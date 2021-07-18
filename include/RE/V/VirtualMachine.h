@@ -87,6 +87,10 @@ namespace RE
 				void                       SetCallableFromTasklets1(const char* a_className, const char* a_stateName, const char* a_fnName, bool a_callable) override;                                                                      // 19
 				void                       SetCallableFromTasklets2(const char* a_className, const char* a_fnName, bool a_callable) override;                                                                                               // 1A - { SetCallableFromTasklets1(a_className, 0, a_fnName, a_callable); }
 				void                       ForEachBoundObject(VMHandle a_handle, IForEachScriptObjectFunctor* a_functor) override;                                                                                                          // 1B
+#ifdef SKYRIMVR
+				void                       New_1C(void) override;    // added in VR 1.4.15
+				void                       New_1D(void) override;    // added in VR 1.4.15
+#endif
 				bool                       FindBoundObject(VMHandle a_handle, const char* a_className, BSTSmartPointer<Object>& a_result) const override;                                                                                   // 1C
 				void                       MoveBoundObjects(VMHandle a_from, VMHandle a_to) override;                                                                                                                                       // 1D
 				void                       ResetAllBoundObjects(VMHandle a_handle) override;                                                                                                                                                // 1E

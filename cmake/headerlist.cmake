@@ -1,5 +1,6 @@
 set(headers ${headers}
 	include/RE/Offsets.h
+	include/RE/Offsets_VR.h
 	include/RE/Offsets_NiRTTI.h
 	include/RE/Offsets_RTTI.h
 	include/RE/RTTI.h

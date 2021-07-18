@@ -34,6 +34,13 @@ namespace RE
 		// members
 		float         unk128;       // 128
 		float         unk12C;       // 12C
+#ifdef SKYRIMVR
+		std::uint64_t pad1;   // VR offset moved by 0x28
+		std::uint64_t pad2;
+		std::uint64_t pad3;
+		std::uint64_t pad4;
+		std::uint64_t pad5;
+#endif
 		float         currentFade;  // 130
 		std::uint32_t unk134;       // 134
 		std::uint32_t unk138;       // 138
@@ -49,5 +56,9 @@ namespace RE
 		std::uint8_t  unk155;       // 155
 		std::uint16_t unk156;       // 156
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BSFadeNode) == 0x158);
+#else
+	static_assert(sizeof(BSFadeNode) == 0x180);
+#endif
 }

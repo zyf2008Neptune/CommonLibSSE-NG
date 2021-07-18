@@ -19,7 +19,11 @@ namespace RE
 {
 	bool NiAVObject::GetAppCulled() const
 	{
+#ifndef SKYRIMVR
 		return flags.all(Flag::kHidden);
+#else
+		return flagsVR.all(Flag::kHidden);
+#endif
 	}
 
 	bool NiAVObject::SetMotionType(std::uint32_t a_motionType, bool a_arg2, bool a_arg3, bool a_allowActivate)

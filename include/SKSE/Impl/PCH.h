@@ -604,7 +604,11 @@ namespace REL
 
 #include "REL/Relocation.h"
 
+#ifndef SKYRIMVR
 #include "RE/Offsets.h"
+#else
+#include "RE/Offsets_VR.h"
+#endif
 #include "RE/Offsets_NiRTTI.h"
 #include "RE/Offsets_RTTI.h"
 
