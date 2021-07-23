@@ -22,6 +22,7 @@ namespace RE
 		{
 			// IndirectSig: E8 ? ? ? ? 0F B6 F0 49 8D 4E 30
 			inline constexpr REL::Offset AddSpell(0x00638430);						// VR 1_4_15
+			inline constexpr REL::Offset RemoveSpell(0x006385F0);
 			// IndirectSig: E8 ? ? ? ? 49 8B D5 49 8B 8D ? ? ? ?
 			inline constexpr REL::Offset DispelWornItemEnchantments(0x0055CCB0);	// VR 1_4_15
 			// DirectSig: 40 55 56 57 48 83 EC 30 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 0F B6 DA 48 8B F1
@@ -37,6 +38,7 @@ namespace RE
 			// DirectSig: 48 83 EC 28 48 8B 81 ? ? ? ? 48 85 C0 74 16
 			inline constexpr REL::Offset HasPerk(0x006025A0);						// VR 1_4_15
 			// IndirectSig: E8 ? ? ? ? 48 8B CF 0F B6 E8
+			inline constexpr REL::Offset InterruptCast(0x0063AB50);
 			inline constexpr REL::Offset IsRunning(0x005D9770);					// VR 1_4_15
 			// IndirectSig: E8 ? ? ? ? 85 C0 7E 2D
 			inline constexpr REL::Offset RequestDetectionLevel(0x00605190);		// VR 1_4_15
@@ -158,7 +160,7 @@ namespace RE
 		namespace BSFixedString
 		{
 			// IndirectSig: E8 ? ? ? ? 83 CD 01
-			inline constexpr REL::Offset Ctor_CStr(0x00C6DB20);	// VR 1_4_15
+			inline constexpr REL::Offset Ctor8(0x00C6DB20);	// VR 1_4_15
 			// IndirectSig: E8 ? ? ? ? 89 7D 98
 			inline constexpr REL::Offset Ctor_Copy(0x00C6DBB0);	// VR 1_4_15
 			// IndirectSig: E8 ? ? ? ? 01 5F 1C
@@ -166,16 +168,11 @@ namespace RE
 			// IndirectSig: E8 ? ? ? ? F7 DF
 			inline constexpr REL::Offset Set_Copy(0x00C6DD50);		// VR 1_4_15
 			// IndirectSig: E8 ? ? ? ? EB 94
-			inline constexpr REL::Offset Dtor(0x00C6DC70);			// VR 1_4_15
-		}
-
-
-		namespace BSFixedStringW
-		{
+			inline constexpr REL::Offset Dtor8(0x00C6DC70);			// VR 1_4_15
 			// DirectSig: 40 53 48 83 EC 20 48 C7 01 00 00 00 00 4C 8B DA
-			inline constexpr REL::Offset Ctor(0x00C6E440);	// VR 1_4_15
+			inline constexpr REL::Offset Ctor16(0x00C6E440);	// VR 1_4_15
 			// IndirectSig: E8 ? ? ? ? 4C 8D 45 C8 48 8D 55 D8
-			inline constexpr REL::Offset Dtor(0x00C6E550);	// VR 1_4_15
+			inline constexpr REL::Offset Dtor16(0x00C6E550);	// VR 1_4_15
 		}
 
 
@@ -239,12 +236,13 @@ namespace RE
 		{
 			namespace Object
 			{
-				// IndirectSig: E8 ? ? ? ? 49 8B CE E8 ? ? ? ? 48 85 DB 74 08
-				inline constexpr REL::Offset Dtor(0x0126BB20);			// VR 1_4_15
+				inline constexpr REL::Offset GetHandle(0x0126BBD0);
 				// IndirectSig: E8 ? ? ? ? 49 89 3F
 				inline constexpr REL::Offset IncRef(0x0126C810);	// VR 1_4_15
 				// IndirectSig: E8 ? ? ? ? 85 C0 75 10 49 8B CE
 				inline constexpr REL::Offset DecRef(0x0126C8C0);	// VR 1_4_15
+				// IndirectSig: E8 ? ? ? ? 49 8B CE E8 ? ? ? ? 48 85 DB 74 08
+				inline constexpr REL::Offset Dtor(0x0126BB20);			// VR 1_4_15
 			}
 
 
@@ -274,6 +272,7 @@ namespace RE
 
 			namespace Stack
 			{
+				inline constexpr REL::Offset GetStackFrameVariable(0x0129A720);
 				// IndirectSig: E8 ? ? ? ? BA A0 00 00 00 49 8B CF
 				inline constexpr REL::Offset Dtor(0x0129A210);	// VR 1_4_15
 			}
@@ -299,6 +298,13 @@ namespace RE
 		{
 			// DirectSig: 40 57 41 54 41 55 41 56 41 57 48 83 EC 30 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 41 8B F8
 			inline constexpr REL::Offset Set_CStr(0x00010A440);	// VR 1_4_15
+		}
+
+
+		namespace BSStringPool
+		{
+			inline constexpr REL::Offset Release8(0x00C6EDB0);
+			inline constexpr REL::Offset Release16(0x00C6EF20);
 		}
 
 

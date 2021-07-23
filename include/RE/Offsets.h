@@ -14,14 +14,18 @@ namespace RE
 		namespace Actor
 		{
 			inline constexpr REL::ID AddSpell(static_cast<std::uint64_t>(37771));
+			inline constexpr REL::ID RemoveSpell(static_cast<std::uint64_t>(37772));
 			inline constexpr REL::ID DispelWornItemEnchantments(static_cast<std::uint64_t>(33828));
 			inline constexpr REL::ID DoReset3D(static_cast<std::uint64_t>(39181));
+			inline constexpr REL::ID EvaluatePackage(static_cast<std::uint64_t>(36407));
 			inline constexpr REL::ID GetGhost(static_cast<std::uint64_t>(36286));
 			inline constexpr REL::ID GetHostileToActor(static_cast<std::uint64_t>(36537));
 			inline constexpr REL::ID GetLevel(static_cast<std::uint64_t>(36344));
 			inline constexpr REL::ID HasPerk(static_cast<std::uint64_t>(36690));
+			inline constexpr REL::ID InterruptCast(static_cast<std::uint64_t>(37808));
 			inline constexpr REL::ID IsRunning(static_cast<std::uint64_t>(36252));
 			inline constexpr REL::ID RequestDetectionLevel(static_cast<std::uint64_t>(36748));
+			inline constexpr REL::ID StealAlarm(static_cast<std::uint64_t>(36427));
 			inline constexpr REL::ID SwitchRace(static_cast<std::uint64_t>(36901));
 			inline constexpr REL::ID UpdateArmorAbility(static_cast<std::uint64_t>(37802));
 			inline constexpr REL::ID UpdateWeaponAbility(static_cast<std::uint64_t>(37803));
@@ -92,6 +96,12 @@ namespace RE
 			inline constexpr REL::ID BuildSoundDataFromDescriptor(static_cast<std::uint64_t>(66404));
 		}
 
+		namespace BSFixedString
+		{
+			inline constexpr REL::ID Ctor8(static_cast<std::uint64_t>(67819));
+			inline constexpr REL::ID Ctor16(static_cast<std::uint64_t>(67834));
+		}
+
 		namespace BSInputDeviceManager
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(516574));
@@ -125,6 +135,14 @@ namespace RE
 
 		namespace BSScript
 		{
+			namespace Object
+			{
+				inline constexpr REL::ID GetHandle(static_cast<std::uint64_t>(97463));
+				inline constexpr REL::ID IncRef(static_cast<std::uint64_t>(97468));
+				inline constexpr REL::ID DecRef(static_cast<std::uint64_t>(97469));
+				inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(97462));
+			}
+
 			namespace ObjectBindPolicy
 			{
 				inline constexpr REL::ID BindObject(static_cast<std::uint64_t>(97379));
@@ -140,6 +158,7 @@ namespace RE
 
 			namespace Stack
 			{
+				inline constexpr REL::ID GetStackFrameVariable(static_cast<std::uint64_t>(97746));
 				inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(97742));
 			}
 		}
@@ -156,6 +175,12 @@ namespace RE
 		namespace BSString
 		{
 			inline constexpr REL::ID Set_CStr(static_cast<std::uint64_t>(10979));
+		}
+
+		namespace BSStringPool
+		{
+			inline constexpr REL::ID Release8(static_cast<std::uint64_t>(67847));
+			inline constexpr REL::ID Release16(static_cast<std::uint64_t>(67848));
 		}
 
 		namespace BucketTable
