@@ -182,7 +182,7 @@ namespace RE
 #ifndef SKYRIMVR
 			REL::Relocation<func_t> func{ REL::ID(14509) };
 #else
-			REL::Relocation<func_t> func{ 0x1a5510 };
+			REL::Relocation<func_t> func{ REL::Offset(0x1a5510) };
 #endif
 			return func(a_id, a_file);
 		}
@@ -196,8 +196,8 @@ namespace RE
 			REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ REL::ID(514351) };
 			REL::Relocation<BSReadWriteLock*>               allFormsMapLock{ REL::ID(514360) };
 #else
-			REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ 0x1f88b18 };
-			REL::Relocation<BSReadWriteLock*>               allFormsMapLock{ 0x1f88fb0 };
+			REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ REL::Offset(0x1f88b18) };
+			REL::Relocation<BSReadWriteLock*>               allFormsMapLock{ REL::Offset(0x1f88fb0) };
 #endif
 			return { *allForms, std::ref(*allFormsMapLock) };
 		}
@@ -211,8 +211,8 @@ namespace RE
 			REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ REL::ID(514352) };
 			REL::Relocation<BSReadWriteLock*>                      allFormsEditorIDMapLock{ REL::ID(514361) };
 #else
-			REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ 0x1f88b20 };
-			REL::Relocation<BSReadWriteLock*>                      allFormsEditorIDMapLock{ 0x1f88fb8 };
+			REL::Relocation<BSTHashMap<BSFixedString, TESForm*>**> allFormsByEditorID{ REL::Offset(0x1f88b20) };
+			REL::Relocation<BSReadWriteLock*>                      allFormsEditorIDMapLock{ REL::Offset(0x1f88fb8) };
 #endif
 			return { *allFormsByEditorID, std::ref(*allFormsEditorIDMapLock) };
 		}
