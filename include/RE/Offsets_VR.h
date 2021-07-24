@@ -59,6 +59,8 @@ namespace RE
 		{
 			// DirectSig: 48 85 D2 0F 84 ? ? ? ? 57 48 83 EC 50 48 C7 44 24 ? ? ? ? ? 48 89 5C 24 ? 48 89 6C 24 ? 48 89 74 24 ? 49 8B D9
 			inline constexpr REL::Offset EquipObject(0x00640A90);		// VR 1_4_15
+			inline constexpr REL::Offset EquipShout(0x006556848);
+			inline constexpr REL::Offset EquipSpell(0x006556624);
 			// 88 4C 24 30 48 8B 0D ? ? ? ? 48 C7 44 24 ? ? ? ? ?
 			inline constexpr REL::Offset Singleton(0x02F896D8);		// VR
 			// IndirectSig: E8 ? ? ? ? 84 C0 0F 94 C0 33 F6

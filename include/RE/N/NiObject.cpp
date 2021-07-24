@@ -31,7 +31,7 @@ namespace RE
 	void NiObject::CreateDeepCopy(NiPointer<NiObject>& a_object)
 	{
 		using func_t = decltype(&NiObject::CreateDeepCopy);
-		REL::Relocation<func_t> func{ REL::ID(68839) };
+		REL::Relocation<func_t> func{ Offset::NiObject::CreateDeepCopy };
 		return func(this, a_object);
 	}
 }

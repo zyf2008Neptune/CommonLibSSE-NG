@@ -11,6 +11,11 @@ namespace RE
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263060));
 		}
 
+		namespace ActiveEffect
+		{
+			inline constexpr REL::ID Dispel(static_cast<std::uint64_t>(33286));
+		}
+
 		namespace Actor
 		{
 			inline constexpr REL::ID AddSpell(static_cast<std::uint64_t>(37771));
@@ -35,6 +40,8 @@ namespace RE
 		namespace ActorEquipManager
 		{
 			inline constexpr REL::ID EquipObject(static_cast<std::uint64_t>(37938));
+			inline constexpr REL::ID EquipShout(static_cast<std::uint64_t>(37941));
+			inline constexpr REL::ID EquipSpell(static_cast<std::uint64_t>(37939));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514494));
 			inline constexpr REL::ID UnequipObject(static_cast<std::uint64_t>(37945));
 		}
@@ -58,6 +65,11 @@ namespace RE
 		namespace AutoMoveHandler
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263061));
+		}
+
+		namespace BGSDefaultObjectManager
+		{
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(10878));
 		}
 
 		namespace BGSFootstepManager
@@ -126,6 +138,12 @@ namespace RE
 			inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(69638));
 			inline constexpr REL::ID Seek(static_cast<std::uint64_t>(69640));
 			inline constexpr REL::ID SetEndianSwap(static_cast<std::uint64_t>(69643));
+		}
+
+		namespace BSScaleformManager
+		{
+			inline constexpr REL::ID LoadMovie(static_cast<std::uint64_t>(80302));
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(516573));
 		}
 
 		namespace BSScaleformTranslator
@@ -198,6 +216,11 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514287));
 		}
 
+		namespace ChestsLooted
+		{
+			inline constexpr REL::ID GetEventSource(static_cast<std::uint64_t>(50257));
+		}
+
 		namespace Console
 		{
 			inline constexpr REL::ID SelectedRef(static_cast<std::uint64_t>(519394));
@@ -220,6 +243,11 @@ namespace RE
 			inline constexpr REL::ID SizeOf32(static_cast<std::uint64_t>(66963));
 			inline constexpr REL::ID SizeOf64(static_cast<std::uint64_t>(66964));
 			inline constexpr REL::ID SizeOfSize(static_cast<std::uint64_t>(66962));
+		}
+
+		namespace DialogueItem
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(34413));
 		}
 
 		namespace ExtraAliasInstanceArray
@@ -314,6 +342,11 @@ namespace RE
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229890));
 		}
 
+		namespace ExtraTextDisplayData
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229625));
+		}
+
 		namespace ExtraUniqueID
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(229631));
@@ -379,6 +412,16 @@ namespace RE
 			inline constexpr REL::ID GlobalHeap(static_cast<std::uint64_t>(525584));
 		}
 
+		namespace GString
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(80446));
+		}
+
+		namespace hkContainerHeapAllocator
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(510713));
+		}
+
 		namespace hkReferencedObject
 		{
 			inline constexpr REL::ID AddReference(static_cast<std::uint64_t>(56606));
@@ -407,10 +450,18 @@ namespace RE
 
 		namespace InventoryChanges
 		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(15812));
+			inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(15813));
 			inline constexpr REL::ID GetNextUniqueID(static_cast<std::uint64_t>(15908));
 			inline constexpr REL::ID SendContainerChangedEvent(static_cast<std::uint64_t>(15909));
 			inline constexpr REL::ID SetUniqueID(static_cast<std::uint64_t>(15907));
 			inline constexpr REL::ID TransferItemUID(static_cast<std::uint64_t>(15909));
+		}
+
+		namespace InventoryEntryData
+		{
+			inline constexpr REL::ID GetValue(static_cast<std::uint64_t>(15757));
+			inline constexpr REL::ID IsOwnedBy(static_cast<std::uint64_t>(15782));
 		}
 
 		namespace ItemCrafted
@@ -524,6 +575,11 @@ namespace RE
 		namespace NiNode
 		{
 			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(68936));
+		}
+
+		namespace NiObject
+		{
+			inline constexpr REL::ID CreateDeepCopy(static_cast<std::uint64_t>(68839));
 		}
 
 		namespace NiRefObject

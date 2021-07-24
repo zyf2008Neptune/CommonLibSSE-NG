@@ -79,14 +79,14 @@ namespace RE
 	InventoryChanges* InventoryChanges::Ctor(TESObjectREFR* a_ref)
 	{
 		using func_t = decltype(&InventoryChanges::Ctor);
-		REL::Relocation<func_t> func{ REL::ID(15812) };
+		REL::Relocation<func_t> func{ Offset::InventoryChanges::Ctor };
 		return func(this, a_ref);
 	}
 
 	void InventoryChanges::Dtor()
 	{
 		using func_t = decltype(&InventoryChanges::Dtor);
-		REL::Relocation<func_t> func{ REL::ID(15813) };
+		REL::Relocation<func_t> func{ Offset::InventoryChanges::Dtor };
 		return func(this);
 	}
 }

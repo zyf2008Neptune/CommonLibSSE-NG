@@ -13,7 +13,7 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ REL::ID(229625) };
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraTextDisplayData::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 	}
 
@@ -28,7 +28,7 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ REL::ID(229625) };
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraTextDisplayData::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 		SetName(a_name);
 	}
@@ -44,7 +44,7 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ REL::ID(229625) };
+		REL::Relocation<std::uintptr_t> vtbl{ Offset::ExtraTextDisplayData::Vtbl };
 		((std::uintptr_t*)this)[0] = vtbl.address();
 		GetDisplayName(a_baseObject, a_temperFactor);
 	}
