@@ -9,8 +9,13 @@ namespace RE
 			IFormFactory* data[stl::to_underlying(FormType::Max)];
 		};
 
+#ifndef SKYRIMVR
 		REL::Relocation<Factories*> formFactories{ REL::ID(514355) };
 		REL::Relocation<bool*>      formFactoriesInitialized{ REL::ID(514349) };
+#else
+		REL::Relocation<Factories*> formFactories{ REL::Offset(0x1f88b40) };
+		REL::Relocation<bool*>      formFactoriesInitialized{ REL::Offset(0x1f88b13) };
+#endif
 		return std::make_pair(formFactories->data, *formFactoriesInitialized);
 	}
 
