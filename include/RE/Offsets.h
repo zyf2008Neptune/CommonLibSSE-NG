@@ -632,6 +632,12 @@ namespace RE
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263063));
 		}
 
+		namespace ScrapHeap
+		{
+			inline constexpr REL::ID Allocate(static_cast<std::uint64_t>(66884));
+			inline constexpr REL::ID Deallocate(static_cast<std::uint64_t>(66885));
+		}
+
 		namespace Script
 		{
 			inline constexpr REL::ID CompileAndRun(static_cast<std::uint64_t>(21416));

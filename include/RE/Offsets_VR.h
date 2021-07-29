@@ -977,6 +977,13 @@ namespace RE
 		}
 
 
+		namespace ScrapHeap
+		{
+			inline constexpr REL::Offset Allocate(0x00C3E320);
+			inline constexpr REL::Offset Deallocate(0x00C3E940);
+		}
+
+
 		namespace Script
 		{
 			// DirectSig: 41 54 41 56 41 57 48 83 EC 40 48 C7 44 24 38 FE FF FF FF 48 89 5C 24 60 48 89 6C 24 68 48 89 74 24 70 48 89 7C 24 78 4D 8B F1
