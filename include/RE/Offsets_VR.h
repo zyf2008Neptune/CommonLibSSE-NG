@@ -674,7 +674,7 @@ namespace RE
 		namespace InterfaceStrings
 		{
 			// E8 ? ? ? ? 90 48 89 05 ? ? ? ? 48 8B 0D ? ? ? ? E8 ? ? ? ? 48 83 3D ? ? ? ? ? 75 20
-			inline constexpr REL::Offset Singleton(0x01EC0A78);	// 1_5_97
+			inline constexpr REL::Offset Singleton(0x01F85100);						// VR 1_4_15
 		}
 
 
