@@ -4,6 +4,12 @@ namespace RE
 {
 	namespace Offset
 	{
+		namespace _CRT
+		{
+			inline constexpr REL::Offset RTDynamicCast(0x0138BABA);
+		}
+
+
 		namespace ActivateHandler
 		{
 			// VTable: .?AUActivateHandler@@

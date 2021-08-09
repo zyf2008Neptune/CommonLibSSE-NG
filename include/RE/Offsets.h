@@ -6,6 +6,11 @@ namespace RE
 {
 	namespace Offset
 	{
+		namespace _CRT
+		{
+			inline constexpr REL::ID RTDynamicCast(static_cast<std::uint64_t>(102238));
+		}
+
 		namespace ActivateHandler
 		{
 			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263060));
