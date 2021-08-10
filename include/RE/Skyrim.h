@@ -1211,5 +1211,8 @@
 #include "RE/V/Variable.h"
 #include "RE/V/VirtualMachine.h"
 #include "RE/W/WeatherType.h"
+#ifdef SKYRIMVR
+#include "RE/W/WorldSpaceMenu.h"
+#endif
 #include "RE/Z/ZeroFunctionArguments.h"
 #include "RE/Z/ZeroOverheadHeap.h"
