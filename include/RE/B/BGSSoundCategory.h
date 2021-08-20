@@ -48,11 +48,11 @@ namespace RE
 		std::uint16_t GetCategoryAttenuation() const override;                     // 06
 		void          SetCategoryAttenuation(std::uint16_t a_value) override;      // 07
 
-		float GetDefaultMenuValue() const;
-		float GetStaticVolumeMultiplier() const;
-		bool  IsMenuCategory() const;
-		void  SetDefaultMenuValue(float a_val);
-		void  SetStaticVolumeMultiplier(float a_val);
+		[[nodiscard]] float GetDefaultMenuValue() const;
+		[[nodiscard]] float GetStaticVolumeMultiplier() const;
+		[[nodiscard]] bool  IsMenuCategory() const;
+		void                SetDefaultMenuValue(float a_val);
+		void                SetStaticVolumeMultiplier(float a_val);
 
 		// members
 		stl::enumeration<Flag, std::uint32_t> flags;             // 38 - FNAM

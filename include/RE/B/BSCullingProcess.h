@@ -46,10 +46,10 @@ namespace RE
 		void AppendVirtual(BSGeometry& a_visible, std::uint32_t a_arg2) override;                             // 18
 
 		// add
-		virtual void AppendNonAccum(NiAVObject& a_object);               // 19
-		virtual bool TestBaseVisibility1(BSMultiBound& a_bound);         // 1A
-		virtual bool TestBaseVisibility2(BSOcclusionPlane& a_bound);     // 1B
-		virtual bool TestBaseVisibility3(const NiBound& a_bound) const;  // 1C
+		virtual void               AppendNonAccum(NiAVObject& a_object);               // 19
+		virtual bool               TestBaseVisibility1(BSMultiBound& a_bound);         // 1A
+		virtual bool               TestBaseVisibility2(BSOcclusionPlane& a_bound);     // 1B
+		[[nodiscard]] virtual bool TestBaseVisibility3(const NiBound& a_bound) const;  // 1C
 
 		BSTArray<NiPointer<NiAVObject>>                   unk00128;           // 00128
 		BSTLocklessQueue::ObjMultiProdCons<Data, 4096, 0> cullQueue;          // 00140

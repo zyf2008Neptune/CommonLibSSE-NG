@@ -17,10 +17,10 @@ namespace RE
 
 		~BSHandleRefObject() override;  // 00
 
-		void          DecRefCount();
-		void          IncRefCount();
-		bool          IsHandleValid() const;
-		std::uint32_t QRefCount() const;
+		void                        DecRefCount();
+		void                        IncRefCount();
+		[[nodiscard]] bool          IsHandleValid() const;
+		[[nodiscard]] std::uint32_t QRefCount() const;
 	};
 	static_assert(sizeof(BSHandleRefObject) == 0x10);
 }

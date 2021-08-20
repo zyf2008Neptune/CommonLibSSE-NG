@@ -33,11 +33,11 @@ namespace RE
 		BSSoundHandle();
 		~BSSoundHandle() = default;
 
-		bool IsValid() const;
-		bool SetPosition(NiPoint3 a_pos);
-		void SetObjectToFollow(NiAVObject* a_node);
-		bool Stop();
-		bool Play();
+		[[nodiscard]] bool IsValid() const;
+		bool               SetPosition(NiPoint3 a_pos);
+		void               SetObjectToFollow(NiAVObject* a_node);
+		bool               Stop();
+		bool               Play();
 
 		// members
 		std::uint32_t                                 soundID;        // 00

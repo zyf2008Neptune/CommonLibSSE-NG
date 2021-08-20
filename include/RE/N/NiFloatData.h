@@ -22,8 +22,8 @@ namespace RE
 		void          SaveBinary(NiStream& a_stream) override;  // 1B
 		bool          IsEqual(NiObject* a_object) override;     // 1C
 
-		std::uint32_t GetNumKeys() const;
-		NiFloatKey*   GetAnim(std::uint32_t& a_numKeys, KeyType& a_type, std::uint8_t& a_size) const;
+		[[nodiscard]] std::uint32_t GetNumKeys() const;
+		NiFloatKey*                 GetAnim(std::uint32_t& a_numKeys, KeyType& a_type, std::uint8_t& a_size) const;
 
 		// members
 		std::uint32_t numKeys;  // 10

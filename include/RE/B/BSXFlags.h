@@ -40,8 +40,8 @@ namespace RE
 		void          SaveBinary(NiStream& a_stream) override;            // 1B - { NiIntegerExtraData::SaveBinary(a_stream); }
 		bool          IsEqual(NiObject* a_object) override;               // 1C - { return NiIntegerExtraData::IsEqual(a_object); }
 
-		Flag GetFlags() const;
-		void SetFlags(Flag a_flags);
+		[[nodiscard]] Flag GetFlags() const;
+		void               SetFlags(Flag a_flags);
 	};
 	static_assert(sizeof(BSXFlags) == 0x20);
 }

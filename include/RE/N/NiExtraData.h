@@ -22,13 +22,13 @@ namespace RE
 		bool          IsEqual(NiObject* a_object) override;              // 1C
 
 		// add
-		virtual bool IsStreamable() const;  // 25 - { return true; }
-		virtual bool IsCloneable() const;   // 26 - { return true; }
+		[[nodiscard]] virtual bool IsStreamable() const;  // 25 - { return true; }
+		[[nodiscard]] virtual bool IsCloneable() const;   // 26 - { return true; }
 
 		static NiExtraData* Create(std::size_t a_size, std::uintptr_t a_vtbl);
 
-		const BSFixedString& GetName() const;
-		void                 SetName(const BSFixedString& a_name);
+		[[nodiscard]] const BSFixedString& GetName() const;
+		void                               SetName(const BSFixedString& a_name);
 
 		// members
 		BSFixedString name;  // 10

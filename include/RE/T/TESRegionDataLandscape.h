@@ -17,11 +17,11 @@ namespace RE
 		~TESRegionDataLandscape() override;  // 00
 
 		// override (TESRegionData)
-		Type GetType() const override;                              // 03 - { return Type::kLand; }
-		void ConstructSelf() override;                              // 04
-		void Unk_05(void) override;                                 // 05
-		void CopyFrom(TESRegionData* a_src, bool a_copy) override;  // 06
-		bool IsLoaded() const override;                             // 07
+		Type               GetType() const override;                              // 03 - { return Type::kLand; }
+		void               ConstructSelf() override;                              // 04
+		void               Unk_05(void) override;                                 // 05
+		void               CopyFrom(TESRegionData* a_src, bool a_copy) override;  // 06
+		[[nodiscard]] bool IsLoaded() const override;                             // 07
 
 		// add
 		virtual bool LoadIcon(TESFile* a_mod);           // 08
