@@ -1215,6 +1215,7 @@ set(SOURCES
 	include/RE/V/Variable.h
 	include/RE/V/VirtualMachine.h
 	include/RE/W/WeatherType.h
+	include/RE/W/WorldSpaceMenu.h
 	include/RE/Z/ZeroFunctionArguments.h
 	include/RE/Z/ZeroOverheadHeap.h
 	include/REL/Relocation.h

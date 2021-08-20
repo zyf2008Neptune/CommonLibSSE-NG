@@ -32,10 +32,10 @@ namespace RE
 		virtual BSLeafAnimNode* AsLeafAnimNode();  // 3F - { return 0; }
 
 		// members
-		float         unk128;       // 128
-		float         unk12C;       // 12C
+		float unk128;  // 128
+		float unk12C;  // 12C
 #ifdef SKYRIMVR
-		std::uint64_t pad1;   // VR offset moved by 0x28
+		std::uint64_t pad1;  // VR offset moved by 0x28
 		std::uint64_t pad2;
 		std::uint64_t pad3;
 		std::uint64_t pad4;

@@ -128,10 +128,10 @@ namespace RE
 		float                                 fadeAmount;               // 100
 		std::uint32_t                         lastUpdatedFrameCounter;  // 104
 #ifndef SKYRIMVR
-		std::uint64_t                         unk108;                   // 108
+		std::uint64_t unk108;  // 108
 #else
-		std::uint32_t                         unk108;                   // 108
-		stl::enumeration<Flag, std::uint32_t> flagsVR;                  // 10C
+		std::uint32_t                         unk108;   // 108
+		stl::enumeration<Flag, std::uint32_t> flagsVR;  // 10C
 #endif
 	};
 	static_assert(sizeof(NiAVObject) == 0x110);

@@ -60,36 +60,36 @@ namespace RE
 				~VirtualMachine() override;  // 00
 
 				// override (IVirtualMachine)
-				void                       SetLinkedCallback(ITypeLinkedCallback* a_callback) override;                                                                                                                                     // 01
-				void                       TraceStack(const char* a_str, VMStackID a_stackID, Severity a_severity = Severity::kInfo) override;                                                                                              // 02
-				void                       Unk_03(void) override;                                                                                                                                                                           // 03
-				void                       Update(float a_budget) override;                                                                                                                                                                 // 04
-				void                       UpdateTasklets(float a_budget) override;                                                                                                                                                         // 05
-				void                       SetOverstressed(bool a_set) override;                                                                                                                                                            // 06 - { overstressed = a_set; }
-				bool                       IsCompletelyFrozen() const override;                                                                                                                                                             // 07
-				bool                       RegisterObjectType(VMTypeID a_typeID, const char* a_className) override;                                                                                                                         // 08
-				bool                       GetScriptObjectType1(const BSFixedString& a_className, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr) override;                                                                              // 09
-				bool                       GetScriptObjectType2(VMTypeID a_typeID, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr) override;                                                                                             // 0A
-				bool                       GetScriptObjectTypeNoLoad1(const BSFixedString& a_className, BSTSmartPointer<ObjectTypeInfo>& a_typeInfoPtr) const override;                                                                     // 0B
-				bool                       GetScriptObjectTypeNoLoad2(VMTypeID a_typeID, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr) const override;                                                                                 // 0C
-				bool                       GetTypeIDForScriptObject(const BSFixedString& a_className, VMTypeID& a_typeID) const override;                                                                                                   // 0D
-				void                       GetScriptObjectsWithATypeID(BSScrapArray<BSFixedString>& a_results) const override;                                                                                                              // 0E
-				bool                       GetParentNativeType(const BSFixedString& a_className, BSTSmartPointer<ObjectTypeInfo>& a_typeInfoPtr) override;                                                                                  // 0F
-				bool                       TypeIsValid(const BSFixedString& a_className) override;                                                                                                                                          // 10
-				bool                       ReloadType(const char* a_className) override;                                                                                                                                                    // 11
-				void                       TasksToJobs(BSJobs::JobList& a_jobList) override;                                                                                                                                                // 12
-				void                       CalculateFullReloadList(void) const override;                                                                                                                                                    // 13
-				bool                       CreateObject1(const BSFixedString& a_className, void* a_property, BSTSmartPointer<Object>& a_objPtr) override;                                                                                   // 14
-				bool                       CreateObject2(const BSFixedString& a_className, BSTSmartPointer<Object>& a_result) override;                                                                                                     // 15
-				bool                       CreateArray1(const TypeInfo& a_typeInfo, std::uint32_t a_size, BSTSmartPointer<Array>& a_arrayPtr) override;                                                                                     // 16
-				bool                       CreateArray2(TypeInfo::RawType a_typeID, const BSFixedString& a_className, std::uint32_t a_size, BSTSmartPointer<Array>& a_arrayPtr) override;                                                   // 17
-				bool                       BindNativeMethod(IFunction* a_fn) override;                                                                                                                                                      // 18
-				void                       SetCallableFromTasklets1(const char* a_className, const char* a_stateName, const char* a_fnName, bool a_callable) override;                                                                      // 19
-				void                       SetCallableFromTasklets2(const char* a_className, const char* a_fnName, bool a_callable) override;                                                                                               // 1A - { SetCallableFromTasklets1(a_className, 0, a_fnName, a_callable); }
-				void                       ForEachBoundObject(VMHandle a_handle, IForEachScriptObjectFunctor* a_functor) override;                                                                                                          // 1B
+				void SetLinkedCallback(ITypeLinkedCallback* a_callback) override;                                                                                    // 01
+				void TraceStack(const char* a_str, VMStackID a_stackID, Severity a_severity = Severity::kInfo) override;                                             // 02
+				void Unk_03(void) override;                                                                                                                          // 03
+				void Update(float a_budget) override;                                                                                                                // 04
+				void UpdateTasklets(float a_budget) override;                                                                                                        // 05
+				void SetOverstressed(bool a_set) override;                                                                                                           // 06 - { overstressed = a_set; }
+				bool IsCompletelyFrozen() const override;                                                                                                            // 07
+				bool RegisterObjectType(VMTypeID a_typeID, const char* a_className) override;                                                                        // 08
+				bool GetScriptObjectType1(const BSFixedString& a_className, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr) override;                             // 09
+				bool GetScriptObjectType2(VMTypeID a_typeID, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr) override;                                            // 0A
+				bool GetScriptObjectTypeNoLoad1(const BSFixedString& a_className, BSTSmartPointer<ObjectTypeInfo>& a_typeInfoPtr) const override;                    // 0B
+				bool GetScriptObjectTypeNoLoad2(VMTypeID a_typeID, BSTSmartPointer<ObjectTypeInfo>& a_outTypeInfoPtr) const override;                                // 0C
+				bool GetTypeIDForScriptObject(const BSFixedString& a_className, VMTypeID& a_typeID) const override;                                                  // 0D
+				void GetScriptObjectsWithATypeID(BSScrapArray<BSFixedString>& a_results) const override;                                                             // 0E
+				bool GetParentNativeType(const BSFixedString& a_className, BSTSmartPointer<ObjectTypeInfo>& a_typeInfoPtr) override;                                 // 0F
+				bool TypeIsValid(const BSFixedString& a_className) override;                                                                                         // 10
+				bool ReloadType(const char* a_className) override;                                                                                                   // 11
+				void TasksToJobs(BSJobs::JobList& a_jobList) override;                                                                                               // 12
+				void CalculateFullReloadList(void) const override;                                                                                                   // 13
+				bool CreateObject1(const BSFixedString& a_className, void* a_property, BSTSmartPointer<Object>& a_objPtr) override;                                  // 14
+				bool CreateObject2(const BSFixedString& a_className, BSTSmartPointer<Object>& a_result) override;                                                    // 15
+				bool CreateArray1(const TypeInfo& a_typeInfo, std::uint32_t a_size, BSTSmartPointer<Array>& a_arrayPtr) override;                                    // 16
+				bool CreateArray2(TypeInfo::RawType a_typeID, const BSFixedString& a_className, std::uint32_t a_size, BSTSmartPointer<Array>& a_arrayPtr) override;  // 17
+				bool BindNativeMethod(IFunction* a_fn) override;                                                                                                     // 18
+				void SetCallableFromTasklets1(const char* a_className, const char* a_stateName, const char* a_fnName, bool a_callable) override;                     // 19
+				void SetCallableFromTasklets2(const char* a_className, const char* a_fnName, bool a_callable) override;                                              // 1A - { SetCallableFromTasklets1(a_className, 0, a_fnName, a_callable); }
+				void ForEachBoundObject(VMHandle a_handle, IForEachScriptObjectFunctor* a_functor) override;                                                         // 1B
 #ifdef SKYRIMVR
-				void                       New_1C(void) override;    // added in VR 1.4.15
-				void                       New_1D(void) override;    // added in VR 1.4.15
+				void New_1C(void) override;  // added in VR 1.4.15
+				void New_1D(void) override;  // added in VR 1.4.15
 #endif
 				bool                       FindBoundObject(VMHandle a_handle, const char* a_className, BSTSmartPointer<Object>& a_result) const override;                                                                                   // 1C
 				void                       MoveBoundObjects(VMHandle a_from, VMHandle a_to) override;                                                                                                                                       // 1D

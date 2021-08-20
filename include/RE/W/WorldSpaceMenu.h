@@ -10,8 +10,8 @@ namespace RE
 	// menuDepth = 4
 	// context = 22
 	class WorldSpaceMenu :
-		public IMenu,                             // 00
-		public BSTEventSink<HudModeChangeEvent>   // 40
+		public IMenu,                            // 00
+		public BSTEventSink<HudModeChangeEvent>  // 40
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_WorldSpaceMenu;

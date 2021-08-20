@@ -5,7 +5,7 @@
 #include "RE/G/GFxValue.h"
 #include "RE/I/IMenu.h"
 #ifdef SKYRIMVR
-#include "RE/W/WorldSpaceMenu.h"
+#	include "RE/W/WorldSpaceMenu.h"
 #endif
 
 namespace RE

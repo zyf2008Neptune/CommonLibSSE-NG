@@ -65,7 +65,7 @@ namespace RE
 #ifndef SKYRIMVR
 		return grabbedObject.get();
 #else
-		return nullptr;    // Not sure this exists anymore in VR. will need to hunt
+		return nullptr;  // Not sure this exists anymore in VR. will need to hunt
 #endif
 	}
 

@@ -182,7 +182,7 @@ namespace RE
 #ifndef SKYRIMVR
 			REL::Relocation<func_t> func{ REL::ID(14509) };
 #else
-			REL::Relocation<func_t> func{ REL::Offset(0x1a5510) };
+			REL::Relocation<func_t>                                func{ REL::Offset(0x1a5510) };
 #endif
 			return func(a_id, a_file);
 		}
@@ -196,8 +196,8 @@ namespace RE
 			REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ REL::ID(514351) };
 			REL::Relocation<BSReadWriteLock*>               allFormsMapLock{ REL::ID(514360) };
 #else
-			REL::Relocation<BSTHashMap<FormID, TESForm*>**> allForms{ REL::Offset(0x1f88b18) };
-			REL::Relocation<BSReadWriteLock*>               allFormsMapLock{ REL::Offset(0x1f88fb0) };
+			REL::Relocation<BSTHashMap<FormID, TESForm*>**>        allForms{ REL::Offset(0x1f88b18) };
+			REL::Relocation<BSReadWriteLock*>                      allFormsMapLock{ REL::Offset(0x1f88fb0) };
 #endif
 			return { *allForms, std::ref(*allFormsMapLock) };
 		}

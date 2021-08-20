@@ -367,9 +367,7 @@
 #include "RE/C/ControlMap.h"
 #include "RE/C/CraftingMenu.h"
 #include "RE/C/CraftingSubMenu.h"
-#ifndef SKYRIMVR
 #include "RE/C/CreationClubMenu.h"
-#endif
 #include "RE/C/CreditsMenu.h"
 #include "RE/C/Crime.h"
 #include "RE/C/CursorMenu.h"
@@ -973,6 +971,9 @@
 #include "RE/O/Object.h"
 #include "RE/O/ObjectTypeInfo.h"
 #include "RE/O/OldMessageBoxCallback.h"
+#include "RE/Offsets_VR.h"
+#include "RE/Offsets_VR_NiRTTI.h"
+#include "RE/Offsets_VR_RTTI.h"
 #include "RE/P/PCGamepadType.h"
 #include "RE/P/PackUnpack.h"
 #include "RE/P/PackUnpackImpl.h"
@@ -1211,8 +1212,6 @@
 #include "RE/V/Variable.h"
 #include "RE/V/VirtualMachine.h"
 #include "RE/W/WeatherType.h"
-#ifdef SKYRIMVR
 #include "RE/W/WorldSpaceMenu.h"
-#endif
 #include "RE/Z/ZeroFunctionArguments.h"
 #include "RE/Z/ZeroOverheadHeap.h"
