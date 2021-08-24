@@ -1,11 +1,20 @@
 cmake_minimum_required(VERSION 3.19)
 
 option(SKSE_SUPPORT_XBYAK "Enables trampoline support for Xbyak." OFF)
+option(BUILD_SKYRIMVR "Build for Skyrim VR" OFF)
 
-project(
-	CommonLibSSE
-	LANGUAGES CXX
-)
+if (NOT BUILD_SKYRIMVR)
+	project(
+		CommonLibSSE
+		LANGUAGES CXX
+	)
+else()
+	project(
+		CommonLibVR
+		LANGUAGES CXX
+	)
+	add_compile_definitions(SKYRIMVR)
+endif()
 
 include(GNUInstallDirs)
 

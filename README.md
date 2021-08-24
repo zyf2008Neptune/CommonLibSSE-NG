@@ -10,9 +10,24 @@
 * [Visual Studio Community 2019 16.10.0 Preview 3.0](https://visualstudio.microsoft.com/vs/preview/)
 	* Desktop development with C++
 
-## End User Dependencies
+## Building
+```
+git clone https://github.com/Ryan-rsm-McKenzie/CommonLibSSE.git
+cd CommonLibSSE
+
+# Skyrim SE
+cmake -B build -S .
+
+# Skyrim VR
+cmake -B buildVR -S . -DBUILD_SKYRIMVR=ON
+```
+
+## End User Dependencies SSE
 * [Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444)
 * [SKSE64](https://skse.silverlock.org/)
+
+## End User Dependencies VR
+* [SKSEVR](https://skse.silverlock.org/)
 
 ## Development
 * [Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444)
@@ -22,3 +37,8 @@
 
 ## Notes
 * CommonLib is incompatible with SKSE and is intended to replace it as a static dependency. However, you will still need the runtime component.
+
+## Credits
+* Thanks to Ryan McKenzie for original code
+* Thanks to RollingRock & po3 for important contributions
+* Thanks to Exit-9B for recombination of [CommonLibSSE](https://github.com/Ryan-rsm-McKenzie/CommonLibSSE) and [CommonLibVR](https://github.com/lfrazer/CommonLibVR)
