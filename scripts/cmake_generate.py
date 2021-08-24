@@ -68,7 +68,7 @@ def main():
 
 	os.chdir(os.path.join(root, "include"))
 	make_header("SKSE", "SKSE.h", { "Impl" })
-	make_header("RE", "Skyrim.h", { "BSCoreTypes.h", "Offsets.h", "Offsets_NiRTTI.h", "Offsets_RTTI.h", "SFTypes.h" })
+	make_header("RE", "Skyrim.h", { "BSCoreTypes.h", "Offsets.h", "Offsets_NiRTTI.h", "Offsets_RTTI.h", "Offsets_VR.h", "Offsets_VR_NiRTTI.h", "Offsets_VR_RTTI.h", "SFTypes.h" })
 
 if __name__ == "__main__":
 	main()
