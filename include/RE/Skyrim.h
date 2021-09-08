@@ -367,7 +367,6 @@
 #include "RE/C/ControlMap.h"
 #include "RE/C/CraftingMenu.h"
 #include "RE/C/CraftingSubMenu.h"
-#include "RE/C/CreationClubMenu.h"
 #include "RE/C/CreditsMenu.h"
 #include "RE/C/Crime.h"
 #include "RE/C/CursorMenu.h"

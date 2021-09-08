@@ -608,6 +608,7 @@ namespace REL
 #	include "RE/Offsets.h"
 #	include "RE/Offsets_NiRTTI.h"
 #	include "RE/Offsets_RTTI.h"
+#	include "RE/C/CreationClubMenu.h"
 #else
 #	include "RE/Offsets_VR.h"
 #	include "RE/Offsets_VR_NiRTTI.h"
