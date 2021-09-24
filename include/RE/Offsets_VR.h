@@ -318,7 +318,8 @@ namespace RE
 		namespace Console
 		{
 			// 48 8D 0D ? ? ? ? E8 ? ? ? ? 83 3D ? ? ? ? ? 74 13 48 8D 15 ? ? ? ? 48 8D 0D ? ? ? ? E8 ? ? ? ? 45 33 C9 45 33 C0 BA ? ? ? ? 48 8D 0D ? ? ? ? E8 ? ? ? ? 48 89 44 24 ?
-			inline constexpr REL::Offset SelectedRef(0x02F4C31C);  // 1_5_97
+			// NOTE: This is called "g_consoleHandle" in SKSEVR but it seems the type and ordering of the static var has changed quite a bit in the VR binary - hopefully this is correct.
+			inline constexpr REL::Offset SelectedRef(0x030115FC);  // VR 1_4_15
 			// IndirectSig: E8 ? ? ? ? BE 02 00 00 00 8B C6
 			inline constexpr REL::Offset SetSelectedRef(0x008864D0);  // VR 1_4_15
 		}
