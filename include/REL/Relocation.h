@@ -1,4 +1,5 @@
 #pragma once
+#include <csv.hpp>
 
 #define REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER_IMPL(a_nopropQual, a_propQual, ...)              \
 	template <                                                                                    \
@@ -654,8 +655,39 @@ namespace REL
 			const auto version = Module::get().version();
 			auto       filename = L"Data/SKSE/Plugins/version-"s;
 			filename += version.wstring();
+			auto csv_filename = filename + L".csv"s;
+			load_csv(csv_filename, version);
 			filename += L".bin"sv;
-			load_file(filename, version);
+			//load_file(filename, version);
+		}
+
+		bool load_csv(stl::zwstring a_filename, Version a_version)
+		{
+			io::CSVReader<2, io::trim_chars<>, io::no_quote_escape<','>> in("Data/SKSE/Plugins/version-1-4-15-0.csv");
+			in.read_header(io::ignore_missing_column, "id", "offset");
+			unsigned long long id, address_count;
+			std::string        version, offset;
+			auto               mapname = L"CommonLibSSEOffsets-v2-"s;
+			mapname += a_version.wstring();
+			in.read_row(address_count, version);
+			const auto byteSize = static_cast<std::size_t>(address_count * sizeof(mapping_t));
+			if (!_mmap.open(mapname, byteSize) &&
+				!_mmap.create(mapname, byteSize)) {
+				stl::report_and_fail("failed to create shared mapping"sv);
+			}
+			_id2offset = { static_cast<mapping_t*>(_mmap.data()), static_cast<std::size_t>(address_count) };
+			while (in.read_row(id, offset)) {
+				_id2offset[in.get_file_line() - 1] = { static_cast<std::uint64_t>(id),
+					static_cast<std::uint64_t>(std::stoul(offset, 0, 16)) };
+			}
+			std::sort(
+				_id2offset.begin(),
+				_id2offset.end(),
+				[](auto&& a_lhs, auto&& a_rhs) {
+					return a_lhs.id < a_rhs.id;
+				});
+			_natvis = _id2offset.data();
+			return true;
 		}
 
 		void load_file(stl::zwstring a_filename, Version a_version)
