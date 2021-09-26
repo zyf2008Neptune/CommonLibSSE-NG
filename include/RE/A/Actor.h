@@ -305,47 +305,47 @@ namespace RE
 		void                    UpdateAnimation(float a_delta) override;                                                                                                                                                                              // 07D
 		void                    Unk_82(void) override;                                                                                                                                                                                                // 082
 #ifndef SKYRIMVR
-		void                    SetObjectReference(TESBoundObject* a_object) override;                                                                                                                                                                // 084
-		void                    MoveHavok(bool a_forceRec) override;                                                                                                                                                                                  // 085
-		void                    GetLinearVelocity(NiPoint3& a_velocity) const override;                                                                                                                                                               // 086
-		void                    SetActionComplete(bool a_set) override;                                                                                                                                                                               // 087
-		void                    Disable() override;                                                                                                                                                                                                   // 089
-		void                    ResetInventory(bool a_leveledOnly) override;                                                                                                                                                                          // 08A
-		void                    Unk_8B(void) override;                                                                                                                                                                                                // 08B
-		void                    Unk_8C(void) override;                                                                                                                                                                                                // 08C
-		bool                    OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;                                                                                                                                                 // 090
-		void                    DoMoveToHigh() override;                                                                                                                                                                                              // 091
-		void                    TryMoveToMiddleLow() override;                                                                                                                                                                                        // 092
-		bool                    TryChangeSkyCellActorsProcessLevel() override;                                                                                                                                                                        // 093
-		void                    Unk_95(void) override;                                                                                                                                                                                                // 095
-		void                    Unk_96(void) override;                                                                                                                                                                                                // 096
-		void                    SetParentCell(TESObjectCELL* a_cell) override;                                                                                                                                                                        // 098
-		bool                    IsDead(bool a_notEssential = true) const override;                                                                                                                                                                    // 099
-		void                    Unk_9C(void) override;                                                                                                                                                                                                // 09C
-		void                    Unk_9D(void) override;                                                                                                                                                                                                // 09D
-		TESAmmo*                GetCurrentAmmo() const override;                                                                                                                                                                                      // 09E
-		void                    UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object) override;                                                                                                                                                 // 0A1
+		void     SetObjectReference(TESBoundObject* a_object) override;                 // 084
+		void     MoveHavok(bool a_forceRec) override;                                   // 085
+		void     GetLinearVelocity(NiPoint3& a_velocity) const override;                // 086
+		void     SetActionComplete(bool a_set) override;                                // 087
+		void     Disable() override;                                                    // 089
+		void     ResetInventory(bool a_leveledOnly) override;                           // 08A
+		void     Unk_8B(void) override;                                                 // 08B
+		void     Unk_8C(void) override;                                                 // 08C
+		bool     OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 090
+		void     DoMoveToHigh() override;                                               // 091
+		void     TryMoveToMiddleLow() override;                                         // 092
+		bool     TryChangeSkyCellActorsProcessLevel() override;                         // 093
+		void     Unk_95(void) override;                                                 // 095
+		void     Unk_96(void) override;                                                 // 096
+		void     SetParentCell(TESObjectCELL* a_cell) override;                         // 098
+		bool     IsDead(bool a_notEssential = true) const override;                     // 099
+		void     Unk_9C(void) override;                                                 // 09C
+		void     Unk_9D(void) override;                                                 // 09D
+		TESAmmo* GetCurrentAmmo() const override;                                       // 09E
+		void     UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object) override;  // 0A1
 #else
-		void                    SetObjectReference(TESBoundObject* a_object) override;                                                                                                                                                                // 085
-		void                    MoveHavok(bool a_forceRec) override;                                                                                                                                                                                  // 086
-		void                    GetLinearVelocity(NiPoint3& a_velocity) const override;                                                                                                                                                               // 087
-		void                    SetActionComplete(bool a_set) override;                                                                                                                                                                               // 088
-		void                    Disable() override;                                                                                                                                                                                                   // 08A
-		void                    ResetInventory(bool a_leveledOnly) override;                                                                                                                                                                          // 08B
-		void                    Unk_8C(void) override;                                                                                                                                                                                                // 08C
-		void                    Unk_8D(void) override;                                                                                                                                                                                                // 08D
-		bool                    OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;                                                                                                                                                 // 091
-		void                    DoMoveToHigh() override;                                                                                                                                                                                              // 092
-		void                    TryMoveToMiddleLow() override;                                                                                                                                                                                        // 093
-		bool                    TryChangeSkyCellActorsProcessLevel() override;                                                                                                                                                                        // 094
-		void                    Unk_96(void) override;                                                                                                                                                                                                // 096
-		void                    Unk_97(void) override;                                                                                                                                                                                                // 097
-		void                    SetParentCell(TESObjectCELL* a_cell) override;                                                                                                                                                                        // 099
-		bool                    IsDead(bool a_notEssential = true) const override;                                                                                                                                                                    // 09A
-		void                    Unk_9D(void) override;                                                                                                                                                                                                // 09D
-		void                    Unk_9E(void) override;                                                                                                                                                                                                // 09E
-		TESAmmo*                GetCurrentAmmo() const override;                                                                                                                                                                                      // 09F
-		void                    UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object) override;                                                                                                                                                 // 0A2
+		void                         SetObjectReference(TESBoundObject* a_object) override;                                                                                                                           // 085
+		void                         MoveHavok(bool a_forceRec) override;                                                                                                                                             // 086
+		void                         GetLinearVelocity(NiPoint3& a_velocity) const override;                                                                                                                          // 087
+		void                         SetActionComplete(bool a_set) override;                                                                                                                                          // 088
+		void                         Disable() override;                                                                                                                                                              // 08A
+		void                         ResetInventory(bool a_leveledOnly) override;                                                                                                                                     // 08B
+		void                         Unk_8C(void) override;                                                                                                                                                           // 08C
+		void                         Unk_8D(void) override;                                                                                                                                                           // 08D
+		bool                         OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;                                                                                                            // 091
+		void                         DoMoveToHigh() override;                                                                                                                                                         // 092
+		void                         TryMoveToMiddleLow() override;                                                                                                                                                   // 093
+		bool                         TryChangeSkyCellActorsProcessLevel() override;                                                                                                                                   // 094
+		void                         Unk_96(void) override;                                                                                                                                                           // 096
+		void                         Unk_97(void) override;                                                                                                                                                           // 097
+		void                         SetParentCell(TESObjectCELL* a_cell) override;                                                                                                                                   // 099
+		bool                         IsDead(bool a_notEssential = true) const override;                                                                                                                               // 09A
+		void                         Unk_9D(void) override;                                                                                                                                                           // 09D
+		void                         Unk_9E(void) override;                                                                                                                                                           // 09E
+		TESAmmo*                     GetCurrentAmmo() const override;                                                                                                                                                 // 09F
+		void                         UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object) override;                                                                                                            // 0A2
 #endif
 		// override (MagicTarget)
 		Actor*                       GetTargetStatsObject() override;      // 002 - { return this; }
@@ -590,7 +590,7 @@ namespace RE
 		virtual bool                 IsPowerAttackCoolingDown() const;                                                                                                                                                // 105 - { return false; }
 		virtual void                 HandleHealthDamage(Actor* a_attacker, float a_damage);                                                                                                                           // 106 - { return; }
 		virtual void                 Unk_107(void);                                                                                                                                                                   // 107 - { return ~(unk0E0 >> 5) & 1; }
-		virtual void                 Unk_108(void);                                                                                                                                                                   // 108 
+		virtual void                 Unk_108(void);                                                                                                                                                                   // 108
 		virtual bool                 QSpeakingDone() const;                                                                                                                                                           // 109
 		virtual void                 SetSpeakingDone(bool a_set);                                                                                                                                                     // 10A - { return unk16C; }
 		virtual void                 CreateMovementController();                                                                                                                                                      // 10B - { unk16C = a_arg1; }

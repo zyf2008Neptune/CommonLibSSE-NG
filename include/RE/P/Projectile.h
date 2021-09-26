@@ -40,31 +40,31 @@ namespace RE
 		~Projectile() override;  // 00
 
 		// override (TESObjectREFR)
-		bool         Load(TESFile* a_mod) override;                                         // 06 - { return TESObjectREFR::Load(a_mod); }
-		void         SaveGame(BGSSaveFormBuffer* a_buf) override;                           // 0E
-		void         LoadGame(BGSLoadFormBuffer* a_buf) override;                           // 0F
-		void         InitLoadGame(BGSLoadFormBuffer* a_buf) override;                       // 10
-		void         FinishLoadGame(BGSLoadFormBuffer* a_buf) override;                     // 11
-		void         Revert(BGSLoadFormBuffer* a_buf) override;                             // 12
-		bool         GetAllowPromoteToPersistent() const override;                          // 47 - { return false; }
-		bool         HasKeywordHelper(const BGSKeyword* a_keyword) const override;          // 48
-		void         SetActorCause(ActorCause* a_cause) override;                           // 50 - { actorCause = a_cause; }
-		ActorCause*  GetActorCause() const override;                                        // 51 - { return actorCause; }
-		MagicCaster* GetMagicCaster(MagicSystem::CastingSource a_source) override;          // 5C
-		bool         DetachHavok(NiAVObject* a_obj3D) override;                             // 65
-		void         InitHavok() override;                                                  // 66
-		NiAVObject*  Load3D(bool a_backgroundLoading) override;                             // 6A
-		void         Set3D(NiAVObject* a_object, bool a_queue3DTasks = true) override;      // 6C
-		void         MoveHavok(bool a_forceRec) override;                                   // 85 - { return; }
-		void         GetLinearVelocity(NiPoint3& a_velocity) const override;                // 86
+		bool         Load(TESFile* a_mod) override;                                     // 06 - { return TESObjectREFR::Load(a_mod); }
+		void         SaveGame(BGSSaveFormBuffer* a_buf) override;                       // 0E
+		void         LoadGame(BGSLoadFormBuffer* a_buf) override;                       // 0F
+		void         InitLoadGame(BGSLoadFormBuffer* a_buf) override;                   // 10
+		void         FinishLoadGame(BGSLoadFormBuffer* a_buf) override;                 // 11
+		void         Revert(BGSLoadFormBuffer* a_buf) override;                         // 12
+		bool         GetAllowPromoteToPersistent() const override;                      // 47 - { return false; }
+		bool         HasKeywordHelper(const BGSKeyword* a_keyword) const override;      // 48
+		void         SetActorCause(ActorCause* a_cause) override;                       // 50 - { actorCause = a_cause; }
+		ActorCause*  GetActorCause() const override;                                    // 51 - { return actorCause; }
+		MagicCaster* GetMagicCaster(MagicSystem::CastingSource a_source) override;      // 5C
+		bool         DetachHavok(NiAVObject* a_obj3D) override;                         // 65
+		void         InitHavok() override;                                              // 66
+		NiAVObject*  Load3D(bool a_backgroundLoading) override;                         // 6A
+		void         Set3D(NiAVObject* a_object, bool a_queue3DTasks = true) override;  // 6C
+		void         MoveHavok(bool a_forceRec) override;                               // 85 - { return; }
+		void         GetLinearVelocity(NiPoint3& a_velocity) const override;            // 86
 #ifndef SKYRIMVR
-		void         Unk_8B(void) override;                                                 // 8B
-		Projectile*  AsProjectile() override;                                               // 8F - { return this; }
-		bool         OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 90 - { return false; }
+		void        Unk_8B(void) override;                                                 // 8B
+		Projectile* AsProjectile() override;                                               // 8F - { return this; }
+		bool        OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 90 - { return false; }
 #else
-		void         Unk_8C(void) override;                                                 // 8C
-		Projectile*  AsProjectile() override;                                               // 90 - { return this; }
-		bool         OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 91 - { return false; }
+		void        Unk_8C(void) override;                                                 // 8C
+		Projectile* AsProjectile() override;                                               // 90 - { return this; }
+		bool        OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 91 - { return false; }
 #endif
 		// add
 		virtual void Unk_A2(void);                   // A2 - { return 0; }
