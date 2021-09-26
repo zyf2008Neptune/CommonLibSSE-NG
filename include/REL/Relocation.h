@@ -831,6 +831,10 @@ namespace REL
 			_offset(a_offset)
 		{}
 
+		constexpr Offset(std::uintptr_t a_offset, std::size_t a_mod) noexcept :
+			_offset(a_offset + a_mod)
+		{}
+
 		constexpr Offset& operator=(std::size_t a_offset) noexcept
 		{
 			_offset = a_offset;
