@@ -24,12 +24,15 @@ namespace RE
 		if (!file || file->compileIndex == 0xFF) {
 			return nullptr;
 		}
-
+#ifndef SKYRIMVR
 		FormID formID = file->compileIndex << (3 * 8);
 		formID += file->smallFileCompileIndex << ((1 * 8) + 4);
 		formID += a_rawFormID;
 
 		return TESForm::LookupByID(formID);
+#else
+		return TESForm::LookupByID(a_rawFormID & 0xFFFFFF | (file->compileIndex << 24));
+#endif
 	}
 
 	const TESFile* TESDataHandler::LookupModByName(std::string_view a_modName)
