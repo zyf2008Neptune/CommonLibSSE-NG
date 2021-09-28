@@ -17,7 +17,7 @@ namespace RE
 #ifndef SKYRIMVR
 		REL::Relocation<RefHandle*> handle{ REL::ID(519421) };
 #else
-		REL::Relocation<RefHandle*> handle{ REL::Offset(0x30117e8) };
+		REL::Relocation<RefHandle*>     handle{ REL::Offset(0x30117e8) };
 #endif
 		return *handle;
 	}
