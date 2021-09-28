@@ -182,7 +182,7 @@ namespace RE
 #ifndef SKYRIMVR
 			REL::Relocation<func_t> func{ REL::ID(14509) };
 #else
-			REL::Relocation<func_t>                                func{ REL::Offset(0x1a5510) };
+			REL::Relocation<func_t> func{ REL::Offset(0x1a5510) };
 #endif
 			return func(a_id, a_file);
 		}
