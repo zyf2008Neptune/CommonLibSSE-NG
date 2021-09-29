@@ -333,17 +333,17 @@ namespace RE
 		void                         Disable() override;                                                                                                                                                              // 08A
 		void                         ResetInventory(bool a_leveledOnly) override;                                                                                                                                     // 08B
 		void                         Unk_8C(void) override;                                                                                                                                                           // 08C
-		void                         Unk_8D(void) override;                                                                                                                                                           // 08D
+		void                         Unk_8D(void);                                                                                                                                                                    // 08D
 		bool                         OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;                                                                                                            // 091
 		void                         DoMoveToHigh() override;                                                                                                                                                         // 092
 		void                         TryMoveToMiddleLow() override;                                                                                                                                                   // 093
 		bool                         TryChangeSkyCellActorsProcessLevel() override;                                                                                                                                   // 094
 		void                         Unk_96(void) override;                                                                                                                                                           // 096
-		void                         Unk_97(void) override;                                                                                                                                                           // 097
+		void                         Unk_97(void);                                                                                                                                                                    // 097
 		void                         SetParentCell(TESObjectCELL* a_cell) override;                                                                                                                                   // 099
 		bool                         IsDead(bool a_notEssential = true) const override;                                                                                                                               // 09A
 		void                         ProcessInWater(hkpCollidable* a_collidable, float a_waterHeight, float a_deltaTime) override;                                                                                    // 09D
-		void                         Unk_9E(void) override;                                                                                                                                                           // 09E
+		void                         Unk_9E(void);                                                                                                                                                                    // 09E
 		TESAmmo*                     GetCurrentAmmo() const override;                                                                                                                                                 // 09F
 		void                         UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object) override;                                                                                                            // 0A2
 #endif
