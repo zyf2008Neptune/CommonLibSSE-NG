@@ -1,6 +1,7 @@
 #pragma once
-#include <csv.hpp>
-
+#ifdef SKYRIMVR
+#	include <csv.hpp>
+#endif
 #define REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER_IMPL(a_nopropQual, a_propQual, ...)              \
 	template <                                                                                    \
 		class R,                                                                                  \
@@ -655,12 +656,16 @@ namespace REL
 			const auto version = Module::get().version();
 			auto       filename = L"Data/SKSE/Plugins/version-"s;
 			filename += version.wstring();
+#ifndef SKYRIMVR
+			filename += L".bin"sv;
+			load_file(filename, version);
+#else
 			auto csv_filename = filename + L".csv"s;
 			load_csv(csv_filename, version);
-			filename += L".bin"sv;
-			//load_file(filename, version);
+#endif
 		}
 
+#ifdef SKYRIMVR
 		bool load_csv(stl::zwstring a_filename, Version a_version)
 		{
 			io::CSVReader<2, io::trim_chars<>, io::no_quote_escape<','>> in("Data/SKSE/Plugins/version-1-4-15-0.csv");
@@ -689,7 +694,7 @@ namespace REL
 			_natvis = _id2offset.data();
 			return true;
 		}
-
+#endif
 		void load_file(stl::zwstring a_filename, Version a_version)
 		{
 			istream_t input(a_filename.data(), std::ios::in | std::ios::binary);
