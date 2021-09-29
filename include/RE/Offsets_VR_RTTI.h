@@ -30,6 +30,7 @@ namespace RE
 	inline constexpr REL::ID RTTI_BSResource____LooseFileStream(static_cast<std::uint64_t>(690383));
 	inline constexpr REL::ID RTTI___LoggingDisabler(static_cast<std::uint64_t>(691067));
 
+	inline constexpr REL::Offset RTTI___AttachLightHitEffectVisitor(0x1eff0b0);
 	inline constexpr REL::Offset RTTI_BaseFormComponent(0x01ED6CD0);
 	inline constexpr REL::Offset RTTI_IFormFactory(0x01ED6CF8);
 	inline constexpr REL::Offset RTTI_AlchemyItem(0x01ED6D60);

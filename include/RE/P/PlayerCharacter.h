@@ -140,6 +140,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_PlayerCharacter;
+		inline static constexpr auto VTABLE = VTABLE_PlayerCharacter;
 		inline static constexpr auto FORMTYPE = FormType::ActorCharacter;
 
 		enum class EventType
@@ -294,8 +295,20 @@ namespace RE
 		void PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void StartGrabObject();
 
-#ifndef SKYRIMVR
+		template <class T>
+		inline BSTEventSource<T>* GetEventSource()
+		{
+			return static_cast<BSTEventSource<T>*>(this);
+		}
+
+		template <class T>
+		inline void AddEventSink(BSTEventSink<T>* a_sink)
+		{
+			GetEventSource<T>()->AddEventSink(a_sink);
+		}
+
 		// members
+#ifndef SKYRIMVR
 		std::uint32_t                                           unk3D8;                                       // 3D8
 		std::uint32_t                                           unk3DC;                                       // 3DC
 		BSTHashMap<const TESFaction*, CrimeGoldStruct>          crimeGoldMap;                                 // 3E0
