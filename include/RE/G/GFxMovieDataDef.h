@@ -15,24 +15,24 @@ namespace RE
 
 	struct GFxMovieLoadInfo
 	{
-		std::uint32_t   totalBytes;  // 00
-		std::uint32_t   version;     // 04
-		GRectF          frameRect;   // 08
-		float           frameRate;   // 18
-		std::uint32_t   frameCount;  // 1C
-		std::uint32_t   swfFlags;    // 20
-		std::uint32_t   unk24;       // 24
-		std::uint64_t   unk28;       // 28
-		std::uint64_t   unk30;       // 30
-		std::uint64_t   unk38;       // 38
-		std::uint16_t   unk40;       // 40
-		std::uint16_t   pad42;       // 42
-		std::uint32_t   unk44;       // 44
-		GString         unk48;       // 48
-		GString         unk50;       // 50
-		void*           unk58;       // 58
-		std::uint64_t   unk60;       // 60
-		std::uint64_t   unk68;       // 68
+		std::uint32_t totalBytes;  // 00
+		std::uint32_t version;     // 04
+		GRectF        frameRect;   // 08
+		float         frameRate;   // 18
+		std::uint32_t frameCount;  // 1C
+		std::uint32_t swfFlags;    // 20
+		std::uint32_t unk24;       // 24
+		std::uint64_t unk28;       // 28
+		std::uint64_t unk30;       // 30
+		std::uint64_t unk38;       // 38
+		std::uint16_t unk40;       // 40
+		std::uint16_t pad42;       // 42
+		std::uint32_t unk44;       // 44
+		GString       unk48;       // 48
+		GString       unk50;       // 50
+		void*         unk58;       // 58
+		std::uint64_t unk60;       // 60
+		std::uint64_t unk68;       // 68
 	};
 	static_assert(sizeof(GFxMovieLoadInfo) == 0x70);
 
@@ -44,14 +44,16 @@ namespace RE
 			kImported,
 		};
 
+		struct ImportSource
+		{
+			std::uint32_t index;
+			std::uint32_t unk04;
+		};
+
 		union ResourceUnion
 		{
 			GFxResource* resource;
-			struct
-			{
-				std::uint32_t index;
-				std::uint32_t unk04;
-			};
+			ImportSource importSource;
 		};
 
 		SourceType    type;   // 00
@@ -129,10 +131,10 @@ namespace RE
 
 			void Free()
 			{
-				const auto heap = GMemory::GetGlobalHeap();
-				void* block = lastBlock;
+				const auto globalHeap = GMemory::GetGlobalHeap();
+				void*      block = lastBlock;
 				while (block) {
-					heap->Free(block);
+					globalHeap->Free(block);
 					block = static_cast<void**>(block)[0];
 				}
 			}
