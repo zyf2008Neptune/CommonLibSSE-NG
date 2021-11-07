@@ -41,7 +41,8 @@ namespace RE
 	{
 		if (ContainsKeywordString(a_editorID)) {
 			return true;
-		} else if (auto npcRace = GetRace(); npcRace && npcRace->ContainsKeywordString(a_editorID)) {
+		}
+		if (auto npcRace = GetRace(); npcRace && npcRace->ContainsKeywordString(a_editorID)) {
 			return true;
 		}
 		return false;
@@ -167,7 +168,8 @@ namespace RE
 	{
 		if (HasKeywordString(a_editorID)) {
 			return true;
-		} else if (auto npcRace = GetRace(); npcRace && npcRace->HasKeywordString(a_editorID)) {
+		}
+		if (auto npcRace = GetRace(); npcRace && npcRace->HasKeywordString(a_editorID)) {
 			return true;
 		}
 		return false;

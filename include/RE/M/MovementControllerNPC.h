@@ -58,5 +58,7 @@ namespace RE
 		std::uint16_t unk1C6;  // 1C6
 		std::uint64_t unk1C8;  // 1C8
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(MovementControllerNPC) == 0x1D0);
+#endif
 }
