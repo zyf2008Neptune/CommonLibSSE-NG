@@ -78,6 +78,8 @@ namespace RE
 		BGSSoundDescriptorForm* openSound;   // C0 - SNAM
 		BGSSoundDescriptorForm* closeSound;  // C8 - QNAM
 	};
+#ifndef SKYRIMVR
 	static_assert(offsetof(TESObjectCONT, data) == 0xB9);
 	static_assert(sizeof(TESObjectCONT) == 0xD0);
+#endif
 }

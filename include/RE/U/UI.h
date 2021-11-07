@@ -134,7 +134,9 @@ namespace RE
 		std::uint16_t                          pad1C2;                        // 1C2
 		std::uint32_t                          pad1C4;                        // 1C4
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(UI) == 0x1C8);
+#endif
 
 	template <class T>
 	void UI::AddEventSink(BSTEventSink<T>* a_sink)

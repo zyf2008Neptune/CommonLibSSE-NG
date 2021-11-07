@@ -30,5 +30,7 @@ namespace RE
 		std::uint32_t          blurCount;   // 18
 		std::uint32_t          pad1C;       // 1C
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(UIBlurManager) == 0x20);
+#endif
 }

@@ -32,5 +32,7 @@ namespace RE
 		std::uint64_t unk220;  // 220
 		std::uint64_t unk228;  // 228
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(Archive) == 0x230);
+#endif
 }

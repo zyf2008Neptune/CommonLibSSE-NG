@@ -58,5 +58,7 @@ namespace RE
 		std::uint64_t unk110;  // 110
 		std::uint64_t unk118;  // 118
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(MovementControllerAI) == 0x120);
+#endif
 }
