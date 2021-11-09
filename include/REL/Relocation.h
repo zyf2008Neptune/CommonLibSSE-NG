@@ -1,6 +1,6 @@
 #pragma once
 #ifdef SKYRIMVR
-#	include <csv.hpp>
+#	include <csv.h>
 #endif
 #define REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER_IMPL(a_nopropQual, a_propQual, ...)              \
 	template <                                                                                    \
