@@ -7,7 +7,6 @@
   "supports": "windows & x64",
   "dependencies": [
     "boost-stl-interfaces",
-    "spdlog",
-    "fast-cpp-csv-parser"
+    "spdlog"
   ]
 }

@@ -1329,6 +1329,7 @@ set(SOURCES
 	include/SKSE/SKSE.h
 	include/SKSE/Trampoline.h
 	include/SKSE/Version.h
+	include/csv.h
 	src/RE/A/AIFormulas.cpp
 	src/RE/A/AIProcess.cpp
 	src/RE/A/ActiveEffect.cpp
