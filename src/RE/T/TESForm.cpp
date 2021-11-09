@@ -69,9 +69,9 @@ namespace RE
 					};
 				};
 				if (a_matchAll) {
-					return std::ranges::any_of(a_keywords, has_keyword());
-				} else {
 					return std::ranges::all_of(a_keywords, has_keyword());
+				} else {
+					return std::ranges::any_of(a_keywords, has_keyword());
 				}
 			}
 		}
@@ -96,14 +96,6 @@ namespace RE
 					};
 				};
 				if (a_matchAll) {
-					if (std::ranges::any_of(a_keywords->forms, form_has_keyword())) {
-						return true;
-					}
-					if (a_keywords->scriptAddedTempForms && std::ranges::any_of(*a_keywords->scriptAddedTempForms, id_has_keyword())) {
-						return true;
-					}
-					return false;
-				} else {
 					if (std::ranges::none_of(a_keywords->forms, form_has_keyword())) {
 						return false;
 					}
@@ -111,6 +103,14 @@ namespace RE
 						return false;
 					}
 					return true;
+				} else {
+					if (std::ranges::any_of(a_keywords->forms, form_has_keyword())) {
+						return true;
+					}
+					if (a_keywords->scriptAddedTempForms && std::ranges::any_of(*a_keywords->scriptAddedTempForms, id_has_keyword())) {
+						return true;
+					}
+					return false;
 				}
 			}
 		}

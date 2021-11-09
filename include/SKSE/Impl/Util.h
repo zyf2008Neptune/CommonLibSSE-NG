@@ -118,9 +118,9 @@ namespace SKSE
 				return hash::hash_string(toHash);
 			}
 
-			inline bool is_empty(char* a_char)
+			inline bool is_empty(const char* a_char)
 			{
-				return !a_char || *a_char == '\0';
+				return a_char == nullptr || a_char[0] == '\0';
 			}
 
 			inline bool is_only_digit(std::string_view a_str)
@@ -175,6 +175,20 @@ namespace SKSE
 					[](char ch1, char ch2) {
 						return std::toupper(static_cast<unsigned char>(ch1)) == std::toupper(static_cast<unsigned char>(ch2));
 					});
+			}
+
+			inline std::string join(const std::vector<std::string>& a_vec, const char* a_delimiter)
+			{
+				std::ostringstream os;
+				auto               begin = a_vec.begin();
+				auto               end = a_vec.end();
+
+				if (begin != end) {
+					std::copy(begin, std::prev(end), std::ostream_iterator<std::string>(os, a_delimiter));
+					os << *std::prev(end);
+				}
+
+				return os.str();
 			}
 
 			template <class T>
