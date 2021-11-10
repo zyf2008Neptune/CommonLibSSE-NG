@@ -461,7 +461,7 @@ namespace REL
 		{
 			auto handle = WinAPI::GetModuleHandle(_filename.c_str());
 			if (handle == nullptr) {
-				stl::report_and_fail("Failed to obtain module handle! SkyrimSE.exe has been renamed (please don't rename skse64_loader.exe to SkyrimSE.exe), or you're attempting to run this on the VR version."sv);
+				stl::report_and_fail("Failed to obtain module handle! SkyrimSE.exe or SkyrimVR.exe has been renamed and the dll isn't made for that exe."sv);
 			}
 			_base = reinterpret_cast<std::uintptr_t>(handle);
 			_natvis = _base;
