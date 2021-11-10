@@ -668,11 +668,20 @@ namespace REL
 #ifdef SKYRIMVR
 		bool load_csv(stl::zwstring a_filename, Version a_version)
 		{
-			io::CSVReader<2, io::trim_chars<>, io::no_quote_escape<','>> in("Data/SKSE/Plugins/version-1-4-15-0.csv");
+			// conversion code from https://docs.microsoft.com/en-us/cpp/text/how-to-convert-between-various-string-types?view=msvc-170
+			const wchar_t*    orig = a_filename.data();
+			std::size_t       origsize = wcslen(orig) + 1;
+			std::size_t       convertedChars = 0;
+			const std::size_t newsize = origsize * 2;
+			char*             nstring = new char[newsize];
+			wcstombs_s(&convertedChars, nstring, newsize, orig, _TRUNCATE);
+			if (!std::filesystem::exists(nstring))
+				stl::report_and_fail(fmt::format("Required VR Address Library file {} does not exist"sv, nstring));
+			io::CSVReader<2, io::trim_chars<>, io::no_quote_escape<','>> in(nstring);
 			in.read_header(io::ignore_missing_column, "id", "offset");
-			unsigned long long id, address_count;
-			std::string        version, offset;
-			auto               mapname = L"CommonLibSSEOffsets-v2-"s;
+			std::size_t id, address_count;
+			std::string version, offset;
+			auto        mapname = L"CommonLibSSEOffsets-v2-"s;
 			mapname += a_version.wstring();
 			in.read_row(address_count, version);
 			const auto byteSize = static_cast<std::size_t>(address_count * sizeof(mapping_t));
