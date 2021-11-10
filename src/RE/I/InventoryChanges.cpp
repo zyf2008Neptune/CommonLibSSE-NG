@@ -26,13 +26,15 @@ namespace RE
 		entryList->push_front(a_entry);
 		changed = true;
 	}
-
+#ifndef SKYRIMVR
+	// Unable to find offset in VR https://github.com/alandtse/CommonLibVR/issues/2
 	TESObjectARMO* InventoryChanges::GetArmorInSlot(std::int32_t a_slot)
 	{
 		using func_t = decltype(&InventoryChanges::GetArmorInSlot);
 		REL::Relocation<func_t> func{ REL::ID(15873) };
 		return func(this, a_slot);
 	}
+#endif
 
 	std::uint16_t InventoryChanges::GetNextUniqueID()
 	{
