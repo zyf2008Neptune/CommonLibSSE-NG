@@ -44,4 +44,5 @@ cmake -B buildVR -S . -DBUILD_SKYRIMVR=ON
 ## Credits
 * Thanks to Ryan McKenzie for original code
 * Thanks to RollingRock & po3 for important contributions
+* Thanks to lfrazer for commonlibvr port which is the source of Exit-9B recombination; also thanks for all the support in discord.
 * Thanks to Exit-9B for recombination of [CommonLibSSE](https://github.com/Ryan-rsm-McKenzie/CommonLibSSE) and [CommonLibVR](https://github.com/lfrazer/CommonLibVR)
