@@ -690,10 +690,13 @@ namespace REL
 				stl::report_and_fail("failed to create shared mapping"sv);
 			}
 			_id2offset = { static_cast<mapping_t*>(_mmap.data()), static_cast<std::size_t>(address_count) };
+			int index = 0;
 			while (in.read_row(id, offset)) {
-				_id2offset[in.get_file_line() - 1] = { static_cast<std::uint64_t>(id),
+				_id2offset[index++] = { static_cast<std::uint64_t>(id),
 					static_cast<std::uint64_t>(std::stoul(offset, 0, 16)) };
 			}
+			if (index != address_count)
+				stl::report_and_fail(fmt::format("VR Address Library {} loaded only {} entries but expected {}. Please redownload."sv, version, index, address_count));
 			std::sort(
 				_id2offset.begin(),
 				_id2offset.end(),
