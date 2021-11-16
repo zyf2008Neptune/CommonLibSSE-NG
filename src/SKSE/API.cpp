@@ -75,6 +75,7 @@ namespace SKSE
 			stl::report_and_fail("interface is null"sv);
 		}
 
+#if 0
 		(void)REL::Module::get();
 #ifndef SKYRIMVR
 		(void)REL::IDDatabase::get();
