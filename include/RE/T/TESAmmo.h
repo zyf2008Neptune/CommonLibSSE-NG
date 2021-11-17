@@ -36,13 +36,15 @@ namespace RE
 	static_assert(sizeof(AMMO_DATA) == 0x10);
 
 	class TESAmmo :
-		public TESBoundObject,             // 000
-		public TESFullName,                // 030
-		public TESModelTextureSwap,        // 040
-		public TESIcon,                    // 078
-		public BGSMessageIcon,             // 088
-		public TESValueForm,               // 0A0
-		public TESWeightForm,              // 0B0
+		public TESBoundObject,       // 000
+		public TESFullName,          // 030
+		public TESModelTextureSwap,  // 040
+		public TESIcon,              // 078
+		public BGSMessageIcon,       // 088
+		public TESValueForm,         // 0A0
+#ifndef SKYRIMVR
+		public TESWeightForm,  // 0B0
+#endif
 		public BGSDestructibleObjectForm,  // 0C0
 		public BGSPickupPutdownSounds,     // 0D0
 		public TESDescription,             // 0E8
@@ -85,5 +87,9 @@ namespace RE
 		AMMO_DATA     data;       // 110 - DATA
 		BSFixedString shortDesc;  // 120 - ONAM
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(TESAmmo) == 0x128);
+#else
+	static_assert(sizeof(TESAmmo) == 0x118);
+#endif
 }
