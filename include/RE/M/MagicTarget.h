@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSPointerHandle.h"
+#include "RE/B/BSTEvent.h"
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/E/EffectArchetypes.h"
@@ -31,10 +32,14 @@ namespace RE
 		public:
 			inline static constexpr auto RTTI = RTTI_MagicTarget__ForEachActiveEffectVisitor;
 
-			virtual ~ForEachActiveEffectVisitor();  // 00
+			virtual ~ForEachActiveEffectVisitor() = default;  // 00
 
 			// add
+#ifndef SKYRIMVR
 			virtual bool Accept(ActiveEffect* a_effect) = 0;  // 01
+#else
+			virtual RE::BSContainer::ForEachResult Visit(ActiveEffect* effect) = 0;
+#endif
 		};
 		static_assert(sizeof(ForEachActiveEffectVisitor) == 0x8);
 
@@ -86,6 +91,79 @@ namespace RE
 		void DispelEffectsWithArchetype(Archetype a_type, bool a_force);
 		bool HasEffectWithArchetype(Archetype a_type);
 		bool HasMagicEffect(EffectSetting* a_effect);
+
+#ifdef SKYRIMVR
+		//VR requires a visitor to access all items
+		class GetEffectCount : public MagicTarget::ForEachActiveEffectVisitor
+		{
+		public:
+			GetEffectCount() :
+				m_count(0) {}
+
+			virtual BSContainer::ForEachResult Visit(ActiveEffect* effect) override
+			{
+				m_count++;
+				return BSContainer::ForEachResult::kContinue;
+			}
+
+			std::uint32_t GetCount() const { return m_count; }
+
+		private:
+			std::uint32_t m_count;
+		};
+
+		class GetNthEffect : public MagicTarget::ForEachActiveEffectVisitor
+		{
+		public:
+			GetNthEffect(std::uint32_t n) :
+				m_result(nullptr), m_n(n), m_count(0) {}
+
+			virtual BSContainer::ForEachResult Visit(ActiveEffect* effect) override
+			{
+				if (m_count == m_n) {
+					m_result = effect;
+					return BSContainer::ForEachResult::kContinue;
+				}
+				m_count++;
+				return BSContainer::ForEachResult::kStop;
+			}
+
+			ActiveEffect* GetResult() { return m_result; }
+
+		private:
+			ActiveEffect* m_result;
+			std::uint32_t m_n;
+			std::uint32_t m_count;
+		};
+
+		class EffectVisitor : public MagicTarget::ForEachActiveEffectVisitor
+		{
+		public:
+			EffectVisitor(std::function<BSContainer::ForEachResult(ActiveEffect*)> func) :
+				m_functor(func) {}
+
+			virtual BSContainer::ForEachResult Visit(ActiveEffect* effect) override
+			{
+				return m_functor(effect);
+			}
+
+		protected:
+			std::function<BSContainer::ForEachResult(ActiveEffect*)> m_functor;
+		};
+
+		void VisitActiveEffects(std::function<BSContainer::ForEachResult(ActiveEffect*)> func)
+		{
+			EffectVisitor visitor(func);
+			ForEachActiveEffect(visitor);
+		}
+
+		void ForEachActiveEffect(MagicTarget::ForEachActiveEffectVisitor& visitor)
+		{
+			using func_t = decltype(&MagicTarget::ForEachActiveEffect);
+			REL::Relocation<func_t> func{ REL::ID(33756) };
+			func(this, visitor);
+		}
+#endif
 
 		// members
 		SpellDispelData* postUpdateDispelList;  // 08
