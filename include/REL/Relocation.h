@@ -527,7 +527,7 @@ namespace REL
 					return a_lhs.id < a_rhs.id;
 				});
 			if (it == _id2offset.end()) {
-				stl::report_and_fail("id not found"sv);
+				stl::report_and_fail(fmt::format("address id {} not found"sv, a_id));
 			}
 
 			return static_cast<std::size_t>(it->offset);
