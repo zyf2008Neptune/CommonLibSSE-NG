@@ -692,6 +692,8 @@ namespace REL
 			_id2offset = { static_cast<mapping_t*>(_mmap.data()), static_cast<std::size_t>(address_count) };
 			int index = 0;
 			while (in.read_row(id, offset)) {
+				if (index >= address_count)
+					stl::report_and_fail(fmt::format("VR Address Library {} tried to exceed {} allocated entries."sv, version, address_count));
 				_id2offset[index++] = { static_cast<std::uint64_t>(id),
 					static_cast<std::uint64_t>(std::stoul(offset, 0, 16)) };
 			}
