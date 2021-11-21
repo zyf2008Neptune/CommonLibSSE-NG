@@ -259,7 +259,7 @@ namespace RE
 			return false;
 		}
 
-		assert(extraDataSize < std::numeric_limits<SInt16>::max());
+		assert(extraDataSize < std::numeric_limits<std::int16_t>::max());
 
 		std::int16_t bottom = 0;
 		std::int16_t top = static_cast<std::int16_t>(extraDataSize - 1);
