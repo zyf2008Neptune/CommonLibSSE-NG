@@ -100,6 +100,7 @@ set(SOURCES
 	include/RE/B/BGSImpactData.h
 	include/RE/B/BGSImpactDataSet.h
 	include/RE/B/BGSInstancedQuestObjective.h
+	include/RE/B/BGSKeyword.cpp
 	include/RE/B/BGSKeyword.h
 	include/RE/B/BGSKeywordForm.h
 	include/RE/B/BGSLensFlare.h
@@ -193,6 +194,7 @@ set(SOURCES
 	include/RE/B/BSCoreTypes.h
 	include/RE/B/BSCullingProcess.h
 	include/RE/B/BSDismemberSkinInstance.h
+	include/RE/B/BSDynamicTriShape.h
 	include/RE/B/BSEffectShaderData.h
 	include/RE/B/BSEffectShaderMaterial.h
 	include/RE/B/BSEffectShaderProperty.h
@@ -201,6 +203,7 @@ set(SOURCES
 	include/RE/B/BSFaceGenKeyframe.h
 	include/RE/B/BSFaceGenKeyframeMultiple.h
 	include/RE/B/BSFaceGenManager.h
+	include/RE/B/BSFaceGenModelExtraData.h
 	include/RE/B/BSFaceGenNiNode.h
 	include/RE/B/BSFadeNode.h
 	include/RE/B/BSFile.h
@@ -439,6 +442,7 @@ set(SOURCES
 	include/RE/D/DropObjectFunctor.h
 	include/RE/E/Effect.h
 	include/RE/E/EffectArchetypes.h
+	include/RE/E/EffectSetting.cpp
 	include/RE/E/EffectSetting.h
 	include/RE/E/EnchantConstructMenu.h
 	include/RE/E/EnchantmentItem.h
@@ -993,6 +997,7 @@ set(SOURCES
 	include/RE/N/NiFloatKey.h
 	include/RE/N/NiFrustum.h
 	include/RE/N/NiFrustumPlanes.h
+	include/RE/N/NiGeometry.h
 	include/RE/N/NiGeometryData.h
 	include/RE/N/NiIntegerExtraData.h
 	include/RE/N/NiIntegersExtraData.h
