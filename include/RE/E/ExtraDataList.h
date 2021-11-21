@@ -5,6 +5,8 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/E/ExtraFlags.h"
+#include "RE/E/ExtraWorn.h"
+#include "RE/E/ExtraWornLeft.h"
 #include "RE/F/FormTypes.h"
 #include "RE/M/MemoryManager.h"
 #include "RE/S/SoulLevels.h"
@@ -153,6 +155,7 @@ namespace RE
 		TESForm*              GetOwner();
 		SOUL_LEVEL            GetSoulLevel() const;
 		ObjectRefHandle       GetTeleportLinkedDoor();
+		bool                  GetWorn() const;
 		void                  SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable);
 		void                  SetInventoryChanges(InventoryChanges* a_changes);
 		void                  SetLinkedRef(TESObjectREFR* a_targetRef, BGSKeyword* a_keyword);

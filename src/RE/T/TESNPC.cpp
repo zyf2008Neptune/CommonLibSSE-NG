@@ -184,6 +184,11 @@ namespace RE
 		return func(this);
 	}
 
+	bool TESNPC::IsInClass(TESClass* a_class) const
+	{
+		return npcClass ? npcClass == a_class : false;
+	}
+
 	bool TESNPC::IsInFaction(TESFaction* a_faction) const
 	{
 		for (auto& faction : factions) {

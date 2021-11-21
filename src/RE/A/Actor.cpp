@@ -412,6 +412,11 @@ namespace RE
 		return nullptr;
 	}
 
+	bool Actor::HasKeyword(const BGSKeyword* a_keyword) const
+	{
+		return HasKeywordHelper(a_keyword);
+	}
+
 	bool Actor::HasKeywordString(std::string_view a_formEditorID)
 	{
 		const auto base = GetActorBase();

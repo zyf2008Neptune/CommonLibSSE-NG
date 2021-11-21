@@ -1,6 +1,8 @@
 #pragma once
 
+#include "RE/B/BSLightingShaderProperty.h"
 #include "RE/N/NiAVObject.h"
+#include "RE/N/NiRTTI.h"
 #include "RE/N/NiSkinPartition.h"
 #include "RE/N/NiSmartPointer.h"
 
@@ -73,7 +75,21 @@ namespace RE
 
 		[[nodiscard]] bool HasVertexFlag(NiSkinPartition::Vertex::Flags a_flag) { return (NiSkinPartition::GetVertexFlags(vertexDesc) & a_flag) == a_flag; }
 
-		// members
+		inline BSLightingShaderProperty* lightingShaderProp_cast()
+		{
+			if (auto effect = properties[States::kEffect].get(); effect) {
+				if (auto rtti = effect->GetRTTI(); rtti) {
+					const std::string rttiStr(rtti->GetName());
+					if (rttiStr == "BSLightingShaderProperty") {
+						return static_cast<BSLightingShaderProperty*>(effect);
+					}
+				}
+			}
+			return nullptr;
+		}
+
+// members
+#ifndef SKYRIMVR
 		NiBound                              modelBound;                  // 110
 		NiPointer<NiProperty>                properties[States::kTotal];  // 120
 		NiPointer<NiSkinInstance>            skinInstance;                // 130
@@ -86,4 +102,20 @@ namespace RE
 		std::uint32_t                        pad154;                      // 154
 	};
 	static_assert(sizeof(BSGeometry) == 0x158);
+#else
+		NiBound                   modelBound;                  // 138
+		NiPoint3                  unk148;                      // 148
+		NiPoint3                  unk154;                      // 154
+		NiPointer<NiProperty>     properties[States::kTotal];  // 160
+		NiPointer<NiSkinInstance> skinInstance;                // 170
+		void*                     rendererData;                // 178
+		void*                     unk180;                      // 180
+		std::uint64_t             vertexDesc;                  // 188
+		Type                      type;                        // 190
+		std::uint8_t              pad191;                      // 191
+		std::uint16_t             pad192;                      // 192
+		std::uint32_t             pad194;                      // 194
+	};
+	static_assert(sizeof(BSGeometry) == 0x1A0);
+#endif
 }

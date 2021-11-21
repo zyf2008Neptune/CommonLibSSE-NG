@@ -57,6 +57,10 @@ namespace RE
 		void                                  ReadData(void* a_buf, std::uint32_t a_size);
 		bool                                  Seek(std::uint32_t a_offset);
 		bool                                  SeekNextSubrecord();
+		std::uint32_t                         GetFormID(FormID formLower) const
+		{
+			return std::uint32_t(compileIndex) << 24 | (formLower & 0xFFFFFF);
+		}
 
 		// members
 		stl::enumeration<Error, std::uint32_t>      lastError;                        // 000

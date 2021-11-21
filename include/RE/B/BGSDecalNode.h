@@ -29,5 +29,9 @@ namespace RE
 		BSTArray<NiPointer<BSTempEffect>> decals;     // 128
 		bool                              isSkinned;  // 140
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BGSDecalNode) == 0x148);
+#else
+	static_assert(sizeof(BGSDecalNode) == 0x170);
+#endif
 }

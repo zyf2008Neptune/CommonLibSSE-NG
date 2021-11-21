@@ -28,6 +28,8 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 
+		bool IsMatch(EffectSetting* a_base, float a_mag, std::uint32_t a_area, std::uint32_t a_dur, float a_cost);
+
 		// members
 		EffectItem     effectItem;  // 00 - EFIT
 		std::uint32_t  pad0C;       // 0C

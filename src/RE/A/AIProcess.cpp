@@ -113,6 +113,13 @@ namespace RE
 		return cachedValues && cachedValues->flags.all(CachedValues::Flags::kActorIsGhost);
 	}
 
+	void AIProcess::SetActorRefraction(float a_refraction)
+	{
+		using func_t = decltype(&AIProcess::SetActorRefraction);
+		REL::Relocation<func_t> func{ REL::ID(5375528368) };
+		return func(this, a_refraction);
+	}
+
 	void AIProcess::SetArrested(bool a_arrested)
 	{
 		if (high) {
@@ -124,6 +131,13 @@ namespace RE
 	{
 		if (high) {
 			high->cachedActorHeight = a_height;
+		}
+	}
+
+	void AIProcess::SetRefraction(float a_refraction)
+	{
+		if (middleHigh) {
+			middleHigh->scriptRefractPower = a_refraction;
 		}
 	}
 

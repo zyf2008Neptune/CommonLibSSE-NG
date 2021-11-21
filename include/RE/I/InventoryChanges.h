@@ -8,6 +8,7 @@ namespace RE
 {
 	class ExtraDataList;
 	class InventoryEntryData;
+	class TESBoundObject;
 
 	class InventoryChanges
 	{
@@ -31,7 +32,9 @@ namespace RE
 		~InventoryChanges();
 
 		void           AddEntryData(InventoryEntryData* a_entry);
+		void           GenerateLeveledListChanges();
 		TESObjectARMO* GetArmorInSlot(std::int32_t a_slot);
+		std::int16_t   GetItemCount(RE::TESBoundObject* a_obj);
 		std::uint16_t  GetNextUniqueID();
 		std::uint32_t  GetWornMask();
 		void           InitFromContainerExtra();

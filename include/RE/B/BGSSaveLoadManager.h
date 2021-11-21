@@ -86,6 +86,7 @@ namespace RE
 		void Save(const char* a_fileName);
 		void Load(const char* a_fileName);
 		void Load(const char* a_fileName, bool a_checkForMods);
+		bool PopulateSaveList();
 
 		// members
 		std::uint64_t   unk070;  // 070
@@ -183,9 +184,15 @@ namespace RE
 
 		BSTCommonStaticMessageQueue<BSTSmartPointer<bgs::saveload::Request>, 8> unk370;  // 370
 
+		uint64_t unk3D0;  // 3D0;
+
 	protected:
 		bool Save_Impl(std::int32_t a_deviceID, std::uint32_t a_outputStats, const char* a_fileName);
 		bool Load_Impl(const char* a_fileName, std::int32_t a_deviceID, std::uint32_t a_outputStats, bool a_checkForMods);
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BGSSaveLoadManager) == 0x3D0);
+#else
+	static_assert(sizeof(BGSSaveLoadManager) == 0x3D8);
+#endif
 }

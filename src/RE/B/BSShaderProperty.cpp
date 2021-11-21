@@ -2,6 +2,13 @@
 
 namespace RE
 {
+	bool BSShaderProperty::InvalidateMaterial()
+	{
+		using func_t = decltype(&BSShaderProperty::InvalidateMaterial);
+		REL::Relocation<func_t> func{ REL::ID(5370397616) };
+		return func(this);
+	}
+
 	void BSShaderProperty::SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data)
 	{
 		lastRenderPassState = std::numeric_limits<std::int32_t>::max();

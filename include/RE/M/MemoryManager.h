@@ -63,12 +63,9 @@ namespace RE
 
 		void RegisterMemoryManager()
 		{
-			// TODO Fix for VR
-#ifndef SKYRIMVR
 			using func_t = decltype(&MemoryManager::RegisterMemoryManager);
-			REL::Relocation<func_t> func{ RE::Offset::MemoryManager::RegisterMemoryManager };
+			REL::Relocation<func_t> func{ REL::ID(35199) };
 			return func(this);
-#endif
 		}
 
 		// members

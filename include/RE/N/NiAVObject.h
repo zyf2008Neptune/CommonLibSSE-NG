@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
+#include "RE/B/BSLightingShaderProperty.h"
 #include "RE/B/BSShaderMaterial.h"
 #include "RE/N/NiBound.h"
 #include "RE/N/NiObjectNET.h"
@@ -18,6 +19,7 @@ namespace RE
 	class NiNode;
 	class NiPoint3;
 	class TESObjectREFR;
+	class BSGeometry;
 
 	class NiUpdateData
 	{
@@ -93,7 +95,10 @@ namespace RE
 		void          ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
 
 		// add
-		virtual void        UpdateControllers(NiUpdateData& a_data);                                                            // 25
+		virtual void UpdateControllers(NiUpdateData& a_data);  // 25
+#ifdef SKYRIMVR
+		virtual void Unk_VRFunc(void);
+#endif
 		virtual void        PerformOp(PerformOpFunc& a_func);                                                                   // 26
 		virtual void        AttachProperty(NiAlphaProperty* a_property);                                                        // 27 - { return; }
 		virtual void        SetMaterialNeedsUpdate(bool a_needsUpdate);                                                         // 28 - { return; }
@@ -128,7 +133,10 @@ namespace RE
 		void                         UpdateMaterialShader(const NiColorA& a_projectedUVParams, const NiColor& a_projectedUVColor, const bool a_isSnow);
 		void                         UpdateRigidBodySettings(std::uint32_t a_type, std::uint32_t a_arg2);
 
+		BSLightingShaderProperty* temp_nicast(BSGeometry* a_geometry);
+
 		// members
+#ifndef SKYRIMVR
 		NiNode*                               parent;                   // 030
 		std::uint32_t                         parentIndex;              // 038
 		std::uint32_t                         unk03C;                   // 03C
@@ -141,12 +149,32 @@ namespace RE
 		TESObjectREFR*                        userData;                 // 0F8
 		float                                 fadeAmount;               // 100
 		std::uint32_t                         lastUpdatedFrameCounter;  // 104
-#ifndef SKYRIMVR
-		std::uint64_t unk108;  // 108
-#else
-		std::uint32_t                         unk108;   // 108
-		stl::enumeration<Flag, std::uint32_t> flagsVR;  // 10C
-#endif
+		std::uint64_t                         unk108;                   // 108
 	};
 	static_assert(sizeof(NiAVObject) == 0x110);
+#else
+		NiNode*                               parent;                   // 030
+		std::uint32_t                         parentIndex;              // 038
+		std::uint32_t                         unk03C;                   // 03C
+		NiPointer<NiCollisionObject>          collisionObject;          // 040
+		NiTransform                           local;                    // 048
+		NiTransform                           world;                    // 07C
+		NiTransform                           previousWorld;            // 0B0
+		NiBound                               worldBound;               // 0E4
+		float                                 unkF4;                    // 0F4
+		float                                 unkF8;                    // 0F8
+		float                                 unkFC;                    // 0FC
+		float                                 fadeAmount;               // 100
+		std::uint32_t                         lastUpdatedFrameCounter;  // 104
+		float                                 unk108;                   // 108
+		stl::enumeration<Flag, std::uint32_t> flags;                    // 10C
+		TESObjectREFR*                        userData;                 // 110
+		std::uint32_t                         unk11C;                   // 11C
+		std::uint8_t                          unk120[8];                // 120 - bitfield
+		std::uint64_t                         unk128;                   // 128
+		std::uint32_t                         unk130;                   // 130
+		std::uint32_t                         unk134;                   // 134
+	};
+	static_assert(sizeof(NiAVObject) == 0x138);
+#endif
 }

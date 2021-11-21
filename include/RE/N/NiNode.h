@@ -77,10 +77,15 @@ namespace RE
 		void SetAt(std::uint32_t a_idx, NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);
 
 		// members
-		NiTObjectArray<NiPointer<NiAVObject>> children;  // 110
+		NiTObjectArray<NiPointer<NiAVObject>> children;  // 110 VR 138
 
 	protected:
 		NiNode* Ctor(std::uint16_t a_arrBufLen);
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(NiNode) == 0x128);
+#else
+	static_assert(sizeof(NiNode) == 0x150);
+#endif
+
 }

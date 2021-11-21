@@ -33,20 +33,19 @@ namespace RE
 		InventoryEntryData& operator=(InventoryEntryData&& a_rhs);
 
 		void                                          AddExtraList(ExtraDataList* a_extra);
+		bool                                          CanItemBeTaken(bool a_noEquipped, bool a_noFavourited, bool a_noQuestItem) const;
 		[[nodiscard]] const char*                     GetDisplayName();
 		[[nodiscard]] std::optional<double>           GetEnchantmentCharge() const;
 		[[nodiscard]] constexpr TESBoundObject*       GetObject() noexcept { return object; }
 		[[nodiscard]] constexpr const TESBoundObject* GetObject() const noexcept { return object; }
 		[[nodiscard]] TESForm*                        GetOwner();
 		[[nodiscard]] SOUL_LEVEL                      GetSoulLevel() const;
-
-		[[nodiscard]] std::int32_t GetValue() const
+		[[nodiscard]] std::int32_t                    GetValue() const
 		{
 			using func_t = decltype(&InventoryEntryData::GetValue);
 			REL::Relocation<func_t> func{ Offset::InventoryEntryData::GetValue };
 			return func(this);
 		}
-
 		[[nodiscard]] float GetWeight() const;
 		[[nodiscard]] bool  IsEnchanted() const;
 		[[nodiscard]] bool  IsFavorited() const;

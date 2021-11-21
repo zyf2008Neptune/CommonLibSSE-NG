@@ -668,6 +668,7 @@ namespace RE
 		[[nodiscard]] SOUL_LEVEL     GetSoulSize() const;
 		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID);
+		bool                         HasKeyword(const BGSKeyword* a_keyword) const;
 		bool                         HasKeywordString(std::string_view a_formEditorID);
 		bool                         HasPerk(BGSPerk* a_perk) const;
 		bool                         HasSpell(SpellItem* a_spell) const;

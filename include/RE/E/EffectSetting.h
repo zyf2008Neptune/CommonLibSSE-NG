@@ -135,13 +135,14 @@ namespace RE
 		// override (BGSKeywordForm)
 		bool HasKeyword(const BGSKeyword* a_keyword) const override;  // 04
 
-		[[nodiscard]] constexpr Archetype    GetArchetype() const noexcept { return data.archetype; }
-		[[nodiscard]] constexpr ActorValue   GetMagickSkill() const noexcept { return data.associatedSkill; }
-		[[nodiscard]] constexpr std::int32_t GetMinimumSkillLevel() const noexcept { return data.minimumSkill; }
-		[[nodiscard]] constexpr bool         HasArchetype(Archetype a_type) const noexcept { return data.archetype == a_type; }
-		[[nodiscard]] bool                   HasKeyword(std::string_view a_editorID) { return HasKeywordString(a_editorID); }
-		[[nodiscard]] bool                   IsDetrimental() const noexcept { return data.flags.all(EffectSettingData::Flag::kDetrimental); }
-		[[nodiscard]] bool                   IsHostile() const noexcept { return data.flags.all(EffectSettingData::Flag::kHostile); }
+		[[nodiscard]] constexpr Archetype     GetArchetype() const noexcept { return data.archetype; }
+		[[nodiscard]] constexpr ActorValue    GetMagickSkill() const noexcept { return data.associatedSkill; }
+		[[nodiscard]] constexpr std::int32_t  GetMinimumSkillLevel() const noexcept { return data.minimumSkill; }
+		[[nodiscard]] constexpr BSFixedString GetArchetypeAsString() const;
+		[[nodiscard]] constexpr bool          HasArchetype(Archetype a_type) const noexcept { return data.archetype == a_type; }
+		[[nodiscard]] bool                    HasKeyword(std::string_view a_editorID) { return HasKeywordString(a_editorID); }
+		[[nodiscard]] bool                    IsDetrimental() const noexcept { return data.flags.all(EffectSettingData::Flag::kDetrimental); }
+		[[nodiscard]] bool                    IsHostile() const noexcept { return data.flags.all(EffectSettingData::Flag::kHostile); }
 
 		// members
 		FilterValidation_t*          filterValidationFunction;   // 058

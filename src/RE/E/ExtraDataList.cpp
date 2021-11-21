@@ -264,6 +264,11 @@ namespace RE
                    ObjectRefHandle();
 	}
 
+	bool ExtraDataList::GetWorn() const
+	{
+		return HasType<ExtraWorn>() || HasType<ExtraWornLeft>();
+	}
+
 	void ExtraDataList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
 	{
 		using func_t = decltype(&ExtraDataList::SetExtraFlags);

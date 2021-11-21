@@ -50,6 +50,7 @@ namespace RE
 		void             Unk_3E(void) override;                                // 3E - { return 2; }
 
 		void CopyMembers(BSLightingShaderProperty* a_other);
+		void InvalidateTextures(std::uint32_t a_unk1);
 
 		// members
 		Data            unk088[3];          // 088

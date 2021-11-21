@@ -192,6 +192,7 @@ namespace RE
 		virtual void                           Unk_3D(void);                         // 3D - { return 0; }
 		virtual void                           Unk_3E(void);                         // 3E - { return 0; }
 
+		bool InvalidateMaterial();
 		void SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
 		void SetMaterial(BSShaderMaterial* a_material, bool a_unk1);
 		void SetFlags(EShaderPropertyFlag8 a_flag, bool a_set);

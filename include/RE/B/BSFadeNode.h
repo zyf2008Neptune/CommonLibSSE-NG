@@ -32,15 +32,9 @@ namespace RE
 		virtual BSLeafAnimNode* AsLeafAnimNode();  // 3F - { return 0; }
 
 		// members
-		float unk128;  // 128
-		float unk12C;  // 12C
-#ifdef SKYRIMVR
-		std::uint64_t pad1;  // VR offset moved by 0x28
-		std::uint64_t pad2;
-		std::uint64_t pad3;
-		std::uint64_t pad4;
-		std::uint64_t pad5;
-#endif
+#ifndef SKYRIMVR
+		float         unk128;       // 128
+		float         unk12C;       // 12C
 		float         currentFade;  // 130
 		std::uint32_t unk134;       // 134
 		std::uint32_t unk138;       // 138
@@ -55,6 +49,24 @@ namespace RE
 		std::uint8_t  unk154;       // 154
 		std::uint8_t  unk155;       // 155
 		std::uint16_t unk156;       // 156
+#else
+		float         unk150;       // 150
+		float         unk154;       // 154
+		float         currentFade;  // 158
+		std::uint32_t unk15C;       // 15C
+		std::uint32_t unk160;       // 160
+		std::uint32_t unk164;       // 164
+		float         unk168;       // 168
+		std::uint32_t unk16C;       // 16C
+		std::uint32_t unk170;       // 170
+		float         unk174;       // 174
+		std::uint16_t unk176;       // 176
+		std::uint8_t  unk177;       // 177
+		std::uint8_t  unk178;       // 178
+		std::uint8_t  unk179;       // 179
+		std::int8_t   unk17A;       // 17A
+		std::uint16_t unk17C;       // 17C
+#endif
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(BSFadeNode) == 0x158);

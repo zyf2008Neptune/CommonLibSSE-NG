@@ -27,5 +27,9 @@ namespace RE
 		float         fade;     // 134
 		std::uint32_t unk138;   // 138
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(NiLight) == 0x140);
+#else
+	static_assert(sizeof(NiLight) == 0x168);
+#endif  // !SKYRIMVR
 }

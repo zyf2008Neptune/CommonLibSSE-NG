@@ -252,6 +252,7 @@ namespace RE
 		[[nodiscard]] SEX            GetSex() const;
 		bool                         HasKeyword(std::string_view a_editorID);
 		bool                         HasOverlays();
+		bool                         IsInClass(TESClass* a_class) const;
 		bool                         IsInFaction(TESFaction* a_faction) const;
 		bool                         RemovePerk(BGSPerk* a_perk);
 		void                         SetFaceTexture(BGSTextureSet* a_textureSet);

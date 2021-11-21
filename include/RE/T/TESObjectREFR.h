@@ -180,6 +180,8 @@ namespace RE
 
 				kDoesntLightLandscape = 1 << 17,
 
+				kIgnoreFriendlyHits = 1 << 20,  // Actor
+
 				kNoAIAcquire = 1 << 25,
 				kCollisionGeometry_Filter = 1 << 26,
 				kCollisionGeometry_BoundingBox = 1 << 27,
@@ -352,8 +354,8 @@ namespace RE
 		virtual void                SetMovementComplete(bool a_set);                                                      // 89
 		virtual void                Disable();                                                                            // 8A
 		virtual void                ResetInventory(bool a_leveledOnly);                                                   // 8B - { return 0; }
-		virtual void                Unk_8B(void);                                                                         // 8C - { return; }
-		virtual void                Unk_8C(void);                                                                         // 8D - { return Get3D2(); }
+		virtual void                Unk_8C(void);                                                                         // 8C - { return; }
+		virtual void                Unk_8D(void);                                                                         // 8D - { return Get3D2(); }
 		virtual NiAVObject*         GetCurrent3D() const;                                                                 // 8E - { return 0; }
 		virtual Explosion*          AsExplosion();                                                                        // 8F - { return 0; }
 		virtual Projectile*         AsProjectile();                                                                       // 90 - { return true; }
@@ -363,16 +365,16 @@ namespace RE
 		virtual bool                TryChangeSkyCellActorsProcessLevel();                                                 // 94 - { return; }
 		virtual void                Unk_95(void);                                                                         // 95 - { return; }
 		virtual void                Unk_96(void);                                                                         // 96 - related to lockpicking
-		virtual TESObjectCELL*      GetSaveParentCell() const;                                                            // 97
-		virtual void                SetParentCell(TESObjectCELL* a_cell);                                                 // 98
-		virtual bool                IsDead(bool a_notEssential = true) const;                                             // 99
-		virtual BSAnimNoteReceiver* CreateAnimNoteReceiver();                                                             // 9A
-		virtual BSAnimNoteReceiver* GetAnimNoteReceiver();                                                                // 9B
-		virtual void                ProcessInWater(hkpCollidable* a_collidable, float a_waterHeight, float a_deltaTime);  // 9C
-		virtual void                Unk_9D(void);                                                                         // 9D - { return 0; }
-		virtual TESAmmo*            GetCurrentAmmo() const;                                                               // 9E - { return 0; }
-		virtual BGSDecalGroup*      GetDecalGroup() const;                                                                // 9F
-		virtual void                Unk_A0(void);                                                                         // A0
+		virtual void                Unk_97(void);                                                                         // 97 - related to lockpicking
+		virtual TESObjectCELL*      GetSaveParentCell() const;                                                            // 98
+		virtual void                SetParentCell(TESObjectCELL* a_cell);                                                 // 99
+		virtual bool                IsDead(bool a_notEssential = true) const;                                             // 9A
+		virtual BSAnimNoteReceiver* CreateAnimNoteReceiver();                                                             // 9B
+		virtual BSAnimNoteReceiver* GetAnimNoteReceiver();                                                                // 9C
+		virtual void                ProcessInWater(hkpCollidable* a_collidable, float a_waterHeight, float a_deltaTime);  // 9D
+		virtual void                Unk_9E(void);                                                                         // 9E - { return 0; }
+		virtual TESAmmo*            GetCurrentAmmo() const;                                                               // 9F - { return 0; }
+		virtual BGSDecalGroup*      GetDecalGroup() const;                                                                // A0
 		virtual void                Unk_A1(void);                                                                         // A1
 		virtual void                UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object);                          // A2 - { return; }
 #endif

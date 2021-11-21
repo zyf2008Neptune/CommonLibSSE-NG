@@ -42,11 +42,7 @@ namespace RE
 
 	bool NiAVObject::GetAppCulled() const
 	{
-#ifndef SKYRIMVR
 		return flags.all(Flag::kHidden);
-#else
-		return flagsVR.all(Flag::kHidden);
-#endif
 	}
 
 	BSGeometry* NiAVObject::GetFirstGeometryOfShaderType(BSShaderMaterial::Feature a_type)
@@ -256,5 +252,17 @@ namespace RE
 		using func_t = decltype(&NiAVObject::UpdateRigidBodySettings);
 		REL::Relocation<func_t> func{ REL::ID(76171) };
 		return func(this, a_type, a_arg2);
+	}
+	BSLightingShaderProperty* NiAVObject::temp_nicast(BSGeometry* a_geometry)
+	{
+		if (auto effect = a_geometry->properties[BSGeometry::States::kEffect].get(); effect) {
+			if (auto rtti = effect->GetRTTI(); rtti) {
+				const std::string name(rtti->GetName());
+				if (name == "BSLightingShaderProperty") {
+					return static_cast<RE::BSLightingShaderProperty*>(effect);
+				}
+			}
+		}
+		return nullptr;
 	}
 }

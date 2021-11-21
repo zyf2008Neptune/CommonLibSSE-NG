@@ -23,9 +23,13 @@ namespace RE
 		bool          IsEqual(NiObject* a_object) override;               // 1C - { return false; }
 
 		// members
-		std::uint16_t triangleCount;  // 158
-		std::uint16_t vertexCount;    // 15A
-		std::uint32_t pad15C;         // 15C
+		std::uint16_t triangleCount;  // 158 VR 198
+		std::uint16_t vertexCount;    // 15A VR 19A
+		std::uint32_t pad15C;         // 15C VR 19C
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BSTriShape) == 0x160);
+#else
+	static_assert(sizeof(BSTriShape) == 0x1A8);
+#endif
 }

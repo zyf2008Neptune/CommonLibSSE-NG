@@ -39,9 +39,13 @@ namespace RE
 		virtual void              Unk_41(void);                           // 41
 
 		// members
-		NiPointer<BSMultiBound>           multiBound;     // 128
-		BSCullingProcess::BSCPCullingType cullingMode;    // 130
-		float                             lastAccumTime;  // 134
+		NiPointer<BSMultiBound>           multiBound;     // 128 VR 150
+		BSCullingProcess::BSCPCullingType cullingMode;    // 130 VR 158
+		float                             lastAccumTime;  // 134 VR 15C
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BSMultiBoundNode) == 0x138);
+#else
+	static_assert(sizeof(BSMultiBoundNode) == 0x160);
+#endif
 }
