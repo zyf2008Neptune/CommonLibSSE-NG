@@ -129,8 +129,6 @@ namespace RE
 			inline constexpr REL::Offset BeginShutDownQuest(0x004E8240);  // VR 1_4_15
 			// IndirectSig: E8 ? ? ? ? 4C 8D 35 ? ? ? ? 40 84 F6
 			inline constexpr REL::Offset BeginStartUpQuest(0x004E8120);  // VR 1_4_15
-			// 48 8B 0D ? ? ? ? 48 8B D3 45 84 C0
-			inline constexpr REL::Offset Singleton(0x01EC3B80);  // 1_5_97
 		}
 
 		namespace BipedAnim
@@ -330,12 +328,6 @@ namespace RE
 			inline constexpr REL::Offset Singleton(0x02FC4FE0);  // VR
 			// DirectSig: 48 8B C4 57 41 54 41 55 41 56 41 57 48 83 EC 40 48 C7 40 ? ? ? ? ? 48 89 58 10 48 89 68 18 48 89 70 20 4D 8B F8 4C 8B E2
 			inline constexpr REL::Offset VPrint(0x00886DF0);  // VR 1_4_15
-		}
-
-		namespace ControlMap
-		{
-			// E8 ? ? ? ? 90 48 89 05 ? ? ? ? 8B 05 ? ? ? ?
-			inline constexpr REL::Offset Singleton(0x02EC5BD0);  // 1_5_97
 		}
 
 		namespace CRC32Calculator
@@ -767,12 +759,6 @@ namespace RE
 		{
 			// DirectSig: 48 83 EC 18 F3 41 0F 10 60 04
 			inline constexpr REL::Offset WorldPtToScreenPt3(0x00CAC0E0);  // VR 1_4_15
-		}
-
-		namespace NiMemManager
-		{
-			// 48 89 44 24 30 48 89 05 ? ? ? ?
-			inline constexpr REL::Offset Singleton(0x02F77208);  // 1_5_97
 		}
 
 		namespace NiNode
