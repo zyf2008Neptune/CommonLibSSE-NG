@@ -86,12 +86,10 @@ namespace RE
 				bool BindNativeMethod(IFunction* a_fn) override;                                                                                                     // 18
 				void SetCallableFromTasklets1(const char* a_className, const char* a_stateName, const char* a_fnName, bool a_callable) override;                     // 19
 				void SetCallableFromTasklets2(const char* a_className, const char* a_fnName, bool a_callable) override;                                              // 1A - { SetCallableFromTasklets1(a_className, 0, a_fnName, a_callable); }
-#ifdef SKYRIMVR
-				void New_1B(void) override;  // added in VR 1.4.15
-#endif
 				void ForEachBoundObject(VMHandle a_handle, IForEachScriptObjectFunctor* a_functor) override;  // 1C
 #ifdef SKYRIMVR
-				void New_1D(void) override;  // added in VR 1.4.15
+				virtual void UnkVR_1C(void) = 0;  // added in VR 1.4.15
+				virtual void UnkVR_1D(void) = 0;  // added in VR 1.4.15
 #endif
 				bool                       FindBoundObject(VMHandle a_handle, const char* a_className, BSTSmartPointer<Object>& a_result) const override;                                                                                   // 1C
 				void                       MoveBoundObjects(VMHandle a_from, VMHandle a_to) override;                                                                                                                                       // 1D

@@ -26,5 +26,7 @@ namespace RE
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(CreditsMenu) == 0x40);
+#else
+	static_assert(sizeof(CreditsMenu) == 0x50);
 #endif
 }

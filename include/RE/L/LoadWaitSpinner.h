@@ -47,5 +47,7 @@ namespace RE
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(LoadWaitSpinner) == 0x68);
+#else
+	static_assert(sizeof(LoadWaitSpinner) == 0x78);
 #endif
 }

@@ -32,5 +32,7 @@ namespace RE
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(SleepWaitMenu) == 0x58);
+#else
+	static_assert(sizeof(SleepWaitMenu) == 0x68);
 #endif
 }

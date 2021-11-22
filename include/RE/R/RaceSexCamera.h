@@ -1,5 +1,7 @@
 #pragma once
 
+#ifndef SKYRIMVR
+
 #include "RE/T/TESCamera.h"
 
 namespace RE
@@ -23,3 +25,5 @@ namespace RE
 	};
 	static_assert(sizeof(RaceSexCamera) == 0x58);
 }
+
+#endif

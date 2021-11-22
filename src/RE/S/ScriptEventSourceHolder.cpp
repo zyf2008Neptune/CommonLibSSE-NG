@@ -12,6 +12,7 @@ namespace RE
 		return func();
 	}
 
+#ifdef SKYRIMVR
 	void ScriptEventSourceHolder::SendActivateEvent(const NiPointer<TESObjectREFR>& a_objectActivated, const NiPointer<TESObjectREFR>& a_actionRef)
 	{
 		const TESActivateEvent e{
@@ -21,7 +22,7 @@ namespace RE
 
 		this->SendEvent(&e);
 	}
-
+#endif
 	void ScriptEventSourceHolder::SendOpenCloseEvent(const NiPointer<TESObjectREFR>& a_ref, const NiPointer<TESObjectREFR>& a_activeRef, bool a_isOpened)
 	{
 		using func_t = decltype(&ScriptEventSourceHolder::SendOpenCloseEvent);

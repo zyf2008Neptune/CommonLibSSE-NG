@@ -1123,6 +1123,7 @@ set(SOURCES
 	include/RE/O/OldMessageBoxCallback.h
 	include/RE/Offsets.h
 	include/RE/Offsets_NiRTTI.h
+	include/RE/Offsets_NiRTTI_VR.h
 	include/RE/Offsets_RTTI.h
 	include/RE/Offsets_VR.h
 	include/RE/Offsets_VR_NiRTTI.h

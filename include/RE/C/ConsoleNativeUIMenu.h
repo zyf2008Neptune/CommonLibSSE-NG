@@ -26,5 +26,7 @@ namespace RE
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(ConsoleNativeUIMenu) == 0x38);
+#else
+	static_assert(sizeof(ConsoleNativeUIMenu) == 0x48);
 #endif
 }

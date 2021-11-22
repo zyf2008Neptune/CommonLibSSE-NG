@@ -45,7 +45,7 @@ namespace RE
 
 			// add
 			virtual void SetLinkedCallback(ITypeLinkedCallback* a_callback) = 0;                                                                                    // 01
-			virtual void TraceStack(const char* a_str, VMStackID a_stackID, Severity a_severity = Severity::kError) = 0;                                            // 02
+			virtual void TraceStack(const char* a_str, VMStackID a_stackID, Severity a_severity = Severity::kInfo) = 0;                                             // 02
 			virtual void Unk_03(void) = 0;                                                                                                                          // 03
 			virtual void Update(float a_budget) = 0;                                                                                                                // 04
 			virtual void UpdateTasklets(float a_budget) = 0;                                                                                                        // 05
@@ -70,12 +70,10 @@ namespace RE
 			virtual bool BindNativeMethod(IFunction* a_fn) = 0;                                                                                                     // 18
 			virtual void SetCallableFromTasklets1(const char* a_className, const char* a_stateName, const char* a_fnName, bool a_callable) = 0;                     // 19
 			virtual void SetCallableFromTasklets2(const char* a_className, const char* a_fnName, bool a_callable) = 0;                                              // 1A
+			virtual void ForEachBoundObject(VMHandle a_handle, IForEachScriptObjectFunctor* a_functor) = 0;                                                         // 1B
 #ifdef SKYRIMVR
-			virtual void New_1B(void) = 0;  // added in VR 1.4.15
-#endif
-			virtual void ForEachBoundObject(VMHandle a_handle, IForEachScriptObjectFunctor* a_functor) = 0;  // 1C
-#ifdef SKYRIMVR
-			virtual void New_1D(void) = 0;  // added in VR 1.4.15
+			virtual void UnkVR_1C(void) = 0;  // added in VR 1.4.15
+			virtual void UnkVR_1D(void) = 0;  // added in VR 1.4.15
 #endif
 			virtual bool                       FindBoundObject(VMHandle a_handle, const char* a_className, BSTSmartPointer<Object>& a_result) const = 0;                                                                                   // 1C
 			virtual void                       MoveBoundObjects(VMHandle a_from, VMHandle a_to) = 0;                                                                                                                                       // 1D
