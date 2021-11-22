@@ -160,7 +160,7 @@ namespace RE
 	void Actor::DeselectSpell(SpellItem* a_spell)
 	{
 		using func_t = decltype(&Actor::DeselectSpell);
-		REL::Relocation<func_t> func{ REL::Offset(0x6581F0) };
+		REL::Relocation<func_t> func{ REL::ID(37820) };
 		return func(this, a_spell);
 	}
 

@@ -17,14 +17,14 @@ namespace RE
 
 	std::uint32_t TaskQueueInterface::QueueCreateRipple(float a_scale, const NiPoint3& a_pos)
 	{
-		using func_t = decltype(&TaskQueueInterface::QueueBulletWaterDisplacementTask);
+		using func_t = decltype(&TaskQueueInterface::QueueCreateRipple);
 		REL::Relocation<func_t> func{ REL::ID(35978) };
 		return func(this, a_scale, a_pos);
 	}
 
 	std::uint32_t TaskQueueInterface::QueueRemoveSpell(RE::ActorHandle& a_actorHandle, RE::SpellItem* a_spellItem)
 	{
-		using func_t = decltype(&TaskQueueInterface::QueueRemoveSpellTask);
+		using func_t = decltype(&TaskQueueInterface::QueueRemoveSpell);
 		REL::Relocation<func_t> func{ REL::ID(35987) };
 		return func(this, a_actorHandle, a_spellItem);
 	}

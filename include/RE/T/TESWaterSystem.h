@@ -24,13 +24,13 @@ namespace RE
 	public:
 		[[nodiscard]] static TESWaterSystem* GetSingleton()
 		{
-			REL::Relocation<BGSWaterSystemManager**> singleton{ REL::ID(514290) };
+			REL::Relocation<TESWaterSystem**> singleton{ REL::ID(514290) };
 			return *singleton;
 		}
 
 		void AddRipple(const NiPoint3& a_pos, float a_scale)
 		{
-			using func_t = decltype(&BGSWaterSystemManager::CreateBulletWaterDisplacement);
+			using func_t = decltype(&TESWaterSystem::AddRipple);
 			REL::Relocation<func_t> func{ REL::ID(31410) };
 			return func(this, a_pos, a_scale);
 		}

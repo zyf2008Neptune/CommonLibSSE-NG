@@ -111,7 +111,7 @@ namespace RE
 	void NiAVObject::SetCollisionLayer(COL_LAYER a_collisionLayer)
 	{
 		using func_t = decltype(&NiAVObject::SetCollisionLayer);
-		REL::Relocation<func_t> func{ REL::Offset(0xDEE3C0) };
+		REL::Relocation<func_t> func{ REL::ID(76170) };
 		return func(this, a_collisionLayer);
 	}
 
