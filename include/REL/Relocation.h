@@ -729,7 +729,7 @@ namespace REL
 				[](auto&& a_lhs, auto&& a_rhs) {
 					return a_lhs.id < a_rhs.id;
 				});
-			_natvis = _id2offset.data();
+			//			_natvis = _id2offset.data();
 			return true;
 		}
 #endif

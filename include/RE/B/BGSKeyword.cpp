@@ -8,12 +8,9 @@ namespace RE
 {
 	BGSKeyword* RE::BGSKeyword::CreateKeyword(const BSFixedString& a_formEditorID)
 	{
-		BGSKeyword* BGSKeyword::CreateKeyword(const BSFixedString& a_formEditorID)
-		{
-			auto factory = IFormFactory::GetConcreteFormFactoryByType<BGSKeyword>();
-			auto keyword = factory->Create();
-			keyword->formEditorID = a_formEditorID;
-			return keyword;
-		}
+		auto factory = IFormFactory::GetConcreteFormFactoryByType<BGSKeyword>();
+		auto keyword = factory->Create();
+		keyword->formEditorID = a_formEditorID;
+		return keyword;
 	}
 }

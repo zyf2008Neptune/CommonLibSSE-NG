@@ -5,7 +5,7 @@
 
 namespace RE
 {
-	BSFixedString EffectSetting::GetArchetypeAsString() const
+	BSFixedString EffectSetting::GetArchetypeAsString()
 	{
 		auto archetype = BSFixedString();
 
