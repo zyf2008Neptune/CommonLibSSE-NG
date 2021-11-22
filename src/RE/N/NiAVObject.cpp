@@ -115,6 +115,13 @@ namespace RE
 		return func(this, a_collisionLayer);
 	}
 
+	void NiAVObject::SetCollisionLayerAndGroup(COL_LAYER a_collisionLayer, std::uint32_t a_group)
+	{
+		using func_t = decltype(&NiAVObject::SetCollisionLayerAndGroup);
+		REL::Relocation<func_t> func{ REL::ID(76171) };
+		return func(this, a_collisionLayer, a_group);
+	}
+
 	bool NiAVObject::SetMotionType(std::uint32_t a_motionType, bool a_arg2, bool a_arg3, bool a_allowActivate)
 	{
 		using func_t = decltype(&NiAVObject::SetMotionType);
@@ -252,12 +259,5 @@ namespace RE
 			}
 			return BSVisit::BSVisitControl::kContinue;
 		});
-	}
-
-	void NiAVObject::UpdateRigidBodySettings(std::uint32_t a_type, std::uint32_t a_arg2)
-	{
-		using func_t = decltype(&NiAVObject::UpdateRigidBodySettings);
-		REL::Relocation<func_t> func{ REL::ID(76171) };
-		return func(this, a_type, a_arg2);
 	}
 }
