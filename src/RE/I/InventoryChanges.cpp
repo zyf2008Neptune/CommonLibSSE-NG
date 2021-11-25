@@ -1,5 +1,8 @@
+#pragma once
 #include "RE/I/InventoryChanges.h"
-
+#include "RE/A/Actor.h"
+#include "RE/F/FormTraits.h"
+#include "RE/T/TESObjectREFR.h"
 namespace RE
 {
 	InventoryChanges::InventoryChanges() :
@@ -40,15 +43,22 @@ namespace RE
 		return func(this, a_obj);
 	}
 
-#ifndef SKYRIMVR
-	// Unable to find offset in VR https://github.com/alandtse/CommonLibVR/issues/2
 	TESObjectARMO* InventoryChanges::GetArmorInSlot(std::int32_t a_slot)
 	{
+#ifndef SKYRIMVR
 		using func_t = decltype(&InventoryChanges::GetArmorInSlot);
 		REL::Relocation<func_t> func{ REL::ID(15873) };
 		return func(this, a_slot);
-	}
+#else
+		// Unable to find offset in VR https://github.com/alandtse/CommonLibVR/issues/2
+		auto owner = this->owner;
+		auto actor = owner ? owner->As<RE::Actor>() : nullptr;
+		if (actor) {
+			return actor->GetWornArmor(a_slot);
+		}
+		return nullptr;
 #endif
+	}
 
 	std::uint16_t InventoryChanges::GetNextUniqueID()
 	{
