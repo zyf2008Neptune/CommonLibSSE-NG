@@ -17,20 +17,6 @@
 
 namespace RE
 {
-	void NiAVObject::ClearDecals()
-	{
-		using func_t = decltype(&NiAVObject::ClearDecals);
-		REL::Relocation<func_t> func{ REL::ID(15547) };
-		return func(this);
-	}
-
-	void NiAVObject::ClearWeaponBlood()
-	{
-		using func_t = decltype(&NiAVObject::ClearWeaponBlood);
-		REL::Relocation<func_t> func{ REL::ID(29303) };
-		return func(this);
-	}
-
 	void NiAVObject::CullNode(bool a_cull)
 	{
 		BSVisit::TraverseScenegraphObjects(this, [&](NiAVObject* a_object) -> BSVisit::BSVisitControl {
@@ -103,9 +89,30 @@ namespace RE
 		return hasShaderType;
 	}
 
+	void NiAVObject::RemoveDecals()
+	{
+		using func_t = decltype(&NiAVObject::RemoveDecals);
+		REL::Relocation<func_t> func{ REL::ID(15547) };
+		return func(this);
+	}
+
 	void NiAVObject::SetAppCulled(bool a_cull)
 	{
 		a_cull ? flags.set(Flag::kHidden) : flags.reset(Flag::kHidden);
+	}
+
+	void NiAVObject::SetCollisionLayer(COL_LAYER a_collisionLayer)
+	{
+		using func_t = decltype(&NiAVObject::SetCollisionLayer);
+		REL::Relocation<func_t> func{ REL::ID(76170) };
+		return func(this, a_collisionLayer);
+	}
+
+	void NiAVObject::SetCollisionLayerAndGroup(COL_LAYER a_collisionLayer, std::uint32_t a_group)
+	{
+		using func_t = decltype(&NiAVObject::SetCollisionLayerAndGroup);
+		REL::Relocation<func_t> func{ REL::ID(76171) };
+		return func(this, a_collisionLayer, a_group);
 	}
 
 	bool NiAVObject::SetMotionType(std::uint32_t a_motionType, bool a_arg2, bool a_arg3, bool a_allowActivate)
@@ -113,13 +120,6 @@ namespace RE
 		using func_t = decltype(&NiAVObject::SetMotionType);
 		REL::Relocation<func_t> func{ Offset::NiAVObject::SetMotionType };
 		return func(this, a_motionType, a_arg2, a_arg3, a_allowActivate);
-	}
-
-	void NiAVObject::SetRigidConstraints(bool a_enable, std::uint8_t a_arg2, std::uint32_t a_arg3)
-	{
-		using func_t = decltype(&NiAVObject::SetRigidConstraints);
-		REL::Relocation<func_t> func{ REL::ID(76271) };
-		return func(this, a_enable, a_arg2, a_arg3);
 	}
 
 	void NiAVObject::TintScenegraph(const NiColorA& a_color)
@@ -247,11 +247,11 @@ namespace RE
 		});
 	}
 
-	void NiAVObject::UpdateRigidBodySettings(std::uint32_t a_type, std::uint32_t a_arg2)
+	void NiAVObject::UpdateRigidConstraints(bool a_enable, std::uint8_t a_arg2, std::uint32_t a_arg3)
 	{
-		using func_t = decltype(&NiAVObject::UpdateRigidBodySettings);
-		REL::Relocation<func_t> func{ REL::ID(76171) };
-		return func(this, a_type, a_arg2);
+		using func_t = decltype(&NiAVObject::UpdateRigidConstraints);
+		REL::Relocation<func_t> func{ REL::ID(76271) };
+		return func(this, a_enable, a_arg2, a_arg3);
 	}
 	BSLightingShaderProperty* NiAVObject::temp_nicast(BSGeometry* a_geometry)
 	{

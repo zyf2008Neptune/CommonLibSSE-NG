@@ -3,6 +3,7 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSLightingShaderProperty.h"
 #include "RE/B/BSShaderMaterial.h"
+#include "RE/C/CollisionLayers.h"
 #include "RE/N/NiBound.h"
 #include "RE/N/NiObjectNET.h"
 #include "RE/N/NiSmartPointer.h"
@@ -115,23 +116,23 @@ namespace RE
 		virtual void        PostAttachUpdate();                                                                                 // 33
 		virtual void        OnVisible(NiCullingProcess& a_process);                                                             // 34 - { return; }
 
-		void                         ClearDecals();
-		void                         ClearWeaponBlood();
 		void                         CullNode(bool a_cull);
 		[[nodiscard]] bool           GetAppCulled() const;
 		[[nodiscard]] BSGeometry*    GetFirstGeometryOfShaderType(BSShaderMaterial::Feature a_type);
 		[[nodiscard]] TESObjectREFR* GetUserData() const;
 		[[nodiscard]] bool           HasShaderType(BSShaderMaterial::Feature a_type);
+		void                         RemoveDecals();
 		void                         SetAppCulled(bool a_cull);
+		void                         SetCollisionLayer(COL_LAYER a_collisionLayer);
+		void                         SetCollisionLayerAndGroup(COL_LAYER a_collisionLayer, std::uint32_t a_group);
 		bool                         SetMotionType(std::uint32_t a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
-		void                         SetRigidConstraints(bool a_enable, std::uint8_t a_arg2 = 1, std::uint32_t a_arg3 = 1);
 		void                         TintScenegraph(const NiColorA& a_color);
 		void                         Update(NiUpdateData& a_data);
 		void                         UpdateBodyTint(const NiColor& a_color);
 		void                         UpdateHairColor(const NiColor& a_color);
 		void                         UpdateMaterialAlpha(float a_alpha, bool a_doOnlySkin);
 		void                         UpdateMaterialShader(const NiColorA& a_projectedUVParams, const NiColor& a_projectedUVColor, const bool a_isSnow);
-		void                         UpdateRigidBodySettings(std::uint32_t a_type, std::uint32_t a_arg2);
+		void                         UpdateRigidConstraints(bool a_enable, std::uint8_t a_arg2 = 1, std::uint32_t a_arg3 = 1);
 
 		BSLightingShaderProperty* temp_nicast(BSGeometry* a_geometry);
 
