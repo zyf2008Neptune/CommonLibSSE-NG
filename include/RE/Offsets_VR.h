@@ -322,14 +322,6 @@ namespace RE
 			inline constexpr REL::Offset SetSelectedRef(0x008864D0);  // VR 1_4_15
 		}
 
-		namespace ConsoleLog
-		{
-			// E8 ? ? ? ? 48 89 2D ? ? ? ? 48 8B 0D ? ? ? ? 48 85 C9 74 0C E8 ? ? ? ? 48 89 2D ? ? ? ? 48 8B 0D ? ? ? ? 48 85 C9 74 0C E8 ? ? ? ? 48 89 2D ? ? ? ? 48 8B 0D ? ? ? ?
-			inline constexpr REL::Offset Singleton(0x02FC4FE0);  // VR
-			// DirectSig: 48 8B C4 57 41 54 41 55 41 56 41 57 48 83 EC 40 48 C7 40 ? ? ? ? ? 48 89 58 10 48 89 68 18 48 89 70 20 4D 8B F8 4C 8B E2
-			inline constexpr REL::Offset VPrint(0x00886DF0);  // VR 1_4_15
-		}
-
 		namespace CRC32Calculator
 		{
 			// IndirectSig: E8 ? ? ? ? 8B 75 AB
@@ -1103,7 +1095,5 @@ namespace RE
 		inline constexpr REL::Offset PlaySound(0x0090B1D0);  // VR 1_4_15
 		// IndirectSig: E8 ? ? ? ? 48 8B F5
 		inline constexpr REL::Offset RTDynamicCast(0x0138BABA);  // VR 1_4_15
-		//
-		inline constexpr REL::Offset TlsIndex(0x03497408);  // 1_5_97
 	}
 }
