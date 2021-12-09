@@ -47,7 +47,11 @@ namespace RE
 			// members
 			BSTArray<UserEventMapping> deviceMappings[INPUT_DEVICES::kTotal];  // 00
 		};
+		#ifndef SKYRIMVR
 		static_assert(sizeof(InputContext) == 0x60);
+		#else
+		static_assert(sizeof(InputContext) == 0xA8);
+		#endif
 
 		struct LinkedMapping
 		{
