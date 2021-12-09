@@ -692,7 +692,7 @@ namespace REL
 						version.string()))
 					.value_or(L"<unknown filename>"s);
 			load_file(filename, version);
-#else !defined(SKYRIMVR)
+#elif !defined(SKYRIMVR)
 			const auto filename =
 				stl::utf8_to_utf16(
 					fmt::format(
@@ -707,7 +707,7 @@ namespace REL
 						"Data/SKSE/Plugins/version-{}.csv"sv,
 						version.string()))
 					.value_or(L"<unknown filename>"s);
-			load_csv(csv_filename, version);
+			load_csv(filename, version);
 #endif
 		}
 
