@@ -47,9 +47,9 @@ namespace RE
 		std::uint32_t                        unkE4;                           // E4
 		std::uint64_t                        unkE8;                           // E8
 	};
-	#ifndef SKYRIMVR
+#ifndef SKYRIMVR
 	static_assert(sizeof(BSInputDeviceManager) == 0xF0);
-	#else
+#else
 	static_assert(sizeof(BSInputDeviceManager) == 0x108);
-	#endif
+#endif
 }
