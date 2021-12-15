@@ -11,10 +11,10 @@ namespace RE
 			kMouse,
 			kGamepad,
 			kVirtualKeyboard,
-			#ifdef SKYRIMVR
+#ifdef SKYRIMVR
 			kVRRight = 5,
 			kVRLeft = 6,
-			#endif
+#endif
 			kTotal
 		};
 	};
