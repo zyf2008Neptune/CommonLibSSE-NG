@@ -35,6 +35,20 @@ namespace RE
 #endif
 	}
 
+	FormID TESDataHandler::LookupFormID(FormID a_rawFormID, std::string_view a_modName)
+	{
+		auto file = LookupModByName(a_modName);
+		if (!file || file->compileIndex == 0xFF) {
+			return 0;
+		}
+
+		FormID formID = file->compileIndex << (3 * 8);
+		formID += file->smallFileCompileIndex << ((1 * 8) + 4);
+		formID += a_rawFormID;
+
+		return formID;
+	}
+
 	const TESFile* TESDataHandler::LookupModByName(std::string_view a_modName)
 	{
 		for (auto& file : files) {
