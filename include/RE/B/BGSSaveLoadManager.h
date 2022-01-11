@@ -191,7 +191,7 @@ namespace RE
 		bool Load_Impl(const char* a_fileName, std::int32_t a_deviceID, std::uint32_t a_outputStats, bool a_checkForMods);
 	};
 #ifndef SKYRIMVR
-	static_assert(sizeof(BGSSaveLoadManager) == 0x3D0);
+	//static_assert(sizeof(BGSSaveLoadManager) == 0x3D0);
 #else
 	static_assert(sizeof(BGSSaveLoadManager) == 0x3D8);
 #endif

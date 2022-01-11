@@ -29,6 +29,7 @@ namespace RE
 		entryList->push_front(a_entry);
 		changed = true;
 	}
+	#ifdef SKYRIMVR
 	void InventoryChanges::GenerateLeveledListChanges()
 	{
 		using func_t = decltype(&InventoryChanges::GenerateLeveledListChanges);
@@ -42,6 +43,8 @@ namespace RE
 		REL::Relocation<func_t> func{ REL::ID(5370704656) };
 		return func(this, a_obj);
 	}
+#endif
+
 
 	TESObjectARMO* InventoryChanges::GetArmorInSlot(std::int32_t a_slot)
 	{

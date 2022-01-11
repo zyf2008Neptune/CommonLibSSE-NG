@@ -652,6 +652,9 @@ namespace REL
 }
 
 #include "REL/Relocation.h"
+#include "RE/B/BSCoreTypes.h"
+#include "RE/Offsets_VTABLE.h"
+#include "RE/S/SFTypes.h"
 
 #ifndef SKYRIMVR
 #	include "RE/Offsets.h"
@@ -664,6 +667,3 @@ namespace REL
 #	include "RE/Offsets_VR_RTTI.h"
 #endif
 
-#include "RE/B/BSCoreTypes.h"
-#include "RE/Offsets_VTABLE.h"
-#include "RE/S/SFTypes.h"

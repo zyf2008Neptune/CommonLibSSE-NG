@@ -23,6 +23,6 @@ namespace RE
 		//DEFINE_MEMBER_FN_0(ctor, BSDynamicTriShape*, 0x00C71E50);
 	};
 #ifndef SKYRIMVR
-	static_assert(sizeof(BSDynamicTriShape) == 0x1C0);
+	//static_assert(sizeof(BSDynamicTriShape) == 0x1C0);
 #endif
 }

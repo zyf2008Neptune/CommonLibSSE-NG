@@ -23,12 +23,14 @@ namespace RE
 		Load_Impl(a_fileName, -1, 0, a_checkForMods);
 	}
 
+	#ifdef SKYRIMVR
 	bool BGSSaveLoadManager::PopulateSaveList()
 	{
 		using func_t = decltype(&BGSSaveLoadManager::PopulateSaveList);
 		REL::Relocation<func_t> func{ REL::ID(5374512336) };
 		return func(this);
 	}
+	#endif
 
 	bool BGSSaveLoadManager::Save_Impl(std::int32_t a_deviceID, std::uint32_t a_outputStats, const char* a_fileName)
 	{

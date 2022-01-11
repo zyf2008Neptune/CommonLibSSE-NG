@@ -638,7 +638,13 @@ namespace REL
 			void read(binary_io::file_istream& a_in)
 			{
 				const auto [format] = a_in.read<std::int32_t>();
-				if (format != 2) {
+				if (format != 
+					#if !defined(SKYRIMVR) && defined(AE) 
+					2
+					#else
+					1
+					#endif
+					) {
 					stl::report_and_fail(
 						fmt::format(
 							"Unsupported address library format: {}\n"
@@ -688,7 +694,7 @@ namespace REL
 			const auto filename =
 				stl::utf8_to_utf16(
 					fmt::format(
-						"Data/SKSE/Plugins/version-{}.bin"sv,
+						"Data/SKSE/Plugins/versionlib-{}.bin"sv,
 						version.string()))
 					.value_or(L"<unknown filename>"s);
 			load_file(filename, version);
@@ -696,7 +702,7 @@ namespace REL
 			const auto filename =
 				stl::utf8_to_utf16(
 					fmt::format(
-						"Data/SKSE/Plugins/versionlib-{}.bin"sv,
+						"Data/SKSE/Plugins/version-{}.bin"sv,
 						version.string()))
 					.value_or(L"<unknown filename>"s);
 			load_file(filename, version);

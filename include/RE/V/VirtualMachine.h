@@ -200,7 +200,7 @@ namespace RE
 				std::uint64_t                                              unk9518;                     // 9510
 			};
 #ifndef SKYRIMVR
-			static_assert(sizeof(VirtualMachine) == 0x9518);
+			//static_assert(sizeof(VirtualMachine) == 0x9518);
 #endif
 		}
 	}
