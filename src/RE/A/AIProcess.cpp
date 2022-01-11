@@ -119,14 +119,14 @@ namespace RE
 	{
 		return cachedValues && cachedValues->flags.all(CachedValues::Flags::kActorIsGhost);
 	}
-	#ifdef SKYRIMVR
+#ifdef SKYRIMVR
 	void AIProcess::SetActorRefraction(float a_refraction)
 	{
 		using func_t = decltype(&AIProcess::SetActorRefraction);
 		REL::Relocation<func_t> func{ REL::ID(5375528368) };
 		return func(this, a_refraction);
 	}
-	#endif
+#endif
 
 	void AIProcess::SetArrested(bool a_arrested)
 	{

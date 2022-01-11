@@ -651,10 +651,10 @@ namespace REL
 	namespace WinAPI = SKSE::WinAPI;
 }
 
-#include "REL/Relocation.h"
 #include "RE/B/BSCoreTypes.h"
 #include "RE/Offsets_VTABLE.h"
 #include "RE/S/SFTypes.h"
+#include "REL/Relocation.h"
 
 #ifndef SKYRIMVR
 #	include "RE/Offsets.h"
@@ -666,4 +666,3 @@ namespace REL
 #	include "RE/Offsets_VR_NiRTTI.h"
 #	include "RE/Offsets_VR_RTTI.h"
 #endif
-

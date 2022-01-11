@@ -638,13 +638,13 @@ namespace REL
 			void read(binary_io::file_istream& a_in)
 			{
 				const auto [format] = a_in.read<std::int32_t>();
-				if (format != 
-					#if !defined(SKYRIMVR) && defined(AE) 
+				if (format !=
+#if !defined(SKYRIMVR) && defined(AE)
 					2
-					#else
+#else
 					1
-					#endif
-					) {
+#endif
+				) {
 					stl::report_and_fail(
 						fmt::format(
 							"Unsupported address library format: {}\n"
