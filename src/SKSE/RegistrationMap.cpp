@@ -218,7 +218,7 @@ namespace SKSE
 				} else if (keyIndex == 2) {
 					RE::FormType formType = std::get<2>(key);
 					if (!a_intfc->WriteRecordData(formType)) {
-						log::error("Failed to save reg key as formtype ({})!", formType);
+						log::error("Failed to save reg key as formtype ({})!", int(formType));
 						return false;
 					}
 				}
