@@ -311,6 +311,7 @@ namespace RE
 		[[nodiscard]] bool AllowsPCDialogue() const;
 		[[nodiscard]] bool AllowsPickpocket() const;
 		BGSHeadPart*       GetHeadPartByType(HeadPartType a_type, SEX a_sex) const;
+		[[nodiscard]] bool IsChildRace() const;
 
 		// members
 		TESModel                                       skeletonModels[SEXES::kTotal];                  // 098 - ANAM

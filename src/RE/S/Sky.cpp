@@ -11,7 +11,12 @@ namespace RE
 		return func();
 	}
 
-	bool Sky::GetIsSnowing()
+	bool Sky::GetIsRaining() const
+	{
+		return currentWeather && currentWeather->data.flags.all(TESWeather::WeatherDataFlag::kRainy);
+	}
+
+	bool Sky::GetIsSnowing() const
 	{
 		return currentWeather && currentWeather->data.flags.all(TESWeather::WeatherDataFlag::kSnow);
 	}

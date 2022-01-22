@@ -24,4 +24,9 @@ namespace RE
 
 		return nullptr;
 	}
+
+	bool TESRace::IsChildRace() const
+	{
+		return data.flags.all(RACE_DATA::Flag::kChild);
+	}
 }

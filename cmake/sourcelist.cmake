@@ -70,6 +70,7 @@ set(SOURCES
 	include/RE/B/BGSColorForm.h
 	include/RE/B/BGSConstructibleObject.h
 	include/RE/B/BGSDebris.h
+	include/RE/B/BGSDecalEmitter.h
 	include/RE/B/BGSDecalGroup.h
 	include/RE/B/BGSDecalManager.h
 	include/RE/B/BGSDecalNode.h
@@ -995,6 +996,7 @@ set(SOURCES
 	include/RE/N/NiFloatExtraData.h
 	include/RE/N/NiFloatInterpolator.h
 	include/RE/N/NiFloatKey.h
+	include/RE/N/NiFloatsExtraData.h
 	include/RE/N/NiFrustum.h
 	include/RE/N/NiFrustumPlanes.h
 	include/RE/N/NiGeometry.h
@@ -1105,6 +1107,7 @@ set(SOURCES
 	include/RE/S/SafeZoneMenu.h
 	include/RE/S/SavePatcher.h
 	include/RE/S/ScrapHeap.h
+	include/RE/S/ScreenSplatter.h
 	include/RE/S/Script.h
 	include/RE/S/ScriptEventSourceHolder.h
 	include/RE/S/ScriptFunction.h
@@ -1270,6 +1273,7 @@ set(SOURCES
 	include/RE/T/TESResetEvent.h
 	include/RE/T/TESResolveNPCTemplatesEvent.h
 	include/RE/T/TESShout.h
+	include/RE/T/TESSleepStopEvent.h
 	include/RE/T/TESSoulGem.h
 	include/RE/T/TESSound.h
 	include/RE/T/TESSpellCastEvent.h
@@ -1518,6 +1522,7 @@ set(SOURCES
 	src/RE/M/Misc.cpp
 	src/RE/N/NativeFunctionBase.cpp
 	src/RE/N/NiAVObject.cpp
+	src/RE/N/NiAlphaProperty.cpp
 	src/RE/N/NiAnimationKey.cpp
 	src/RE/N/NiBinaryStream.cpp
 	src/RE/N/NiBooleanExtraData.cpp
@@ -1530,6 +1535,7 @@ set(SOURCES
 	src/RE/N/NiFloatData.cpp
 	src/RE/N/NiFloatExtraData.cpp
 	src/RE/N/NiFloatKey.cpp
+	src/RE/N/NiFloatsExtraData.cpp
 	src/RE/N/NiIntegerExtraData.cpp
 	src/RE/N/NiIntegersExtraData.cpp
 	src/RE/N/NiInterpolator.cpp
