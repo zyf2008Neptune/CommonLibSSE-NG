@@ -1,8 +1,8 @@
 {
-  "name": "commonlibsse",
+  "name": "commonlibvr",
   "version-string": "1",
-  "description": "A reverse engineered resource for developing F4SE plugins for Skyrim Special Edition",
-  "homepage": "https://github.com/Ryan-rsm-McKenzie/CommonLibSSE",
+  "description": "A reverse engineered resource for developing F4SE plugins for Skyrim Special Edition/VR",
+  "homepage": "https://github.com/alandtse/CommonLibVR",
   "license": "MIT",
   "supports": "windows & x64",
   "dependencies": [

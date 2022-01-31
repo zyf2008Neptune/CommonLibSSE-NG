@@ -15,7 +15,7 @@ This a version of CommonLibVR that is based off of the latest CommonLibSSE after
 * [Address Library for SKSE Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/32444)
 * [VR Address Library for SKSEVR Plugins](https://www.nexusmods.com/skyrimspecialedition/mods/58101)
 * [VR Address Tools](https://github.com/alandtse/vr_address_tools)
-	* For checking VR known addresses. 
+	* For checking VR known addresses.
 * [clang-format 12.0.0](https://github.com/llvm/llvm-project/releases)
 * [CMake](https://cmake.org/)
 * [vcpkg](https://github.com/microsoft/vcpkg)
@@ -34,10 +34,12 @@ git checkout vr
 vcpkg install
 
 # Skyrim SE
-cmake -B build -S .
+cmake --preset vs2022-windows-vcpkg
+cmake --build build --config Release
 
 # Skyrim VR
-cmake -B buildVR -S . -DBUILD_SKYRIMVR=ON
+cmake --preset vs2022-windows-vcpkg-vr
+cmake --build buildvr --config Release
 ```
 
 ## End User Dependencies SSE
@@ -54,5 +56,6 @@ cmake -B buildVR -S . -DBUILD_SKYRIMVR=ON
 ## Credits
 * Thanks to Ryan McKenzie for original code
 * Thanks to RollingRock & po3 for important contributions
-* Thanks to lfrazer for commonlibvr port which is the source of Exit-9B recombination; also thanks for all the support in discord.
+* Thanks to lfrazer for [commonlibvr](https://github.com/lfrazer/CommonLibVR) port which is the source of Exit-9B recombination; also thanks for all the support in discord.
 * Thanks to Exit-9B for recombination of [CommonLibSSE](https://github.com/Ryan-rsm-McKenzie/CommonLibSSE) and [CommonLibVR](https://github.com/lfrazer/CommonLibVR)
+* Thanks to powerof3 for maintaing a SSE branch of [CommonLibSSE](https://github.com/powerof3/CommonLibSSE/tree/dev)

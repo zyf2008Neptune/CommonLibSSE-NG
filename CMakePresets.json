@@ -5,7 +5,7 @@
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": {
           "type": "STRING",
-          "value": "Debug"
+          "value": "Release"
         }
       },
       "errors": {
@@ -23,6 +23,10 @@
         "CMAKE_TOOLCHAIN_FILE": {
           "type": "STRING",
           "value": "$env{VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake"
+        },
+        "VCPKG_OVERLAY_PORTS": {
+          "type": "STRING",
+          "value": "${sourceDir}/cmake/ports/"
         }
       },
       "hidden": true,
@@ -43,6 +47,14 @@
       "name": "windows"
     },
     {
+      "binaryDir": "${sourceDir}/buildvr",
+      "cacheVariables": {
+        "BUILD_SKYRIMVR": true
+      },
+      "hidden": true,
+      "name": "vr"
+    },
+    {
       "cacheVariables": {
         "CMAKE_CXX_FLAGS": "/EHsc /MP /W4 /WX /external:anglebrackets /external:W0 $penv{CXXFLAGS}"
       },
@@ -56,15 +68,43 @@
     },
     {
       "cacheVariables": {
-        "CMAKE_CXX_FLAGS": "/EHsc /MP /W4 /WX $penv{CXXFLAGS}"
+        "CMAKE_CXX_FLAGS": "/EHsc /MP /W4 /WX /external:anglebrackets /external:W0 $penv{CXXFLAGS}"
       },
       "generator": "Visual Studio 17 2022",
       "inherits": [
+        "vr",
         "cmake-dev",
         "vcpkg",
         "windows"
       ],
       "name": "vs2022-windows-vcpkg",
+      "toolset": "v143"
+    },
+    {
+      "cacheVariables": {
+        "CMAKE_CXX_FLAGS": "/EHsc /MP /W4 /WX /external:anglebrackets /external:W0 $penv{CXXFLAGS}"
+      },
+      "generator": "Visual Studio 16 2019",
+      "inherits": [
+        "vr",
+        "cmake-dev",
+        "vcpkg",
+        "windows"
+      ],
+      "name": "vs2019-windows-vcpkg-vr"
+    },
+    {
+      "cacheVariables": {
+        "CMAKE_CXX_FLAGS": "/EHsc /MP /W4 /WX /external:anglebrackets /external:W0 $penv{CXXFLAGS}"
+      },
+      "generator": "Visual Studio 17 2022",
+      "inherits": [
+        "vr",
+        "cmake-dev",
+        "vcpkg",
+        "windows"
+      ],
+      "name": "vs2022-windows-vcpkg-vr",
       "toolset": "v143"
     }
   ],
