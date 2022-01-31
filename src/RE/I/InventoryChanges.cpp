@@ -53,8 +53,8 @@ namespace RE
 		return func(this, a_slot);
 #else
 		// Unable to find offset in VR https://github.com/alandtse/CommonLibVR/issues/2
-		auto owner = this->owner;
-		auto actor = owner ? owner->As<RE::Actor>() : nullptr;
+		auto armorowner = this->owner;
+		auto actor = armorowner ? armorowner->As<RE::Actor>() : nullptr;
 		if (actor) {
 			return actor->GetWornArmor(a_slot);
 		}

@@ -277,8 +277,8 @@ namespace RE
 	{
 		if (auto effect = a_geometry->properties[BSGeometry::States::kEffect].get(); effect) {
 			if (auto rtti = effect->GetRTTI(); rtti) {
-				const std::string name(rtti->GetName());
-				if (name == "BSLightingShaderProperty") {
+				const std::string temp_name(rtti->GetName());
+				if (temp_name == "BSLightingShaderProperty") {
 					return static_cast<RE::BSLightingShaderProperty*>(effect);
 				}
 			}
