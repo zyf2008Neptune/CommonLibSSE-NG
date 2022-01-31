@@ -100,7 +100,7 @@ namespace RE
 			GetEffectCount() :
 				m_count(0) {}
 
-			virtual BSContainer::ForEachResult Visit(ActiveEffect* /*effect*/) override // suppress c4100 error
+			virtual BSContainer::ForEachResult Visit(ActiveEffect* /*effect*/) override  // suppress c4100 error
 			{
 				m_count++;
 				return BSContainer::ForEachResult::kContinue;
