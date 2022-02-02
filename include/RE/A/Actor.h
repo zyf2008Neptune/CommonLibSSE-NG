@@ -504,14 +504,16 @@ namespace RE
 		[[nodiscard]] NiAVObject*    GetHeadPartObject(BGSHeadPart::HeadPartType a_type);
 		float                        GetHeight();
 		std::uint16_t                GetLevel() const;
+		bool                         GetMount(NiPointer<Actor>& a_outMount);
 		ObjectRefHandle              GetOccupiedFurniture() const;
 		TESRace*                     GetRace() const;
 		[[nodiscard]] TESObjectARMO* GetSkin() const;
 		[[nodiscard]] TESObjectARMO* GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] SOUL_LEVEL     GetSoulSize() const;
 		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot);
-		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID);
+		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID);                     
 		bool                         HasKeywordString(std::string_view a_formEditorID);
+		bool                         HasLineOfSight(TESObjectREFR* a_ref, bool& a_arg2);
 		bool                         HasPerk(BGSPerk* a_perk) const;
 		bool                         HasSpell(SpellItem* a_spell) const;
 		void                         InterruptCast(bool a_restoreMagicka) const;
@@ -519,6 +521,8 @@ namespace RE
 		bool                         IsAMount() const;
 		bool                         IsAnimationDriven() const;
 		bool                         IsBeingRidden() const;
+		bool                         IsBlocking() const;
+		bool                         IsCasting(SpellItem* a_spell) const;
 		bool                         IsCommandedActor() const;
 		bool                         IsEssential() const;
 		bool                         IsFactionInCrimeGroup(const TESFaction* a_faction) const;
@@ -527,7 +531,9 @@ namespace RE
 		bool                         IsHostileToActor(Actor* a_actor);
 		bool                         IsLimbGone(std::uint32_t a_limb);
 		[[nodiscard]] constexpr bool IsInKillMove() const noexcept { return boolFlags.all(BOOL_FLAGS::kIsInKillMove); }
+		bool                         IsInMidair() const;
 		bool                         IsOnMount() const;
+		bool                         IsOverEncumbered() const;
 		bool                         IsPlayerTeammate() const;
 		bool                         IsRunning() const;
 		bool                         IsSneaking() const;
@@ -538,6 +544,8 @@ namespace RE
 		void                         RemoveExtraArrows3D();
 		bool                         RemoveSpell(SpellItem* a_spell);
 		std::int32_t                 RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);
+		void                         SetRotationX(float a_angle);
+		void                         SetRotationZ(float a_angle);
 		void                         SetLifeState(ACTOR_LIFE_STATE a_lifeState);
 		void                         StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning);
 		void                         StopInteractingQuick(bool a_unk02);

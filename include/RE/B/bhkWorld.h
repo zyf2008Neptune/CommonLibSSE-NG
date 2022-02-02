@@ -60,6 +60,18 @@ namespace RE
 		virtual void Unk_35(void);                                              // 35
 		virtual void InitHavok(NiAVObject* a_sceneObject, NiAVObject* a_root);  // 36
 
+		static float GetWorldScale()
+		{
+			REL::Relocation<float*> worldScale{ REL::ID(231896) };
+			return *worldScale;
+		}
+
+		static float GetWorldScaleInverse()
+		{
+			REL::Relocation<float*> worldScaleInverse{ REL::ID(230692) };
+			return *worldScaleInverse;
+		}
+
 		// members
 		std::uint8_t                  unk0020[0x320];             // 0020
 		std::uint8_t                  unk0340[0x6400];            // 0340

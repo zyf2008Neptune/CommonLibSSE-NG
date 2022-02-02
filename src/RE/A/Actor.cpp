@@ -351,6 +351,13 @@ namespace RE
 		return func(this);
 	}
 
+	bool Actor::GetMount(NiPointer<Actor>& a_outMount)
+	{
+		using func_t = decltype(&Actor::GetMount);
+		REL::Relocation<func_t> func{ REL::ID(37757) };
+		return func(this, a_outMount);
+	}
+
 	ObjectRefHandle Actor::GetOccupiedFurniture() const
 	{
 		if (currentProcess) {
@@ -432,6 +439,13 @@ namespace RE
 		return base && base->HasKeyword(a_formEditorID);
 	}
 
+	bool Actor::HasLineOfSight(TESObjectREFR* a_ref, bool& a_arg2)
+	{
+		using func_t = decltype(&Actor::HasLineOfSight);
+		REL::Relocation<func_t> func{ REL::ID(53029) };
+		return func(this, a_ref, a_arg2);
+	}
+
 	bool Actor::HasPerk(BGSPerk* a_perk) const
 	{
 		using func_t = decltype(&Actor::HasPerk);
@@ -472,6 +486,20 @@ namespace RE
 	bool Actor::IsBeingRidden() const
 	{
 		return IsAMount() && extraList.HasType(ExtraDataType::kInteraction);
+	}
+
+	bool Actor::IsBlocking() const
+	{
+		using func_t = decltype(&Actor::IsBlocking);
+		REL::Relocation<func_t> func{ REL::ID(36927) };
+		return func(this);
+	}
+
+	bool Actor::IsCasting(SpellItem* a_spell) const
+	{
+		using func_t = decltype(&Actor::IsCasting);
+		REL::Relocation<func_t> func{ REL::ID(37810) };
+		return func(this, a_spell);
 	}
 
 	bool Actor::IsCommandedActor() const
@@ -524,9 +552,23 @@ namespace RE
 		return func(this, a_limb);
 	}
 
+	bool Actor::IsInMidair() const
+	{
+		using func_t = decltype(&Actor::IsInMidair);
+		REL::Relocation<func_t> func{ REL::ID(36259) };
+		return func(this);
+	}
+
 	bool Actor::IsOnMount() const
 	{
 		return !IsAMount() && extraList.HasType(ExtraDataType::kInteraction);
+	}
+
+	bool Actor::IsOverEncumbered() const
+	{
+		using func_t = decltype(&Actor::IsOverEncumbered);
+		REL::Relocation<func_t> func{ REL::ID(36457) };
+		return func(this);
 	}
 
 	bool Actor::IsPlayerTeammate() const
@@ -614,6 +656,20 @@ namespace RE
 		using func_t = decltype(&Actor::RequestDetectionLevel);
 		REL::Relocation<func_t> func{ Offset::Actor::RequestDetectionLevel };
 		return func(this, a_target, a_priority);
+	}
+
+	void Actor::SetRotationX(float a_angle)
+	{
+		using func_t = decltype(&Actor::SetRotationX);
+		REL::Relocation<func_t> func{ REL::ID(36602) };
+		return func(this, a_angle);
+	}
+
+	void Actor::SetRotationZ(float a_angle)
+	{
+		using func_t = decltype(&Actor::SetRotationZ);
+		REL::Relocation<func_t> func{ REL::ID(36248) };
+		return func(this, a_angle);
 	}
 
 	void Actor::SetLifeState(ACTOR_LIFE_STATE a_lifeState)
