@@ -38,9 +38,13 @@ namespace RE
 	float TESForm::GetWeight() const
 	{
 		const auto survival = []() {
+#ifndef SKYRIMVR
 			const auto dobj = BGSDefaultObjectManager::GetSingleton();
 			const auto survival = dobj ? dobj->GetObject<TESGlobal>(DEFAULT_OBJECT::kSurvivalModeEnabled) : nullptr;
 			return survival ? survival->value == 1.0F : false;
+#else
+			return false;
+#endif
 		};
 
 		const auto ref = As<TESObjectREFR>();
