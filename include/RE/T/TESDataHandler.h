@@ -73,7 +73,7 @@ namespace RE
 		std::uint32_t                     padD54;                                         // D54
 		TESFile*                          activeFile;                                     // D58
 		BSSimpleList<TESFile*>            files;                                          // D60
-		TESFileCollection                 compiledFileCollection;                         // D70
+		TESFileCollection                 compiledFileCollection;                         // D70 //may be broken in SKYRIMVR, iterate over files instead
 		bool                              masterSave;                                     // DA0
 		bool                              blockSave;                                      // DA1
 		bool                              saveLoadGame;                                   // DA2
