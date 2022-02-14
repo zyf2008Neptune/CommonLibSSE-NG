@@ -24,5 +24,10 @@ namespace RE
 		virtual std::uint32_t AddGroup(std::uint32_t a_numInstances, std::uint16_t& a_instanceData, std::uint32_t a_arg3, float a_arg4) = 0;  // 3C
 		virtual void          RemoveGroup(std::uint32_t a_numInstance) = 0;                                                                   // 3D
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BSInstanceTriShape) == 0x160);
+#else
+	static_assert(sizeof(BSInstanceTriShape) == 0x1A8);
+#endif
+
 }
