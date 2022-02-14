@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		// members
-		NiPointer<TESObjectREFR> actor;			// 00
+		NiPointer<TESObjectREFR> actor;  // 00
 	};
 	static_assert(sizeof(TESEnterBleedoutEvent) == 0x8);
 }
