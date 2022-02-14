@@ -94,6 +94,7 @@ set(SOURCES
 	include/RE/B/BGSFootstepEvent.h
 	include/RE/B/BGSFootstepManager.h
 	include/RE/B/BGSFootstepSet.h
+	include/RE/B/BGSGrassManager.h
 	include/RE/B/BGSHazard.h
 	include/RE/B/BGSHeadPart.h
 	include/RE/B/BGSIdleCollection.h
@@ -226,6 +227,7 @@ set(SOURCES
 	include/RE/B/BSImagespaceShaderBlur3.h
 	include/RE/B/BSInputDevice.h
 	include/RE/B/BSInputDeviceManager.h
+	include/RE/B/BSInstanceTriShape.h
 	include/RE/B/BSIntrusiveRefCounted.h
 	include/RE/B/BSKeyboardDevice.h
 	include/RE/B/BSLensFlareRenderData.h
@@ -253,6 +255,7 @@ set(SOURCES
 	include/RE/B/BSMultiBoundOBB.h
 	include/RE/B/BSMultiBoundShape.h
 	include/RE/B/BSMultiIndexTriShape.h
+	include/RE/B/BSMultiStreamInstanceTriShape.h
 	include/RE/B/BSMusicEvent.h
 	include/RE/B/BSMusicManager.h
 	include/RE/B/BSNavmesh.h
@@ -711,6 +714,7 @@ set(SOURCES
 	include/RE/G/GiftMenu.h
 	include/RE/G/GlobalLocations.h
 	include/RE/G/GlobalPaths.h
+	include/RE/G/GrassParam.h
 	include/RE/G/GrenadeProjectile.h
 	include/RE/G/GridArray.h
 	include/RE/G/GridCellArray.h
