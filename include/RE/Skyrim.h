@@ -1173,6 +1173,7 @@
 #include "RE/T/TESBoundObject.h"
 #include "RE/T/TESCamera.h"
 #include "RE/T/TESCameraState.h"
+#include "RE/T/TESCellAttachDetachEvent.h"
 #include "RE/T/TESCellFullyLoadedEvent.h"
 #include "RE/T/TESChildCell.h"
 #include "RE/T/TESClass.h"
