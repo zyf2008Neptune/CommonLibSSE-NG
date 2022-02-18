@@ -70,7 +70,7 @@ namespace RE
 		return nullptr;
 	}
 
-	bool NiAVObject::HasAnimation()
+	bool NiAVObject::HasAnimation() const
 	{
 		const auto bsxFlags = GetExtraData<BSXFlags>("BSX");
 		return bsxFlags && ((bsxFlags->value & 2) != 0);
