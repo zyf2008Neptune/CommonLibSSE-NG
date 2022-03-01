@@ -40,7 +40,7 @@ namespace RE
 
 		enum class CATEGORY
 		{
-		    kTotal = 7
+			kTotal = 7
 		};
 
 		~CombatInventoryItem() override;  // 00
