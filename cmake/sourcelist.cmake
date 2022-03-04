@@ -898,6 +898,7 @@ set(SOURCES
 	include/RE/I/IngredientItem.h
 	include/RE/I/InputDevices.h
 	include/RE/I/InputEvent.h
+	include/RE/I/Interface3DRenderer.h
 	include/RE/I/InterfaceStrings.h
 	include/RE/I/InteriorData.h
 	include/RE/I/Inventory.h
@@ -1319,7 +1320,6 @@ set(SOURCES
 	include/RE/U/UIBlurManager.h
 	include/RE/U/UIMessage.h
 	include/RE/U/UIMessageQueue.h
-	include/RE/U/UIRenderManager.h
 	include/RE/U/UISaveLoadManager.h
 	include/RE/U/UserEventEnabled.h
 	include/RE/U/UserEvents.h
