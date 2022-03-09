@@ -48,7 +48,7 @@ namespace RE
 			NiPointer<BSLight> light;         // 28
 			MenuLight*         last;          // 30
 		};
-		static_assert(sizeof(MenuLights) == 0x38);
+		static_assert(sizeof(MenuLight) == 0x38);
 
 		static UI3DSceneManager* GetSingleton()
 		{
