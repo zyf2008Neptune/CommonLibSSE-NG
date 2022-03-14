@@ -219,7 +219,7 @@ namespace RE
 		float                                                 unk1F4;                         // 1F4
 		std::uint32_t                                         unk1F8;                         // 1F8
 		float                                                 unk1FC;                         // 1FC
-		float                                                 unk200;                         // 200
+		float                                                 takeBackTimer;                  // 200
 		std::uint32_t                                         pad204;                         // 204
 		Data208*                                              unk208;                         // 208
 		std::uint64_t                                         unk210;                         // 210
@@ -328,7 +328,7 @@ namespace RE
 		bool                                                  unk46F;                         // 46F
 		bool                                                  unk470;                         // 470
 		bool                                                  unk471;                         // 471
-		bool                                                  unk472;                         // 472
+		bool                                                  aggroRadiusStarted;             // 472
 		std::uint8_t                                          pad473;                         // 473
 		std::uint32_t                                         pad474;                         // 474
 	};

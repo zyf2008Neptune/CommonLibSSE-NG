@@ -28,6 +28,7 @@ namespace RE
 		enum class Flags
 		{
 			kNone = 0,
+			kkIgnoreImageSpaceSwap = 1 << 4,
 			kInWater = 1 << 5
 		};
 
@@ -45,37 +46,37 @@ namespace RE
 		bool         OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 90 - { return false; }
 
 		// add
-		virtual void Unk_A2(void);  // A2 - { return 0; }
-		virtual void Unk_A3(void);  // A3 - { return 0; }
-		virtual void Unk_A4(void);  // A4 - { return 0; }
+		virtual void Initialize();           // A2
+		virtual void Update(float a_delta);  // A3
+		virtual void FindTargets();          // A4
 
 		// members
-		std::uint64_t                          unk98;         // 098
-		float                                  unkA0;         // 0A0
-		float                                  unkA4;         // 0A4
-		float                                  unkA8;         // 0A8
-		float                                  radius;        // 0AC
-		float                                  imodRadius;    // 0B0
-		float                                  unkB4;         // 0B4
-		bhkSimpleShapePhantom*                 unkB8;         // 0B8
-		std::uint64_t                          unkC0;         // 0C0
-		std::uint64_t                          unkC8;         // 0C8
-		BSSoundHandle                          sound01;       // 0D0
-		BSSoundHandle                          sound02;       // 0DC
-		NiPointer<NiPointLight>                light;         // 0E8
-		std::uint32_t                          unkF0;         // 0F0
-		std::uint32_t                          unkF4;         // 0F4
-		std::uint32_t                          unkF8;         // 0F8
-		std::uint32_t                          padFC;         // 0FC
-		NiPointer<ActorCause>                  actorCause;    // 100
-		NonActorMagicCaster*                   magicCaster;   // 108
-		TESObjectWEAP*                         weaponSource;  // 110
-		std::uint32_t                          unk118;        // 118
-		NiPoint3                               unk11C;        // 11C
-		NiPoint3                               unk128;        // 128
-		float                                  unk134;        // 134
-		float                                  unk138;        // 138
-		stl::enumeration<Flags, std::uint32_t> flags;         // 13C
+		std::uint64_t                          unk98;             // 098
+		float                                  startKeyTime;      // 0A0
+		float                                  endKeyTime;        // 0A4
+		float                                  hitKeyTime;        // 0A8
+		float                                  radius;            // 0AC
+		float                                  imodRadius;        // 0B0
+		float                                  unkB4;             // 0B4
+		bhkSimpleShapePhantom*                 unkB8;             // 0B8
+		std::uint64_t                          unkC0;             // 0C0
+		std::uint64_t                          unkC8;             // 0C8
+		BSSoundHandle                          sound01;           // 0D0
+		BSSoundHandle                          sound02;           // 0DC
+		NiPointer<NiPointLight>                light;             // 0E8
+		ActorHandle                            actorOwner;        // 0F0
+		ActorHandle                            unkF4;             // 0F4
+		std::uint32_t                          unkF8;             // 0F8
+		std::uint32_t                          padFC;             // 0FC
+		NiPointer<ActorCause>                  actorCause;        // 100
+		NonActorMagicCaster*                   magicCaster;       // 108
+		TESObjectWEAP*                         weaponSource;      // 110
+		std::uint32_t                          unk118;            // 118
+		NiPoint3                               unk11C;            // 11C
+		NiPoint3                               negativeVelocity;  // 128
+		float                                  damage;            // 134
+		float                                  unk138;            // 138
+		stl::enumeration<Flags, std::uint32_t> flags;             // 13C
 	};
 	static_assert(sizeof(Explosion) == 0x140);
 }
