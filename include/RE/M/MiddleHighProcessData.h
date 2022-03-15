@@ -307,7 +307,7 @@ namespace RE
 		bool                                           unk32A;                      // 32A
 		bool                                           unk32B;                      // 32B
 		bool                                           unk32C;                      // 32C
-		bool                                           unk32D;                      // 32D
+		bool                                           hostileGuard;                // 32D
 		bool                                           unk32E;                      // 32E
 		bool                                           unk32F;                      // 32F
 		bool                                           unk330;                      // 330
