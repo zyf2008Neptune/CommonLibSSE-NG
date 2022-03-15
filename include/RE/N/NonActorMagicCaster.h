@@ -17,14 +17,14 @@ namespace RE
 		~NonActorMagicCaster() override;  // 00
 
 		// override (MagicCaster)
-		void           Unk_01(void) override;                        // 01
-		void           Unk_07(void) override;                        // 07 - { return; }
-		TESObjectREFR* GetTarget() override;                         // 0B - { return 0; }
-		Actor*         GetCaster() override;                         // 0C - { return 0; }
-		void           Unk_0D(void) override;                        // 0D
-		NiNode*        GetMagicNode() override;                      // 0E - { return 0; }
-		void           SaveGame(BGSSaveGameBuffer* a_buf) override;  // 18
-		void           LoadGame(BGSLoadGameBuffer* a_buf) override;  // 19
+		void           InstantCast(SpellItem* spell, bool noHitEffectArt, Actor* target, float effectiveness, bool hostileEffectivenessOnly, float magnitudeOverride, Actor* cause) override;  // 01
+		void           Unk_07(void) override;                                                                                                                                                  // 07 - { return; }
+		TESObjectREFR* GetTarget() override;                                                                                                                                                   // 0B - { return 0; }
+		Actor*         GetCaster() override;                                                                                                                                                   // 0C - { return 0; }
+		void           Unk_0D(void) override;                                                                                                                                                  // 0D
+		NiNode*        GetMagicNode() override;                                                                                                                                                // 0E - { return 0; }
+		void           SaveGame(BGSSaveGameBuffer* a_buf) override;                                                                                                                            // 18
+		void           LoadGame(BGSLoadGameBuffer* a_buf) override;                                                                                                                            // 19
 
 		// members
 		TESObjectREFR* unk58;       // 58
