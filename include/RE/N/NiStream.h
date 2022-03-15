@@ -33,10 +33,10 @@ namespace RE
 
 		// add
 		virtual bool          Load1(NiBinaryStream* a_stream);                          // 01
-		virtual bool          Load2(char* a_path, std::uint64_t a_arg2);                // 02
+		virtual bool          Load2(char* a_buffer, std::uint64_t a_len);               // 02
 		virtual bool          Load3(const char* a_path);                                // 03
 		virtual bool          Save1(NiBinaryStream* a_stream);                          // 04
-		virtual bool          Save2(char*& a_path, std::uint64_t& a_arg2);              // 05
+		virtual bool          Save2(char*& a_path, std::uint64_t& a_len);               // 05
 		virtual bool          Save3(const char* a_path);                                // 06
 		virtual void          Unk_07(void);                                             // 07 - { return 0; }
 		virtual bool          RegisterFixedString(const BSFixedString& a_fixedString);  // 08
@@ -61,7 +61,7 @@ namespace RE
 		BSTSmallArray<NiObjectGroup>                  groups;                              // 0D0
 		std::uint32_t                                 nifMaxVersion;                       // 100
 		std::uint32_t                                 nifMaxUserDefinedVersion;            // 104
-		char                                          unk108[WinAPI::MAX_PATH];            // 108 - filePath?
+		char                                          inputFilePath[WinAPI::MAX_PATH];     // 108
 		std::uint16_t                                 unk20C;                              // 20C
 		std::uint16_t                                 unk20E;                              // 20E
 		std::uint64_t                                 unk210;                              // 210
