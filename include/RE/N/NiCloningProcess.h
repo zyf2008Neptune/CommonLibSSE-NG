@@ -9,7 +9,8 @@ namespace RE
 	class NiCloningProcess
 	{
 	public:
-		BSTHashMap<NiObject*, NiObject*> cloneMap;    // 00
+		// members
+	    BSTHashMap<NiObject*, NiObject*> cloneMap;    // 00
 		BSTHashMap<NiObject*, bool>      processMap;  // 30
 		std::uint32_t                    copyType;    // 60
 		char                             appendChar;  // 64

@@ -1027,6 +1027,7 @@
 #include "RE/N/NiMultiTargetTransformController.h"
 #include "RE/N/NiNode.h"
 #include "RE/N/NiObject.h"
+#include "RE/N/NiObjectGroup.h"
 #include "RE/N/NiObjectNET.h"
 #include "RE/N/NiPlane.h"
 #include "RE/N/NiPoint2.h"

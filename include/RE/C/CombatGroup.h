@@ -75,8 +75,8 @@ namespace RE
 		BSTArray<CombatTarget>         targets;                      // 008
 		BSTArray<CombatMember>         members;                      // 020
 		CombatGroupDetectionListener*  detectionListener;            // 038
-		AITimer                        unk40;                        // 040
-		AITimer                        unk48;                        // 048
+		AITimer                        allyKilledTimer;              // 040
+		AITimer                        avoidThreathTimer;            // 048
 		AITimer                        unk50;                        // 050
 		AITimer                        detectionDialogueTimers[11];  // 058
 		AITimer                        updateTimer;                  // 0B0

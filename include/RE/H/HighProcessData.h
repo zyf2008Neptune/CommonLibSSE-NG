@@ -259,7 +259,8 @@ namespace RE
 		float                                                 idleTimer;                      // 31C
 		float                                                 detectGreetTimer;               // 320
 		float                                                 breathTimer;                    // 324
-		std::uint64_t                                         unk328;                         // 328
+		float                                                 voiceTimer;                     // 328
+		int                                                   dyingTimer;                     // 32C
 		std::uint64_t                                         unk330;                         // 330
 		std::uint64_t                                         unk338;                         // 338
 		float                                                 closeDialogueTimer;             // 340
