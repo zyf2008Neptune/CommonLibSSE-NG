@@ -30,7 +30,7 @@ namespace RE
 
 		bool                         AddIdle(TESIdleForm* a_idle);
 		static BGSIdleCollection*    Create();
-		std::optional<std::uint32_t> GetIndex(TESIdleForm* a_idle);
+		std::optional<std::uint32_t> GetIndex(TESIdleForm* a_idle) const;
 		bool                         RemoveIdle(TESIdleForm* a_idle);
 
 		// members
@@ -43,10 +43,10 @@ namespace RE
 		std::uint32_t                            pad1C;              // 1C
 
 	private:
-		[[nodiscard]] BGSIdleCollection* ctor()
+		[[nodiscard]] BGSIdleCollection* Ctor()
 		{
-			using func_t = decltype(&BGSIdleCollection::ctor);
-			REL::Relocation<func_t> func{ REL::ID(14127) };
+			using func_t = decltype(&BGSIdleCollection::Ctor);
+			REL::Relocation<func_t> func{ RELOCATION_ID(14127, 14227) };
 			return func(this);
 		}
 	};

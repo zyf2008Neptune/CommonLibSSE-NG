@@ -1068,9 +1068,13 @@ set(SOURCES
 	include/RE/O/ObjectTypeInfo.h
 	include/RE/O/OldMessageBoxCallback.h
 	include/RE/Offsets.h
+	include/RE/Offsets_AE.h
 	include/RE/Offsets_NiRTTI.h
+	include/RE/Offsets_NiRTTI_AE.h
 	include/RE/Offsets_RTTI.h
+	include/RE/Offsets_RTTI_AE.h
 	include/RE/Offsets_VTABLE.h
+	include/RE/Offsets_VTABLE_AE.h
 	include/RE/P/PCGamepadType.h
 	include/RE/P/PackUnpack.h
 	include/RE/P/PackUnpackImpl.h

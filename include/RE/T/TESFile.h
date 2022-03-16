@@ -52,9 +52,9 @@ namespace RE
 		[[nodiscard]] constexpr std::uint32_t GetCurrentChunkID() const noexcept { return currentchunkID; }
 		[[nodiscard]] std::string_view        GetFilename() const noexcept { return { fileName }; }
 		FormType                              GetFormType();
-		[[nodiscard]] bool                    IsFormInMod(FormID a_formID) const;
 		[[nodiscard]] std::uint16_t           GetSmallFileCompileIndex() const noexcept { return smallFileCompileIndex; }
 		[[nodiscard]] constexpr std::uint32_t GetPartialIndex() const noexcept { return !IsLight() ? compileIndex : (0xFE000 | smallFileCompileIndex); };
+		[[nodiscard]] bool                    IsFormInMod(FormID a_formID) const;
 		[[nodiscard]] constexpr bool          IsLight() const noexcept { return recordFlags.all(RecordFlag::kSmallFile); };
 		[[nodiscard]] constexpr bool          IsLocalized() const noexcept { return recordFlags.all(RecordFlag::kDelocalized); }
 		void                                  ReadData(void* a_buf, std::uint32_t a_size);

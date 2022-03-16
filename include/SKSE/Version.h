@@ -19,4 +19,16 @@ namespace SKSE
 	inline constexpr REL::Version RUNTIME_1_5_73(1, 5, 73, 0);
 	inline constexpr REL::Version RUNTIME_1_5_80(1, 5, 80, 0);
 	inline constexpr REL::Version RUNTIME_1_5_97(1, 5, 97, 0);
+#ifdef SKYRIM_SUPPORT_AE
+	inline constexpr REL::Version RUNTIME_1_6_317(1, 6, 317, 0);
+	inline constexpr REL::Version RUNTIME_1_6_318(1, 6, 318, 0);
+	inline constexpr REL::Version RUNTIME_1_6_323(1, 6, 323, 0);
+	inline constexpr REL::Version RUNTIME_1_6_342(1, 6, 342, 0);
+	inline constexpr REL::Version RUNTIME_1_6_353(1, 6, 353, 0);
+#endif
+#ifdef SKYRIM_SUPPORT_AE
+	inline constexpr auto RUNTIME_LATEST = RUNTIME_1_6_353;
+#else
+	inline constexpr auto RUNTIME_LATEST = RUNTIME_1_5_97;
+#endif
 }

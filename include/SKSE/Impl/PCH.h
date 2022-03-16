@@ -705,12 +705,25 @@ namespace REL
 	namespace WinAPI = SKSE::WinAPI;
 }
 
+#ifdef SKYRIM_SUPPORT_AE
+#	define RELOCATION_ID(SE, AE) REL::ID(AE)
+#else
+#	define RELOCATION_ID(SE, AE) REL::ID(SE)
+#endif
+
 #include "REL/Relocation.h"
 
-#include "RE/Offsets.h"
-#include "RE/Offsets_NiRTTI.h"
-#include "RE/Offsets_RTTI.h"
-#include "RE/Offsets_VTABLE.h"
+#ifdef SKYRIM_SUPPORT_AE
+#	include "RE/Offsets_AE.h"
+#	include "RE/Offsets_NiRTTI_AE.h"
+#	include "RE/Offsets_RTTI_AE.h"
+#	include "RE/Offsets_VTABLE_AE.h"
+#else
+#	include "RE/Offsets.h"
+#	include "RE/Offsets_NiRTTI.h"
+#	include "RE/Offsets_RTTI.h"
+#	include "RE/Offsets_VTABLE.h"
+#endif
 
 #include "RE/B/BSCoreTypes.h"
 #include "RE/S/SFTypes.h"

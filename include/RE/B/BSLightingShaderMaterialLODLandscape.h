@@ -32,10 +32,10 @@ namespace RE
 		float                      terrainTexFade;         // BC
 
 	protected:
-		BSLightingShaderMaterialLODLandscape* ctor()
+		BSLightingShaderMaterialLODLandscape* Ctor()
 		{
-			using func_t = decltype(&BSLightingShaderMaterialLODLandscape::ctor);
-			REL::Relocation<func_t> func{ REL::ID(100110) };
+			using func_t = decltype(&BSLightingShaderMaterialLODLandscape::Ctor);
+			REL::Relocation<func_t> func{ RELOCATION_ID(100110, 106817) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

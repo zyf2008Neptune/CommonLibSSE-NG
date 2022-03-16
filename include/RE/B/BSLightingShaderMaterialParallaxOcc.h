@@ -34,10 +34,10 @@ namespace RE
 		float                      parallaxOccScale;      // AC
 
 	protected:
-		BSLightingShaderMaterialParallaxOcc* ctor()
+		BSLightingShaderMaterialParallaxOcc* Ctor()
 		{
-			using func_t = decltype(&BSLightingShaderMaterialParallaxOcc::ctor);
-			REL::Relocation<func_t> func{ REL::ID(100065) };
+			using func_t = decltype(&BSLightingShaderMaterialParallaxOcc::Ctor);
+			REL::Relocation<func_t> func{ RELOCATION_ID(100065, 106772) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

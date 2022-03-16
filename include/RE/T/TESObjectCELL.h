@@ -186,7 +186,7 @@ namespace RE
 		inline bhkWorld* GetbhkWorld() const
 		{
 			using func_t = decltype(&TESObjectCELL::GetbhkWorld);
-			REL::Relocation<func_t> func{ REL::ID(18536) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(18536, 18995) };
 			return func(this);
 		}
 
@@ -199,7 +199,7 @@ namespace RE
 		inline BGSLocation* GetLocation() const
 		{
 			using func_t = decltype(&TESObjectCELL::GetLocation);
-			REL::Relocation<func_t> func{ REL::ID(18474) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(18474, 18905) };
 			return func(this);
 		}
 

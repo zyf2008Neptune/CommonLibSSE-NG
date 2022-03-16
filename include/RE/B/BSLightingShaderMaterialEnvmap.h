@@ -35,10 +35,10 @@ namespace RE
 		std::uint32_t              padB4;           // B4
 
 	protected:
-		BSLightingShaderMaterialEnvmap* ctor()
+		BSLightingShaderMaterialEnvmap* Ctor()
 		{
-			using func_t = decltype(&BSLightingShaderMaterialEnvmap::ctor);
-			REL::Relocation<func_t> func{ REL::ID(100021) };
+			using func_t = decltype(&BSLightingShaderMaterialEnvmap::Ctor);
+			REL::Relocation<func_t> func{ RELOCATION_ID(100021, 106728) };
 			return func(this);
 		}
 		friend class BSLightingShaderMaterialBase;

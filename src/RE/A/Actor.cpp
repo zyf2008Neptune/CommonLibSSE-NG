@@ -47,12 +47,12 @@ namespace RE
 		GetAnimationGraphManager(graphManager);
 		if (graphManager) {
 			bool sinked = false;
-			for (auto& animationGraph : graphManager->graphs) {
+			for (const auto& animationGraph : graphManager->graphs) {
 				if (sinked) {
 					break;
 				}
-				auto eventSource = animationGraph->GetEventSource<BSAnimationGraphEvent>();
-				for (auto& sink : eventSource->sinks) {
+                const auto eventSource = animationGraph->GetEventSource<BSAnimationGraphEvent>();
+				for (const auto& sink : eventSource->sinks) {
 					if (sink == a_sink) {
 						sinked = true;
 						break;
@@ -77,7 +77,7 @@ namespace RE
 	void Actor::AddToFaction(TESFaction* a_faction, std::int8_t a_rank)
 	{
 		using func_t = decltype(&Actor::AddToFaction);
-		REL::Relocation<func_t> func{ REL::ID(36678) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36678, 37686) };
 		return func(this, a_faction, a_rank);
 	}
 
@@ -104,7 +104,7 @@ namespace RE
 	bool Actor::CanAttackActor(Actor* a_actor)
 	{
 		using func_t = decltype(&Actor::CanAttackActor);
-		REL::Relocation<func_t> func{ REL::ID(36532) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36532, 37532) };
 		return func(this, a_actor);
 	}
 
@@ -161,14 +161,14 @@ namespace RE
 	bool Actor::Decapitate()
 	{
 		using func_t = decltype(&Actor::Decapitate);
-		REL::Relocation<func_t> func{ REL::ID(36631) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36631, 37639) };
 		return func(this);
 	}
 
 	void Actor::DeselectSpell(SpellItem* a_spell)
 	{
 		using func_t = decltype(&Actor::DeselectSpell);
-		REL::Relocation<func_t> func{ REL::ID(37820) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(37820, 38769) };
 		return func(this, a_spell);
 	}
 
@@ -202,7 +202,7 @@ namespace RE
 	void Actor::EvaluatePackage(bool a_immediate, bool a_resetAI)
 	{
 		using func_t = decltype(&Actor::EvaluatePackage);
-		REL::Relocation<func_t> func{ REL::ID(36407) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36407, 37401) };
 		return func(this, a_immediate, a_resetAI);
 	}
 
@@ -221,7 +221,7 @@ namespace RE
 	float Actor::GetActorValueModifier(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_value) const
 	{
 		using func_t = decltype(&Actor::GetActorValueModifier);
-		REL::Relocation<func_t> func{ REL::ID(37524) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(37524, 38469) };
 		return func(this, a_modifier, a_value);
 	}
 
@@ -388,7 +388,7 @@ namespace RE
 	SOUL_LEVEL Actor::GetSoulSize() const
 	{
 		using func_t = decltype(&Actor::GetSoulSize);
-		REL::Relocation<func_t> func{ REL::ID(37862) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(37862, 38817) };
 		return func(this);
 	}
 
@@ -443,14 +443,14 @@ namespace RE
 	bool Actor::HasSpell(SpellItem* a_spell) const
 	{
 		using func_t = decltype(&Actor::HasSpell);
-		REL::Relocation<func_t> func{ REL::ID(37828) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(37828, 38782) };
 		return func(this, a_spell);
 	}
 
 	void Actor::InterruptCast(bool a_restoreMagicka) const
 	{
 		using func_t = decltype(&Actor::InterruptCast);
-		REL::Relocation<func_t> func{ REL::ID(37808) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(37808, 38757) };
 		return func(this, a_restoreMagicka);
 	}
 
@@ -521,7 +521,7 @@ namespace RE
 	bool Actor::IsLimbGone(std::uint32_t a_limb)
 	{
 		using func_t = decltype(&Actor::IsLimbGone);
-		REL::Relocation<func_t> func{ REL::ID(19338) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(19338, 19765) };
 		return func(this, a_limb);
 	}
 
@@ -592,22 +592,22 @@ namespace RE
 	void Actor::KillImmediate()
 	{
 		using func_t = decltype(&Actor::KillImmediate);
-		REL::Relocation<func_t> func{ REL::ID(36723) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36723, 37735) };
 		return func(this);
 	}
 
-	void Actor::RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink)
-	{
+	void Actor::RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const
+    {
 		BSAnimationGraphManagerPtr graphManager;
 		GetAnimationGraphManager(graphManager);
 		if (graphManager) {
 			bool sinked = true;
-			for (auto& animationGraph : graphManager->graphs) {
+			for (const auto& animationGraph : graphManager->graphs) {
 				if (!sinked) {
 					break;
 				}
-				auto eventSource = animationGraph->GetEventSource<BSAnimationGraphEvent>();
-				for (auto& sink : eventSource->sinks) {
+                const auto eventSource = animationGraph->GetEventSource<BSAnimationGraphEvent>();
+				for (const auto& sink : eventSource->sinks) {
 					if (sink == a_sink) {
 						eventSource->RemoveEventSink(a_sink);
 						sinked = false;
@@ -626,7 +626,7 @@ namespace RE
 	bool Actor::RemoveSpell(SpellItem* a_spell)
 	{
 		using func_t = decltype(&Actor::RemoveSpell);
-		REL::Relocation<func_t> func{ REL::ID(37772) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(37772, 38717) };
 		return func(this, a_spell);
 	}
 
@@ -640,28 +640,28 @@ namespace RE
 	void Actor::SetLifeState(ACTOR_LIFE_STATE a_lifeState)
 	{
 		using func_t = decltype(&Actor::SetLifeState);
-		REL::Relocation<func_t> func{ REL::ID(36604) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36604, 37612) };
 		return func(this, a_lifeState);
 	}
 
 	void Actor::StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning)
 	{
 		using func_t = decltype(&Actor::StealAlarm);
-		REL::Relocation<func_t> func{ REL::ID(36427) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36427, 37422) };
 		return func(this, a_ref, a_object, a_num, a_total, a_owner, a_allowWarning);
 	}
 
 	void Actor::StopInteractingQuick(bool a_unk02)
 	{
 		using func_t = decltype(&Actor::StopInteractingQuick);
-		REL::Relocation<func_t> func{ REL::ID(37752) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(37752, 38697) };
 		return func(this, a_unk02);
 	}
 
 	void Actor::StopMoving(float a_delta)
 	{
 		using func_t = decltype(&Actor::StopMoving);
-		REL::Relocation<func_t> func{ REL::ID(36801) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(36801, 37817) };
 		return func(this, a_delta);
 	}
 

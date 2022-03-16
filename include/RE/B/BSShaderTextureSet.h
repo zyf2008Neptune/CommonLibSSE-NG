@@ -30,7 +30,9 @@ namespace RE
 		const char* textures[Texture::kTotal];
 
 	private:
-		BSShaderTextureSet* ctor();
+#ifndef SKYRIM_SUPPORT_AE
+	    BSShaderTextureSet* Ctor();
+#endif
 	};
 	static_assert(sizeof(BSShaderTextureSet) == 0x58);
 }

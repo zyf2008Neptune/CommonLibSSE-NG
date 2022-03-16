@@ -561,12 +561,12 @@ namespace REL
 			{
 				const mapping_t elem{ 0, a_offset };
 				const auto      it = std::lower_bound(
-                    _offset2id.begin(),
-                    _offset2id.end(),
-                    elem,
-                    [](auto&& a_lhs, auto&& a_rhs) {
+						 _offset2id.begin(),
+						 _offset2id.end(),
+						 elem,
+						 [](auto&& a_lhs, auto&& a_rhs) {
                         return a_lhs.offset < a_rhs.offset;
-                    });
+						 });
 				if (it == _offset2id.end()) {
 					stl::report_and_fail(
 						fmt::format(
@@ -632,7 +632,11 @@ namespace REL
 			void read(binary_io::file_istream& a_in)
 			{
 				const auto [format] = a_in.read<std::int32_t>();
+#ifdef SKYRIM_SUPPORT_AE
+				if (format != 2) {
+#else
 				if (format != 1) {
+#endif
 					stl::report_and_fail(
 						fmt::format(
 							"Unsupported address library format: {}\n"
@@ -678,9 +682,16 @@ namespace REL
 		void load()
 		{
 			const auto version = Module::get().version();
-			auto       filename = L"Data/SKSE/Plugins/version-"s;
-			filename += version.wstring();
-			filename += L".bin"sv;
+			const auto filename =
+				stl::utf8_to_utf16(
+					fmt::format(
+#ifdef SKYRIM_SUPPORT_AE
+						"Data/SKSE/Plugins/versionlib-{}.bin"sv,
+#else
+						"Data/SKSE/Plugins/version-{}.bin"sv,
+#endif
+						version.string()))
+					.value_or(L"<unknown filename>"s);
 			load_file(filename, version);
 		}
 
