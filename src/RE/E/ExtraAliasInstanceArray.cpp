@@ -9,8 +9,7 @@ namespace RE
 		aliases(),
 		lock()
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ VTABLE[0] };
-		((std::uintptr_t*)this)[0] = vtbl.address();
+		stl::emplace_vtable(this);
 	}
 
 	ExtraAliasInstanceArray::~ExtraAliasInstanceArray()

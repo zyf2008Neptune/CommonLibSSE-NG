@@ -7,8 +7,7 @@ namespace RE
 		northRot(0.0F),
 		pad14(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ ExtraNorthRotation::VTABLE[0] };
-		((std::uintptr_t*)this)[0] = vtbl.address();
+		stl::emplace_vtable(this);
 	}
 
 	ExtraDataType ExtraNorthRotation::GetType() const

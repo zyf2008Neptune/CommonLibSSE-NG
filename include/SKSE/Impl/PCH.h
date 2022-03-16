@@ -498,6 +498,12 @@ namespace SKSE
 		}
 
 		template <class T>
+		void emplace_vtable(T* a_ptr)
+		{
+			reinterpret_cast<std::uintptr_t*>(a_ptr)[0] = T::VTABLE[0].address();
+		}
+
+		template <class T>
 		void memzero(volatile T* a_ptr, std::size_t a_size = sizeof(T))
 		{
 			const auto     begin = reinterpret_cast<volatile char*>(a_ptr);

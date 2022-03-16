@@ -13,8 +13,7 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ REL::ID(229625) };
-		((std::uintptr_t*)this)[0] = vtbl.address();
+		stl::emplace_vtable(this);
 	}
 
 	ExtraTextDisplayData::ExtraTextDisplayData(const char* a_name) :
@@ -28,8 +27,7 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ REL::ID(229625) };
-		((std::uintptr_t*)this)[0] = vtbl.address();
+		stl::emplace_vtable(this);
 		SetName(a_name);
 	}
 
@@ -44,8 +42,7 @@ namespace RE
 		pad32(0),
 		pad34(0)
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ REL::ID(229625) };
-		((std::uintptr_t*)this)[0] = vtbl.address();
+		stl::emplace_vtable(this);
 		GetDisplayName(a_baseObject, a_temperFactor);
 	}
 

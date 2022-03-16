@@ -10,6 +10,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NiExtraData;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiExtraData;
+		inline static constexpr auto VTABLE = VTABLE_NiExtraData;
 
 		~NiExtraData() override;  // 00
 
@@ -40,7 +41,6 @@ namespace RE
 	template <class T>
 	T* NiExtraData::Create()
 	{
-		REL::Relocation<std::uintptr_t> vtbl{ T::VTABLE[0] };
-		return static_cast<T*>(Create(sizeof(T), vtbl.address()));
+		return static_cast<T*>(Create(sizeof(T), T::VTABLE[0].address()));
 	}
 }
