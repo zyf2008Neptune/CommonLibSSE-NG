@@ -187,7 +187,7 @@ namespace RE
 				return std::make_pair(fSafeZoneXWide->GetFloat(), fSafeZoneYWide->GetFloat());
 			} else {
 				REL::Relocation<const Setting*> fSafeZoneX{ RELOCATION_ID(512513, 389575) };
-				REL::Relocation<const Setting*> fSafeZoneY{ RELOCATION_ID(512515,389578) };
+				REL::Relocation<const Setting*> fSafeZoneY{ RELOCATION_ID(512515, 389578) };
 
 				return std::make_pair(fSafeZoneX->GetFloat(), fSafeZoneY->GetFloat());
 			}

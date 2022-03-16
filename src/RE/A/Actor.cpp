@@ -51,7 +51,7 @@ namespace RE
 				if (sinked) {
 					break;
 				}
-                const auto eventSource = animationGraph->GetEventSource<BSAnimationGraphEvent>();
+				const auto eventSource = animationGraph->GetEventSource<BSAnimationGraphEvent>();
 				for (const auto& sink : eventSource->sinks) {
 					if (sink == a_sink) {
 						sinked = true;
@@ -597,7 +597,7 @@ namespace RE
 	}
 
 	void Actor::RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const
-    {
+	{
 		BSAnimationGraphManagerPtr graphManager;
 		GetAnimationGraphManager(graphManager);
 		if (graphManager) {
@@ -606,7 +606,7 @@ namespace RE
 				if (!sinked) {
 					break;
 				}
-                const auto eventSource = animationGraph->GetEventSource<BSAnimationGraphEvent>();
+				const auto eventSource = animationGraph->GetEventSource<BSAnimationGraphEvent>();
 				for (const auto& sink : eventSource->sinks) {
 					if (sink == a_sink) {
 						eventSource->RemoveEventSink(a_sink);

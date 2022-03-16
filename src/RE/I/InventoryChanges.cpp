@@ -93,7 +93,7 @@ namespace RE
 	void InventoryChanges::Dtor()
 	{
 		using func_t = decltype(&InventoryChanges::Dtor);
-		REL::Relocation<func_t> func{ RELOCATION_ID(15813,16051) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(15813, 16051) };
 		return func(this);
 	}
 }

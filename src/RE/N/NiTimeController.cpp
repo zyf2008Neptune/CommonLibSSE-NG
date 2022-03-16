@@ -11,14 +11,14 @@ namespace RE
 	void NiTimeController::LoadBinary(NiStream& a_stream)
 	{
 		using func_t = decltype(&NiTimeController::LoadBinary);
-		REL::Relocation<func_t> func{ RELOCATION_ID(69433,70810) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(69433, 70810) };
 		return func(this, a_stream);
 	}
 
 	void NiTimeController::LinkObject(NiStream& a_stream)
 	{
 		using func_t = decltype(&NiTimeController::LinkObject);
-		REL::Relocation<func_t> func{ RELOCATION_ID(69434,70811) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(69434, 70811) };
 		return func(this, a_stream);
 	}
 
@@ -88,7 +88,7 @@ namespace RE
 	void NiTimeController::dtor()
 	{
 		using func_t = decltype(&NiTimeController::dtor);
-		REL::Relocation<func_t> func{ RELOCATION_ID(69439,70816) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(69439, 70816) };
 		return func(this);
 	}
 }

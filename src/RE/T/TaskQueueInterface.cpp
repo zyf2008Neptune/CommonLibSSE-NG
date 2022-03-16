@@ -11,7 +11,7 @@ namespace RE
 	bool TaskQueueInterface::ShouldUseTaskQueue()
 	{
 		using func_t = decltype(&TaskQueueInterface::ShouldUseTaskQueue);
-		REL::Relocation<func_t> func{ RELOCATION_ID(38079,39033) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(38079, 39033) };
 		return func();
 	}
 

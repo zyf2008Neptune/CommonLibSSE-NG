@@ -28,7 +28,7 @@ namespace RE
 		Variable& Stack::GetStackFrameVariable(const StackFrame* a_frame, std::uint32_t a_index, std::uint32_t a_pageHint)
 		{
 			using func_t = decltype(&Stack::GetStackFrameVariable);
-			REL::Relocation<func_t> func{ RELOCATION_ID(97746,104484) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(97746, 104484) };
 			return func(this, a_frame, a_index, a_pageHint);
 		}
 

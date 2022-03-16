@@ -31,7 +31,7 @@ namespace RE
 
 	private:
 #ifndef SKYRIM_SUPPORT_AE
-	    BSShaderTextureSet* Ctor();
+		BSShaderTextureSet* Ctor();
 #endif
 	};
 	static_assert(sizeof(BSShaderTextureSet) == 0x58);

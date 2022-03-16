@@ -115,7 +115,7 @@ namespace RE
 	MATERIAL_ID TES::GetLandMaterialType(const NiPoint3& a_position) const
 	{
 		using func_t = decltype(&TES::GetLandMaterialType);
-		REL::Relocation<func_t> func{ RELOCATION_ID(13203,13349) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(13203, 13349) };
 		return func(this, a_position);
 	}
 
