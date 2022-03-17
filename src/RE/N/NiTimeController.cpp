@@ -46,7 +46,7 @@ namespace RE
 	void NiTimeController::ProcessClone(NiCloningProcess& a_cloning)
 	{
 		using func_t = decltype(&NiTimeController::ProcessClone);
-		REL::Relocation<func_t> func{ RELOCATION_ID(69449,70826) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(69449, 70826) };
 		return func(this, a_cloning);
 	}
 
