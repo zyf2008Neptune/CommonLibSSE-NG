@@ -492,10 +492,6 @@ namespace RE
 		}
 
 		inline constexpr REL::ID CreateRefHandle(static_cast<std::uint64_t>(12326));
-		inline constexpr REL::ID CreateRefHandle(static_cast<std::uint64_t>(12326));
-		inline constexpr REL::ID CreateRefHandle(static_cast<std::uint64_t>(12326));
-		inline constexpr REL::ID CreateRefHandle(static_cast<std::uint64_t>(12326));
-		inline constexpr REL::ID CreateRefHandle(static_cast<std::uint64_t>(12326));
 		inline constexpr REL::ID DebugNotification(static_cast<std::uint64_t>(52933));
 		inline constexpr REL::ID LookupReferenceByHandle(static_cast<std::uint64_t>(12332));
 		inline constexpr REL::ID PlaySound(static_cast<std::uint64_t>(52939));
