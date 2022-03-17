@@ -713,17 +713,10 @@ namespace REL
 
 #include "REL/Relocation.h"
 
-#ifdef SKYRIM_SUPPORT_AE
-#	include "RE/Offsets_AE.h"
-#	include "RE/Offsets_NiRTTI_AE.h"
-#	include "RE/Offsets_RTTI_AE.h"
-#	include "RE/Offsets_VTABLE_AE.h"
-#else
-#	include "RE/Offsets.h"
-#	include "RE/Offsets_NiRTTI.h"
-#	include "RE/Offsets_RTTI.h"
-#	include "RE/Offsets_VTABLE.h"
-#endif
+#include "RE/Offsets.h"
+#include "RE/Offsets_NiRTTI.h"
+#include "RE/Offsets_RTTI.h"
+#include "RE/Offsets_VTABLE.h"
 
 #include "RE/B/BSCoreTypes.h"
 #include "RE/S/SFTypes.h"

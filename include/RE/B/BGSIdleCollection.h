@@ -43,7 +43,7 @@ namespace RE
 		std::uint32_t                            pad1C;              // 1C
 
 	private:
-		[[nodiscard]] BGSIdleCollection* Ctor()
+		BGSIdleCollection* Ctor()
 		{
 			using func_t = decltype(&BGSIdleCollection::Ctor);
 			REL::Relocation<func_t> func{ RELOCATION_ID(14127, 14227) };
