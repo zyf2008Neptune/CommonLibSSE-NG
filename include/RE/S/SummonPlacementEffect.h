@@ -37,9 +37,9 @@ namespace RE
 		void             Init() override;                                    // 36
 
 		// override (SimpleAnimationGraphManagerHolder)
-	    bool SetupAnimEventSinks(const BSTSmartPointer<BShkbAnimationGraph>& a_animGraph) override;  // 08
+		bool SetupAnimEventSinks(const BSTSmartPointer<BShkbAnimationGraph>& a_animGraph) override;  // 08
 
-	    // override (BSTEventSink<BSAnimationGraphEvent>)
+		// override (BSTEventSink<BSAnimationGraphEvent>)
 		BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;  // 01
 
 		// members

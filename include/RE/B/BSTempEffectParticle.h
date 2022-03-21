@@ -25,7 +25,7 @@ namespace RE
 		~BSTempEffectParticle() override;  // 00
 
 		// override (BSTempEffect)
-	    const NiRTTI*                  GetRTTI() const override;       // 02
+		const NiRTTI*                  GetRTTI() const override;       // 02
 		void                           Detach() override;              // 27
 		bool                           Update(float a_arg1) override;  // 28
 		[[nodiscard]] TEMP_EFFECT_TYPE GetType() const override;       // 2C - { return kParticle; }
