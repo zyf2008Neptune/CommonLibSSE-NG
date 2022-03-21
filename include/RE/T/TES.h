@@ -88,7 +88,7 @@ namespace RE
 		std::uint64_t                                       unk0B8;                     // 0B8
 		TESObjectCELL*                                      interiorCell;               // 0C0
 		TESObjectCELL**                                     interiorBuffer;             // 0C8
-		void*                                               unk0D0;                     // 0D0
+		TESObjectCELL**                                     exteriorBuffer;             // 0D0
 		std::uint64_t                                       unk0D8;                     // 0D8
 		std::uint64_t                                       unk0E0;                     // 0E0
 		std::uint64_t                                       unk0E8;                     // 0E8

@@ -33,18 +33,26 @@ namespace RE
 		~ModelReferenceEffect() override;  // 00
 
 		// override (ReferenceEffect)
-		const NiRTTI*    GetRTTI() const override;                               // 02
-		bool             Update(float a_arg1) override;                          // 28
-		NiAVObject*      Get3D() const override;                                 // 29 - { return unkC8; }
-		TEMP_EFFECT_TYPE GetType() const override;                               // 2C - { return 9; }
-		void             SaveGame(BGSSaveGameBuffer* a_buf) override;            // 2D
-		void             LoadGame(BGSLoadGameBuffer* a_buf) override;            // 2E
-		void             Unk_36(void) override;                                  // 36
-		void             UpdateCellDynamicNode(BGSArtObject* a_model) override;  // 3A
-		void             UpdatePosition() override;                              // 3B
-		NiAVObject*      GetTargetRoot() override;                               // 3C
-		bool             IsModelAttached() override;                             // 3D - { return unkD0 & 1; }
-		void             Clear() override;                                       // 3E
+		const NiRTTI*    GetRTTI() const override;                         // 02
+		bool             Update(float a_arg1) override;                    // 28
+		NiAVObject*      Get3D() const override;                           // 29 - { return artObject3D; }
+		TEMP_EFFECT_TYPE GetType() const override;                         // 2C - { return 9; }
+		void             SaveGame(BGSSaveGameBuffer* a_buf) override;      // 2D
+		void             LoadGame(BGSLoadGameBuffer* a_buf) override;      // 2E
+		void             Init() override;                                  // 36
+		void             UpdateParentCell(NiAVObject* a_object) override;  // 3A
+		void             UpdatePosition() override;                        // 3B
+		NiAVObject*      GetAttachRoot() override;                         // 3C
+		bool             GetAttached() override;                           // 3D - { return flags & 1; }
+		void             DetachImpl() override;                            // 3E
+
+		// override (SimpleAnimationGraphManagerHolder)
+		bool SetupAnimEventSinks(const BSTSmartPointer<BShkbAnimationGraph>& a_animGraph) override;                                                        // 08
+		bool CreateAnimationChannels(BSScrapArray<BSTSmartPointer<BSAnimationGraphChannel>>& animGraphChannels) override;                                  // 0A
+		void PostChangeAnimationManager(const BSTSmartPointer<BShkbAnimationGraph>& a_arg1, const BSTSmartPointer<BShkbAnimationGraph>& a_arg2) override;  // 0D
+
+		// override (BSTEventSink<BSAnimationGraphEvent>)
+		BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;  // 01
 
 		// members
 		RefAttachTechniqueInput                hitEffectArtData;  // 68

@@ -23,7 +23,8 @@ namespace RE
 
 		~BSTempEffectSimpleDecal() override;  // 00
 
-		const NiRTTI*             GetRTTI() const override;       // 02
+		// override (BSTempEffect)
+	    const NiRTTI*             GetRTTI() const override;       // 02
 		void                      Initialize() override;          // 25
 		void                      Attach() override;              // 26
 		bool                      Update(float a_arg1) override;  // 28

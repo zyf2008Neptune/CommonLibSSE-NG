@@ -318,6 +318,7 @@
 #include "RE/B/BSTempEffectSPG.h"
 #include "RE/B/BSTempEffectSimpleDecal.h"
 #include "RE/B/BSTempEffectWeaponBlood.h"
+#include "RE/B/BSTerrainEffect.h"
 #include "RE/B/BSTextureSet.h"
 #include "RE/B/BSThread.h"
 #include "RE/B/BSThreadEvent.h"

@@ -16,6 +16,7 @@ namespace RE
 
 		~BSTempEffectDebris() override;  // 00
 
+		// override (BSTempEffect)
 		const NiRTTI*    GetRTTI() const override;       // 02
 		bool             Update(float a_arg1) override;  // 28
 		NiAVObject*      Get3D() const override;         // 29

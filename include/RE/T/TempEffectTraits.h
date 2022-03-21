@@ -7,6 +7,7 @@
 #include "RE/B/BSTempEffectSPG.h"
 #include "RE/B/BSTempEffectSimpleDecal.h"
 #include "RE/B/BSTempEffectWeaponBlood.h"
+#include "RE/B/BSTerrainEffect.h"
 #include "RE/M/ModelReferenceEffect.h"
 #include "RE/R/ReferenceEffect.h"
 #include "RE/S/ShaderReferenceEffect.h"
@@ -32,6 +33,7 @@ namespace RE
 	const T* BSTempEffect::As() const noexcept
 	{
 		switch (GetType()) {
+			TEMPEFFECT_TRAITS(BSTerrainEffect);
 			TEMPEFFECT_TRAITS(BSTempEffectWeaponBlood);
 			TEMPEFFECT_TRAITS(BSTempEffectSimpleDecal);
 			TEMPEFFECT_TRAITS(BSTempEffectGeometryDecal);
