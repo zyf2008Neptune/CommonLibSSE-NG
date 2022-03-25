@@ -659,13 +659,13 @@ namespace RE
 		return true;
 	}
 
-    NiPointer<TESObjectREFR> TESObjectREFR::PlaceObjectAtMe(TESBoundObject* a_baseToPlace, bool a_forcePersist) const
-    {
-        const auto handle = TESDataHandler::GetSingleton()->CreateReferenceAtLocation(a_baseToPlace, GetPosition(), GetAngle(), GetParentCell(), GetWorldspace(), nullptr, nullptr, ObjectRefHandle(), a_forcePersist, true);
+	NiPointer<TESObjectREFR> TESObjectREFR::PlaceObjectAtMe(TESBoundObject* a_baseToPlace, bool a_forcePersist) const
+	{
+		const auto handle = TESDataHandler::GetSingleton()->CreateReferenceAtLocation(a_baseToPlace, GetPosition(), GetAngle(), GetParentCell(), GetWorldspace(), nullptr, nullptr, ObjectRefHandle(), a_forcePersist, true);
 		return handle.get();
 	}
 
-    void TESObjectREFR::PlayAnimation(stl::zstring a_from, stl::zstring a_to)
+	void TESObjectREFR::PlayAnimation(stl::zstring a_from, stl::zstring a_to)
 	{
 		auto node = Get3D();
 		if (!node) {
