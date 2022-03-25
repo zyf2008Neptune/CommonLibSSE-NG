@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSingleton.h"
@@ -10,6 +11,8 @@
 
 namespace RE
 {
+	class BGSPrimitive;
+	class NiPoint3;
 	class TESFile;
 	class TESRegionDataManager;
 	class TESRegionList;
@@ -58,6 +61,8 @@ namespace RE
 		BSTArray<TESForm*>& GetFormArray(FormType a_formType);
 		template <class T>
 		BSTArray<T*>& GetFormArray();
+
+		ObjectRefHandle CreateReferenceAtLocation(TESBoundObject* a_base, const NiPoint3& a_location, const NiPoint3& a_rotation, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, TESObjectREFR* a_alreadyCreatedRef, BGSPrimitive* a_primitive, const ObjectRefHandle& a_linkedRoomRefHandle, bool a_forcePersist, bool a_arg11);
 
 		// members
 		std::uint8_t                      pad001;                                         // 001
