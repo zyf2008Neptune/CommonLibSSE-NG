@@ -20,11 +20,11 @@ namespace RE
 		virtual ~BSParticleShaderProperty();  // 00
 
 		// override (BSShaderProperty)
-		const NiRTTI*    GetRTTI() const override;                             // 02
-		bool             InitializeGeometry(BSGeometry* a_geometry) override;  // 27 - { particleShaderGeometry = newGeometry; }
-		void             Unk_2A(void) override;                                // 2A
-		void             Unk_35(void) override;                                // 35 - { return 5; }
-		NiSourceTexture* GetPrimaryTexture() override;                         // 37 - { return particleShaderTexture; }
+		const NiRTTI*    GetRTTI() const override;                        // 02
+		bool             SetupGeometry(BSGeometry* a_geometry) override;  // 27 - { particleShaderGeometry = newGeometry; }
+		void             Unk_2A(void) override;                           // 2A
+		void             Unk_35(void) override;                           // 35 - { return 5; }
+		NiSourceTexture* GetBaseTexture() override;                       // 37 - { return particleShaderTexture; }
 
 		// members
 		bool                                     useWorldSpace;                    // 088

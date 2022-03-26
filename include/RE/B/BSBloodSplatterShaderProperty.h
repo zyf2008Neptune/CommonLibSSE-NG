@@ -32,7 +32,7 @@ namespace RE
 		void             Unk_2A(void) override;                              // 2A
 		void             Unk_33(void) override;                              // 33
 		void             Unk_35(void) override;                              // 35 - { return 12 }
-		NiSourceTexture* GetPrimaryTexture() override;                       // 37 - { return bloodColorTexture; }
+		NiSourceTexture* GetBaseTexture() override;                          // 37 - { return bloodColorTexture; }
 
 		// members
 		NiPointer<NiSourceTexture> bloodTextures[kTotal];  // 088

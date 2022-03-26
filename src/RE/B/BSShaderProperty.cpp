@@ -15,10 +15,10 @@ namespace RE
 		return func(this, a_material, a_unk1);
 	}
 
-	void BSShaderProperty::SetFlags(EShaderPropertyFlag8 a_flag, bool a_toggle)
+	void BSShaderProperty::SetFlags(EShaderPropertyFlag8 a_flag, bool a_set)
 	{
 		using func_t = decltype(&BSShaderProperty::SetFlags);
 		REL::Relocation<func_t> func{ RELOCATION_ID(98893, 105540) };
-		return func(this, a_flag, a_toggle);
+		return func(this, a_flag, a_set);
 	}
 }

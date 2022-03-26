@@ -161,7 +161,7 @@ namespace RE
 				lightingShader->projectedUVParams = a_projectedUVParams;
 				lightingShader->projectedUVColor = a_projectedUVColor;
 
-				lightingShader->InitializeGeometry(a_geometry);
+				lightingShader->SetupGeometry(a_geometry);
 			}
 			return BSVisit::BSVisitControl::kContinue;
 		});
