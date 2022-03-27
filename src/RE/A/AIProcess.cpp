@@ -38,6 +38,13 @@ namespace RE
 		return equippedObjects[Hands::kRight];
 	}
 
+	ObjectRefHandle AIProcess::GetHeadtrackTarget() const
+	{
+		using func_t = decltype(&AIProcess::GetHeadtrackTarget);
+		REL::Relocation<func_t> func{ RELOCATION_ID(38483, 39484) };
+		return func(this);
+	}
+
 	bool AIProcess::GetIsSummonedCreature() const noexcept
 	{
 		return middleHigh && middleHigh->summonedCreature;
@@ -132,6 +139,13 @@ namespace RE
 		if (high) {
 			high->cachedActorHeight = a_height;
 		}
+	}
+
+	void AIProcess::SetHeadtrackTarget(Actor* a_owner, NiPoint3& a_targetPosition)
+	{
+		using func_t = decltype(&AIProcess::SetHeadtrackTarget);
+		REL::Relocation<func_t> func{ RELOCATION_ID(38850, 39887) };
+		return func(this, a_owner, a_targetPosition);
 	}
 
 	void AIProcess::Set3DUpdateFlag(RESET_3D_FLAGS a_flags)

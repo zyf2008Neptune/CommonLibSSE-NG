@@ -10,6 +10,7 @@ namespace RE
 	class BSAnimationGraphManager;
 	class BShkbAnimationGraph;
 	class NiAVObject;
+	class NiPoint3;
 
 	class IAnimationGraphManagerHolder
 	{
@@ -42,10 +43,12 @@ namespace RE
 		bool GetGraphVariableFloat(const BSFixedString& a_variableName, float& a_out) const;
 		bool GetGraphVariableInt(const BSFixedString& a_variableName, std::int32_t& a_out) const;
 		bool GetGraphVariableBool(const BSFixedString& a_variableName, bool& a_out) const;
+		bool GetGraphVariableNiPoint3(const BSFixedString& a_variableName, NiPoint3& a_out) const;
 		bool SetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_in);
 		bool SetGraphVariableBool(const BSFixedString& a_variableName, bool a_in);
 		bool SetGraphVariableInt(const BSFixedString& a_variableName, std::int32_t a_in);
 		bool SetGraphVariableFloat(const BSFixedString& a_variableName, float a_in);
+		bool SetGraphVariableNiPoint3(const BSFixedString& a_variableName, NiPoint3& a_in) const;
 	};
 	static_assert(sizeof(IAnimationGraphManagerHolder) == 0x8);
 }

@@ -10,6 +10,7 @@ namespace RE
 	class Actor;
 	class bhkCharacterController;
 	class HighProcess;
+	class NiPoint3;
 	class TESForm;
 	struct HighProcessData;
 	struct MiddleHighProcessData;
@@ -144,6 +145,7 @@ namespace RE
 		ActorHandle             GetCommandingActor() const;
 		TESForm*                GetEquippedLeftHand();
 		TESForm*                GetEquippedRightHand();
+		ObjectRefHandle         GetHeadtrackTarget() const;
 		[[nodiscard]] bool      GetIsSummonedCreature() const noexcept;
 		ObjectRefHandle         GetOccupiedFurniture() const;
 		TESPackage*             GetRunningPackage() const;
@@ -155,6 +157,7 @@ namespace RE
 		bool                    IsGhost() const;
 		void                    SetArrested(bool a_arrested);
 		void                    SetCachedHeight(float a_height);
+		void                    SetHeadtrackTarget(Actor* a_owner, NiPoint3& a_targetPosition);
 		void                    Set3DUpdateFlag(RESET_3D_FLAGS a_flags);
 		void                    Update3DModel(Actor* a_actor);
 

@@ -26,6 +26,13 @@ namespace RE
 		void          Unk_2D(void) override;                              // 2D
 		void          Unk_2E(void) override;                              // 2E
 		void          Unk_2F(void) override;                              // 2F
+
+		bhkRigidBody* GetRigidBody() const
+		{
+			using func_t = decltype(&bhkCollisionObject::GetRigidBody);
+			REL::Relocation<func_t> func{ RELOCATION_ID(12784, 20014) };
+			return func(this);
+		}
 	};
 	static_assert(sizeof(bhkCollisionObject) == 0x28);
 }

@@ -736,6 +736,7 @@ set(SOURCES
 	include/RE/H/HeapBlockFreeHead.h
 	include/RE/H/HeldStateHandler.h
 	include/RE/H/HighProcessData.h
+	include/RE/H/HorseCameraState.h
 	include/RE/H/hkAabb.h
 	include/RE/H/hkArray.h
 	include/RE/H/hkBaseObject.h
@@ -818,6 +819,7 @@ set(SOURCES
 	include/RE/H/hkpRayCollidableFilter.h
 	include/RE/H/hkpRayHitCollector.h
 	include/RE/H/hkpRayShapeCollectionFilter.h
+	include/RE/H/hkpRayHitCollector.h
 	include/RE/H/hkpRigidBody.h
 	include/RE/H/hkpRootCdPoint.h
 	include/RE/H/hkpShape.h
@@ -1084,6 +1086,7 @@ set(SOURCES
 	include/RE/P/PerkEntryVisitor.h
 	include/RE/P/PerkRankVisitor.h
 	include/RE/P/PlayerCamera.h
+	include/RE/P/PlayerCameraTransitionState.h
 	include/RE/P/PlayerCharacter.h
 	include/RE/P/PlayerControls.h
 	include/RE/P/PlayerControlsData.h
@@ -1205,6 +1208,7 @@ set(SOURCES
 	include/RE/T/TESDescription.h
 	include/RE/T/TESEffectShader.h
 	include/RE/T/TESEnchantableForm.h
+	include/RE/T/TESEnterBleedoutEvent.h
 	include/RE/T/TESEquipEvent.h
 	include/RE/T/TESEyes.h
 	include/RE/T/TESFaction.h
@@ -1557,6 +1561,7 @@ set(SOURCES
 	src/RE/N/NiNode.cpp
 	src/RE/N/NiObject.cpp
 	src/RE/N/NiObjectNET.cpp
+	src/RE/N/NiPoint2.cpp
 	src/RE/N/NiPoint3.cpp
 	src/RE/N/NiRefObject.cpp
 	src/RE/N/NiSkinInstance.cpp
