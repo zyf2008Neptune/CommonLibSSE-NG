@@ -36,13 +36,13 @@ namespace RE
 
 		reference operator[](size_type a_pos)
 		{
-			assert(a_pos < size());
+			assert(a_pos < capacity());
 			return _data[a_pos];
 		}
 
 		const_reference operator[](size_type a_pos) const
 		{
-			assert(a_pos < size());
+			assert(a_pos < capacity());
 			return _data[a_pos];
 		}
 
@@ -58,12 +58,12 @@ namespace RE
 
 		reference back()
 		{
-			return operator[](size() - 1);
+			return operator[](capacity() - 1);
 		}
 
 		[[nodiscard]] const_reference back() const
 		{
-			return operator[](size() - 1);
+			return operator[](capacity() - 1);
 		}
 
 		iterator begin()
@@ -83,17 +83,17 @@ namespace RE
 
 		iterator end()
 		{
-			return _data + _size;
+			return _data + _capacity;
 		}
 
 		[[nodiscard]] const_iterator end() const
 		{
-			return _data + _size;
+			return _data + _capacity;
 		}
 
 		[[nodiscard]] const_iterator cend() const
 		{
-			return _data + _size;
+			return _data + _capacity;
 		}
 
 		[[nodiscard]] bool empty() const

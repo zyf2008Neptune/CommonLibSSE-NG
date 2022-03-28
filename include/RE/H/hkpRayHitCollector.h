@@ -14,7 +14,7 @@ namespace RE
 		// add
 		virtual void AddRayHit(const hkpCdBody& a_body, const hkpShapeRayCastCollectorOutput& a_hitInfo) = 0;  // 00
 
-		virtual ~hkpRayHitCollector();  // 01
+		virtual ~hkpRayHitCollector() = default;  // 01
 
 		// members
 		float         earlyOutHitFraction;  // 08

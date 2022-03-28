@@ -32,6 +32,13 @@ namespace RE
 		return flags.all(Flag::kHidden);
 	}
 
+	bhkCollisionObject* NiAVObject::GetCollisionObject() const
+	{
+		using func_t = decltype(&NiAVObject::GetCollisionObject);
+		REL::Relocation<func_t> func{ RELOCATION_ID(25482, 26022) };
+		return func(this);
+	}
+
 	BSGeometry* NiAVObject::GetFirstGeometryOfShaderType(BSShaderMaterial::Feature a_type)
 	{
 		BSGeometry* firstGeometry = nullptr;
