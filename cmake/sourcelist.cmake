@@ -819,7 +819,6 @@ set(SOURCES
 	include/RE/H/hkpRayCollidableFilter.h
 	include/RE/H/hkpRayHitCollector.h
 	include/RE/H/hkpRayShapeCollectionFilter.h
-	include/RE/H/hkpRayHitCollector.h
 	include/RE/H/hkpRigidBody.h
 	include/RE/H/hkpRootCdPoint.h
 	include/RE/H/hkpShape.h
