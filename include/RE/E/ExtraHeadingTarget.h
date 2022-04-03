@@ -9,8 +9,8 @@ namespace RE
 	class ExtraHeadingTarget : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraHeadingTarget;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHeadingTarget;
+		inline static auto RTTI = RTTI_ExtraHeadingTarget;
+		inline static auto EXTRADATATYPE = ExtraDataType::kHeadingTarget;
 
 		~ExtraHeadingTarget() override;  // 00
 

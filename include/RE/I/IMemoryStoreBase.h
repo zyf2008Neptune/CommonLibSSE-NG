@@ -19,7 +19,7 @@ namespace RE
 	class IMemoryStoreBase
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_IMemoryStoreBase;
+		inline static auto RTTI = RTTI_IMemoryStoreBase;
 
 		virtual ~IMemoryStoreBase() = default;  // 00
 

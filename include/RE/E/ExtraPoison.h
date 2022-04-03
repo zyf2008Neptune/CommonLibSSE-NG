@@ -10,9 +10,9 @@ namespace RE
 	class ExtraPoison : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraPoison;
-		inline static constexpr auto VTABLE = VTABLE_ExtraPoison;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPoison;
+		inline static auto RTTI = RTTI_ExtraPoison;
+		inline static auto VTABLE = VTABLE_ExtraPoison;
+		inline static auto EXTRADATATYPE = ExtraDataType::kPoison;
 
 		ExtraPoison();
 		ExtraPoison(AlchemyItem* a_poison, std::int32_t a_count);

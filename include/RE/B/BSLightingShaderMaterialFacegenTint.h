@@ -8,9 +8,9 @@ namespace RE
 	class BSLightingShaderMaterialFacegenTint : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialFacegenTint;
-		inline static constexpr auto VTABLE = VTABLE_BSLightingShaderMaterialFacegenTint;
-		inline static constexpr auto FEATURE = Feature::kFaceGenRGBTint;
+		inline static auto RTTI = RTTI_BSLightingShaderMaterialFacegenTint;
+		inline static auto VTABLE = VTABLE_BSLightingShaderMaterialFacegenTint;
+		inline static auto FEATURE = Feature::kFaceGenRGBTint;
 
 		~BSLightingShaderMaterialFacegenTint() override;  // 00
 

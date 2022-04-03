@@ -13,8 +13,8 @@ namespace RE
 		public BSISoundDescriptor  // 20
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSSoundDescriptorForm;
-		inline static constexpr auto VTABLE = VTABLE_BGSSoundDescriptorForm;
+		inline static auto RTTI = RTTI_BGSSoundDescriptorForm;
+		inline static auto VTABLE = VTABLE_BGSSoundDescriptorForm;
 		inline static constexpr auto FORMTYPE = FormType::SoundRecord;
 
 		struct RecordFlags

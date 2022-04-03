@@ -10,8 +10,8 @@ namespace RE
 	class ExtraAttachRefChildren : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraAttachRefChildren;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAttachRefChildren;
+		inline static auto RTTI = RTTI_ExtraAttachRefChildren;
+		inline static auto EXTRADATATYPE = ExtraDataType::kAttachRefChildren;
 
 		virtual ~ExtraAttachRefChildren();  // 00
 

@@ -10,9 +10,9 @@ namespace RE
 	class BSLightingShaderMaterialFacegen : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialFacegen;
-		inline static constexpr auto VTABLE = VTABLE_BSLightingShaderMaterialFacegen;
-		inline static constexpr auto FEATURE = Feature::kFaceGen;
+		inline static auto RTTI = RTTI_BSLightingShaderMaterialFacegen;
+		inline static auto VTABLE = VTABLE_BSLightingShaderMaterialFacegen;
+		inline static auto FEATURE = Feature::kFaceGen;
 
 		~BSLightingShaderMaterialFacegen() override;  // 00
 

@@ -14,7 +14,7 @@ namespace RE
 	class ReferenceEffectController
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ReferenceEffectController;
+		inline static auto RTTI = RTTI_ReferenceEffectController;
 
 		virtual ~ReferenceEffectController();  // 00
 

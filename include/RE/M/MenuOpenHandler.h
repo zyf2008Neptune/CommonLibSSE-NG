@@ -7,7 +7,7 @@ namespace RE
 	struct MenuOpenHandler : public MenuEventHandler
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_MenuOpenHandler;
+		inline static auto RTTI = RTTI_MenuOpenHandler;
 
 		~MenuOpenHandler() override;  // 00
 

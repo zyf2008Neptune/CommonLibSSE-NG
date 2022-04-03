@@ -8,7 +8,7 @@ namespace RE
 	class DetectionState : public NiRefObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_DetectionState;
+		inline static auto RTTI = RTTI_DetectionState;
 
 		~DetectionState() override;  // 00
 

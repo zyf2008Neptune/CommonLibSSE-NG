@@ -11,8 +11,8 @@ namespace RE
 	class ExtraPlayerCrimeList : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraPlayerCrimeList;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPlayerCrimeList;
+		inline static auto RTTI = RTTI_ExtraPlayerCrimeList;
+		inline static auto EXTRADATATYPE = ExtraDataType::kPlayerCrimeList;
 
 		virtual ~ExtraPlayerCrimeList();  // 00
 

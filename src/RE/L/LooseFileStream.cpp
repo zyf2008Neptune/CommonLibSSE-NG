@@ -6,7 +6,7 @@ namespace RE
 {
 	namespace BSResource
 	{
-#ifndef SKYRIM_SUPPORT_AE
+#if defined(SKYRIM_FORCE_SE) || defined(SKYRIM_FORCE_VR)
 		LooseFileStream* LooseFileStream::Create(BSFixedString a_prefix, BSFixedString a_dirName, BSFixedString a_fileName, std::uint32_t a_fileSize, bool a_readOnly, Location* a_location)
 		{
 			auto mem = malloc<LooseFileStream>();

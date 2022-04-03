@@ -8,8 +8,8 @@ namespace RE
 	class ExtraWorn : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraWorn;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kWorn;
+		inline static auto RTTI = RTTI_ExtraWorn;
+		inline static auto EXTRADATATYPE = ExtraDataType::kWorn;
 
 		~ExtraWorn() override;  // 00
 

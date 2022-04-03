@@ -23,13 +23,13 @@ namespace RE
 	class ActiveEffect
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ActiveEffect;
-		inline static constexpr auto VMTYPEID = static_cast<VMTypeID>(142);
+		inline static auto RTTI = RTTI_ActiveEffect;
+		inline static auto VMTYPEID = static_cast<VMTypeID>(142);
 
 		class ForEachHitEffectVisitor
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_ActiveEffect__ForEachHitEffectVisitor;
+			inline static auto RTTI = RTTI_ActiveEffect__ForEachHitEffectVisitor;
 
 			virtual ~ForEachHitEffectVisitor();  // 00
 

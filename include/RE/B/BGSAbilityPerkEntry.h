@@ -9,8 +9,8 @@ namespace RE
 	class BGSAbilityPerkEntry : public BGSPerkEntry
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSAbilityPerkEntry;
-		inline static constexpr auto VTABLE = VTABLE_BGSAbilityPerkEntry;
+		inline static auto RTTI = RTTI_BGSAbilityPerkEntry;
+		inline static auto VTABLE = VTABLE_BGSAbilityPerkEntry;
 
 		~BGSAbilityPerkEntry() override;  // 00
 

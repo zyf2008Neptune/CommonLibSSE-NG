@@ -11,8 +11,8 @@ namespace RE
 	class ExtraRoom : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraRoom;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRoom;
+		inline static auto RTTI = RTTI_ExtraRoom;
+		inline static auto EXTRADATATYPE = ExtraDataType::kRoom;
 
 		~ExtraRoom() override;  // 00
 

@@ -10,7 +10,7 @@ namespace RE
 	class GFxTranslator : public GFxState
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_GFxTranslator;
+		inline static auto RTTI = RTTI_GFxTranslator;
 
 		using WordWrappingType = GFxWWHelper::WordWrappingType;
 

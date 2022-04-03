@@ -13,8 +13,8 @@ namespace RE
 	class BSLightingShaderMaterialBase : public BSShaderMaterial
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialBase;
-		inline static constexpr auto VTABLE = VTABLE_BSLightingShaderMaterialBase;
+		inline static auto RTTI = RTTI_BSLightingShaderMaterialBase;
+		inline static auto VTABLE = VTABLE_BSLightingShaderMaterialBase;
 
 		~BSLightingShaderMaterialBase() override;  // 00
 

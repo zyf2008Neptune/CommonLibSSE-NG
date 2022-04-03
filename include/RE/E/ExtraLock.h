@@ -48,8 +48,8 @@ namespace RE
 	class ExtraLock : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraLock;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLock;
+		inline static auto RTTI = RTTI_ExtraLock;
+		inline static auto EXTRADATATYPE = ExtraDataType::kLock;
 
 		~ExtraLock() override;  // 00
 

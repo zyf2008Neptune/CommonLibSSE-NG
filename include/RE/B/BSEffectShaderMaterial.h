@@ -11,7 +11,7 @@ namespace RE
 	class BSEffectShaderMaterial : public BSShaderMaterial
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSEffectShaderMaterial;
+		inline static auto RTTI = RTTI_BSEffectShaderMaterial;
 
 		~BSEffectShaderMaterial() override;  // 00
 

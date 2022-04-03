@@ -8,8 +8,8 @@ namespace RE
 	class BSBound : public NiExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSBound;
-		inline static constexpr auto Ni_RTTI = NiRTTI_BSBound;
+		inline static auto RTTI = RTTI_BSBound;
+		inline static auto Ni_RTTI = NiRTTI_BSBound;
 
 		~BSBound() override;  // 00
 

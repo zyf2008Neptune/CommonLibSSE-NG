@@ -13,8 +13,8 @@ namespace RE
 	class bhkWorld : public bhkSerializable
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_bhkWorld;
-		inline static constexpr auto Ni_RTTI = NiRTTI_bhkWorld;
+		inline static auto RTTI = RTTI_bhkWorld;
+		inline static auto Ni_RTTI = NiRTTI_bhkWorld;
 
 		class bhkConstraintProjector;
 

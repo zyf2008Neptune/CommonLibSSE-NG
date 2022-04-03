@@ -8,8 +8,8 @@ namespace RE
 	class BGSRelationship : public TESForm
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSRelationship;
-		inline static constexpr auto VTABLE = VTABLE_BGSRelationship;
+		inline static auto RTTI = RTTI_BGSRelationship;
+		inline static auto VTABLE = VTABLE_BGSRelationship;
 		inline static constexpr auto FORMTYPE = FormType::Relationship;
 
 		enum class RELATIONSHIP_LEVEL

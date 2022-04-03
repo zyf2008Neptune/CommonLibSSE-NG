@@ -7,8 +7,8 @@ namespace RE
 	class CombatInventoryItemScroll : public CombatInventoryItemMagic
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_CombatInventoryItemScroll;
-		inline static constexpr auto VTABLE = VTABLE_CombatInventoryItemScroll;
+		inline static auto RTTI = RTTI_CombatInventoryItemScroll;
+		inline static auto VTABLE = VTABLE_CombatInventoryItemScroll;
 
 		~CombatInventoryItemScroll() override;  // 00
 

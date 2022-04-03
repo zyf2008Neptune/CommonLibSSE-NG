@@ -21,7 +21,7 @@ namespace RE
 		public BSTEventSink<BSSystemEvent>  // 40
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_JournalMenu;
+		inline static auto                RTTI = RTTI_JournalMenu;
 		constexpr static std::string_view MENU_NAME = "Journal Menu";
 
 		~JournalMenu() override;  // 00

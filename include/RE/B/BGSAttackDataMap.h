@@ -13,7 +13,7 @@ namespace RE
 	class BGSAttackDataMap : public NiRefObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSAttackDataMap;
+		inline static auto RTTI = RTTI_BGSAttackDataMap;
 
 		~BGSAttackDataMap() override;  // 00
 

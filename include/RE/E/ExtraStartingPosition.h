@@ -18,8 +18,8 @@ namespace RE
 	class ExtraStartingPosition : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraStartingPosition;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kStartingPosition;
+		inline static auto RTTI = RTTI_ExtraStartingPosition;
+		inline static auto EXTRADATATYPE = ExtraDataType::kStartingPosition;
 
 		virtual ~ExtraStartingPosition();  // 00
 

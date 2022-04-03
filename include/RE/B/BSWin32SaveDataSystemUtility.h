@@ -7,7 +7,7 @@ namespace RE
 	class BSWin32SaveDataSystemUtility : public BSSaveDataSystemUtility
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSWin32SaveDataSystemUtility;
+		inline static auto RTTI = RTTI_BSWin32SaveDataSystemUtility;
 
 		~BSWin32SaveDataSystemUtility() override;
 

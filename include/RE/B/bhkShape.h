@@ -8,8 +8,8 @@ namespace RE
 	class bhkShape : public bhkSerializable
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_bhkShape;
-		inline static constexpr auto Ni_RTTI = NiRTTI_bhkShape;
+		inline static auto RTTI = RTTI_bhkShape;
+		inline static auto Ni_RTTI = NiRTTI_bhkShape;
 
 		~bhkShape() override;  // 00
 

@@ -7,9 +7,9 @@ namespace RE
 	class ExtraCannotWear : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraCannotWear;
-		inline static constexpr auto VTABLE = VTABLE_ExtraCannotWear;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCannotWear;
+		inline static auto RTTI = RTTI_ExtraCannotWear;
+		inline static auto VTABLE = VTABLE_ExtraCannotWear;
+		inline static auto EXTRADATATYPE = ExtraDataType::kCannotWear;
 
 		ExtraCannotWear();
 		virtual ~ExtraCannotWear() = default;  // 00

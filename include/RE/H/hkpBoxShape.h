@@ -8,7 +8,7 @@ namespace RE
 	class hkpBoxShape : public hkpConvexShape
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpBoxShape;
+		inline static auto RTTI = RTTI_hkpBoxShape;
 
 		~hkpBoxShape() override;  // 00
 

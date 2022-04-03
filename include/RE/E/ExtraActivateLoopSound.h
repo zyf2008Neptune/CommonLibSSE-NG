@@ -9,8 +9,8 @@ namespace RE
 	class ExtraActivateLoopSound : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraActivateLoopSound;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kActivateLoopSound;
+		inline static auto RTTI = RTTI_ExtraActivateLoopSound;
+		inline static auto EXTRADATATYPE = ExtraDataType::kActivateLoopSound;
 
 		virtual ~ExtraActivateLoopSound();  // 00
 

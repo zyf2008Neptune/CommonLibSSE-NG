@@ -7,8 +7,8 @@ namespace RE
 	class ParalysisEffect : public ValueModifierEffect
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ParalysisEffect;
-		inline static constexpr auto VTABLE = VTABLE_ParalysisEffect;
+		inline static auto RTTI = RTTI_ParalysisEffect;
+		inline static auto VTABLE = VTABLE_ParalysisEffect;
 
 		// override (ValueModifierEffect)
 		void Unk_04(void) override;  // 04

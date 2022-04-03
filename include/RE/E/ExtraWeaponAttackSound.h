@@ -9,8 +9,8 @@ namespace RE
 	class ExtraWeaponAttackSound : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraWeaponAttackSound;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kWeaponAttackSound;
+		inline static auto RTTI = RTTI_ExtraWeaponAttackSound;
+		inline static auto EXTRADATATYPE = ExtraDataType::kWeaponAttackSound;
 
 		virtual ~ExtraWeaponAttackSound();  // 00
 

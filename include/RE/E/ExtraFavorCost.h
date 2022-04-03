@@ -8,8 +8,8 @@ namespace RE
 	class ExtraFavorCost : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraFavorCost;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFavorCost;
+		inline static auto RTTI = RTTI_ExtraFavorCost;
+		inline static auto EXTRADATATYPE = ExtraDataType::kFavorCost;
 
 		~ExtraFavorCost() override;  // 00
 

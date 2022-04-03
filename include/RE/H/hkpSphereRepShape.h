@@ -9,7 +9,7 @@ namespace RE
 	class hkpSphereRepShape : public hkpShape
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpSphereRepShape;
+		inline static auto RTTI = RTTI_hkpSphereRepShape;
 
 		virtual ~hkpSphereRepShape();  // 00
 

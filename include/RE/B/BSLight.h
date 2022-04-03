@@ -16,7 +16,7 @@ namespace RE
 	class BSLight : public NiRefObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSLight;
+		inline static auto RTTI = RTTI_BSLight;
 
 		struct ShapeData
 		{

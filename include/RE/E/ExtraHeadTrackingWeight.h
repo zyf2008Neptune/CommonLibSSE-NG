@@ -8,8 +8,8 @@ namespace RE
 	class ExtraHeadTrackingWeight : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraHeadTrackingWeight;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHeadTrackingWeight;
+		inline static auto RTTI = RTTI_ExtraHeadTrackingWeight;
+		inline static auto EXTRADATATYPE = ExtraDataType::kHeadTrackingWeight;
 
 		~ExtraHeadTrackingWeight() override;  // 00
 

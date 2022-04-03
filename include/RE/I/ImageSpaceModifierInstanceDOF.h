@@ -39,7 +39,7 @@ namespace RE
 	class ImageSpaceModifierInstanceDOF : public ImageSpaceModifierInstanceTemp
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ImageSpaceModifierInstanceDOF;
+		inline static auto RTTI = RTTI_ImageSpaceModifierInstanceDOF;
 
 		enum class DepthOfFieldMode
 		{

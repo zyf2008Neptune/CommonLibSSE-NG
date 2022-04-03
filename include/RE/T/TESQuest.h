@@ -188,8 +188,8 @@ namespace RE
 		public TESFullName               // 028
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESQuest;
-		inline static constexpr auto VTABLE = VTABLE_TESQuest;
+		inline static auto RTTI = RTTI_TESQuest;
+		inline static auto VTABLE = VTABLE_TESQuest;
 
 		using DT = DIALOGUE_TYPE;
 		inline static constexpr auto FORMTYPE = FormType::Quest;

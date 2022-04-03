@@ -7,7 +7,7 @@ namespace RE
 	class hkpConvexShape : public hkpSphereRepShape
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpConvexShape;
+		inline static auto RTTI = RTTI_hkpConvexShape;
 
 		~hkpConvexShape() override;  // 00
 

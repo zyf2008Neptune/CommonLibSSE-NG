@@ -23,7 +23,7 @@ namespace RE
 	class TESBoundObject : public TESObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESBoundObject;
+		inline static auto RTTI = RTTI_TESBoundObject;
 
 		struct BOUND_DATA  // OBND
 		{

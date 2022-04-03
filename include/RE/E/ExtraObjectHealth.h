@@ -8,8 +8,8 @@ namespace RE
 	class ExtraObjectHealth : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraObjectHealth;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kObjectHealth;
+		inline static auto RTTI = RTTI_ExtraObjectHealth;
+		inline static auto EXTRADATATYPE = ExtraDataType::kObjectHealth;
 
 		virtual ~ExtraObjectHealth();  // 00
 

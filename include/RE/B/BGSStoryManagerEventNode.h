@@ -35,7 +35,7 @@ namespace RE
 	class BGSStoryManagerEventNode : public BGSStoryManagerBranchNode
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSStoryManagerEventNode;
+		inline static auto RTTI = RTTI_BGSStoryManagerEventNode;
 		inline static constexpr auto FORMTYPE = FormType::StoryManagerEventNode;
 
 		struct RecordFlags

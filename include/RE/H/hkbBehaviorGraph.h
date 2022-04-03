@@ -11,7 +11,7 @@ namespace RE
 	class hkbBehaviorGraph : public hkbGenerator
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkbBehaviorGraph;
+		inline static auto RTTI = RTTI_hkbBehaviorGraph;
 
 		enum class VariableMode
 		{

@@ -12,7 +12,7 @@ namespace RE
 		public BSReloadShaderI       // 18
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSShader;
+		inline static auto RTTI = RTTI_BSShader;
 
 		~BSShader() override;  // 00
 

@@ -9,8 +9,8 @@ namespace RE
 	class ExtraItemDropper : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraItemDropper;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kItemDropper;
+		inline static auto RTTI = RTTI_ExtraItemDropper;
+		inline static auto EXTRADATATYPE = ExtraDataType::kItemDropper;
 
 		~ExtraItemDropper() override;  // 00
 

@@ -10,7 +10,7 @@ namespace RE
 	class BGSSkillPerkTreeNode
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSSkillPerkTreeNode;
+		inline static auto RTTI = RTTI_BGSSkillPerkTreeNode;
 
 		virtual ~BGSSkillPerkTreeNode();  // 00
 

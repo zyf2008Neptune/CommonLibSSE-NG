@@ -10,8 +10,8 @@ namespace RE
 	class ExtraRandomTeleportMarker : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraRandomTeleportMarker;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRandomTeleportMarker;
+		inline static auto RTTI = RTTI_ExtraRandomTeleportMarker;
+		inline static auto EXTRADATATYPE = ExtraDataType::kRandomTeleportMarker;
 
 		virtual ~ExtraRandomTeleportMarker();  // 00
 

@@ -12,7 +12,7 @@ namespace RE
 	class hkMoppBvTreeShapeBase : public hkpBvTreeShape
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkMoppBvTreeShapeBase;
+		inline static auto RTTI = RTTI_hkMoppBvTreeShapeBase;
 
 		~hkMoppBvTreeShapeBase() override;  // 00
 

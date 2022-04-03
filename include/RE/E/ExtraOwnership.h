@@ -10,9 +10,9 @@ namespace RE
 	class ExtraOwnership : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraOwnership;
-		inline static constexpr auto VTABLE = VTABLE_ExtraOwnership;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kOwnership;
+		inline static auto RTTI = RTTI_ExtraOwnership;
+		inline static auto VTABLE = VTABLE_ExtraOwnership;
+		inline static auto EXTRADATATYPE = ExtraDataType::kOwnership;
 
 		ExtraOwnership();
 		explicit ExtraOwnership(TESForm* a_owner);

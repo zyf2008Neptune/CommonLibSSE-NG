@@ -31,7 +31,7 @@ namespace RE
 		public BGSPerkRankArray            // 138
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESActorBase;
+		inline static auto RTTI = RTTI_TESActorBase;
 
 		~TESActorBase() override;  // 00
 

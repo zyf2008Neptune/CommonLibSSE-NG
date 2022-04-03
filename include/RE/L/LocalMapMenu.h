@@ -56,7 +56,7 @@ namespace RE
 		class InputHandler : public MenuEventHandler
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_LocalMapMenu__InputHandler;
+			inline static auto RTTI = RTTI_LocalMapMenu__InputHandler;
 
 			~InputHandler() override;  // 00
 

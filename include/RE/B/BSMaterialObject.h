@@ -12,7 +12,7 @@ namespace RE
 	class BSMaterialObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSMaterialObject;
+		inline static auto RTTI = RTTI_BSMaterialObject;
 
 		struct DIRECTIONAL_DATA  // DATA
 		{

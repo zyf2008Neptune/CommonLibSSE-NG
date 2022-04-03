@@ -23,8 +23,8 @@ namespace RE
 		public TESValueForm                // 120
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_IngredientItem;
-		inline static constexpr auto VTABLE = VTABLE_IngredientItem;
+		inline static auto RTTI = RTTI_IngredientItem;
+		inline static auto VTABLE = VTABLE_IngredientItem;
 		inline static constexpr auto FORMTYPE = FormType::Ingredient;
 
 		enum class IngredientFlag

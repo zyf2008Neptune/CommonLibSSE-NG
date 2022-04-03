@@ -8,7 +8,7 @@ namespace RE
 	class ValueModifierEffect : public ActiveEffect
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ValueModifierEffect;
+		inline static auto RTTI = RTTI_ValueModifierEffect;
 
 		// override (ActiveEffect)
 		void Unk_01(void) override;  // 01

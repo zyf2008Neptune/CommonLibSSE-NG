@@ -9,7 +9,7 @@ namespace RE
 	class BGSIdleCollection : public BaseFormComponent
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSIdleCollection;
+		inline static auto RTTI = RTTI_BGSIdleCollection;
 
 		enum class IdleFlags
 		{

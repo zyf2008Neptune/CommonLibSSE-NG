@@ -30,8 +30,8 @@ namespace RE
 	class BGSDualCastData : public TESBoundObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSDualCastData;
-		inline static constexpr auto VTABLE = VTABLE_BGSDualCastData;
+		inline static auto RTTI = RTTI_BGSDualCastData;
+		inline static auto VTABLE = VTABLE_BGSDualCastData;
 		inline static constexpr auto FORMTYPE = FormType::DualCastData;
 
 		struct RecordFlags

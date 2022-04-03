@@ -10,8 +10,8 @@ namespace RE
 	class BGSDecalNode : public NiNode
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSDecalNode;
-		inline static constexpr auto Ni_RTTI = NiRTTI_BGSDecalNode;
+		inline static auto RTTI = RTTI_BGSDecalNode;
+		inline static auto Ni_RTTI = NiRTTI_BGSDecalNode;
 
 		~BGSDecalNode() override;  // 00
 

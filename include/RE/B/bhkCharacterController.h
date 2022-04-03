@@ -65,7 +65,7 @@ namespace RE
 		public BSTEventSource<bhkCharacterMoveFinishEvent>  // 010
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_bhkCharacterController;
+		inline static auto RTTI = RTTI_bhkCharacterController;
 
 		~bhkCharacterController() override;  // 00
 

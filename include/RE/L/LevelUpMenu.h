@@ -11,7 +11,7 @@ namespace RE
 	class LevelUpMenu : public IMenu
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_LevelUpMenu;
+		inline static auto                RTTI = RTTI_LevelUpMenu;
 		constexpr static std::string_view MENU_NAME = "LevelUp Menu";
 
 		~LevelUpMenu() override;  // 00

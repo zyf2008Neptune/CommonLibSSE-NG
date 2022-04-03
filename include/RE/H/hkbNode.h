@@ -8,7 +8,7 @@ namespace RE
 	class hkbNode : public hkbBindable
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkbNode;
+		inline static auto RTTI = RTTI_hkbNode;
 
 		~hkbNode() override;  // 00
 

@@ -7,7 +7,7 @@ namespace RE
 	class PathingCell : public BSPathingCell
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_PathingCell;
+		inline static auto RTTI = RTTI_PathingCell;
 
 		virtual ~PathingCell();  // 00
 

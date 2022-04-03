@@ -1,7 +1,23 @@
 cmake_minimum_required(VERSION 3.19)
 
 option(SKSE_SUPPORT_XBYAK "Enables trampoline support for Xbyak." OFF)
-option(SKYRIM_SUPPORT_AE "Enables support for Skyrim AE" OFF)
+option(SKYRIM_FORCE_SE "Forces the build to support only SE, which allows functionality not present for AE/VR." OFF)
+option(SKYRIM_FORCE_AE "Forces the build to support only AE, which allows functionality not present for SE/VR." OFF)
+option(SKYRIM_FORCE_VR "Forces the build to support only VR, which allows functionality not present for SE/AE." OFF)
+
+if(SKYRIM_FORCE_SE)
+	if(SKYRIM_FORCE_AE OR SKYRIM_FORCE_VR)
+		message(FATAL_ERROR "Only one version of Skyrim can forced on at a time.")
+	endif()
+	add_compile_definitions(USING_AE=false USING_VR=false)
+elseif(SKYRIM_FORCE_AE)
+	if(SKYRIM_FORCE_VR)
+		message(FATAL_ERROR "Only one version of Skyrim can forced on at a time.")
+	endif()
+	add_compile_definitions(USING_AE=true USING_VR=false)
+elseif(SKYRIM_FORCE_VR)
+	add_compile_definitions(USING_AE=false USING_VR=true)
+endif()
 
 project(
 	CommonLibSSE
@@ -17,6 +33,7 @@ endif()
 find_package(binary_io REQUIRED CONFIG)
 find_package(Boost MODULE REQUIRED)
 find_package(spdlog REQUIRED CONFIG)
+find_path(FAST_CPP_CSV_PARSER_INCLUDE_DIRS "csv.h")
 
 include(cmake/sourcelist.cmake)
 
@@ -42,7 +59,8 @@ target_compile_definitions(
 		WINVER=0x0601	# windows 7, minimum supported version by skyrim special edition
 		_WIN32_WINNT=0x0601
 		"$<$<BOOL:${SKSE_SUPPORT_XBYAK}>:SKSE_SUPPORT_XBYAK=1>"
-		"$<$<BOOL:${SKYRIM_SUPPORT_AE}>:SKYRIM_SUPPORT_AE=1>"
+		"$<$<BOOL:${SKYRIM_FORCE_SE}>:SKYRIM_FORCE_SE=1>"
+		"$<$<BOOL:${SKYRIM_FORCE_AE}>:SKYRIM_FORCE_AE=1>"
 )
 
 target_compile_features(
@@ -55,6 +73,8 @@ if (MSVC)
 	target_compile_options(
 		"${PROJECT_NAME}"
 		PRIVATE
+			/bigobj # support large object file format
+
 			# warnings -> errors
 			/we4715	# 'function' : not all control paths return a value
 
@@ -88,6 +108,12 @@ target_include_directories(
 	PUBLIC
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+)
+
+target_include_directories(
+	"${PROJECT_NAME}"
+	PRIVATE
+		${FAST_CPP_CSV_PARSER_INCLUDE_DIRS}
 )
 
 target_link_libraries(

@@ -7,7 +7,7 @@ namespace RE
 	class IProcedureTreeItem
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_IProcedureTreeItem;
+		inline static auto RTTI = RTTI_IProcedureTreeItem;
 
 		virtual ~IProcedureTreeItem();  // 00
 

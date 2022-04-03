@@ -12,8 +12,8 @@ namespace RE
 	class ExtraLinkedRefChildren : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraLinkedRefChildren;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLinkedRefChildren;
+		inline static auto RTTI = RTTI_ExtraLinkedRefChildren;
+		inline static auto EXTRADATATYPE = ExtraDataType::kLinkedRefChildren;
 
 		struct LinkedRefChild
 		{

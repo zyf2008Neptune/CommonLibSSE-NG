@@ -7,8 +7,8 @@ namespace RE
 	class bhkListShape : public bhkShapeCollection
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_bhkListShape;
-		inline static constexpr auto Ni_RTTI = NiRTTI_bhkListShape;
+		inline static auto RTTI = RTTI_bhkListShape;
+		inline static auto Ni_RTTI = NiRTTI_bhkListShape;
 
 		~bhkListShape() override;  // 00
 

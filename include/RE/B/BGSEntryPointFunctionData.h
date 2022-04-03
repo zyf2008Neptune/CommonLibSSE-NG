@@ -9,7 +9,7 @@ namespace RE
 	class BGSEntryPointFunctionData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSEntryPointFunctionData;
+		inline static auto RTTI = RTTI_BGSEntryPointFunctionData;
 
 		enum class FunctionType
 		{

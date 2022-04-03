@@ -7,7 +7,7 @@ namespace RE
 	class IMovementState : public IMovementInterface
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_IMovementState;
+		inline static auto RTTI = RTTI_IMovementState;
 
 		~IMovementState() override;  // 00
 

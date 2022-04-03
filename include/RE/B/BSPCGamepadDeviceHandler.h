@@ -9,7 +9,7 @@ namespace RE
 	class BSPCGamepadDeviceHandler : public BSIInputDevice
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSPCGamepadDeviceHandler;
+		inline static auto RTTI = RTTI_BSPCGamepadDeviceHandler;
 
 		~BSPCGamepadDeviceHandler() override;  // 00
 

@@ -9,9 +9,9 @@ namespace RE
 	class ExtraSoul : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraSoul;
-		inline static constexpr auto VTABLE = VTABLE_ExtraSoul;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSoul;
+		inline static auto RTTI = RTTI_ExtraSoul;
+		inline static auto VTABLE = VTABLE_ExtraSoul;
+		inline static auto EXTRADATATYPE = ExtraDataType::kSoul;
 
 		ExtraSoul();
 		explicit ExtraSoul(SOUL_LEVEL a_level);

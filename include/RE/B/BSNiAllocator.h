@@ -7,7 +7,7 @@ namespace RE
 	class BSNiAllocator : public NiAllocator
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSNiAllocator;
+		inline static auto RTTI = RTTI_BSNiAllocator;
 
 		~BSNiAllocator() override;  // 00
 

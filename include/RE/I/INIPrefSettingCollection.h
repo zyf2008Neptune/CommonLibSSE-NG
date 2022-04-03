@@ -7,7 +7,7 @@ namespace RE
 	class INIPrefSettingCollection : public INISettingCollection
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_INIPrefSettingCollection;
+		inline static auto RTTI = RTTI_INIPrefSettingCollection;
 
 		~INIPrefSettingCollection() override;  // 00
 

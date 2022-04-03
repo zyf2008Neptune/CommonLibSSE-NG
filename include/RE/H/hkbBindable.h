@@ -12,7 +12,7 @@ namespace RE
 	class hkbBindable : public hkReferencedObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkbBindable;
+		inline static auto RTTI = RTTI_hkbBindable;
 
 		~hkbBindable() override;  // 00
 

@@ -8,7 +8,7 @@ namespace RE
 	class BGSMessageIcon : public BaseFormComponent
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSMessageIcon;
+		inline static auto RTTI = RTTI_BGSMessageIcon;
 
 		~BGSMessageIcon() override;  // 00
 

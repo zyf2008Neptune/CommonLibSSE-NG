@@ -9,8 +9,8 @@ namespace RE
 	class ExtraLastFinishedSequence : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraLastFinishedSequence;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLastFinishedSequence;
+		inline static auto RTTI = RTTI_ExtraLastFinishedSequence;
+		inline static auto EXTRADATATYPE = ExtraDataType::kLastFinishedSequence;
 
 		virtual ~ExtraLastFinishedSequence();  // 00
 

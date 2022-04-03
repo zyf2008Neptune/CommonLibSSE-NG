@@ -16,7 +16,7 @@ namespace RE
 		public PlayerInputHandler  // 20
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ThirdPersonState;
+		inline static auto RTTI = RTTI_ThirdPersonState;
 
 		~ThirdPersonState() override;  // 00
 

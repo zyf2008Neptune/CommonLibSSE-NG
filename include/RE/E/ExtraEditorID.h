@@ -9,8 +9,8 @@ namespace RE
 	class ExtraEditorID : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraEditorID;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kEditorID;
+		inline static auto RTTI = RTTI_ExtraEditorID;
+		inline static auto EXTRADATATYPE = ExtraDataType::kEditorID;
 
 		~ExtraEditorID() override;  // 00
 

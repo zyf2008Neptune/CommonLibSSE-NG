@@ -14,7 +14,7 @@ namespace RE
 	class hkpWorldCinfo : public hkReferencedObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpWorldCinfo;
+		inline static auto RTTI = RTTI_hkpWorldCinfo;
 
 		enum class SolverType
 		{

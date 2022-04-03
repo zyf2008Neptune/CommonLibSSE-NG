@@ -21,8 +21,8 @@ namespace RE
 		public BGSKeywordForm              // 90
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESObjectACTI;
-		inline static constexpr auto VTABLE = VTABLE_TESObjectACTI;
+		inline static auto RTTI = RTTI_TESObjectACTI;
+		inline static auto VTABLE = VTABLE_TESObjectACTI;
 		inline static constexpr auto FORMTYPE = FormType::Activator;
 
 		enum class ActiFlags

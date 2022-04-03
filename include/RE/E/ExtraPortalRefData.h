@@ -15,8 +15,8 @@ namespace RE
 	class ExtraPortalRefData : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraPortalRefData;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPortalRefData;
+		inline static auto RTTI = RTTI_ExtraPortalRefData;
+		inline static auto EXTRADATATYPE = ExtraDataType::kPortalRefData;
 
 		virtual ~ExtraPortalRefData();  // 00
 

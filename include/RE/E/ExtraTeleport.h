@@ -21,8 +21,8 @@ namespace RE
 	class ExtraTeleport : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraTeleport;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kTeleport;
+		inline static auto RTTI = RTTI_ExtraTeleport;
+		inline static auto EXTRADATATYPE = ExtraDataType::kTeleport;
 
 		~ExtraTeleport() override;  // 00
 

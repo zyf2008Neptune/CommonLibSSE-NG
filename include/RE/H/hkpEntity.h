@@ -22,7 +22,7 @@ namespace RE
 	class hkpEntity : public hkpWorldObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpEntity;
+		inline static auto RTTI = RTTI_hkpEntity;
 
 		enum class SpuCollisionCallbackEventFilter
 		{

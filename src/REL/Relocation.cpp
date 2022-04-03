@@ -43,6 +43,7 @@
 #define NOMCX
 
 #include <Windows.h>
+#include <Psapi.h>
 
 namespace REL
 {

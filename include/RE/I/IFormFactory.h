@@ -18,7 +18,7 @@ namespace RE
 	class IFormFactory
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_IFormFactory;
+		inline static auto RTTI = RTTI_IFormFactory;
 
 		virtual ~IFormFactory();  // 00
 

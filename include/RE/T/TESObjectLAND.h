@@ -45,8 +45,8 @@ namespace RE
 		public TESChildCell  // 20
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESObjectLAND;
-		inline static constexpr auto VTABLE = VTABLE_TESObjectLAND;
+		inline static auto RTTI = RTTI_TESObjectLAND;
+		inline static auto VTABLE = VTABLE_TESObjectLAND;
 		inline static constexpr auto FORMTYPE = FormType::Land;
 
 		struct RecordFlags

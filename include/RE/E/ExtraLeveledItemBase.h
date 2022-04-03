@@ -10,8 +10,8 @@ namespace RE
 	class ExtraLeveledItemBase : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraLeveledItemBase;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLeveledItemBase;
+		inline static auto RTTI = RTTI_ExtraLeveledItemBase;
+		inline static auto EXTRADATATYPE = ExtraDataType::kLeveledItemBase;
 
 		virtual ~ExtraLeveledItemBase();  // 00
 

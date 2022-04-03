@@ -8,8 +8,8 @@ namespace RE
 	class ExtraFromAlias : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraFromAlias;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFromAlias;
+		inline static auto RTTI = RTTI_ExtraFromAlias;
+		inline static auto EXTRADATATYPE = ExtraDataType::kFromAlias;
 
 		virtual ~ExtraFromAlias();  // 00
 

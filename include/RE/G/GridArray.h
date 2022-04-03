@@ -5,7 +5,7 @@ namespace RE
 	class GridArray
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_GridArray;
+		inline static auto RTTI = RTTI_GridArray;
 
 		virtual ~GridArray();  // 00
 

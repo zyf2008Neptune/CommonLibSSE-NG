@@ -9,8 +9,8 @@ namespace RE
 	class DialoguePackage : public TESPackage
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_DialoguePackage;
-		inline static constexpr auto VTABLE = VTABLE_DialoguePackage;
+		inline static auto RTTI = RTTI_DialoguePackage;
+		inline static auto VTABLE = VTABLE_DialoguePackage;
 		inline static constexpr auto FORMTYPE = FormType::Package;
 
 		~DialoguePackage() override;  // 00

@@ -9,8 +9,8 @@ namespace RE
 	class ExtraSavedAnimation : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraSavedAnimation;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSavedAnimation;
+		inline static auto RTTI = RTTI_ExtraSavedAnimation;
+		inline static auto EXTRADATATYPE = ExtraDataType::kSavedAnimation;
 
 		virtual ~ExtraSavedAnimation();  // 00
 

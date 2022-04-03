@@ -12,9 +12,9 @@ namespace RE
 	class ExtraForcedTarget : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraForcedTarget;
-		inline static constexpr auto VTABLE = VTABLE_ExtraForcedTarget;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kForcedTarget;
+		inline static auto RTTI = RTTI_ExtraForcedTarget;
+		inline static auto VTABLE = VTABLE_ExtraForcedTarget;
+		inline static auto EXTRADATATYPE = ExtraDataType::kForcedTarget;
 
 		ExtraForcedTarget();
 		explicit ExtraForcedTarget(ObjectRefHandle a_target);

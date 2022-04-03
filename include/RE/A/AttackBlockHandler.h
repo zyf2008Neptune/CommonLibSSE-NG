@@ -7,7 +7,7 @@ namespace RE
 	struct AttackBlockHandler : public HeldStateHandler
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_AttackBlockHandler;
+		inline static auto RTTI = RTTI_AttackBlockHandler;
 
 		virtual ~AttackBlockHandler();  // 00
 

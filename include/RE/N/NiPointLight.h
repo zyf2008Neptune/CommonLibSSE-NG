@@ -7,8 +7,8 @@ namespace RE
 	class NiPointLight : public NiLight
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_NiPointLight;
-		inline static constexpr auto Ni_RTTI = NiRTTI_NiPointLight;
+		inline static auto RTTI = RTTI_NiPointLight;
+		inline static auto Ni_RTTI = NiRTTI_NiPointLight;
 
 		~NiPointLight() override;  // 00
 

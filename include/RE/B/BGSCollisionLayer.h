@@ -14,8 +14,8 @@ namespace RE
 		public TESDescription  // 20
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSCollisionLayer;
-		inline static constexpr auto VTABLE = VTABLE_BGSCollisionLayer;
+		inline static auto RTTI = RTTI_BGSCollisionLayer;
+		inline static auto VTABLE = VTABLE_BGSCollisionLayer;
 		inline static constexpr auto FORMTYPE = FormType::CollisionLayer;
 
 		enum class FLAG  // GNAM

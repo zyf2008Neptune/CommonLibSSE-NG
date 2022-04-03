@@ -15,8 +15,8 @@ namespace RE
 		public TESModel  // 20
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSImpactData;
-		inline static constexpr auto VTABLE = VTABLE_BGSImpactData;
+		inline static auto RTTI = RTTI_BGSImpactData;
+		inline static auto VTABLE = VTABLE_BGSImpactData;
 		inline static constexpr auto FORMTYPE = FormType::Impact;
 
 		enum class ORIENTATION

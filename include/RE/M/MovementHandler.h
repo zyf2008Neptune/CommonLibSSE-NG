@@ -7,7 +7,7 @@ namespace RE
 	struct MovementHandler : public PlayerInputHandler
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_MovementHandler;
+		inline static auto RTTI = RTTI_MovementHandler;
 
 		~MovementHandler() override;  // 00
 

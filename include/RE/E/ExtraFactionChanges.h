@@ -12,8 +12,8 @@ namespace RE
 	class ExtraFactionChanges : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraFactionChanges;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFactionChanges;
+		inline static auto RTTI = RTTI_ExtraFactionChanges;
+		inline static auto EXTRADATATYPE = ExtraDataType::kFactionChanges;
 
 		virtual ~ExtraFactionChanges();  // 00
 

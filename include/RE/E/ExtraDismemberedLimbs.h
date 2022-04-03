@@ -24,8 +24,8 @@ namespace RE
 	class ExtraDismemberedLimbs : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraDismemberedLimbs;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kDismemberedLimbs;
+		inline static auto RTTI = RTTI_ExtraDismemberedLimbs;
+		inline static auto EXTRADATATYPE = ExtraDataType::kDismemberedLimbs;
 
 		~ExtraDismemberedLimbs() override;  // 00
 

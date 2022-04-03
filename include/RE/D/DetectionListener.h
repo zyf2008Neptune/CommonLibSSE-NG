@@ -7,7 +7,7 @@ namespace RE
 	class DetectionListener : public NiRefObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_DetectionListener;
+		inline static auto RTTI = RTTI_DetectionListener;
 
 		~DetectionListener() override;  // 00
 

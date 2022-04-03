@@ -17,8 +17,8 @@ namespace RE
 	class ExtraLevCreaModifier : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraLevCreaModifier;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLevCreaModifier;
+		inline static auto RTTI = RTTI_ExtraLevCreaModifier;
+		inline static auto EXTRADATATYPE = ExtraDataType::kLevCreaModifier;
 
 		virtual ~ExtraLevCreaModifier();  // 00
 

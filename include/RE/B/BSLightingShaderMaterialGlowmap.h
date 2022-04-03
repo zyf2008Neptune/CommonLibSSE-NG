@@ -10,9 +10,9 @@ namespace RE
 	class BSLightingShaderMaterialGlowmap : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialGlowmap;
-		inline static constexpr auto VTABLE = VTABLE_BSLightingShaderMaterialGlowmap;
-		inline static constexpr auto FEATURE = Feature::kGlowMap;
+		inline static auto RTTI = RTTI_BSLightingShaderMaterialGlowmap;
+		inline static auto VTABLE = VTABLE_BSLightingShaderMaterialGlowmap;
+		inline static auto FEATURE = Feature::kGlowMap;
 
 		~BSLightingShaderMaterialGlowmap() override;  // 00
 

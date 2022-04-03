@@ -10,8 +10,8 @@ namespace RE
 	class ExtraTresPassPackage : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraTresPassPackage;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kTresPassPackage;
+		inline static auto RTTI = RTTI_ExtraTresPassPackage;
+		inline static auto EXTRADATATYPE = ExtraDataType::kTresPassPackage;
 
 		virtual ~ExtraTresPassPackage();  // 00
 

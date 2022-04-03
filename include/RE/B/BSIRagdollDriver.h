@@ -7,7 +7,7 @@ namespace RE
 	class BSIRagdollDriver
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSIRagdollDriver;
+		inline static auto RTTI = RTTI_BSIRagdollDriver;
 
 		virtual ~BSIRagdollDriver();  // 00
 

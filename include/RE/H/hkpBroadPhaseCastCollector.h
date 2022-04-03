@@ -7,7 +7,7 @@ namespace RE
 	class hkpBroadPhaseCastCollector
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpBroadPhaseCastCollector;
+		inline static auto RTTI = RTTI_hkpBroadPhaseCastCollector;
 
 		virtual ~hkpBroadPhaseCastCollector() = default;  // 00
 

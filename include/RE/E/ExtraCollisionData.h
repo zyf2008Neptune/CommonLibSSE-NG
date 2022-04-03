@@ -15,8 +15,8 @@ namespace RE
 	class ExtraCollisionData : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraCollisionData;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCollisionData;
+		inline static auto RTTI = RTTI_ExtraCollisionData;
+		inline static auto EXTRADATATYPE = ExtraDataType::kCollisionData;
 
 		~ExtraCollisionData() override;  // 00
 

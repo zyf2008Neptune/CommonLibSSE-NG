@@ -15,7 +15,7 @@ namespace RE
 		public MenuEventHandler  // 30
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_RaceSexMenu;
+		inline static auto                RTTI = RTTI_RaceSexMenu;
 		constexpr static std::string_view MENU_NAME = "RaceSex Menu";
 
 		~RaceSexMenu() override;  // 00

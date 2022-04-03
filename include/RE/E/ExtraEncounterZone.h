@@ -10,8 +10,8 @@ namespace RE
 	class ExtraEncounterZone : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraEncounterZone;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kEncounterZone;
+		inline static auto RTTI = RTTI_ExtraEncounterZone;
+		inline static auto EXTRADATATYPE = ExtraDataType::kEncounterZone;
 
 		~ExtraEncounterZone() override;  // 00
 

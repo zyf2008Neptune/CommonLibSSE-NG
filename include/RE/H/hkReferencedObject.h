@@ -10,7 +10,7 @@ namespace RE
 	class hkReferencedObject : public hkBaseObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkReferencedObject;
+		inline static auto RTTI = RTTI_hkReferencedObject;
 
 		enum class LockMode
 		{

@@ -19,7 +19,7 @@ namespace RE
 		public hkpRayCollidableFilter          // 20
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpCollisionFilter;
+		inline static auto RTTI = RTTI_hkpCollisionFilter;
 
 		enum class hkpFilterType
 		{

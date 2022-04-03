@@ -12,7 +12,7 @@ namespace RE
 		class StreamBase
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSResource__StreamBase;
+			inline static auto RTTI = RTTI_BSResource__StreamBase;
 
 			enum : std::uint32_t
 			{

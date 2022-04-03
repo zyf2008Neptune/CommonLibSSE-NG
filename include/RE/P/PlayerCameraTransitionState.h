@@ -14,7 +14,7 @@ namespace RE
 	class PlayerCameraTransitionState : public TESCameraState
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_PlayerCameraTransitionState;
+		inline static auto RTTI = RTTI_PlayerCameraTransitionState;
 
 		virtual ~PlayerCameraTransitionState();  // 00
 

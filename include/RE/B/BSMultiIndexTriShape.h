@@ -16,8 +16,8 @@ namespace RE
 	class BSMultiIndexTriShape : public BSTriShape
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSMultiIndexTriShape;
-		inline static constexpr auto Ni_RTTI = NiRTTI_BSMultiIndexTriShape;
+		inline static auto RTTI = RTTI_BSMultiIndexTriShape;
+		inline static auto Ni_RTTI = NiRTTI_BSMultiIndexTriShape;
 
 		~BSMultiIndexTriShape() override;  // 00
 

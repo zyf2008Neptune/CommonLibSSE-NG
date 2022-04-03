@@ -8,9 +8,9 @@ namespace RE
 	class BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSExtraData;
-		inline static constexpr auto VTABLE = VTABLE_BSExtraData;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kNone;
+		inline static auto RTTI = RTTI_BSExtraData;
+		inline static auto VTABLE = VTABLE_BSExtraData;
+		inline static auto EXTRADATATYPE = ExtraDataType::kNone;
 
 		BSExtraData();
 		virtual ~BSExtraData() = default;  // 00

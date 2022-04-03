@@ -5,7 +5,7 @@ namespace RE
 	class BSGameSound
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSGameSound;
+		inline static auto RTTI = RTTI_BSGameSound;
 
 		// add
 		virtual void Unk_00(void);  // 00 - { return; }

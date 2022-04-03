@@ -7,7 +7,7 @@ namespace RE
 	class ShoutMeter : public HUDMeter
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ShoutMeter;
+		inline static auto RTTI = RTTI_ShoutMeter;
 
 		~ShoutMeter() override;  // 00
 

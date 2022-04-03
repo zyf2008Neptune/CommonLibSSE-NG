@@ -7,7 +7,7 @@ namespace RE
 	class BSSystemFileStorage : public BSStorage
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSSystemFileStorage;
+		inline static auto RTTI = RTTI_BSSystemFileStorage;
 
 		struct Attributes
 		{

@@ -27,8 +27,8 @@ namespace RE
 	class NiSkinPartition : public NiObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_NiSkinPartition;
-		inline static constexpr auto Ni_RTTI = NiRTTI_NiSkinPartition;
+		inline static auto RTTI = RTTI_NiSkinPartition;
+		inline static auto Ni_RTTI = NiRTTI_NiSkinPartition;
 
 		class Partition
 		{

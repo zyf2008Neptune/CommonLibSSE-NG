@@ -8,7 +8,7 @@ namespace RE
 	class BGSStoryManagerNodeBase : public BGSStoryManagerTreeForm
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSStoryManagerNodeBase;
+		inline static auto RTTI = RTTI_BGSStoryManagerNodeBase;
 
 		struct Flags  // DNAM
 		{

@@ -10,8 +10,8 @@ namespace RE
 	class ExtraDecalGroup : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraDecalGroup;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kDecalGroup;
+		inline static auto RTTI = RTTI_ExtraDecalGroup;
+		inline static auto EXTRADATATYPE = ExtraDataType::kDecalGroup;
 
 		~ExtraDecalGroup() override;  // 00
 

@@ -35,8 +35,8 @@ namespace RE
 		public BSTEventSink<MenuOpenCloseEvent>  // 188
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESNPC;
-		inline static constexpr auto VTABLE = VTABLE_TESNPC;
+		inline static auto RTTI = RTTI_TESNPC;
+		inline static auto VTABLE = VTABLE_TESNPC;
 
 		using HeadPartType = BGSHeadPart::HeadPartType;
 		inline static constexpr auto FORMTYPE = FormType::NPC;

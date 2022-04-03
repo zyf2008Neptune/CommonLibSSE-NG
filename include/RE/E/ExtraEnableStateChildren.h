@@ -10,8 +10,8 @@ namespace RE
 	class ExtraEnableStateChildren : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraEnableStateChildren;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kEnableStateChildren;
+		inline static auto RTTI = RTTI_ExtraEnableStateChildren;
+		inline static auto EXTRADATATYPE = ExtraDataType::kEnableStateChildren;
 
 		virtual ~ExtraEnableStateChildren();  // 00
 

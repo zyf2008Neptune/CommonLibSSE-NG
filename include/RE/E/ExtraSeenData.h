@@ -10,8 +10,8 @@ namespace RE
 	class ExtraSeenData : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraSeenData;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSeenData;
+		inline static auto RTTI = RTTI_ExtraSeenData;
+		inline static auto EXTRADATATYPE = ExtraDataType::kSeenData;
 
 		~ExtraSeenData() override;  // 00
 

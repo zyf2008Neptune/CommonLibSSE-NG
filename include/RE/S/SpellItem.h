@@ -15,8 +15,8 @@ namespace RE
 		public TESDescription         // B0
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_SpellItem;
-		inline static constexpr auto VTABLE = VTABLE_SpellItem;
+		inline static auto RTTI = RTTI_SpellItem;
+		inline static auto VTABLE = VTABLE_SpellItem;
 		inline static constexpr auto FORMTYPE = FormType::Spell;
 
 		enum class SpellFlag

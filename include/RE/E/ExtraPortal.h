@@ -11,8 +11,8 @@ namespace RE
 	class ExtraPortal : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraPortal;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPortal;
+		inline static auto RTTI = RTTI_ExtraPortal;
+		inline static auto EXTRADATATYPE = ExtraDataType::kPortal;
 
 		~ExtraPortal() override;  // 00
 

@@ -8,8 +8,8 @@ namespace RE
 	class ExtraRefractionProperty : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraRefractionProperty;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRefractionProperty;
+		inline static auto RTTI = RTTI_ExtraRefractionProperty;
+		inline static auto EXTRADATATYPE = ExtraDataType::kRefractionProperty;
 
 		~ExtraRefractionProperty() override;  // 00
 

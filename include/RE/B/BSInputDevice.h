@@ -10,7 +10,7 @@ namespace RE
 	class BSInputDevice : public BSIInputDevice
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSInputDevice;
+		inline static auto RTTI = RTTI_BSInputDevice;
 
 		struct InputButton
 		{

@@ -9,7 +9,7 @@ namespace RE
 	class BGSOverridePackCollection : public BaseFormComponent
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSOverridePackCollection;
+		inline static auto RTTI = RTTI_BGSOverridePackCollection;
 
 		~BGSOverridePackCollection() override;  // 00
 

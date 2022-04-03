@@ -12,7 +12,7 @@ namespace RE
 	class MessageBoxData : public IUIMessageData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_MessageBoxData;
+		inline static auto RTTI = RTTI_MessageBoxData;
 
 		~MessageBoxData() override;  // 00
 

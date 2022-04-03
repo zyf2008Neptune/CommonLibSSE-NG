@@ -14,7 +14,7 @@ namespace RE
 	class hkpShapeCollectionFilter
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpShapeCollectionFilter;
+		inline static auto RTTI = RTTI_hkpShapeCollectionFilter;
 
 		// add
 		virtual bool         IsCollisionEnabled1(const hkpCollisionInput& a_input, const hkpCdBody& a_bodyA, const hkpCdBody& a_bodyB, const hkpShapeContainer& a_shapeB, hkpShapeKey a_key) const = 0;                                                                      // 00

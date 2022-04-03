@@ -7,7 +7,7 @@ namespace RE
 	class ActorMover
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ActorMover;
+		inline static auto RTTI = RTTI_ActorMover;
 
 		virtual ~ActorMover();  // 00
 

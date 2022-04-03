@@ -7,7 +7,7 @@ namespace RE
 	class TESModelTri : public TESModel
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESModelTri;
+		inline static auto RTTI = RTTI_TESModelTri;
 
 		~TESModelTri() override;  // 00
 

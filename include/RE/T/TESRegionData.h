@@ -7,7 +7,7 @@ namespace RE
 	class TESRegionData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESRegionData;
+		inline static auto RTTI = RTTI_TESRegionData;
 
 		enum class Type
 		{

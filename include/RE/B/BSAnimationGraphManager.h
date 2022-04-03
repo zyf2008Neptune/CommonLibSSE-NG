@@ -47,7 +47,7 @@ namespace RE
 		public BSIntrusiveRefCounted                 // 08
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSAnimationGraphManager;
+		inline static auto RTTI = RTTI_BSAnimationGraphManager;
 
 		struct AnimationVariable
 		{

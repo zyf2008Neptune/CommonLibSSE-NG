@@ -9,8 +9,8 @@ namespace RE
 	class NiCollisionObject : public NiObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_NiCollisionObject;
-		inline static constexpr auto Ni_RTTI = NiRTTI_NiCollisionObject;
+		inline static auto RTTI = RTTI_NiCollisionObject;
+		inline static auto Ni_RTTI = NiRTTI_NiCollisionObject;
 
 		~NiCollisionObject() override = 0;  // 00
 

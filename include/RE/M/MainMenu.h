@@ -20,7 +20,7 @@ namespace RE
 		public GFxFunctionHandler              // 40
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_MainMenu;
+		inline static auto                RTTI = RTTI_MainMenu;
 		constexpr static std::string_view MENU_NAME = "Main Menu";
 
 		~MainMenu() override;  // 00

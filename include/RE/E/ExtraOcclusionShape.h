@@ -11,8 +11,8 @@ namespace RE
 	class ExtraOcclusionShape : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraOcclusionShape;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kOcclusionShape;
+		inline static auto RTTI = RTTI_ExtraOcclusionShape;
+		inline static auto EXTRADATATYPE = ExtraDataType::kOcclusionShape;
 
 		virtual ~ExtraOcclusionShape();  // 00
 

@@ -12,12 +12,12 @@ namespace RE
 		class EnchantConstructMenu : public CraftingSubMenu
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu;
+			inline static auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu;
 
 			class EnchantMenuCallback : public IMessageBoxCallback
 			{
 			public:
-				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuCallback;
+				inline static auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuCallback;
 
 				virtual ~EnchantMenuCallback();  // 00
 
@@ -29,7 +29,7 @@ namespace RE
 			class EnchantMenuDisenchantCallback : public EnchantMenuCallback
 			{
 			public:
-				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuDisenchantCallback;
+				inline static auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuDisenchantCallback;
 
 				virtual ~EnchantMenuDisenchantCallback();  // 00
 
@@ -41,7 +41,7 @@ namespace RE
 			class EnchantMenuCraftCallback : public EnchantMenuCallback
 			{
 			public:
-				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuCraftCallback;
+				inline static auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuCraftCallback;
 
 				virtual ~EnchantMenuCraftCallback();  // 00
 
@@ -53,7 +53,7 @@ namespace RE
 			class EnchantMenuExitCallback : public EnchantMenuCallback
 			{
 			public:
-				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuExitCallback;
+				inline static auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuExitCallback;
 
 				virtual ~EnchantMenuExitCallback();  // 00
 

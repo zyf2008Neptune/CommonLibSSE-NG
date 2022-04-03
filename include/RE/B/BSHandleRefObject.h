@@ -7,7 +7,7 @@ namespace RE
 	class BSHandleRefObject : public NiRefObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSHandleRefObject;
+		inline static auto RTTI = RTTI_BSHandleRefObject;
 
 		enum
 		{

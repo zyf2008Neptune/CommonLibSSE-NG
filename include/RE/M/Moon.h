@@ -11,7 +11,7 @@ namespace RE
 	class Moon : public SkyObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_Moon;
+		inline static auto RTTI = RTTI_Moon;
 
 		enum class UpdateStatus
 		{

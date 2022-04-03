@@ -49,8 +49,8 @@ namespace RE
 		public BGSKeywordForm              // 0F8
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESAmmo;
-		inline static constexpr auto VTABLE = VTABLE_TESAmmo;
+		inline static auto RTTI = RTTI_TESAmmo;
+		inline static auto VTABLE = VTABLE_TESAmmo;
 		inline static constexpr auto FORMTYPE = FormType::Ammo;
 
 		struct RecordFlags

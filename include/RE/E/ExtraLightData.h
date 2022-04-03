@@ -23,9 +23,9 @@ namespace RE
 	class ExtraLightData : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraLightData;
-		inline static constexpr auto VTABLE = VTABLE_ExtraLightData;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLightData;
+		inline static auto RTTI = RTTI_ExtraLightData;
+		inline static auto VTABLE = VTABLE_ExtraLightData;
+		inline static auto EXTRADATATYPE = ExtraDataType::kLightData;
 
 		ExtraLightData();
 		virtual ~ExtraLightData() = default;  // 00

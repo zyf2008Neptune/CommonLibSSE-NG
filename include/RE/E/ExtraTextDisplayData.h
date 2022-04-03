@@ -13,9 +13,9 @@ namespace RE
 	class ExtraTextDisplayData : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraTextDisplayData;
-		inline static constexpr auto VTABLE = VTABLE_ExtraTextDisplayData;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kTextDisplayData;
+		inline static auto RTTI = RTTI_ExtraTextDisplayData;
+		inline static auto VTABLE = VTABLE_ExtraTextDisplayData;
+		inline static auto EXTRADATATYPE = ExtraDataType::kTextDisplayData;
 
 		enum class DisplayDataType
 		{

@@ -8,8 +8,8 @@ namespace RE
 	class ExtraTimeLeft : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraTimeLeft;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kTimeLeft;
+		inline static auto RTTI = RTTI_ExtraTimeLeft;
+		inline static auto EXTRADATATYPE = ExtraDataType::kTimeLeft;
 
 		~ExtraTimeLeft() override;  // 00
 

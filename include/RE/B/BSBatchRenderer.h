@@ -8,7 +8,7 @@ namespace RE
 	class BSBatchRenderer
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSBatchRenderer;
+		inline static auto RTTI = RTTI_BSBatchRenderer;
 
 		virtual ~BSBatchRenderer();  // 00
 

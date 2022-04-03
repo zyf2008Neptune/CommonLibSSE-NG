@@ -10,8 +10,8 @@ namespace RE
 	class ExtraReflectorRefs : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraReflectorRefs;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kReflectorRefs;
+		inline static auto RTTI = RTTI_ExtraReflectorRefs;
+		inline static auto EXTRADATATYPE = ExtraDataType::kReflectorRefs;
 
 		virtual ~ExtraReflectorRefs();  // 00
 

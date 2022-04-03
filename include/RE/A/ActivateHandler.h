@@ -7,7 +7,7 @@ namespace RE
 	struct ActivateHandler : public HeldStateHandler
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ActivateHandler;
+		inline static auto RTTI = RTTI_ActivateHandler;
 
 		~ActivateHandler() override;  // 00
 

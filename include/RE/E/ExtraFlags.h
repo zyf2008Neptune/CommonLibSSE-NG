@@ -8,8 +8,8 @@ namespace RE
 	class ExtraFlags : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraFlags;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kFlags;
+		inline static auto RTTI = RTTI_ExtraFlags;
+		inline static auto EXTRADATATYPE = ExtraDataType::kFlags;
 
 		enum class Flag
 		{

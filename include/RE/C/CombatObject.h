@@ -10,7 +10,7 @@ namespace RE
 	class CombatObject : public NiRefObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_CombatObject;
+		inline static auto RTTI = RTTI_CombatObject;
 
 		~CombatObject() override;  // 00
 

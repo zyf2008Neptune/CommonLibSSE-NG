@@ -7,7 +7,7 @@ namespace RE
 	class MapLookHandler : public MapInputHandler
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_MapLookHandler;
+		inline static auto RTTI = RTTI_MapLookHandler;
 
 		~MapLookHandler() override;  // 00
 

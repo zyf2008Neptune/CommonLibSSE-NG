@@ -7,7 +7,7 @@ namespace RE
 		class IVMSaveLoadInterface
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScript__IVMSaveLoadInterface;
+			inline static auto RTTI = RTTI_BSScript__IVMSaveLoadInterface;
 
 			virtual ~IVMSaveLoadInterface();  // 00
 

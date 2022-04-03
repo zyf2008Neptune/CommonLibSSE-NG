@@ -10,8 +10,8 @@ namespace RE
 	class ExtraRegionList : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraRegionList;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRegionList;
+		inline static auto RTTI = RTTI_ExtraRegionList;
+		inline static auto EXTRADATATYPE = ExtraDataType::kRegionList;
 
 		~ExtraRegionList() override;  // 00
 

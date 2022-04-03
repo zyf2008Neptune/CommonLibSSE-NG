@@ -7,7 +7,7 @@ namespace RE
 	class StandardItemData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_StandardItemData;
+		inline static auto RTTI = RTTI_StandardItemData;
 
 		virtual ~StandardItemData();  // 00
 

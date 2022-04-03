@@ -7,7 +7,7 @@ namespace RE
 	class ahkpCharacterProxy : public hkpCharacterProxy
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ahkpCharacterProxy;
+		inline static auto RTTI = RTTI_ahkpCharacterProxy;
 
 		~ahkpCharacterProxy() override;  // 00
 

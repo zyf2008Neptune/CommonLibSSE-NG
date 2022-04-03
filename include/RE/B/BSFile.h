@@ -7,7 +7,7 @@ namespace RE
 	class BSFile : public NiFile
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSFile;
+		inline static auto RTTI = RTTI_BSFile;
 
 		virtual ~BSFile();  // 00
 

@@ -10,9 +10,9 @@ namespace RE
 	class BSLightingShaderMaterialEnvmap : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialEnvmap;
-		inline static constexpr auto VTABLE = VTABLE_BSLightingShaderMaterialEnvmap;
-		inline static constexpr auto FEATURE = Feature::kEnvironmentMap;
+		inline static auto RTTI = RTTI_BSLightingShaderMaterialEnvmap;
+		inline static auto VTABLE = VTABLE_BSLightingShaderMaterialEnvmap;
+		inline static auto FEATURE = Feature::kEnvironmentMap;
 
 		~BSLightingShaderMaterialEnvmap() override;  // 00
 

@@ -13,7 +13,7 @@ namespace RE
 		public bhkCharacterController      // 010
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_bhkCharProxyController;
+		inline static auto RTTI = RTTI_bhkCharProxyController;
 
 		~bhkCharProxyController() override;  // 00
 

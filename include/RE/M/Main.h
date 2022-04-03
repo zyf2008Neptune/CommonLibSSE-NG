@@ -50,7 +50,7 @@ namespace RE
 		public BSTEventSink<BSGamerProfileEvent>   // 08
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_Main;
+		inline static auto RTTI = RTTI_Main;
 
 		~Main() override;  // 00
 

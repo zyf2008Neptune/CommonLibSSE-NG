@@ -7,7 +7,7 @@ namespace RE
 	class hkpEntityListener
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpEntityListener;
+		inline static auto RTTI = RTTI_hkpEntityListener;
 
 		virtual ~hkpEntityListener();  // 00
 

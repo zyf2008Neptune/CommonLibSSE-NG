@@ -9,8 +9,8 @@ namespace RE
 	class BGSLocAlias : public BGSBaseAlias
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSLocAlias;
-		inline static constexpr auto VMTYPEID = static_cast<VMTypeID>(141);
+		inline static auto RTTI = RTTI_BGSLocAlias;
+		inline static auto VMTYPEID = static_cast<VMTypeID>(141);
 
 		~BGSLocAlias() override;  // 00
 

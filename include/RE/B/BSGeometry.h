@@ -14,8 +14,8 @@ namespace RE
 	class BSGeometry : public NiAVObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSGeometry;
-		inline static constexpr auto Ni_RTTI = NiRTTI_BSGeometry;
+		inline static auto RTTI = RTTI_BSGeometry;
+		inline static auto Ni_RTTI = NiRTTI_BSGeometry;
 
 		enum class Type
 		{

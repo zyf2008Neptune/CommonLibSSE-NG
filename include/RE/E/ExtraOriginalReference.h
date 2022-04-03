@@ -9,8 +9,8 @@ namespace RE
 	class ExtraOriginalReference : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraOriginalReference;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kOriginalReference;
+		inline static auto RTTI = RTTI_ExtraOriginalReference;
+		inline static auto EXTRADATATYPE = ExtraDataType::kOriginalReference;
 
 		virtual ~ExtraOriginalReference();  // 00
 

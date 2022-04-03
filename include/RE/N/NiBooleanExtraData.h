@@ -7,9 +7,9 @@ namespace RE
 	class NiBooleanExtraData : public NiExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_NiBooleanExtraData;
-		inline static constexpr auto Ni_RTTI = NiRTTI_NiBooleanExtraData;
-		inline static constexpr auto VTABLE = VTABLE_NiBooleanExtraData;
+		inline static auto RTTI = RTTI_NiBooleanExtraData;
+		inline static auto Ni_RTTI = NiRTTI_NiBooleanExtraData;
+		inline static auto VTABLE = VTABLE_NiBooleanExtraData;
 
 		~NiBooleanExtraData() override;  // 00
 

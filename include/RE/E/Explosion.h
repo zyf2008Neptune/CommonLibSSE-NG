@@ -21,8 +21,8 @@ namespace RE
 	class Explosion : public TESObjectREFR
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_Explosion;
-		inline static constexpr auto VTABLE = VTABLE_Explosion;
+		inline static auto RTTI = RTTI_Explosion;
+		inline static auto VTABLE = VTABLE_Explosion;
 		inline static constexpr auto FORMTYPE = FormType::Explosion;
 
 		enum class Flags

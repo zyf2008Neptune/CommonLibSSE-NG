@@ -11,7 +11,7 @@ namespace RE
 	class AbstractHeap : public IMemoryHeap
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_AbstractHeap;
+		inline static auto RTTI = RTTI_AbstractHeap;
 
 		virtual ~AbstractHeap();  // 00
 

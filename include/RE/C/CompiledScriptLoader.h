@@ -13,7 +13,7 @@ namespace RE
 		class CompiledScriptLoader : public ILoader
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScript__CompiledScriptLoader;
+			inline static auto RTTI = RTTI_BSScript__CompiledScriptLoader;
 
 			~CompiledScriptLoader() override;  // 00
 

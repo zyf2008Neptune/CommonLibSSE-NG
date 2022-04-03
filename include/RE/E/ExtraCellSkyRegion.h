@@ -10,8 +10,8 @@ namespace RE
 	class ExtraCellSkyRegion : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraCellSkyRegion;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCellSkyRegion;
+		inline static auto RTTI = RTTI_ExtraCellSkyRegion;
+		inline static auto EXTRADATATYPE = ExtraDataType::kCellSkyRegion;
 
 		~ExtraCellSkyRegion() override;  // 00
 

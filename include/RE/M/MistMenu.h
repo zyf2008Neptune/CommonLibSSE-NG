@@ -16,7 +16,7 @@ namespace RE
 		public MenuEventHandler                    // 48
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_MistMenu;
+		inline static auto                RTTI = RTTI_MistMenu;
 		constexpr static std::string_view MENU_NAME = "Mist Menu";
 
 		struct Colors

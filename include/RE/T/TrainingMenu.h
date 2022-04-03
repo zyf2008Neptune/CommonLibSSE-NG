@@ -18,7 +18,7 @@ namespace RE
 		public BSTEventSink<MenuOpenCloseEvent>  // 30
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_TrainingMenu;
+		inline static auto                RTTI = RTTI_TrainingMenu;
 		constexpr static std::string_view MENU_NAME = "Training Menu";
 
 		~TrainingMenu() override;  // 00

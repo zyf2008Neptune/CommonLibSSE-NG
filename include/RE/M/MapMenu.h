@@ -28,7 +28,7 @@ namespace RE
 		public IMapCameraCallbacks                // 00038
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_MapMenu;
+		inline static auto                RTTI = RTTI_MapMenu;
 		constexpr static std::string_view MENU_NAME = "MapMenu";
 
 		~MapMenu() override;  // 00

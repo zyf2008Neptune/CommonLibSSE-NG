@@ -10,8 +10,8 @@ namespace RE
 	class ExtraReservedMarkers : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraReservedMarkers;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kReservedMarkers;
+		inline static auto RTTI = RTTI_ExtraReservedMarkers;
+		inline static auto EXTRADATATYPE = ExtraDataType::kReservedMarkers;
 
 		virtual ~ExtraReservedMarkers();  // 00
 

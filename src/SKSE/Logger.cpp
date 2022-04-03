@@ -103,7 +103,13 @@ namespace SKSE
 			}
 
 			std::filesystem::path path = knownPath.get();
-			path /= "My Games/Skyrim Special Edition/SKSE"sv;
+			path /= "My Games";
+			if (USING_VR) {
+				path /= "Skyrim VR";
+			} else {
+				path /= "Skyrim Special Edition";
+			}
+			path /= "SKSE"sv;
 			return path;
 		}
 	}

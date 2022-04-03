@@ -9,9 +9,9 @@ namespace RE
 	class BSLightingShaderMaterialLODLandscape : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialLODLandscape;
-		inline static constexpr auto VTABLE = VTABLE_BSLightingShaderMaterialLODLandscape;
-		inline static constexpr auto FEATURE = Feature::kLODLandNoise;
+		inline static auto RTTI = RTTI_BSLightingShaderMaterialLODLandscape;
+		inline static auto VTABLE = VTABLE_BSLightingShaderMaterialLODLandscape;
+		inline static auto FEATURE = Feature::kLODLandNoise;
 
 		~BSLightingShaderMaterialLODLandscape() override;  // 00
 

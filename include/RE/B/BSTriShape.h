@@ -7,8 +7,8 @@ namespace RE
 	class BSTriShape : public BSGeometry
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSTriShape;
-		inline static constexpr auto Ni_RTTI = NiRTTI_BSTriShape;
+		inline static auto RTTI = RTTI_BSTriShape;
+		inline static auto Ni_RTTI = NiRTTI_BSTriShape;
 
 		~BSTriShape() override;  // 00
 

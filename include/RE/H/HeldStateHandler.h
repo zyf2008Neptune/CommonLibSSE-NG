@@ -7,7 +7,7 @@ namespace RE
 	class HeldStateHandler : public PlayerInputHandler
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_HeldStateHandler;
+		inline static auto RTTI = RTTI_HeldStateHandler;
 
 		~HeldStateHandler() override;  // 00
 

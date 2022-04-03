@@ -12,7 +12,7 @@ namespace RE
 	class LoadingMenu : public IMenu
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_LoadingMenu;
+		inline static auto                RTTI = RTTI_LoadingMenu;
 		constexpr static std::string_view MENU_NAME = "Loading Menu";
 
 		~LoadingMenu() override;  // 00

@@ -11,8 +11,8 @@ namespace RE
 	class ExtraMagicLight : public ExtraLight
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraMagicLight;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMagicLight;
+		inline static auto RTTI = RTTI_ExtraMagicLight;
+		inline static auto EXTRADATATYPE = ExtraDataType::kMagicLight;
 
 		~ExtraMagicLight() override;  // 00
 

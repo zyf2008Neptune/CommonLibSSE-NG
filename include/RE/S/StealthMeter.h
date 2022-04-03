@@ -8,7 +8,7 @@ namespace RE
 	class StealthMeter : public HUDObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_StealthMeter;
+		inline static auto RTTI = RTTI_StealthMeter;
 
 		~StealthMeter() override;  // 00
 

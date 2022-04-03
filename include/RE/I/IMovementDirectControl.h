@@ -7,7 +7,7 @@ namespace RE
 	class IMovementDirectControl : public IMovementInterface
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_IMovementDirectControl;
+		inline static auto RTTI = RTTI_IMovementDirectControl;
 
 		~IMovementDirectControl() override;  // 00
 

@@ -1,14 +1,20 @@
 {
-  "name": "commonlibsse",
-  "version-string": "1",
-  "description": "A reverse engineered resource for developing F4SE plugins for Skyrim Special Edition",
-  "homepage": "https://github.com/Ryan-rsm-McKenzie/CommonLibSSE",
-  "license": "MIT",
-  "supports": "windows & x64",
-  "dependencies": [
-    "boost-stl-interfaces",
-    "fmt",
-    "rsm-binary-io",
-    "spdlog"
-  ]
+    "name": "commonlibsse-ng",
+    "version-string": "1.0.0",
+    "description": "A fork of CommonLibSSE with advanced features for modern SKSE development.",
+    "homepage": "https://github.com/CharmedBaryon/CommonLibSSE",
+    "license": "MIT",
+    "supports": "windows & x64",
+    "dependencies": [
+        {
+            "name": "vcpkg-cmake-config",
+            "host": true
+        },
+        "boost-stl-interfaces",
+        "fast-cpp-csv-parser",
+        "fmt",
+        "rsm-binary-io",
+        "spdlog",
+        "xbyak"
+    ]
 }

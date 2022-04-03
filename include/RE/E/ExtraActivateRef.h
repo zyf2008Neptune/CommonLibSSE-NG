@@ -11,8 +11,8 @@ namespace RE
 	class ExtraActivateRef : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraActivateRef;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kActivateRef;
+		inline static auto RTTI = RTTI_ExtraActivateRef;
+		inline static auto EXTRADATATYPE = ExtraDataType::kActivateRef;
 
 		~ExtraActivateRef() override;  // 00
 

@@ -7,7 +7,7 @@ namespace RE
 	class CombatGroupDetectionListener : public DetectionListener
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_CombatGroupDetectionListener;
+		inline static auto RTTI = RTTI_CombatGroupDetectionListener;
 
 		~CombatGroupDetectionListener() override;  // 00
 

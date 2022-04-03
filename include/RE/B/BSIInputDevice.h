@@ -7,7 +7,7 @@ namespace RE
 	class BSIInputDevice
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSIInputDevice;
+		inline static auto RTTI = RTTI_BSIInputDevice;
 
 		virtual ~BSIInputDevice();  // 00
 

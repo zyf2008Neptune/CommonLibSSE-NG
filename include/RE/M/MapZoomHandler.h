@@ -7,7 +7,7 @@ namespace RE
 	class MapZoomHandler : public MapInputHandler
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_MapZoomHandler;
+		inline static auto RTTI = RTTI_MapZoomHandler;
 
 		~MapZoomHandler() override;  // 00
 

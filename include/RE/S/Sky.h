@@ -30,7 +30,7 @@ namespace RE
 	class Sky
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_Sky;
+		inline static auto RTTI = RTTI_Sky;
 
 		enum class Mode
 		{

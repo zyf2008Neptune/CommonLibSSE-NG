@@ -5,7 +5,7 @@ namespace RE
 	class MoviePlayer
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_MoviePlayer;
+		inline static auto RTTI = RTTI_MoviePlayer;
 
 		virtual ~MoviePlayer();  // 00
 

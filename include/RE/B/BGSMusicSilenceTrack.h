@@ -7,7 +7,7 @@ namespace RE
 	class BGSMusicSilenceTrack : public BGSMusicTrack
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSMusicSilenceTrack;
+		inline static auto RTTI = RTTI_BGSMusicSilenceTrack;
 
 		~BGSMusicSilenceTrack() override;  // 00
 

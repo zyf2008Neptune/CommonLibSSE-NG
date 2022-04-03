@@ -61,7 +61,7 @@ namespace RE
 	class hkpWorld : public hkReferencedObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpWorld;
+		inline static auto RTTI = RTTI_hkpWorld;
 
 		~hkpWorld() override;  // 00
 

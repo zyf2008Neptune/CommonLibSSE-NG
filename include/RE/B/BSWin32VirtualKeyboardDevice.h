@@ -7,7 +7,7 @@ namespace RE
 	class BSWin32VirtualKeyboardDevice : public BSVirtualKeyboardDevice
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSWin32VirtualKeyboardDevice;
+		inline static auto RTTI = RTTI_BSWin32VirtualKeyboardDevice;
 
 		~BSWin32VirtualKeyboardDevice() override;  // 00
 

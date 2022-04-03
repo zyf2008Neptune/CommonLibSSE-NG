@@ -65,8 +65,8 @@ namespace RE
 		public BGSKeywordForm              // F8
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESObjectBOOK;
-		inline static constexpr auto VTABLE = VTABLE_TESObjectBOOK;
+		inline static auto RTTI = RTTI_TESObjectBOOK;
+		inline static auto VTABLE = VTABLE_TESObjectBOOK;
 		inline static constexpr auto FORMTYPE = FormType::Book;
 
 		struct ChangeFlags

@@ -19,8 +19,8 @@ namespace RE
 	class ExtraLight : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraLight;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLight;
+		inline static auto RTTI = RTTI_ExtraLight;
+		inline static auto EXTRADATATYPE = ExtraDataType::kLight;
 
 		~ExtraLight() override;  // 00
 

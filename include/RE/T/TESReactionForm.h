@@ -18,7 +18,7 @@ namespace RE
 	class TESReactionForm : public BaseFormComponent
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESReactionForm;
+		inline static auto RTTI = RTTI_TESReactionForm;
 
 		~TESReactionForm() override;  // 00
 

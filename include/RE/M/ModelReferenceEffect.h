@@ -19,8 +19,8 @@ namespace RE
 		public BSTEventSink<BSAnimationGraphEvent>  // 60
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ModelReferenceEffect;
-		inline static constexpr auto Ni_RTTI = NiRTTI_ModelReferenceEffect;
+		inline static auto RTTI = RTTI_ModelReferenceEffect;
+		inline static auto Ni_RTTI = NiRTTI_ModelReferenceEffect;
 		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kRefModel;
 
 		enum class Flags

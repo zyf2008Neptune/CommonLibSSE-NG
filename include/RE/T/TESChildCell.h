@@ -5,7 +5,7 @@ namespace RE
 	class TESChildCell
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESChildCell;
+		inline static auto RTTI = RTTI_TESChildCell;
 
 		virtual ~TESChildCell();  // 00
 

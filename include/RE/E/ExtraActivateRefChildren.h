@@ -11,8 +11,8 @@ namespace RE
 	class ExtraActivateRefChildren : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraActivateRefChildren;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kActivateRefChildren;
+		inline static auto RTTI = RTTI_ExtraActivateRefChildren;
+		inline static auto EXTRADATATYPE = ExtraDataType::kActivateRefChildren;
 
 		virtual ~ExtraActivateRefChildren();  // 00
 

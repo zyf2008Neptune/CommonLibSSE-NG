@@ -7,8 +7,8 @@ namespace RE
 	class NiAlphaProperty : public NiProperty
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_NiAlphaProperty;
-		inline static constexpr auto Ni_RTTI = NiRTTI_NiAlphaProperty;
+		inline static auto RTTI = RTTI_NiAlphaProperty;
+		inline static auto Ni_RTTI = NiRTTI_NiAlphaProperty;
 
 		enum class AlphaFunction
 		{

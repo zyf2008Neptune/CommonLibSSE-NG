@@ -9,8 +9,8 @@ namespace RE
 	class ExtraEditorRefMoveData : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraEditorRefMoveData;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kEditorRefMoveData;
+		inline static auto RTTI = RTTI_ExtraEditorRefMoveData;
+		inline static auto EXTRADATATYPE = ExtraDataType::kEditorRefMoveData;
 
 		virtual ~ExtraEditorRefMoveData();  // 00
 

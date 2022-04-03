@@ -11,8 +11,8 @@ namespace RE
 	class BGSSoundDescriptor : public BSISoundDescriptor
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSSoundDescriptor;
-		inline static constexpr auto VTABLE = VTABLE_BGSSoundDescriptor;
+		inline static auto RTTI = RTTI_BGSSoundDescriptor;
+		inline static auto VTABLE = VTABLE_BGSSoundDescriptor;
 
 		~BGSSoundDescriptor() override;  // 00
 

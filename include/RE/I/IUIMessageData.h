@@ -5,7 +5,7 @@ namespace RE
 	class IUIMessageData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_IUIMessageData;
+		inline static auto RTTI = RTTI_IUIMessageData;
 
 		virtual ~IUIMessageData() = default;  // 00
 

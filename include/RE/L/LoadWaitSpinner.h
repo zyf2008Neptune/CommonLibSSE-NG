@@ -20,7 +20,7 @@ namespace RE
 		public BSTEventSink<BGSSaveLoadManagerEvent>  // 40
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_LoadWaitSpinner;
+		inline static auto                RTTI = RTTI_LoadWaitSpinner;
 		constexpr static std::string_view MENU_NAME = "LoadWaitSpinner";
 
 		~LoadWaitSpinner() override;  // 00

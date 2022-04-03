@@ -48,12 +48,12 @@ namespace RE
 		public BSTEventSink<BSSystemEvent>                        // 010
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSSaveLoadManager;
+		inline static auto RTTI = RTTI_BGSSaveLoadManager;
 
 		class Thread : public BSThread
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BGSSaveLoadManager__Thread;
+			inline static auto RTTI = RTTI_BGSSaveLoadManager__Thread;
 
 			~Thread() override;  // 00
 

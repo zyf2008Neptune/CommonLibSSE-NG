@@ -7,7 +7,7 @@ namespace RE
 	class BGSPreloadable : public BaseFormComponent
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSPreloadable;
+		inline static auto RTTI = RTTI_BGSPreloadable;
 
 		~BGSPreloadable() override;  // 00
 

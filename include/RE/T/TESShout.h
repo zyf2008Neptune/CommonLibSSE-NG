@@ -17,8 +17,8 @@ namespace RE
 		public TESDescription         // 50
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESShout;
-		inline static constexpr auto VTABLE = VTABLE_TESShout;
+		inline static auto RTTI = RTTI_TESShout;
+		inline static auto VTABLE = VTABLE_TESShout;
 		inline static constexpr auto FORMTYPE = FormType::Shout;
 
 		struct RecordFlags

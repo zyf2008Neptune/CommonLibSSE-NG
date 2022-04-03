@@ -11,8 +11,8 @@ namespace RE
 	class ExtraLitWaterRefs : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraLitWaterRefs;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLitWaterRefs;
+		inline static auto RTTI = RTTI_ExtraLitWaterRefs;
+		inline static auto EXTRADATATYPE = ExtraDataType::kLitWaterRefs;
 
 		virtual ~ExtraLitWaterRefs();  // 00
 

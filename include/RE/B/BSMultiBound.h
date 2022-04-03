@@ -11,8 +11,8 @@ namespace RE
 	class BSMultiBound : public NiObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSMultiBound;
-		inline static constexpr auto Ni_RTTI = NiRTTI_BSMultiBound;
+		inline static auto RTTI = RTTI_BSMultiBound;
+		inline static auto Ni_RTTI = NiRTTI_BSMultiBound;
 
 		virtual ~BSMultiBound();  // 00
 

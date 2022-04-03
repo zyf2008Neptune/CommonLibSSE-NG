@@ -18,8 +18,8 @@ namespace RE
 	class ExtraPatrolRefData : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraPatrolRefData;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPatrolRefData;
+		inline static auto RTTI = RTTI_ExtraPatrolRefData;
+		inline static auto EXTRADATATYPE = ExtraDataType::kPatrolRefData;
 
 		virtual ~ExtraPatrolRefData();  // 00
 

@@ -21,7 +21,7 @@ namespace RE
 	class Projectile : public TESObjectREFR
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_Projectile;
+		inline static auto RTTI = RTTI_Projectile;
 
 		struct ImpactData
 		{

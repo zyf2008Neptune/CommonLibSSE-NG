@@ -19,8 +19,8 @@ namespace RE
 	class ExtraRunOncePacks : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraRunOncePacks;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRunOncePacks;
+		inline static auto RTTI = RTTI_ExtraRunOncePacks;
+		inline static auto EXTRADATATYPE = ExtraDataType::kRunOncePacks;
 
 		~ExtraRunOncePacks() override;  // 00
 

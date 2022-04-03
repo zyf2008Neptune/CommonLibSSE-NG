@@ -7,7 +7,7 @@ namespace RE
 	class TESAttackDamageForm : public BaseFormComponent
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESAttackDamageForm;
+		inline static auto RTTI = RTTI_TESAttackDamageForm;
 
 		~TESAttackDamageForm() override;  // 00
 

@@ -8,8 +8,8 @@ namespace RE
 	class ExtraInfoGeneralTopic : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraInfoGeneralTopic;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kInfoGeneralTopic;
+		inline static auto RTTI = RTTI_ExtraInfoGeneralTopic;
+		inline static auto EXTRADATATYPE = ExtraDataType::kInfoGeneralTopic;
 
 		struct Data
 		{

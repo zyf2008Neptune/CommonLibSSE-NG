@@ -15,7 +15,7 @@ namespace RE
 		public GFxFunctionHandler  // 40
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_ModManagerMenu;
+		inline static auto                RTTI = RTTI_ModManagerMenu;
 		constexpr static std::string_view MENU_NAME = "Mod Manager Menu";
 
 		~ModManagerMenu() override;  // 00

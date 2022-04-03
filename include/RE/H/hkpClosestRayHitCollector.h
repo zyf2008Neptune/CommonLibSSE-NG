@@ -8,8 +8,8 @@ namespace RE
 	class hkpClosestRayHitCollector : public hkpRayHitCollector
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpClosestRayHitCollector;
-		inline static constexpr auto VTABLE = VTABLE_hkpClosestRayHitCollector;
+		inline static auto RTTI = RTTI_hkpClosestRayHitCollector;
+		inline static auto VTABLE = VTABLE_hkpClosestRayHitCollector;
 
 		// override (hkpRayHitCollector)
 		void AddRayHit(const hkpCdBody& a_body, const hkpShapeRayCastCollectorOutput& a_hitInfo) override;  // 01

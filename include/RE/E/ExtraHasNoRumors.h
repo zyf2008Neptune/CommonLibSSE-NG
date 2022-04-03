@@ -8,8 +8,8 @@ namespace RE
 	class ExtraHasNoRumors : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraHasNoRumors;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kHasNoRumors;
+		inline static auto RTTI = RTTI_ExtraHasNoRumors;
+		inline static auto EXTRADATATYPE = ExtraDataType::kHasNoRumors;
 
 		~ExtraHasNoRumors() override;  // 00
 

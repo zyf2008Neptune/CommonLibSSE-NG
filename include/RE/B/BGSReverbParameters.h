@@ -11,8 +11,8 @@ namespace RE
 		public BSIReverbType  // 20
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSReverbParameters;
-		inline static constexpr auto VTABLE = VTABLE_BGSReverbParameters;
+		inline static auto RTTI = RTTI_BGSReverbParameters;
+		inline static auto VTABLE = VTABLE_BGSReverbParameters;
 		inline static constexpr auto FORMTYPE = FormType::ReverbParam;
 
 		struct RecordFlags

@@ -8,8 +8,8 @@ namespace RE
 	class ExtraAmmo : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraAmmo;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAmmo;
+		inline static auto RTTI = RTTI_ExtraAmmo;
+		inline static auto EXTRADATATYPE = ExtraDataType::kAmmo;
 
 		~ExtraAmmo() override;  // 00
 

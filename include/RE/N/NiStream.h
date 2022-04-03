@@ -26,8 +26,8 @@ namespace RE
 	class NiStream
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_NiStream;
-		inline static constexpr auto VTABLE = VTABLE_NiStream;
+		inline static auto RTTI = RTTI_NiStream;
+		inline static auto VTABLE = VTABLE_NiStream;
 
 		virtual ~NiStream();  // 00
 

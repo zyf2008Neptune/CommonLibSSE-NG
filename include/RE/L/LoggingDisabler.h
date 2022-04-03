@@ -4,11 +4,11 @@
 
 namespace RE
 {
-#ifndef SKYRIM_SUPPORT_AE
+#if defined(SKYRIM_FORCE_SE) || defined(SKYRIM_FORCE_VR)
 	class LoggingDisabler : public GFxLog
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI___LoggingDisabler;
+		inline static auto RTTI = RTTI___LoggingDisabler;
 
 		LoggingDisabler() = default;
 		~LoggingDisabler() override = default;  // 00

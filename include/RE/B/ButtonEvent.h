@@ -9,7 +9,7 @@ namespace RE
 	class ButtonEvent : public IDEvent
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ButtonEvent;
+		inline static auto RTTI = RTTI_ButtonEvent;
 
 		~ButtonEvent() override;  // 00
 

@@ -8,8 +8,8 @@ namespace RE
 	class ExtraCachedScale : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraCachedScale;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCachedScale;
+		inline static auto RTTI = RTTI_ExtraCachedScale;
+		inline static auto EXTRADATATYPE = ExtraDataType::kCachedScale;
 
 		~ExtraCachedScale() override;  // 00
 

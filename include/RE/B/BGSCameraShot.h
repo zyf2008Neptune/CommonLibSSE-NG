@@ -13,8 +13,8 @@ namespace RE
 		public TESImageSpaceModifiableForm  // 48
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSCameraShot;
-		inline static constexpr auto VTABLE = VTABLE_BGSCameraShot;
+		inline static auto RTTI = RTTI_BGSCameraShot;
+		inline static auto VTABLE = VTABLE_BGSCameraShot;
 		inline static constexpr auto FORMTYPE = FormType::CameraShot;
 
 		enum class CAM_ACTION

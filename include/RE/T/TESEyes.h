@@ -13,8 +13,8 @@ namespace RE
 		public TESTexture    // 30
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESEyes;
-		inline static constexpr auto VTABLE = VTABLE_TESEyes;
+		inline static auto RTTI = RTTI_TESEyes;
+		inline static auto VTABLE = VTABLE_TESEyes;
 		inline static constexpr auto FORMTYPE = FormType::Eyes;
 
 		enum class Flag

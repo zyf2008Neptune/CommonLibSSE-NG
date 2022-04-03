@@ -10,9 +10,9 @@ namespace RE
 	class ExtraContainerChanges : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraContainerChanges;
-		inline static constexpr auto VTABLE = VTABLE_ExtraContainerChanges;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kContainerChanges;
+		inline static auto RTTI = RTTI_ExtraContainerChanges;
+		inline static auto VTABLE = VTABLE_ExtraContainerChanges;
+		inline static auto EXTRADATATYPE = ExtraDataType::kContainerChanges;
 
 		ExtraContainerChanges();
 		explicit ExtraContainerChanges(InventoryChanges* a_changes);

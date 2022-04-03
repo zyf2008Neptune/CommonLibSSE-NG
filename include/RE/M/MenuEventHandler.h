@@ -13,7 +13,7 @@ namespace RE
 	class MenuEventHandler : public BSIntrusiveRefCounted
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_MenuEventHandler;
+		inline static auto RTTI = RTTI_MenuEventHandler;
 
 		MenuEventHandler() = default;
 		virtual ~MenuEventHandler() = default;  // 00

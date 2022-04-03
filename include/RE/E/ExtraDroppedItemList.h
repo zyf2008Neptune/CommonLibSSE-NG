@@ -10,8 +10,8 @@ namespace RE
 	class ExtraDroppedItemList : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraDroppedItemList;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kDroppedItemList;
+		inline static auto RTTI = RTTI_ExtraDroppedItemList;
+		inline static auto EXTRADATATYPE = ExtraDataType::kDroppedItemList;
 
 		virtual ~ExtraDroppedItemList();  // 00
 

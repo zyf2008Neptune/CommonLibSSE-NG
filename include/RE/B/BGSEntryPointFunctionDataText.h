@@ -8,7 +8,7 @@ namespace RE
 	class BGSEntryPointFunctionDataText : public BGSEntryPointFunctionData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSEntryPointFunctionDataText;
+		inline static auto RTTI = RTTI_BGSEntryPointFunctionDataText;
 
 		~BGSEntryPointFunctionDataText() override;  // 00
 

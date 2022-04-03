@@ -7,7 +7,7 @@ namespace RE
 	struct SprintHandler : public HeldStateHandler
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_SprintHandler;
+		inline static auto RTTI = RTTI_SprintHandler;
 
 		~SprintHandler() override;  // 00
 

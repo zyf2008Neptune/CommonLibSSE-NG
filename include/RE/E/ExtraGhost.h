@@ -8,8 +8,8 @@ namespace RE
 	class ExtraGhost : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraGhost;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kGhost;
+		inline static auto RTTI = RTTI_ExtraGhost;
+		inline static auto EXTRADATATYPE = ExtraDataType::kGhost;
 
 		~ExtraGhost() override;  // 00
 

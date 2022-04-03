@@ -7,8 +7,8 @@ namespace RE
 	class BSOrderedNode : public BSNiNode
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSOrderedNode;
-		inline static constexpr auto Ni_RTTI = NiRTTI_BSOrderedNode;
+		inline static auto RTTI = RTTI_BSOrderedNode;
+		inline static auto Ni_RTTI = NiRTTI_BSOrderedNode;
 
 		~BSOrderedNode() override;  // 00
 

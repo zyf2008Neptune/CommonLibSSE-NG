@@ -17,7 +17,7 @@ namespace RE
 			class CodeTasklet : public IFuncCallQuery
 			{
 			public:
-				inline static constexpr auto RTTI = RTTI_BSScript__Internal__CodeTasklet;
+				inline static auto RTTI = RTTI_BSScript__Internal__CodeTasklet;
 
 				enum class ResumeReason
 				{

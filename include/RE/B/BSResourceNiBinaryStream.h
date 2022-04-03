@@ -15,7 +15,7 @@ namespace RE
 	class BSResourceNiBinaryStream : public NiBinaryStream
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSResourceNiBinaryStream;
+		inline static auto RTTI = RTTI_BSResourceNiBinaryStream;
 
 		struct BufferType
 		{

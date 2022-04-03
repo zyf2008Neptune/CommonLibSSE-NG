@@ -7,7 +7,7 @@ namespace RE
 	class PerkEntryVisitor
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_PerkEntryVisitor;
+		inline static auto RTTI = RTTI_PerkEntryVisitor;
 
 		enum class ReturnType
 		{

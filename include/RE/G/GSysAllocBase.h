@@ -5,7 +5,7 @@ namespace RE
 	class GSysAllocBase
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_GSysAllocBase;
+		inline static auto RTTI = RTTI_GSysAllocBase;
 
 		virtual ~GSysAllocBase() = default;  // 00
 

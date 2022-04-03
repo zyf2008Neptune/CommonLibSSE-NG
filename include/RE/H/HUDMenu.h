@@ -22,7 +22,7 @@ namespace RE
 		public BSTEventSink<BSRemoteGamepadEvent>    // 38
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_HUDMenu;
+		inline static auto                RTTI = RTTI_HUDMenu;
 		constexpr static std::string_view MENU_NAME = "HUD Menu";
 
 		~HUDMenu() override;  // 00

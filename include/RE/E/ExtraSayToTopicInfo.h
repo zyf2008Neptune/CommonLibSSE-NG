@@ -13,8 +13,8 @@ namespace RE
 	class ExtraSayToTopicInfo : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraSayToTopicInfo;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSayTopicInfo;
+		inline static auto RTTI = RTTI_ExtraSayToTopicInfo;
+		inline static auto EXTRADATATYPE = ExtraDataType::kSayTopicInfo;
 
 		virtual ~ExtraSayToTopicInfo();  // 00
 

@@ -24,8 +24,8 @@ namespace RE
 		public BSTEventSink<BSAnimationGraphEvent>  // 48
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_BookMenu;
-		inline static constexpr auto      VTABLE = VTABLE_BookMenu;
+		inline static auto                RTTI = RTTI_BookMenu;
+		inline static auto                VTABLE = VTABLE_BookMenu;
 		constexpr static std::string_view MENU_NAME = "Book Menu";
 
 		~BookMenu() override;  // 00

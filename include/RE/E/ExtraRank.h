@@ -8,9 +8,9 @@ namespace RE
 	class ExtraRank : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraRank;
-		inline static constexpr auto VTABLE = VTABLE_ExtraRank;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRank;
+		inline static auto RTTI = RTTI_ExtraRank;
+		inline static auto VTABLE = VTABLE_ExtraRank;
+		inline static auto EXTRADATATYPE = ExtraDataType::kRank;
 
 		ExtraRank();
 		explicit ExtraRank(std::int32_t a_rank);

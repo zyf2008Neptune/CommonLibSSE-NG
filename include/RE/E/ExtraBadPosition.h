@@ -8,8 +8,8 @@ namespace RE
 	class ExtraBadPosition : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraBadPosition;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kBadPosition;
+		inline static auto RTTI = RTTI_ExtraBadPosition;
+		inline static auto EXTRADATATYPE = ExtraDataType::kBadPosition;
 
 		~ExtraBadPosition() override;  // 00
 

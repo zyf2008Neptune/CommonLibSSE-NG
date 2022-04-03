@@ -5,7 +5,7 @@ namespace RE
 	class IMovementControllerRegisterInterface
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_IMovementControllerRegisterInterface;
+		inline static auto RTTI = RTTI_IMovementControllerRegisterInterface;
 
 		virtual ~IMovementControllerRegisterInterface();  // 00
 

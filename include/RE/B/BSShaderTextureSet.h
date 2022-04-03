@@ -7,9 +7,9 @@ namespace RE
 	class BSShaderTextureSet : public BSTextureSet
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSShaderTextureSet;
-		inline static constexpr auto Ni_RTTI = NiRTTI_BSShaderTextureSet;
-		inline static constexpr auto VTABLE = VTABLE_BSShaderTextureSet;
+		inline static auto RTTI = RTTI_BSShaderTextureSet;
+		inline static auto Ni_RTTI = NiRTTI_BSShaderTextureSet;
+		inline static auto VTABLE = VTABLE_BSShaderTextureSet;
 
 		~BSShaderTextureSet() override;  // 00
 
@@ -30,9 +30,7 @@ namespace RE
 		const char* textures[Texture::kTotal];
 
 	private:
-#ifndef SKYRIM_SUPPORT_AE
 		BSShaderTextureSet* Ctor();
-#endif
 	};
 	static_assert(sizeof(BSShaderTextureSet) == 0x58);
 }

@@ -7,7 +7,7 @@ namespace RE
 	class CombatMagicCasterTargetEffect : public CombatMagicCaster
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_CombatMagicCasterTargetEffect;
+		inline static auto RTTI = RTTI_CombatMagicCasterTargetEffect;
 
 		~CombatMagicCasterTargetEffect() override;  // 00
 

@@ -9,7 +9,7 @@ namespace RE
 	class HorseCameraState : public ThirdPersonState
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_HorseCameraState;
+		inline static auto RTTI = RTTI_HorseCameraState;
 
 		virtual ~HorseCameraState();  // 00
 

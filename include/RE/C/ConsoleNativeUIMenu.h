@@ -10,7 +10,7 @@ namespace RE
 	class ConsoleNativeUIMenu : public IMenu
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_ConsoleNativeUIMenu;
+		inline static auto                RTTI = RTTI_ConsoleNativeUIMenu;
 		constexpr static std::string_view MENU_NAME = "Console Native UI Menu";
 
 		~ConsoleNativeUIMenu() override;  // 00

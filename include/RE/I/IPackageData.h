@@ -11,7 +11,7 @@ namespace RE
 	class IPackageData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_IPackageData;
+		inline static auto RTTI = RTTI_IPackageData;
 
 		virtual ~IPackageData();  // 00
 

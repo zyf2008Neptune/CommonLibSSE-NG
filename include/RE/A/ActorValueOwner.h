@@ -7,7 +7,7 @@ namespace RE
 	class ActorValueOwner
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ActorValueOwner;
+		inline static auto RTTI = RTTI_ActorValueOwner;
 
 		virtual ~ActorValueOwner();  // 00
 

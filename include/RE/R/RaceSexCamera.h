@@ -7,7 +7,7 @@ namespace RE
 	class RaceSexCamera : public TESCamera
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_RaceSexCamera;
+		inline static auto RTTI = RTTI_RaceSexCamera;
 
 		~RaceSexCamera() override;  // 00
 

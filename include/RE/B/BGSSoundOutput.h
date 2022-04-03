@@ -11,8 +11,8 @@ namespace RE
 		public BSISoundOutputModel  // 20
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSSoundOutput;
-		inline static constexpr auto VTABLE = VTABLE_BGSSoundOutput;
+		inline static auto RTTI = RTTI_BGSSoundOutput;
+		inline static auto VTABLE = VTABLE_BGSSoundOutput;
 		inline static constexpr auto FORMTYPE = FormType::SoundOutputModel;
 
 		enum class Type  // MNAM

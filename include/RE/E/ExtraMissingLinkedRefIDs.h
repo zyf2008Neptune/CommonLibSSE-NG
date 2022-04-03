@@ -11,8 +11,8 @@ namespace RE
 	class ExtraMissingLinkedRefIDs : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraMissingLinkedRefIDs;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMissingLinkedRefIDs;
+		inline static auto RTTI = RTTI_ExtraMissingLinkedRefIDs;
+		inline static auto EXTRADATATYPE = ExtraDataType::kMissingLinkedRefIDs;
 
 		struct Entry
 		{

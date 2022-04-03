@@ -8,8 +8,8 @@ namespace RE
 	class bhkRigidBody : public bhkEntity
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_bhkRigidBody;
-		inline static constexpr auto Ni_RTTI = NiRTTI_bhkRigidBody;
+		inline static auto RTTI = RTTI_bhkRigidBody;
+		inline static auto Ni_RTTI = NiRTTI_bhkRigidBody;
 
 		~bhkRigidBody() override;  // 00
 

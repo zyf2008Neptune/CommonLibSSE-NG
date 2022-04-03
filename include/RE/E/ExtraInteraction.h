@@ -11,8 +11,8 @@ namespace RE
 	class ExtraInteraction : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraInteraction;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kInteraction;
+		inline static auto RTTI = RTTI_ExtraInteraction;
+		inline static auto EXTRADATATYPE = ExtraDataType::kInteraction;
 
 		~ExtraInteraction() override;  // 00
 

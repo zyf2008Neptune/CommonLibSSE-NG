@@ -10,7 +10,7 @@ namespace RE
 	class BSIMusicType
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSIMusicType;
+		inline static auto RTTI = RTTI_BSIMusicType;
 
 		enum class MST  // FNAM
 		{

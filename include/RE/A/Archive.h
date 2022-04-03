@@ -12,7 +12,7 @@ namespace RE
 		public NiRefObject  // 180
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_Archive;
+		inline static auto RTTI = RTTI_Archive;
 
 		~Archive() override;  // 00
 

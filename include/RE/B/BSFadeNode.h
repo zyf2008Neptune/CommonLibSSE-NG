@@ -10,8 +10,8 @@ namespace RE
 	class BSFadeNode : public NiNode
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSFadeNode;
-		inline static constexpr auto Ni_RTTI = NiRTTI_BSFadeNode;
+		inline static auto RTTI = RTTI_BSFadeNode;
+		inline static auto Ni_RTTI = NiRTTI_BSFadeNode;
 
 		~BSFadeNode() override;  // 00
 

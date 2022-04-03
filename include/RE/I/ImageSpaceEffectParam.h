@@ -5,7 +5,7 @@ namespace RE
 	class ImageSpaceEffectParam
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ImageSpaceEffectParam;
+		inline static auto RTTI = RTTI_ImageSpaceEffectParam;
 
 		virtual ~ImageSpaceEffectParam();  // 00
 	};

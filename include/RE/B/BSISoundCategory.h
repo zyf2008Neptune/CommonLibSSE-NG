@@ -5,7 +5,7 @@ namespace RE
 	class BSISoundCategory
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSISoundCategory;
+		inline static auto RTTI = RTTI_BSISoundCategory;
 
 		virtual ~BSISoundCategory();  // 00
 

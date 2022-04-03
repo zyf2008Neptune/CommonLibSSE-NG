@@ -15,7 +15,7 @@ namespace RE
 		public MagicTarget   // 10
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_NonActorMagicTarget;
+		inline static auto RTTI = RTTI_NonActorMagicTarget;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kNonActorMagicTarget;
 
 		~NonActorMagicTarget() override;  // 00

@@ -9,8 +9,8 @@ namespace RE
 	class ExtraCreatureMovementSound : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraCreatureMovementSound;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCreatureMovementSound;
+		inline static auto RTTI = RTTI_ExtraCreatureMovementSound;
+		inline static auto EXTRADATATYPE = ExtraDataType::kCreatureMovementSound;
 
 		virtual ~ExtraCreatureMovementSound();  // 00
 

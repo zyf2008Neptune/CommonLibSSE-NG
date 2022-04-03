@@ -11,8 +11,8 @@ namespace RE
 	class BGSBaseAlias
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSBaseAlias;
-		inline static constexpr auto VMTYPEID = static_cast<VMTypeID>(139);
+		inline static auto RTTI = RTTI_BGSBaseAlias;
+		inline static auto VMTYPEID = static_cast<VMTypeID>(139);
 
 		enum class FLAGS
 		{

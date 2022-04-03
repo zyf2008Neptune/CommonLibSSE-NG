@@ -7,7 +7,7 @@ namespace RE
 	class hkpCollidableCollidableFilter
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpCollidableCollidableFilter;
+		inline static auto RTTI = RTTI_hkpCollidableCollidableFilter;
 
 		virtual ~hkpCollidableCollidableFilter();  // 00
 

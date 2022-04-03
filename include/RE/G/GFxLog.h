@@ -10,7 +10,7 @@ namespace RE
 		public GFxLogBase<GFxLog>  // 18
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_GFxLog;
+		inline static auto RTTI = RTTI_GFxLog;
 
 		GFxLog();
 		~GFxLog() override = default;  // 00

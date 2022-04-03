@@ -7,9 +7,9 @@ namespace RE
 	class NiIntegerExtraData : public NiExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_NiIntegerExtraData;
-		inline static constexpr auto Ni_RTTI = NiRTTI_NiIntegerExtraData;
-		inline static constexpr auto VTABLE = VTABLE_NiIntegerExtraData;
+		inline static auto RTTI = RTTI_NiIntegerExtraData;
+		inline static auto Ni_RTTI = NiRTTI_NiIntegerExtraData;
+		inline static auto VTABLE = VTABLE_NiIntegerExtraData;
 
 		~NiIntegerExtraData() override;  // 00
 

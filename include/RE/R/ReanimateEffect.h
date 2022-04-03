@@ -7,8 +7,8 @@ namespace RE
 	class ReanimateEffect : public CommandEffect
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ReanimateEffect;
-		inline static constexpr auto VTABLE = VTABLE_ReanimateEffect;
+		inline static auto RTTI = RTTI_ReanimateEffect;
+		inline static auto VTABLE = VTABLE_ReanimateEffect;
 
 		// override (CommandEffect)
 		void Unk_04(void) override;                        // 04

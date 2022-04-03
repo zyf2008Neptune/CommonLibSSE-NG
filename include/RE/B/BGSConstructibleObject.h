@@ -10,8 +10,8 @@ namespace RE
 	class BGSConstructibleObject : public TESForm
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSConstructibleObject;
-		inline static constexpr auto VTABLE = VTABLE_BGSConstructibleObject;
+		inline static auto RTTI = RTTI_BGSConstructibleObject;
+		inline static auto VTABLE = VTABLE_BGSConstructibleObject;
 		inline static constexpr auto FORMTYPE = FormType::ConstructibleObject;
 
 		struct RecordFlags

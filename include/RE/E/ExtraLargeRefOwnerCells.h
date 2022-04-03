@@ -11,8 +11,8 @@ namespace RE
 	class ExtraLargeRefOwnerCells : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraLargeRefOwnerCells;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLargeRefOwnerCells;
+		inline static auto RTTI = RTTI_ExtraLargeRefOwnerCells;
+		inline static auto EXTRADATATYPE = ExtraDataType::kLargeRefOwnerCells;
 
 		virtual ~ExtraLargeRefOwnerCells();  // 00
 

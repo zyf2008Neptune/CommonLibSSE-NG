@@ -8,7 +8,7 @@ namespace RE
 	class CombatMagicCasterOffensive : public CombatMagicCaster
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_CombatMagicCasterOffensive;
+		inline static auto RTTI = RTTI_CombatMagicCasterOffensive;
 
 		~CombatMagicCasterOffensive() override;  // 00
 

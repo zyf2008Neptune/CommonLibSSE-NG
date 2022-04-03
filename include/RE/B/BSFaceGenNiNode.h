@@ -13,8 +13,8 @@ namespace RE
 	class BSFaceGenNiNode : public NiNode
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSFaceGenNiNode;
-		inline static constexpr auto Ni_RTTI = NiRTTI_BSFaceGenNiNode;
+		inline static auto RTTI = RTTI_BSFaceGenNiNode;
+		inline static auto Ni_RTTI = NiRTTI_BSFaceGenNiNode;
 
 		~BSFaceGenNiNode() override;  // 00
 

@@ -10,9 +10,9 @@ namespace RE
 	class ExtraLocationRefType : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraLocationRefType;
-		inline static constexpr auto VTABLE = VTABLE_ExtraLocationRefType;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLocationRefType;
+		inline static auto RTTI = RTTI_ExtraLocationRefType;
+		inline static auto VTABLE = VTABLE_ExtraLocationRefType;
+		inline static auto EXTRADATATYPE = ExtraDataType::kLocationRefType;
 
 		virtual ~ExtraLocationRefType();  // 00
 

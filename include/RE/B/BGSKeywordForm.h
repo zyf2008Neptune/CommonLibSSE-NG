@@ -9,7 +9,7 @@ namespace RE
 	class BGSKeywordForm : public BaseFormComponent
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSKeywordForm;
+		inline static auto RTTI = RTTI_BGSKeywordForm;
 
 		~BGSKeywordForm() override;  // 00
 

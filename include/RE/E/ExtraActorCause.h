@@ -11,8 +11,8 @@ namespace RE
 	class ExtraActorCause : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraActorCause;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kActorCause;
+		inline static auto RTTI = RTTI_ExtraActorCause;
+		inline static auto EXTRADATATYPE = ExtraDataType::kActorCause;
 
 		virtual ~ExtraActorCause();  // 00
 

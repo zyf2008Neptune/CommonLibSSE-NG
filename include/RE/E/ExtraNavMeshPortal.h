@@ -26,8 +26,8 @@ namespace RE
 	class ExtraNavMeshPortal : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraNavMeshPortal;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kNavMeshPortal;
+		inline static auto RTTI = RTTI_ExtraNavMeshPortal;
+		inline static auto EXTRADATATYPE = ExtraDataType::kNavMeshPortal;
 
 		~ExtraNavMeshPortal() override;  // 00
 

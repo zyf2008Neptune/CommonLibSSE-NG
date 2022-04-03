@@ -7,7 +7,7 @@ namespace RE
 	class NiRefObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_NiRefObject;
+		inline static auto RTTI = RTTI_NiRefObject;
 
 		NiRefObject();
 		virtual ~NiRefObject();  // 00

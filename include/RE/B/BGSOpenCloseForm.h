@@ -8,7 +8,7 @@ namespace RE
 	class BGSOpenCloseForm
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSOpenCloseForm;
+		inline static auto RTTI = RTTI_BGSOpenCloseForm;
 
 		enum class OPEN_STATE
 		{

@@ -9,8 +9,8 @@ namespace RE
 	class ExtraOpenCloseActivateRef : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraOpenCloseActivateRef;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kOpenCloseActivateRef;
+		inline static auto RTTI = RTTI_ExtraOpenCloseActivateRef;
+		inline static auto EXTRADATATYPE = ExtraDataType::kOpenCloseActivateRef;
 
 		virtual ~ExtraOpenCloseActivateRef();  // 00
 

@@ -10,8 +10,8 @@ namespace RE
 	class ExtraSceneData : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraSceneData;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSceneData;
+		inline static auto RTTI = RTTI_ExtraSceneData;
+		inline static auto EXTRADATATYPE = ExtraDataType::kSceneData;
 
 		virtual ~ExtraSceneData();  // 00
 

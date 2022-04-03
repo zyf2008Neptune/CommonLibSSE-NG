@@ -10,8 +10,8 @@ namespace RE
 	class ExtraPrimitive : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraPrimitive;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPrimitive;
+		inline static auto RTTI = RTTI_ExtraPrimitive;
+		inline static auto EXTRADATATYPE = ExtraDataType::kPrimitive;
 
 		virtual ~ExtraPrimitive();  // 00
 

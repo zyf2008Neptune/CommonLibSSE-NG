@@ -9,8 +9,8 @@ namespace RE
 	class ExtraRefrPath : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraRefrPath;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kRefrPath;
+		inline static auto RTTI = RTTI_ExtraRefrPath;
+		inline static auto EXTRADATATYPE = ExtraDataType::kRefrPath;
 
 		enum class PATH_TYPE
 		{

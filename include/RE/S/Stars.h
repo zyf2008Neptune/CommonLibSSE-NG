@@ -10,7 +10,7 @@ namespace RE
 	class Stars : public SkyObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_Stars;
+		inline static auto RTTI = RTTI_Stars;
 
 		~Stars() override;  // 00
 

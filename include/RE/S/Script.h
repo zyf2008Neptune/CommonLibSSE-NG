@@ -22,8 +22,8 @@ namespace RE
 	class Script : public TESForm
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_Script;
-		inline static constexpr auto VTABLE = VTABLE_Script;
+		inline static auto RTTI = RTTI_Script;
+		inline static auto VTABLE = VTABLE_Script;
 		inline static constexpr auto FORMTYPE = FormType::Script;
 
 		struct RecordFlags

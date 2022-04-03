@@ -9,7 +9,7 @@ namespace RE
 	class bhkCollisionFilter : public hkpCollisionFilter
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_bhkCollisionFilter;
+		inline static auto RTTI = RTTI_bhkCollisionFilter;
 
 		[[nodiscard]] static bhkCollisionFilter* GetSingleton()
 		{

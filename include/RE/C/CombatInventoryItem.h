@@ -32,7 +32,7 @@ namespace RE
 	class CombatInventoryItem : public CombatObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_CombatInventoryItem;
+		inline static auto RTTI = RTTI_CombatInventoryItem;
 
 		enum class TYPE
 		{

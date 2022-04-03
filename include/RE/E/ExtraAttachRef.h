@@ -9,8 +9,8 @@ namespace RE
 	class ExtraAttachRef : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraAttachRef;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAttachRef;
+		inline static auto RTTI = RTTI_ExtraAttachRef;
+		inline static auto EXTRADATATYPE = ExtraDataType::kAttachRef;
 
 		~ExtraAttachRef() override;  // 00
 

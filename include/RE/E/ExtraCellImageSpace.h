@@ -10,8 +10,8 @@ namespace RE
 	class ExtraCellImageSpace : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraCellImageSpace;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kCellImageSpace;
+		inline static auto RTTI = RTTI_ExtraCellImageSpace;
+		inline static auto EXTRADATATYPE = ExtraDataType::kCellImageSpace;
 
 		virtual ~ExtraCellImageSpace();  // 00
 

@@ -7,7 +7,7 @@ namespace RE
 	class BSMouseDevice : public BSInputDevice
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSMouseDevice;
+		inline static auto RTTI = RTTI_BSMouseDevice;
 
 		~BSMouseDevice() override;  // 00
 

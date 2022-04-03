@@ -7,8 +7,8 @@ namespace RE
 	class BSMultiStreamInstanceTriShape : public BSInstanceTriShape
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BSMultiStreamInstanceTriShape;
-		inline static constexpr auto Ni_RTTI = NiRTTI_BSMultiStreamInstanceTriShape;
+		inline static auto RTTI = RTTI_BSMultiStreamInstanceTriShape;
+		inline static auto Ni_RTTI = NiRTTI_BSMultiStreamInstanceTriShape;
 
 		~BSMultiStreamInstanceTriShape() override;  // 00
 

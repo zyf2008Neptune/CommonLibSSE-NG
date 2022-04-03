@@ -7,7 +7,7 @@ namespace RE
 	class BGSBehaviorGraphModel : TESModel
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_BGSBehaviorGraphModel;
+		inline static auto RTTI = RTTI_BGSBehaviorGraphModel;
 
 		~BGSBehaviorGraphModel() override;  // 00
 

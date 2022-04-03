@@ -19,8 +19,8 @@ namespace RE
 	class ExtraSayTopicInfoOnceADay : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraSayTopicInfoOnceADay;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kSayTopicInfoOnceADay;
+		inline static auto RTTI = RTTI_ExtraSayTopicInfoOnceADay;
+		inline static auto EXTRADATATYPE = ExtraDataType::kSayTopicInfoOnceADay;
 
 		virtual ~ExtraSayTopicInfoOnceADay();  // 00
 

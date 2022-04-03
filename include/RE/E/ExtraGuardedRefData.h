@@ -9,8 +9,8 @@ namespace RE
 	class ExtraGuardedRefData : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraGuardedRefData;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kGuardedRefData;
+		inline static auto RTTI = RTTI_ExtraGuardedRefData;
+		inline static auto EXTRADATATYPE = ExtraDataType::kGuardedRefData;
 
 		struct GuardInfo
 		{

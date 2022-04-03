@@ -7,7 +7,7 @@ namespace RE
 	struct RunHandler : public HeldStateHandler
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_RunHandler;
+		inline static auto RTTI = RTTI_RunHandler;
 
 		~RunHandler() override;  // 00
 

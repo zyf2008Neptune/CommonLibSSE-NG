@@ -7,7 +7,7 @@ namespace RE
 	class bhkCharacterStateOnGround : public bhkCharacterState
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_bhkCharacterStateOnGround;
+		inline static auto RTTI = RTTI_bhkCharacterStateOnGround;
 
 		~bhkCharacterStateOnGround() override;  // 00
 

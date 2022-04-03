@@ -8,8 +8,8 @@ namespace RE
 	class NiKeyBasedInterpolator : public NiInterpolator
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_NiKeyBasedInterpolator;
-		inline static constexpr auto Ni_RTTI = NiRTTI_NiKeyBasedInterpolator;
+		inline static auto RTTI = RTTI_NiKeyBasedInterpolator;
+		inline static auto Ni_RTTI = NiRTTI_NiKeyBasedInterpolator;
 
 		using KeyType = NiAnimationKey::KeyType;
 		using KeyContent = NiAnimationKey::KeyContent;

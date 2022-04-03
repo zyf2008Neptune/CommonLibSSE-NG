@@ -7,7 +7,7 @@ namespace RE
 	class hkpCdPointCollector
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpCdPointCollector;
+		inline static auto RTTI = RTTI_hkpCdPointCollector;
 
 		virtual ~hkpCdPointCollector();  // 00
 

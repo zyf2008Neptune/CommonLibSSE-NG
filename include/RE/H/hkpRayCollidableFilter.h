@@ -9,7 +9,7 @@ namespace RE
 	class hkpRayCollidableFilter
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpRayCollidableFilter;
+		inline static auto RTTI = RTTI_hkpRayCollidableFilter;
 
 		virtual ~hkpRayCollidableFilter();  // 00
 

@@ -10,8 +10,8 @@ namespace RE
 	class ExtraGlobal : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraGlobal;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kGlobal;
+		inline static auto RTTI = RTTI_ExtraGlobal;
+		inline static auto EXTRADATATYPE = ExtraDataType::kGlobal;
 
 		~ExtraGlobal() override;  // 00
 

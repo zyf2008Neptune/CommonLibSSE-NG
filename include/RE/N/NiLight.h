@@ -9,8 +9,8 @@ namespace RE
 	class NiLight : public NiAVObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_NiLight;
-		inline static constexpr auto Ni_RTTI = NiRTTI_NiLight;
+		inline static auto RTTI = RTTI_NiLight;
+		inline static auto Ni_RTTI = NiRTTI_NiLight;
 
 		~NiLight() override;  // 00
 

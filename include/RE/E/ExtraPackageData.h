@@ -10,8 +10,8 @@ namespace RE
 	class ExtraPackageData : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraPackageData;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kPackageData;
+		inline static auto RTTI = RTTI_ExtraPackageData;
+		inline static auto EXTRADATATYPE = ExtraDataType::kPackageData;
 
 		~ExtraPackageData() override;  // 00
 

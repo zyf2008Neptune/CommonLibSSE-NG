@@ -15,7 +15,7 @@ namespace RE
 	class hkpMotion : public hkReferencedObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpMotion;
+		inline static auto RTTI = RTTI_hkpMotion;
 
 		enum
 		{

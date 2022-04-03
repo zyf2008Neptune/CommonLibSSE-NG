@@ -14,7 +14,7 @@ namespace RE
 	class hkpPhantom : public hkpWorldObject
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_hkpPhantom;
+		inline static auto RTTI = RTTI_hkpPhantom;
 
 		~hkpPhantom() override;  // 00
 

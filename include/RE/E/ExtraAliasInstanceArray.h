@@ -21,9 +21,9 @@ namespace RE
 	class ExtraAliasInstanceArray : public BSExtraData
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_ExtraAliasInstanceArray;
-		inline static constexpr auto VTABLE = VTABLE_ExtraAliasInstanceArray;
-		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kAliasInstanceArray;
+		inline static auto RTTI = RTTI_ExtraAliasInstanceArray;
+		inline static auto VTABLE = VTABLE_ExtraAliasInstanceArray;
+		inline static auto EXTRADATATYPE = ExtraDataType::kAliasInstanceArray;
 
 		ExtraAliasInstanceArray();
 		virtual ~ExtraAliasInstanceArray();  // 00

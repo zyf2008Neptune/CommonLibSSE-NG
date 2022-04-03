@@ -10,7 +10,7 @@ namespace RE
 		public IPackageData             // 08
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_IPackageDataAIWorldLocationHandle;
+		inline static auto RTTI = RTTI_IPackageDataAIWorldLocationHandle;
 
 		~IPackageDataAIWorldLocationHandle() override;  // 00
 	};

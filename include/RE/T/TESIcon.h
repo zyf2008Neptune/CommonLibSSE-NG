@@ -7,7 +7,7 @@ namespace RE
 	class TESIcon : public TESTexture
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_TESTexture;
+		inline static auto RTTI = RTTI_TESTexture;
 
 		~TESIcon() override;  // 00
 
