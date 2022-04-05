@@ -380,14 +380,14 @@ namespace RE
 		return base ? base->race : nullptr;
 	}
 
-    bool Actor::GetRider(NiPointer<Actor>& a_outRider)
+	bool Actor::GetRider(NiPointer<Actor>& a_outRider)
 	{
 		using func_t = decltype(&Actor::GetRider);
 		REL::Relocation<func_t> func{ RELOCATION_ID(37758, 38703) };
 		return func(this, a_outRider);
 	}
 
-    TESObjectARMO* Actor::GetSkin() const
+	TESObjectARMO* Actor::GetSkin() const
 	{
 		if (const auto base = GetActorBase(); base && base->skin) {
 			return base->skin;
