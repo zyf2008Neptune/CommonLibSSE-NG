@@ -508,6 +508,7 @@ namespace RE
 		bool                         GetMount(NiPointer<Actor>& a_outMount);
 		ObjectRefHandle              GetOccupiedFurniture() const;
 		TESRace*                     GetRace() const;
+		bool                         GetRider(NiPointer<Actor>& a_outRider);
 		[[nodiscard]] TESObjectARMO* GetSkin() const;
 		[[nodiscard]] TESObjectARMO* GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] SOUL_LEVEL     GetSoulSize() const;
