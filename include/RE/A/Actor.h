@@ -474,6 +474,7 @@ namespace RE
 		void                         AddToFaction(TESFaction* a_faction, std::int8_t a_rank);
 		void                         AllowBleedoutDialogue(bool a_canTalk);
 		void                         AllowPCDialogue(bool a_talk);
+		bool                         CalculateOffersServices() const;
 		bool                         CanAttackActor(Actor* a_actor);
 		bool                         CanFlyHere() const;
 		bool                         CanPickpocket() const;
@@ -510,6 +511,8 @@ namespace RE
 		[[nodiscard]] TESObjectARMO* GetSkin() const;
 		[[nodiscard]] TESObjectARMO* GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] SOUL_LEVEL     GetSoulSize() const;
+		TESFaction*                  GetVendorFaction();
+		const TESFaction*            GetVendorFaction() const;
 		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID);
 		bool                         HasKeywordString(std::string_view a_formEditorID);
@@ -624,6 +627,7 @@ namespace RE
 		WinAPI::CRITICAL_SECTION                              unk288;                             // 288 - havok related
 
 	private:
+		void        CalculateCurrentVendorFaction() const;
 		TESFaction* GetCrimeFactionImpl() const;
 	};
 	static_assert(sizeof(Actor) == 0x2B0);

@@ -101,6 +101,12 @@ namespace RE
 		xTalk->talk = a_talk;
 	}
 
+	bool Actor::CalculateOffersServices() const
+	{
+		const auto* vendorFac = GetVendorFaction();
+		return vendorFac ? vendorFac->OffersServices() : false;
+	}
+
 	bool Actor::CanAttackActor(Actor* a_actor)
 	{
 		using func_t = decltype(&Actor::CanAttackActor);
@@ -397,6 +403,22 @@ namespace RE
 		using func_t = decltype(&Actor::GetSoulSize);
 		REL::Relocation<func_t> func{ RELOCATION_ID(37862, 38817) };
 		return func(this);
+	}
+
+	TESFaction* Actor::GetVendorFaction()
+	{
+		if (!vendorFaction) {
+			CalculateCurrentVendorFaction();
+		}
+		return vendorFaction;
+	}
+
+	const TESFaction* Actor::GetVendorFaction() const
+	{
+		if (!vendorFaction) {
+			CalculateCurrentVendorFaction();
+		}
+		return vendorFaction;
 	}
 
 	TESObjectARMO* Actor::GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot)
@@ -840,6 +862,13 @@ namespace RE
 	bool Actor::WouldBeStealing(const TESObjectREFR* a_target) const
 	{
 		return a_target != nullptr && !a_target->IsAnOwner(this, true, false);
+	}
+
+	void Actor::CalculateCurrentVendorFaction() const
+	{
+		using func_t = decltype(&Actor::CalculateCurrentVendorFaction);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36392, 37383) };
+		return func(this);
 	}
 
 	TESFaction* Actor::GetCrimeFactionImpl() const
