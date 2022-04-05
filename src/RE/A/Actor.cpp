@@ -525,11 +525,11 @@ namespace RE
 		return func(this);
 	}
 
-	bool Actor::IsCasting(SpellItem* a_spell) const
+	bool Actor::IsCasting(MagicItem* a_magicItem) const
 	{
 		using func_t = decltype(&Actor::IsCasting);
 		REL::Relocation<func_t> func{ RELOCATION_ID(37810, 38759) };
-		return func(this, a_spell);
+		return func(this, a_magicItem);
 	}
 
 	bool Actor::IsCommandedActor() const

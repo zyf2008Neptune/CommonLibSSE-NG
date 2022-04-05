@@ -238,7 +238,7 @@ namespace RE
 		InventoryEntryData*                            leftHand;                    // 220
 		TESIdleForm*                                   furnitureIdle;               // 228
 		void*                                          unk230;                      // 230 - smart ptr
-		std::uint64_t                                  unk238;                      // 238
+		BSFaceGenAnimationData*                        faceAnimationData;           // 238
 		std::uint64_t                                  unk240;                      // 240
 		std::uint64_t                                  unk248;                      // 248
 		NiPointer<bhkCharacterController>              charController;              // 250
