@@ -114,7 +114,7 @@ namespace RE
 		return worldSpace && worldSpace->HasMaxHeightData();
 	}
 
-	bool Actor::CanOffersServices() const
+	bool Actor::CanOfferServices() const
 	{
 		const auto* vendorFac = GetVendorFaction();
 		return vendorFac ? vendorFac->OffersServices() : false;

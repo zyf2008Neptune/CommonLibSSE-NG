@@ -476,7 +476,7 @@ namespace RE
 		void                         AllowPCDialogue(bool a_talk);
 		bool                         CanAttackActor(Actor* a_actor);
 		bool                         CanFlyHere() const;
-		bool                         CanOffersServices() const;
+		bool                         CanOfferServices() const;
 		bool                         CanPickpocket() const;
 		bool                         CanTalkToPlayer() const;
 		void                         ClearArrested();
