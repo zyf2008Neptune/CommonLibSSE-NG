@@ -474,9 +474,9 @@ namespace RE
 		void                         AddToFaction(TESFaction* a_faction, std::int8_t a_rank);
 		void                         AllowBleedoutDialogue(bool a_canTalk);
 		void                         AllowPCDialogue(bool a_talk);
-		bool                         CalculateOffersServices() const;
 		bool                         CanAttackActor(Actor* a_actor);
 		bool                         CanFlyHere() const;
+		bool                         CanOffersServices() const;
 		bool                         CanPickpocket() const;
 		bool                         CanTalkToPlayer() const;
 		void                         ClearArrested();

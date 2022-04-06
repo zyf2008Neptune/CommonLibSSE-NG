@@ -101,12 +101,6 @@ namespace RE
 		xTalk->talk = a_talk;
 	}
 
-	bool Actor::CalculateOffersServices() const
-	{
-		const auto* vendorFac = GetVendorFaction();
-		return vendorFac ? vendorFac->OffersServices() : false;
-	}
-
 	bool Actor::CanAttackActor(Actor* a_actor)
 	{
 		using func_t = decltype(&Actor::CanAttackActor);
@@ -118,6 +112,12 @@ namespace RE
 	{
 		const auto* worldSpace = GetWorldspace();
 		return worldSpace && worldSpace->HasMaxHeightData();
+	}
+
+	bool Actor::CanOffersServices() const
+	{
+		const auto* vendorFac = GetVendorFaction();
+		return vendorFac ? vendorFac->OffersServices() : false;
 	}
 
 	bool Actor::CanPickpocket() const
