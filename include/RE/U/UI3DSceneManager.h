@@ -52,7 +52,7 @@ namespace RE
 
 		static UI3DSceneManager* GetSingleton()
 		{
-			REL::Relocation<UI3DSceneManager**> singleton{ RELOCATION_ID(517052, 403560) };
+			REL::Relocation<UI3DSceneManager**> singleton{ REL::RelocationID(517052, 403560) };
 			return *singleton;
 		}
 

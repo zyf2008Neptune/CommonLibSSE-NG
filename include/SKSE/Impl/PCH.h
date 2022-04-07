@@ -705,15 +705,6 @@ namespace REL
 	namespace WinAPI = SKSE::WinAPI;
 }
 
-#ifndef USING_AE
-#	define USING_AE (REL::Module::get().version()[1] > 5)
-#endif
-#ifndef USING_VR
-#	define USING_VR (REL::Module::get().version()[1] == 4)
-#endif
-#define RELOCATION_ID(SE, AE) (USING_AE ? REL::ID(AE) : REL::ID(SE))
-#define RELOCATION(SE, AE) (USING_AE ? AE : SE)
-
 #include "REL/Relocation.h"
 
 #include "RE/Offsets.h"

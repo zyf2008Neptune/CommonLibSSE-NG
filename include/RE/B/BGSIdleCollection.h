@@ -46,7 +46,7 @@ namespace RE
 		BGSIdleCollection* Ctor()
 		{
 			using func_t = decltype(&BGSIdleCollection::Ctor);
-			REL::Relocation<func_t> func{ RELOCATION_ID(14127, 14227) };
+			REL::Relocation<func_t> func{ REL::RelocationID(14127, 14227) };
 			return func(this);
 		}
 	};

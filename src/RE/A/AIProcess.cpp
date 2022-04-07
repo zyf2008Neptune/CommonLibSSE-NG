@@ -9,7 +9,7 @@ namespace RE
 	void AIProcess::ClearMuzzleFlashes()
 	{
 		using func_t = decltype(&AIProcess::ClearMuzzleFlashes);
-		REL::Relocation<func_t> func{ RELOCATION_ID(38495, 39504) };
+		REL::Relocation<func_t> func{ REL::RelocationID(38495, 39504) };
 		return func(this);
 	}
 
@@ -41,7 +41,7 @@ namespace RE
 	ObjectRefHandle AIProcess::GetHeadtrackTarget() const
 	{
 		using func_t = decltype(&AIProcess::GetHeadtrackTarget);
-		REL::Relocation<func_t> func{ RELOCATION_ID(38483, 39484) };
+		REL::Relocation<func_t> func{ REL::RelocationID(38483, 39484) };
 		return func(this);
 	}
 
@@ -144,7 +144,7 @@ namespace RE
 	void AIProcess::SetHeadtrackTarget(Actor* a_owner, NiPoint3& a_targetPosition)
 	{
 		using func_t = decltype(&AIProcess::SetHeadtrackTarget);
-		REL::Relocation<func_t> func{ RELOCATION_ID(38850, 39887) };
+		REL::Relocation<func_t> func{ REL::RelocationID(38850, 39887) };
 		return func(this, a_owner, a_targetPosition);
 	}
 

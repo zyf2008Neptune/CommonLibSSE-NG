@@ -423,6 +423,26 @@ namespace REL
 	class Module
 	{
 	public:
+		/**
+		 * Identifies a Skyrim runtime.
+		 */
+		enum class Runtime : uint8_t {
+			/**
+			 * The Skyrim runtime is a post-Anniversary Edition Skyrim SE release (version 1.6.x and later).
+			 */
+			AE,
+
+			/**
+			 * The Skyrim runtime is a pre-Anniversary Edition Skyrim SE release (version 1.5.97 and prior).
+			 */
+			SE,
+
+			/**
+			 * The Skyrim runtime is Skyrim VR.
+			 */
+			VR
+		};
+
 		[[nodiscard]] static Module& get()
 		{
 			static Module singleton;
@@ -441,6 +461,34 @@ namespace REL
 		[[nodiscard]] T* pointer() const noexcept
 		{
 			return static_cast<T*>(pointer());
+		}
+
+		/**
+		 * Get the type of runtime the currently-loaded Skyrim module is.
+		 */
+		[[nodiscard]] inline Runtime GetRuntime() const noexcept {
+			return _runtime;
+		}
+
+		/**
+		 * Returns whether the current Skyrim runtime is a post-Anniversary Edition Skyrim SE release.
+		 */
+		[[nodiscard]] inline bool IsAE() const noexcept {
+			return GetRuntime() == Runtime::AE;
+		}
+
+		/**
+		 * Returns whether the current Skyrim runtime is a pre-Anniversary Edition Skyrim SE release.
+		 */
+		[[nodiscard]] inline bool IsSE() const noexcept {
+			return GetRuntime() == Runtime::SE;
+		}
+
+		/**
+		 * Returns whether the current Skyrim runtime is a Skyrim VR release.
+		 */
+		[[nodiscard]] inline bool IsVR() const noexcept {
+			return GetRuntime() == Runtime::VR;
 		}
 
 	private:
@@ -481,6 +529,9 @@ namespace REL
 
 		void load(void* handle)
 		{
+			if (_filename == L"SkyrimVR.exe") {
+				_runtime = Runtime::VR;
+			}
 			_base = reinterpret_cast<std::uintptr_t>(handle);
 			load_version();
 			load_segments();
@@ -493,6 +544,9 @@ namespace REL
 			const auto version = get_file_version(_filename);
 			if (version) {
 				_version = *version;
+				if (_version[1] == 5) {
+					_runtime = Runtime::SE;
+				}
 			} else {
 				stl::report_and_fail(
 					fmt::format(
@@ -523,7 +577,15 @@ namespace REL
 		std::array<Segment, Segment::total> _segments;
 		Version                             _version;
 		std::uintptr_t                      _base{ 0 };
+		Runtime                             _runtime{ Runtime::AE };
 	};
+
+#ifndef USING_AE
+#	define USING_AE (REL::Module::get().version()[1] > 5)
+#endif
+#ifndef USING_VR
+#	define USING_VR (REL::Module::get().version()[1] == 4)
+#endif
 
 	class IDDatabase
 	{
@@ -1209,6 +1271,110 @@ namespace REL
 		detail::make_byte_array(0x40, 0x10, 0xF2, 0x41)));
 	static_assert(make_pattern<"B8 D0 ?? ?? D4 6E">().match(
 		detail::make_byte_array(0xB8, 0xD0, 0x35, 0x2A, 0xD4, 0x6E)));
+
+	/**
+	 * Selects a proper <code>REL::ID</code> based on the current Skyrim runtime.
+	 *
+	 * <p>
+	 * Skyrim SE and Skyrim AE have different databases of address library IDs. Using this function
+	 * allows both to be provided, letting the compiled code dynamically select at runtime which is
+	 * correct to use. This lets a single SKSE plugin target multiple versions of Skyrim.
+	 * </p>
+	 *
+	 * <p>
+	 * The Address Library for Skyrim VR reuses the same IDs as SE, so usually no VR alternative is
+	 * required. However, the SE ID must be manually mapped to a VR offset in the VR Adress Library
+	 * database. To support VR, you must verify that the ID is already mapped or map it yourself and
+	 * submit a PR upstream to add the changes.
+	 * </p>
+	 *
+	 * @param seAndVR the ID to use for Skyrim SE and VR.
+	 * @param ae the ID to sue for Skyrim AE.
+	 * @return The correct ID based on the currently running Skyrim executable.
+	 */
+	[[nodiscard]] inline REL::ID RelocationID(uint64_t seAndVR, uint64_t ae) noexcept {
+		return REL::ID(Module::get().IsAE() ? ae : seAndVR);
+	}
+
+	/**
+	 * Selects a proper <code>REL::ID</code> based on the current Skyrim runtime.
+	 *
+	 * <p>
+	 * Skyrim SE and Skyrim AE have different databases of address library IDs. Using this function
+	 * allows both to be provided, letting the compiled code dynamically select at runtime which is
+	 * correct to use. This lets a single SKSE plugin target multiple versions of Skyrim.
+	 * </p>
+	 *
+	 * <p>
+	 * The Address Library for Skyrim VR reuses the same IDs as SE, however sometimes VR can be fundamentally
+	 * different and needs to hook a different function entirely. Hence this overload allows selecting a
+	 * different VR ID.
+	 * </p>
+	 *
+	 * @param se the ID to use for Skyrim SE.
+	 * @param ae the ID to use for Skyrim AE.
+	 * @param vr the ID To use for Skyrim VR.
+	 * @return the correct ID for the current runtime of Skyrim.
+	 */
+	[[nodiscard]] inline REL::ID RelocationID(std::uint64_t se, std::uint64_t ae, std::uint64_t vr) noexcept {
+		switch (Module::get().GetRuntime()) {
+		case Module::Runtime::AE:
+			return REL::ID(ae);
+		case Module::Runtime::VR:
+			return REL::ID(vr);
+		default:
+			return REL::ID(se);
+		}
+	}
+
+	/**
+	 * Return the correct value of two choices between SE/VR, and AE versions of Skyrim.
+	 *
+	 * <p>
+	 * This is commonly used to select between relative offsets within a function, when hooking a call instruction.
+	 * In such cases the function can be identified by its Address Library ID, but the offset within the function
+	 * may vary between Skyrim versions. This selection is made at runtime, allowing the same compiled code to run
+	 * in multiple versions of Skyrim.
+	 * </p>
+	 *
+	 * @tparam T the type of value to return.
+	 * @param seAndVR the value to use for SE and VR.
+	 * @param ae the value to use for AE.
+	 * @return Either <code>seAndVR</code> if the current runtime is Skyrim SE or VR, or <code>ae</code> if the runtime is AE.
+	 */
+	template <class T>
+	[[nodiscard]] inline T Relocate(T&& seAndVR, T&& ae) noexcept {
+		return Module::get().IsAE() ? ae : seAndVR;
+	}
+
+	/**
+	 * Return the correct value of two choices between SE, AE, and VR versions of Skyrim.
+	 *
+	 * <p>
+	 * This is commonly used to select between relative offsets within a function, when hooking a call instruction.
+	 * In such cases the function can be identified by its Address Library ID, but the offset within the function
+	 * may vary between Skyrim versions. This selection is made at runtime, allowing the same compiled code to run
+	 * in multiple versions of Skyrim.
+	 * </p>
+	 *
+	 * @tparam T the type of value to return.
+	 * @param se the value to use for SE.
+	 * @param ae the value to use for AE.
+	 * @param vr the value to use for VR.
+	 * @return Either <code>se</code> if the current runtime is Skyrim SE, or <code>ae</code> if the runtime is AE, or
+	 * <code>vr</code> if running Skyrim VR.
+	 */
+	template <class T>
+	[[nodiscard]] inline T Relocate(T&& se, T&& ae, T&& vr) noexcept {
+		switch (Module::get().GetRuntime()) {
+		case Module::Runtime::AE:
+			return ae;
+		case Module::Runtime::VR:
+			return vr;
+		default:
+			return se;
+		}
+	}
 }
 
 #undef REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE

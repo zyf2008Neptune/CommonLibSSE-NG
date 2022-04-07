@@ -1,6 +1,6 @@
 {
     "name": "commonlibsse-ng",
-    "version-string": "1.0.0",
+    "version-string": "2.0.0",
     "description": "A fork of CommonLibSSE with advanced features for modern SKSE development.",
     "homepage": "https://github.com/CharmedBaryon/CommonLibSSE",
     "license": "MIT",

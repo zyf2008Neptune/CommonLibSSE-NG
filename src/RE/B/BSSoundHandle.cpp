@@ -20,7 +20,7 @@ namespace RE
 	bool BSSoundHandle::SetFrequency(float a_frequency)
 	{
 		using func_t = decltype(&BSSoundHandle::SetFrequency);
-		REL::Relocation<func_t> func{ RELOCATION_ID(66366, 67627) };
+		REL::Relocation<func_t> func{ REL::RelocationID(66366, 67627) };
 		return func(this, a_frequency);
 	}
 
@@ -41,7 +41,7 @@ namespace RE
 	bool BSSoundHandle::SetVolume(float a_volume)
 	{
 		using func_t = decltype(&BSSoundHandle::SetVolume);
-		REL::Relocation<func_t> func{ RELOCATION_ID(66365, 67626) };
+		REL::Relocation<func_t> func{ REL::RelocationID(66365, 67626) };
 		return func(this, a_volume);
 	}
 
