@@ -157,6 +157,12 @@ namespace SKSE::WinAPI
 				static_cast<::LPCSTR>(a_procName)));
 	}
 
+	bool IsDebuggerPresent() noexcept
+	{
+		return static_cast<bool>(
+			::IsDebuggerPresent());
+	}
+
 	std::int32_t MessageBox(
 		void*        a_wnd,
 		const char*  a_text,
