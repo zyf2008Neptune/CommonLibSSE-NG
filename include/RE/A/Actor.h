@@ -476,6 +476,7 @@ namespace RE
 		void                         AllowPCDialogue(bool a_talk);
 		bool                         CanAttackActor(Actor* a_actor);
 		bool                         CanFlyHere() const;
+		bool                         CanOfferServices() const;
 		bool                         CanPickpocket() const;
 		bool                         CanTalkToPlayer() const;
 		void                         ClearArrested();
@@ -507,9 +508,12 @@ namespace RE
 		bool                         GetMount(NiPointer<Actor>& a_outMount);
 		ObjectRefHandle              GetOccupiedFurniture() const;
 		TESRace*                     GetRace() const;
+		bool                         GetRider(NiPointer<Actor>& a_outRider);
 		[[nodiscard]] TESObjectARMO* GetSkin() const;
 		[[nodiscard]] TESObjectARMO* GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] SOUL_LEVEL     GetSoulSize() const;
+		TESFaction*                  GetVendorFaction();
+		const TESFaction*            GetVendorFaction() const;
 		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID);
 		bool                         HasKeywordString(std::string_view a_formEditorID);
@@ -522,7 +526,7 @@ namespace RE
 		bool                         IsAnimationDriven() const;
 		bool                         IsBeingRidden() const;
 		bool                         IsBlocking() const;
-		bool                         IsCasting(SpellItem* a_spell) const;
+		bool                         IsCasting(MagicItem* a_magicItem) const;
 		bool                         IsCommandedActor() const;
 		bool                         IsEssential() const;
 		bool                         IsFactionInCrimeGroup(const TESFaction* a_faction) const;
@@ -624,6 +628,7 @@ namespace RE
 		WinAPI::CRITICAL_SECTION                              unk288;                             // 288 - havok related
 
 	private:
+		void        CalculateCurrentVendorFaction() const;
 		TESFaction* GetCrimeFactionImpl() const;
 	};
 	static_assert(sizeof(Actor) == 0x2B0);

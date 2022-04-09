@@ -190,6 +190,11 @@ namespace RE
 		}
 	}
 
+	bool TESFaction::OffersServices() const
+	{
+		return vendorData.vendorSellBuyList != nullptr;
+	}
+
 	void TESFaction::PlayerPayCrimeGold(bool a_removeStolenItems, bool a_goToJail)
 	{
 		auto player = PlayerCharacter::GetSingleton();

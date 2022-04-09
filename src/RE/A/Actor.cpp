@@ -114,6 +114,12 @@ namespace RE
 		return worldSpace && worldSpace->HasMaxHeightData();
 	}
 
+	bool Actor::CanOfferServices() const
+	{
+		const auto* vendorFac = GetVendorFaction();
+		return vendorFac ? vendorFac->OffersServices() : false;
+	}
+
 	bool Actor::CanPickpocket() const
 	{
 		if (!race) {
@@ -374,6 +380,13 @@ namespace RE
 		return base ? base->race : nullptr;
 	}
 
+	bool Actor::GetRider(NiPointer<Actor>& a_outRider)
+	{
+		using func_t = decltype(&Actor::GetRider);
+		REL::Relocation<func_t> func{ REL::RelocationID(37758, 38703) };
+		return func(this, a_outRider);
+	}
+
 	TESObjectARMO* Actor::GetSkin() const
 	{
 		if (const auto base = GetActorBase(); base && base->skin) {
@@ -397,6 +410,22 @@ namespace RE
 		using func_t = decltype(&Actor::GetSoulSize);
 		REL::Relocation<func_t> func{ REL::RelocationID(37862, 38817) };
 		return func(this);
+	}
+
+	TESFaction* Actor::GetVendorFaction()
+	{
+		if (!vendorFaction) {
+			CalculateCurrentVendorFaction();
+		}
+		return vendorFaction;
+	}
+
+	const TESFaction* Actor::GetVendorFaction() const
+	{
+		if (!vendorFaction) {
+			CalculateCurrentVendorFaction();
+		}
+		return vendorFaction;
 	}
 
 	TESObjectARMO* Actor::GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot)
@@ -496,11 +525,11 @@ namespace RE
 		return func(this);
 	}
 
-	bool Actor::IsCasting(SpellItem* a_spell) const
+	bool Actor::IsCasting(MagicItem* a_magicItem) const
 	{
 		using func_t = decltype(&Actor::IsCasting);
 		REL::Relocation<func_t> func{ REL::RelocationID(37810, 38759) };
-		return func(this, a_spell);
+		return func(this, a_magicItem);
 	}
 
 	bool Actor::IsCommandedActor() const
@@ -840,6 +869,13 @@ namespace RE
 	bool Actor::WouldBeStealing(const TESObjectREFR* a_target) const
 	{
 		return a_target != nullptr && !a_target->IsAnOwner(this, true, false);
+	}
+
+	void Actor::CalculateCurrentVendorFaction() const
+	{
+		using func_t = decltype(&Actor::CalculateCurrentVendorFaction);
+		REL::Relocation<func_t> func{ REL::RelocationID(36392, 37383) };
+		return func(this);
 	}
 
 	TESFaction* Actor::GetCrimeFactionImpl() const
