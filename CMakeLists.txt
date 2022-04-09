@@ -22,7 +22,7 @@ endif()
 project(
 	CommonLibSSE
 	LANGUAGES CXX
-	VERSION 2.0.0
+	VERSION 2.0.1
 )
 
 include(GNUInstallDirs)
@@ -80,6 +80,7 @@ if (MSVC)
 			/we4715	# 'function' : not all control paths return a value
 
 			# disable warnings
+			/wd4005 # macro redefinition
 			/wd4061 # enumerator 'identifier' in switch of enum 'enumeration' is not explicitly handled by a case label
 			/wd4200 # nonstandard extension used : zero-sized array in struct/union
 			/wd4201 # nonstandard extension used : nameless struct/union

@@ -58,14 +58,13 @@
             "cacheVariables": {
                 "CMAKE_CXX_FLAGS": "/EHsc /MP /W4 /WX $penv{CXXFLAGS}"
             },
-            "generator": "Visual Studio 17 2022",
+            "generator": "Ninja",
             "inherits": [
                 "cmake-dev",
                 "vcpkg",
                 "windows"
             ],
-            "name": "vs2022-windows-vcpkg",
-            "toolset": "v143"
+            "name": "vs2022-windows-vcpkg"
         }
     ],
     "buildPresets": [
