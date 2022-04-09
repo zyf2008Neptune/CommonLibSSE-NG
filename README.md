@@ -5,12 +5,17 @@
 
 CommonLibSSE NG is a fork of CommonLibSSE which tracks upstream updates but adds a number of enhancements:
 * Support for Address Libraries for SE, AE, and VR.
-* Dynamic cross-runtime support (ability to produce a single DLL that works on AE, SE, or VR).
+* Dynamic cross-runtime support (ability to produce a single DLL that works on AE, SE, or VR), with access to all
+  cross-compatible features.
+* Ability to build locked to a single runtime, where access to non-portable features is needed.
 * Fully extensible native function binding traits (enables custom script object bindings in
   [Fully Dynamic Game Engine](https://gitlab.com/colorglass/fully-dynamic-game-engine)).
 * Unit testing support (can be run without being hosted in a Skyrim executable).
 * Better support for the CLion IDE, including a completed CMakePresets.json file that works in non-Visual Studio IDEs.
 * Fixes to support the current versions of  dependencies on Vcpkg.
+* Uses modern Vcpkg manifest version feature and assigns semantic versions to specific CommonLibSSE NG releases.
+* Upgrades the build system to Ninja for faster builds.
+* Provides distribution through Vcpkg rather than requiring import as a Git submodule.
 
 CommonLibSSE NG is available as a Vcpkg port. To add it to your project, create a `vcpkg-configuration.json` file in the
 project root (next to `vcpkg.json`) with the following contents:
@@ -21,6 +26,7 @@ project root (next to `vcpkg.json`) with the following contents:
         {
             "kind": "git",
             "repository": "https://gitlab.com/colorglass/vcpkg-colorglass",
+            // Update this baseline to the latest commit from the above repo.
             "baseline": "59ebdd824b295fad4effcdccfe6e6aaa47ff4764",
             "packages": [
                 "commonlibsse-ng"
@@ -34,6 +40,9 @@ Then add `commonlibsse-ng` as a dependency in `vcpkg.json`. There are also runti
 * `commonlibsse-ng-ae`: Supports AE executables (1.6.x) only.
 * `commonlibsse-ng-se`: Supports pre-AE executables (1.5.x) only.
 * `commonlibsse-ng-vr`: Supports VR only.
+* `commonlibsse-ng-prebuilt`: A prebuilt binary for CommonLibSSE NG, avoids the overhead of compiling it. Recommended to
+  be used only with `x64-windows-static-md` triplet (or equivalent custom one), but can also be used with
+  `x64-windows-static` (or custom equivalent).
 
 The runtime-specific ports will not attempt to dynamically lookup the version of Skyrim at runtime, and will enable
 access to reverse engineered content that is specific to that version of Skyrim and non-portable (i.e. it does not exist
