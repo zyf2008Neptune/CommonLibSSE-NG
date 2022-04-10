@@ -1,28 +1,22 @@
 cmake_minimum_required(VERSION 3.19)
 
 option(SKSE_SUPPORT_XBYAK "Enables trampoline support for Xbyak." OFF)
-option(SKYRIM_FORCE_SE "Forces the build to support only SE, which allows functionality not present for AE/VR." OFF)
-option(SKYRIM_FORCE_AE "Forces the build to support only AE, which allows functionality not present for SE/VR." OFF)
-option(SKYRIM_FORCE_VR "Forces the build to support only VR, which allows functionality not present for SE/AE." OFF)
+option(ENABLE_SKYRIM_SE "Enable support for Skyrim SE in the dynamic runtime feature." ON)
+option(ENABLE_SKYRIM_AE "Enable support for Skyrim AE in the dynamic runtime feature." ON)
+option(ENABLE_SKYRIM_VR "Enable support for Skyrim VR in the dynamic runtime feature." ON)
+message("Options:")
+message("\tEnable Skyrim SE: ${ENABLE_SKYRIM_SE}")
+message("\tEnable Skyrim AE: ${ENABLE_SKYRIM_AE}")
+message("\tEnable Skyrim VR: ${ENABLE_SKYRIM_VR}")
 
-if(SKYRIM_FORCE_SE)
-	if(SKYRIM_FORCE_AE OR SKYRIM_FORCE_VR)
-		message(FATAL_ERROR "Only one version of Skyrim can forced on at a time.")
-	endif()
-	add_compile_definitions(USING_AE=false USING_VR=false)
-elseif(SKYRIM_FORCE_AE)
-	if(SKYRIM_FORCE_VR)
-		message(FATAL_ERROR "Only one version of Skyrim can forced on at a time.")
-	endif()
-	add_compile_definitions(USING_AE=true USING_VR=false)
-elseif(SKYRIM_FORCE_VR)
-	add_compile_definitions(USING_AE=false USING_VR=true)
+if(NOT ENABLE_SKYRIM_SE AND NOT ENABLE_SKYRIM_AE AND NOT ENABLE_SKYRIM_VR)
+	message(FATAL_ERROR "At least one Skyrim runtime must be supported by the CommonLibSSE build.")
 endif()
 
 project(
 	CommonLibSSE
 	LANGUAGES CXX
-	VERSION 2.0.1
+	VERSION 2.1.1
 )
 
 include(GNUInstallDirs)
@@ -60,8 +54,9 @@ target_compile_definitions(
 		WINVER=0x0601	# windows 7, minimum supported version by skyrim special edition
 		_WIN32_WINNT=0x0601
 		"$<$<BOOL:${SKSE_SUPPORT_XBYAK}>:SKSE_SUPPORT_XBYAK=1>"
-		"$<$<BOOL:${SKYRIM_FORCE_SE}>:SKYRIM_FORCE_SE=1>"
-		"$<$<BOOL:${SKYRIM_FORCE_AE}>:SKYRIM_FORCE_AE=1>"
+		"$<$<BOOL:${ENABLE_SKYRIM_SE}>:ENABLE_SKYRIM_SE=1>"
+		"$<$<BOOL:${ENABLE_SKYRIM_AE}>:ENABLE_SKYRIM_AE=1>"
+		"$<$<BOOL:${ENABLE_SKYRIM_VR}>:ENABLE_SKYRIM_VR=1>"
 )
 
 target_compile_features(
