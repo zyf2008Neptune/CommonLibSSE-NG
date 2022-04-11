@@ -9,8 +9,8 @@ namespace RE
 	class BGSAssociationType : public TESForm
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSAssociationType;
-		inline static auto VTABLE = VTABLE_BGSAssociationType;
+		inline static auto           RTTI = RTTI_BGSAssociationType;
+		inline static auto           VTABLE = VTABLE_BGSAssociationType;
 		inline static constexpr auto FORMTYPE = FormType::AssociationType;
 
 		enum class FLAGS  // DATA

@@ -11,8 +11,8 @@ namespace RE
 		public TESIcon   // 20
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSMenuIcon;
-		inline static auto VTABLE = VTABLE_BGSMenuIcon;
+		inline static auto           RTTI = RTTI_BGSMenuIcon;
+		inline static auto           VTABLE = VTABLE_BGSMenuIcon;
 		inline static constexpr auto FORMTYPE = FormType::MenuIcon;
 
 		struct RecordFlags

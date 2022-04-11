@@ -72,8 +72,8 @@ namespace RE
 		public TESDescription              // 158
 	{
 	public:
-		inline static auto RTTI = RTTI_TESObjectWEAP;
-		inline static auto VTABLE = VTABLE_TESObjectWEAP;
+		inline static auto           RTTI = RTTI_TESObjectWEAP;
+		inline static auto           VTABLE = VTABLE_TESObjectWEAP;
 		inline static constexpr auto FORMTYPE = FormType::Weapon;
 
 		struct RecordFlags

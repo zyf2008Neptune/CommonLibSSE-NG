@@ -16,8 +16,8 @@ namespace RE
 	class TESLandTexture : public TESForm
 	{
 	public:
-		inline static auto RTTI = RTTI_TESLandTexture;
-		inline static auto VTABLE = VTABLE_TESLandTexture;
+		inline static auto           RTTI = RTTI_TESLandTexture;
+		inline static auto           VTABLE = VTABLE_TESLandTexture;
 		inline static constexpr auto FORMTYPE = FormType::LandTexture;
 
 		struct RecordFlags

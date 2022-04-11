@@ -9,7 +9,7 @@ namespace RE
 	class BarrierProjectile : public Projectile
 	{
 	public:
-		inline static auto RTTI = RTTI_BarrierProjectile;
+		inline static auto           RTTI = RTTI_BarrierProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileBarrier;
 
 		struct RecordFlags

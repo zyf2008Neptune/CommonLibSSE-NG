@@ -95,8 +95,8 @@ namespace RE
 	class TESImageSpace : public TESForm
 	{
 	public:
-		inline static auto RTTI = RTTI_TESImageSpace;
-		inline static auto VTABLE = VTABLE_TESImageSpace;
+		inline static auto           RTTI = RTTI_TESImageSpace;
+		inline static auto           VTABLE = VTABLE_TESImageSpace;
 		inline static constexpr auto FORMTYPE = FormType::ImageSpace;
 
 		struct RecordFlags

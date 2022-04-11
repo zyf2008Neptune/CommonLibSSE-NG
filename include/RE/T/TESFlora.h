@@ -11,8 +11,8 @@ namespace RE
 		public TESProduceForm  // C8
 	{
 	public:
-		inline static auto RTTI = RTTI_TESFlora;
-		inline static auto VTABLE = VTABLE_TESFlora;
+		inline static auto           RTTI = RTTI_TESFlora;
+		inline static auto           VTABLE = VTABLE_TESFlora;
 		inline static constexpr auto FORMTYPE = FormType::Flora;
 
 		struct RecordFlags

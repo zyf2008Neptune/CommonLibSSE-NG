@@ -82,8 +82,8 @@ namespace RE
 		public BGSPreloadable  // 48
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSBodyPartData;
-		inline static auto VTABLE = VTABLE_BGSBodyPartData;
+		inline static auto           RTTI = RTTI_BGSBodyPartData;
+		inline static auto           VTABLE = VTABLE_BGSBodyPartData;
 		inline static constexpr auto FORMTYPE = FormType::BodyPartData;
 
 		struct RecordFlags

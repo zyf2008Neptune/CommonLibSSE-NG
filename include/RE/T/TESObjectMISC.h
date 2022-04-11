@@ -27,8 +27,8 @@ namespace RE
 		public BGSKeywordForm              // 0E8
 	{
 	public:
-		inline static auto RTTI = RTTI_TESObjectMISC;
-		inline static auto VTABLE = VTABLE_TESObjectMISC;
+		inline static auto           RTTI = RTTI_TESObjectMISC;
+		inline static auto           VTABLE = VTABLE_TESObjectMISC;
 		inline static constexpr auto FORMTYPE = FormType::Misc;
 
 		struct RecordFlags

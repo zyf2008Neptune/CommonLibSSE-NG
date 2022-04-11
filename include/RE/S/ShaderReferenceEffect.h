@@ -19,9 +19,9 @@ namespace RE
 	class ShaderReferenceEffect : public ReferenceEffect
 	{
 	public:
-		inline static auto RTTI = RTTI_ShaderReferenceEffect;
-		inline static auto Ni_RTTI = NiRTTI_ShaderReferenceEffect;
-		inline static auto VTABLE = VTABLE_ShaderReferenceEffect;
+		inline static auto           RTTI = RTTI_ShaderReferenceEffect;
+		inline static auto           Ni_RTTI = NiRTTI_ShaderReferenceEffect;
+		inline static auto           VTABLE = VTABLE_ShaderReferenceEffect;
 		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kRefShader;
 
 		enum class Flag

@@ -127,7 +127,7 @@ namespace RE
 		using EntryPoint = BGSEntryPointPerkEntry::EntryPoint;
 
 	public:
-		inline static auto RTTI = RTTI_Actor;
+		inline static auto           RTTI = RTTI_Actor;
 		inline static constexpr auto FORMTYPE = FormType::ActorCharacter;
 
 		struct SlotTypes

@@ -8,8 +8,8 @@ namespace RE
 	class FlameProjectile : public Projectile
 	{
 	public:
-		inline static auto RTTI = RTTI_FlameProjectile;
-		inline static auto VTABLE = VTABLE_FlameProjectile;
+		inline static auto           RTTI = RTTI_FlameProjectile;
+		inline static auto           VTABLE = VTABLE_FlameProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileFlame;
 
 		struct RecordFlags

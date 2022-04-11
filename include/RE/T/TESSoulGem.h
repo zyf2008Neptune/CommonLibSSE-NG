@@ -9,8 +9,8 @@ namespace RE
 	class TESSoulGem : public TESObjectMISC
 	{
 	public:
-		inline static auto RTTI = RTTI_TESSoulGem;
-		inline static auto VTABLE = VTABLE_TESSoulGem;
+		inline static auto           RTTI = RTTI_TESSoulGem;
+		inline static auto           VTABLE = VTABLE_TESSoulGem;
 		inline static constexpr auto FORMTYPE = FormType::SoulGem;
 
 		struct RecordFlags

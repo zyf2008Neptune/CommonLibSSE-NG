@@ -119,8 +119,8 @@ namespace RE
 		public TESReactionForm  // 030
 	{
 	public:
-		inline static auto RTTI = RTTI_TESFaction;
-		inline static auto VTABLE = VTABLE_TESFaction;
+		inline static auto           RTTI = RTTI_TESFaction;
+		inline static auto           VTABLE = VTABLE_TESFaction;
 		inline static constexpr auto FORMTYPE = FormType::Faction;
 
 		struct ChangeFlags

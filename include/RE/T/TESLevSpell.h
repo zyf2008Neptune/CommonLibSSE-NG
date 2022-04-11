@@ -11,8 +11,8 @@ namespace RE
 		public TESLeveledList   // 30
 	{
 	public:
-		inline static auto RTTI = RTTI_TESLevSpell;
-		inline static auto VTABLE = VTABLE_TESLevSpell;
+		inline static auto           RTTI = RTTI_TESLevSpell;
+		inline static auto           VTABLE = VTABLE_TESLevSpell;
 		inline static constexpr auto FORMTYPE = FormType::LeveledSpell;
 
 		struct ChangeFlags

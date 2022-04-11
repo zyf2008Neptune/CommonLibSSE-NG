@@ -9,7 +9,7 @@ namespace RE
 	class BGSSceneActionDialogue : public BGSSceneAction
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSSceneActionDialogue;
+		inline static auto           RTTI = RTTI_BGSSceneActionDialogue;
 		inline static constexpr auto TYPE = Type::kDialogue;
 
 		~BGSSceneActionDialogue() override;  // 00

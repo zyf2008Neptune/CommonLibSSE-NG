@@ -10,8 +10,8 @@ namespace RE
 	class BGSMovementType : public TESForm
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSMovementType;
-		inline static auto VTABLE = VTABLE_BGSMovementType;
+		inline static auto           RTTI = RTTI_BGSMovementType;
+		inline static auto           VTABLE = VTABLE_BGSMovementType;
 		inline static constexpr auto FORMTYPE = FormType::MovementType;
 
 		struct RecordFlags

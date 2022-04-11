@@ -7,7 +7,7 @@ namespace RE
 	class BGSSceneActionTimer : public BGSSceneAction
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSSceneActionTimer;
+		inline static auto           RTTI = RTTI_BGSSceneActionTimer;
 		inline static constexpr auto TYPE = Type::kTimer;
 
 		~BGSSceneActionTimer() override;  // 00

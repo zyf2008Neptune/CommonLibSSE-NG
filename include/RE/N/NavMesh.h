@@ -13,8 +13,8 @@ namespace RE
 		public BSNavmesh      // 028
 	{
 	public:
-		inline static auto RTTI = RTTI_NavMesh;
-		inline static auto VTABLE = VTABLE_NavMesh;
+		inline static auto           RTTI = RTTI_NavMesh;
+		inline static auto           VTABLE = VTABLE_NavMesh;
 		inline static constexpr auto FORMTYPE = FormType::NavMesh;
 
 		struct RecordFlags

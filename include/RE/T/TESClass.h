@@ -87,8 +87,8 @@ namespace RE
 		public TESTexture       // 40
 	{
 	public:
-		inline static auto RTTI = RTTI_TESClass;
-		inline static auto VTABLE = VTABLE_TESClass;
+		inline static auto           RTTI = RTTI_TESClass;
+		inline static auto           VTABLE = VTABLE_TESClass;
 		inline static constexpr auto FORMTYPE = FormType::Class;
 
 		struct ChangeFlags

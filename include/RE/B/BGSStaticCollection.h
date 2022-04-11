@@ -11,8 +11,8 @@ namespace RE
 		public TESModelTextureSwap  // 30
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSStaticCollection;
-		inline static auto VTABLE = VTABLE_BGSStaticCollection;
+		inline static auto           RTTI = RTTI_BGSStaticCollection;
+		inline static auto           VTABLE = VTABLE_BGSStaticCollection;
 		inline static constexpr auto FORMTYPE = FormType::StaticCollection;
 
 		struct RecordFlags

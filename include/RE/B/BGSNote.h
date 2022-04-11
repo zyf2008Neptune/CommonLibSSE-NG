@@ -18,8 +18,8 @@ namespace RE
 		public BGSPickupPutdownSounds  // 78
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSNote;
-		inline static auto VTABLE = VTABLE_BGSNote;
+		inline static auto           RTTI = RTTI_BGSNote;
+		inline static auto           VTABLE = VTABLE_BGSNote;
 		inline static constexpr auto FORMTYPE = FormType::Note;
 
 		struct ChangeFlags

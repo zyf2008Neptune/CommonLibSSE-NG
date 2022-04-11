@@ -12,8 +12,8 @@ namespace RE
 		public TESModelTextureSwap  // 20
 	{
 	public:
-		inline static auto RTTI = RTTI_TESObjectANIO;
-		inline static auto VTABLE = VTABLE_TESObjectANIO;
+		inline static auto           RTTI = RTTI_TESObjectANIO;
+		inline static auto           VTABLE = VTABLE_TESObjectANIO;
 		inline static constexpr auto FORMTYPE = FormType::AnimatedObject;
 
 		struct RecordFlags

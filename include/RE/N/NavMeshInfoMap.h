@@ -18,8 +18,8 @@ namespace RE
 		public PrecomputedNavmeshInfoPathMap  // 30
 	{
 	public:
-		inline static auto RTTI = RTTI_NavMeshInfoMap;
-		inline static auto VTABLE = VTABLE_NavMeshInfoMap;
+		inline static auto           RTTI = RTTI_NavMeshInfoMap;
+		inline static auto           VTABLE = VTABLE_NavMeshInfoMap;
 		inline static constexpr auto FORMTYPE = FormType::Navigation;
 
 		struct RecordFlags

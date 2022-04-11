@@ -27,8 +27,8 @@ namespace RE
 		public TESObjectSTAT               // 20
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSMovableStatic;
-		inline static auto VTABLE = VTABLE_BGSMovableStatic;
+		inline static auto           RTTI = RTTI_BGSMovableStatic;
+		inline static auto           VTABLE = VTABLE_BGSMovableStatic;
 		inline static constexpr auto FORMTYPE = FormType::MovableStatic;
 
 		struct RecordFlags

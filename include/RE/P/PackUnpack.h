@@ -17,51 +17,57 @@ namespace RE
 		void*             UnpackHandle(const Variable* a_src, VMTypeID a_typeID);
 
 		template <class T>
-		struct GetRawType {
-			[[nodiscard]] constexpr TypeInfo::RawType operator()() const noexcept {
+		struct GetRawType
+		{
+			[[nodiscard]] constexpr TypeInfo::RawType operator()() const noexcept
+			{
 				static_assert(!sizeof(T*), "Invalid target type for GetRawType.");
 				return TypeInfo::RawType::kNone;
 			}
 		};
 
 		template <class T>
-		requires (is_builtin_convertible_v<T>)
-			struct GetRawType<T> {
-			[[nodiscard]] constexpr TypeInfo::RawType operator()() const noexcept {
+		requires(is_builtin_convertible_v<T>) struct GetRawType<T>
+		{
+			[[nodiscard]] constexpr TypeInfo::RawType operator()() const noexcept
+			{
 				return vm_type_v<T>;
 			}
 		};
 
 		template <class T>
-		requires (is_form_pointer_v<T>)
-			struct GetRawType<T> {
-			[[nodiscard]] constexpr TypeInfo::RawType operator()() const noexcept {
+		requires(is_form_pointer_v<T>) struct GetRawType<T>
+		{
+			[[nodiscard]] constexpr TypeInfo::RawType operator()() const noexcept
+			{
 				return GetRawTypeFromVMType(static_cast<VMTypeID>(decay_pointer_t<T>::FORMTYPE));
 			}
 		};
 
 		template <class T>
-		requires (is_alias_pointer_v<T>)
-			struct GetRawType<T> {
-			[[nodiscard]] constexpr TypeInfo::RawType operator()() const noexcept {
+		requires(is_alias_pointer_v<T>) struct GetRawType<T>
+		{
+			[[nodiscard]] constexpr TypeInfo::RawType operator()() const noexcept
+			{
 				return GetRawTypeFromVMType(decay_pointer_t<T>::VMTYPEID);
 			}
 		};
 
 		template <class T>
-		requires (is_active_effect_pointer_v<T>)
-			struct GetRawType<T> {
-			[[nodiscard]] constexpr TypeInfo::RawType operator()() const noexcept {
+		requires(is_active_effect_pointer_v<T>) struct GetRawType<T>
+		{
+			[[nodiscard]] constexpr TypeInfo::RawType operator()() const noexcept
+			{
 				return GetRawTypeFromVMType(decay_pointer_t<T>::VMTYPEID);
 			}
 		};
 
 		template <class T>
-		requires ((is_array_v<T> || is_reference_wrapper_v<T>) &&
-			(is_builtin_convertible_v<typename T::value_type> || is_form_pointer_v<typename T::value_type> ||
-				is_alias_pointer_v<typename T::value_type> || is_active_effect_pointer_v<typename T::value_type>))
-			struct GetRawType<T> {
-			[[nodiscard]] constexpr TypeInfo::RawType operator()() const noexcept {
+		requires((is_array_v<T> || is_reference_wrapper_v<T>)&&(is_builtin_convertible_v<typename T::value_type> || is_form_pointer_v<typename T::value_type> ||
+																is_alias_pointer_v<typename T::value_type> || is_active_effect_pointer_v<typename T::value_type>)) struct GetRawType<T>
+		{
+			[[nodiscard]] constexpr TypeInfo::RawType operator()() const noexcept
+			{
 				using value_type = typename T::value_type;
 				if constexpr (is_builtin_convertible_v<value_type>) {
 					return *(stl::enumeration{ vm_type_v<T> } + TypeInfo::RawType::kNoneArray);

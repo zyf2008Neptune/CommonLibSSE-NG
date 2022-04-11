@@ -10,8 +10,8 @@ namespace RE
 	class TESFurniture : public TESObjectACTI
 	{
 	public:
-		inline static auto RTTI = RTTI_TESFurniture;
-		inline static auto VTABLE = VTABLE_TESFurniture;
+		inline static auto           RTTI = RTTI_TESFurniture;
+		inline static auto           VTABLE = VTABLE_TESFurniture;
 		inline static constexpr auto FORMTYPE = FormType::Furniture;
 
 		enum class ActiveMarker

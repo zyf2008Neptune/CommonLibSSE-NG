@@ -78,8 +78,8 @@ namespace RE
 		public BGSDestructibleObjectForm  // 070
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSProjectile;
-		inline static auto VTABLE = VTABLE_BGSProjectile;
+		inline static auto           RTTI = RTTI_BGSProjectile;
+		inline static auto           VTABLE = VTABLE_BGSProjectile;
 		inline static constexpr auto FORMTYPE = FormType::Projectile;
 
 		struct RecordFlags

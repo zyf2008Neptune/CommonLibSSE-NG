@@ -11,8 +11,8 @@ namespace RE
 		public TESModelTextureSwap  // 30
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSArtObject;
-		inline static auto VTABLE = VTABLE_BGSArtObject;
+		inline static auto           RTTI = RTTI_BGSArtObject;
+		inline static auto           VTABLE = VTABLE_BGSArtObject;
 		inline static constexpr auto FORMTYPE = FormType::ArtObject;
 
 		enum class ArtType

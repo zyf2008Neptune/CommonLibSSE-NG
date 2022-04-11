@@ -13,8 +13,8 @@ namespace RE
 		public TESDescription   // 110
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSApparatus;
-		inline static auto VTABLE = VTABLE_BGSApparatus;
+		inline static auto           RTTI = RTTI_BGSApparatus;
+		inline static auto           VTABLE = VTABLE_BGSApparatus;
 		inline static constexpr auto FORMTYPE = FormType::Apparatus;
 
 		struct RecordFlags

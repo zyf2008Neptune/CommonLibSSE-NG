@@ -12,8 +12,8 @@ namespace RE
 		public BGSPreloadable  // 20
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSImpactDataSet;
-		inline static auto VTABLE = VTABLE_BGSImpactDataSet;
+		inline static auto           RTTI = RTTI_BGSImpactDataSet;
+		inline static auto           VTABLE = VTABLE_BGSImpactDataSet;
 		inline static constexpr auto FORMTYPE = FormType::ImpactDataSet;
 
 		struct RecordFlags

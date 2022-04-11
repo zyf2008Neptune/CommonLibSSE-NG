@@ -11,7 +11,7 @@ namespace RE
 	class NonActorMagicCaster : public ExtraMagicCaster
 	{
 	public:
-		inline static auto RTTI = RTTI_NonActorMagicCaster;
+		inline static auto           RTTI = RTTI_NonActorMagicCaster;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMagicCaster;
 
 		~NonActorMagicCaster() override;  // 00

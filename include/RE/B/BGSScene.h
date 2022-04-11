@@ -31,8 +31,8 @@ namespace RE
 	class BGSScene : public TESForm
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSScene;
-		inline static auto VTABLE = VTABLE_BGSScene;
+		inline static auto           RTTI = RTTI_BGSScene;
+		inline static auto           VTABLE = VTABLE_BGSScene;
 		inline static constexpr auto FORMTYPE = FormType::Scene;
 
 		enum class Flag

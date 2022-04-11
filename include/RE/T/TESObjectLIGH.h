@@ -65,8 +65,8 @@ namespace RE
 		public BGSEquipType                // 0D0
 	{
 	public:
-		inline static auto RTTI = RTTI_TESObjectLIGH;
-		inline static auto VTABLE = VTABLE_TESObjectLIGH;
+		inline static auto           RTTI = RTTI_TESObjectLIGH;
+		inline static auto           VTABLE = VTABLE_TESObjectLIGH;
 		inline static constexpr auto FORMTYPE = FormType::Light;
 
 		struct RecordFlags

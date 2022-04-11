@@ -12,8 +12,8 @@ namespace RE
 		public TESFullName  // 20
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSColorForm;
-		inline static auto VTABLE = VTABLE_BGSColorForm;
+		inline static auto           RTTI = RTTI_BGSColorForm;
+		inline static auto           VTABLE = VTABLE_BGSColorForm;
 		inline static constexpr auto FORMTYPE = FormType::ColorForm;
 
 		enum class Flag  // FNAM

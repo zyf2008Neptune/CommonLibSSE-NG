@@ -9,8 +9,8 @@ namespace RE
 	class EnchantmentItem : public MagicItem
 	{
 	public:
-		inline static auto RTTI = RTTI_EnchantmentItem;
-		inline static auto VTABLE = VTABLE_EnchantmentItem;
+		inline static auto           RTTI = RTTI_EnchantmentItem;
+		inline static auto           VTABLE = VTABLE_EnchantmentItem;
 		inline static constexpr auto FORMTYPE = FormType::Enchantment;
 
 		enum class EnchantmentFlag

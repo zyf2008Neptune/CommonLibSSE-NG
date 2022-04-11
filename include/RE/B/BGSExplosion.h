@@ -52,8 +52,8 @@ namespace RE
 		public TESImageSpaceModifiableForm  // 88
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSExplosion;
-		inline static auto VTABLE = VTABLE_BGSExplosion;
+		inline static auto           RTTI = RTTI_BGSExplosion;
+		inline static auto           VTABLE = VTABLE_BGSExplosion;
 		inline static constexpr auto FORMTYPE = FormType::Explosion;
 
 		struct RecordFlags

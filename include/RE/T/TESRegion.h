@@ -52,8 +52,8 @@ namespace RE
 	class TESRegion : public TESForm
 	{
 	public:
-		inline static auto RTTI = RTTI_TESRegion;
-		inline static auto VTABLE = VTABLE_TESRegion;
+		inline static auto           RTTI = RTTI_TESRegion;
+		inline static auto           VTABLE = VTABLE_TESRegion;
 		inline static constexpr auto FORMTYPE = FormType::Region;
 
 		struct RecordFlags

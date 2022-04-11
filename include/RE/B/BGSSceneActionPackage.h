@@ -10,7 +10,7 @@ namespace RE
 	class BGSSceneActionPackage : public BGSSceneAction
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSSceneActionPackage;
+		inline static auto           RTTI = RTTI_BGSSceneActionPackage;
 		inline static constexpr auto TYPE = Type::kPackage;
 
 		~BGSSceneActionPackage() override;  // 00

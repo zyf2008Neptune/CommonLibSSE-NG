@@ -426,7 +426,8 @@ namespace REL
 		/**
 		 * Identifies a Skyrim runtime.
 		 */
-		enum class Runtime : uint8_t {
+		enum class Runtime : uint8_t
+		{
 			/**
 			 * The Skyrim runtime is a post-Anniversary Edition Skyrim SE release (version 1.6.x and later).
 			 */
@@ -449,9 +450,9 @@ namespace REL
 			return singleton;
 		}
 
-		[[nodiscard]] std::uintptr_t               base() const noexcept { return _base; }
-		[[nodiscard]] stl::zwstring                filename() const noexcept { return _filename; }
-		[[nodiscard]] Version                      version() const noexcept { return _version; }
+		[[nodiscard]] std::uintptr_t base() const noexcept { return _base; }
+		[[nodiscard]] stl::zwstring  filename() const noexcept { return _filename; }
+		[[nodiscard]] Version        version() const noexcept { return _version; }
 
 		[[nodiscard]] Segment segment(Segment::Name a_segment) const noexcept { return _segments[a_segment]; }
 
@@ -466,28 +467,32 @@ namespace REL
 		/**
 		 * Get the type of runtime the currently-loaded Skyrim module is.
 		 */
-		[[nodiscard]] inline Runtime GetRuntime() const noexcept {
+		[[nodiscard]] inline Runtime GetRuntime() const noexcept
+		{
 			return _runtime;
 		}
 
 		/**
 		 * Returns whether the current Skyrim runtime is a post-Anniversary Edition Skyrim SE release.
 		 */
-		[[nodiscard]] inline bool IsAE() const noexcept {
+		[[nodiscard]] inline bool IsAE() const noexcept
+		{
 			return GetRuntime() == Runtime::AE;
 		}
 
 		/**
 		 * Returns whether the current Skyrim runtime is a pre-Anniversary Edition Skyrim SE release.
 		 */
-		[[nodiscard]] inline bool IsSE() const noexcept {
+		[[nodiscard]] inline bool IsSE() const noexcept
+		{
 			return GetRuntime() == Runtime::SE;
 		}
 
 		/**
 		 * Returns whether the current Skyrim runtime is a Skyrim VR release.
 		 */
-		[[nodiscard]] inline bool IsVR() const noexcept {
+		[[nodiscard]] inline bool IsVR() const noexcept
+		{
 			return GetRuntime() == Runtime::VR;
 		}
 
@@ -567,11 +572,9 @@ namespace REL
 			std::make_pair(".gfids"sv, static_cast<std::uint32_t>(0))
 		};
 
-		static constexpr auto ENVIRONMENT = L"SKSE_RUNTIME"sv;
-		static constexpr std::array<std::wstring_view, 2> RUNTIMES{ {
-			L"SkyrimVR.exe",
-			L"SkyrimSE.exe"
-		} };
+		static constexpr auto                             ENVIRONMENT = L"SKSE_RUNTIME"sv;
+		static constexpr std::array<std::wstring_view, 2> RUNTIMES{ { L"SkyrimVR.exe",
+			L"SkyrimSE.exe" } };
 
 		std::wstring                        _filename;
 		std::array<Segment, Segment::total> _segments;
@@ -759,7 +762,7 @@ namespace REL
 				const auto filename =
 					stl::utf8_to_utf16(
 						USING_AE ?
-							fmt::format("Data/SKSE/Plugins/versionlib-{}.bin"sv,
+                            fmt::format("Data/SKSE/Plugins/versionlib-{}.bin"sv,
 								version.string()) :
                             fmt::format("Data/SKSE/Plugins/version-{}.bin"sv,
 								version.string()))
@@ -1292,7 +1295,8 @@ namespace REL
 	 * @param ae the ID to sue for Skyrim AE.
 	 * @return The correct ID based on the currently running Skyrim executable.
 	 */
-	[[nodiscard]] inline REL::ID RelocationID(uint64_t seAndVR, uint64_t ae) noexcept {
+	[[nodiscard]] inline REL::ID RelocationID(uint64_t seAndVR, uint64_t ae) noexcept
+	{
 		return REL::ID(Module::get().IsAE() ? ae : seAndVR);
 	}
 
@@ -1316,7 +1320,8 @@ namespace REL
 	 * @param vr the ID To use for Skyrim VR.
 	 * @return the correct ID for the current runtime of Skyrim.
 	 */
-	[[nodiscard]] inline REL::ID RelocationID(std::uint64_t se, std::uint64_t ae, std::uint64_t vr) noexcept {
+	[[nodiscard]] inline REL::ID RelocationID(std::uint64_t se, std::uint64_t ae, std::uint64_t vr) noexcept
+	{
 		switch (Module::get().GetRuntime()) {
 		case Module::Runtime::AE:
 			return REL::ID(ae);
@@ -1343,7 +1348,8 @@ namespace REL
 	 * @return Either <code>seAndVR</code> if the current runtime is Skyrim SE or VR, or <code>ae</code> if the runtime is AE.
 	 */
 	template <class T>
-	[[nodiscard]] inline T Relocate(T&& seAndVR, T&& ae) noexcept {
+	[[nodiscard]] inline T Relocate(T&& seAndVR, T&& ae) noexcept
+	{
 		return Module::get().IsAE() ? ae : seAndVR;
 	}
 
@@ -1365,7 +1371,8 @@ namespace REL
 	 * <code>vr</code> if running Skyrim VR.
 	 */
 	template <class T>
-	[[nodiscard]] inline T Relocate(T&& se, T&& ae, T&& vr) noexcept {
+	[[nodiscard]] inline T Relocate(T&& se, T&& ae, T&& vr) noexcept
+	{
 		switch (Module::get().GetRuntime()) {
 		case Module::Runtime::AE:
 			return ae;

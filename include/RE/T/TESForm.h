@@ -34,7 +34,7 @@ namespace RE
 	class TESForm : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_TESForm;
+		inline static auto           RTTI = RTTI_TESForm;
 		inline static constexpr auto FORMTYPE = FormType::None;
 
 		struct ChangeFlags

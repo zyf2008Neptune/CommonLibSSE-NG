@@ -7,8 +7,8 @@ namespace RE
 	class Character : public Actor
 	{
 	public:
-		inline static auto RTTI = RTTI_Character;
-		inline static auto VTABLE = VTABLE_Character;
+		inline static auto           RTTI = RTTI_Character;
+		inline static auto           VTABLE = VTABLE_Character;
 		inline static constexpr auto FORMTYPE = FormType::ActorCharacter;
 
 		struct RecordFlags
