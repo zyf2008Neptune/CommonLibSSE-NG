@@ -1,13 +1,14 @@
 # `CommonLibSSE NG`
 [![C++20](https://img.shields.io/static/v1?label=standard&message=C%2B%2B20&color=blue&logo=c%2B%2B&&logoColor=white&style=flat)](https://en.cppreference.com/w/cpp/compiler_support)
 [![Platform](https://img.shields.io/static/v1?label=platform&message=windows&color=dimgray&style=flat)](#)
-[![Main CI](https://img.shields.io/github/workflow/status/Ryan-rsm-McKenzie/CommonLibSSE/Main%20CI?logo=github&logoColor=white)](https://github.com/Ryan-rsm-McKenzie/CommonLibSSE/actions/workflows/main_ci.yml)
+[![Main CI](https://github.com/CharmedBaryon/CommonLibSSE-NG/actions/workflows/main_ci.yml/badge.svg)](https://github.com/CharmedBaryon/CommonLibSSE-NG/actions/workflows/main_ci.yml)
 
 CommonLibSSE NG is a fork of CommonLibSSE which tracks upstream updates but adds a number of enhancements:
 * Support for Address Libraries for SE, AE, and VR.
 * Dynamic cross-runtime support (ability to produce a single DLL that works on AE, SE, or VR), with access to all
   cross-compatible features.
 * Ability to build locked to a single runtime, where access to non-portable features is needed.
+* Updated GitHub Actions CI workflows to build for all likely target runtime combinations.
 * Fully extensible native function binding traits (enables custom script object bindings in
   [Fully Dynamic Game Engine](https://gitlab.com/colorglass/fully-dynamic-game-engine)).
 * Unit testing support (can be run without being hosted in a Skyrim executable).
@@ -16,6 +17,9 @@ CommonLibSSE NG is a fork of CommonLibSSE which tracks upstream updates but adds
 * Uses modern Vcpkg manifest version feature and assigns semantic versions to specific CommonLibSSE NG releases.
 * Upgrades the build system to Ninja for faster builds.
 * Provides distribution through Vcpkg rather than requiring import as a Git submodule.
+* A related [new example plugin](https://gitlab.com/colorglass/commonlibsse-sample-plugin) that demonstrates not only a
+  project structure but a full-featured dev environment and implementation of a number of features using the library,
+  including support for AE, SE, and VR with a single DLL.
 
 CommonLibSSE NG is available as a Vcpkg port. To add it to your project, create a `vcpkg-configuration.json` file in the
 project root (next to `vcpkg.json`) with the following contents:

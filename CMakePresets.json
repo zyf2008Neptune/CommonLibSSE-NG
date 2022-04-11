@@ -21,7 +21,7 @@
             "cacheVariables": {
                 "CMAKE_TOOLCHAIN_FILE": {
                     "type": "STRING",
-                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+                    "value": "$env{VCPKG_INSTALLATION_ROOT}/scripts/buildsystems/vcpkg.cmake"
                 }
             },
             "hidden": true,
@@ -107,6 +107,16 @@
             "name": "ae-only"
         },
         {
+            "cacheVariables": {
+                "ENABLE_SKYRIM_AE": {
+                    "type": "STRING",
+                    "value": "OFF"
+                }
+            },
+            "hidden": true,
+            "name": "pre-ae-only"
+        },
+        {
             "inherits": [
                 "vs2022-windows-vcpkg",
                 "flatrim-only"
@@ -137,6 +147,14 @@
             ],
             "name": "vs2022-windows-vcpkg-se",
             "binaryDir": "${sourceDir}/build/se"
+        },
+        {
+            "inherits": [
+                "vs2022-windows-vcpkg",
+                "pre-ae-only"
+            ],
+            "name": "vs2022-windows-vcpkg-pre-ae",
+            "binaryDir": "${sourceDir}/build/pre-ae"
         }
     ],
     "buildPresets": [
@@ -164,6 +182,11 @@
             "name": "Debug-SE",
             "displayName": "Debug (SE)",
             "configurePreset": "vs2022-windows-vcpkg-se"
+        },
+        {
+            "name": "Debug-Pre-AE",
+            "displayName": "Debug (Pre-AE)",
+            "configurePreset": "vs2022-windows-vcpkg-pre-ae"
         }
     ],
     "version": 2

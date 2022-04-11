@@ -2,7 +2,7 @@ name: Main CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ dev-ng ]
     paths:
       - '.github/workflows/main_ci.yml'
       - 'cmake/**'
@@ -12,41 +12,142 @@ on:
       - 'CMakePresets.json'
       - 'vcpkg.json'
   pull_request:
-    branches: [ master ]
+    branches: [ dev-ng ]
   workflow_dispatch:
 
 env:
-  BUILD_TYPE: Debug
-  VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg-cache
+  VCPKG_COMMIT_ID: d72783cb3aeddfd667861caef1060e54ca6fa7a9
 
 jobs:
-  windows:
+  all-runtimes:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
           path: main
 
+      - name: Setup MSVC Environment
+        uses: ilammy/msvc-dev-cmd@v1.10.0
+
       - name: Setup vcpkg
-        run: |
-          mkdir -p ${{ env.VCPKG_DEFAULT_BINARY_CACHE }}
-          cd $env:VCPKG_INSTALLATION_ROOT
-          ./bootstrap-vcpkg.bat
-          ./vcpkg --version > ${{ github.workspace }}/vcpkg-version.txt
-
-      - name: Cache vcpkg
-        uses: actions/cache@v2
-        id: vcpkg-cache
-        env:
-          cache-name: vcpkg-cache
+        uses: lukka/run-vcpkg@v10.0
         with:
-          path: ${{ env.VCPKG_DEFAULT_BINARY_CACHE }}/*
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('main/**/vcpkg.json', 'vcpkg-version.txt') }}
-
-      - name: Configure CMake
-        working-directory: ${{ github.workspace }}/main
-        run: cmake --preset vs2022-windows-vcpkg
+          vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
 
       - name: Build
-        working-directory: ${{ github.workspace }}/main
-        run: cmake --build build --config ${{ env.BUILD_TYPE }}
+        uses: lukka/run-cmake@v10.0
+        with:
+          cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
+          configurePreset: vs2022-windows-vcpkg
+          buildPreset: Debug-All
+  flatrim-only:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: main
+
+      - name: Setup MSVC Environment
+        uses: ilammy/msvc-dev-cmd@v1.10.0
+
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v10.0
+        with:
+          vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
+
+      - name: Build
+        uses: lukka/run-cmake@v10.0
+        with:
+          cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
+          configurePreset: vs2022-windows-vcpkg-flatrim
+          buildPreset: Debug-Flatrim
+  pre-ae-runtimes:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: main
+
+      - name: Setup MSVC Environment
+        uses: ilammy/msvc-dev-cmd@v1.10.0
+
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v10.0
+        with:
+          vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
+
+      - name: Build
+        uses: lukka/run-cmake@v10.0
+        with:
+          cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
+          configurePreset: vs2022-windows-vcpkg-pre-ae
+          buildPreset: Debug-Pre-AE
+  se-only:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: main
+
+      - name: Setup MSVC Environment
+        uses: ilammy/msvc-dev-cmd@v1.10.0
+
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v10.0
+        with:
+          vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
+
+      - name: Build
+        uses: lukka/run-cmake@v10.0
+        with:
+          cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
+          configurePreset: vs2022-windows-vcpkg-se
+          buildPreset: Debug-SE
+  ae-only:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: main
+
+      - name: Setup MSVC Environment
+        uses: ilammy/msvc-dev-cmd@v1.10.0
+
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v10.0
+        with:
+          vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
+
+      - name: Build
+        uses: lukka/run-cmake@v10.0
+        with:
+          cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
+          configurePreset: vs2022-windows-vcpkg-ae
+          buildPreset: Debug-AE
+  vr-only:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: main
+
+      - name: Setup MSVC Environment
+        uses: ilammy/msvc-dev-cmd@v1.10.0
+
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v10.0
+        with:
+          vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
+
+      - name: Build
+        uses: lukka/run-cmake@v10.0
+        with:
+          cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
+          configurePreset: vs2022-windows-vcpkg-vr
+          buildPreset: Debug-VR
