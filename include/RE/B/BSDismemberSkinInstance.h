@@ -32,14 +32,12 @@ namespace RE
 		bool          IsEqual(NiObject* a_object) override;               // 1C
 		void          Unk_25(void) override;                              // 25
 
-#if defined(SKYRIM_FORCE_SE) || defined(SKYRIM_FORCE_VR)
 		void UpdateDismemberPartion(std::uint16_t a_slot, bool a_enable)
 		{
 			using func_t = decltype(&BSDismemberSkinInstance::UpdateDismemberPartion);
-			REL::Relocation<func_t> func{ REL::ID(15576) };
+			REL::Relocation<func_t> func{ REL::RelocationID(15576, 15753) };
 			return func(this, a_slot, a_enable);
 		}
-#endif
 
 		// members
 		std::int32_t  numPartitions;  // 88
