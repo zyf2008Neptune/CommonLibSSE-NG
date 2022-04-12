@@ -198,7 +198,7 @@ namespace RE
 			boolBits.set(BOOL_BITS::kProcessMe);
 		} else {
 			boolBits.reset(BOOL_BITS::kProcessMe);
-            if (const auto controller = GetCharController()) {
+			if (const auto controller = GetCharController()) {
 				controller->SetLinearVelocityImpl(0.0f);
 			}
 		}
