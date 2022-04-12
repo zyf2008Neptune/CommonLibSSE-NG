@@ -195,11 +195,10 @@ namespace RE
 	void Actor::EnableAI(bool a_enable)
 	{
 		if (a_enable) {
-			boolBits.set(Actor::BOOL_BITS::kProcessMe);
+			boolBits.set(BOOL_BITS::kProcessMe);
 		} else {
-			boolBits.reset(Actor::BOOL_BITS::kProcessMe);
-			auto controller = GetCharController();
-			if (controller) {
+			boolBits.reset(BOOL_BITS::kProcessMe);
+            if (const auto controller = GetCharController()) {
 				controller->SetLinearVelocityImpl(0.0f);
 			}
 		}

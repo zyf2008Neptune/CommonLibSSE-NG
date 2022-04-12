@@ -287,11 +287,9 @@ namespace SKSE
 						continue;
 					}
 					a_intfc->ReadRecordData(vmHandle);
-					if (!a_intfc->ResolveHandle(vmHandle, vmHandle)) {
-						log::warn("Failed to resolve handle ({})", vmHandle);
-						continue;
+					if (a_intfc->ResolveHandle(vmHandle, vmHandle)) {
+						_regs[curKey].insert({ targetFormID, vmHandle });
 					}
-					_regs[curKey].insert({ targetFormID, vmHandle });
 				}
 			}
 

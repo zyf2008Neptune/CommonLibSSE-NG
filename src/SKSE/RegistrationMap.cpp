@@ -286,9 +286,7 @@ namespace SKSE
 				a_intfc->ReadRecordData(numRegs);
 				for (std::size_t k = 0; k < numRegs; ++k) {
 					a_intfc->ReadRecordData(handle);
-					if (!a_intfc->ResolveHandle(handle, handle)) {
-						log::warn("Failed to resolve handle ({})", handle);
-					} else {
+					if (a_intfc->ResolveHandle(handle, handle)) {
 						_regs[curKey].insert(handle);
 					}
 				}
