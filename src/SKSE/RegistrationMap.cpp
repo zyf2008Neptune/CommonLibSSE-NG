@@ -212,7 +212,7 @@ namespace SKSE
 				} else if (keyIndex == 1) {
 					RE::FormID formID = std::get<1>(key);
 					if (!a_intfc->WriteRecordData(formID)) {
-						log::error("Failed to save reg key as formID ({})!", formID);
+						log::error("Failed to save reg key as formID ({:X})!", formID);
 						return false;
 					}
 				} else if (keyIndex == 2) {

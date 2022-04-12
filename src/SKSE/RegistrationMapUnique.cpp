@@ -283,7 +283,7 @@ namespace SKSE
 				for (std::size_t k = 0; k < numRegs; ++k) {
 					a_intfc->ReadRecordData(targetFormID);
 					if (!a_intfc->ResolveFormID(targetFormID, targetFormID)) {
-						log::warn("Error reading target formID ({:X})", targetFormID);
+						log::warn("Failed to resolve target formID ({:X})", targetFormID);
 						continue;
 					}
 					a_intfc->ReadRecordData(vmHandle);
