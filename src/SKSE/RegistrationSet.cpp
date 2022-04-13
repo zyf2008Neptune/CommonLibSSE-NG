@@ -188,13 +188,8 @@ namespace SKSE
 			RE::VMHandle handle;
 			for (std::size_t i = 0; i < numRegs; ++i) {
 				a_intfc->ReadRecordData(handle);
-				if (!a_intfc->ResolveHandle(handle, handle)) {
-					log::warn("Failed to resolve handle ({})", handle);
-				} else {
-					auto result = _handles.insert(handle);
-					if (!result.second) {
-						log::error("Loaded duplicate handle ({})", handle);
-					}
+				if (a_intfc->ResolveHandle(handle, handle)) {
+					_handles.insert(handle);
 				}
 			}
 

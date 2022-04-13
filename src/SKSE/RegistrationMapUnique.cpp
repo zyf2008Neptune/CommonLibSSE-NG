@@ -283,15 +283,13 @@ namespace SKSE
 				for (std::size_t k = 0; k < numRegs; ++k) {
 					a_intfc->ReadRecordData(targetFormID);
 					if (!a_intfc->ResolveFormID(targetFormID, targetFormID)) {
-						log::warn("Error reading target formID ({:X})", targetFormID);
+						log::warn("Failed to resolve target formID ({:X})", targetFormID);
 						continue;
 					}
 					a_intfc->ReadRecordData(vmHandle);
-					if (!a_intfc->ResolveHandle(vmHandle, vmHandle)) {
-						log::warn("Failed to resolve handle ({})", vmHandle);
-						continue;
+					if (a_intfc->ResolveHandle(vmHandle, vmHandle)) {
+						_regs[curKey].insert({ targetFormID, vmHandle });
 					}
-					_regs[curKey].insert({ targetFormID, vmHandle });
 				}
 			}
 

@@ -212,7 +212,7 @@ namespace SKSE
 				} else if (keyIndex == 1) {
 					RE::FormID formID = std::get<1>(key);
 					if (!a_intfc->WriteRecordData(formID)) {
-						log::error("Failed to save reg key as formID ({})!", formID);
+						log::error("Failed to save reg key as formID ({:X})!", formID);
 						return false;
 					}
 				} else if (keyIndex == 2) {
@@ -286,9 +286,7 @@ namespace SKSE
 				a_intfc->ReadRecordData(numRegs);
 				for (std::size_t k = 0; k < numRegs; ++k) {
 					a_intfc->ReadRecordData(handle);
-					if (!a_intfc->ResolveHandle(handle, handle)) {
-						log::warn("Failed to resolve handle ({})", handle);
-					} else {
+					if (a_intfc->ResolveHandle(handle, handle)) {
 						_regs[curKey].insert(handle);
 					}
 				}
