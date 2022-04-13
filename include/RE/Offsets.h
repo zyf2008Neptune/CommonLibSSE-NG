@@ -6,7 +6,6 @@ namespace RE
 {
 	namespace Offset
 	{
-
 #ifdef SKYRIM_SUPPORT_AE
 		namespace Actor
 		{

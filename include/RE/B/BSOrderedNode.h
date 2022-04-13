@@ -29,9 +29,9 @@ namespace RE
 		bool          useStaticBound;  // 138
 		std::uint32_t pad13C;          // 13C
 	};
-	#ifndef SKYRIMVR
+#ifndef SKYRIMVR
 	static_assert(sizeof(BSOrderedNode) == 0x140);
-	#else
+#else
 	static_assert(sizeof(BSOrderedNode) == 0x168);
-	#endif
+#endif
 }
