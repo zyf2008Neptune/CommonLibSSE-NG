@@ -696,15 +696,15 @@ namespace REL
 #elif SKYRIMVR
 						"Data/SKSE/Plugins/version-{}.csv"sv,
 #else
-						"Data/SKSE/Plugins/version-{}.bin"sv,
-#endif //SKYRIM_SUPPORT_AE
+					"Data/SKSE/Plugins/version-{}.bin"sv,
+#endif  //SKYRIM_SUPPORT_AE
 						version.string()))
 					.value_or(L"<unknown filename>"s);
 #ifdef SKYRIMVR
 			load_csv(filename, version);
 #else
 			load_file(filename, version);
-#endif // SKYRIMVR
+#endif  // SKYRIMVR
 		}
 
 #ifdef SKYRIMVR

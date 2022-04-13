@@ -727,4 +727,3 @@ namespace REL
 #include "RE/B/BSCoreTypes.h"
 #include "RE/Offsets_VTABLE.h"
 #include "RE/S/SFTypes.h"
-
