@@ -46,12 +46,11 @@ namespace RE
 		switch (a_feature) {
 		case Feature::kDefault:
 			{
-				REL::Relocation<std::uintptr_t> vtbl{ BSLightingShaderMaterial::VTABLE[0] };
-				auto                            material = malloc<BSLightingShaderMaterial>();
+				auto material = malloc<BSLightingShaderMaterial>();
 				if (material) {
 					std::memset(material, 0, sizeof(BSLightingShaderMaterial));
-					material->ctor();
-					((std::uintptr_t*)material)[0] = vtbl.address();
+					material->Ctor();
+					reinterpret_cast<std::uintptr_t*>(material)[0] = BSLightingShaderMaterial::VTABLE[0].address();
 				}
 				return material;
 			}
@@ -59,7 +58,7 @@ namespace RE
 			{
 				auto material = malloc<BSLightingShaderMaterialEnvmap>();
 				if (material) {
-					material->ctor();
+					material->Ctor();
 				}
 				return material;
 			}
@@ -67,7 +66,7 @@ namespace RE
 			{
 				auto material = malloc<BSLightingShaderMaterialGlowmap>();
 				if (material) {
-					material->ctor();
+					material->Ctor();
 				}
 				return material;
 			}
@@ -75,7 +74,7 @@ namespace RE
 			{
 				auto material = malloc<BSLightingShaderMaterialParallax>();
 				if (material) {
-					material->ctor();
+					material->Ctor();
 				}
 				return material;
 			}
@@ -83,7 +82,7 @@ namespace RE
 			{
 				auto material = malloc<BSLightingShaderMaterialFacegen>();
 				if (material) {
-					material->ctor();
+					material->Ctor();
 				}
 				return material;
 			}
@@ -91,7 +90,7 @@ namespace RE
 			{
 				auto material = malloc<BSLightingShaderMaterialFacegenTint>();
 				if (material) {
-					material->ctor();
+					material->Ctor();
 				}
 				return material;
 			}
@@ -99,7 +98,7 @@ namespace RE
 			{
 				auto material = malloc<BSLightingShaderMaterialHairTint>();
 				if (material) {
-					material->ctor();
+					material->Ctor();
 				}
 				return material;
 			}
@@ -107,7 +106,7 @@ namespace RE
 			{
 				auto material = malloc<BSLightingShaderMaterialParallaxOcc>();
 				if (material) {
-					material->ctor();
+					material->Ctor();
 				}
 				return material;
 			}
@@ -116,7 +115,7 @@ namespace RE
 			{
 				auto material = malloc<BSLightingShaderMaterialLandscape>();
 				if (material) {
-					material->ctor();
+					material->Ctor();
 				}
 				return material;
 			}
@@ -125,7 +124,7 @@ namespace RE
 			{
 				auto material = malloc<BSLightingShaderMaterialLODLandscape>();
 				if (material) {
-					material->ctor();
+					material->Ctor();
 				}
 				return material;
 			}
@@ -134,7 +133,7 @@ namespace RE
 			{
 				auto material = malloc<BSLightingShaderMaterialSnow>();
 				if (material) {
-					material->ctor();
+					material->Ctor();
 				}
 				return material;
 			}
@@ -142,7 +141,7 @@ namespace RE
 			{
 				auto material = malloc<BSLightingShaderMaterialMultiLayerParallax>();
 				if (material) {
-					material->ctor();
+					material->Ctor();
 				}
 				return material;
 			}
@@ -150,7 +149,7 @@ namespace RE
 			{
 				auto material = malloc<BSLightingShaderMaterialEye>();
 				if (material) {
-					material->ctor();
+					material->Ctor();
 				}
 				return material;
 			}

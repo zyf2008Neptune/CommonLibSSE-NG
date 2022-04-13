@@ -113,6 +113,8 @@ namespace SKSE::WinAPI
 		void*       a_module,
 		const char* a_procName) noexcept;
 
+	[[nodiscard]] bool IsDebuggerPresent() noexcept;
+
 	std::int32_t MessageBox(
 		void*        a_wnd,
 		const char*  a_text,

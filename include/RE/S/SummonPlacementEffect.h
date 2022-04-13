@@ -34,7 +34,13 @@ namespace RE
 		void             SaveGame(BGSSaveGameBuffer* a_buf) override;        // 2D
 		void             LoadGame(BGSLoadGameBuffer* a_buf) override;        // 2E
 		void             FinishLoadGame(BGSLoadGameBuffer* a_buf) override;  // 2F
-		void             Unk_36(void) override;                              // 36
+		void             Init() override;                                    // 36
+
+		// override (SimpleAnimationGraphManagerHolder)
+		bool SetupAnimEventSinks(const BSTSmartPointer<BShkbAnimationGraph>& a_animGraph) override;  // 08
+
+		// override (BSTEventSink<BSAnimationGraphEvent>)
+		BSEventNotifyControl ProcessEvent(const BSAnimationGraphEvent* a_event, BSTEventSource<BSAnimationGraphEvent>* a_eventSource) override;  // 01
 
 		// members
 		BGSArtObject*                          effectArt;  // 68

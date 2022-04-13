@@ -6,6 +6,7 @@
 
 namespace RE
 {
+	class BSAnimationGraphChannel;
 	class BSAnimationGraphManager;
 	class BShkbAnimationGraph;
 	class NiAVObject;
@@ -28,7 +29,7 @@ namespace RE
 		virtual void                        Unk_07(void);                                                                                                                        // 07 - { return 1; }
 		virtual bool                        SetupAnimEventSinks(const BSTSmartPointer<BShkbAnimationGraph>& a_animGraph);                                                        // 08 - { return true; } - sinks the holder to the the source passed in
 		virtual void                        Unk_09(void);                                                                                                                        // 09 - { return; }
-		virtual void                        Unk_0A(void);                                                                                                                        // 0A - { return 0; }
+		virtual bool                        CreateAnimationChannels(BSScrapArray<BSTSmartPointer<BSAnimationGraphChannel>>& animGraphChannels);                                  // 0A - { return 0; }
 		virtual void                        PostCreateAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_animGraphMgr);                                           // 0B - { return; }
 		virtual void                        Unk_0C(void);                                                                                                                        // 0C - { return; }
 		virtual void                        PostChangeAnimationManager(const BSTSmartPointer<BShkbAnimationGraph>& a_arg1, const BSTSmartPointer<BShkbAnimationGraph>& a_arg2);  // 0D - { return; }
@@ -44,9 +45,9 @@ namespace RE
 		bool GetGraphVariableBool(const BSFixedString& a_variableName, bool& a_out) const;
 		bool GetGraphVariableNiPoint3(const BSFixedString& a_variableName, NiPoint3& a_out) const;
 		bool SetAnimationGraphManager(BSTSmartPointer<BSAnimationGraphManager>& a_in);
-		bool SetGraphVariableBool(const BSFixedString& a_variableName, bool a_in) const;
-		bool SetGraphVariableInt(const BSFixedString& a_variableName, std::int32_t a_in) const;
-		bool SetGraphVariableFloat(const BSFixedString& a_variableName, float a_in) const;
+		bool SetGraphVariableBool(const BSFixedString& a_variableName, bool a_in);
+		bool SetGraphVariableInt(const BSFixedString& a_variableName, std::int32_t a_in);
+		bool SetGraphVariableFloat(const BSFixedString& a_variableName, float a_in);
 		bool SetGraphVariableNiPoint3(const BSFixedString& a_variableName, NiPoint3& a_in) const;
 	};
 	static_assert(sizeof(IAnimationGraphManagerHolder) == 0x8);

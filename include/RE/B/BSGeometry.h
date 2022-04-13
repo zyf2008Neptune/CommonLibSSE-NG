@@ -73,8 +73,6 @@ namespace RE
 		virtual BSSkinnedDecalTriShape* AsSkinnedDecalTriShape();  // 36 - { return 0; }
 		virtual void                    Unk_37(void);              // 37 - { return 0; }
 
-		[[nodiscard]] bool HasVertexFlag(NiSkinPartition::Vertex::Flags a_flag) { return (NiSkinPartition::GetVertexFlags(vertexDesc) & a_flag) == a_flag; }
-
 		inline BSLightingShaderProperty* lightingShaderProp_cast()
 		{
 			if (auto effect = properties[States::kEffect].get(); effect) {
@@ -90,12 +88,13 @@ namespace RE
 
 // members
 #ifndef SKYRIMVR
+		// members
 		NiBound                              modelBound;                  // 110
 		NiPointer<NiProperty>                properties[States::kTotal];  // 120
 		NiPointer<NiSkinInstance>            skinInstance;                // 130
-		void*                                rendererData;                // 138
+		BSGraphics::TriShape*                rendererData;                // 138
 		void*                                unk140;                      // 140 - smart ptr
-		std::uint64_t                        vertexDesc;                  // 148
+		BSGraphics::VertexDesc               vertexDesc;                  // 148
 		stl::enumeration<Type, std::uint8_t> type;                        // 150
 		std::uint8_t                         pad151;                      // 151
 		std::uint16_t                        pad152;                      // 152
@@ -108,9 +107,9 @@ namespace RE
 		NiPoint3                  unk154;                      // 154
 		NiPointer<NiProperty>     properties[States::kTotal];  // 160
 		NiPointer<NiSkinInstance> skinInstance;                // 170
-		void*                     rendererData;                // 178
+		BSGraphics::TriShape*     rendererData;                // 178
 		void*                     unk180;                      // 180
-		std::uint64_t             vertexDesc;                  // 188
+		BSGraphics::VertexDesc    vertexDesc;                  // 188
 		Type                      type;                        // 190
 		std::uint8_t              pad191;                      // 191
 		std::uint16_t             pad192;                      // 192

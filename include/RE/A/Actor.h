@@ -359,8 +359,8 @@ namespace RE
 		virtual float                GetHeading(bool a_ignoreRaceSettings) const;                                                                                                                                     // 0A4
 		virtual void                 SetAvoidanceDisabled(bool a_set);                                                                                                                                                // 0A5 - { return; }
 		virtual void                 DrawWeaponMagicHands(bool a_draw);                                                                                                                                               // 0A6
-		virtual void                 Unk_A7(void);                                                                                                                                                                    // 0A7
-		virtual void                 Unk_A8(void);                                                                                                                                                                    // 0A8
+		virtual void                 DetachCharController();                                                                                                                                                          // 0A7
+		virtual void                 RemoveCharController();                                                                                                                                                          // 0A8
 		virtual void                 SetPosition(const NiPoint3& a_pos, bool a_updateCharController);                                                                                                                 // 0A9
 		virtual void                 KillDying();                                                                                                                                                                     // 0AA
 		virtual void                 Resurrect(bool a_resetInventory, bool a_attach3D);                                                                                                                               // 0AB
@@ -412,7 +412,7 @@ namespace RE
 		virtual void                 Unk_D9(void);                                                                                                                                                                    // 0D9
 		virtual void                 EndDialogue();                                                                                                                                                                   // 0DA
 		virtual Actor*               SetUpTalkingActivatorActor(Actor* a_target, Actor*& a_activator);                                                                                                                // 0DB
-		virtual void                 Unk_DC(void);                                                                                                                                                                    // 0DC - { return; }
+		virtual void                 InitiateSpectator(Actor* a_target);                                                                                                                                              // 0DC - { return; }
 		virtual void                 InitiateFlee(TESObjectREFR* a_fleeRef, bool a_runOnce, bool a_knows, bool a_combatMode, TESObjectCELL* a_cell, TESObjectREFR* a_ref, float a_fleeFromDist, float a_fleeToDist);  // 0DD
 		virtual void                 InitiateGetUpPackage();                                                                                                                                                          // 0DE
 		virtual void                 PutCreatedPackage(TESPackage* a_package, bool a_tempPackage, bool a_createdPackage, bool a_allowFromFurniture);                                                                  // 0DF
@@ -635,6 +635,7 @@ namespace RE
 		void                         AllowPCDialogue(bool a_talk);
 		bool                         CanAttackActor(Actor* a_actor);
 		bool                         CanFlyHere() const;
+		bool                         CanOfferServices() const;
 		bool                         CanPickpocket() const;
 		bool                         CanTalkToPlayer() const;
 		void                         ClearArrested();
@@ -666,9 +667,12 @@ namespace RE
 		bool                         GetMount(NiPointer<Actor>& a_outMount);
 		ObjectRefHandle              GetOccupiedFurniture() const;
 		TESRace*                     GetRace() const;
+		bool                         GetRider(NiPointer<Actor>& a_outRider);
 		[[nodiscard]] TESObjectARMO* GetSkin() const;
 		[[nodiscard]] TESObjectARMO* GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] SOUL_LEVEL     GetSoulSize() const;
+		TESFaction*                  GetVendorFaction();
+		const TESFaction*            GetVendorFaction() const;
 		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID);
 		bool                         HasKeyword(const BGSKeyword* a_keyword) const;
@@ -682,7 +686,7 @@ namespace RE
 		bool                         IsAnimationDriven() const;
 		bool                         IsBeingRidden() const;
 		bool                         IsBlocking() const;
-		bool                         IsCasting(SpellItem* a_spell) const;
+		bool                         IsCasting(MagicItem* a_magicItem) const;
 		bool                         IsCommandedActor() const;
 		bool                         IsEssential() const;
 		bool                         IsFactionInCrimeGroup(const TESFaction* a_faction) const;
@@ -702,7 +706,7 @@ namespace RE
 		[[nodiscard]] bool           IsSummoned() const noexcept;
 		bool                         IsTrespassing() const;
 		void                         KillImmediate();
-		void                         RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink);
+		void                         RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
 		void                         RemoveExtraArrows3D();
 		bool                         RemoveSpell(SpellItem* a_spell);
 		std::int32_t                 RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);
@@ -784,6 +788,7 @@ namespace RE
 		WinAPI::CRITICAL_SECTION                              unk288;                             // 288 - havok related
 
 	private:
+		void        CalculateCurrentVendorFaction() const;
 		TESFaction* GetCrimeFactionImpl() const;
 	};
 	static_assert(sizeof(Actor) == 0x2B0);

@@ -49,7 +49,7 @@ namespace RE
 	{
 #ifndef SKYRIMVR
 		using func_t = decltype(&InventoryChanges::GetArmorInSlot);
-		REL::Relocation<func_t> func{ REL::ID(15873) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(15873, 16113) };
 		return func(this, a_slot);
 #else
 		// Unable to find offset in VR https://github.com/alandtse/CommonLibVR/issues/2
@@ -72,7 +72,7 @@ namespace RE
 	std::uint32_t InventoryChanges::GetWornMask()
 	{
 		using func_t = decltype(&InventoryChanges::GetWornMask);
-		REL::Relocation<func_t> func{ REL::ID(15806) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(15806, 16044) };
 		return func(this);
 	}
 
@@ -93,35 +93,35 @@ namespace RE
 	void InventoryChanges::InitFromContainerExtra()
 	{
 		using func_t = decltype(&InventoryChanges::InitFromContainerExtra);
-		REL::Relocation<func_t> func{ REL::ID(15890) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(15890, 16130) };
 		return func(this);
 	}
 
 	void InventoryChanges::InitLeveledItems()
 	{
 		using func_t = decltype(&InventoryChanges::InitLeveledItems);
-		REL::Relocation<func_t> func{ REL::ID(15889) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(15889, 16129) };
 		return func(this);
 	}
 
 	void InventoryChanges::InitScripts()
 	{
 		using func_t = decltype(&InventoryChanges::InitScripts);
-		REL::Relocation<func_t> func{ REL::ID(15829) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(15829, 16068) };
 		return func(this);
 	}
 
 	InventoryChanges* InventoryChanges::Ctor(TESObjectREFR* a_ref)
 	{
 		using func_t = decltype(&InventoryChanges::Ctor);
-		REL::Relocation<func_t> func{ Offset::InventoryChanges::Ctor };
+		REL::Relocation<func_t> func{ RELOCATION_ID(15812, 16050) };
 		return func(this, a_ref);
 	}
 
 	void InventoryChanges::Dtor()
 	{
 		using func_t = decltype(&InventoryChanges::Dtor);
-		REL::Relocation<func_t> func{ Offset::InventoryChanges::Dtor };
+		REL::Relocation<func_t> func{ RELOCATION_ID(15813, 16051) };
 		return func(this);
 	}
 }

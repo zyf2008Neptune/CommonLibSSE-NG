@@ -20,6 +20,7 @@ namespace RE
 	class GridCellArray;
 	class ImageSpaceModifierInstance;
 	class NavMeshInfoMap;
+	class NiAVObject;
 	class NiNode;
 	class Sky;
 	class TESLandTexture;
@@ -28,6 +29,7 @@ namespace RE
 	class TESObjectREFR;
 	class TESWorldSpace;
 
+	struct bhkPickData;
 	struct PositionPlayerEvent;
 
 	class TES :
@@ -66,40 +68,12 @@ namespace RE
 		void ForEachReference(std::function<bool(TESObjectREFR& a_ref)> a_callback);
 		void ForEachReferenceInRange(TESObjectREFR* a_origin, float a_radius, std::function<bool(TESObjectREFR& a_ref)> a_callback);
 
-		TESObjectCELL* GetCell(const NiPoint3& a_position) const
-		{
-			using func_t = decltype(&TES::GetCell);
-			REL::Relocation<func_t> func{ REL::ID(13177) };
-			return func(this, a_position);
-		}
-
-		TESLandTexture* GetLandTexture(const NiPoint3& a_position) const
-		{
-			using func_t = decltype(&TES::GetLandTexture);
-			REL::Relocation<func_t> func{ REL::ID(13202) };
-			return func(this, a_position);
-		}
-
-		MATERIAL_ID GetLandMaterialType(const NiPoint3& a_position) const
-		{
-			using func_t = decltype(&TES::GetLandMaterialType);
-			REL::Relocation<func_t> func{ REL::ID(13203) };
-			return func(this, a_position);
-		}
-
-		float GetWaterHeight(const NiPoint3& a_pos, TESObjectCELL* a_cell) const
-		{
-			using func_t = decltype(&TES::GetWaterHeight);
-			REL::Relocation<func_t> func{ REL::ID(13212) };
-			return func(this, a_pos, a_cell);
-		}
-
-		void PurgeBufferedCells()
-		{
-			using func_t = decltype(&TES::PurgeBufferedCells);
-			REL::Relocation<func_t> func{ REL::ID(13159) };
-			return func(this);
-		}
+		TESObjectCELL*  GetCell(const NiPoint3& a_position) const;
+		TESLandTexture* GetLandTexture(const NiPoint3& a_position) const;
+		MATERIAL_ID     GetLandMaterialType(const NiPoint3& a_position) const;
+		float           GetWaterHeight(const NiPoint3& a_pos, TESObjectCELL* a_cell) const;
+		NiAVObject*     Pick(bhkPickData& a_pickData);
+		void            PurgeBufferedCells();
 
 		// members
 		std::uint64_t                                       unk070;                     // 070
@@ -114,7 +88,7 @@ namespace RE
 		std::uint64_t                                       unk0B8;                     // 0B8
 		TESObjectCELL*                                      interiorCell;               // 0C0
 		TESObjectCELL**                                     interiorBuffer;             // 0C8
-		void*                                               unk0D0;                     // 0D0
+		TESObjectCELL**                                     exteriorBuffer;             // 0D0
 		std::uint64_t                                       unk0D8;                     // 0D8
 		std::uint64_t                                       unk0E0;                     // 0E0
 		std::uint64_t                                       unk0E8;                     // 0E8

@@ -253,7 +253,7 @@ namespace RE
 		virtual void                              Update3DPosition(bool a_warp);                                                                                                                                                                               // 3F
 		virtual void                              UpdateSoundCallBack(bool a_endSceneAction);                                                                                                                                                                  // 40
 		virtual bool                              SetDialogueWithPlayer(bool a_flag, bool a_forceGreet, TESTopicInfo* a_topic);                                                                                                                                // 41
-		virtual void                              Unk_42(void);                                                                                                                                                                                                // 42
+		virtual void                              DamageObject(float a_objectHealth, bool a_arg3);                                                                                                                                                             // 42
 		virtual bool                              GetFullLODRef() const;                                                                                                                                                                                       // 43
 		virtual void                              SetFullLODRef(bool a_set);                                                                                                                                                                                   // 44
 		virtual BGSAnimationSequencer*            GetSequencer() const;                                                                                                                                                                                        // 45
@@ -462,6 +462,7 @@ namespace RE
 		void                                    MoveTo(TESObjectREFR* a_target);
 		bool                                    MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool                                    MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
+		NiPointer<TESObjectREFR>                PlaceObjectAtMe(TESBoundObject* a_baseToPlace, bool a_forcePersist) const;
 		void                                    PlayAnimation(stl::zstring a_from, stl::zstring a_to);
 		void                                    PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq);
 		void                                    SetActivationBlocked(bool a_blocked);

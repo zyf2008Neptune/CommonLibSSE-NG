@@ -71,30 +71,33 @@ namespace RE
 	{
 	public:
 		// members
-		NiPointer<BSPortalGraph>                             portalGraph;           // 000 - smart ptr
-		NiPointer<NiNode>                                    cell3D;                // 008
-		void*                                                unk010;                // 010 - smart ptr
-		void*                                                unk018;                // 018 - smart ptr
-		void*                                                unk020;                // 020 - smart ptr
-		std::uint64_t                                        unk028;                // 028
-		std::uint64_t                                        unk030;                // 030
-		std::uint64_t                                        unk038;                // 038
-		BSTArray<void*>                                      unk040;                // 040
-		BSTArray<void*>                                      unk058;                // 058
-		NiTMap<TESForm*, ObjectRefHandle>                    unk070;                // 070
-		NiTMap<ObjectRefHandle, NiNode*>                     emittanceLightRefMap;  // 090
-		NiTMap<ObjectRefHandle, NiPointer<BSMultiBoundNode>> multiboundRefMap;      // 0B0
-		NiTMap<BSMultiBoundNode*, ObjectRefHandle>           refMultiboundMap;      // 0D0
-		BSSimpleList<ObjectRefHandle>                        activatingRefs;        // 0F0
-		BSSimpleList<ObjectRefHandle>                        unk100;                // 100
-		std::uint64_t                                        unk110;                // 110
-		BSTArray<void*>                                      unk118;                // 118
-		BSTArray<void*>                                      unk130;                // 130
-		BSTArray<void*>                                      unk148;                // 148
-		BGSEncounterZone*                                    encounterZone;         // 160
-		std::uint64_t                                        unk168;                // 168
-		std::uint64_t                                        unk170;                // 170
-		std::uint64_t                                        unk178;                // 178
+		NiPointer<BSPortalGraph>                             portalGraph;             // 000 - smart ptr
+		NiPointer<NiNode>                                    cell3D;                  // 008
+		void*                                                unk010;                  // 010 - smart ptr
+		void*                                                unk018;                  // 018 - smart ptr
+		void*                                                unk020;                  // 020 - smart ptr
+		std::uint64_t                                        unk028;                  // 028
+		std::uint64_t                                        unk030;                  // 030
+		std::uint64_t                                        unk038;                  // 038
+		BSTArray<void*>                                      unk040;                  // 040
+		BSTArray<void*>                                      unk058;                  // 058
+		NiTMap<TESForm*, ObjectRefHandle>                    unk070;                  // 070
+		NiTMap<ObjectRefHandle, NiNode*>                     emittanceLightRefMap;    // 090
+		NiTMap<ObjectRefHandle, NiPointer<BSMultiBoundNode>> multiboundRefMap;        // 0B0
+		NiTMap<BSMultiBoundNode*, ObjectRefHandle>           refMultiboundMap;        // 0D0
+		BSSimpleList<ObjectRefHandle>                        activatingRefs;          // 0F0
+		BSSimpleList<ObjectRefHandle>                        unk100;                  // 100
+		std::uint64_t                                        unk110;                  // 110
+		BSTArray<void*>                                      unk118;                  // 118
+		BSTArray<void*>                                      unk130;                  // 130
+		BSTArray<void*>                                      unk148;                  // 148
+		BGSEncounterZone*                                    encounterZone;           // 160
+		std::uint32_t                                        unk168;                  // 168
+		volatile mutable std::int32_t                        criticalQueuedRefCount;  // 16C
+		volatile mutable std::int32_t                        queuedRefCount;          // 170
+		volatile mutable std::int32_t                        queuedDistantRefCount;   // 174
+		std::uint32_t                                        unk178;                  // 178
+		std::uint32_t                                        unk17C;                  // 17C
 	};
 	static_assert(sizeof(LOADED_CELL_DATA) == 0x180);
 
@@ -186,7 +189,7 @@ namespace RE
 		inline bhkWorld* GetbhkWorld() const
 		{
 			using func_t = decltype(&TESObjectCELL::GetbhkWorld);
-			REL::Relocation<func_t> func{ REL::ID(18536) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(18536, 18995) };
 			return func(this);
 		}
 
@@ -199,7 +202,7 @@ namespace RE
 		inline BGSLocation* GetLocation() const
 		{
 			using func_t = decltype(&TESObjectCELL::GetLocation);
-			REL::Relocation<func_t> func{ REL::ID(18474) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(18474, 18905) };
 			return func(this);
 		}
 
@@ -210,18 +213,15 @@ namespace RE
 		bool     IsAttached() const;
 		bool     IsExteriorCell() const;
 		bool     IsInteriorCell() const;
-
-		BSTempEffectParticle* PlaceParticleEffect(float a_lifetime, const char* a_modelName, const NiMatrix3& a_normal, const NiPoint3& a_pos, float a_scale, std::uint32_t a_flags, NiAVObject* a_target);
-
-		void SetActorOwner(TESNPC* a_owner);
-		void SetFactionOwner(TESFaction* a_owner);
-		void SetFogColor(Color a_near, Color a_far);
-		void SetFogPlanes(float a_near, float a_far);
-		void SetFogPower(float a_power);
-		void SetHandChanged(bool a_changed);
-		void SetOwner(TESForm* a_owner);
-		void SetPublic(bool a_public);
-		bool UsesSkyLighting() const;
+		void     SetActorOwner(TESNPC* a_owner);
+		void     SetFactionOwner(TESFaction* a_owner);
+		void     SetFogColor(Color a_near, Color a_far);
+		void     SetFogPlanes(float a_near, float a_far);
+		void     SetFogPower(float a_power);
+		void     SetHandChanged(bool a_changed);
+		void     SetOwner(TESForm* a_owner);
+		void     SetPublic(bool a_public);
+		bool     UsesSkyLighting() const;
 
 		// members
 		mutable BSSpinLock                        grassCreateLock;   // 030

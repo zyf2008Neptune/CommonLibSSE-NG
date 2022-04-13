@@ -42,7 +42,7 @@ namespace RE
 	bool MagicItem::IsValid() const
 	{
 		using func_t = decltype(&MagicItem::IsValid);
-		REL::Relocation<func_t> func{ REL::ID(11183) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(11183, 11290) };
 		return func(this);
 	}
 	Effect* MagicItem::GetEffectIsMatch(EffectSetting* a_base, float a_mag, ::uint32_t a_area, ::uint32_t a_dur, float a_cost)

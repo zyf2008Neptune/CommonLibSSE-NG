@@ -638,13 +638,11 @@ namespace REL
 			void read(binary_io::file_istream& a_in)
 			{
 				const auto [format] = a_in.read<std::int32_t>();
-				if (format !=
-#if !defined(SKYRIMVR) && defined(AE)
-					2
+#ifdef SKYRIM_SUPPORT_AE
+				if (format != 2) {
 #else
-					1
+				if (format != 1) {
 #endif
-				) {
 					stl::report_and_fail(
 						fmt::format(
 							"Unsupported address library format: {}\n"
@@ -690,31 +688,23 @@ namespace REL
 		void load()
 		{
 			const auto version = Module::get().version();
-#if !defined(SKYRIMVR) && defined(AE)
 			const auto filename =
 				stl::utf8_to_utf16(
 					fmt::format(
+#ifdef SKYRIM_SUPPORT_AE
 						"Data/SKSE/Plugins/versionlib-{}.bin"sv,
-						version.string()))
-					.value_or(L"<unknown filename>"s);
-			load_file(filename, version);
-#elif !defined(SKYRIMVR)
-			const auto filename =
-				stl::utf8_to_utf16(
-					fmt::format(
-						"Data/SKSE/Plugins/version-{}.bin"sv,
-						version.string()))
-					.value_or(L"<unknown filename>"s);
-			load_file(filename, version);
-#else
-			const auto filename =
-				stl::utf8_to_utf16(
-					fmt::format(
+#elif SKYRIMVR
 						"Data/SKSE/Plugins/version-{}.csv"sv,
+#else
+						"Data/SKSE/Plugins/version-{}.bin"sv,
+#endif //SKYRIM_SUPPORT_AE
 						version.string()))
 					.value_or(L"<unknown filename>"s);
+#ifdef SKYRIMVR
 			load_csv(filename, version);
-#endif
+#else
+			load_file(filename, version);
+#endif // SKYRIMVR
 		}
 
 #ifdef SKYRIMVR

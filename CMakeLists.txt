@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.19)
 
 option(SKSE_SUPPORT_XBYAK "Enables trampoline support for Xbyak." OFF)
 option(BUILD_SKYRIMVR "Build for Skyrim VR" OFF)
+option(SKYRIM_SUPPORT_AE "Enables support for Skyrim AE" OFF)
 
 if (NOT BUILD_SKYRIMVR)
 	project(
@@ -50,6 +51,7 @@ target_compile_definitions(
 		WINVER=0x0601	# windows 7, minimum supported version by skyrim special edition
 		_WIN32_WINNT=0x0601
 		"$<$<BOOL:${SKSE_SUPPORT_XBYAK}>:SKSE_SUPPORT_XBYAK=1>"
+		"$<$<BOOL:${SKYRIM_SUPPORT_AE}>:SKYRIM_SUPPORT_AE=1>"
 )
 
 target_compile_features(
@@ -68,6 +70,7 @@ if (MSVC)
 			# disable warnings
 			/wd4061 # enumerator 'identifier' in switch of enum 'enumeration' is not explicitly handled by a case label
 			/wd4200 # nonstandard extension used : zero-sized array in struct/union
+			/wd4201 # nonstandard extension used : nameless struct/union
 			/wd4265 # 'type': class has virtual functions, but its non-trivial destructor is not virtual; instances of this class may not be destructed correctly
 			/wd4266 # 'function' : no override available for virtual member function from base 'type'; function is hidden
 			/wd4371 # 'classname': layout of class may have changed from a previous version of the compiler due to better packing of member 'member'

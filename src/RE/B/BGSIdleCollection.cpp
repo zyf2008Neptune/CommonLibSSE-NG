@@ -29,12 +29,12 @@ namespace RE
 	{
 		auto idleCollection = malloc<BGSIdleCollection>();
 		if (idleCollection) {
-			return idleCollection->ctor();
+			idleCollection->Ctor();
 		}
 		return idleCollection;
 	}
 
-	std::optional<std::uint32_t> BGSIdleCollection::GetIndex(TESIdleForm* a_idle)
+	std::optional<std::uint32_t> BGSIdleCollection::GetIndex(TESIdleForm* a_idle) const
 	{
 		std::optional<std::uint32_t> index = std::nullopt;
 		if (idles) {

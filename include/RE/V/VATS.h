@@ -18,7 +18,7 @@ namespace RE
 	public:
 		[[nodiscard]] static VATS* GetSingleton()
 		{
-			REL::Relocation<VATS**> singleton{ REL::ID(514725) };
+			REL::Relocation<VATS**> singleton{ RELOCATION_ID(514725, 400883) };
 			return *singleton;
 		}
 

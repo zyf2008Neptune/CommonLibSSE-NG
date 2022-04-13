@@ -26,7 +26,7 @@ namespace RE
 	bool IAnimationGraphManagerHolder::GetGraphVariableNiPoint3(const BSFixedString& a_variableName, NiPoint3& a_out) const
 	{
 		using func_t = decltype(&IAnimationGraphManagerHolder::GetGraphVariableNiPoint3);
-		REL::Relocation<func_t> func{ REL::ID(32192) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(32192, 32884) };
 		return func(this, a_variableName, a_out);
 	}
 
@@ -35,31 +35,31 @@ namespace RE
 		return SetAnimationGraphManagerImpl(a_in);
 	}
 
-	bool IAnimationGraphManagerHolder::SetGraphVariableBool(const BSFixedString& a_variableName, bool a_in) const
+	bool IAnimationGraphManagerHolder::SetGraphVariableBool(const BSFixedString& a_variableName, bool a_in)
 	{
 		using func_t = decltype(&IAnimationGraphManagerHolder::SetGraphVariableBool);
-		REL::Relocation<func_t> func{ REL::ID(32141) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(32141, 32885) };
 		return func(this, a_variableName, a_in);
 	}
 
-	bool IAnimationGraphManagerHolder::SetGraphVariableInt(const BSFixedString& a_variableName, std::int32_t a_in) const
+	bool IAnimationGraphManagerHolder::SetGraphVariableInt(const BSFixedString& a_variableName, std::int32_t a_in)
 	{
 		using func_t = decltype(&IAnimationGraphManagerHolder::SetGraphVariableInt);
-		REL::Relocation<func_t> func{ REL::ID(32142) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(32142, 32886) };
 		return func(this, a_variableName, a_in);
 	}
 
-	bool IAnimationGraphManagerHolder::SetGraphVariableFloat(const BSFixedString& a_variableName, float a_in) const
+	bool IAnimationGraphManagerHolder::SetGraphVariableFloat(const BSFixedString& a_variableName, float a_in)
 	{
 		using func_t = decltype(&IAnimationGraphManagerHolder::SetGraphVariableFloat);
-		REL::Relocation<func_t> func{ REL::ID(32143) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(32143, 32887) };
 		return func(this, a_variableName, a_in);
 	}
 
 	bool IAnimationGraphManagerHolder::SetGraphVariableNiPoint3(const BSFixedString& a_variableName, NiPoint3& a_in) const
 	{
 		using func_t = decltype(&IAnimationGraphManagerHolder::SetGraphVariableNiPoint3);
-		REL::Relocation<func_t> func{ REL::ID(32144) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(32144, 32888) };
 		return func(this, a_variableName, a_in);
 	}
 }

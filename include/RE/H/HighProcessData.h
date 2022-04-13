@@ -146,7 +146,7 @@ namespace RE
 		void SetHeadtrackTarget(int32_t a_headtrackPriority, TESObjectREFR* a_target)
 		{
 			using func_t = decltype(&HighProcessData::SetHeadtrackTarget);
-			REL::Relocation<func_t> func{ REL::ID(38760) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(38760, 39783) };
 			return func(this, a_headtrackPriority, a_target);
 		}
 
@@ -233,7 +233,7 @@ namespace RE
 		float                                                 unk1F4;                         // 1F4
 		std::uint32_t                                         unk1F8;                         // 1F8
 		float                                                 unk1FC;                         // 1FC
-		float                                                 unk200;                         // 200
+		float                                                 takeBackTimer;                  // 200
 		std::uint32_t                                         pad204;                         // 204
 		Data208*                                              unk208;                         // 208
 		std::uint64_t                                         unk210;                         // 210
@@ -273,7 +273,8 @@ namespace RE
 		float                                                 idleTimer;                      // 31C
 		float                                                 detectGreetTimer;               // 320
 		float                                                 breathTimer;                    // 324
-		std::uint64_t                                         unk328;                         // 328
+		float                                                 voiceTimer;                     // 328
+		int                                                   dyingTimer;                     // 32C
 		std::uint64_t                                         unk330;                         // 330
 		std::uint64_t                                         unk338;                         // 338
 		float                                                 closeDialogueTimer;             // 340
@@ -317,11 +318,14 @@ namespace RE
 		Crime*                                                crimeToReactTo;                 // 440
 		std::uint64_t                                         unk448;                         // 448
 		std::uint64_t                                         unk450;                         // 450
-		std::uint8_t                                          unk458;                         // 458
+		bool                                                  talkingToPC;                    // 458
 		bool                                                  inCommandState;                 // 459
 		std::uint8_t                                          unk45A;                         // 45A
 		std::uint8_t                                          unk45B;                         // 45B
-		std::uint32_t                                         unk45C;                         // 45C
+		std::uint8_t                                          unk45C;                         // 45C
+		std::uint8_t                                          unk45D;                         // 45D
+		std::uint8_t                                          unk45E;                         // 45E
+		bool                                                  isDualCasting;                  // 45F
 		std::uint16_t                                         unk460;                         // 460
 		bool                                                  arrested;                       // 462
 		bool                                                  unk463;                         // 463
@@ -339,7 +343,7 @@ namespace RE
 		bool                                                  unk46F;                         // 46F
 		bool                                                  unk470;                         // 470
 		bool                                                  unk471;                         // 471
-		bool                                                  unk472;                         // 472
+		bool                                                  aggroRadiusStarted;             // 472
 		std::uint8_t                                          pad473;                         // 473
 		std::uint32_t                                         pad474;                         // 474
 	};

@@ -101,6 +101,7 @@ set(SOURCES
 	include/RE/B/BGSIdleMarker.h
 	include/RE/B/BGSImpactData.h
 	include/RE/B/BGSImpactDataSet.h
+	include/RE/B/BGSImpactManager.h
 	include/RE/B/BGSInstancedQuestObjective.h
 	include/RE/B/BGSKeyword.cpp
 	include/RE/B/BGSKeyword.h
@@ -262,6 +263,7 @@ set(SOURCES
 	include/RE/B/BSNavmeshInfoMap.h
 	include/RE/B/BSNiAllocator.h
 	include/RE/B/BSNiNode.h
+	include/RE/B/BSOrderedNode.h
 	include/RE/B/BSPCGamepadDeviceDelegate.h
 	include/RE/B/BSPCGamepadDeviceHandler.h
 	include/RE/B/BSParticleShaderEmitter.h
@@ -286,9 +288,11 @@ set(SOURCES
 	include/RE/B/BSShaderPropertyLightData.h
 	include/RE/B/BSShaderTextureSet.h
 	include/RE/B/BSShadowLight.h
+	include/RE/B/BSSimpleScaleController.h
 	include/RE/B/BSSmallBlockAllocator.h
 	include/RE/B/BSSoundHandle.h
 	include/RE/B/BSStorage.h
+	include/RE/B/BSStream.h
 	include/RE/B/BSString.h
 	include/RE/B/BSStringPool.h
 	include/RE/B/BSSystemFile.h
@@ -317,6 +321,7 @@ set(SOURCES
 	include/RE/B/BSTempEffectSPG.h
 	include/RE/B/BSTempEffectSimpleDecal.h
 	include/RE/B/BSTempEffectWeaponBlood.h
+	include/RE/B/BSTerrainEffect.h
 	include/RE/B/BSTextureSet.h
 	include/RE/B/BSThread.h
 	include/RE/B/BSThreadEvent.h
@@ -358,6 +363,7 @@ set(SOURCES
 	include/RE/B/bhkCharacterStateJumping.h
 	include/RE/B/bhkCharacterStateOnGround.h
 	include/RE/B/bhkCharacterStateSwimming.h
+	include/RE/B/bhkCollisionFilter.h
 	include/RE/B/bhkCollisionObject.h
 	include/RE/B/bhkCompressedMeshShape.h
 	include/RE/B/bhkCompressedMeshShapeData.h
@@ -366,6 +372,7 @@ set(SOURCES
 	include/RE/B/bhkMeshMaterial.h
 	include/RE/B/bhkNiCollisionObject.h
 	include/RE/B/bhkPhantom.h
+	include/RE/B/bhkPickData.h
 	include/RE/B/bhkRefObject.h
 	include/RE/B/bhkRigidBody.h
 	include/RE/B/bhkSerializable.h
@@ -400,7 +407,9 @@ set(SOURCES
 	include/RE/C/CombatMagicCasterOffensive.h
 	include/RE/C/CombatMagicCasterRestore.h
 	include/RE/C/CombatMagicCasterTargetEffect.h
+	include/RE/C/CombatManager.h
 	include/RE/C/CombatObject.h
+	include/RE/C/CombatSearchLocation.h
 	include/RE/C/CombatState.h
 	include/RE/C/CommandEffect.h
 	include/RE/C/CommandTable.h
@@ -783,11 +792,15 @@ set(SOURCES
 	include/RE/H/hkpCharacterProxyListener.h
 	include/RE/H/hkpCharacterState.h
 	include/RE/H/hkpCharacterStateManager.h
+	include/RE/H/hkpClosestRayHitCollector.h
 	include/RE/H/hkpCollidable.h
+	include/RE/H/hkpCollidableCollidableFilter.h
+	include/RE/H/hkpCollisionFilter.h
 	include/RE/H/hkpCollisionInput.h
 	include/RE/H/hkpCompressedMeshShape.h
 	include/RE/H/hkpConstraintInfo.h
 	include/RE/H/hkpConstraintOwner.h
+	include/RE/H/hkpConvexListFilter.h
 	include/RE/H/hkpConvexShape.h
 	include/RE/H/hkpEntity.h
 	include/RE/H/hkpEntityListener.h
@@ -807,11 +820,15 @@ set(SOURCES
 	include/RE/H/hkpPhantomListener.h
 	include/RE/H/hkpPhantomType.h
 	include/RE/H/hkpProperty.h
+	include/RE/H/hkpRayCollidableFilter.h
+	include/RE/H/hkpRayHitCollector.h
+	include/RE/H/hkpRayShapeCollectionFilter.h
 	include/RE/H/hkpRigidBody.h
 	include/RE/H/hkpRootCdPoint.h
 	include/RE/H/hkpShape.h
 	include/RE/H/hkpShapeBuffer.h
 	include/RE/H/hkpShapeCollection.h
+	include/RE/H/hkpShapeCollectionFilter.h
 	include/RE/H/hkpShapeContainer.h
 	include/RE/H/hkpShapePhantom.h
 	include/RE/H/hkpShapeRayCastCollectorOutput.h
@@ -1018,6 +1035,7 @@ set(SOURCES
 	include/RE/N/NiMultiTargetTransformController.h
 	include/RE/N/NiNode.h
 	include/RE/N/NiObject.h
+	include/RE/N/NiObjectGroup.h
 	include/RE/N/NiObjectNET.h
 	include/RE/N/NiPlane.h
 	include/RE/N/NiPoint2.h
@@ -1316,10 +1334,10 @@ set(SOURCES
 	include/RE/T/TypeInfo.h
 	include/RE/T/TypeTraits.h
 	include/RE/U/UI.h
+	include/RE/U/UI3DSceneManager.h
 	include/RE/U/UIBlurManager.h
 	include/RE/U/UIMessage.h
 	include/RE/U/UIMessageQueue.h
-	include/RE/U/UIRenderManager.h
 	include/RE/U/UISaveLoadManager.h
 	include/RE/U/UserEventEnabled.h
 	include/RE/U/UserEvents.h
@@ -1327,6 +1345,7 @@ set(SOURCES
 	include/RE/V/VDescTable.h
 	include/RE/V/ValueModifierEffect.h
 	include/RE/V/Variable.h
+	include/RE/V/VertexDesc.h
 	include/RE/V/VirtualMachine.h
 	include/RE/W/WeatherType.h
 	include/RE/W/WorldSpaceMenu.h
@@ -1405,7 +1424,6 @@ set(SOURCES
 	src/RE/B/BSSystemFileStorage.cpp
 	src/RE/B/BSTArray.cpp
 	src/RE/B/BSTCreateFactoryManager.cpp
-	src/RE/B/BSTempEffectWeaponBlood.cpp
 	src/RE/B/BSVisit.cpp
 	src/RE/B/BSWin32KeyboardDevice.cpp
 	src/RE/B/BSWin32SaveDataSystemUtility.cpp

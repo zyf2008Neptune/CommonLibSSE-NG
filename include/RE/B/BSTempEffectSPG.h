@@ -17,6 +17,7 @@ namespace RE
 
 		~BSTempEffectSPG() override;  // 00
 
+		// override (BSTempEffect)
 		const NiRTTI*    GetRTTI() const override;                           // 02
 		void             Detach() override;                                  // 27
 		bool             Update(float a_arg1) override;                      // 28

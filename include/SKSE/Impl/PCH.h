@@ -498,6 +498,12 @@ namespace SKSE
 		}
 
 		template <class T>
+		void emplace_vtable(T* a_ptr)
+		{
+			reinterpret_cast<std::uintptr_t*>(a_ptr)[0] = T::VTABLE[0].address();
+		}
+
+		template <class T>
 		void memzero(volatile T* a_ptr, std::size_t a_size = sizeof(T))
 		{
 			const auto     begin = reinterpret_cast<volatile char*>(a_ptr);
@@ -584,9 +590,9 @@ namespace SKSE
 				const std::filesystem::path p = a_loc.file_name();
 				auto                        filename = p.lexically_normal().generic_string();
 
-				const std::regex r{ R"(^(?:[^\\\/]*[\\\/])?(?:include|src)[\\\/](.*)$)" };
+				const std::regex r{ R"((?:^|[\\\/])(?:include|src)[\\\/](.*)$)" };
 				std::smatch      matches;
-				if (std::regex_match(filename, matches, r)) {
+				if (std::regex_search(filename, matches, r)) {
 					filename = matches[1].str();
 				}
 
@@ -699,9 +705,12 @@ namespace REL
 	namespace WinAPI = SKSE::WinAPI;
 }
 
-#include "RE/B/BSCoreTypes.h"
-#include "RE/Offsets_VTABLE.h"
-#include "RE/S/SFTypes.h"
+#ifdef SKYRIM_SUPPORT_AE
+#	define RELOCATION_ID(SE, AE) REL::ID(AE)
+#else
+#	define RELOCATION_ID(SE, AE) REL::ID(SE)
+#endif
+
 #include "REL/Relocation.h"
 
 #ifndef SKYRIMVR
@@ -714,3 +723,8 @@ namespace REL
 #	include "RE/Offsets_VR_NiRTTI.h"
 #	include "RE/Offsets_VR_RTTI.h"
 #endif
+
+#include "RE/B/BSCoreTypes.h"
+#include "RE/Offsets_VTABLE.h"
+#include "RE/S/SFTypes.h"
+

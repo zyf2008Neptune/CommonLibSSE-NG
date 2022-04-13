@@ -11,6 +11,7 @@
 
 namespace RE
 {
+	class bhkCollisionObject;
 	class NiAlphaProperty;
 	class NiAVObject;
 	class NiCollisionObject;
@@ -116,24 +117,25 @@ namespace RE
 		virtual void        PostAttachUpdate();                                                                                 // 33
 		virtual void        OnVisible(NiCullingProcess& a_process);                                                             // 34 - { return; }
 
-		void                         CullNode(bool a_cull);
-		[[nodiscard]] bool           GetAppCulled() const;
-		[[nodiscard]] BSGeometry*    GetFirstGeometryOfShaderType(BSShaderMaterial::Feature a_type);
-		[[nodiscard]] TESObjectREFR* GetUserData() const;
-		[[nodiscard]] bool           HasAnimation() const;
-		[[nodiscard]] bool           HasShaderType(BSShaderMaterial::Feature a_type);
-		void                         RemoveDecals();
-		void                         SetAppCulled(bool a_cull);
-		void                         SetCollisionLayer(COL_LAYER a_collisionLayer);
-		void                         SetCollisionLayerAndGroup(COL_LAYER a_collisionLayer, std::uint32_t a_group);
-		bool                         SetMotionType(std::uint32_t a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
-		bool                         SetProjectedUVData(const NiColorA& a_projectedUVParams, const NiColor& a_projectedUVColor, bool a_isSnow);
-		void                         TintScenegraph(const NiColorA& a_color);
-		void                         Update(NiUpdateData& a_data);
-		void                         UpdateBodyTint(const NiColor& a_color);
-		void                         UpdateHairColor(const NiColor& a_color);
-		void                         UpdateMaterialAlpha(float a_alpha, bool a_doOnlySkin);
-		void                         UpdateRigidConstraints(bool a_enable, std::uint8_t a_arg2 = 1, std::uint32_t a_arg3 = 1);
+		void                              CullNode(bool a_cull);
+		[[nodiscard]] bool                GetAppCulled() const;
+		[[nodiscard]] bhkCollisionObject* GetCollisionObject() const;
+		[[nodiscard]] BSGeometry*         GetFirstGeometryOfShaderType(BSShaderMaterial::Feature a_type);
+		[[nodiscard]] TESObjectREFR*      GetUserData() const;
+		[[nodiscard]] bool                HasAnimation() const;
+		[[nodiscard]] bool                HasShaderType(BSShaderMaterial::Feature a_type);
+		void                              RemoveDecals();
+		void                              SetAppCulled(bool a_cull);
+		void                              SetCollisionLayer(COL_LAYER a_collisionLayer);
+		void                              SetCollisionLayerAndGroup(COL_LAYER a_collisionLayer, std::uint32_t a_group);
+		bool                              SetMotionType(std::uint32_t a_motionType, bool a_arg2 = true, bool a_arg3 = false, bool a_allowActivate = true);
+		bool                              SetProjectedUVData(const NiColorA& a_projectedUVParams, const NiColor& a_projectedUVColor, bool a_isSnow);
+		void                              TintScenegraph(const NiColorA& a_color);
+		void                              Update(NiUpdateData& a_data);
+		void                              UpdateBodyTint(const NiColor& a_color);
+		void                              UpdateHairColor(const NiColor& a_color);
+		void                              UpdateMaterialAlpha(float a_alpha, bool a_doOnlySkin);
+		void                              UpdateRigidConstraints(bool a_enable, std::uint8_t a_arg2 = 1, std::uint32_t a_arg3 = 1);
 
 		BSLightingShaderProperty* temp_nicast(BSGeometry* a_geometry);
 

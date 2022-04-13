@@ -238,7 +238,7 @@ namespace RE
 		InventoryEntryData*                            leftHand;                    // 220
 		TESIdleForm*                                   furnitureIdle;               // 228
 		void*                                          unk230;                      // 230 - smart ptr
-		std::uint64_t                                  unk238;                      // 238
+		BSFaceGenAnimationData*                        faceAnimationData;           // 238
 		std::uint64_t                                  unk240;                      // 240
 		std::uint64_t                                  unk248;                      // 248
 		NiPointer<bhkCharacterController>              charController;              // 250
@@ -258,7 +258,7 @@ namespace RE
 		float                                          unk2A8;                      // 2A8
 		float                                          unk2AC;                      // 2AC
 		float                                          unk2B0;                      // 2B0
-		float                                          unk2B4;                      // 2B4
+		float                                          bleedoutRate;                // 2B4
 		float                                          unk2B8;                      // 2B8
 		float                                          unk2BC;                      // 2BC
 		float                                          unk2C0;                      // 2C0
@@ -307,7 +307,7 @@ namespace RE
 		bool                                           unk32A;                      // 32A
 		bool                                           unk32B;                      // 32B
 		bool                                           unk32C;                      // 32C
-		bool                                           unk32D;                      // 32D
+		bool                                           hostileGuard;                // 32D
 		bool                                           unk32E;                      // 32E
 		bool                                           unk32F;                      // 32F
 		bool                                           unk330;                      // 330

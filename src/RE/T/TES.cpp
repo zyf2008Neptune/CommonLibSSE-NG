@@ -1,6 +1,8 @@
 #include "RE/T/TES.h"
 
+#include "RE/B/bhkPickData.h"
 #include "RE/G/GridCellArray.h"
+#include "RE/N/NiAVObject.h"
 #include "RE/T/TESObjectCELL.h"
 #include "RE/T/TESObjectREFR.h"
 #include "RE/T/TESWorldspace.h"
@@ -94,5 +96,47 @@ namespace RE
 				return a_callback(a_ref);
 			});
 		}
+	}
+
+	TESObjectCELL* TES::GetCell(const NiPoint3& a_position) const
+	{
+		using func_t = decltype(&TES::GetCell);
+		REL::Relocation<func_t> func{ RELOCATION_ID(13177, 13322) };
+		return func(this, a_position);
+	}
+
+	TESLandTexture* TES::GetLandTexture(const NiPoint3& a_position) const
+	{
+		using func_t = decltype(&TES::GetLandTexture);
+		REL::Relocation<func_t> func{ RELOCATION_ID(13202, 13348) };
+		return func(this, a_position);
+	}
+
+	MATERIAL_ID TES::GetLandMaterialType(const NiPoint3& a_position) const
+	{
+		using func_t = decltype(&TES::GetLandMaterialType);
+		REL::Relocation<func_t> func{ RELOCATION_ID(13203, 13349) };
+		return func(this, a_position);
+	}
+
+	float TES::GetWaterHeight(const NiPoint3& a_pos, TESObjectCELL* a_cell) const
+	{
+		using func_t = decltype(&TES::GetWaterHeight);
+		REL::Relocation<func_t> func{ RELOCATION_ID(13212, 13358) };
+		return func(this, a_pos, a_cell);
+	}
+
+	NiAVObject* TES::Pick(bhkPickData& a_pickData)
+	{
+		using func_t = decltype(&TES::Pick);
+		REL::Relocation<func_t> func{ RELOCATION_ID(13221, 13371) };
+		return func(this, a_pickData);
+	}
+
+	void TES::PurgeBufferedCells()
+	{
+		using func_t = decltype(&TES::PurgeBufferedCells);
+		REL::Relocation<func_t> func{ RELOCATION_ID(13159, 13299) };
+		return func(this);
 	}
 }

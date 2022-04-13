@@ -14,6 +14,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraTextDisplayData;
+		inline static constexpr auto VTABLE = VTABLE_ExtraTextDisplayData;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kTextDisplayData;
 
 		enum class DisplayDataType

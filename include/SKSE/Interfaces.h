@@ -349,7 +349,7 @@ namespace SKSE
 		const char*   name;
 		std::uint32_t version;
 	};
-
+#ifdef SKYRIM_SUPPORT_AE
 	struct PluginVersionData
 	{
 	public:
@@ -410,4 +410,5 @@ namespace SKSE
 	static_assert(offsetof(PluginVersionData, compatibleVersions) == 0x30C);
 	static_assert(offsetof(PluginVersionData, xseMinimum) == 0x34C);
 	static_assert(sizeof(PluginVersionData) == 0x350);
+#endif
 }
