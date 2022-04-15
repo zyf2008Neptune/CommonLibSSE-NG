@@ -14,14 +14,32 @@ namespace RE
 	// flags = kPausesGame | kDisablePauseMenu | kRequiresUpdate | kUpdateUsesCursor | kApplicationMenu
 	// context = kMenuMode
 	class MainMenu :
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 		public IMenu,                          // 00
 		public BSTEventSink<BSSystemEvent>,    // 30
 		public BSTEventSink<BSSaveDataEvent>,  // 38
 		public GFxFunctionHandler              // 40
+#else
+		public IMenu  // 00
+#endif
 	{
 	public:
 		inline static auto                RTTI = RTTI_MainMenu;
 		constexpr static std::string_view MENU_NAME = "Main Menu";
+
+		struct RUNTIME_DATA
+		{
+#define RUNTIME_DATA_CONTENT      \
+	ImageData     unk50; /* 00 */ \
+	std::uint32_t unk68; /* 18 */ \
+	std::uint8_t  unk6C; /* 1C */ \
+	std::uint8_t  unk6D; /* 1D */ \
+	std::uint8_t  unk6E; /* 1E */ \
+	std::uint8_t  pad6F; /* 1F */
+
+			RUNTIME_DATA_CONTENT
+		};
+		static_assert(sizeof(RUNTIME_DATA) == 0x20);
 
 		~MainMenu() override;  // 00
 
@@ -30,6 +48,7 @@ namespace RE
 		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;                         // 04
 		void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
 
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 		// override (BSTEventSink<BSSystemEvent>)
 		BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;  // 01
 
@@ -38,14 +57,27 @@ namespace RE
 
 		// override (GFxFunctionHandler)
 		void Call(Params& a_params) override;  // 01
+#endif
+
+		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
+		{
+			return REL::RelocateMember<RUNTIME_DATA>(this, 0x50, 0x60);
+		}
+
+		[[nodiscard]] inline const RUNTIME_DATA& GetRuntimeData() const noexcept
+		{
+			return REL::RelocateMember<RUNTIME_DATA>(this, 0x50, 0x60);
+		}
 
 		// members
-		ImageData     unk50;  // 50
-		std::uint32_t unk68;  // 68
-		std::uint8_t  unk6C;  // 6C
-		std::uint8_t  unk6D;  // 6D
-		std::uint8_t  unk6E;  // 6E
-		std::uint8_t  pad6F;  // 6F
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+		RUNTIME_DATA_CONTENT  // 50, 60
+#endif
 	};
+#ifndef ENABLE_SKYRIM_VR
 	static_assert(sizeof(MainMenu) == 0x70);
+#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+	static_assert(sizeof(MainMenu) == 0x80);
+#endif
 }
+#undef RUNTIME_DATA_CONTENT

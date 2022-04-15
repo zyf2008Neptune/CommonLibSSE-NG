@@ -32,19 +32,20 @@ namespace RE
 		~Hazard() override;  // 00
 
 		// override (TESObjectREFR)
-		void SaveGame(BGSSaveFormBuffer* a_buf) override;                           // 0E
-		void LoadGame(BGSLoadFormBuffer* a_buf) override;                           // 0F
-		void FinishLoadGame(BGSLoadFormBuffer* a_buf) override;                     // 11
-		void Revert(BGSLoadFormBuffer* a_buf) override;                             // 12
-		void InitItemImpl() override;                                               // 13
-		void SetActorCause(ActorCause* a_cause) override;                           // 50
-		void Release3DRelatedData() override;                                       // 6B
-		bool OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 90 - { return false; }
+		void SaveGame(BGSSaveFormBuffer* a_buf) override;        // 0E
+		void LoadGame(BGSLoadFormBuffer* a_buf) override;        // 0F
+		void FinishLoadGame(BGSLoadFormBuffer* a_buf) override;  // 11
+		void Revert(BGSLoadFormBuffer* a_buf) override;          // 12
+		void InitItemImpl() override;                            // 13
+		void SetActorCause(ActorCause* a_cause) override;        // 50
+		void Release3DRelatedData() override;                    // 6B
+		// Override functions past where Skyrim VR breaks compatibility.
+		//		bool OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 90 - { return false; }
 
 		// add
-		virtual void Initialize();                // A2
-		virtual void Unk_A3(void);                // A3 - { return; }
-		virtual bool IsNotGeneratedForm() const;  // A4 - { return TESDataHandler::GetSingleton()->IsGeneratedFormID(formID) == 0; }
+		void Initialize();                // A2
+		void Unk_A3(void);                // A3 - { return; }
+		bool IsNotGeneratedForm() const;  // A4 - { return TESDataHandler::GetSingleton()->IsGeneratedFormID(formID) == 0; }
 
 		// members
 		void*                                  hazardDBHandle;  // 98

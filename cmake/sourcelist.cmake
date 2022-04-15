@@ -196,6 +196,7 @@ set(SOURCES
 	include/RE/B/BSCoreTypes.h
 	include/RE/B/BSCullingProcess.h
 	include/RE/B/BSDismemberSkinInstance.h
+	include/RE/B/BSDynamicTriShape.h
 	include/RE/B/BSEffectShaderData.h
 	include/RE/B/BSEffectShaderMaterial.h
 	include/RE/B/BSEffectShaderProperty.h
@@ -204,6 +205,7 @@ set(SOURCES
 	include/RE/B/BSFaceGenKeyframe.h
 	include/RE/B/BSFaceGenKeyframeMultiple.h
 	include/RE/B/BSFaceGenManager.h
+	include/RE/B/BSFaceGenModelExtraData.h
 	include/RE/B/BSFaceGenNiNode.h
 	include/RE/B/BSFadeNode.h
 	include/RE/B/BSFile.h
@@ -260,6 +262,7 @@ set(SOURCES
 	include/RE/B/BSNavmeshInfoMap.h
 	include/RE/B/BSNiAllocator.h
 	include/RE/B/BSNiNode.h
+	include/RE/B/BSOpenVRControllerDevice.h
 	include/RE/B/BSOrderedNode.h
 	include/RE/B/BSPCGamepadDeviceDelegate.h
 	include/RE/B/BSPCGamepadDeviceHandler.h
@@ -324,6 +327,7 @@ set(SOURCES
 	include/RE/B/BSThread.h
 	include/RE/B/BSThreadEvent.h
 	include/RE/B/BSTimer.h
+	include/RE/B/BSTrackedControllerDevice.h
 	include/RE/B/BSTriShape.h
 	include/RE/B/BSUIMessageData.h
 	include/RE/B/BSUIScaleformData.h
@@ -1018,6 +1022,7 @@ set(SOURCES
 	include/RE/N/NiFloatsExtraData.h
 	include/RE/N/NiFrustum.h
 	include/RE/N/NiFrustumPlanes.h
+	include/RE/N/NiGeometry.h
 	include/RE/N/NiGeometryData.h
 	include/RE/N/NiIntegerExtraData.h
 	include/RE/N/NiIntegersExtraData.h
@@ -1193,6 +1198,7 @@ set(SOURCES
 	include/RE/T/TESBoundObject.h
 	include/RE/T/TESCamera.h
 	include/RE/T/TESCameraState.h
+	include/RE/T/TESCellAttachDetachEvent.h
 	include/RE/T/TESCellFullyLoadedEvent.h
 	include/RE/T/TESChildCell.h
 	include/RE/T/TESClass.h
@@ -1330,6 +1336,7 @@ set(SOURCES
 	include/RE/U/UIBlurManager.h
 	include/RE/U/UIMessage.h
 	include/RE/U/UIMessageQueue.h
+	include/RE/U/UIRenderManager.h
 	include/RE/U/UISaveLoadManager.h
 	include/RE/U/UserEventEnabled.h
 	include/RE/U/UserEvents.h
@@ -1340,6 +1347,7 @@ set(SOURCES
 	include/RE/V/VertexDesc.h
 	include/RE/V/VirtualMachine.h
 	include/RE/W/WeatherType.h
+	include/RE/W/WorldSpaceMenu.h
 	include/RE/Z/ZeroFunctionArguments.h
 	include/RE/Z/ZeroOverheadHeap.h
 	include/REL/Relocation.h
@@ -1377,6 +1385,8 @@ set(SOURCES
 	src/RE/B/BGSBipedObjectForm.cpp
 	src/RE/B/BGSColorForm.cpp
 	src/RE/B/BGSDebris.cpp
+	src/RE/B/BGSDecalNode.cpp
+	src/RE/B/BGSDefaultObjectManager.cpp
 	src/RE/B/BGSEntryPointFunctionDataActivateChoice.cpp
 	src/RE/B/BGSEntryPointPerkEntry.cpp
 	src/RE/B/BGSFootstepManager.cpp
@@ -1396,10 +1406,14 @@ set(SOURCES
 	src/RE/B/BSAudioManager.cpp
 	src/RE/B/BSEffectShaderData.cpp
 	src/RE/B/BSExtraData.cpp
+	src/RE/B/BSFaceGenNiNode.cpp
+	src/RE/B/BSFadeNode.cpp
 	src/RE/B/BSFixedString.cpp
+	src/RE/B/BSGeometry.cpp
 	src/RE/B/BSHandleRefObject.cpp
 	src/RE/B/BSInputDevice.cpp
 	src/RE/B/BSInputDeviceManager.cpp
+	src/RE/B/BSInstanceTriShape.cpp
 	src/RE/B/BSLightingShaderMaterialBase.cpp
 	src/RE/B/BSLightingShaderProperty.cpp
 	src/RE/B/BSPointerHandle.cpp
@@ -1437,6 +1451,7 @@ set(SOURCES
 	src/RE/D/DisarmedEvent.cpp
 	src/RE/D/DragonSoulsGained.cpp
 	src/RE/E/Effect.cpp
+	src/RE/E/Explosion.cpp
 	src/RE/E/ExtraAliasInstanceArray.cpp
 	src/RE/E/ExtraAshPileRef.cpp
 	src/RE/E/ExtraCanTalkToPlayer.cpp
@@ -1488,8 +1503,10 @@ set(SOURCES
 	src/RE/G/GViewport.cpp
 	src/RE/G/GameSettingCollection.cpp
 	src/RE/G/GiftMenu.cpp
+	src/RE/H/HUDMenu.cpp
 	src/RE/H/HUDMeter.cpp
 	src/RE/H/HUDObject.cpp
+	src/RE/H/Hazard.cpp
 	src/RE/H/HeapBlock.cpp
 	src/RE/H/hkBaseTypes.cpp
 	src/RE/H/hkReferencedObject.cpp
@@ -1504,6 +1521,7 @@ set(SOURCES
 	src/RE/I/IFormFactory.cpp
 	src/RE/I/IFunction.cpp
 	src/RE/I/IHandlerFunctor.cpp
+	src/RE/I/IMapCameraCallbacks.cpp
 	src/RE/I/IMemoryStore.cpp
 	src/RE/I/IMenu.cpp
 	src/RE/I/INIPrefSettingCollection.cpp
@@ -1531,6 +1549,7 @@ set(SOURCES
 	src/RE/M/MagicItem.cpp
 	src/RE/M/MagicTarget.cpp
 	src/RE/M/Main.cpp
+	src/RE/M/MapMenu.cpp
 	src/RE/M/MemoryPage.cpp
 	src/RE/M/MenuControls.cpp
 	src/RE/M/MenuEventHandler.cpp
@@ -1552,6 +1571,7 @@ set(SOURCES
 	src/RE/N/NiFloatExtraData.cpp
 	src/RE/N/NiFloatKey.cpp
 	src/RE/N/NiFloatsExtraData.cpp
+	src/RE/N/NiGeometry.cpp
 	src/RE/N/NiIntegerExtraData.cpp
 	src/RE/N/NiIntegersExtraData.cpp
 	src/RE/N/NiInterpolator.cpp
@@ -1579,6 +1599,7 @@ set(SOURCES
 	src/RE/P/PlayerControls.cpp
 	src/RE/P/PlayerInputHandler.cpp
 	src/RE/P/ProcessLists.cpp
+	src/RE/P/Projectile.cpp
 	src/RE/R/RemoveCallbackVisitor.cpp
 	src/RE/S/ScrapHeap.cpp
 	src/RE/S/Script.cpp
