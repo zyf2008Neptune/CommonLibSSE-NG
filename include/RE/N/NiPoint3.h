@@ -24,6 +24,8 @@ namespace RE
 		NiPoint3     operator-() const;
 		NiPoint3&    operator+=(const NiPoint3& a_rhs);
 		NiPoint3&    operator-=(const NiPoint3& a_rhs);
+		NiPoint3&    operator*=(const NiPoint3& a_rhs);
+		NiPoint3&    operator/=(const NiPoint3& a_rhs);
 		NiPoint3&    operator*=(float a_scalar);
 		NiPoint3&    operator/=(float a_scalar);
 
