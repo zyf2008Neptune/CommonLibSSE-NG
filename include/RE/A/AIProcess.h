@@ -110,7 +110,11 @@ namespace RE
 		enum class LowProcessFlags : std::uint8_t
 		{
 			kNone = 0,
+			kTargetActivated = 1 << 0,
+			kCurrentActionComplete = 1 << 1,
 			kAlert = 1 << 3,
+			kPackageDoneOnce = 1 << 5,
+			kPackageIdleDone = 1 << 6
 		};
 
 		struct Hands
@@ -184,7 +188,7 @@ namespace RE
 		TESForm*                                        equippedObjects[Hand::kTotal];  // 0F0
 		std::uint64_t                                   unk100;                         // 100
 		std::uint64_t                                   unk108;                         // 108
-		std::uint32_t                                   unk110;                         // 110
+		RefHandle                                       followTarget;                   // 110
 		RefHandle                                       target;                         // 114
 		std::uint64_t                                   unk118;                         // 118
 		std::uint64_t                                   unk120;                         // 120
