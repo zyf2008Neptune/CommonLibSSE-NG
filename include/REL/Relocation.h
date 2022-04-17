@@ -62,7 +62,7 @@
 	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(&&, ##__VA_ARGS__)
 
 #if !defined(ENABLE_SKYRIM_AE) || (!defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR))
-	/**
+/**
 	 * A macro which defines a modifier for expressions that vary by Skyrim Address Library IDs.
 	 *
 	 * <p>
@@ -71,7 +71,7 @@
 	 */
 #	define SKYRIM_ADDR constexpr
 #else
-	/**
+/**
  	 * A macro which defines a modifier for expressions that vary by Skyrim address library IDs.
  	 *
  	 * <p>
@@ -82,7 +82,7 @@
 #endif
 
 #if (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR)) || (!defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
-	/**
+/**
 	 * A macro which defines a modifier for expressions that vary by the specific Skyrim runtime.
 	 *
 	 * <p>
@@ -91,7 +91,7 @@
 	 */
 #	define SKYRIM_REL constexpr
 
-	/**
+/**
 	 * A macro which defines a modifier for expressions which may be <code>constexpr</code> when using selective targeting.
 	 *
 	 * <p>
@@ -100,7 +100,7 @@
 	 */
 #	define SKYRIM_REL_CONSTEXPR constexpr
 #else
-	/**
+/**
 	 * A macro which defines a modifier for expressions that vary by the specific Skyrim runtime.
 	 *
 	 * <p>
@@ -109,7 +109,7 @@
 	 */
 #	define SKYRIM_REL inline
 
-	/**
+/**
 	 * A macro which defines a modifier for expressions which may be <code>constexpr</code> when using selective targeting.
 	 *
 	 * <p>
@@ -120,7 +120,7 @@
 #endif
 
 #if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
-	/**
+/**
 	 * A macro which defines a modifier for expressions that vary between Skyrim SE/AE and Skyrim VR.
 	 *
 	 * <p>
@@ -129,7 +129,7 @@
 	 */
 #	define SKYRIM_REL_VR constexpr
 
-	/**
+/**
 	 * A macro which defines a modifier for expressions which may be <code>constexpr</code> when using selectively VR or non-VR.
 	 *
 	 * <p>
@@ -138,7 +138,7 @@
 	 */
 #	define SKYRIM_REL_VR_CONSTEXPR constexpr
 #else
-	/**
+/**
 	 * A macro which defines a modifier for expressions that vary between Skyrim SE/AE and Skyrim VR.
 	 *
 	 * <p>
@@ -147,7 +147,7 @@
 	 */
 #	define SKYRIM_REL_VR inline
 
-	/**
+/**
 	 * A macro which defines a modifier for expressions which may be <code>constexpr</code> when using selectively VR or non-VR.
 	 *
 	 * <p>
