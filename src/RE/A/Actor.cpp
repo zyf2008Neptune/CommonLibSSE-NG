@@ -1084,9 +1084,9 @@ namespace RE
 		return RelocateVirtual<decltype(&Actor::GetAcrobatics)>(0x0C7, 0x0C9, this);
 	}
 
-	void Actor::Unk_C8()
+	bhkCharacterController* Actor::Move(float a_arg2, const NiPoint3& a_position)
 	{
-		RelocateVirtual<decltype(&Actor::Unk_C8)>(0x0C8, 0x0CA, this);
+		return RelocateVirtual<decltype(&Actor::Move)>(0x0C8, 0x0CA, this, a_arg2, a_position);
 	}
 
 	void Actor::Unk_C9()
@@ -1159,9 +1159,9 @@ namespace RE
 		return RelocateVirtual<decltype(&Actor::CheckValidTarget)>(0x0D6, 0x0D8, this, a_target);
 	}
 
-	void Actor::Unk_D7()
+	bool Actor::InitiateTresPassPackage(TrespassPackage* a_trespassPackage)
 	{
-		RelocateVirtual<decltype(&Actor::Unk_D7)>(0x0D7, 0x0D9, this);
+		return RelocateVirtual<decltype(&Actor::InitiateTresPassPackage)>(0x0D7, 0x0D9, this, a_trespassPackage);
 	}
 
 	void Actor::InitiateDialogue(Actor* a_target, PackageLocation* a_loc1, PackageLocation* a_loc2)
@@ -1169,9 +1169,9 @@ namespace RE
 		RelocateVirtual<decltype(&Actor::InitiateDialogue)>(0x0D8, 0x0DA, this, a_target, a_loc1, a_loc2);
 	}
 
-	void Actor::Unk_D9()
+	void Actor::SetSize(float a_size)
 	{
-		RelocateVirtual<decltype(&Actor::Unk_D9)>(0x0D9, 0x0DB, this);
+		RelocateVirtual<decltype(&Actor::SetSize)>(0x0D9, 0x0DB, this, a_size);
 	}
 
 	void Actor::EndDialogue()
@@ -1234,19 +1234,19 @@ namespace RE
 		RelocateVirtual<decltype(&Actor::StopCombat)>(0x0E5, 0x0E7, this);
 	}
 
-	void Actor::Unk_E6()
+	float Actor::CalcArmorRating()
 	{
-		RelocateVirtual<decltype(&Actor::Unk_E6)>(0x0E6, 0x0E8, this);
+		return RelocateVirtual<decltype(&Actor::CalcArmorRating)>(0x0E6, 0x0E8, this);
 	}
 
-	void Actor::Unk_E7()
+	float Actor::GetArmorBaseFactorSum()
 	{
-		RelocateVirtual<decltype(&Actor::Unk_E7)>(0x0E7, 0x0E9, this);
+		return RelocateVirtual<decltype(&Actor::GetArmorBaseFactorSum)>(0x0E7, 0x0E9, this);
 	}
 
-	void Actor::Unk_E8()
+	float Actor::CalcUnarmedDamage()
 	{
-		RelocateVirtual<decltype(&Actor::Unk_E8)>(0x0E8, 0x0EA, this);
+		return RelocateVirtual<decltype(&Actor::CalcUnarmedDamage)>(0x0E8, 0x0EA, this);
 	}
 
 	void Actor::Unk_E9()
@@ -1259,24 +1259,24 @@ namespace RE
 		RelocateVirtual<decltype(&Actor::Unk_EA)>(0x0EA, 0x0EC, this);
 	}
 
-	void Actor::Unk_EB()
+	float Actor::GetRunSpeed()
 	{
-		RelocateVirtual<decltype(&Actor::Unk_EB)>(0x0EB, 0x0ED, this);
+		return RelocateVirtual<decltype(&Actor::GetRunSpeed)>(0x0EB, 0x0ED, this);
 	}
 
-	void Actor::Unk_EC()
+	float Actor::GetJogSpeed()
 	{
-		RelocateVirtual<decltype(&Actor::Unk_EC)>(0x0EC, 0x0EE, this);
+		return RelocateVirtual<decltype(&Actor::GetJogSpeed)>(0x0EC, 0x0EE, this);
 	}
 
-	void Actor::Unk_ED()
+	float Actor::GetFastWalkSpeed()
 	{
-		RelocateVirtual<decltype(&Actor::Unk_ED)>(0x0ED, 0x0EF, this);
+		return RelocateVirtual<decltype(&Actor::GetFastWalkSpeed)>(0x0ED, 0x0EF, this);
 	}
 
-	void Actor::Unk_EE()
+	float Actor::GetWalkSpeed()
 	{
-		RelocateVirtual<decltype(&Actor::Unk_EE)>(0x0EE, 0x0F0, this);
+		return RelocateVirtual<decltype(&Actor::GetWalkSpeed)>(0x0EE, 0x0F0, this);
 	}
 
 	void Actor::WeaponSwingCallBack()
@@ -1304,9 +1304,9 @@ namespace RE
 		return RelocateVirtual<decltype(&Actor::MovetoMiddleLow)>(0x0F3, 0x0F5, this);
 	}
 
-	void Actor::Unk_F4()
+	bool Actor::MoveToMiddleHigh()
 	{
-		RelocateVirtual<decltype(&Actor::Unk_F4)>(0x0F4, 0x0F6, this);
+		return RelocateVirtual<decltype(&Actor::MoveToMiddleHigh)>(0x0F4, 0x0F6, this);
 	}
 
 	bool Actor::HasBeenAttacked() const
@@ -1439,9 +1439,9 @@ namespace RE
 		RelocateVirtual<decltype(&Actor::KillImpl)>(0x10E, 0x110, this, a_attacker, a_damage, a_sendEvent, a_ragdollInstant);
 	}
 
-	void Actor::Unk_10F()
+	bool Actor::DrinkPotion(AlchemyItem* a_potion, ExtraDataList* a_extralist)
 	{
-		RelocateVirtual<decltype(&Actor::Unk_10F)>(0x10F, 0x111, this);
+		return RelocateVirtual<decltype(&Actor::DrinkPotion)>(0x10F, 0x111, this, a_potion, a_extralist);
 	}
 
 	bool Actor::CheckCast(MagicItem* a_spell, bool a_dualCast, MagicSystem::CannotCastReason* a_reason)
@@ -1484,9 +1484,9 @@ namespace RE
 		RelocateVirtual<decltype(&Actor::Unk_117)>(0x117, 0x119, this);
 	}
 
-	void Actor::Unk_118()
+	void Actor::InitValues()
 	{
-		RelocateVirtual<decltype(&Actor::Unk_118)>(0x118, 0x11A, this);
+		RelocateVirtual<decltype(&Actor::InitValues)>(0x118, 0x11A, this);
 	}
 
 	const BSFixedString& Actor::GetResponseString() const
@@ -1494,9 +1494,9 @@ namespace RE
 		return RelocateVirtual<decltype(&Actor::GetResponseString)>(0x119, 0x11B, this);
 	}
 
-	void Actor::Unk_11A()
+	void Actor::ModifyMovementData(float a_delta, NiPoint3& a_arg3, NiPoint3& a_arg4)
 	{
-		RelocateVirtual<decltype(&Actor::Unk_11A)>(0x11A, 0x11C, this);
+		RelocateVirtual<decltype(&Actor::ModifyMovementData)>(0x11A, 0x11C, this, a_delta, a_arg3, a_arg4);
 	}
 
 	void Actor::UpdateCombatControllerSettings()

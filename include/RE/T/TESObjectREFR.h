@@ -32,6 +32,7 @@ namespace RE
 	class BSFlattenedBoneTree;
 	class DialogueResponse;
 	class Explosion;
+	class hkVector4;
 	class InventoryChanges;
 	class InventoryEntryData;
 	class MagicCaster;
@@ -348,7 +349,7 @@ namespace RE
 		BSAnimNoteReceiver* CreateAnimNoteReceiver();                                                             // 9A
 		BSAnimNoteReceiver* GetAnimNoteReceiver();                                                                // 9B
 		bool                ProcessInWater(hkpCollidable* a_collidable, float a_waterHeight, float a_deltaTime);  // 9C
-		void                Unk_9D(void);                                                                         // 9D - { return 0; }
+		bool                ApplyCurrent(float a_velocityTime, const hkVector4& a_velocity);                      // 9D - { return 0; }
 		TESAmmo*            GetCurrentAmmo() const;                                                               // 9E - { return 0; }
 		BGSDecalGroup*      GetDecalGroup() const;                                                                // 9F
 		void                Unk_A0(void);                                                                         // A0

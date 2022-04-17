@@ -912,9 +912,9 @@ namespace RE
 		return REL::RelocateVirtual<decltype(&TESObjectREFR::ProcessInWater)>(0x9C, 0x9D, this, a_collidable, a_waterHeight, a_deltaTime);
 	}
 
-	void TESObjectREFR::Unk_9D()
+	bool TESObjectREFR::ApplyCurrent(float a_velocityTime, const hkVector4& a_velocity)
 	{
-		REL::RelocateVirtual<decltype(&TESObjectREFR::Unk_9D)>(0x9D, 0x9E, this);
+		return REL::RelocateVirtual<decltype(&TESObjectREFR::ApplyCurrent)>(0x9D, 0x9E, this, a_velocityTime, a_velocity);
 	}
 
 	TESAmmo* TESObjectREFR::GetCurrentAmmo() const
