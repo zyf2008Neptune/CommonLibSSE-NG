@@ -370,7 +370,7 @@ namespace RE
 		void                    SetRefraction(bool a_enable, float a_refraction);                                                                                                                                // 0C3
 		void                    Unk_C4(void);                                                                                                                                                                    // 0C4 - { return; }
 		void                    Unk_C5(void);                                                                                                                                                                    // 0C5 - { return 1; }
-		void                    Unk_C6(void);                                                                                                                                                                // 0C6
+		void                    Unk_C6(void);                                                                                                                                                                    // 0C6
 		float                   GetAcrobatics() const;                                                                                                                                                           // 0C7 - { return 1.0; }
 		bhkCharacterController* Move(float a_arg2, const NiPoint3& a_position);                                                                                                                                  // 0C8
 		void                    Unk_C9(void);                                                                                                                                                                    // 0C9
