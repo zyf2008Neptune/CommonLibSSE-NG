@@ -1344,18 +1344,18 @@ namespace REL
 	 * submit a PR upstream to add the changes.
 	 * </p>
 	 *
-	 * @param seAndVR the ID to use for Skyrim SE and VR.
-	 * @param ae the ID to sue for Skyrim AE.
+	 * @param a_seAndVR the ID to use for Skyrim SE and VR.
+	 * @param a_ae the ID to sue for Skyrim AE.
 	 * @return The correct ID based on the currently running Skyrim executable.
 	 */
-	[[nodiscard]] SKYRIM_ADDR REL::ID RelocationID([[maybe_unused]] uint64_t seAndVR, [[maybe_unused]] uint64_t ae) noexcept
+	[[nodiscard]] SKYRIM_ADDR REL::ID RelocationID([[maybe_unused]] uint64_t a_seAndVR, [[maybe_unused]] uint64_t a_ae) noexcept
 	{
 #ifndef ENABLE_SKYRIM_AE
-		return REL::ID(seAndVR);
+		return REL::ID(a_seAndVR);
 #elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)
-		return REL::ID(ae);
+		return REL::ID(a_ae);
 #else
-		return REL::ID(Module::get().IsAE() ? ae : seAndVR);
+		return REL::ID(Module::get().IsAE() ? a_ae : a_seAndVR);
 #endif
 	}
 
@@ -1374,28 +1374,28 @@ namespace REL
 	 * different VR ID.
 	 * </p>
 	 *
-	 * @param se the ID to use for Skyrim SE.
-	 * @param ae the ID to use for Skyrim AE.
-	 * @param vr the ID To use for Skyrim VR.
+	 * @param a_se the ID to use for Skyrim SE.
+	 * @param a_ae the ID to use for Skyrim AE.
+	 * @param a_vr the ID To use for Skyrim VR.
 	 * @return the correct ID for the current runtime of Skyrim.
 	 */
-	[[nodiscard]] SKYRIM_REL REL::ID RelocationID([[maybe_unused]] std::uint64_t se, [[maybe_unused]] std::uint64_t ae,
-		[[maybe_unused]] std::uint64_t vr) noexcept
+	[[nodiscard]] SKYRIM_REL REL::ID RelocationID([[maybe_unused]] std::uint64_t a_se, [[maybe_unused]] std::uint64_t a_ae,
+		[[maybe_unused]] std::uint64_t a_vr) noexcept
 	{
 #if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR)
-		return REL::ID(se);
+		return REL::ID(a_se);
 #elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)
-		return REL::ID(ae);
+		return REL::ID(a_ae);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-		return REL::ID(vr);
+		return REL::ID(a_vr);
 #else
 		switch (Module::get().GetRuntime()) {
 		case Module::Runtime::AE:
-			return REL::ID(ae);
+			return REL::ID(a_ae);
 		case Module::Runtime::VR:
-			return REL::ID(vr);
+			return REL::ID(a_vr);
 		default:
-			return REL::ID(se);
+			return REL::ID(a_se);
 		}
 #endif
 	}
@@ -1411,19 +1411,19 @@ namespace REL
 	 * </p>
 	 *
 	 * @tparam T the type of value to return.
-	 * @param seAndVR the value to use for SE and VR.
-	 * @param ae the value to use for AE.
-	 * @return Either <code>seAndVR</code> if the current runtime is Skyrim SE or VR, or <code>ae</code> if the runtime is AE.
+	 * @param a_seAndVR the value to use for SE and VR.
+	 * @param a_ae the value to use for AE.
+	 * @return Either <code>a_seAndVR</code> if the current runtime is Skyrim SE or VR, or <code>a_ae</code> if the runtime is AE.
 	 */
 	template <class T>
-	[[nodiscard]] SKYRIM_ADDR T Relocate([[maybe_unused]] T&& seAndVR, [[maybe_unused]] T&& ae) noexcept
+	[[nodiscard]] SKYRIM_ADDR T Relocate([[maybe_unused]] T&& a_seAndVR, [[maybe_unused]] T&& a_ae) noexcept
 	{
 #ifndef ENABLE_SKYRIM_AE
-		return seAndVR;
+		return a_seAndVR;
 #elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)
-		return ae;
+		return a_ae;
 #else
-		return Module::get().IsAE() ? ae : seAndVR;
+		return Module::get().IsAE() ? a_ae : a_seAndVR;
 #endif
 	}
 
@@ -1438,30 +1438,30 @@ namespace REL
 	 * </p>
 	 *
 	 * @tparam T the type of value to return.
-	 * @param se the value to use for SE.
-	 * @param ae the value to use for AE.
-	 * @param vr the value to use for VR.
-	 * @return Either <code>se</code> if the current runtime is Skyrim SE, or <code>ae</code> if the runtime is AE, or
-	 * <code>vr</code> if running Skyrim VR.
+	 * @param a_se the value to use for SE.
+	 * @param a_ae the value to use for AE.
+	 * @param a_vr the value to use for VR.
+	 * @return Either <code>a_se</code> if the current runtime is Skyrim SE, or <code>a_ae</code> if the runtime is AE, or
+	 * <code>a_vr</code> if running Skyrim VR.
 	 */
 	template <class T>
-	[[nodiscard]] SKYRIM_REL T Relocate([[maybe_unused]] T se, [[maybe_unused]] T ae,
-		[[maybe_unused]] T vr) noexcept
+	[[nodiscard]] SKYRIM_REL T Relocate([[maybe_unused]] T a_se, [[maybe_unused]] T a_ae,
+		[[maybe_unused]] T a_vr) noexcept
 	{
 #if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR)
-		return se;
+		return a_se;
 #elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)
-		return ae;
+		return a_ae;
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-		return vr;
+		return a_vr;
 #else
 		switch (Module::get().GetRuntime()) {
 		case Module::Runtime::AE:
-			return ae;
+			return a_ae;
 		case Module::Runtime::VR:
-			return vr;
+			return a_vr;
 		default:
-			return se;
+			return a_se;
 		}
 #endif
 	}
@@ -1534,33 +1534,33 @@ namespace REL
 	 *
 	 * @tparam Fn the type of the function being called.
 	 * @tparam Args the types of the arguments being passed.
-	 * @param seAndAEVtableOffset the offset from the <code>this</code> pointer to the vtable with the virtual function in SE/AE.
-	 * @param vrVtableIndex the offset from the <code>this</code> pointer to the vtable with the virtual function in VR.
-	 * @param seAndAEVtableIndex the index of the function in the class' vtable in SE and AE.
-	 * @param vrVtableIndex the index of the function in the class' vtable in VR.
-	 * @param self the <code>this</code> argument for the call.
-	 * @param args the remaining arguments for the call, if any.
+	 * @param a_seAndAEVtableOffset the offset from the <code>this</code> pointer to the vtable with the virtual function in SE/AE.
+	 * @param a_vrVtableIndex the offset from the <code>this</code> pointer to the vtable with the virtual function in VR.
+	 * @param a_seAndAEVtableIndex the index of the function in the class' vtable in SE and AE.
+	 * @param a_vrVtableIndex the index of the function in the class' vtable in VR.
+	 * @param a_self the <code>this</code> argument for the call.
+	 * @param a_args the remaining arguments for the call, if any.
 	 * @return The result of the function call.
 	 */
 	template <class Fn, class... Args>
 	[[nodiscard]] inline typename detail::RelocateVirtualHelper<Fn>::return_type RelocateVirtual(
-		[[maybe_unused]] std::ptrdiff_t seAndAEVtableOffset, [[maybe_unused]] std::ptrdiff_t vrVtableOffset,
-		[[maybe_unused]] std::ptrdiff_t seAndAEVtableIndex, [[maybe_unused]] std::ptrdiff_t vrVtableIndex,
-		typename detail::RelocateVirtualHelper<Fn>::this_type* self, Args&&... args)
+		[[maybe_unused]] std::ptrdiff_t a_seAndAEVtableOffset, [[maybe_unused]] std::ptrdiff_t a_vrVtableOffset,
+		[[maybe_unused]] std::ptrdiff_t a_seAndAEVtableIndex, [[maybe_unused]] std::ptrdiff_t a_vrVtableIndex,
+		typename detail::RelocateVirtualHelper<Fn>::this_type* a_self, Args&&... a_args)
 	{
 		return (*reinterpret_cast<typename detail::RelocateVirtualHelper<Fn>::function_type**>(
-			*reinterpret_cast<const uintptr_t*>(reinterpret_cast<uintptr_t>(self) +
+			*reinterpret_cast<const uintptr_t*>(reinterpret_cast<uintptr_t>(a_self) +
 #ifndef ENABLE_SKYRIM_VR
-												seAndAEVtableOffset) +
-			seAndAEVtableIndex
+												a_seAndAEVtableOffset) +
+			a_seAndAEVtableIndex
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-												vrVtableOffset) +
-			vrVtableIndex
+												a_vrVtableOffset) +
+			a_vrVtableIndex
 #else
-												(Module::get().IsVR() ? vrVtableOffset : seAndAEVtableOffset)) +
-			(Module::get().IsVR() ? vrVtableIndex : seAndAEVtableIndex)
+												(Module::get().IsVR() ? a_vrVtableOffset : a_seAndAEVtableOffset)) +
+			(Module::get().IsVR() ? a_vrVtableIndex : a_seAndAEVtableIndex)
 #endif
-				* sizeof(uintptr_t)))(self, std::forward<Args>(args)...);
+				* sizeof(uintptr_t)))(a_self, std::forward<Args>(a_args)...);
 	}
 
 	/**
@@ -1580,18 +1580,18 @@ namespace REL
 	 *
 	 * @tparam Fn the type of the function being called.
 	 * @tparam Args the types of the arguments being passed.
-	 * @param seAndAEVtableIndex the index of the function in the class' vtable in SE and AE.
-	 * @param vrVtableIndex the index of the function in the class' vtable in VR.
-	 * @param self the <code>this</code> argument for the call.
-	 * @param args the remaining arguments for the call, if any.
+	 * @param a_seAndAEVtableIndex the index of the function in the class' vtable in SE and AE.
+	 * @param a_vrVtableIndex the index of the function in the class' vtable in VR.
+	 * @param a_self the <code>this</code> argument for the call.
+	 * @param a_args the remaining arguments for the call, if any.
 	 * @return The result of the function call.
 	 */
 	template <class Fn, class... Args>
 	[[nodiscard]] inline typename detail::RelocateVirtualHelper<Fn>::return_type RelocateVirtual(
-		std::ptrdiff_t seAndAEVtableIndex, std::ptrdiff_t vrVtableIndex,
-		typename detail::RelocateVirtualHelper<Fn>::this_type* self, Args&&... args)
+		std::ptrdiff_t a_seAndAEVtableIndex, std::ptrdiff_t a_vrVtableIndex,
+		typename detail::RelocateVirtualHelper<Fn>::this_type* a_self, Args&&... a_args)
 	{
-		return RelocateVirtual<Fn, Args...>(0, 0, seAndAEVtableIndex, vrVtableIndex, self, std::forward<Args>(args)...);
+		return RelocateVirtual<Fn, Args...>(0, 0, a_seAndAEVtableIndex, a_vrVtableIndex, a_self, std::forward<Args>(a_args)...);
 	}
 
 	/**
@@ -1606,15 +1606,15 @@ namespace REL
 	 *
 	 * @tparam T the type of the member being accessed.
 	 * @tparam This the type of the target object that has the member.
-	 * @param self the target object that has the member.
-	 * @param seAndAE the memory offset of the member in Skyrim SE and AE.
-	 * @param vr the memory offset of the member in Skyrim VR.
+	 * @param a_self the target object that has the member.
+	 * @param a_seAndAE the memory offset of the member in Skyrim SE and AE.
+	 * @param a_vr the memory offset of the member in Skyrim VR.
 	 * @return A reference to the member.
 	 */
 	template <class T, class This>
-	[[nodiscard]] inline T& RelocateMember(This* self, ptrdiff_t seAndAE, ptrdiff_t vr)
+	[[nodiscard]] inline T& RelocateMember(This* a_self, ptrdiff_t a_seAndAE, ptrdiff_t a_vr)
 	{
-		return *reinterpret_cast<T*>(reinterpret_cast<uintptr_t>(self) + Relocate(seAndAE, seAndAE, vr));
+		return *reinterpret_cast<T*>(reinterpret_cast<uintptr_t>(a_self) + Relocate(a_seAndAE, a_seAndAE, a_vr));
 	}
 }
 
