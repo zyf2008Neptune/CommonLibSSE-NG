@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/B/BSTSmartPointer.h"
 #include "RE/B/BSIntrusiveRefCounted.h"
 #include "RE/B/BSPointerHandle.h"
+#include "RE/B/BSTSmartPointer.h"
 #include "RE/B/BipedObjects.h"
 #include "RE/N/NiSmartPointer.h"
 #include "RE/W/WeaponAnimationGraphManagerHolder.h"
