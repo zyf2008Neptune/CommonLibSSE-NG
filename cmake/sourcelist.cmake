@@ -45,6 +45,7 @@ set(SOURCES
 	include/RE/A/AutoRegisterFactory.h
 	include/RE/A/ahkpCharacterProxy.h
 	include/RE/A/ahkpWorld.h
+	include/RE/B/BaseHandleReaderWriter.h
 	include/RE/B/BGSAbilityPerkEntry.h
 	include/RE/B/BGSAcousticSpace.h
 	include/RE/B/BGSAction.h
@@ -246,6 +247,7 @@ set(SOURCES
 	include/RE/B/BSLightingShaderMaterialSnow.h
 	include/RE/B/BSLightingShaderProperty.h
 	include/RE/B/BSMaterialObject.h
+	include/RE/B/BSMemStorage.h
 	include/RE/B/BSMouseDevice.h
 	include/RE/B/BSMultiBound.h
 	include/RE/B/BSMultiBoundAABB.h
@@ -860,6 +862,7 @@ set(SOURCES
 	include/RE/I/IFunction.h
 	include/RE/I/IFunctionArguments.h
 	include/RE/I/IHandlerFunctor.h
+	include/RE/I/IHandleReaderWriter.h
 	include/RE/I/ILoader.h
 	include/RE/I/IMapCameraCallbacks.h
 	include/RE/I/IMemoryHeap.h
@@ -932,6 +935,7 @@ set(SOURCES
 	include/RE/L/LevelUpMenu.h
 	include/RE/L/LightEffect.h
 	include/RE/L/LinkerProcessor.h
+	include/RE/L/LoadStorageWrapper.h
 	include/RE/L/LoadWaitSpinner.h
 	include/RE/L/LoadingMenu.h
 	include/RE/L/LocalMapCamera.h
@@ -1124,7 +1128,9 @@ set(SOURCES
 	include/RE/RTTI.h
 	include/RE/S/SFTypes.h
 	include/RE/S/SafeZoneMenu.h
+	include/RE/S/SaveFileHandleReaderWriter.h
 	include/RE/S/SavePatcher.h
+	include/RE/S/SaveStorageWrapper.h
 	include/RE/S/ScrapHeap.h
 	include/RE/S/ScreenSplatter.h
 	include/RE/S/Script.h
