@@ -45,7 +45,6 @@ set(SOURCES
 	include/RE/A/AutoRegisterFactory.h
 	include/RE/A/ahkpCharacterProxy.h
 	include/RE/A/ahkpWorld.h
-	include/RE/B/BaseHandleReaderWriter.h
 	include/RE/B/BGSAbilityPerkEntry.h
 	include/RE/B/BGSAcousticSpace.h
 	include/RE/B/BGSAction.h
@@ -347,6 +346,7 @@ set(SOURCES
 	include/RE/B/BarrierProjectile.h
 	include/RE/B/BarterMenu.h
 	include/RE/B/BaseFormComponent.h
+	include/RE/B/BaseHandleReaderWriter.h
 	include/RE/B/BeamProjectile.h
 	include/RE/B/BipedAnim.h
 	include/RE/B/BipedObjects.h
@@ -863,8 +863,8 @@ set(SOURCES
 	include/RE/I/IFuncCallQuery.h
 	include/RE/I/IFunction.h
 	include/RE/I/IFunctionArguments.h
-	include/RE/I/IHandlerFunctor.h
 	include/RE/I/IHandleReaderWriter.h
+	include/RE/I/IHandlerFunctor.h
 	include/RE/I/ILoader.h
 	include/RE/I/IMapCameraCallbacks.h
 	include/RE/I/IMemoryHeap.h
