@@ -45,18 +45,18 @@ namespace RE
 
 	TESObjectARMO* InventoryChanges::GetArmorInSlot(std::int32_t a_slot)
 	{
-		if (REL::Module::get().IsVR()) {
+		if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
 			auto armorowner = this->owner;
 			auto actor = armorowner ? armorowner->As<RE::Actor>() : nullptr;
 			if (actor) {
 				return actor->GetWornArmor(a_slot);
 			}
 			return nullptr;
+		} else {
+			using func_t = decltype(&InventoryChanges::GetArmorInSlot);
+			REL::Relocation<func_t> func{ REL::RelocationID(15873, 16113) };
+			return func(this, a_slot);
 		}
-
-		using func_t = decltype(&InventoryChanges::GetArmorInSlot);
-		REL::Relocation<func_t> func{ REL::RelocationID(15873, 16113) };
-		return func(this, a_slot);
 	}
 
 	std::uint16_t InventoryChanges::GetNextUniqueID()

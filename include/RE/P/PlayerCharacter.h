@@ -537,18 +537,20 @@ namespace RE
 
 		[[nodiscard]] VR_NODE_DATA* GetVRNodeData() noexcept
 		{
-			if (!REL::Module::get().IsVR()) {
+			if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
 				return nullptr;
+			} else {
+				return &REL::RelocateMember<VR_NODE_DATA>(this, 0, 0x3F0);
 			}
-			return &REL::RelocateMember<VR_NODE_DATA>(this, 0, 0x3F0);
 		}
 
 		[[nodiscard]] const VR_NODE_DATA* GetVRNodeData() const noexcept
 		{
-			if (!REL::Module::get().IsVR()) {
+			if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
 				return nullptr;
+			} else {
+				return &REL::RelocateMember<VR_NODE_DATA>(this, 0, 0x3F0);
 			}
-			return &REL::RelocateMember<VR_NODE_DATA>(this, 0, 0x3F0);
 		}
 
 		// members

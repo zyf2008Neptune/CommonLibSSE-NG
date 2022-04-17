@@ -49,8 +49,11 @@ namespace RE
 #if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 				return INPUT_DEVICES::kTotal;
 #else
-				return REL::Module::get().IsVR() ? INPUT_DEVICES::kTotal :
-                                                   static_cast<std::size_t>(INPUT_DEVICES::kVirtualKeyboard) + 1;
+				if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
+					return INPUT_DEVICES::kTotal;
+				} else {
+					return static_cast<std::size_t>(INPUT_DEVICES::kVirtualKeyboard) + 1;
+				}
 #endif
 			}
 

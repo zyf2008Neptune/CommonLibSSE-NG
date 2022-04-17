@@ -64,10 +64,11 @@ namespace RE
 
 	NiPointer<TESObjectREFR> PlayerCharacter::GetGrabbedRef()
 	{
-		if (REL::Module::get().IsVR()) {
+		if SKYRIM_REL_CONSTEXPR (Module::IsVR()) {
 			return nullptr;
+		} else {
+			return REL::RelocateMember<ObjectRefHandle>(this, 0x8C8, 0).get();
 		}
-		return REL::RelocateMember<ObjectRefHandle>(this, 0x8C8, 0).get();
 	}
 
 	std::uint32_t PlayerCharacter::GetNumTints(std::uint32_t a_tintType)
@@ -113,10 +114,11 @@ namespace RE
 
 	bool PlayerCharacter::IsGrabbing() const
 	{
-		if (Module::get().IsVR()) {
+		if SKYRIM_REL_CONSTEXPR (Module::IsVR()) {
 			return false;
+		} else {
+			return static_cast<bool>(REL::RelocateMember<ObjectRefHandle>(this, 0x8C8, 0));
 		}
-		return static_cast<bool>(REL::RelocateMember<ObjectRefHandle>(this, 0x8C8, 0));
 	}
 
 	void PlayerCharacter::PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType)

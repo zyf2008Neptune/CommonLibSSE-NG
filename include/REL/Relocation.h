@@ -61,6 +61,102 @@
 	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(&, ##__VA_ARGS__) \
 	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(&&, ##__VA_ARGS__)
 
+#if !defined(ENABLE_SKYRIM_AE) || (!defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR))
+	/**
+	 * A macro which defines a modifier for expressions that vary by Skyrim Address Library IDs.
+	 *
+	 * <p>
+	 * Currently defined as <code>constexpr</code> since this build only targets one family of Address Library.
+	 * </p>
+	 */
+#	define SKYRIM_ADDR constexpr
+#else
+	/**
+ 	 * A macro which defines a modifier for expressions that vary by Skyrim address library IDs.
+ 	 *
+ 	 * <p>
+ 	 * Currently defined as <code>inline</code> to support multiple Address Library ID families dynamically.
+ 	 * </p>
+ 	 */
+#	define SKYRIM_ADDR inline
+#endif
+
+#if (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR)) || (!defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+	/**
+	 * A macro which defines a modifier for expressions that vary by the specific Skyrim runtime.
+	 *
+	 * <p>
+	 * Currently defined as <code>constexpr</code> since this build is for only a single runtime.
+	 * </p>
+	 */
+#	define SKYRIM_REL constexpr
+
+	/**
+	 * A macro which defines a modifier for expressions which may be <code>constexpr</code> when using selective targeting.
+	 *
+	 * <p>
+	 * Currently defined as <code>constexpr</code> since this build is for only a single runtime.
+	 * </p>
+	 */
+#	define SKYRIM_REL_CONSTEXPR constexpr
+#else
+	/**
+	 * A macro which defines a modifier for expressions that vary by the specific Skyrim runtime.
+	 *
+	 * <p>
+	 * Currently defined as <code>inline</code> to support multiple runtimes dynamically.
+	 * </p>
+	 */
+#	define SKYRIM_REL inline
+
+	/**
+	 * A macro which defines a modifier for expressions which may be <code>constexpr</code> when using selective targeting.
+	 *
+	 * <p>
+	 * Currently defined as empty to support multiple runtimes.
+	 * </p>
+	 */
+#	define SKYRIM_REL_CONSTEXPR
+#endif
+
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+	/**
+	 * A macro which defines a modifier for expressions that vary between Skyrim SE/AE and Skyrim VR.
+	 *
+	 * <p>
+	 * Currently defined as <code>constexpr</code> since this build is only for VR or non-VR.
+	 * </p>
+	 */
+#	define SKYRIM_REL_VR constexpr
+
+	/**
+	 * A macro which defines a modifier for expressions which may be <code>constexpr</code> when using selectively VR or non-VR.
+	 *
+	 * <p>
+	 * Currently defined as <code>constexpr</code> since this build is only for VR or non-VR.
+	 * </p>
+	 */
+#	define SKYRIM_REL_VR_CONSTEXPR constexpr
+#else
+	/**
+	 * A macro which defines a modifier for expressions that vary between Skyrim SE/AE and Skyrim VR.
+	 *
+	 * <p>
+	 * Currently defined as <code>inline</code> since this build is for both VR and non-VR.
+	 * </p>
+	 */
+#	define SKYRIM_REL_VR inline
+
+	/**
+	 * A macro which defines a modifier for expressions which may be <code>constexpr</code> when using selectively VR or non-VR.
+	 *
+	 * <p>
+	 * Currently defined as empty since this build is for both VR and non-VR.
+	 * </p>
+	 */
+#	define SKYRIM_REL_VR_CONSTEXPR
+#endif
+
 namespace REL
 {
 	namespace detail
@@ -467,15 +563,23 @@ namespace REL
 		/**
 		 * Get the type of runtime the currently-loaded Skyrim module is.
 		 */
-		[[nodiscard]] inline Runtime GetRuntime() const noexcept
+		[[nodiscard]] static SKYRIM_REL Runtime GetRuntime() noexcept
 		{
-			return _runtime;
+#if (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR))
+			return Runtime::SE;
+#elif (!defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR))
+			return Runtime::AE;
+#elif (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+			return Runtime::VR;
+#else
+			return get()._runtime;
+#endif
 		}
 
 		/**
 		 * Returns whether the current Skyrim runtime is a post-Anniversary Edition Skyrim SE release.
 		 */
-		[[nodiscard]] inline bool IsAE() const noexcept
+		[[nodiscard]] static SKYRIM_REL bool IsAE() noexcept
 		{
 			return GetRuntime() == Runtime::AE;
 		}
@@ -483,7 +587,7 @@ namespace REL
 		/**
 		 * Returns whether the current Skyrim runtime is a pre-Anniversary Edition Skyrim SE release.
 		 */
-		[[nodiscard]] inline bool IsSE() const noexcept
+		[[nodiscard]] static SKYRIM_REL bool IsSE() noexcept
 		{
 			return GetRuntime() == Runtime::SE;
 		}
@@ -491,9 +595,15 @@ namespace REL
 		/**
 		 * Returns whether the current Skyrim runtime is a Skyrim VR release.
 		 */
-		[[nodiscard]] inline bool IsVR() const noexcept
+		[[nodiscard]] static SKYRIM_REL_VR bool IsVR() noexcept
 		{
+#ifndef ENABLE_SKYRIM_VR
+			return false;
+#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+			return true;
+#else
 			return GetRuntime() == Runtime::VR;
+#endif
 		}
 
 	private:
@@ -697,7 +807,7 @@ namespace REL
 			void read(binary_io::file_istream& a_in)
 			{
 				const auto [format] = a_in.read<std::int32_t>();
-				if (format != (Module::get().IsAE() ? 2 : 1)) {
+				if (format != (Module::IsAE() ? 2 : 1)) {
 					stl::report_and_fail(
 						fmt::format(
 							"Unsupported address library format: {}\n"
@@ -743,7 +853,7 @@ namespace REL
 		void load()
 		{
 			const auto version = Module::get().version();
-			if (Module::get().IsVR()) {
+			if SKYRIM_REL_CONSTEXPR (Module::IsVR()) {
 				const auto filename =
 					stl::utf8_to_utf16(
 						fmt::format(
@@ -754,7 +864,7 @@ namespace REL
 			} else {
 				const auto filename =
 					stl::utf8_to_utf16(
-						Module::get().IsAE() ?
+						Module::IsAE() ?
                             fmt::format("Data/SKSE/Plugins/versionlib-{}.bin"sv,
 								version.string()) :
                             fmt::format("Data/SKSE/Plugins/version-{}.bin"sv,
@@ -1268,66 +1378,6 @@ namespace REL
 	static_assert(make_pattern<"B8 D0 ?? ?? D4 6E">().match(
 		detail::make_byte_array(0xB8, 0xD0, 0x35, 0x2A, 0xD4, 0x6E)));
 
-#if !defined(ENABLE_SKYRIM_AE) || (!defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR))
-	/**
-	 * A macro which defines a modifier for expressions that vary by Skyrim Address Library IDs.
-	 *
-	 * <p>
-	 * Currently defined as <code>constexpr</code> since this build only targets one family of Address Library.
-	 * </p>
-	 */
-#	define SKYRIM_ADDR constexpr
-#else
-	/**
- 	 * A macro which defines a modifier for expressions that vary by Skyrim address library IDs.
- 	 *
- 	 * <p>
- 	 * Currently defined as <code>inline</code> to support multiple Address Library ID families dynamically.
- 	 * </p>
- 	 */
-#	define SKYRIM_ADDR inline
-#endif
-
-#if (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR)) || (!defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
-	/**
-	 * A macro which defines a modifier for expressions that vary by the specific Skyrim runtime.
-	 *
-	 * <p>
-	 * Currently defined as <code>constexpr</code> since this build is for only a single runtime.
-	 * </p>
-	 */
-#	define SKYRIM_REL constexpr
-#else
-	/**
-	 * A macro which defines a modifier for expressions that vary by the specific Skyrim runtime.
-	 *
-	 * <p>
-	 * Currently defined as <code>inline</code> to support multiple runtimes dynamically.
-	 * </p>
-	 */
-#	define SKYRIM_REL inline
-#endif
-
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
-	/**
-	 * A macro which defines a modifier for expressions that vary between Skyrim SE/AE and Skyrim VR.
-	 *
-	 * <p>
-	 * Currently defined as <code>constexpr</code> since this build is only for VR or non-VR.
-	 * </p>
-	 */
-#	define SKYRIM_REL_VR constexpr
-#else
-	/**
-	 * A macro which defines a modifier for expressions that vary between Skyrim SE/AE and Skyrim VR.
-	 *
-	 * <p>
-	 * Currently defined as <code>inline</code> since this build is for both VR and non-VR.
-	 * </p>
-	 */
-#	define SKYRIM_REL_VR inline
-#endif
-
 	/**
 	 * Selects a proper <code>REL::ID</code> based on the current Skyrim runtime.
 	 *
@@ -1355,7 +1405,7 @@ namespace REL
 #elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)
 		return REL::ID(a_ae);
 #else
-		return REL::ID(Module::get().IsAE() ? a_ae : a_seAndVR);
+		return REL::ID(Module::IsAE() ? a_ae : a_seAndVR);
 #endif
 	}
 
@@ -1423,7 +1473,7 @@ namespace REL
 #elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)
 		return a_ae;
 #else
-		return Module::get().IsAE() ? a_ae : a_seAndVR;
+		return Module::IsAE() ? a_ae : a_seAndVR;
 #endif
 	}
 
@@ -1557,8 +1607,8 @@ namespace REL
 												a_vrVtableOffset) +
 			a_vrVtableIndex
 #else
-												(Module::get().IsVR() ? a_vrVtableOffset : a_seAndAEVtableOffset)) +
-			(Module::get().IsVR() ? a_vrVtableIndex : a_seAndAEVtableIndex)
+												(Module::IsVR() ? a_vrVtableOffset : a_seAndAEVtableOffset)) +
+			(Module::IsVR() ? a_vrVtableIndex : a_seAndAEVtableIndex)
 #endif
 				* sizeof(uintptr_t)))(a_self, std::forward<Args>(a_args)...);
 	}

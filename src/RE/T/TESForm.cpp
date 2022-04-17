@@ -38,13 +38,13 @@ namespace RE
 	float TESForm::GetWeight() const
 	{
 		const auto survival = []() {
-			if (REL::Module::get().IsVR()) {
+			if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
 				return false;
+			} else {
+				const auto dobj = BGSDefaultObjectManager::GetSingleton();
+				const auto survival = dobj ? dobj->GetObject<TESGlobal>(DefaultObjectID::kSurvivalModeEnabled) : nullptr;
+				return survival && *survival ? (*survival)->value == 1.0F : false;
 			}
-
-			const auto dobj = BGSDefaultObjectManager::GetSingleton();
-			const auto survival = dobj ? dobj->GetObject<TESGlobal>(DefaultObjectID::kSurvivalModeEnabled) : nullptr;
-			return survival && *survival ? (*survival)->value == 1.0F : false;
 		};
 
 		const auto ref = As<TESObjectREFR>();

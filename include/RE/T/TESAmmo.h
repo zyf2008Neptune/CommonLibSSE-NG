@@ -97,7 +97,11 @@ namespace RE
 
 		[[nodiscard]] inline float GetWeight() const noexcept
 		{
-			return REL::Module::get().IsVR() ? 0.0f : REL::RelocateMember<float>(this, 0xB8, 0);
+			if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
+				return 0.0f;
+			} else {
+				return REL::RelocateMember<float>(this, 0xB8, 0);
+			}
 		}
 
 #ifndef ENABLE_SKYRIM_VR
