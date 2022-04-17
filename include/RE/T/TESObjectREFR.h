@@ -9,6 +9,7 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/E/ExtraDataList.h"
 #include "RE/F/FormTypes.h"
+#include "RE/H/hkVector4.h"
 #include "RE/I/IAnimationGraphManagerHolder.h"
 #include "RE/M/MagicSystem.h"
 #include "RE/N/NiPoint3.h"

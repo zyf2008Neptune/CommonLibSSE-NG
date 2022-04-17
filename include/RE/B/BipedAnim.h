@@ -1,10 +1,11 @@
 #pragma once
 
-#include "BSTSmartPointer.h"
 #include "RE/B/BSIntrusiveRefCounted.h"
 #include "RE/B/BSPointerHandle.h"
+#include "RE/B/BSTSmartPointer.h"
 #include "RE/B/BipedObjects.h"
 #include "RE/N/NiSmartPointer.h"
+#include "RE/W/WeaponAnimationGraphManagerHolder.h"
 
 namespace RE
 {
@@ -14,27 +15,26 @@ namespace RE
 	class TESForm;
 	class TESModel;
 	class TESObjectARMA;
-	class WeaponAnimationGraphManagerHolder;
 
 	struct BIPOBJECT
 	{
 	public:
 		// members
-		TESForm*                           item;           // 00
-		TESObjectARMA*                     addon;          // 08
-		TESModel*                          part;           // 10
-		BGSTextureSet*                     skinTexture;    // 18
-		NiPointer<NiAVObject>              partClone;      // 20
-		std::uint64_t                      unk28;          // 28 - same as AIProcess::Data0B8
-		std::uint64_t                      unk30;          // 30
-		std::uint64_t                      unk38;          // 38
-		std::uint64_t                      unk40;          // 40
-		std::uint64_t                      unk48;          // 48
-		std::uint64_t                      unk50;          // 50
-		std::uint64_t                      unk58;          // 58
-		WeaponAnimationGraphManagerHolder* weaponManager;  // 60 - smart ptr
-		std::uint64_t                      unk68;          // 68
-		void*                              unk70;          // 70
+		TESForm*                                           item;           // 00
+		TESObjectARMA*                                     addon;          // 08
+		TESModel*                                          part;           // 10
+		BGSTextureSet*                                     skinTexture;    // 18
+		NiPointer<NiAVObject>                              partClone;      // 20
+		std::uint64_t                                      unk28;          // 28 - same as AIProcess::Data0B8
+		std::uint64_t                                      unk30;          // 30
+		std::uint64_t                                      unk38;          // 38
+		std::uint64_t                                      unk40;          // 40
+		std::uint64_t                                      unk48;          // 48
+		std::uint64_t                                      unk50;          // 50
+		std::uint64_t                                      unk58;          // 58
+		BSTSmartPointer<WeaponAnimationGraphManagerHolder> weaponManager;  // 60 - smart ptr
+		std::uint64_t                                      unk68;          // 68
+		void*                                              unk70;          // 70
 	};
 	static_assert(sizeof(BIPOBJECT) == 0x78);
 
