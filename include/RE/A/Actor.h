@@ -16,7 +16,6 @@
 #include "RE/B/BSTTuple.h"
 #include "RE/D/DetectionPriorities.h"
 #include "RE/F/FormTypes.h"
-#include "RE/H/hkVector4.h"
 #include "RE/I/IPostAnimationChannelUpdateFunctor.h"
 #include "RE/M/MagicSystem.h"
 #include "RE/M/MagicTarget.h"
