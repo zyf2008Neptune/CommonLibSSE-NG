@@ -95,15 +95,6 @@ namespace RE
 		NiAVObject* Clone3D(TESObjectREFR* a_ref, bool a_arg3) override;                 // 40
 		void        HandleRemoveItemFromContainer(TESObjectREFR* a_container) override;  // 4E
 
-		[[nodiscard]] inline float GetWeight() const noexcept
-		{
-			if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
-				return 0.0f;
-			} else {
-				return REL::RelocateMember<float>(this, 0xB8, 0);
-			}
-		}
-
 #ifndef ENABLE_SKYRIM_VR
 		// override (BGSKeywordForm)
 		[[nodiscard]] BGSKeyword* GetDefaultKeyword() const override;  // 05
