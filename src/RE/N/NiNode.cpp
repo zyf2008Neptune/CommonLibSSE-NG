@@ -49,6 +49,7 @@ namespace RE
 		return func(this, a_arrBuffLen);
 	}
 
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 	void NiNode::AttachChild(NiAVObject* a_child, bool a_firstAvail)
 	{
 		REL::RelocateVirtual<decltype(&NiNode::AttachChild)>(0x35, 0x36, this, a_child, a_firstAvail);
@@ -93,4 +94,5 @@ namespace RE
 	{
 		REL::RelocateVirtual<decltype(&NiNode::UpdateUpwardPass)>(0x3D, 0x3E, this, a_data);
 	}
+#endif
 }

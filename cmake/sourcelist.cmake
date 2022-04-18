@@ -1423,6 +1423,7 @@ set(SOURCES
 	src/RE/B/BSInstanceTriShape.cpp
 	src/RE/B/BSLightingShaderMaterialBase.cpp
 	src/RE/B/BSLightingShaderProperty.cpp
+	src/RE/B/BSMultiBoundNode.cpp
 	src/RE/B/BSPointerHandle.cpp
 	src/RE/B/BSResourceNiBinaryStream.cpp
 	src/RE/B/BSResponse.cpp
@@ -1449,6 +1450,7 @@ set(SOURCES
 	src/RE/C/Color.cpp
 	src/RE/C/ColorUtil.cpp
 	src/RE/C/CommandTable.cpp
+	src/RE/C/ConeProjectile.cpp
 	src/RE/C/Console.cpp
 	src/RE/C/ConsoleLog.cpp
 	src/RE/C/ContainerItemExtra.cpp
@@ -1510,7 +1512,6 @@ set(SOURCES
 	src/RE/G/GViewport.cpp
 	src/RE/G/GameSettingCollection.cpp
 	src/RE/G/GiftMenu.cpp
-	src/RE/H/HUDMenu.cpp
 	src/RE/H/HUDMeter.cpp
 	src/RE/H/HUDObject.cpp
 	src/RE/H/Hazard.cpp
@@ -1528,7 +1529,6 @@ set(SOURCES
 	src/RE/I/IFormFactory.cpp
 	src/RE/I/IFunction.cpp
 	src/RE/I/IHandlerFunctor.cpp
-	src/RE/I/IMapCameraCallbacks.cpp
 	src/RE/I/IMemoryStore.cpp
 	src/RE/I/IMenu.cpp
 	src/RE/I/INIPrefSettingCollection.cpp
@@ -1562,6 +1562,7 @@ set(SOURCES
 	src/RE/M/MenuEventHandler.cpp
 	src/RE/M/MiddleHighProcessData.cpp
 	src/RE/M/Misc.cpp
+	src/RE/M/MissileProjectile.cpp
 	src/RE/N/NativeFunctionBase.cpp
 	src/RE/N/NiAVObject.cpp
 	src/RE/N/NiAlphaProperty.cpp

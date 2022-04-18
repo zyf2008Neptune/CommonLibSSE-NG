@@ -30,12 +30,14 @@ namespace RE
 		const NiRTTI* GetRTTI() const override;                            // 02
 		NiObject*     CreateClone(NiCloningProcess& a_cloning) override;   // 17
 		void          ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 		// The following are virtual functions past the point where VR compatibility breaks.
-		//		void          OnVisible(NiCullingProcess& a_process) override;     // 34
+		void OnVisible(NiCullingProcess& a_process) override;  // 34
+#endif
 
 		// add
-		std::uint8_t Unk_3E();                                               // 3E - { return 1; }
-		void         AttachDecal(BSTempEffect* a_decal, bool a_firstAvail);  // 3F
+		SKYRIM_REL_VR_VIRTUAL std::uint8_t Unk_3E();                                               // 3E - { return 1; }
+		SKYRIM_REL_VR_VIRTUAL void         AttachDecal(BSTempEffect* a_decal, bool a_firstAvail);  // 3F
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{

@@ -88,8 +88,10 @@ namespace RE
 
 		// override (NiNode)
 		const NiRTTI* GetRTTI() const override;  // 02
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR))
 		// The following are virtual functions past the point where VR compatibility breaks.
-		//		void          OnVisible(NiCullingProcess& a_process) override;  // 34
+		void OnVisible(NiCullingProcess& a_process) override;  // 34
+#endif
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{

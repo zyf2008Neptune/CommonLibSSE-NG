@@ -787,6 +787,7 @@ namespace RE
 		return func(this, a_manager, a_toSeq, a_fromSeq, a_arg4);
 	}
 
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 	void TESObjectREFR::SetObjectReference(TESBoundObject* a_object)
 	{
 		REL::RelocateVirtual<decltype(&TESObjectREFR::SetObjectReference)>(0x84, 0x85, this, a_object);
@@ -936,4 +937,5 @@ namespace RE
 	{
 		REL::RelocateVirtual<decltype(&TESObjectREFR::UnequipItem)>(0xA1, 0xA2, this, a_arg1, a_object);
 	}
+#endif
 }

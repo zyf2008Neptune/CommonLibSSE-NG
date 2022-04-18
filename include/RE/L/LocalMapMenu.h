@@ -99,10 +99,10 @@ namespace RE
 			~InputHandler() override;  // 00
 
 			// override (MenuEventHandler)
-			//			bool CanProcess(InputEvent* a_event) override;              // 01
-			//			bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
-			//			bool ProcessMouseMove(MouseMoveEvent* a_event) override;    // 04
-			//			bool ProcessButton(ButtonEvent* a_event) override;          // 05
+			bool CanProcess(InputEvent* a_event) override;              // 01
+			bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
+			bool ProcessMouseMove(MouseMoveEvent* a_event) override;    // 04
+			bool ProcessButton(ButtonEvent* a_event) override;          // 05
 
 			// members
 			LocalMapMenu* localMapMenu;  // 10

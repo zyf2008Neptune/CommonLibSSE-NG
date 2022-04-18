@@ -37,12 +37,13 @@ namespace RE
 		// override (NiNode)
 		const NiRTTI* GetRTTI() const override;                           // 02
 		NiObject*     CreateClone(NiCloningProcess& a_cloning) override;  // 17
-
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 		// The following are virtual functions past the point where VR compatibility breaks.
-		//		void          UpdateDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;  // 2C
+		void UpdateDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;  // 2C
+#endif
 
 		// add
-		void FixSkinInstances(NiNode* a_skeleton, bool a_arg2);  // 3E
+		SKYRIM_REL_VR_VIRTUAL void FixSkinInstances(NiNode* a_skeleton, bool a_arg2);  // 3E
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{

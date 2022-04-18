@@ -24,13 +24,14 @@ namespace RE
 		};
 		static_assert(sizeof(RUNTIME_DATA) == 0x28);
 
-		void          Unk_35(void);                           // 35, 36 - call controller vtbl+0xA0?
-		void          Unk_36(void);                           // 36, 37 - ret 0
-		void          Unk_37(void);                           // 37, 38 - same as Unk_33
-		void*         Unk_38(void);                           // 38, 39 - ret call m_spModelData vtbl+0x9C
-		void          SetGeometryData(NiGeometryData* unk1);  // 39, 3A - set and AddRef geometry data
-		void*         Unk_3A(void);                           // 3A, 3B - ret call m_spModelData vtbl+0x94
-		std::uint16_t Unk_3B(bool unk1);                      // 3B, 3C ??
+		// add
+		SKYRIM_REL_VR_VIRTUAL void  Unk_35(void);                           // 35, 36 - call controller vtbl+0xA0?
+		SKYRIM_REL_VR_VIRTUAL void  Unk_36(void);                           // 36, 37 - ret 0
+		SKYRIM_REL_VR_VIRTUAL void  Unk_37(void);                           // 37, 38 - same as Unk_33
+		SKYRIM_REL_VR_VIRTUAL void* Unk_38(void);                           // 38, 39 - ret call m_spModelData vtbl+0x9C
+		SKYRIM_REL_VR_VIRTUAL void  SetGeometryData(NiGeometryData* unk1);  // 39, 3A - set and AddRef geometry data
+		SKYRIM_REL_VR_VIRTUAL void* Unk_3A(void);                           // 3A, 3B - ret call m_spModelData vtbl+0x94
+		SKYRIM_REL_VR_VIRTUAL std::uint16_t Unk_3B(bool unk1);              // 3B, 3C ??
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{

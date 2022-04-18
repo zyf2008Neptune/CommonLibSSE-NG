@@ -4,6 +4,7 @@ using namespace REL;
 
 namespace RE
 {
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 	void Hazard::Initialize()
 	{
 		RelocateVirtual<decltype(&Hazard::Initialize)>(0xA2, 0xA3, this);
@@ -18,4 +19,5 @@ namespace RE
 	{
 		return RelocateVirtual<decltype(&Hazard::IsNotGeneratedForm)>(0xA4, 0xA5, this);
 	}
+#endif
 }

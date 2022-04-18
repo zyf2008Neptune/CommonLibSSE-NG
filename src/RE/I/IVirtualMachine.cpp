@@ -143,6 +143,7 @@ namespace RE
 			TraceStack(buf.data(), a_stackID, a_severity);
 		}
 
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 		bool IVirtualMachine::FindBoundObject(VMHandle a_handle, const char* a_className, BSTSmartPointer<Object>& a_result) const
 		{
 			return REL::RelocateVirtual<decltype(&IVirtualMachine::FindBoundObject)>(0x1C, 0x1E, this, a_handle, a_className, a_result);
@@ -272,5 +273,6 @@ namespace RE
 		{
 			REL::RelocateVirtual<decltype(&IVirtualMachine::UnregisterForStatsEvent)>(0x35, 0x37, this, a_sink);
 		}
+#endif
 	}
 }

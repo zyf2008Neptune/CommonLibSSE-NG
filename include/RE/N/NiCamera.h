@@ -62,9 +62,11 @@ namespace RE
 		bool          RegisterStreamables(NiStream& a_stream) override;   // 1A
 		void          SaveBinary(NiStream& a_stream) override;            // 1B - { return; }
 		bool          IsEqual(NiObject* a_object) override;               // 1C
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR))
 		// The following are virtual functions past the point where VR compatibility breaks.
-		//		void          UpdateWorldBound() override;                        // 2F - { return; }
-		//		void          UpdateWorldData(NiUpdateData* a_data) override;     // 30
+		void UpdateWorldBound() override;                     // 2F - { return; }
+		void UpdateWorldData(NiUpdateData* a_data) override;  // 30
+#endif
 
 		static bool WorldPtToScreenPt3(const float a_matrix[4][4], const NiRect<float>& a_port, const NiPoint3& a_point, float& a_xOut, float& a_yOut, float& a_zOut, float a_zeroTolerance);
 

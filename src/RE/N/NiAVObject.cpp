@@ -287,6 +287,7 @@ namespace RE
 		return func(this, a_enable, a_arg2, a_arg3);
 	}
 
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 	void NiAVObject::PerformOp(PerformOpFunc& a_func)
 	{
 		REL::RelocateVirtual<decltype(&NiAVObject::PerformOp)>(0x03, 0x04, this, a_func);
@@ -361,4 +362,5 @@ namespace RE
 	{
 		REL::RelocateVirtual<decltype(&NiAVObject::OnVisible)>(0x11, 0x12, this, a_process);
 	}
+#endif
 }

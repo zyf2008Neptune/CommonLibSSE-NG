@@ -28,17 +28,19 @@ namespace RE
 		void InitLoadGame(BGSLoadFormBuffer* a_buf) override;    // 10
 		void FinishLoadGame(BGSLoadFormBuffer* a_buf) override;  // 11
 		void Revert(BGSLoadFormBuffer* a_buf) override;          // 12
-																 //		void Unk_A2(void) override;                              // A2 - { return 1; }
-																 //		void Unk_A9(void) override;                              // A9
-																 //		void UpdateImpl(float a_delta) override;                 // AB
-																 //		void Unk_AC(void) override;                              // AC
-																 //		void Unk_B8(void) override;                              // B8 - { return unk1D8 == 1; }
-																 //		void Unk_BD(void) override;                              // BD
-																 //		void Handle3DLoaded() override;                          // C0
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+		void Unk_A2(void) override;               // A2 - { return 1; }
+		void Unk_A9(void) override;               // A9
+		void UpdateImpl(float a_delta) override;  // AB
+		void Unk_AC(void) override;               // AC
+		void Unk_B8(void) override;               // B8 - { return unk1D8 == 1; }
+		void Unk_BD(void) override;               // BD
+		void Handle3DLoaded() override;           // C0
+#endif
 
 		// add
-		virtual void Unk_C2(void);  // C2 - { return 0; }
-		virtual void Unk_C3(void);  // C3 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void Unk_C2(void);  // C2 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void Unk_C3(void);  // C3 - { return 0; }
 
 		// members
 		ImpactResult  impactResult;           // 1D8

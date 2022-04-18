@@ -27,13 +27,15 @@ namespace RE
 		void InitLoadGame(BGSLoadFormBuffer* a_buf) override;    // 10
 		void FinishLoadGame(BGSLoadFormBuffer* a_buf) override;  // 11
 		void Revert(BGSLoadFormBuffer* a_buf) override;          // 12
-																 //		void Unk_A4(void) override;                              // A4 - { return 1; }
-																 //		void Unk_A9(void) override;                              // A9
-																 //		void UpdateImpl(float a_delta) override;                 // AB
-																 //		void Unk_B7(void) override;                              // B7
-																 //		void Unk_BD(void) override;                              // BD
-																 //		void Handle3DLoaded() override;                          // C0 - { flags = flags & 0xFFFFFFCC | 8; }
-																 //		void Unk_C1(void) override;                              // C1
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+		void Unk_A4(void) override;               // A4 - { return 1; }
+		void Unk_A9(void) override;               // A9
+		void UpdateImpl(float a_delta) override;  // AB
+		void Unk_B7(void) override;               // B7
+		void Unk_BD(void) override;               // BD
+		void Handle3DLoaded() override;           // C0 - { flags = flags & 0xFFFFFFCC | 8; }
+		void Unk_C1(void) override;               // C1
+#endif
 
 		// members
 		float expirationTimer;  // 1D8

@@ -38,21 +38,23 @@ namespace RE
 		BSFaceGenNiNode*        GetFaceNodeSkinned() override;                                 // 061
 		BSFaceGenAnimationData* GetFaceGenAnimationData() override;                            // 063
 		void                    SetBiped(const BSTSmartPointer<BipedAnim>& a_biped) override;  // 081
-		//		void                    InitiateVampireFeedPackage(Actor* a_arg1, TESObjectREFR* a_arg2) override;  // 0C0
-		//		void                    Unk_C4(void) override;                                                      // 0C4 - { unk272 = a_arg1; }
-		//		void                    Unk_C5(void) override;                                                      // 0C5 - { return unk272; }
-		//		void                    Unk_C6(void) override;                                                      // 0C6 - { return 1; }
-		//		void                    OnArmorActorValueChanged() override;                                        // 0CA
-		//		bool                    InitiateTresPassPackage(TrespassPackage* a_trespassPackage) override;                                                      // 0D7
-		//		void                    SetSize(float a_size) override;                                                      // 0D9
-		//		float                    CalcArmorRating() override;                                                      // 0E6
-		//		float                   GetArmorBaseFactorSum() override;                                                      // 0E7
-		//		float                    CalcUnarmedDamage() override;                                                      // 0E8
-		//		void                    PrecacheData(void) override;                                                // 120
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+		void  InitiateVampireFeedPackage(Actor* a_arg1, TESObjectREFR* a_arg2) override;  // 0C0
+		void  Unk_C4(void) override;                                                      // 0C4 - { unk272 = a_arg1; }
+		void  Unk_C5(void) override;                                                      // 0C5 - { return unk272; }
+		void  Unk_C6(void) override;                                                      // 0C6 - { return 1; }
+		void  OnArmorActorValueChanged() override;                                        // 0CA
+		bool  InitiateTresPassPackage(TrespassPackage* a_trespassPackage) override;       // 0D7
+		void  SetSize(float a_size) override;                                             // 0D9
+		float CalcArmorRating() override;                                                 // 0E6
+		float GetArmorBaseFactorSum() override;                                           // 0E7
+		float CalcUnarmedDamage() override;                                               // 0E8
+		void  PrecacheData(void) override;                                                // 120
+#endif
 
 		// add
-		virtual void Unk_128(void);  // 128
-		virtual void Unk_129(void);  // 129 - { return 1; }
+		SKYRIM_REL_VR_VIRTUAL void Unk_128(void);  // 128
+		SKYRIM_REL_VR_VIRTUAL void Unk_129(void);  // 129 - { return 1; }
 	};
 	static_assert(sizeof(Character) == 0x2B0);
 }

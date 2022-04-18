@@ -99,21 +99,21 @@ namespace RE
 #if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 		virtual void Unk_VRFunc(void);
 #endif
-		void        PerformOp(PerformOpFunc& a_func);                                                                   // 26
-		void        AttachProperty(NiAlphaProperty* a_property);                                                        // 27 - { return; }
-		void        SetMaterialNeedsUpdate(bool a_needsUpdate);                                                         // 28 - { return; }
-		void        SetDefaultMaterialNeedsUpdateFlag(bool a_flag);                                                     // 29 - { return; }
-		NiAVObject* GetObjectByName(const BSFixedString& a_name);                                                       // 2A
-		void        SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid);  // 2B
-		void        UpdateDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2);                                     // 2C
-		void        UpdateSelectedDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2);                             // 2D
-		void        UpdateRigidDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2);                                // 2E
-		void        UpdateWorldBound();                                                                                 // 2F - { return; }
-		void        UpdateWorldData(NiUpdateData* a_data);                                                              // 30
-		void        UpdateTransformAndBounds(NiUpdateData& a_data);                                                     // 31
-		void        PreAttachUpdate(NiNode* a_parent, NiUpdateData& a_data);                                            // 32
-		void        PostAttachUpdate();                                                                                 // 33
-		void        OnVisible(NiCullingProcess& a_process);                                                             // 34 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void        PerformOp(PerformOpFunc& a_func);                                                                   // 26
+		SKYRIM_REL_VR_VIRTUAL void        AttachProperty(NiAlphaProperty* a_property);                                                        // 27 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void        SetMaterialNeedsUpdate(bool a_needsUpdate);                                                         // 28 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void        SetDefaultMaterialNeedsUpdateFlag(bool a_flag);                                                     // 29 - { return; }
+		SKYRIM_REL_VR_VIRTUAL NiAVObject* GetObjectByName(const BSFixedString& a_name);                                                       // 2A
+		SKYRIM_REL_VR_VIRTUAL void        SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid);  // 2B
+		SKYRIM_REL_VR_VIRTUAL void        UpdateDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2);                                     // 2C
+		SKYRIM_REL_VR_VIRTUAL void        UpdateSelectedDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2);                             // 2D
+		SKYRIM_REL_VR_VIRTUAL void        UpdateRigidDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2);                                // 2E
+		SKYRIM_REL_VR_VIRTUAL void        UpdateWorldBound();                                                                                 // 2F - { return; }
+		SKYRIM_REL_VR_VIRTUAL void        UpdateWorldData(NiUpdateData* a_data);                                                              // 30
+		SKYRIM_REL_VR_VIRTUAL void        UpdateTransformAndBounds(NiUpdateData& a_data);                                                     // 31
+		SKYRIM_REL_VR_VIRTUAL void        PreAttachUpdate(NiNode* a_parent, NiUpdateData& a_data);                                            // 32
+		SKYRIM_REL_VR_VIRTUAL void        PostAttachUpdate();                                                                                 // 33
+		SKYRIM_REL_VR_VIRTUAL void        OnVisible(NiCullingProcess& a_process);                                                             // 34 - { return; }
 
 		void                              CullNode(bool a_cull);
 		[[nodiscard]] bool                GetAppCulled() const;

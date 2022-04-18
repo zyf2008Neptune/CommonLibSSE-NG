@@ -455,11 +455,11 @@ namespace RE
 		~PlayerCharacter() override;  // 000
 
 		// add
-		void          Unk_12A(void);                                                   // 12A
-		std::uint32_t GetViolentCrimeGoldValue(const TESFaction* a_faction) const;     // 12B
-		std::uint32_t GetNonViolentCrimeGoldValue(const TESFaction* a_faction) const;  // 12C
-		void          ClearAllCrimeGold(TESFaction* a_faction);                        // 12D
-		void          Unk_12E(void);                                                   // 12E - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void Unk_12A(void);                                                            // 12A
+		SKYRIM_REL_VR_VIRTUAL std::uint32_t GetViolentCrimeGoldValue(const TESFaction* a_faction) const;     // 12B
+		SKYRIM_REL_VR_VIRTUAL std::uint32_t GetNonViolentCrimeGoldValue(const TESFaction* a_faction) const;  // 12C
+		SKYRIM_REL_VR_VIRTUAL void          ClearAllCrimeGold(TESFaction* a_faction);                        // 12D
+		SKYRIM_REL_VR_VIRTUAL void          Unk_12E(void);                                                   // 12E - { return 0; }
 
 		static PlayerCharacter* GetSingleton();
 
@@ -473,11 +473,10 @@ namespace RE
 		float                    GetDamage(InventoryEntryData* a_form);
 		NiPointer<TESObjectREFR> GetGrabbedRef();
 		std::uint32_t            GetNumTints(std::uint32_t a_tintType);
-#ifndef ENABLE_SKYRIM_VR
 		TintMask*            GetOverlayTintMask(TintMask* a_original);
-		BSTArray<TintMask*>& GetTintList();
+		BSTArray<TintMask*>* GetTintList();
 		TintMask*            GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
-#endif
+
 		bool HasActorDoingCommand() const;
 		bool IsGrabbing() const;
 		void PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);

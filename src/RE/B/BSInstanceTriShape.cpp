@@ -4,6 +4,7 @@ using namespace REL;
 
 namespace RE
 {
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 	void BSInstanceTriShape::BeginAddingInstances(std::uint32_t a_numFloatsPerInstance)
 	{
 		RelocateVirtual<decltype(&BSInstanceTriShape::BeginAddingInstances)>(0x38, 0x39, this, a_numFloatsPerInstance);
@@ -33,4 +34,5 @@ namespace RE
 	{
 		RelocateVirtual<decltype(&BSInstanceTriShape::RemoveGroup)>(0x3D, 0x3E, this, a_numInstance);
 	}
+#endif
 }

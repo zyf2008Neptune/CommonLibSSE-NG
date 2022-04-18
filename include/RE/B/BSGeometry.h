@@ -89,19 +89,21 @@ namespace RE
 		bool          IsEqual(NiObject* a_object) override;                // 1C - { return false; }
 		void          ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
 		void          PostLinkObject(NiStream& a_stream) override;         // 1E
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 		// The following are virtual functions past the point where VR compatibility breaks.
-		//		void          AttachProperty(NiAlphaProperty* a_property) override;                                                        // 27
-		//		void          SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid) override;  // 2B
-		//		void          UpdateDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;                                     // 2C
-		//		void          UpdateSelectedDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;                             // 2D
-		//		void          UpdateRigidDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;                                // 2E
-		//		void          UpdateWorldBound() override;                                                                                 // 2F
-		//		void          OnVisible(NiCullingProcess& a_process) override;                                                             // 34
+		void AttachProperty(NiAlphaProperty* a_property) override;                                                        // 27
+		void SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid) override;  // 2B
+		void UpdateDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;                                     // 2C
+		void UpdateSelectedDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;                             // 2D
+		void UpdateRigidDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;                                // 2E
+		void UpdateWorldBound() override;                                                                                 // 2F
+		void OnVisible(NiCullingProcess& a_process) override;                                                             // 34
+#endif
 
 		// add
-		BSMultiIndexTriShape*   AsMultiIndexTriShape();    // 35 - { return 0; }
-		BSSkinnedDecalTriShape* AsSkinnedDecalTriShape();  // 36 - { return 0; }
-		void                    Unk_37(void);              // 37 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL BSMultiIndexTriShape*   AsMultiIndexTriShape();    // 35 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL BSSkinnedDecalTriShape* AsSkinnedDecalTriShape();  // 36 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void                    Unk_37(void);              // 37 - { return 0; }
 
 		[[nodiscard]] inline MODEL_DATA& GetModelData() noexcept
 		{

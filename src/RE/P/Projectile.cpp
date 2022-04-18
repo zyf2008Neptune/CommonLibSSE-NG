@@ -4,6 +4,7 @@ using namespace REL;
 
 namespace RE
 {
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 	void Projectile::Unk_A2()
 	{
 		RelocateVirtual<void(Projectile*)>(0xA2, 0xA3, this);
@@ -163,4 +164,5 @@ namespace RE
 	{
 		RelocateVirtual<void(Projectile*)>(0xC1, 0xC2, this);
 	}
+#endif
 }

@@ -27,29 +27,30 @@ namespace RE
 		bool          IsEqual(NiObject* a_object) override;                // 1C
 		void          ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
 		void          UpdateControllers(NiUpdateData& a_data) override;    // 25
-
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 		// The following are virtual functions past the point where VR compatibility breaks.
-		//		void          PerformOp(PerformOpFunc& a_func) override;                                                                   // 26
-		//		void          AttachProperty(NiAlphaProperty* a_property) override;                                                        // 27
-		//		NiAVObject*   GetObjectByName(const BSFixedString& a_name) override;                                                       // 2A
-		//		void          SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid) override;  // 2B
-		//		void          UpdateDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;                                     // 2C
-		//		void          UpdateSelectedDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;                             // 2D
-		//		void          UpdateRigidDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;                                // 2E
-		//		void          UpdateWorldBound() override;                                                                                 // 2F
-		//		void          UpdateTransformAndBounds(NiUpdateData& a_data) override;                                                     // 31
-		//		void          OnVisible(NiCullingProcess& a_process) override;                                                             // 34
+		void        PerformOp(PerformOpFunc& a_func) override;                                                                   // 26
+		void        AttachProperty(NiAlphaProperty* a_property) override;                                                        // 27
+		NiAVObject* GetObjectByName(const BSFixedString& a_name) override;                                                       // 2A
+		void        SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid) override;  // 2B
+		void        UpdateDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;                                     // 2C
+		void        UpdateSelectedDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;                             // 2D
+		void        UpdateRigidDownwardPass(NiUpdateData& a_data, std::uint32_t a_arg2) override;                                // 2E
+		void        UpdateWorldBound() override;                                                                                 // 2F
+		void        UpdateTransformAndBounds(NiUpdateData& a_data) override;                                                     // 31
+		void        OnVisible(NiCullingProcess& a_process) override;                                                             // 34
+#endif
 
 		// add
-		void AttachChild(NiAVObject* a_child, bool a_firstAvail = false);                          // 35
-		void InsertChildAt(std::uint32_t a_idx, NiAVObject* a_child);                              // 36
-		void DetachChild1(NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);                 // 37
-		void DetachChild2(NiAVObject* a_child);                                                    // 38
-		void DetachChildAt1(std::uint32_t a_idx, NiPointer<NiAVObject>& a_childOut);               // 39
-		void DetachChildAt2(std::uint32_t a_idx);                                                  // 3A
-		void SetAt1(std::uint32_t a_idx, NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);  // 3B
-		void SetAt2(std::uint32_t a_idx, NiAVObject* a_child);                                     // 3C
-		void UpdateUpwardPass(NiUpdateData& a_data);                                               // 3D
+		SKYRIM_REL_VR_VIRTUAL void AttachChild(NiAVObject* a_child, bool a_firstAvail = false);                          // 35
+		SKYRIM_REL_VR_VIRTUAL void InsertChildAt(std::uint32_t a_idx, NiAVObject* a_child);                              // 36
+		SKYRIM_REL_VR_VIRTUAL void DetachChild1(NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);                 // 37
+		SKYRIM_REL_VR_VIRTUAL void DetachChild2(NiAVObject* a_child);                                                    // 38
+		SKYRIM_REL_VR_VIRTUAL void DetachChildAt1(std::uint32_t a_idx, NiPointer<NiAVObject>& a_childOut);               // 39
+		SKYRIM_REL_VR_VIRTUAL void DetachChildAt2(std::uint32_t a_idx);                                                  // 3A
+		SKYRIM_REL_VR_VIRTUAL void SetAt1(std::uint32_t a_idx, NiAVObject* a_child, NiPointer<NiAVObject>& a_childOut);  // 3B
+		SKYRIM_REL_VR_VIRTUAL void SetAt2(std::uint32_t a_idx, NiAVObject* a_child);                                     // 3C
+		SKYRIM_REL_VR_VIRTUAL void UpdateUpwardPass(NiUpdateData& a_data);                                               // 3D
 
 		static NiNode* Create(std::uint16_t a_arrBufLen = 0);
 

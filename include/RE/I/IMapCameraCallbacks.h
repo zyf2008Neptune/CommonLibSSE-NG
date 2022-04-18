@@ -8,8 +8,8 @@ namespace RE
 		SKYRIM_ADDR static auto RTTI = RTTI_IMapCameraCallbacks;
 
 		// add
-		void Unk_00(void);  // 00
-		void Unk_01(void);  // 01
+		virtual void Unk_00(void);  // 00
+		virtual void Unk_01(void);  // 01
 
 		virtual ~IMapCameraCallbacks();  // 02
 	};

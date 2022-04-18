@@ -78,34 +78,47 @@ namespace RE
 		return func(this, a_tintType);
 	}
 
-#ifndef ENABLE_SKYRIM_VR
 	TintMask* PlayerCharacter::GetOverlayTintMask(TintMask* a_original)
 	{
-		if (!overlayTintMasks) {
+		if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
+			return nullptr;
+		} else {
+			auto* tryOverlayTintMasks = REL::RelocateMember<BSTArray<TintMask*>*>(this, 0xB28, 0);
+			if (!tryOverlayTintMasks) {
+				return nullptr;
+			}
+
+			auto& tintMasksValue = REL::RelocateMember<BSTArray<TintMask*>>(this, 0xB10, 0);
+			for (std::uint32_t i = 0; i < tintMasksValue.size(); ++i) {
+				if (tintMasksValue[i] == a_original) {
+					return i < tryOverlayTintMasks->size() ? (*tryOverlayTintMasks)[i] : nullptr;
+				}
+			}
+
 			return nullptr;
 		}
-
-		for (std::uint32_t i = 0; i < tintMasks.size(); ++i) {
-			if (tintMasks[i] == a_original) {
-				return i < overlayTintMasks->size() ? (*overlayTintMasks)[i] : nullptr;
-			}
-		}
-
-		return nullptr;
 	}
 
-	BSTArray<TintMask*>& PlayerCharacter::GetTintList()
+	BSTArray<TintMask*>* PlayerCharacter::GetTintList()
 	{
-		return overlayTintMasks ? *overlayTintMasks : tintMasks;
+		if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
+			return nullptr;
+		} else {
+			auto* tryOverlayTintMasks = REL::RelocateMember<BSTArray<TintMask*>*>(this, 0xB28, 0);
+			return tryOverlayTintMasks ? tryOverlayTintMasks : &REL::RelocateMember<BSTArray<TintMask*>>(this, 0xB10, 0);
+		}
 	}
 
 	TintMask* PlayerCharacter::GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index)
 	{
-		using func_t = decltype(&PlayerCharacter::GetTintMask);
-		REL::Relocation<func_t> func{ Offset::PlayerCharacter::GetTintMask };
-		return func(this, a_tintType, a_index);
+		if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
+			return nullptr;
+		} else {
+			using func_t = decltype(&PlayerCharacter::GetTintMask);
+			REL::Relocation<func_t> func{ Offset::PlayerCharacter::GetTintMask };
+			return func(this, a_tintType, a_index);
+		}
 	}
-#endif
 
 	bool PlayerCharacter::HasActorDoingCommand() const
 	{

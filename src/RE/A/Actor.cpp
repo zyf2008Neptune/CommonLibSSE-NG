@@ -894,6 +894,7 @@ namespace RE
 		return base ? base->crimeFaction : nullptr;
 	}
 
+#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
 	void Actor::Unk_A2()
 	{
 		RelocateVirtual<decltype(&Actor::Unk_A2)>(0x0A2, 0x0A3, this);
@@ -1563,4 +1564,5 @@ namespace RE
 	{
 		return RelocateVirtual<decltype(&Actor::CheckClampDamageModifier)>(0x127, 0x129, this, a_av, a_delta);
 	}
+#endif
 }
