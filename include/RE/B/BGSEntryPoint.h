@@ -3,7 +3,7 @@
 namespace RE
 {
 	class Actor;
-	
+
 	struct BGSEntryPoint
 	{
 		struct ENTRY_POINTS
