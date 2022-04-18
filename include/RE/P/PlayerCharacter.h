@@ -473,9 +473,9 @@ namespace RE
 		float                    GetDamage(InventoryEntryData* a_form);
 		NiPointer<TESObjectREFR> GetGrabbedRef();
 		std::uint32_t            GetNumTints(std::uint32_t a_tintType);
-		TintMask*            GetOverlayTintMask(TintMask* a_original);
-		BSTArray<TintMask*>* GetTintList();
-		TintMask*            GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
+		TintMask*                GetOverlayTintMask(TintMask* a_original);
+		BSTArray<TintMask*>*     GetTintList();
+		TintMask*                GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
 
 		bool HasActorDoingCommand() const;
 		bool IsGrabbing() const;

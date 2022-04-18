@@ -101,7 +101,7 @@ namespace RE
 #endif
 
 		// add
-		SKYRIM_REL_VR_VIRTUAL BSMultiIndexTriShape*   AsMultiIndexTriShape();    // 35 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL BSMultiIndexTriShape* AsMultiIndexTriShape();      // 35 - { return 0; }
 		SKYRIM_REL_VR_VIRTUAL BSSkinnedDecalTriShape* AsSkinnedDecalTriShape();  // 36 - { return 0; }
 		SKYRIM_REL_VR_VIRTUAL void                    Unk_37(void);              // 37 - { return 0; }
 

@@ -55,7 +55,7 @@ namespace RE
 #endif
 
 		// add
-		SKYRIM_REL_VR_VIRTUAL BSTreeNode*     AsTreeNode();      // 3E - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL BSTreeNode* AsTreeNode();          // 3E - { return 0; }
 		SKYRIM_REL_VR_VIRTUAL BSLeafAnimNode* AsLeafAnimNode();  // 3F - { return 0; }
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
