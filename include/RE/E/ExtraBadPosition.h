@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraBadPosition;
-		inline static auto EXTRADATATYPE = ExtraDataType::kBadPosition;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kBadPosition;
 
 		~ExtraBadPosition() override;  // 00
 

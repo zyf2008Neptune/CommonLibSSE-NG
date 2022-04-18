@@ -14,7 +14,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSMultiBoundNode;
-		inline static auto Ni_RTTI = NiRTTI_BSMultiBoundNode;
+		inline static auto      Ni_RTTI = NiRTTI_BSMultiBoundNode;
 
 		struct RUNTIME_DATA
 		{

@@ -21,7 +21,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_NiSourceTexture;
-		inline static auto Ni_RTTI = NiRTTI_NiSourceTexture;
+		inline static auto      Ni_RTTI = NiRTTI_NiSourceTexture;
 
 		~NiSourceTexture() override;  // 00
 

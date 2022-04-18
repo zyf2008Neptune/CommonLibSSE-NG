@@ -12,7 +12,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraBiped;
-		inline static auto EXTRADATATYPE = ExtraDataType::kBiped;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kBiped;
 
 		~ExtraBiped() override;  // 00
 

@@ -30,8 +30,8 @@ namespace RE
 		public TESIcon          // 40
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSPerk;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSPerk;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSPerk;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSPerk;
 		inline static constexpr auto FORMTYPE = FormType::Perk;
 
 		struct RecordFlags

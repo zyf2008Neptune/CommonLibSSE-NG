@@ -18,8 +18,8 @@ namespace RE
 		public PrecomputedNavmeshInfoPathMap  // 30
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_NavMeshInfoMap;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_NavMeshInfoMap;
+		SKYRIM_ADDR static auto      RTTI = RTTI_NavMeshInfoMap;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_NavMeshInfoMap;
 		inline static constexpr auto FORMTYPE = FormType::Navigation;
 
 		struct RecordFlags

@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraEditorRefMoveData;
-		inline static auto EXTRADATATYPE = ExtraDataType::kEditorRefMoveData;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kEditorRefMoveData;
 
 		virtual ~ExtraEditorRefMoveData();  // 00
 

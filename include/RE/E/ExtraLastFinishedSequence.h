@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLastFinishedSequence;
-		inline static auto EXTRADATATYPE = ExtraDataType::kLastFinishedSequence;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kLastFinishedSequence;
 
 		virtual ~ExtraLastFinishedSequence();  // 00
 

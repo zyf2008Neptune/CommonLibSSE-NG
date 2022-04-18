@@ -13,8 +13,8 @@ namespace RE
 		public TESModelTextureSwap  // 58
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESLevCharacter;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESLevCharacter;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESLevCharacter;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESLevCharacter;
 		inline static constexpr auto FORMTYPE = FormType::LeveledNPC;
 
 		struct ChangeFlags

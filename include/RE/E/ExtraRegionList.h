@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraRegionList;
-		inline static auto EXTRADATATYPE = ExtraDataType::kRegionList;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kRegionList;
 
 		~ExtraRegionList() override;  // 00
 

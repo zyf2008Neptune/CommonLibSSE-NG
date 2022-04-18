@@ -12,7 +12,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraOwnership;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraOwnership;
-		inline static auto EXTRADATATYPE = ExtraDataType::kOwnership;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kOwnership;
 
 		ExtraOwnership();
 		explicit ExtraOwnership(TESForm* a_owner);

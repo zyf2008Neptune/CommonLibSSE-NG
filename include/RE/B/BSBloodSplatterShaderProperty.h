@@ -13,7 +13,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSBloodSplatterShaderProperty;
-		inline static auto Ni_RTTI = NiRTTI_BSBloodSplatterShaderProperty;
+		inline static auto      Ni_RTTI = NiRTTI_BSBloodSplatterShaderProperty;
 
 		enum : std::uint32_t
 		{

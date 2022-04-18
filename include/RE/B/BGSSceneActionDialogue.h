@@ -9,7 +9,7 @@ namespace RE
 	class BGSSceneActionDialogue : public BGSSceneAction
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSSceneActionDialogue;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSSceneActionDialogue;
 		inline static constexpr auto TYPE = Type::kDialogue;
 
 		~BGSSceneActionDialogue() override;  // 00

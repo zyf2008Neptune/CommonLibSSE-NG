@@ -10,8 +10,8 @@ namespace RE
 	class BGSLightingTemplate : public TESForm
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSLightingTemplate;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSLightingTemplate;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSLightingTemplate;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSLightingTemplate;
 		inline static constexpr auto FORMTYPE = FormType::LightingMaster;
 
 		struct RecordFlags

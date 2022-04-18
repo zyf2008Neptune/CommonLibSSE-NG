@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraIgnoredBySandbox;
-		inline static auto EXTRADATATYPE = ExtraDataType::kIgnoredBySandbox;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kIgnoredBySandbox;
 
 		~ExtraIgnoredBySandbox() override;  // 00
 

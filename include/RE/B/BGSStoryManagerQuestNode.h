@@ -10,8 +10,8 @@ namespace RE
 	class BGSStoryManagerQuestNode : public BGSStoryManagerNodeBase
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSStoryManagerQuestNode;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSStoryManagerQuestNode;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSStoryManagerQuestNode;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSStoryManagerQuestNode;
 		inline static constexpr auto FORMTYPE = FormType::StoryManagerQuestNode;
 
 		struct ChangeFlags

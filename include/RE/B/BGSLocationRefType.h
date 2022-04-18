@@ -8,8 +8,8 @@ namespace RE
 	class BGSLocationRefType : public BGSKeyword
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSLocationRefType;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSLocationRefType;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSLocationRefType;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSLocationRefType;
 		inline static constexpr auto FORMTYPE = FormType::LocationRefType;
 
 		struct RecordFlags

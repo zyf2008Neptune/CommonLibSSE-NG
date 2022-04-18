@@ -12,7 +12,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BGSDecalNode;
-		inline static auto Ni_RTTI = NiRTTI_BGSDecalNode;
+		inline static auto      Ni_RTTI = NiRTTI_BGSDecalNode;
 
 		struct RUNTIME_DATA
 		{

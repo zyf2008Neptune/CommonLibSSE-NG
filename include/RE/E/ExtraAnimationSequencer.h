@@ -13,7 +13,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAnimationSequencer;
-		inline static auto EXTRADATATYPE = ExtraDataType::kAnimationSequencer;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kAnimationSequencer;
 
 		virtual ~ExtraAnimationSequencer();  // 00
 

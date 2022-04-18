@@ -82,8 +82,8 @@ namespace RE
 		public TESAttackDamageForm  // 030
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESWaterForm;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESWaterForm;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESWaterForm;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESWaterForm;
 		inline static constexpr auto FORMTYPE = FormType::Water;
 
 		enum class Flag  // FNAM

@@ -19,7 +19,7 @@ namespace RE
 #endif
 	{
 	public:
-		SKYRIM_ADDR static auto                RTTI = RTTI_RaceSexMenu;
+		SKYRIM_ADDR static auto           RTTI = RTTI_RaceSexMenu;
 		constexpr static std::string_view MENU_NAME = "RaceSex Menu";
 
 		struct RUNTIME_DATA

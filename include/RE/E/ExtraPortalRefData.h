@@ -16,7 +16,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPortalRefData;
-		inline static auto EXTRADATATYPE = ExtraDataType::kPortalRefData;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kPortalRefData;
 
 		virtual ~ExtraPortalRefData();  // 00
 

@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSEffectShaderProperty;
-		inline static auto Ni_RTTI = NiRTTI_BSEffectShaderProperty;
+		inline static auto      Ni_RTTI = NiRTTI_BSEffectShaderProperty;
 
 		~BSEffectShaderProperty() override;  // 00
 

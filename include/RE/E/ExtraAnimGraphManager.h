@@ -12,7 +12,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAnimGraphManager;
-		inline static auto EXTRADATATYPE = ExtraDataType::kAnimGraphManager;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kAnimGraphManager;
 
 		~ExtraAnimGraphManager() override;  // 00
 

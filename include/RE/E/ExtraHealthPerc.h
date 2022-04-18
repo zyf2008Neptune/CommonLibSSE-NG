@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraHealthPerc;
-		inline static auto EXTRADATATYPE = ExtraDataType::kHealthPerc;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kHealthPerc;
 
 		~ExtraHealthPerc() override;  // 00
 

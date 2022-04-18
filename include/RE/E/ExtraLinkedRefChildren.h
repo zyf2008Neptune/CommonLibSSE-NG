@@ -13,7 +13,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLinkedRefChildren;
-		inline static auto EXTRADATATYPE = ExtraDataType::kLinkedRefChildren;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kLinkedRefChildren;
 
 		struct LinkedRefChild
 		{

@@ -11,8 +11,8 @@ namespace RE
 		public TESProduceForm  // C8
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESFlora;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESFlora;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESFlora;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESFlora;
 		inline static constexpr auto FORMTYPE = FormType::Flora;
 
 		struct RecordFlags

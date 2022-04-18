@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraGIDBuffer;
-		inline static auto EXTRADATATYPE = ExtraDataType::kGIDBuffer;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kGIDBuffer;
 
 		virtual ~ExtraGIDBuffer();  // 00
 

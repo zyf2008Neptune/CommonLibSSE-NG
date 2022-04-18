@@ -11,7 +11,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraSoul;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraSoul;
-		inline static auto EXTRADATATYPE = ExtraDataType::kSoul;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kSoul;
 
 		ExtraSoul();
 		explicit ExtraSoul(SOUL_LEVEL a_level);

@@ -10,7 +10,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCanTalkToPlayer;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraCanTalkToPlayer;
-		inline static auto EXTRADATATYPE = ExtraDataType::kCanTalkToPlayer;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kCanTalkToPlayer;
 
 		ExtraCanTalkToPlayer();
 		explicit ExtraCanTalkToPlayer(bool a_canTalk);

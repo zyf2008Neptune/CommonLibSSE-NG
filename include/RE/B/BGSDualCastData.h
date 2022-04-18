@@ -30,8 +30,8 @@ namespace RE
 	class BGSDualCastData : public TESBoundObject
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSDualCastData;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSDualCastData;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSDualCastData;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSDualCastData;
 		inline static constexpr auto FORMTYPE = FormType::DualCastData;
 
 		struct RecordFlags

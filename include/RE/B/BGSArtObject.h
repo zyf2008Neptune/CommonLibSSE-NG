@@ -11,8 +11,8 @@ namespace RE
 		public TESModelTextureSwap  // 30
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSArtObject;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSArtObject;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSArtObject;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSArtObject;
 		inline static constexpr auto FORMTYPE = FormType::ArtObject;
 
 		enum class ArtType

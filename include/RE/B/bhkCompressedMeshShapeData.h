@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_bhkCompressedMeshShapeData;
-		inline static auto Ni_RTTI = NiRTTI_bhkCompressedMeshShapeData;
+		inline static auto      Ni_RTTI = NiRTTI_bhkCompressedMeshShapeData;
 
 		~bhkCompressedMeshShapeData() override;  // 00
 

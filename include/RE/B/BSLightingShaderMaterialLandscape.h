@@ -13,7 +13,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderMaterialLandscape;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_BSLightingShaderMaterialLandscape;
-		inline static auto FEATURE = Feature::kMultiTexLandLODBlend;
+		inline static auto      FEATURE = Feature::kMultiTexLandLODBlend;
 
 		~BSLightingShaderMaterialLandscape() override;  // 00
 

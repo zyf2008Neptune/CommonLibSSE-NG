@@ -27,7 +27,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraNavMeshPortal;
-		inline static auto EXTRADATATYPE = ExtraDataType::kNavMeshPortal;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kNavMeshPortal;
 
 		~ExtraNavMeshPortal() override;  // 00
 

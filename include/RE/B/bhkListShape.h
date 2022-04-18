@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_bhkListShape;
-		inline static auto Ni_RTTI = NiRTTI_bhkListShape;
+		inline static auto      Ni_RTTI = NiRTTI_bhkListShape;
 
 		~bhkListShape() override;  // 00
 

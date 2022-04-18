@@ -67,8 +67,8 @@ namespace RE
 		public BGSKeywordForm  // 30
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSLocation;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSLocation;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSLocation;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSLocation;
 		inline static constexpr auto FORMTYPE = FormType::Location;
 
 		struct ChangeFlags

@@ -11,7 +11,7 @@ namespace RE
 	class TESRegionDataLandscape : public TESRegionData
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESRegionDataLandscape;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESRegionDataLandscape;
 		inline static constexpr auto TYPE = Type::kLand;
 
 		~TESRegionDataLandscape() override;  // 00

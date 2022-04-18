@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCreatureMovementSound;
-		inline static auto EXTRADATATYPE = ExtraDataType::kCreatureMovementSound;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kCreatureMovementSound;
 
 		virtual ~ExtraCreatureMovementSound();  // 00
 

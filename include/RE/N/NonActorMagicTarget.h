@@ -15,7 +15,7 @@ namespace RE
 		public MagicTarget   // 10
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_NonActorMagicTarget;
+		SKYRIM_ADDR static auto      RTTI = RTTI_NonActorMagicTarget;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kNonActorMagicTarget;
 
 		~NonActorMagicTarget() override;  // 00

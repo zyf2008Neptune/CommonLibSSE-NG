@@ -119,8 +119,8 @@ namespace RE
 		public TESReactionForm  // 030
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESFaction;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESFaction;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESFaction;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESFaction;
 		inline static constexpr auto FORMTYPE = FormType::Faction;
 
 		struct ChangeFlags

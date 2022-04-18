@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPersistentCell;
-		inline static auto EXTRADATATYPE = ExtraDataType::kPersistentCell;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kPersistentCell;
 
 		virtual ~ExtraPersistentCell();  // 00
 

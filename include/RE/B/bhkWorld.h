@@ -14,7 +14,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_bhkWorld;
-		inline static auto Ni_RTTI = NiRTTI_bhkWorld;
+		inline static auto      Ni_RTTI = NiRTTI_bhkWorld;
 
 		class bhkConstraintProjector;
 

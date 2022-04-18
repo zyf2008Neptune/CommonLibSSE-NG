@@ -10,7 +10,7 @@ namespace RE
 	class SafeZoneMenu : public IMenu
 	{
 	public:
-		SKYRIM_ADDR static auto                RTTI = RTTI_SafeZoneMenu;
+		SKYRIM_ADDR static auto           RTTI = RTTI_SafeZoneMenu;
 		constexpr static std::string_view MENU_NAME = "SafeZoneMenu";
 
 		~SafeZoneMenu() override;  // 00

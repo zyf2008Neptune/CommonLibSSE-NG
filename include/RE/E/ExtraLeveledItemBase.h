@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLeveledItemBase;
-		inline static auto EXTRADATATYPE = ExtraDataType::kLeveledItemBase;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kLeveledItemBase;
 
 		virtual ~ExtraLeveledItemBase();  // 00
 

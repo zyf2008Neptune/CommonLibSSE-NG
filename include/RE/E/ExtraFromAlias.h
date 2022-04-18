@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraFromAlias;
-		inline static auto EXTRADATATYPE = ExtraDataType::kFromAlias;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kFromAlias;
 
 		virtual ~ExtraFromAlias();  // 00
 

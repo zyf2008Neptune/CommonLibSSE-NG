@@ -25,7 +25,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraDismemberedLimbs;
-		inline static auto EXTRADATATYPE = ExtraDataType::kDismemberedLimbs;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kDismemberedLimbs;
 
 		~ExtraDismemberedLimbs() override;  // 00
 

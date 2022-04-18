@@ -20,7 +20,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPackageStartLocation;
-		inline static auto EXTRADATATYPE = ExtraDataType::kPackageStartLocation;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kPackageStartLocation;
 
 		virtual ~ExtraPackageStartLocation();  // 00
 

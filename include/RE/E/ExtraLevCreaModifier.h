@@ -18,7 +18,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLevCreaModifier;
-		inline static auto EXTRADATATYPE = ExtraDataType::kLevCreaModifier;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kLevCreaModifier;
 
 		virtual ~ExtraLevCreaModifier();  // 00
 

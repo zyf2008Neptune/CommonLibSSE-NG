@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraFriendHits;
-		inline static auto EXTRADATATYPE = ExtraDataType::kFriendHits;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kFriendHits;
 
 		~ExtraFriendHits() override;  // 00
 

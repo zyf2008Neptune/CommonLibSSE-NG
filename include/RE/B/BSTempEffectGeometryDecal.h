@@ -16,9 +16,9 @@ namespace RE
 	class BSTempEffectGeometryDecal : public BSTempEffect
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BSTempEffectGeometryDecal;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BSTempEffectGeometryDecal;
 		inline static auto           Ni_RTTI = NiRTTI_BSTempEffectGeometryDecal;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BSTempEffectGeometryDecal;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BSTempEffectGeometryDecal;
 		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kGeometryDecal;
 
 		~BSTempEffectGeometryDecal() override;  // 00

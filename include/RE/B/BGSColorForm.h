@@ -12,8 +12,8 @@ namespace RE
 		public TESFullName  // 20
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSColorForm;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSColorForm;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSColorForm;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSColorForm;
 		inline static constexpr auto FORMTYPE = FormType::ColorForm;
 
 		enum class Flag  // FNAM

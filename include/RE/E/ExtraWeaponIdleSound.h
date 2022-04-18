@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraWeaponIdleSound;
-		inline static auto EXTRADATATYPE = ExtraDataType::kWeaponIdleSound;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kWeaponIdleSound;
 
 		~ExtraWeaponIdleSound() override;  // 00
 

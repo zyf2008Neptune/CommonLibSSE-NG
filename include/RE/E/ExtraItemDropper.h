@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraItemDropper;
-		inline static auto EXTRADATATYPE = ExtraDataType::kItemDropper;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kItemDropper;
 
 		~ExtraItemDropper() override;  // 00
 

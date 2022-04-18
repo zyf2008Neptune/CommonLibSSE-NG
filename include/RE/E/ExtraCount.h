@@ -10,7 +10,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCount;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraCount;
-		inline static auto EXTRADATATYPE = ExtraDataType::kCount;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kCount;
 
 		ExtraCount();
 		explicit ExtraCount(std::int16_t a_count);

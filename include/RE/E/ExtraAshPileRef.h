@@ -11,7 +11,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAshPileRef;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraAshPileRef;
-		inline static auto EXTRADATATYPE = ExtraDataType::kAshPileRef;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kAshPileRef;
 
 		ExtraAshPileRef();
 		explicit ExtraAshPileRef(ObjectRefHandle a_ashPileRef);

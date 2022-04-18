@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraDetachTime;
-		inline static auto EXTRADATATYPE = ExtraDataType::kDetachTime;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kDetachTime;
 
 		~ExtraDetachTime() override;  // 00
 

@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCellSkyRegion;
-		inline static auto EXTRADATATYPE = ExtraDataType::kCellSkyRegion;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kCellSkyRegion;
 
 		~ExtraCellSkyRegion() override;  // 00
 

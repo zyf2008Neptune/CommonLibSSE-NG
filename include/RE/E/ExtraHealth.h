@@ -10,7 +10,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraHealth;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraHealth;
-		inline static auto EXTRADATATYPE = ExtraDataType::kHealth;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kHealth;
 
 		ExtraHealth();
 		explicit ExtraHealth(float a_health);

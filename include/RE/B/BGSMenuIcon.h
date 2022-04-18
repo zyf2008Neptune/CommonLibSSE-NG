@@ -11,8 +11,8 @@ namespace RE
 		public TESIcon   // 20
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSMenuIcon;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSMenuIcon;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSMenuIcon;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSMenuIcon;
 		inline static constexpr auto FORMTYPE = FormType::MenuIcon;
 
 		struct RecordFlags

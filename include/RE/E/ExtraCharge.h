@@ -10,7 +10,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCharge;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraCharge;
-		inline static auto EXTRADATATYPE = ExtraDataType::kCharge;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kCharge;
 
 		ExtraCharge();
 		~ExtraCharge() override = default;  // 00

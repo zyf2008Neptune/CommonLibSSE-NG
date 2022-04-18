@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraTerminalState;
-		inline static auto EXTRADATATYPE = ExtraDataType::kTerminalState;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kTerminalState;
 
 		virtual ~ExtraTerminalState();  // 00
 

@@ -8,8 +8,8 @@ namespace RE
 	class BGSAction : public BGSKeyword
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSAction;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSAction;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSAction;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSAction;
 		inline static constexpr auto FORMTYPE = FormType::Action;
 
 		struct RecordFlags

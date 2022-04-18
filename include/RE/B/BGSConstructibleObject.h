@@ -10,8 +10,8 @@ namespace RE
 	class BGSConstructibleObject : public TESForm
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSConstructibleObject;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSConstructibleObject;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSConstructibleObject;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSConstructibleObject;
 		inline static constexpr auto FORMTYPE = FormType::ConstructibleObject;
 
 		struct RecordFlags

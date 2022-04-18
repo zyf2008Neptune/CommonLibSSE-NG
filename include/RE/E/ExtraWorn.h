@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraWorn;
-		inline static auto EXTRADATATYPE = ExtraDataType::kWorn;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kWorn;
 
 		~ExtraWorn() override;  // 00
 

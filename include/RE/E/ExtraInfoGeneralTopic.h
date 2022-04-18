@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraInfoGeneralTopic;
-		inline static auto EXTRADATATYPE = ExtraDataType::kInfoGeneralTopic;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kInfoGeneralTopic;
 
 		struct Data
 		{

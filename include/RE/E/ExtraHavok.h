@@ -13,7 +13,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraHavok;
-		inline static auto EXTRADATATYPE = ExtraDataType::kHavok;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kHavok;
 
 		~ExtraHavok() override;  // 00
 

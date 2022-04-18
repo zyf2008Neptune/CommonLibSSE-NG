@@ -25,7 +25,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCellGrassData;
-		inline static auto EXTRADATATYPE = ExtraDataType::kCellGrassData;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kCellGrassData;
 
 		~ExtraCellGrassData() override;  // 00
 

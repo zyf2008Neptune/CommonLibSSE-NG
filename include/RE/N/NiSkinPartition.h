@@ -28,7 +28,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_NiSkinPartition;
-		inline static auto Ni_RTTI = NiRTTI_NiSkinPartition;
+		inline static auto      Ni_RTTI = NiRTTI_NiSkinPartition;
 
 		class Partition
 		{

@@ -87,8 +87,8 @@ namespace RE
 		public TESTexture       // 40
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESClass;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESClass;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESClass;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESClass;
 		inline static constexpr auto FORMTYPE = FormType::Class;
 
 		struct ChangeFlags

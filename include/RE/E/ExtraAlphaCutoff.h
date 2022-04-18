@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAlphaCutoff;
-		inline static auto EXTRADATATYPE = ExtraDataType::kAlphaCutoff;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kAlphaCutoff;
 
 		~ExtraAlphaCutoff() override;  // 00
 

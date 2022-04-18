@@ -106,8 +106,8 @@ namespace RE
 		public TESFullName  // 020
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESObjectCELL;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESObjectCELL;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESObjectCELL;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESObjectCELL;
 		inline static constexpr auto FORMTYPE = FormType::Cell;
 
 		enum class Flag  // DATA

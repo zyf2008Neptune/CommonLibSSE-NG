@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraRefractionProperty;
-		inline static auto EXTRADATATYPE = ExtraDataType::kRefractionProperty;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kRefractionProperty;
 
 		~ExtraRefractionProperty() override;  // 00
 

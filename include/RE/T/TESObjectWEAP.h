@@ -72,8 +72,8 @@ namespace RE
 		public TESDescription              // 158
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESObjectWEAP;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESObjectWEAP;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESObjectWEAP;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESObjectWEAP;
 		inline static constexpr auto FORMTYPE = FormType::Weapon;
 
 		struct RecordFlags

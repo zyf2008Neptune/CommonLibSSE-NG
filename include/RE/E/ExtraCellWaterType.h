@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCellWaterType;
-		inline static auto EXTRADATATYPE = ExtraDataType::kCellWaterType;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kCellWaterType;
 
 		~ExtraCellWaterType() override;  // 00
 

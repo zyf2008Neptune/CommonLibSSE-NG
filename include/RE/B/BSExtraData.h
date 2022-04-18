@@ -10,7 +10,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSExtraData;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_BSExtraData;
-		inline static auto EXTRADATATYPE = ExtraDataType::kNone;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kNone;
 
 		BSExtraData();
 		virtual ~BSExtraData() = default;  // 00

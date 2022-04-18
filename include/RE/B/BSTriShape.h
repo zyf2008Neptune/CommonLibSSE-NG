@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSTriShape;
-		inline static auto Ni_RTTI = NiRTTI_BSTriShape;
+		inline static auto      Ni_RTTI = NiRTTI_BSTriShape;
 
 		struct TRISHAPE_RUNTIME_DATA
 		{

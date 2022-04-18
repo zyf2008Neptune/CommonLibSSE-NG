@@ -12,7 +12,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderMaterialMultiLayerParallax;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_BSLightingShaderMaterialMultiLayerParallax;
-		inline static auto FEATURE = Feature::kMultilayerParallax;
+		inline static auto      FEATURE = Feature::kMultilayerParallax;
 
 		~BSLightingShaderMaterialMultiLayerParallax() override;  // 00
 

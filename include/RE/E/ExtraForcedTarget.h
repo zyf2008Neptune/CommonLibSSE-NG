@@ -14,7 +14,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraForcedTarget;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraForcedTarget;
-		inline static auto EXTRADATATYPE = ExtraDataType::kForcedTarget;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kForcedTarget;
 
 		ExtraForcedTarget();
 		explicit ExtraForcedTarget(ObjectRefHandle a_target);

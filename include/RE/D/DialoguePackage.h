@@ -9,8 +9,8 @@ namespace RE
 	class DialoguePackage : public TESPackage
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_DialoguePackage;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_DialoguePackage;
+		SKYRIM_ADDR static auto      RTTI = RTTI_DialoguePackage;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_DialoguePackage;
 		inline static constexpr auto FORMTYPE = FormType::Package;
 
 		~DialoguePackage() override;  // 00

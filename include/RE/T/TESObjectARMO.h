@@ -36,8 +36,8 @@ namespace RE
 		public TESDescription              // 1F0
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESObjectARMO;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESObjectARMO;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESObjectARMO;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESObjectARMO;
 		inline static constexpr auto FORMTYPE = FormType::Armor;
 
 		struct RecordFlags

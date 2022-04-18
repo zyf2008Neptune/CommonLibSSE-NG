@@ -9,8 +9,8 @@ namespace RE
 	class BGSAssociationType : public TESForm
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSAssociationType;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSAssociationType;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSAssociationType;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSAssociationType;
 		inline static constexpr auto FORMTYPE = FormType::AssociationType;
 
 		enum class FLAGS  // DATA

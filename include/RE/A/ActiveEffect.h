@@ -24,7 +24,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ActiveEffect;
-		inline static auto VMTYPEID = static_cast<VMTypeID>(142);
+		inline static auto      VMTYPEID = static_cast<VMTypeID>(142);
 
 		class ForEachHitEffectVisitor
 		{

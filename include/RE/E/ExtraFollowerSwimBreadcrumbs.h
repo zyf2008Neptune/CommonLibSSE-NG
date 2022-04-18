@@ -30,7 +30,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraFollowerSwimBreadcrumbs;
-		inline static auto EXTRADATATYPE = ExtraDataType::kFollowerSwimBreadcrumbs;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kFollowerSwimBreadcrumbs;
 
 		virtual ~ExtraFollowerSwimBreadcrumbs();  // 00
 

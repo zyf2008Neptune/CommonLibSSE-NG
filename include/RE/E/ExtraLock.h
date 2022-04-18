@@ -49,7 +49,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLock;
-		inline static auto EXTRADATATYPE = ExtraDataType::kLock;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kLock;
 
 		~ExtraLock() override;  // 00
 

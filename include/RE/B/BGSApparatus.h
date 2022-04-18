@@ -13,8 +13,8 @@ namespace RE
 		public TESDescription   // 110
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSApparatus;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSApparatus;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSApparatus;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSApparatus;
 		inline static constexpr auto FORMTYPE = FormType::Apparatus;
 
 		struct RecordFlags

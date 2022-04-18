@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraHeadingTarget;
-		inline static auto EXTRADATATYPE = ExtraDataType::kHeadingTarget;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kHeadingTarget;
 
 		~ExtraHeadingTarget() override;  // 00
 

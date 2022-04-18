@@ -11,7 +11,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraEnchantment;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraEnchantment;
-		inline static auto EXTRADATATYPE = ExtraDataType::kEnchantment;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kEnchantment;
 
 		ExtraEnchantment();
 		ExtraEnchantment(EnchantmentItem* a_enchantment, std::uint16_t a_charge, bool a_removeOnUnequip = false);

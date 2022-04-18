@@ -16,7 +16,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraOcclusionPlaneRefData;
-		inline static auto EXTRADATATYPE = ExtraDataType::kOcclusionPlaneRefData;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kOcclusionPlaneRefData;
 
 		~ExtraOcclusionPlaneRefData() override;  // 00
 

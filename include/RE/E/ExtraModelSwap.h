@@ -12,7 +12,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraModelSwap;
-		inline static auto EXTRADATATYPE = ExtraDataType::kModelSwap;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kModelSwap;
 
 		virtual ~ExtraModelSwap();  // 00
 

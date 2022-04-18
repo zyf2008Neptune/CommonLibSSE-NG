@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_bhkWorldObject;
-		inline static auto Ni_RTTI = NiRTTI_bhkWorldObject;
+		inline static auto      Ni_RTTI = NiRTTI_bhkWorldObject;
 
 		~bhkWorldObject() override;  // 00
 

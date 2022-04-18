@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_bhkCollisionObject;
-		inline static auto Ni_RTTI = NiRTTI_bhkCollisionObject;
+		inline static auto      Ni_RTTI = NiRTTI_bhkCollisionObject;
 
 		~bhkCollisionObject() override;  // 00
 

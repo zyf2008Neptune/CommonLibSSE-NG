@@ -12,7 +12,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraMagicLight;
-		inline static auto EXTRADATATYPE = ExtraDataType::kMagicLight;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kMagicLight;
 
 		~ExtraMagicLight() override;  // 00
 

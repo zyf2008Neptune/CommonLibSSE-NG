@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraMultiBoundRef;
-		inline static auto EXTRADATATYPE = ExtraDataType::kMultiBoundRef;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kMultiBoundRef;
 
 		~ExtraMultiBoundRef() override;  // 00
 

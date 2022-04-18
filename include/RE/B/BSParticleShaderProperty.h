@@ -15,7 +15,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSParticleShaderProperty;
-		inline static auto Ni_RTTI = NiRTTI_BSParticleShaderProperty;
+		inline static auto      Ni_RTTI = NiRTTI_BSParticleShaderProperty;
 
 		virtual ~BSParticleShaderProperty();  // 00
 

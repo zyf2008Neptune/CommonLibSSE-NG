@@ -10,7 +10,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraUniqueID;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraUniqueID;
-		inline static auto EXTRADATATYPE = ExtraDataType::kUniqueID;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kUniqueID;
 
 		ExtraUniqueID();
 		ExtraUniqueID(FormID a_baseID, std::uint16_t a_uniqueID);

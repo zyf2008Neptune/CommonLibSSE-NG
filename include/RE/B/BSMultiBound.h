@@ -12,7 +12,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSMultiBound;
-		inline static auto Ni_RTTI = NiRTTI_BSMultiBound;
+		inline static auto      Ni_RTTI = NiRTTI_BSMultiBound;
 
 		virtual ~BSMultiBound();  // 00
 

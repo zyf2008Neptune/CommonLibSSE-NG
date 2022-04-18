@@ -14,8 +14,8 @@ namespace RE
 	class Hazard : public TESObjectREFR
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_Hazard;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_Hazard;
+		SKYRIM_ADDR static auto      RTTI = RTTI_Hazard;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_Hazard;
 		inline static constexpr auto FORMTYPE = FormType::PlacedHazard;
 
 		enum class Flags

@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSMultiBoundAABB;
-		inline static auto Ni_RTTI = NiRTTI_BSMultiBoundAABB;
+		inline static auto      Ni_RTTI = NiRTTI_BSMultiBoundAABB;
 
 		~BSMultiBoundAABB() override;  // 00
 

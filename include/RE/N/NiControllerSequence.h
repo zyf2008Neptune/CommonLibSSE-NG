@@ -23,7 +23,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_NiControllerSequence;
-		inline static auto Ni_RTTI = NiRTTI_NiControllerSequence;
+		inline static auto      Ni_RTTI = NiRTTI_NiControllerSequence;
 
 		enum class AnimState
 		{

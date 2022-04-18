@@ -12,7 +12,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraOcclusionShape;
-		inline static auto EXTRADATATYPE = ExtraDataType::kOcclusionShape;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kOcclusionShape;
 
 		virtual ~ExtraOcclusionShape();  // 00
 

@@ -12,7 +12,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BGSBaseAlias;
-		inline static auto VMTYPEID = static_cast<VMTypeID>(139);
+		inline static auto      VMTYPEID = static_cast<VMTypeID>(139);
 
 		enum class FLAGS
 		{

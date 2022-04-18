@@ -18,8 +18,8 @@ namespace RE
 		public TESValueForm                // 158
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_ScrollItem;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_ScrollItem;
+		SKYRIM_ADDR static auto      RTTI = RTTI_ScrollItem;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_ScrollItem;
 		inline static constexpr auto FORMTYPE = FormType::Scroll;
 
 		struct RecordFlags

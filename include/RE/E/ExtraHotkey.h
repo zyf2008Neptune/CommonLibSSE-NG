@@ -10,7 +10,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraHotkey;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraHotkey;
-		inline static auto EXTRADATATYPE = ExtraDataType::kHotkey;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kHotkey;
 
 		enum class Hotkey
 		{

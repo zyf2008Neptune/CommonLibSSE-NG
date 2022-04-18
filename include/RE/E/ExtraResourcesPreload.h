@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraResourcesPreload;
-		inline static auto EXTRADATATYPE = ExtraDataType::kResourcesPreload;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kResourcesPreload;
 
 		virtual ~ExtraResourcesPreload();  // 00
 

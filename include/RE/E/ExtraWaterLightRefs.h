@@ -12,7 +12,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraWaterLightRefs;
-		inline static auto EXTRADATATYPE = ExtraDataType::kWaterLightRefs;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kWaterLightRefs;
 
 		virtual ~ExtraWaterLightRefs();  // 00
 

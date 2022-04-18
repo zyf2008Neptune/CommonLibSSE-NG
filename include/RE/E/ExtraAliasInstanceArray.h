@@ -23,7 +23,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAliasInstanceArray;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraAliasInstanceArray;
-		inline static auto EXTRADATATYPE = ExtraDataType::kAliasInstanceArray;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kAliasInstanceArray;
 
 		ExtraAliasInstanceArray();
 		virtual ~ExtraAliasInstanceArray();  // 00

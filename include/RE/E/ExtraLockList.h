@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLockList;
-		inline static auto EXTRADATATYPE = ExtraDataType::kLockList;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kLockList;
 
 		~ExtraLockList() override;  // 00
 

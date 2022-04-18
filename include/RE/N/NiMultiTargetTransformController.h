@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_NiMultiTargetTransformController;
-		inline static auto Ni_RTTI = NiRTTI_NiMultiTargetTransformController;
+		inline static auto      Ni_RTTI = NiRTTI_NiMultiTargetTransformController;
 
 		~NiMultiTargetTransformController() override;  // 00
 

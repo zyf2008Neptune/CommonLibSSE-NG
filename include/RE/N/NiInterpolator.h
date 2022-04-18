@@ -16,7 +16,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_NiInterpolator;
-		inline static auto Ni_RTTI = NiRTTI_NiInterpolator;
+		inline static auto      Ni_RTTI = NiRTTI_NiInterpolator;
 
 		~NiInterpolator() override;  // 00
 

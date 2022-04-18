@@ -10,7 +10,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraRank;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraRank;
-		inline static auto EXTRADATATYPE = ExtraDataType::kRank;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kRank;
 
 		ExtraRank();
 		explicit ExtraRank(std::int32_t a_rank);

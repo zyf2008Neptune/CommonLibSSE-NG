@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSDismemberSkinInstance;
-		inline static auto Ni_RTTI = NiRTTI_BSDismemberSkinInstance;
+		inline static auto      Ni_RTTI = NiRTTI_BSDismemberSkinInstance;
 
 		struct Data
 		{

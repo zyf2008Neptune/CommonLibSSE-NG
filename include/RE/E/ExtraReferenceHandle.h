@@ -14,7 +14,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraReferenceHandle;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraReferenceHandle;
-		inline static auto EXTRADATATYPE = ExtraDataType::kReferenceHandle;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kReferenceHandle;
 
 		ExtraReferenceHandle();
 		explicit ExtraReferenceHandle(ObjectRefHandle a_containerRef);

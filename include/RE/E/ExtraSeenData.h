@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraSeenData;
-		inline static auto EXTRADATATYPE = ExtraDataType::kSeenData;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kSeenData;
 
 		~ExtraSeenData() override;  // 00
 

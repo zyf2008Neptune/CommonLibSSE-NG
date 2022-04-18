@@ -21,8 +21,8 @@ namespace RE
 		public BGSKeywordForm              // 90
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESObjectACTI;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESObjectACTI;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESObjectACTI;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESObjectACTI;
 		inline static constexpr auto FORMTYPE = FormType::Activator;
 
 		enum class ActiFlags

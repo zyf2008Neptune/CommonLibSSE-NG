@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraFlags;
-		inline static auto EXTRADATATYPE = ExtraDataType::kFlags;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kFlags;
 
 		enum class Flag
 		{

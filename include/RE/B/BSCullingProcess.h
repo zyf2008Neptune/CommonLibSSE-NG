@@ -17,7 +17,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSCullingProcess;
-		inline static auto Ni_RTTI = NiRTTI_BSCullingProcess;
+		inline static auto      Ni_RTTI = NiRTTI_BSCullingProcess;
 
 		enum class BSCPCullingType
 		{

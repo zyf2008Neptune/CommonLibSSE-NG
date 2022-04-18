@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraTeleportName;
-		inline static auto EXTRADATATYPE = ExtraDataType::kTeleportName;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kTeleportName;
 
 		~ExtraTeleportName() override;  // 00
 

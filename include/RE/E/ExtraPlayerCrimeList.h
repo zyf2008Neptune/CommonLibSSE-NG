@@ -12,7 +12,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPlayerCrimeList;
-		inline static auto EXTRADATATYPE = ExtraDataType::kPlayerCrimeList;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kPlayerCrimeList;
 
 		virtual ~ExtraPlayerCrimeList();  // 00
 

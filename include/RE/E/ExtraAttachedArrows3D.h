@@ -14,7 +14,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAttachedArrows3D;
-		inline static auto EXTRADATATYPE = ExtraDataType::kAttachedArrows3D;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kAttachedArrows3D;
 
 		struct DataItem
 		{

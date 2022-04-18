@@ -9,7 +9,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCannotWear;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraCannotWear;
-		inline static auto EXTRADATATYPE = ExtraDataType::kCannotWear;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kCannotWear;
 
 		ExtraCannotWear();
 		virtual ~ExtraCannotWear() = default;  // 00

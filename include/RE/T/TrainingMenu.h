@@ -22,7 +22,7 @@ namespace RE
 #endif
 	{
 	public:
-		SKYRIM_ADDR static auto                RTTI = RTTI_TrainingMenu;
+		SKYRIM_ADDR static auto           RTTI = RTTI_TrainingMenu;
 		constexpr static std::string_view MENU_NAME = "Training Menu";
 
 		struct RUNTIME_DATA

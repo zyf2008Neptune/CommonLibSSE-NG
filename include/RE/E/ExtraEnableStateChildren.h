@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraEnableStateChildren;
-		inline static auto EXTRADATATYPE = ExtraDataType::kEnableStateChildren;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kEnableStateChildren;
 
 		virtual ~ExtraEnableStateChildren();  // 00
 

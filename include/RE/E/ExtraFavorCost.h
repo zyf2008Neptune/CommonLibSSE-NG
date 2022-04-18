@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraFavorCost;
-		inline static auto EXTRADATATYPE = ExtraDataType::kFavorCost;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kFavorCost;
 
 		~ExtraFavorCost() override;  // 00
 

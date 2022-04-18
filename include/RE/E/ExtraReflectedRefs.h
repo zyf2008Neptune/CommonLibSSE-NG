@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraReflectedRefs;
-		inline static auto EXTRADATATYPE = ExtraDataType::kReflectedRefs;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kReflectedRefs;
 
 		virtual ~ExtraReflectedRefs();  // 00
 

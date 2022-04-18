@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraFollower;
-		inline static auto EXTRADATATYPE = ExtraDataType::kFollower;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kFollower;
 
 		struct FollowerInfo
 		{

@@ -13,7 +13,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderMaterialEye;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_BSLightingShaderMaterialEye;
-		inline static auto FEATURE = Feature::kEye;
+		inline static auto      FEATURE = Feature::kEye;
 
 		~BSLightingShaderMaterialEye() override;  // 00
 

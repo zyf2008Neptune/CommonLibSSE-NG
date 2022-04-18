@@ -10,7 +10,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderMaterialHairTint;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_BSLightingShaderMaterialHairTint;
-		inline static auto FEATURE = Feature::kHairTint;
+		inline static auto      FEATURE = Feature::kHairTint;
 
 		~BSLightingShaderMaterialHairTint() override;  // 00
 

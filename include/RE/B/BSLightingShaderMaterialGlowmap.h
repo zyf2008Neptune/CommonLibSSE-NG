@@ -12,7 +12,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderMaterialGlowmap;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_BSLightingShaderMaterialGlowmap;
-		inline static auto FEATURE = Feature::kGlowMap;
+		inline static auto      FEATURE = Feature::kGlowMap;
 
 		~BSLightingShaderMaterialGlowmap() override;  // 00
 

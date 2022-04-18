@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraForcedLandingMarker;
-		inline static auto EXTRADATATYPE = ExtraDataType::kForcedLandingMarker;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kForcedLandingMarker;
 
 		virtual ~ExtraForcedLandingMarker();  // 00
 

@@ -8,8 +8,8 @@ namespace RE
 	class FlameProjectile : public Projectile
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_FlameProjectile;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_FlameProjectile;
+		SKYRIM_ADDR static auto      RTTI = RTTI_FlameProjectile;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_FlameProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileFlame;
 
 		struct RecordFlags

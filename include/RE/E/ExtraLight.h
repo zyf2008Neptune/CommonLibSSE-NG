@@ -20,7 +20,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLight;
-		inline static auto EXTRADATATYPE = ExtraDataType::kLight;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kLight;
 
 		~ExtraLight() override;  // 00
 

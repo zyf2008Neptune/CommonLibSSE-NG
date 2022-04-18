@@ -13,8 +13,8 @@ namespace RE
 		public BGSIdleCollection  // 58
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSIdleMarker;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSIdleMarker;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSIdleMarker;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSIdleMarker;
 		inline static constexpr auto FORMTYPE = FormType::IdleMarker;
 
 		struct RecordFlags

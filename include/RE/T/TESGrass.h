@@ -11,8 +11,8 @@ namespace RE
 		public TESModel         // 30
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESGrass;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESGrass;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESGrass;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESGrass;
 		inline static constexpr auto FORMTYPE = FormType::Grass;
 
 		enum class GRASS_WATER_STATE

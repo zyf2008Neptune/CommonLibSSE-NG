@@ -14,7 +14,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraSayToTopicInfo;
-		inline static auto EXTRADATATYPE = ExtraDataType::kSayTopicInfo;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kSayTopicInfo;
 
 		virtual ~ExtraSayToTopicInfo();  // 00
 

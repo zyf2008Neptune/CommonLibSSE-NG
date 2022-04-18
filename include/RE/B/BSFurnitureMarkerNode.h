@@ -35,7 +35,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSFurnitureMarkerNode;
-		inline static auto NiRTTI = NiRTTI_BSFurnitureMarkerNode;
+		inline static auto      NiRTTI = NiRTTI_BSFurnitureMarkerNode;
 
 		BSTArray<BSFurnitureMarker> markers;  // 18
 	};

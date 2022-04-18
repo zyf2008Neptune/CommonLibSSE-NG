@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLeveledItem;
-		inline static auto EXTRADATATYPE = ExtraDataType::kLeveledItem;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kLeveledItem;
 
 		~ExtraLeveledItem() override;  // 00
 

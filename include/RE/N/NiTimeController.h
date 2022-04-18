@@ -13,7 +13,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_NiTimeController;
-		inline static auto Ni_RTTI = NiRTTI_NiTimeController;
+		inline static auto      Ni_RTTI = NiRTTI_NiTimeController;
 
 		enum class CycleType
 		{

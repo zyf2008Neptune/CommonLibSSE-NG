@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_NiShadeProperty;
-		inline static auto Ni_RTTI = NiRTTI_NiShadeProperty;
+		inline static auto      Ni_RTTI = NiRTTI_NiShadeProperty;
 
 		~NiShadeProperty() override;  // 00
 

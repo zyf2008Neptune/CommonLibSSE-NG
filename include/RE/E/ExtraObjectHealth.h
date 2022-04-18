@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraObjectHealth;
-		inline static auto EXTRADATATYPE = ExtraDataType::kObjectHealth;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kObjectHealth;
 
 		virtual ~ExtraObjectHealth();  // 00
 

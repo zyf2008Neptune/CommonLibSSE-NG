@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraSavedHavokData;
-		inline static auto EXTRADATATYPE = ExtraDataType::kSavedHavokData;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kSavedHavokData;
 
 		virtual ~ExtraSavedHavokData();  // 00
 

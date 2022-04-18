@@ -17,8 +17,8 @@ namespace RE
 	class BGSShaderParticleGeometryData : public TESForm
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSShaderParticleGeometryData;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSShaderParticleGeometryData;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSShaderParticleGeometryData;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSShaderParticleGeometryData;
 		inline static constexpr auto FORMTYPE = FormType::ShaderParticleGeometryData;
 
 		enum class DataID

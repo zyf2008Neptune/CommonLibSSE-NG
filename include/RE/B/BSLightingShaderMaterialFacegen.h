@@ -12,7 +12,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderMaterialFacegen;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_BSLightingShaderMaterialFacegen;
-		inline static auto FEATURE = Feature::kFaceGen;
+		inline static auto      FEATURE = Feature::kFaceGen;
 
 		~BSLightingShaderMaterialFacegen() override;  // 00
 

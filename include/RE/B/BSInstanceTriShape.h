@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSInstanceTriShape;
-		inline static auto Ni_RTTI = NiRTTI_BSInstanceTriShape;
+		inline static auto      Ni_RTTI = NiRTTI_BSInstanceTriShape;
 
 		~BSInstanceTriShape() override;  // 00
 

@@ -10,7 +10,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderMaterialSnow;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_BSLightingShaderMaterialSnow;
-		inline static auto FEATURE = Feature::kMultiIndexTriShapeSnow;
+		inline static auto      FEATURE = Feature::kMultiIndexTriShapeSnow;
 
 		~BSLightingShaderMaterialSnow() override;  // 00
 

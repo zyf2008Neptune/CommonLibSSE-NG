@@ -15,8 +15,8 @@ namespace RE
 		public TESDescription         // B0
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_SpellItem;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_SpellItem;
+		SKYRIM_ADDR static auto      RTTI = RTTI_SpellItem;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_SpellItem;
 		inline static constexpr auto FORMTYPE = FormType::Spell;
 
 		enum class SpellFlag

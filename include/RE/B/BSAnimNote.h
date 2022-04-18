@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSAnimNote;
-		inline static auto Ni_RTTI = NiRTTI_BSAnimNote;
+		inline static auto      Ni_RTTI = NiRTTI_BSAnimNote;
 
 		enum class AnimNoteType
 		{

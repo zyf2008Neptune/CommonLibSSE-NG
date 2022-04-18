@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_NiFloatExtraData;
-		inline static auto Ni_RTTI = NiRTTI_NiFloatExtraData;
+		inline static auto      Ni_RTTI = NiRTTI_NiFloatExtraData;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_NiFloatExtraData;
 
 		~NiFloatExtraData() override;  // 00

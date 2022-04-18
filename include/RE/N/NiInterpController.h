@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_NiInterpController;
-		inline static auto Ni_RTTI = NiRTTI_NiInterpController;
+		inline static auto      Ni_RTTI = NiRTTI_NiInterpController;
 
 		~NiInterpController() override;  // 00
 

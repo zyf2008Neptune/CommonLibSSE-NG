@@ -15,7 +15,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSGeometry;
-		inline static auto Ni_RTTI = NiRTTI_BSGeometry;
+		inline static auto      Ni_RTTI = NiRTTI_BSGeometry;
 
 		enum class Type
 		{

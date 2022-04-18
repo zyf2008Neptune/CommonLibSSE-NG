@@ -23,8 +23,8 @@ namespace RE
 		public BGSPickupPutdownSounds      // 120
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_AlchemyItem;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_AlchemyItem;
+		SKYRIM_ADDR static auto      RTTI = RTTI_AlchemyItem;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_AlchemyItem;
 		inline static constexpr auto FORMTYPE = FormType::AlchemyItem;
 
 		enum class AlchemyFlag

@@ -12,7 +12,7 @@ namespace RE
 	class LoadingMenu : public IMenu
 	{
 	public:
-		SKYRIM_ADDR static auto                RTTI = RTTI_LoadingMenu;
+		SKYRIM_ADDR static auto           RTTI = RTTI_LoadingMenu;
 		constexpr static std::string_view MENU_NAME = "Loading Menu";
 
 		struct RUNTIME_DATA

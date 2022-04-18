@@ -12,8 +12,8 @@ namespace RE
 	class TESClimate : public TESForm
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESClimate;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESClimate;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESClimate;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESClimate;
 		inline static constexpr auto FORMTYPE = FormType::Climate;
 
 		struct SkyObjects

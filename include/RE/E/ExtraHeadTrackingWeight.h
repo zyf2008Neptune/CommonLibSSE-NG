@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraHeadTrackingWeight;
-		inline static auto EXTRADATATYPE = ExtraDataType::kHeadTrackingWeight;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kHeadTrackingWeight;
 
 		~ExtraHeadTrackingWeight() override;  // 00
 

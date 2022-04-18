@@ -10,8 +10,8 @@ namespace RE
 	class TESFurniture : public TESObjectACTI
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESFurniture;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESFurniture;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESFurniture;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESFurniture;
 		inline static constexpr auto FORMTYPE = FormType::Furniture;
 
 		enum class ActiveMarker

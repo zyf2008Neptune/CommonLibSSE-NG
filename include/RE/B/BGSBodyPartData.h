@@ -82,8 +82,8 @@ namespace RE
 		public BGSPreloadable  // 48
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSBodyPartData;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSBodyPartData;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSBodyPartData;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSBodyPartData;
 		inline static constexpr auto FORMTYPE = FormType::BodyPartData;
 
 		struct RecordFlags

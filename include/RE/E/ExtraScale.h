@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraScale;
-		inline static auto EXTRADATATYPE = ExtraDataType::kScale;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kScale;
 
 		~ExtraScale() override;  // 00
 

@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraActivateLoopSound;
-		inline static auto EXTRADATATYPE = ExtraDataType::kActivateLoopSound;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kActivateLoopSound;
 
 		virtual ~ExtraActivateLoopSound();  // 00
 

@@ -28,8 +28,8 @@ namespace RE
 	class BGSCameraPath : public TESForm
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSCameraPath;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSCameraPath;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSCameraPath;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSCameraPath;
 		inline static constexpr auto FORMTYPE = FormType::CameraPath;
 
 		struct RecordFlags

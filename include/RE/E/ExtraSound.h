@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraSound;
-		inline static auto EXTRADATATYPE = ExtraDataType::kSound;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kSound;
 
 		~ExtraSound() override;  // 00
 

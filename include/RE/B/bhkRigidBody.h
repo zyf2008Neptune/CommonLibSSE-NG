@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_bhkRigidBody;
-		inline static auto Ni_RTTI = NiRTTI_bhkRigidBody;
+		inline static auto      Ni_RTTI = NiRTTI_bhkRigidBody;
 
 		~bhkRigidBody() override;  // 00
 

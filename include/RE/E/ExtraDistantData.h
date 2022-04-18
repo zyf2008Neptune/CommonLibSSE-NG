@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraDistantData;
-		inline static auto EXTRADATATYPE = ExtraDataType::kDistantData;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kDistantData;
 
 		~ExtraDistantData() override;  // 00
 

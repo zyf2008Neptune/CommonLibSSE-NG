@@ -25,7 +25,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraWaterData;
-		inline static auto EXTRADATATYPE = ExtraDataType::kWaterData;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kWaterData;
 
 		virtual ~ExtraWaterData();  // 00
 

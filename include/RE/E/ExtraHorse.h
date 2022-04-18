@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraHorse;
-		inline static auto EXTRADATATYPE = ExtraDataType::kHorse;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kHorse;
 
 		~ExtraHorse() override;  // 00
 

@@ -12,7 +12,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLargeRefOwnerCells;
-		inline static auto EXTRADATATYPE = ExtraDataType::kLargeRefOwnerCells;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kLargeRefOwnerCells;
 
 		virtual ~ExtraLargeRefOwnerCells();  // 00
 

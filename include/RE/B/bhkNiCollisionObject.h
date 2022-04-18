@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_bhkNiCollisionObject;
-		inline static auto Ni_RTTI = NiRTTI_bhkNiCollisionObject;
+		inline static auto      Ni_RTTI = NiRTTI_bhkNiCollisionObject;
 
 		enum class Flag
 		{

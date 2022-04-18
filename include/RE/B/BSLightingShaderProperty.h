@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderProperty;
-		inline static auto Ni_RTTI = NiRTTI_BSLightingShaderProperty;
+		inline static auto      Ni_RTTI = NiRTTI_BSLightingShaderProperty;
 
 		struct Data
 		{

@@ -12,7 +12,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_NiCamera;
-		inline static auto Ni_RTTI = NiRTTI_NiCamera;
+		inline static auto      Ni_RTTI = NiRTTI_NiCamera;
 
 		struct RUNTIME_DATA
 		{

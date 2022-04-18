@@ -7,8 +7,8 @@ namespace RE
 	class Character : public Actor
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_Character;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_Character;
+		SKYRIM_ADDR static auto      RTTI = RTTI_Character;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_Character;
 		inline static constexpr auto FORMTYPE = FormType::ActorCharacter;
 
 		struct RecordFlags

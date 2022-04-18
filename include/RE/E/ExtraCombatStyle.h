@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCombatStyle;
-		inline static auto EXTRADATATYPE = ExtraDataType::kCombatStyle;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kCombatStyle;
 
 		~ExtraCombatStyle() override;  // 00
 

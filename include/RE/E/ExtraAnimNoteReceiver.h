@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAnimNoteReceiver;
-		inline static auto EXTRADATATYPE = ExtraDataType::kAnimNoteReceiver;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kAnimNoteReceiver;
 
 		~ExtraAnimNoteReceiver() override;  // 00
 

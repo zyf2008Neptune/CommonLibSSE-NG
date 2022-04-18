@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSXFlags;
-		inline static auto Ni_RTTI = NiRTTI_BSXFlags;
+		inline static auto      Ni_RTTI = NiRTTI_BSXFlags;
 
 		enum class Flag
 		{

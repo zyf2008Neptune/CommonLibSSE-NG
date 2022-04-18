@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCellAcousticSpace;
-		inline static auto EXTRADATATYPE = ExtraDataType::kCellAcousticSpace;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kCellAcousticSpace;
 
 		virtual ~ExtraCellAcousticSpace();  // 00
 

@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraRefrPath;
-		inline static auto EXTRADATATYPE = ExtraDataType::kRefrPath;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kRefrPath;
 
 		enum class PATH_TYPE
 		{

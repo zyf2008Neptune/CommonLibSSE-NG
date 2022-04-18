@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraUsedMarkers;
-		inline static auto EXTRADATATYPE = ExtraDataType::kUsedMarkers;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kUsedMarkers;
 
 		~ExtraUsedMarkers() override;  // 00
 

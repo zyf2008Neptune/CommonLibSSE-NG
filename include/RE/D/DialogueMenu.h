@@ -20,7 +20,7 @@ namespace RE
 #endif
 	{
 	public:
-		SKYRIM_ADDR static auto                RTTI = RTTI_DialogueMenu;
+		SKYRIM_ADDR static auto           RTTI = RTTI_DialogueMenu;
 		constexpr static std::string_view MENU_NAME = "Dialogue Menu";
 
 		struct Data

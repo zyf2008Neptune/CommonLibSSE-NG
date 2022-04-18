@@ -45,8 +45,8 @@ namespace RE
 		public TESChildCell  // 20
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESObjectLAND;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESObjectLAND;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESObjectLAND;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESObjectLAND;
 		inline static constexpr auto FORMTYPE = FormType::Land;
 
 		struct RecordFlags

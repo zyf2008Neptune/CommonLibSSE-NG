@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_NiFloatData;
-		inline static auto Ni_RTTI = NiRTTI_NiFloatData;
+		inline static auto      Ni_RTTI = NiRTTI_NiFloatData;
 
 		using KeyType = NiFloatKey::KeyType;
 

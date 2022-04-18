@@ -231,8 +231,8 @@ namespace RE
 		public BSTEventSink<TESTrackedStatsEvent>    // 2C8
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_PlayerCharacter;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_PlayerCharacter;
+		SKYRIM_ADDR static auto      RTTI = RTTI_PlayerCharacter;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_PlayerCharacter;
 		inline static constexpr auto FORMTYPE = FormType::ActorCharacter;
 
 		enum class EventType

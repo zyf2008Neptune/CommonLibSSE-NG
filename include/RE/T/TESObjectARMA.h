@@ -27,8 +27,8 @@ namespace RE
 		public BGSBipedObjectForm  // 30
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TESObjectARMA;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESObjectARMA;
+		SKYRIM_ADDR static auto      RTTI = RTTI_TESObjectARMA;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESObjectARMA;
 		inline static constexpr auto FORMTYPE = FormType::Armature;
 
 		struct RecordFlags

@@ -16,7 +16,7 @@ namespace RE
 	class BarterMenu : public IMenu
 	{
 	public:
-		SKYRIM_ADDR static auto                RTTI = RTTI_BarterMenu;
+		SKYRIM_ADDR static auto           RTTI = RTTI_BarterMenu;
 		constexpr static std::string_view MENU_NAME = "BarterMenu";
 
 		struct RUNTIME_DATA

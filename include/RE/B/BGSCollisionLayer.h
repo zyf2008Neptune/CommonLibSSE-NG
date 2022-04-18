@@ -14,8 +14,8 @@ namespace RE
 		public TESDescription  // 20
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_BGSCollisionLayer;
-		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSCollisionLayer;
+		SKYRIM_ADDR static auto      RTTI = RTTI_BGSCollisionLayer;
+		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSCollisionLayer;
 		inline static constexpr auto FORMTYPE = FormType::CollisionLayer;
 
 		enum class FLAG  // GNAM

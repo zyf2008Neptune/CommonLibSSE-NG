@@ -12,7 +12,7 @@ namespace RE
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderMaterialEnvmap;
 		SKYRIM_ADDR static auto VTABLE = VTABLE_BSLightingShaderMaterialEnvmap;
-		inline static auto FEATURE = Feature::kEnvironmentMap;
+		inline static auto      FEATURE = Feature::kEnvironmentMap;
 
 		~BSLightingShaderMaterialEnvmap() override;  // 00
 

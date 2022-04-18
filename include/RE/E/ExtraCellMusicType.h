@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCellMusicType;
-		inline static auto EXTRADATATYPE = ExtraDataType::kCellMusicType;
+		inline static auto      EXTRADATATYPE = ExtraDataType::kCellMusicType;
 
 		~ExtraCellMusicType() override;  // 00
 

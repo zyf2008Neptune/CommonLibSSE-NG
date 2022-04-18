@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		SKYRIM_ADDR static auto RTTI = RTTI_BSNiNode;
-		inline static auto Ni_RTTI = NiRTTI_BSNiNode;
+		inline static auto      Ni_RTTI = NiRTTI_BSNiNode;
 
 		~BSNiNode() override;  // 00
 
