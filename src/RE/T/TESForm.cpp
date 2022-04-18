@@ -37,29 +37,9 @@ namespace RE
 
 	float TESForm::GetWeight() const
 	{
-		const auto survival = []() {
-			if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
-				return false;
-			} else {
-				const auto dobj = BGSDefaultObjectManager::GetSingleton();
-				const auto survival = dobj ? dobj->GetObject<TESGlobal>(DefaultObjectID::kSurvivalModeEnabled) : nullptr;
-				return survival && *survival ? (*survival)->value == 1.0F : false;
-			}
-		};
-
-		const auto ref = As<TESObjectREFR>();
-		const auto baseObj = ref ? ref->GetBaseObject() : nullptr;
-		const auto form = baseObj ? baseObj : this;
-		if (!survival() && (form->IsAmmo() || form->IsLockpick())) {
-			return 0.0F;
-		} else if (const auto weightForm = form->As<TESWeightForm>(); weightForm) {
-			return weightForm->weight;
-		} else if (form->Is(FormType::NPC)) {
-			const auto npc = static_cast<const TESNPC*>(form);
-			return npc->weight;
-		} else {
-			return -1.0F;
-		}
+		using func_t = decltype(&TESForm::GetWeight);
+		REL::Relocation<func_t> func{ REL::RelocationID(14809, 14988) };
+		return func(this);
 	}
 
 	bool TESForm::HasKeywords(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const
