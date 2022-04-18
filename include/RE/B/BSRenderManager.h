@@ -2,11 +2,11 @@
 
 #include "RE/N/NiTexture.h"
 
-class ID3D11Device;
-class ID3D11DeviceContext;
-class IDXGISwapChain;
-class ID3D11RenderTargetView1;
-class ID3D11ShaderResourceView1;
+struct ID3D11Device;
+struct ID3D11DeviceContext;
+struct IDXGISwapChain;
+struct ID3D11RenderTargetView1;
+struct ID3D11ShaderResourceView1;
 
 namespace RE
 {
