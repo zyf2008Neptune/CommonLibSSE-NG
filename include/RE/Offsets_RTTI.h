@@ -7963,9 +7963,11 @@ namespace RE
 #elif !defined(ENABLE_SKYRIM_AE)
 #	if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	// VR-specific offsets.
-	inline constexpr REL::Offset RTTI_WorldSpaceMenu(0x01EFE318);
-	inline constexpr REL::Offset RTTI_BSTrackedControllerDevice(0x01F5FF58);
-	inline constexpr REL::Offset RTTI_BSOpenVRControllerDevice(0x01F5FF28);
+	constexpr REL::Offset RTTI_WorldSpaceMenu(0x01EFE318);
+	constexpr REL::Offset RTTI_BSTrackedControllerDevice(0x01F5FF58);
+	constexpr REL::Offset RTTI_BSVRInterface(0x01F5FB80);
+	constexpr REL::Offset RTTI_BSOpenVR(0x01F5FC78);
+	constexpr REL::Offset RTTI_BSOpenVRControllerDevice(0x01F5FF28);
 #	endif
 	constexpr REL::ID            RTTI_AStarSearch_BSFastNavmeshTriLocation_void_____ptr64_3_(REL::ID(686144));
 	constexpr REL::ID            RTTI_AStarSearch_BSNavmeshInfo_const_____ptr64_BSTSmartPointer_BSPathingDoor_BSTSmartPointerIntrusiveRefCount__22_(REL::ID(691095));
