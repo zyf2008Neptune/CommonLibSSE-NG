@@ -70,6 +70,22 @@ namespace RE
 		return *this;
 	}
 
+	NiPoint3& NiPoint3::operator*=(const NiPoint3& a_rhs)
+	{
+		x *= a_rhs.x;
+		y *= a_rhs.y;
+		z *= a_rhs.z;
+		return *this;
+	}
+
+	NiPoint3& NiPoint3::operator/=(const NiPoint3& a_rhs)
+	{
+		x /= a_rhs.x;
+		y /= a_rhs.y;
+		z /= a_rhs.z;
+		return *this;
+	}
+
 	NiPoint3& NiPoint3::operator*=(float a_scalar)
 	{
 		x *= a_scalar;
