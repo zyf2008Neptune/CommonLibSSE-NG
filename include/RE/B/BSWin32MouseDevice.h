@@ -8,7 +8,7 @@ namespace RE
 	class BSWin32MouseDevice : public BSMouseDevice
 	{
 	public:
-		inline static auto RTTI = RTTI_BSWin32MouseDevice;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSWin32MouseDevice;
 
 		struct Keys
 		{

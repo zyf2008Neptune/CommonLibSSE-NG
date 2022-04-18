@@ -10,7 +10,7 @@ namespace RE
 	class ImageSpaceModifierInstance : NiObject
 	{
 	public:
-		inline static auto RTTI = RTTI_ImageSpaceModifierInstance;
+		SKYRIM_ADDR static auto RTTI = RTTI_ImageSpaceModifierInstance;
 
 		~ImageSpaceModifierInstance() override;  // 00
 

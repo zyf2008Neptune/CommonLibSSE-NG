@@ -12,7 +12,7 @@ namespace RE
 	class ExtraFactionChanges : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraFactionChanges;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraFactionChanges;
 		inline static auto EXTRADATATYPE = ExtraDataType::kFactionChanges;
 
 		virtual ~ExtraFactionChanges();  // 00

@@ -7,8 +7,8 @@ namespace RE::SkyrimScript
 	class SaveFileHandleReaderWriter : public BaseHandleReaderWriter
 	{
 	public:
-		inline static auto RTTI = RTTI_SkyrimScript__BaseHandleReaderWriter;
-		inline static auto VTABLE = VTABLE_SkyrimScript__BaseHandleReaderWriter;
+		SKYRIM_ADDR static auto RTTI = RTTI_SkyrimScript__BaseHandleReaderWriter;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_SkyrimScript__BaseHandleReaderWriter;
 
 		~SaveFileHandleReaderWriter() override;  // 0
 

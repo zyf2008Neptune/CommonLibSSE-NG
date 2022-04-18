@@ -10,7 +10,7 @@ namespace RE
 	class NiFloatInterpolator : public NiKeyBasedInterpolator
 	{
 	public:
-		inline static auto RTTI = RTTI_NiFloatInterpolator;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiFloatInterpolator;
 		inline static auto Ni_RTTI = NiRTTI_NiFloatInterpolator;
 
 		~NiFloatInterpolator() override;  // 00

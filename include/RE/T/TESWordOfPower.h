@@ -12,8 +12,8 @@ namespace RE
 		public TESFullName  // 20
 	{
 	public:
-		inline static auto           RTTI = RTTI_TESWordOfPower;
-		inline static auto           VTABLE = VTABLE_TESWordOfPower;
+		SKYRIM_ADDR static auto           RTTI = RTTI_TESWordOfPower;
+		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESWordOfPower;
 		inline static constexpr auto FORMTYPE = FormType::WordOfPower;
 
 		struct RecordFlags

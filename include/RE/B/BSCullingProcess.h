@@ -16,7 +16,7 @@ namespace RE
 	class BSCullingProcess : public NiCullingProcess
 	{
 	public:
-		inline static auto RTTI = RTTI_BSCullingProcess;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSCullingProcess;
 		inline static auto Ni_RTTI = NiRTTI_BSCullingProcess;
 
 		enum class BSCPCullingType

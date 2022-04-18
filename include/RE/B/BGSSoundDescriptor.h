@@ -11,8 +11,8 @@ namespace RE
 	class BGSSoundDescriptor : public BSISoundDescriptor
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSSoundDescriptor;
-		inline static auto VTABLE = VTABLE_BGSSoundDescriptor;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSSoundDescriptor;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_BGSSoundDescriptor;
 
 		~BGSSoundDescriptor() override;  // 00
 

@@ -9,8 +9,8 @@ namespace RE
 	class ExtraSoul : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraSoul;
-		inline static auto VTABLE = VTABLE_ExtraSoul;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraSoul;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraSoul;
 		inline static auto EXTRADATATYPE = ExtraDataType::kSoul;
 
 		ExtraSoul();

@@ -7,7 +7,7 @@ namespace RE
 	class IMessageBoxCallback : public BSIntrusiveRefCounted
 	{
 	public:
-		inline static auto RTTI = RTTI_IMessageBoxCallback;
+		SKYRIM_ADDR static auto RTTI = RTTI_IMessageBoxCallback;
 
 		enum class Message
 		{

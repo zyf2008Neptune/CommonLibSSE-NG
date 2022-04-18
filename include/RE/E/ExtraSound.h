@@ -9,7 +9,7 @@ namespace RE
 	class ExtraSound : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraSound;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraSound;
 		inline static auto EXTRADATATYPE = ExtraDataType::kSound;
 
 		~ExtraSound() override;  // 00

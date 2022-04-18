@@ -8,9 +8,9 @@ namespace RE
 	class NiExtraData : public NiObject
 	{
 	public:
-		inline static auto RTTI = RTTI_NiExtraData;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiExtraData;
 		inline static auto Ni_RTTI = NiRTTI_NiExtraData;
-		inline static auto VTABLE = VTABLE_NiExtraData;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_NiExtraData;
 
 		~NiExtraData() override;  // 00
 

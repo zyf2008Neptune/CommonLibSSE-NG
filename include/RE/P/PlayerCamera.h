@@ -43,7 +43,7 @@ namespace RE
 		public BSTSingletonSDM<PlayerCamera>  // 038
 	{
 	public:
-		inline static auto RTTI = RTTI_PlayerCamera;
+		SKYRIM_ADDR static auto RTTI = RTTI_PlayerCamera;
 
 		struct Unk120
 		{

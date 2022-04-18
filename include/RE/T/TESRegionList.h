@@ -9,8 +9,8 @@ namespace RE
 	class TESRegionList : public BSSimpleList<TESRegion*>
 	{
 	public:
-		inline static auto RTTI = RTTI_TESRegionList;
-		inline static auto VTABLE = VTABLE_TESRegionList;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESRegionList;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_TESRegionList;
 
 		virtual ~TESRegionList();  // 00
 

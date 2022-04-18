@@ -7,7 +7,7 @@ namespace RE
 	class hkpCollidableCollidableFilter
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpCollidableCollidableFilter;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpCollidableCollidableFilter;
 
 		virtual ~hkpCollidableCollidableFilter();  // 00
 

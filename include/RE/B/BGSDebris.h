@@ -39,8 +39,8 @@ namespace RE
 		public BGSPreloadable  // 20
 	{
 	public:
-		inline static auto           RTTI = RTTI_BGSDebris;
-		inline static auto           VTABLE = VTABLE_BGSDebris;
+		SKYRIM_ADDR static auto           RTTI = RTTI_BGSDebris;
+		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSDebris;
 		inline static constexpr auto FORMTYPE = FormType::Debris;
 
 		struct RecordFlags

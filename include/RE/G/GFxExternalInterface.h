@@ -10,7 +10,7 @@ namespace RE
 	class GFxExternalInterface : public GFxState
 	{
 	public:
-		inline static auto RTTI = RTTI_GFxExternalInterface;
+		SKYRIM_ADDR static auto RTTI = RTTI_GFxExternalInterface;
 
 		GFxExternalInterface() :
 			GFxState(StateType::kExternalInterface)

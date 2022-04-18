@@ -14,7 +14,7 @@ namespace RE
 		public BSTEventSource<BSMusicEvent>  // 60
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSMoviePlayer;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSMoviePlayer;
 
 		~BGSMoviePlayer() override;  // 00
 

@@ -5,7 +5,7 @@ namespace RE
 	class BSFaceGenKeyframe
 	{
 	public:
-		inline static auto RTTI = RTTI_BSFaceGenKeyframe;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSFaceGenKeyframe;
 
 		virtual ~BSFaceGenKeyframe();  // 00
 

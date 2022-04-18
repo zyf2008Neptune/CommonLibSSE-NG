@@ -8,7 +8,7 @@ namespace RE
 	class ExtraFromAlias : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraFromAlias;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraFromAlias;
 		inline static auto EXTRADATATYPE = ExtraDataType::kFromAlias;
 
 		virtual ~ExtraFromAlias();  // 00

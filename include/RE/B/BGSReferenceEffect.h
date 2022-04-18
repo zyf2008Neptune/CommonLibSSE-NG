@@ -8,8 +8,8 @@ namespace RE
 	class BGSReferenceEffect : public TESForm
 	{
 	public:
-		inline static auto           RTTI = RTTI_BGSReferenceEffect;
-		inline static auto           VTABLE = VTABLE_BGSReferenceEffect;
+		SKYRIM_ADDR static auto           RTTI = RTTI_BGSReferenceEffect;
+		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSReferenceEffect;
 		inline static constexpr auto FORMTYPE = FormType::ReferenceEffect;
 
 		enum class Flag

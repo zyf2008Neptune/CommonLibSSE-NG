@@ -8,8 +8,8 @@ namespace RE
 	class BSLightingShaderMaterialHairTint : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static auto RTTI = RTTI_BSLightingShaderMaterialHairTint;
-		inline static auto VTABLE = VTABLE_BSLightingShaderMaterialHairTint;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderMaterialHairTint;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_BSLightingShaderMaterialHairTint;
 		inline static auto FEATURE = Feature::kHairTint;
 
 		~BSLightingShaderMaterialHairTint() override;  // 00

@@ -10,7 +10,7 @@ namespace RE
 		public BSIntrusiveRefCounted          // 08
 	{
 	public:
-		inline static auto RTTI = RTTI_WeaponAnimationGraphManagerHolder;
+		SKYRIM_ADDR static auto RTTI = RTTI_WeaponAnimationGraphManagerHolder;
 
 		// override (IAnimationGraphManagerHolder)
 		bool GetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_out) const override;  // 02 - { a_out = animationGraphManager; return a_out; }

@@ -8,7 +8,7 @@ namespace RE
 	class ExtraHeadTrackingWeight : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraHeadTrackingWeight;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraHeadTrackingWeight;
 		inline static auto EXTRADATATYPE = ExtraDataType::kHeadTrackingWeight;
 
 		~ExtraHeadTrackingWeight() override;  // 00

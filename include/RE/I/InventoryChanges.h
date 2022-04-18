@@ -16,7 +16,7 @@ namespace RE
 		class IItemChangeVisitor
 		{
 		public:
-			inline static auto RTTI = RTTI_InventoryChanges__IItemChangeVisitor;
+			SKYRIM_ADDR static auto RTTI = RTTI_InventoryChanges__IItemChangeVisitor;
 
 			virtual ~IItemChangeVisitor();  // 00
 

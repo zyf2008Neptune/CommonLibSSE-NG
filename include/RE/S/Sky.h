@@ -30,7 +30,7 @@ namespace RE
 	class Sky
 	{
 	public:
-		inline static auto RTTI = RTTI_Sky;
+		SKYRIM_ADDR static auto RTTI = RTTI_Sky;
 
 		enum class Mode
 		{

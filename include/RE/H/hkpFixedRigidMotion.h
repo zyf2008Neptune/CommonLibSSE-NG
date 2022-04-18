@@ -7,7 +7,7 @@ namespace RE
 	class hkpFixedRigidMotion : public hkpKeyframedRigidMotion
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpFixedRigidMotion;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpFixedRigidMotion;
 
 		~hkpFixedRigidMotion() override;  // 00
 

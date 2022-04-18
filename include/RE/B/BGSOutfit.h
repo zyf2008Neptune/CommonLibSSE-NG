@@ -9,8 +9,8 @@ namespace RE
 	class BGSOutfit : public TESForm
 	{
 	public:
-		inline static auto           RTTI = RTTI_BGSOutfit;
-		inline static auto           VTABLE = VTABLE_BGSOutfit;
+		SKYRIM_ADDR static auto           RTTI = RTTI_BGSOutfit;
+		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSOutfit;
 		inline static constexpr auto FORMTYPE = FormType::Outfit;
 
 		struct RecordFlags

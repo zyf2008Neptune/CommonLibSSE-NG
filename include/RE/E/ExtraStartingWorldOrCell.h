@@ -10,7 +10,7 @@ namespace RE
 	class ExtraStartingWorldOrCell : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraStartingWorldOrCell;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraStartingWorldOrCell;
 		inline static auto EXTRADATATYPE = ExtraDataType::kStartingWorldOrCell;
 
 		virtual ~ExtraStartingWorldOrCell();  // 00

@@ -10,7 +10,7 @@ namespace RE
 	class ExtraEncounterZone : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraEncounterZone;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraEncounterZone;
 		inline static auto EXTRADATATYPE = ExtraDataType::kEncounterZone;
 
 		~ExtraEncounterZone() override;  // 00

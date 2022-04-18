@@ -15,7 +15,7 @@ namespace RE
 	class ExtraMissingRefIDs : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraMissingRefIDs;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraMissingRefIDs;
 		inline static auto EXTRADATATYPE = ExtraDataType::kMissingRefIDs;
 
 		~ExtraMissingRefIDs() override;  // 00

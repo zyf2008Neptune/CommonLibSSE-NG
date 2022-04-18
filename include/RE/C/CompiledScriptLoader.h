@@ -13,7 +13,7 @@ namespace RE
 		class CompiledScriptLoader : public ILoader
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__CompiledScriptLoader;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__CompiledScriptLoader;
 
 			~CompiledScriptLoader() override;  // 00
 

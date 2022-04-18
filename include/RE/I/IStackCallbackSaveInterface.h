@@ -7,7 +7,7 @@ namespace RE
 		class IStackCallbackSaveInterface
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__IStackCallbackSaveInterface;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__IStackCallbackSaveInterface;
 
 			virtual ~IStackCallbackSaveInterface();  // 00
 

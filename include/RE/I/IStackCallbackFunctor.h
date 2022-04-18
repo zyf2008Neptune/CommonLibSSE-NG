@@ -13,7 +13,7 @@ namespace RE
 		class IStackCallbackFunctor : public BSIntrusiveRefCounted
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__IStackCallbackFunctor;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__IStackCallbackFunctor;
 
 			IStackCallbackFunctor();
 			virtual ~IStackCallbackFunctor() = default;  // 00

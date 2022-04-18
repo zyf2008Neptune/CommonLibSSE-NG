@@ -7,7 +7,7 @@ namespace RE
 	class BGSTextureModel : public TESModel
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSTextureModel;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSTextureModel;
 
 		~BGSTextureModel() override;  // 00
 

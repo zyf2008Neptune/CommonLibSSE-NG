@@ -7,7 +7,7 @@ namespace RE
 	class BSTriShape : public BSGeometry
 	{
 	public:
-		inline static auto RTTI = RTTI_BSTriShape;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSTriShape;
 		inline static auto Ni_RTTI = NiRTTI_BSTriShape;
 
 		struct TRISHAPE_RUNTIME_DATA

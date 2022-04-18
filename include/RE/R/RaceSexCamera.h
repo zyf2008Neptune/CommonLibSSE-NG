@@ -7,7 +7,7 @@ namespace RE
 	class RaceSexCamera : public TESCamera
 	{
 	public:
-		inline static auto RTTI = RTTI_RaceSexCamera;
+		SKYRIM_ADDR static auto RTTI = RTTI_RaceSexCamera;
 
 		~RaceSexCamera() override;  // 00
 

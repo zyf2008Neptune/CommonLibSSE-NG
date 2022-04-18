@@ -26,7 +26,7 @@ namespace RE
 		public BGSKeywordForm   // 40
 	{
 	public:
-		inline static auto RTTI = RTTI_MagicItem;
+		SKYRIM_ADDR static auto RTTI = RTTI_MagicItem;
 
 		class PreloadableVisitor
 		{

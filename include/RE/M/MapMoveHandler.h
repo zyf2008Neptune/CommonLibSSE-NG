@@ -7,7 +7,7 @@ namespace RE
 	class MapMoveHandler : public MapInputHandler
 	{
 	public:
-		inline static auto RTTI = RTTI_MapMoveHandler;
+		SKYRIM_ADDR static auto RTTI = RTTI_MapMoveHandler;
 
 		~MapMoveHandler() override;  // 00
 

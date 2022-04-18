@@ -9,7 +9,7 @@ namespace RE
 	class BGSEntryPointFunctionData
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSEntryPointFunctionData;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSEntryPointFunctionData;
 
 		enum class FunctionType
 		{

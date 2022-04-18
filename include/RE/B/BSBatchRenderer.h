@@ -8,7 +8,7 @@ namespace RE
 	class BSBatchRenderer
 	{
 	public:
-		inline static auto RTTI = RTTI_BSBatchRenderer;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSBatchRenderer;
 
 		virtual ~BSBatchRenderer();  // 00
 

@@ -12,7 +12,7 @@ namespace RE
 		public BSTHashMap<std::uint32_t, BSTArray<SetEventData> const*>  // 10
 	{
 	public:
-		inline static auto RTTI = RTTI_AttackAnimationArrayMap;
+		SKYRIM_ADDR static auto RTTI = RTTI_AttackAnimationArrayMap;
 
 		// hash key (hiword = right hand | loward = left hand)
 		enum HashKey : std::uint32_t

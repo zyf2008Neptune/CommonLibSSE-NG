@@ -16,8 +16,8 @@ namespace RE
 		public TESDescription  // 30
 	{
 	public:
-		inline static auto           RTTI = RTTI_BGSMessage;
-		inline static auto           VTABLE = VTABLE_BGSMessage;
+		SKYRIM_ADDR static auto           RTTI = RTTI_BGSMessage;
+		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSMessage;
 		inline static constexpr auto FORMTYPE = FormType::Message;
 
 		enum class MessageFlag

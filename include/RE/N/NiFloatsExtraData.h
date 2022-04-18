@@ -7,9 +7,9 @@ namespace RE
 	class NiFloatsExtraData : public NiExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_NiFloatsExtraData;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiFloatsExtraData;
 		inline static auto Ni_RTTI = NiRTTI_NiFloatsExtraData;
-		inline static auto VTABLE = VTABLE_NiFloatsExtraData;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_NiFloatsExtraData;
 
 		~NiFloatsExtraData() override;  // 00
 

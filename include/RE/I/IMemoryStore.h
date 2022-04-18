@@ -7,7 +7,7 @@ namespace RE
 	class IMemoryStore : public IMemoryStoreBase
 	{
 	public:
-		inline static auto RTTI = RTTI_IMemoryStore;
+		SKYRIM_ADDR static auto RTTI = RTTI_IMemoryStore;
 
 		~IMemoryStore() override = default;  // 00
 

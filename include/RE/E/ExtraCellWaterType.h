@@ -10,7 +10,7 @@ namespace RE
 	class ExtraCellWaterType : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraCellWaterType;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCellWaterType;
 		inline static auto EXTRADATATYPE = ExtraDataType::kCellWaterType;
 
 		~ExtraCellWaterType() override;  // 00

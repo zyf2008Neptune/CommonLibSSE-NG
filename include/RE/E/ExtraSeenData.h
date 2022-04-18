@@ -10,7 +10,7 @@ namespace RE
 	class ExtraSeenData : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraSeenData;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraSeenData;
 		inline static auto EXTRADATATYPE = ExtraDataType::kSeenData;
 
 		~ExtraSeenData() override;  // 00

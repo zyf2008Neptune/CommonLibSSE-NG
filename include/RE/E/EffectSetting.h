@@ -23,8 +23,8 @@ namespace RE
 		public BGSKeywordForm         // 040
 	{
 	public:
-		inline static auto RTTI = RTTI_EffectSetting;
-		inline static auto VTABLE = VTABLE_EffectSetting;
+		SKYRIM_ADDR static auto RTTI = RTTI_EffectSetting;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_EffectSetting;
 
 		using Archetype = EffectArchetypes::ArchetypeID;
 		using FilterValidation_t = bool(EffectSetting*, void*);

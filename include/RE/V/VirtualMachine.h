@@ -45,7 +45,7 @@ namespace RE
 				public BSTEventSource<StatsEvent>  // 0028
 			{
 			public:
-				inline static auto RTTI = RTTI_BSScript__Internal__VirtualMachine;
+				SKYRIM_ADDR static auto RTTI = RTTI_BSScript__Internal__VirtualMachine;
 
 				struct QueuedUnbindRefs
 				{

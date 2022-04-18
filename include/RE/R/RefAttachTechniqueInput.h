@@ -11,7 +11,7 @@ namespace RE
 	class RefAttachTechniqueInput : public BSAttachTechniques::AttachTechniqueInput
 	{
 	public:
-		inline static auto RTTI = RTTI_RefAttachTechniqueInput;
+		SKYRIM_ADDR static auto RTTI = RTTI_RefAttachTechniqueInput;
 
 		~RefAttachTechniqueInput() override;  // 00
 

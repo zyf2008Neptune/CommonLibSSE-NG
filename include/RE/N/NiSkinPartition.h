@@ -27,7 +27,7 @@ namespace RE
 	class NiSkinPartition : public NiObject
 	{
 	public:
-		inline static auto RTTI = RTTI_NiSkinPartition;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiSkinPartition;
 		inline static auto Ni_RTTI = NiRTTI_NiSkinPartition;
 
 		class Partition

@@ -11,7 +11,7 @@ namespace RE
 	class ExtraPlayerCrimeList : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraPlayerCrimeList;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPlayerCrimeList;
 		inline static auto EXTRADATATYPE = ExtraDataType::kPlayerCrimeList;
 
 		virtual ~ExtraPlayerCrimeList();  // 00

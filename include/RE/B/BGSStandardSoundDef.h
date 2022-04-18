@@ -12,12 +12,12 @@ namespace RE
 	class BGSStandardSoundDef : public BGSSoundDescriptor
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSStandardSoundDef;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSStandardSoundDef;
 
 		struct SoundPlaybackCharacteristics : public BSISoundDescriptor::BSIPlaybackCharacteristics  // BNAM
 		{
 		public:
-			inline static auto RTTI = RTTI_BGSStandardSoundDef__SoundPlaybackCharacteristics;
+			SKYRIM_ADDR static auto RTTI = RTTI_BGSStandardSoundDef__SoundPlaybackCharacteristics;
 
 			// override (BSIPlaybackCharacteristics)
 			std::uint8_t  GetFrequencyShift() override;     // 01 - { return frequencyShift; }

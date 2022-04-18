@@ -11,7 +11,7 @@ namespace RE
 	class NiCamera : public NiAVObject
 	{
 	public:
-		inline static auto RTTI = RTTI_NiCamera;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiCamera;
 		inline static auto Ni_RTTI = NiRTTI_NiCamera;
 
 		struct RUNTIME_DATA

@@ -7,7 +7,7 @@ namespace RE
 	class hkpPhantomListener
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpPhantomListener;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpPhantomListener;
 
 		virtual ~hkpPhantomListener();  // 00
 

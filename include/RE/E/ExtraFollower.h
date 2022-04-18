@@ -10,7 +10,7 @@ namespace RE
 	class ExtraFollower : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraFollower;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraFollower;
 		inline static auto EXTRADATATYPE = ExtraDataType::kFollower;
 
 		struct FollowerInfo

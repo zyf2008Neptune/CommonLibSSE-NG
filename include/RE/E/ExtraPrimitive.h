@@ -10,7 +10,7 @@ namespace RE
 	class ExtraPrimitive : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraPrimitive;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPrimitive;
 		inline static auto EXTRADATATYPE = ExtraDataType::kPrimitive;
 
 		virtual ~ExtraPrimitive();  // 00

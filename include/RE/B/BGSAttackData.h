@@ -43,7 +43,7 @@ namespace RE
 	class BGSAttackData : public NiRefObject
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSAttackData;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSAttackData;
 
 		~BGSAttackData() override;  // 00
 

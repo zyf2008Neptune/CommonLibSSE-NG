@@ -8,7 +8,7 @@ namespace RE
 	class ExtraLeveledItem : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraLeveledItem;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLeveledItem;
 		inline static auto EXTRADATATYPE = ExtraDataType::kLeveledItem;
 
 		~ExtraLeveledItem() override;  // 00

@@ -15,8 +15,8 @@ namespace RE
 		public BSTextureSet     // 30
 	{
 	public:
-		inline static auto           RTTI = RTTI_BGSTextureSet;
-		inline static auto           VTABLE = VTABLE_BGSTextureSet;
+		SKYRIM_ADDR static auto           RTTI = RTTI_BGSTextureSet;
+		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSTextureSet;
 		inline static constexpr auto FORMTYPE = FormType::TextureSet;
 
 		enum class Flag

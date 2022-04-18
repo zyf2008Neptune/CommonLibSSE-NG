@@ -14,9 +14,9 @@ namespace RE
 		{
 		public:
 #if !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)
-			inline static auto RTTI = RTTI_BSResource__RegisterPrefix__2__Traverser;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSResource__RegisterPrefix__2__Traverser;
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR)
-			inline static auto RTTI = RTTI__void___cdecl_BSResource__RegisterPrefix_char_const_____ptr64_char_const_____ptr64_BSResource__Location_____ptr64_____2___Traverser;
+			SKYRIM_ADDR static auto RTTI = RTTI__void___cdecl_BSResource__RegisterPrefix_char_const_____ptr64_char_const_____ptr64_BSResource__Location_____ptr64_____2___Traverser;
 #endif
 
 			// override (LocationTraverser)

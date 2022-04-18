@@ -7,7 +7,7 @@ namespace RE
 	class bhkPhantom : public bhkWorldObject
 	{
 	public:
-		inline static auto RTTI = RTTI_bhkPhantom;
+		SKYRIM_ADDR static auto RTTI = RTTI_bhkPhantom;
 		inline static auto Ni_RTTI = NiRTTI_bhkPhantom;
 
 		~bhkPhantom() override;  // 00

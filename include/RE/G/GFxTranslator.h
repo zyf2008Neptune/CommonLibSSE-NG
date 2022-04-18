@@ -10,7 +10,7 @@ namespace RE
 	class GFxTranslator : public GFxState
 	{
 	public:
-		inline static auto RTTI = RTTI_GFxTranslator;
+		SKYRIM_ADDR static auto RTTI = RTTI_GFxTranslator;
 
 		using WordWrappingType = GFxWWHelper::WordWrappingType;
 

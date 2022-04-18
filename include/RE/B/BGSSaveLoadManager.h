@@ -48,12 +48,12 @@ namespace RE
 		public BSTEventSink<BSSystemEvent>                        // 010
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSSaveLoadManager;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSSaveLoadManager;
 
 		class Thread : public BSThread
 		{
 		public:
-			inline static auto RTTI = RTTI_BGSSaveLoadManager__Thread;
+			SKYRIM_ADDR static auto RTTI = RTTI_BGSSaveLoadManager__Thread;
 
 			~Thread() override;  // 00
 

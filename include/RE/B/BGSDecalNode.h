@@ -11,7 +11,7 @@ namespace RE
 	class BGSDecalNode : public NiNode
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSDecalNode;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSDecalNode;
 		inline static auto Ni_RTTI = NiRTTI_BGSDecalNode;
 
 		struct RUNTIME_DATA

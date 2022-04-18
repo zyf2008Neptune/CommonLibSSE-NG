@@ -20,7 +20,7 @@ namespace RE
 		class Stream : public StreamBase
 		{
 		public:
-			inline static auto RTTI = RTTI_BSResource__Stream;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSResource__Stream;
 
 			Stream();
 			Stream(const Stream& a_rhs);

@@ -9,7 +9,7 @@ namespace RE
 	class ExtraSpawnContainer : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraSpawnContainer;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraSpawnContainer;
 		inline static auto EXTRADATATYPE = ExtraDataType::kSpawnContainer;
 
 		virtual ~ExtraSpawnContainer();  // 00

@@ -7,7 +7,7 @@ namespace RE
 	class IMovementMessageInterface : public IMovementInterface
 	{
 	public:
-		inline static auto RTTI = RTTI_IMovementMessageInterface;
+		SKYRIM_ADDR static auto RTTI = RTTI_IMovementMessageInterface;
 
 		~IMovementMessageInterface() override;  // 00
 

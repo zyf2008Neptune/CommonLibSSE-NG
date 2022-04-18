@@ -5,7 +5,7 @@ namespace RE
 	class ImageSpaceEffectParam
 	{
 	public:
-		inline static auto RTTI = RTTI_ImageSpaceEffectParam;
+		SKYRIM_ADDR static auto RTTI = RTTI_ImageSpaceEffectParam;
 
 		virtual ~ImageSpaceEffectParam();  // 00
 	};

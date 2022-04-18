@@ -9,7 +9,7 @@ namespace RE
 	class ExtraLastFinishedSequence : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraLastFinishedSequence;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLastFinishedSequence;
 		inline static auto EXTRADATATYPE = ExtraDataType::kLastFinishedSequence;
 
 		virtual ~ExtraLastFinishedSequence();  // 00

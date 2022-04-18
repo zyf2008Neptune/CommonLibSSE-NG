@@ -5,7 +5,7 @@ namespace RE
 	class GridArray
 	{
 	public:
-		inline static auto RTTI = RTTI_GridArray;
+		SKYRIM_ADDR static auto RTTI = RTTI_GridArray;
 
 		virtual ~GridArray();  // 00
 

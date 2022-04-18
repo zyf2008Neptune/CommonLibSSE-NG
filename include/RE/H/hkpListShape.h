@@ -9,7 +9,7 @@ namespace RE
 	class hkpListShape : public hkpShapeCollection
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpListShape;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpListShape;
 
 		enum
 		{

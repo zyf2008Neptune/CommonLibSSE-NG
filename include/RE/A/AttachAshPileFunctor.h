@@ -18,7 +18,7 @@ namespace RE
 		class AttachAshPileFunctor : public DelayFunctor
 		{
 		public:
-			inline static auto RTTI = RTTI_SkyrimScript____AttachAshPileFunctor;
+			SKYRIM_ADDR static auto RTTI = RTTI_SkyrimScript____AttachAshPileFunctor;
 
 			virtual ~AttachAshPileFunctor();  // 00
 

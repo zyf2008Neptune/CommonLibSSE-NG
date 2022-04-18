@@ -26,7 +26,7 @@ namespace RE
 	class ExtraRoomRefData : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraRoomRefData;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraRoomRefData;
 		inline static auto EXTRADATATYPE = ExtraDataType::kRoomRefData;
 
 		~ExtraRoomRefData() override;  // 00

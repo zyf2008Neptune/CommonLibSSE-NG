@@ -11,8 +11,8 @@ namespace RE
 	class BSLightingShaderMaterialEye : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static auto RTTI = RTTI_BSLightingShaderMaterialEye;
-		inline static auto VTABLE = VTABLE_BSLightingShaderMaterialEye;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderMaterialEye;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_BSLightingShaderMaterialEye;
 		inline static auto FEATURE = Feature::kEye;
 
 		~BSLightingShaderMaterialEye() override;  // 00

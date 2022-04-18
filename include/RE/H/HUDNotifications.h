@@ -14,7 +14,7 @@ namespace RE
 	class HUDNotifications : public HUDObject
 	{
 	public:
-		inline static auto RTTI = RTTI_HUDNotifications;
+		SKYRIM_ADDR static auto RTTI = RTTI_HUDNotifications;
 
 		struct Notification
 		{

@@ -17,7 +17,7 @@ namespace RE
 #endif
 	{
 	public:
-		inline static auto                RTTI = RTTI_CursorMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_CursorMenu;
 		constexpr static std::string_view MENU_NAME = "Cursor Menu";
 
 		~CursorMenu() override;  // 00

@@ -8,7 +8,7 @@ namespace RE
 	class hkbNode : public hkbBindable
 	{
 	public:
-		inline static auto RTTI = RTTI_hkbNode;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkbNode;
 
 		~hkbNode() override;  // 00
 

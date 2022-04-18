@@ -19,7 +19,7 @@ namespace RE
 	class IMemoryStoreBase
 	{
 	public:
-		inline static auto RTTI = RTTI_IMemoryStoreBase;
+		SKYRIM_ADDR static auto RTTI = RTTI_IMemoryStoreBase;
 
 		virtual ~IMemoryStoreBase() = default;  // 00
 

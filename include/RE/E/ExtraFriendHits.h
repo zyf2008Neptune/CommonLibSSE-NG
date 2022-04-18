@@ -10,7 +10,7 @@ namespace RE
 	class ExtraFriendHits : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraFriendHits;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraFriendHits;
 		inline static auto EXTRADATATYPE = ExtraDataType::kFriendHits;
 
 		~ExtraFriendHits() override;  // 00

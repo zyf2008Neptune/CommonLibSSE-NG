@@ -10,7 +10,7 @@ namespace RE
 	class BGSAttackDataForm : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSAttackDataForm;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSAttackDataForm;
 
 		~BGSAttackDataForm() override;  // 00
 

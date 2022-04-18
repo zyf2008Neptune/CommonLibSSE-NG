@@ -20,7 +20,7 @@ namespace RE
 #endif
 	{
 	public:
-		inline static auto                RTTI = RTTI_MistMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_MistMenu;
 		constexpr static std::string_view MENU_NAME = "Mist Menu";
 
 		struct Colors

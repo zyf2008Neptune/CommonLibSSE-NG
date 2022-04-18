@@ -8,7 +8,7 @@ namespace RE
 	class KinectEvent : public IDEvent
 	{
 	public:
-		inline static auto RTTI = RTTI_KinectEvent;
+		SKYRIM_ADDR static auto RTTI = RTTI_KinectEvent;
 
 		~KinectEvent() override;  // 00
 

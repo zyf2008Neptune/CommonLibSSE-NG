@@ -10,7 +10,7 @@ namespace RE
 	class ExtraDecalGroup : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraDecalGroup;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraDecalGroup;
 		inline static auto EXTRADATATYPE = ExtraDataType::kDecalGroup;
 
 		~ExtraDecalGroup() override;  // 00

@@ -14,7 +14,7 @@ namespace RE
 	class hkpShapePhantom : public hkpPhantom
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpShapePhantom;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpShapePhantom;
 
 		~hkpShapePhantom() override;  // 00
 

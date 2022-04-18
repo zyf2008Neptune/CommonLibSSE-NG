@@ -12,7 +12,7 @@ namespace RE
 		struct IObjectHandlePolicy
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__IObjectHandlePolicy;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__IObjectHandlePolicy;
 
 			virtual ~IObjectHandlePolicy();  // 00
 

@@ -60,7 +60,7 @@ namespace RE
 	class BSSmallBlockAllocator : public IMemoryStore
 	{
 	public:
-		inline static auto RTTI = RTTI_BSSmallBlockAllocator;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSSmallBlockAllocator;
 
 		struct Pool : public BSSmallBlockAllocatorUtil::Pool
 		{

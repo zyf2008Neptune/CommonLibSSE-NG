@@ -9,7 +9,7 @@ namespace RE
 	class ExtraAttachRef : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraAttachRef;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAttachRef;
 		inline static auto EXTRADATATYPE = ExtraDataType::kAttachRef;
 
 		~ExtraAttachRef() override;  // 00

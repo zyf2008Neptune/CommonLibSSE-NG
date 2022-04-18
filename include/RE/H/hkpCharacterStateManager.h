@@ -8,7 +8,7 @@ namespace RE
 	class hkpCharacterStateManager : public hkReferencedObject
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpCharacterStateManager;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpCharacterStateManager;
 
 		~hkpCharacterStateManager() override;  // 00
 

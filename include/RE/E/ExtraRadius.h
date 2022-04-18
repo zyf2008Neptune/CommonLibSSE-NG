@@ -8,7 +8,7 @@ namespace RE
 	class ExtraRadius : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraRadius;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraRadius;
 		inline static auto EXTRADATATYPE = ExtraDataType::kRadius;
 
 		~ExtraRadius() override;  // 00

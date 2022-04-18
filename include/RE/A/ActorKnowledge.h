@@ -14,7 +14,7 @@ namespace RE
 	class ActorKnowledge : public NiRefObject
 	{
 	public:
-		inline static auto RTTI = RTTI_ActorKnowledge;
+		SKYRIM_ADDR static auto RTTI = RTTI_ActorKnowledge;
 
 		enum class FLAGS
 		{

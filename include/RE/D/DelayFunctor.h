@@ -16,7 +16,7 @@ namespace RE
 		class DelayFunctor : public BSIntrusiveRefCounted
 		{
 		public:
-			inline static auto RTTI = RTTI_SkyrimScript__DelayFunctor;
+			SKYRIM_ADDR static auto RTTI = RTTI_SkyrimScript__DelayFunctor;
 
 			enum class FunctorType
 			{

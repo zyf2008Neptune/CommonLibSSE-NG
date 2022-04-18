@@ -19,7 +19,7 @@ namespace RE
 	class ExtraPackageStartLocation : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraPackageStartLocation;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPackageStartLocation;
 		inline static auto EXTRADATATYPE = ExtraDataType::kPackageStartLocation;
 
 		virtual ~ExtraPackageStartLocation();  // 00

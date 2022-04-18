@@ -11,14 +11,14 @@ namespace RE
 	class FxDelegateHandler : public GRefCountBase<FxDelegateHandler, GStatGroups::kGStat_Default_Mem>
 	{
 	public:
-		inline static auto RTTI = RTTI_FxDelegateHandler;
+		SKYRIM_ADDR static auto RTTI = RTTI_FxDelegateHandler;
 
 		using CallbackFn = void(const FxDelegateArgs& a_params);
 
 		class CallbackProcessor
 		{
 		public:
-			inline static auto RTTI = RTTI_FxDelegateHandler__CallbackProcessor;
+			SKYRIM_ADDR static auto RTTI = RTTI_FxDelegateHandler__CallbackProcessor;
 
 			virtual ~CallbackProcessor() = default;  // 00
 

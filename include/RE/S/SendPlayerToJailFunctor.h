@@ -15,7 +15,7 @@ namespace RE
 		class SendPlayerToJailFunctor : public DelayFunctor
 		{
 		public:
-			inline static auto RTTI = RTTI_SkyrimScript____SendPlayerToJailFunctor;
+			SKYRIM_ADDR static auto RTTI = RTTI_SkyrimScript____SendPlayerToJailFunctor;
 
 			enum class Flag
 			{

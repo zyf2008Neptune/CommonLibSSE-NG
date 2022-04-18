@@ -5,11 +5,11 @@ namespace RE
 	class BSISoundOutputModel
 	{
 	public:
-		inline static auto RTTI = RTTI_BSISoundOutputModel;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSISoundOutputModel;
 
 		struct BSIAttenuationCharacteristics
 		{
-			inline static auto RTTI = RTTI_BSISoundOutputModel__BSIAttenuationCharacteristics;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSISoundOutputModel__BSIAttenuationCharacteristics;
 
 			virtual ~BSIAttenuationCharacteristics();  // 00
 

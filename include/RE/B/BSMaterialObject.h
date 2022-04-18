@@ -12,7 +12,7 @@ namespace RE
 	class BSMaterialObject
 	{
 	public:
-		inline static auto RTTI = RTTI_BSMaterialObject;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSMaterialObject;
 
 		struct DIRECTIONAL_DATA  // DATA
 		{

@@ -13,7 +13,7 @@ namespace RE
 		public PlayerInputHandler  // 20
 	{
 	public:
-		inline static auto RTTI = RTTI_FirstPersonState;
+		SKYRIM_ADDR static auto RTTI = RTTI_FirstPersonState;
 
 		~FirstPersonState() override;  // 00
 

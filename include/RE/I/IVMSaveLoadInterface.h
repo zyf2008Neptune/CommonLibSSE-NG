@@ -7,7 +7,7 @@ namespace RE
 		class IVMSaveLoadInterface
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__IVMSaveLoadInterface;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__IVMSaveLoadInterface;
 
 			virtual ~IVMSaveLoadInterface();  // 00
 

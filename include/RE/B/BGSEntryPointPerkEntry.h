@@ -12,7 +12,7 @@ namespace RE
 	class BGSEntryPointPerkEntry : public BGSPerkEntry
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSEntryPointPerkEntry;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSEntryPointPerkEntry;
 
 		struct EntryData  // DATA
 		{

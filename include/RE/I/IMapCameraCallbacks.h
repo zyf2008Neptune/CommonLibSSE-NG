@@ -5,7 +5,7 @@ namespace RE
 	struct IMapCameraCallbacks
 	{
 	public:
-		inline static auto RTTI = RTTI_IMapCameraCallbacks;
+		SKYRIM_ADDR static auto RTTI = RTTI_IMapCameraCallbacks;
 
 		// add
 		void Unk_00(void);  // 00

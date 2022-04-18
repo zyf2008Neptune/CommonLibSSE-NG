@@ -10,7 +10,7 @@ namespace RE
 	class ExtraLocation : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraLocation;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLocation;
 		inline static auto EXTRADATATYPE = ExtraDataType::kLocation;
 
 		~ExtraLocation() override;  // 00

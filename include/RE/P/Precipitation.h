@@ -12,7 +12,7 @@ namespace RE
 	class Precipitation
 	{
 	public:
-		inline static auto RTTI = RTTI_Precipitation;
+		SKYRIM_ADDR static auto RTTI = RTTI_Precipitation;
 
 		class OcclusionMapData
 		{

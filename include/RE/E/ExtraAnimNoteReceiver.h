@@ -8,7 +8,7 @@ namespace RE
 	class ExtraAnimNoteReceiver : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraAnimNoteReceiver;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAnimNoteReceiver;
 		inline static auto EXTRADATATYPE = ExtraDataType::kAnimNoteReceiver;
 
 		~ExtraAnimNoteReceiver() override;  // 00

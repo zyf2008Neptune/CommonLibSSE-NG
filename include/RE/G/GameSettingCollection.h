@@ -8,7 +8,7 @@ namespace RE
 	class GameSettingCollection : public SettingCollectionMap<Setting>
 	{
 	public:
-		inline static auto RTTI = RTTI_GameSettingCollection;
+		SKYRIM_ADDR static auto RTTI = RTTI_GameSettingCollection;
 
 		~GameSettingCollection() override;  // 00
 

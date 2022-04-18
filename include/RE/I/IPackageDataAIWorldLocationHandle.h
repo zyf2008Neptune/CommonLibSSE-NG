@@ -10,7 +10,7 @@ namespace RE
 		public IPackageData             // 08
 	{
 	public:
-		inline static auto RTTI = RTTI_IPackageDataAIWorldLocationHandle;
+		SKYRIM_ADDR static auto RTTI = RTTI_IPackageDataAIWorldLocationHandle;
 
 		~IPackageDataAIWorldLocationHandle() override;  // 00
 	};

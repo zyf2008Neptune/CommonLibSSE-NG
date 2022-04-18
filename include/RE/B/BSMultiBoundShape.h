@@ -7,7 +7,7 @@ namespace RE
 	class BSMultiBoundShape : public NiObject
 	{
 	public:
-		inline static auto RTTI = RTTI_BSMultiBoundShape;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSMultiBoundShape;
 		inline static auto Ni_RTTI = NiRTTI_BSMultiBoundShape;
 
 		~BSMultiBoundShape() override;  // 00

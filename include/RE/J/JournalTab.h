@@ -10,7 +10,7 @@ namespace RE
 	class JournalTab : public FxDelegateHandler
 	{
 	public:
-		inline static auto RTTI = RTTI_JournalTab;
+		SKYRIM_ADDR static auto RTTI = RTTI_JournalTab;
 
 		~JournalTab() override;  // 00
 

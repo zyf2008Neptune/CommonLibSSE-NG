@@ -13,7 +13,7 @@ namespace RE
 	class BSFaceGenNiNode : public NiNode
 	{
 	public:
-		inline static auto RTTI = RTTI_BSFaceGenNiNode;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSFaceGenNiNode;
 		inline static auto Ni_RTTI = NiRTTI_BSFaceGenNiNode;
 
 		struct RUNTIME_DATA

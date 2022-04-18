@@ -19,7 +19,7 @@ namespace RE
 #endif
 	{
 	public:
-		inline static auto                RTTI = RTTI_ModManagerMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_ModManagerMenu;
 		constexpr static std::string_view MENU_NAME = "Mod Manager Menu";
 
 		struct RUNTIME_DATA

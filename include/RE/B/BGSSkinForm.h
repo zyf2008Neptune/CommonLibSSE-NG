@@ -9,7 +9,7 @@ namespace RE
 	class BGSSkinForm : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSSkinForm;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSSkinForm;
 
 		~BGSSkinForm() override;  // 00
 

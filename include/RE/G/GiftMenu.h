@@ -15,7 +15,7 @@ namespace RE
 	class GiftMenu : public IMenu
 	{
 	public:
-		inline static auto                RTTI = RTTI_GiftMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_GiftMenu;
 		constexpr static std::string_view MENU_NAME = "GiftMenu";
 
 		struct RUNTIME_DATA

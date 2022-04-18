@@ -27,7 +27,7 @@ namespace RE
 	class hkpWorldObject : public hkReferencedObject
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpWorldObject;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpWorldObject;
 
 		enum class MultiThreadingChecks
 		{

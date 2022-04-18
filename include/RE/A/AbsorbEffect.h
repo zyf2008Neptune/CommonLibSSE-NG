@@ -7,7 +7,7 @@ namespace RE
 	class AbsorbEffect : public ValueModifierEffect
 	{
 	public:
-		inline static auto RTTI = RTTI_AbsorbEffect;
+		SKYRIM_ADDR static auto RTTI = RTTI_AbsorbEffect;
 
 		// override (ValueModifierEffect)
 		virtual ~AbsorbEffect();  // 13

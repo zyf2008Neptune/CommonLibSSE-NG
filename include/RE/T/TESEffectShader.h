@@ -181,8 +181,8 @@ namespace RE
 	class TESEffectShader : public TESForm
 	{
 	public:
-		inline static auto           RTTI = RTTI_TESEffectShader;
-		inline static auto           VTABLE = VTABLE_TESEffectShader;
+		SKYRIM_ADDR static auto           RTTI = RTTI_TESEffectShader;
+		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESEffectShader;
 		inline static constexpr auto FORMTYPE = FormType::EffectShader;
 
 		struct RecordFlags

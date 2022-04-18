@@ -7,7 +7,7 @@ namespace RE
 	class bhkCharacterPointCollector : public hkpAllCdPointCollector
 	{
 	public:
-		inline static auto RTTI = RTTI_bhkCharacterPointCollector;
+		SKYRIM_ADDR static auto RTTI = RTTI_bhkCharacterPointCollector;
 
 		~bhkCharacterPointCollector() override;  // 00
 

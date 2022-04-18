@@ -8,7 +8,7 @@ namespace RE
 	class NiColorData : public NiObject
 	{
 	public:
-		inline static auto RTTI = RTTI_NiColorData;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiColorData;
 		inline static auto Ni_RTTI = NiRTTI_NiColorData;
 
 		using KeyType = NiColorKey::KeyType;

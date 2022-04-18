@@ -8,7 +8,7 @@ namespace RE
 	class hkpCapsuleShape : public hkpConvexShape
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpCapsuleShape;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpCapsuleShape;
 
 		~hkpCapsuleShape() override;  // 00
 

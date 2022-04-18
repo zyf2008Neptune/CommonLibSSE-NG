@@ -8,7 +8,7 @@ namespace RE
 	class Journal_QuestsTab : public JournalTab
 	{
 	public:
-		inline static auto RTTI = RTTI_Journal_QuestsTab;
+		SKYRIM_ADDR static auto RTTI = RTTI_Journal_QuestsTab;
 
 		~Journal_QuestsTab() override;  // 00
 

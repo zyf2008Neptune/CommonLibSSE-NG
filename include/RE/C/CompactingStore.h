@@ -14,7 +14,7 @@ namespace RE
 		class Store : public IMemoryStoreBase
 		{
 		public:
-			inline static auto RTTI = RTTI_CompactingStore__Store;
+			SKYRIM_ADDR static auto RTTI = RTTI_CompactingStore__Store;
 
 			~Store() override;  // 00
 

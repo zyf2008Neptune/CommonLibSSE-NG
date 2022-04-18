@@ -7,7 +7,7 @@ namespace RE
 	class HeldStateHandler : public PlayerInputHandler
 	{
 	public:
-		inline static auto RTTI = RTTI_HeldStateHandler;
+		SKYRIM_ADDR static auto RTTI = RTTI_HeldStateHandler;
 
 		~HeldStateHandler() override;  // 00
 

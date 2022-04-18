@@ -11,7 +11,7 @@ namespace RE
 	class BGSMusicTrack : public BSIMusicTrack
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSMusicTrack;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSMusicTrack;
 
 		~BGSMusicTrack() override;  // 00
 

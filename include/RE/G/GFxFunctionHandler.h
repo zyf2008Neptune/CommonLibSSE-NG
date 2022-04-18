@@ -11,7 +11,7 @@ namespace RE
 	class GFxFunctionHandler : public GRefCountBase<GFxFunctionHandler, GStatGroups::kGStat_Default_Mem>
 	{
 	public:
-		inline static auto RTTI = RTTI_GFxFunctionHandler;
+		SKYRIM_ADDR static auto RTTI = RTTI_GFxFunctionHandler;
 
 		struct Params
 		{

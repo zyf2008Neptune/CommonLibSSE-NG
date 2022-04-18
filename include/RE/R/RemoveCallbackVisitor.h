@@ -8,7 +8,7 @@ namespace RE
 	class RemoveCallbackVisitor : public FxDelegateHandler::CallbackProcessor
 	{
 	public:
-		inline static auto RTTI = RTTI_RemoveCallbackVisitor;
+		SKYRIM_ADDR static auto RTTI = RTTI_RemoveCallbackVisitor;
 
 		RemoveCallbackVisitor(FxDelegate::CallbackHash* a_hash);
 		~RemoveCallbackVisitor() override = default;  // 00

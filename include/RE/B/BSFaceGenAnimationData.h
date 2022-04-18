@@ -10,7 +10,7 @@ namespace RE
 	class BSFaceGenAnimationData : public NiExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_BSFaceGenAnimationData;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSFaceGenAnimationData;
 		inline static auto Ni_RTTI = NiRTTI_BSFaceGenAnimationData;
 
 		~BSFaceGenAnimationData() override;  // 00

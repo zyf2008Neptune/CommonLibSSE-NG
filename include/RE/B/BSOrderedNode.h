@@ -7,7 +7,7 @@ namespace RE
 	class BSOrderedNode : public BSNiNode
 	{
 	public:
-		inline static auto RTTI = RTTI_BSOrderedNode;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSOrderedNode;
 		inline static auto Ni_RTTI = NiRTTI_BSOrderedNode;
 
 		struct RUNTIME_DATA

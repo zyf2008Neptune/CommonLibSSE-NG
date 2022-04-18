@@ -8,7 +8,7 @@ namespace RE
 	class ExtraFlags : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraFlags;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraFlags;
 		inline static auto EXTRADATATYPE = ExtraDataType::kFlags;
 
 		enum class Flag

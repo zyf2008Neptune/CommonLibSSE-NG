@@ -24,7 +24,7 @@ namespace RE
 	class ExtraCellGrassData : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraCellGrassData;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCellGrassData;
 		inline static auto EXTRADATATYPE = ExtraDataType::kCellGrassData;
 
 		~ExtraCellGrassData() override;  // 00

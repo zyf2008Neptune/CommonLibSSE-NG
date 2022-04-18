@@ -7,7 +7,7 @@ namespace RE
 	class hkbRagdollDriver : public hkReferencedObject
 	{
 	public:
-		inline static auto RTTI = RTTI_hkbRagdollDriver;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkbRagdollDriver;
 
 		~hkbRagdollDriver() override;  // 00
 

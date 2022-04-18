@@ -23,8 +23,8 @@ namespace RE
 	class ExtraLightData : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraLightData;
-		inline static auto VTABLE = VTABLE_ExtraLightData;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLightData;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraLightData;
 		inline static auto EXTRADATATYPE = ExtraDataType::kLightData;
 
 		ExtraLightData();

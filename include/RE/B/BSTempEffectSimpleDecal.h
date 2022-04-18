@@ -17,7 +17,7 @@ namespace RE
 	class BSTempEffectSimpleDecal : public BSTempEffect
 	{
 	public:
-		inline static auto           RTTI = RTTI_BSTempEffectSimpleDecal;
+		SKYRIM_ADDR static auto           RTTI = RTTI_BSTempEffectSimpleDecal;
 		inline static auto           Ni_RTTI = NiRTTI_BSTempEffectSimpleDecal;
 		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kDecal;
 

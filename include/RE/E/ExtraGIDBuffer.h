@@ -8,7 +8,7 @@ namespace RE
 	class ExtraGIDBuffer : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraGIDBuffer;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraGIDBuffer;
 		inline static auto EXTRADATATYPE = ExtraDataType::kGIDBuffer;
 
 		virtual ~ExtraGIDBuffer();  // 00

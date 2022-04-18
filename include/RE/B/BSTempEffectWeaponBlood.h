@@ -10,7 +10,7 @@ namespace RE
 	class BSTempEffectWeaponBlood : public BSTempEffect
 	{
 	public:
-		inline static auto           RTTI = RTTI_BSTempEffectWeaponBlood;
+		SKYRIM_ADDR static auto           RTTI = RTTI_BSTempEffectWeaponBlood;
 		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kWeaponBlood;
 
 		~BSTempEffectWeaponBlood() override;  // 00

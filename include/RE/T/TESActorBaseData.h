@@ -76,7 +76,7 @@ namespace RE
 	class TESActorBaseData : public BaseFormComponent  // ACBS
 	{
 	public:
-		inline static auto RTTI = RTTI_TESActorBaseData;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESActorBaseData;
 
 		~TESActorBaseData() override;
 

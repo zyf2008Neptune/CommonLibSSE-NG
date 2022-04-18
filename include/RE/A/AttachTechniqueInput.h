@@ -12,7 +12,7 @@ namespace RE
 		struct AttachTechniqueInput
 		{
 		public:
-			inline static auto RTTI = RTTI_BSAttachTechniques__AttachTechniqueInput;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSAttachTechniques__AttachTechniqueInput;
 
 			virtual ~AttachTechniqueInput();  // 00
 

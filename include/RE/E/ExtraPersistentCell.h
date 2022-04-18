@@ -10,7 +10,7 @@ namespace RE
 	class ExtraPersistentCell : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraPersistentCell;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPersistentCell;
 		inline static auto EXTRADATATYPE = ExtraDataType::kPersistentCell;
 
 		virtual ~ExtraPersistentCell();  // 00

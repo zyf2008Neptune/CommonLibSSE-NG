@@ -10,7 +10,7 @@ namespace RE
 	class FaderMenu : public IMenu
 	{
 	public:
-		inline static auto                RTTI = RTTI_FaderMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_FaderMenu;
 		constexpr static std::string_view MENU_NAME = "Fader Menu";
 
 		struct RUNTIME_DATA

@@ -18,7 +18,7 @@ namespace RE
 	class InventoryMenu : public IMenu
 	{
 	public:
-		inline static auto                RTTI = RTTI_InventoryMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_InventoryMenu;
 		constexpr static std::string_view MENU_NAME = "InventoryMenu";
 
 		struct RUNTIME_DATA

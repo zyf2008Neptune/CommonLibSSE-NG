@@ -7,7 +7,7 @@ namespace RE
 	class BSDismemberSkinInstance : public NiSkinInstance
 	{
 	public:
-		inline static auto RTTI = RTTI_BSDismemberSkinInstance;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSDismemberSkinInstance;
 		inline static auto Ni_RTTI = NiRTTI_BSDismemberSkinInstance;
 
 		struct Data

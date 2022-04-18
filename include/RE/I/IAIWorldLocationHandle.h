@@ -10,7 +10,7 @@ namespace RE
 	class IAIWorldLocationHandle
 	{
 	public:
-		inline static auto RTTI = RTTI_IAIWorldLocationHandle;
+		SKYRIM_ADDR static auto RTTI = RTTI_IAIWorldLocationHandle;
 
 		virtual ~IAIWorldLocationHandle();  // 00
 

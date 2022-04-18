@@ -13,8 +13,8 @@ namespace RE
 	class ExtraTextDisplayData : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraTextDisplayData;
-		inline static auto VTABLE = VTABLE_ExtraTextDisplayData;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraTextDisplayData;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraTextDisplayData;
 		inline static auto EXTRADATATYPE = ExtraDataType::kTextDisplayData;
 
 		enum class DisplayDataType

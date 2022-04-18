@@ -10,8 +10,8 @@ namespace RE
 	class BSLightingShaderMaterialParallax : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static auto RTTI = RTTI_BSLightingShaderMaterialParallax;
-		inline static auto VTABLE = VTABLE_BSLightingShaderMaterialParallax;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderMaterialParallax;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_BSLightingShaderMaterialParallax;
 		inline static auto FEATURE = Feature::kParallax;
 
 		~BSLightingShaderMaterialParallax() override;  // 00

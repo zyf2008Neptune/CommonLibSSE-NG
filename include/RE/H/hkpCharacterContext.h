@@ -40,7 +40,7 @@ namespace RE
 	class hkpCharacterContext : public hkReferencedObject
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpCharacterContext;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpCharacterContext;
 
 		enum class CharacterType
 		{

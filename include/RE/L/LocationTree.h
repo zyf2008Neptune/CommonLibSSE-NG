@@ -9,7 +9,7 @@ namespace RE
 		class LocationTree : public Location
 		{
 		public:
-			inline static auto RTTI = RTTI_BSResource____LocationTree;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSResource____LocationTree;
 
 			~LocationTree() override;  // 00
 

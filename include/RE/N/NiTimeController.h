@@ -12,7 +12,7 @@ namespace RE
 	class NiTimeController : public NiObject
 	{
 	public:
-		inline static auto RTTI = RTTI_NiTimeController;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiTimeController;
 		inline static auto Ni_RTTI = NiRTTI_NiTimeController;
 
 		enum class CycleType

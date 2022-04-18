@@ -11,7 +11,7 @@ namespace RE
 	class hkpConvexListFilter : public hkReferencedObject
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpConvexListFilter;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpConvexListFilter;
 
 		enum class ConvexListCollisionType
 		{

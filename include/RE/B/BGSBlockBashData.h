@@ -8,7 +8,7 @@ namespace RE
 	class BGSBlockBashData : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSBlockBashData;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSBlockBashData;
 
 		~BGSBlockBashData() override;  // 00
 

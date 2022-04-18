@@ -16,7 +16,7 @@ namespace RE
 	class MagicCaster
 	{
 	public:
-		inline static auto RTTI = RTTI_MagicCaster;
+		SKYRIM_ADDR static auto RTTI = RTTI_MagicCaster;
 
 		enum class State
 		{

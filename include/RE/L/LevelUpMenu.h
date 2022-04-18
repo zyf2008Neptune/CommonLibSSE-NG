@@ -11,7 +11,7 @@ namespace RE
 	class LevelUpMenu : public IMenu
 	{
 	public:
-		inline static auto                RTTI = RTTI_LevelUpMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_LevelUpMenu;
 		constexpr static std::string_view MENU_NAME = "LevelUp Menu";
 
 		struct RUNTIME_DATA

@@ -7,7 +7,7 @@ namespace RE
 	struct FavoritesHandler : public MenuEventHandler
 	{
 	public:
-		inline static auto RTTI = RTTI_FavoritesHandler;
+		SKYRIM_ADDR static auto RTTI = RTTI_FavoritesHandler;
 
 		~FavoritesHandler() override;  // 00
 

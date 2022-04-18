@@ -8,7 +8,7 @@ namespace RE
 	class IDEvent : public InputEvent
 	{
 	public:
-		inline static auto RTTI = RTTI_IDEvent;
+		SKYRIM_ADDR static auto RTTI = RTTI_IDEvent;
 
 		~IDEvent() override;  // 00
 

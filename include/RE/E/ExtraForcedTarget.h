@@ -12,8 +12,8 @@ namespace RE
 	class ExtraForcedTarget : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraForcedTarget;
-		inline static auto VTABLE = VTABLE_ExtraForcedTarget;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraForcedTarget;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraForcedTarget;
 		inline static auto EXTRADATATYPE = ExtraDataType::kForcedTarget;
 
 		ExtraForcedTarget();

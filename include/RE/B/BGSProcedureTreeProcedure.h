@@ -10,7 +10,7 @@ namespace RE
 	class BGSProcedureTreeProcedure : public BGSTypedItem<BGSProcedureTreeProcedure, BGSProcedureTreeConditionalItem>
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSProcedureTreeProcedure;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSProcedureTreeProcedure;
 
 		~BGSProcedureTreeProcedure() override;  // 00
 

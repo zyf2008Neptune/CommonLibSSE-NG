@@ -12,7 +12,7 @@ namespace RE
 		class ErrorLogger : public BSTEventSource<LogEvent>
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__ErrorLogger;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__ErrorLogger;
 
 			enum class Severity
 			{

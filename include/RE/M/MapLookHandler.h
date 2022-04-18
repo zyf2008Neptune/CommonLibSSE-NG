@@ -7,7 +7,7 @@ namespace RE
 	class MapLookHandler : public MapInputHandler
 	{
 	public:
-		inline static auto RTTI = RTTI_MapLookHandler;
+		SKYRIM_ADDR static auto RTTI = RTTI_MapLookHandler;
 
 		~MapLookHandler() override;  // 00
 

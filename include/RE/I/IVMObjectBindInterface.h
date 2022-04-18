@@ -12,7 +12,7 @@ namespace RE
 		struct IVMObjectBindInterface
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__IVMObjectBindInterface;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__IVMObjectBindInterface;
 
 			virtual ~IVMObjectBindInterface();  // 00
 

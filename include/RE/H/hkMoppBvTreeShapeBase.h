@@ -12,7 +12,7 @@ namespace RE
 	class hkMoppBvTreeShapeBase : public hkpBvTreeShape
 	{
 	public:
-		inline static auto RTTI = RTTI_hkMoppBvTreeShapeBase;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkMoppBvTreeShapeBase;
 
 		~hkMoppBvTreeShapeBase() override;  // 00
 

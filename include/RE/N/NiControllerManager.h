@@ -16,7 +16,7 @@ namespace RE
 	class NiControllerManager : public NiTimeController
 	{
 	public:
-		inline static auto RTTI = RTTI_NiControllerManager;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiControllerManager;
 		inline static auto Ni_RTTI = NiRTTI_NiControllerManager;
 
 		~NiControllerManager() override;  // 00

@@ -31,7 +31,7 @@ namespace RE
 		public BSTEventSource<BSAnimationGraphEvent>   // 068
 	{
 	public:
-		inline static auto RTTI = RTTI_BShkbAnimationGraph;
+		SKYRIM_ADDR static auto RTTI = RTTI_BShkbAnimationGraph;
 
 		~BShkbAnimationGraph() override;  // 00
 

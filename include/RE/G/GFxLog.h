@@ -10,7 +10,7 @@ namespace RE
 		public GFxLogBase<GFxLog>  // 18
 	{
 	public:
-		inline static auto RTTI = RTTI_GFxLog;
+		SKYRIM_ADDR static auto RTTI = RTTI_GFxLog;
 
 		GFxLog();
 		~GFxLog() override = default;  // 00

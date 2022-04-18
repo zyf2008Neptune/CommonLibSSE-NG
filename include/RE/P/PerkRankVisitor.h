@@ -9,7 +9,7 @@ namespace RE
 	class PerkRankVisitor
 	{
 	public:
-		inline static auto RTTI = RTTI_PerkRankVisitor;
+		SKYRIM_ADDR static auto RTTI = RTTI_PerkRankVisitor;
 
 		virtual bool operator()(const PerkRankData* a_entry) = 0;  // 00
 	};

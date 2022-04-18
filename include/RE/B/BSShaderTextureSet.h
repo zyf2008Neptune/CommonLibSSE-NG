@@ -7,9 +7,9 @@ namespace RE
 	class BSShaderTextureSet : public BSTextureSet
 	{
 	public:
-		inline static auto RTTI = RTTI_BSShaderTextureSet;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSShaderTextureSet;
 		inline static auto Ni_RTTI = NiRTTI_BSShaderTextureSet;
-		inline static auto VTABLE = VTABLE_BSShaderTextureSet;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_BSShaderTextureSet;
 
 		~BSShaderTextureSet() override;  // 00
 

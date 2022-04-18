@@ -24,7 +24,7 @@ namespace RE
 #endif
 	{
 	public:
-		inline static auto                RTTI = RTTI_CreationClubMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_CreationClubMenu;
 		constexpr static std::string_view MENU_NAME = "Creation Club Menu";
 
 		struct RUNTIME_DATA

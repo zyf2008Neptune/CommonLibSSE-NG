@@ -8,7 +8,7 @@ namespace RE
 	class INISettingCollection : public SettingCollectionList<Setting>
 	{
 	public:
-		inline static auto RTTI = RTTI_INISettingCollection;
+		SKYRIM_ADDR static auto RTTI = RTTI_INISettingCollection;
 
 		~INISettingCollection() override;  // 00
 

@@ -9,7 +9,7 @@ namespace RE
 	class hkpMoppCode : public hkReferencedObject
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpMoppCode;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpMoppCode;
 
 		enum class BuildType
 		{

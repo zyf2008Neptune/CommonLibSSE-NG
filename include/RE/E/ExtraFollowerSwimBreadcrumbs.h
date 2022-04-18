@@ -29,7 +29,7 @@ namespace RE
 	class ExtraFollowerSwimBreadcrumbs : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraFollowerSwimBreadcrumbs;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraFollowerSwimBreadcrumbs;
 		inline static auto EXTRADATATYPE = ExtraDataType::kFollowerSwimBreadcrumbs;
 
 		virtual ~ExtraFollowerSwimBreadcrumbs();  // 00

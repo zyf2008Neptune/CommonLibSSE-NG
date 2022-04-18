@@ -17,7 +17,7 @@ namespace RE
 			class RawFuncCallQuery : public IFuncCallQuery
 			{
 			public:
-				inline static auto RTTI = RTTI_BSScript__Internal__RawFuncCallQuery;
+				SKYRIM_ADDR static auto RTTI = RTTI_BSScript__Internal__RawFuncCallQuery;
 
 				~RawFuncCallQuery() override;  // 00
 

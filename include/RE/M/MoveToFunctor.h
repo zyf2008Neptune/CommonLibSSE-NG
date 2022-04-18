@@ -17,7 +17,7 @@ namespace RE
 		class MoveToFunctor : public DelayFunctor
 		{
 		public:
-			inline static auto RTTI = RTTI_SkyrimScript____MoveToFunctor;
+			SKYRIM_ADDR static auto RTTI = RTTI_SkyrimScript____MoveToFunctor;
 
 			~MoveToFunctor() override;  // 00
 

@@ -9,7 +9,7 @@ namespace RE
 	class BSEffectShaderProperty : public BSShaderProperty
 	{
 	public:
-		inline static auto RTTI = RTTI_BSEffectShaderProperty;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSEffectShaderProperty;
 		inline static auto Ni_RTTI = NiRTTI_BSEffectShaderProperty;
 
 		~BSEffectShaderProperty() override;  // 00

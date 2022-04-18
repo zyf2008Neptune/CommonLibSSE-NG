@@ -7,7 +7,7 @@ namespace RE
 	class NiFile : public NiBinaryStream
 	{
 	public:
-		inline static auto RTTI = RTTI_NiFile;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiFile;
 
 		enum class OpenMode
 		{

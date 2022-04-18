@@ -10,8 +10,8 @@ namespace RE
 	class ExtraPoison : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraPoison;
-		inline static auto VTABLE = VTABLE_ExtraPoison;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPoison;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraPoison;
 		inline static auto EXTRADATATYPE = ExtraDataType::kPoison;
 
 		ExtraPoison();

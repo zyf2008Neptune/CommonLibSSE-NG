@@ -13,7 +13,7 @@ namespace RE
 		public bhkCharacterController      // 010
 	{
 	public:
-		inline static auto RTTI = RTTI_bhkCharProxyController;
+		SKYRIM_ADDR static auto RTTI = RTTI_bhkCharProxyController;
 
 		~bhkCharProxyController() override;  // 00
 

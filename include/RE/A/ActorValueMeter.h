@@ -8,7 +8,7 @@ namespace RE
 	class ActorValueMeter : public HUDMeter
 	{
 	public:
-		inline static auto RTTI = RTTI_ActorValueMeter;
+		SKYRIM_ADDR static auto RTTI = RTTI_ActorValueMeter;
 
 		~ActorValueMeter() override;  // 00
 

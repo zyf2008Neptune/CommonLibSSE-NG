@@ -10,7 +10,7 @@ namespace RE
 	class ExtraSceneData : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraSceneData;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraSceneData;
 		inline static auto EXTRADATATYPE = ExtraDataType::kSceneData;
 
 		virtual ~ExtraSceneData();  // 00

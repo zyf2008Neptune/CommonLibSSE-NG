@@ -8,7 +8,7 @@ namespace RE
 	class AddCallbackVisitor : public FxDelegateHandler::CallbackProcessor
 	{
 	public:
-		inline static auto RTTI = RTTI_AddCallbackVisitor;
+		SKYRIM_ADDR static auto RTTI = RTTI_AddCallbackVisitor;
 
 		AddCallbackVisitor(FxDelegateHandler* a_handler, FxDelegate::CallbackHash* a_hash);
 		~AddCallbackVisitor() override = default;  // 00

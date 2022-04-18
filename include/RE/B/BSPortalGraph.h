@@ -12,7 +12,7 @@ namespace RE
 	class BSPortalGraph : public NiRefObject
 	{
 	public:
-		inline static auto RTTI = RTTI_BSPortalGraph;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSPortalGraph;
 
 		~BSPortalGraph() override;  // 00
 

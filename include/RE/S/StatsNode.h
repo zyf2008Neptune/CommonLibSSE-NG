@@ -15,7 +15,7 @@ namespace RE
 		public BSTEventSink<BSAnimationGraphEvent>  // 18
 	{
 	public:
-		inline static auto RTTI = RTTI_StatsNode;
+		SKYRIM_ADDR static auto RTTI = RTTI_StatsNode;
 
 		~StatsNode() override;  // 00
 

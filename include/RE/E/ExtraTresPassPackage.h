@@ -10,7 +10,7 @@ namespace RE
 	class ExtraTresPassPackage : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraTresPassPackage;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraTresPassPackage;
 		inline static auto EXTRADATATYPE = ExtraDataType::kTresPassPackage;
 
 		virtual ~ExtraTresPassPackage();  // 00

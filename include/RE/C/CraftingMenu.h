@@ -15,7 +15,7 @@ namespace RE
 	class CraftingMenu : public IMenu
 	{
 	public:
-		inline static auto                RTTI = RTTI_CraftingMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_CraftingMenu;
 		constexpr static std::string_view MENU_NAME = "Crafting Menu";
 
 		~CraftingMenu() override;  // 00

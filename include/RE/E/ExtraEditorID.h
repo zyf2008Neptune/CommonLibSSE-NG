@@ -9,7 +9,7 @@ namespace RE
 	class ExtraEditorID : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraEditorID;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraEditorID;
 		inline static auto EXTRADATATYPE = ExtraDataType::kEditorID;
 
 		~ExtraEditorID() override;  // 00

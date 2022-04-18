@@ -10,7 +10,7 @@ namespace RE
 	class CombatObject : public NiRefObject
 	{
 	public:
-		inline static auto RTTI = RTTI_CombatObject;
+		SKYRIM_ADDR static auto RTTI = RTTI_CombatObject;
 
 		~CombatObject() override;  // 00
 

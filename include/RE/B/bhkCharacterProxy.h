@@ -8,7 +8,7 @@ namespace RE
 	class bhkCharacterProxy : public bhkSerializable
 	{
 	public:
-		inline static auto RTTI = RTTI_bhkCharacterProxy;
+		SKYRIM_ADDR static auto RTTI = RTTI_bhkCharacterProxy;
 		inline static auto Ni_RTTI = NiRTTI_bhkCharacterProxy;
 
 		~bhkCharacterProxy() override;  // 00

@@ -10,7 +10,7 @@ namespace RE
 	class ExtraEmittanceSource : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraEmittanceSource;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraEmittanceSource;
 		inline static auto EXTRADATATYPE = ExtraDataType::kEmittanceSource;
 
 		virtual ~ExtraEmittanceSource();  // 00

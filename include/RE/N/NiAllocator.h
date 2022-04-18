@@ -22,7 +22,7 @@ namespace RE
 	class NiAllocator
 	{
 	public:
-		inline static auto RTTI = RTTI_NiAllocator;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiAllocator;
 
 		virtual ~NiAllocator();  // 00
 

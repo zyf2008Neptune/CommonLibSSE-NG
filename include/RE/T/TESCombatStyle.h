@@ -64,8 +64,8 @@ namespace RE
 	class TESCombatStyle : public TESForm
 	{
 	public:
-		inline static auto           RTTI = RTTI_TESCombatStyle;
-		inline static auto           VTABLE = VTABLE_TESCombatStyle;
+		SKYRIM_ADDR static auto           RTTI = RTTI_TESCombatStyle;
+		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESCombatStyle;
 		inline static constexpr auto FORMTYPE = FormType::CombatStyle;
 
 		enum class FLAG  // DATA

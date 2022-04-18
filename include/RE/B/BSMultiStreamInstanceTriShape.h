@@ -7,7 +7,7 @@ namespace RE
 	class BSMultiStreamInstanceTriShape : public BSInstanceTriShape
 	{
 	public:
-		inline static auto RTTI = RTTI_BSMultiStreamInstanceTriShape;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSMultiStreamInstanceTriShape;
 		inline static auto Ni_RTTI = NiRTTI_BSMultiStreamInstanceTriShape;
 
 		struct MULTISTREAM_TRISHAPE_RUNTIME_DATA

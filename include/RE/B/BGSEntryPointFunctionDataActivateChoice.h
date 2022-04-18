@@ -9,7 +9,7 @@ namespace RE
 	class BGSEntryPointFunctionDataActivateChoice : public BGSEntryPointFunctionData
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSEntryPointFunctionDataActivateChoice;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSEntryPointFunctionDataActivateChoice;
 
 		enum class Flag1
 		{

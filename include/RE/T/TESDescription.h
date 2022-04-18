@@ -11,7 +11,7 @@ namespace RE
 	class TESDescription : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_TESDescription;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESDescription;
 
 		~TESDescription() override;  // 00
 

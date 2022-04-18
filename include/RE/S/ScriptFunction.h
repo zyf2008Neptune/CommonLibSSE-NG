@@ -15,7 +15,7 @@ namespace RE
 			class ScriptFunction : public IFunction
 			{
 			public:
-				inline static auto RTTI = RTTI_BSScript__Internal__ScriptFunction;
+				SKYRIM_ADDR static auto RTTI = RTTI_BSScript__Internal__ScriptFunction;
 
 				~ScriptFunction() override;  // 00
 

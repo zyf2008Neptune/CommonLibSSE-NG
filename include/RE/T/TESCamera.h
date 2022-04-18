@@ -12,7 +12,7 @@ namespace RE
 	class TESCamera
 	{
 	public:
-		inline static auto RTTI = RTTI_TESCamera;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESCamera;
 
 		virtual ~TESCamera();  // 00
 

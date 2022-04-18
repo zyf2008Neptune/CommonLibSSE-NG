@@ -10,7 +10,7 @@ namespace RE
 		class ISavePatcherInterface
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__ISavePatcherInterface;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__ISavePatcherInterface;
 
 			virtual ~ISavePatcherInterface();  // 00
 

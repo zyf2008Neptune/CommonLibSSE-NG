@@ -23,7 +23,7 @@ namespace RE
 		class GetActorsFilter
 		{
 		public:
-			inline static auto RTTI = RTTI_ProcessLists__GetActorsFilter;
+			SKYRIM_ADDR static auto RTTI = RTTI_ProcessLists__GetActorsFilter;
 
 			virtual ~GetActorsFilter();  // 00
 

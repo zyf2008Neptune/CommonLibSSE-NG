@@ -16,7 +16,7 @@ namespace RE
 		static constexpr auto BIT64 = static_cast<std::uint64_t>(1);
 
 	public:
-		inline static auto RTTI = RTTI_BSShaderProperty;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSShaderProperty;
 		inline static auto Ni_RTTI = NiRTTI_BSShaderProperty;
 
 		enum class EShaderPropertyFlag : std::uint64_t

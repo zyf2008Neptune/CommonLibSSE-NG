@@ -10,7 +10,7 @@ namespace RE
 	class hkpConstraintOwner : public hkReferencedObject
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpConstraintOwner;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpConstraintOwner;
 
 		~hkpConstraintOwner() override;  // 00
 

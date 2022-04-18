@@ -13,7 +13,7 @@ namespace RE
 	class ExtraAttachedArrows3D : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraAttachedArrows3D;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAttachedArrows3D;
 		inline static auto EXTRADATATYPE = ExtraDataType::kAttachedArrows3D;
 
 		struct DataItem

@@ -14,7 +14,7 @@ namespace RE
 	class BSGeometry : public NiAVObject
 	{
 	public:
-		inline static auto RTTI = RTTI_BSGeometry;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSGeometry;
 		inline static auto Ni_RTTI = NiRTTI_BSGeometry;
 
 		enum class Type

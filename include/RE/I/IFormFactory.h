@@ -18,7 +18,7 @@ namespace RE
 	class IFormFactory
 	{
 	public:
-		inline static auto RTTI = RTTI_IFormFactory;
+		SKYRIM_ADDR static auto RTTI = RTTI_IFormFactory;
 
 		virtual ~IFormFactory();  // 00
 

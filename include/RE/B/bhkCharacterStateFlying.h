@@ -7,7 +7,7 @@ namespace RE
 	class bhkCharacterStateFlying : public bhkCharacterState
 	{
 	public:
-		inline static auto RTTI = RTTI_bhkCharacterStateFlying;
+		SKYRIM_ADDR static auto RTTI = RTTI_bhkCharacterStateFlying;
 
 		~bhkCharacterStateFlying() override;  // 00
 

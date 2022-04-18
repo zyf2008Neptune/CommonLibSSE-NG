@@ -7,7 +7,7 @@ namespace RE
 	class hkbGenerator : public hkbNode
 	{
 	public:
-		inline static auto RTTI = RTTI_hkbGenerator;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkbGenerator;
 
 		~hkbGenerator() override;  // 00
 

@@ -12,7 +12,7 @@ namespace RE
 		public NiRefObject  // 180
 	{
 	public:
-		inline static auto RTTI = RTTI_Archive;
+		SKYRIM_ADDR static auto RTTI = RTTI_Archive;
 
 		~Archive() override;  // 00
 

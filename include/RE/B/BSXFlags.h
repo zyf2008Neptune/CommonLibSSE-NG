@@ -7,7 +7,7 @@ namespace RE
 	class BSXFlags : public NiIntegerExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_BSXFlags;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSXFlags;
 		inline static auto Ni_RTTI = NiRTTI_BSXFlags;
 
 		enum class Flag

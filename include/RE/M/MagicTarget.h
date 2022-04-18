@@ -23,14 +23,14 @@ namespace RE
 	class MagicTarget
 	{
 	public:
-		inline static auto RTTI = RTTI_MagicTarget;
+		SKYRIM_ADDR static auto RTTI = RTTI_MagicTarget;
 
 		using Archetype = EffectArchetypes::ArchetypeID;
 
 		class ForEachActiveEffectVisitor
 		{
 		public:
-			inline static auto RTTI = RTTI_MagicTarget__ForEachActiveEffectVisitor;
+			SKYRIM_ADDR static auto RTTI = RTTI_MagicTarget__ForEachActiveEffectVisitor;
 
 			virtual ~ForEachActiveEffectVisitor();  // 00
 

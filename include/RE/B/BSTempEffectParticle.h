@@ -18,7 +18,7 @@ namespace RE
 	class BSTempEffectParticle : public BSTempEffect
 	{
 	public:
-		inline static auto           RTTI = RTTI_BSTempEffectParticle;
+		SKYRIM_ADDR static auto           RTTI = RTTI_BSTempEffectParticle;
 		inline static auto           Ni_RTTI = NiRTTI_BSTempEffectParticle;
 		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kParticle;
 

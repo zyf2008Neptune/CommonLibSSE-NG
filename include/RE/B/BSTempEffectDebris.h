@@ -10,7 +10,7 @@ namespace RE
 	class BSTempEffectDebris : public BSTempEffect
 	{
 	public:
-		inline static auto           RTTI = RTTI_BSTempEffectDebris;
+		SKYRIM_ADDR static auto           RTTI = RTTI_BSTempEffectDebris;
 		inline static auto           Ni_RTTI = NiRTTI_BSTempEffectDebris;
 		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kDebris;
 

@@ -22,7 +22,7 @@ namespace RE
 		class LooseFileLocation : public Location
 		{
 		public:
-			inline static auto RTTI = RTTI_BSResource__LooseFileLocation;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSResource__LooseFileLocation;
 
 			~LooseFileLocation() override;  // 00
 

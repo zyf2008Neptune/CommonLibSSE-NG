@@ -16,7 +16,7 @@ namespace RE
 	class TweenMenu : public IMenu
 	{
 	public:
-		inline static auto                RTTI = RTTI_TweenMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_TweenMenu;
 		constexpr static std::string_view MENU_NAME = "TweenMenu";
 
 		struct RUNTIME_DATA

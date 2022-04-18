@@ -19,7 +19,7 @@ namespace RE
 	class ExtraAction : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraAction;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAction;
 		inline static auto EXTRADATATYPE = ExtraDataType::kAction;
 
 		~ExtraAction() override;  // 00

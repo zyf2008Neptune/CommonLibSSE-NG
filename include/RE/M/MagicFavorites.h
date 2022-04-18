@@ -11,7 +11,7 @@ namespace RE
 		public BSTSingletonSDM<MagicFavorites>  // 08
 	{
 	public:
-		inline static auto RTTI = RTTI_MagicFavorites;
+		SKYRIM_ADDR static auto RTTI = RTTI_MagicFavorites;
 
 		virtual ~MagicFavorites();  // 00
 

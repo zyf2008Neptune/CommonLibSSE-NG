@@ -9,7 +9,7 @@ namespace RE
 	class ExtraCreatureAwakeSound : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraCreatureAwakeSound;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCreatureAwakeSound;
 		inline static auto EXTRADATATYPE = ExtraDataType::kCreatureAwakeSound;
 
 		~ExtraCreatureAwakeSound() override;  // 00

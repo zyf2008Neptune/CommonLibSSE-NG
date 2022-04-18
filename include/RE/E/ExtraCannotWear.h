@@ -7,8 +7,8 @@ namespace RE
 	class ExtraCannotWear : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraCannotWear;
-		inline static auto VTABLE = VTABLE_ExtraCannotWear;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCannotWear;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraCannotWear;
 		inline static auto EXTRADATATYPE = ExtraDataType::kCannotWear;
 
 		ExtraCannotWear();

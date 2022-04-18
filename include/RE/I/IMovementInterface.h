@@ -5,7 +5,7 @@ namespace RE
 	class IMovementInterface
 	{
 	public:
-		inline static auto RTTI = RTTI_IMovementInterface;
+		SKYRIM_ADDR static auto RTTI = RTTI_IMovementInterface;
 
 		virtual ~IMovementInterface();
 	};

@@ -9,7 +9,7 @@ namespace RE
 	class ExtraMultiBoundRef : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraMultiBoundRef;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraMultiBoundRef;
 		inline static auto EXTRADATATYPE = ExtraDataType::kMultiBoundRef;
 
 		~ExtraMultiBoundRef() override;  // 00

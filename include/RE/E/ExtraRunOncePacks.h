@@ -19,7 +19,7 @@ namespace RE
 	class ExtraRunOncePacks : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraRunOncePacks;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraRunOncePacks;
 		inline static auto EXTRADATATYPE = ExtraDataType::kRunOncePacks;
 
 		~ExtraRunOncePacks() override;  // 00

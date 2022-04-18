@@ -60,7 +60,7 @@ namespace RE
 	class BGSBipedObjectForm : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSBipedObjectForm;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSBipedObjectForm;
 
 		using ArmorType = BIPED_MODEL::ArmorType;
 		using BipedObjectSlot = BIPED_MODEL::BipedObjectSlot;

@@ -9,7 +9,7 @@ namespace RE
 	class hkpRayHitCollector
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpRayHitCollector;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpRayHitCollector;
 
 		// add
 		virtual void AddRayHit(const hkpCdBody& a_body, const hkpShapeRayCastCollectorOutput& a_hitInfo) = 0;  // 00

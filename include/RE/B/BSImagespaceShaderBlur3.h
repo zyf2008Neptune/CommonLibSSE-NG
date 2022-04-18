@@ -7,7 +7,7 @@ namespace RE
 	class BSImagespaceShaderBlur3 : public BSImagespaceShader
 	{
 	public:
-		inline static auto RTTI = RTTI_BSImagespaceShaderBlur3;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSImagespaceShaderBlur3;
 
 		~BSImagespaceShaderBlur3() override;  // 00
 

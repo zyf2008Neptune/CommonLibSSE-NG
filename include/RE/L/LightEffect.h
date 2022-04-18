@@ -9,8 +9,8 @@ namespace RE
 	class LightEffect : public ActiveEffect
 	{
 	public:
-		inline static auto RTTI = RTTI_LightEffect;
-		inline static auto VTABLE = VTABLE_LightEffect;
+		SKYRIM_ADDR static auto RTTI = RTTI_LightEffect;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_LightEffect;
 
 		// override (ActiveEffect)
 		void Unk_04(void) override;  // 04

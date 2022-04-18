@@ -10,7 +10,7 @@ namespace RE
 		class IStore : public BSStorage
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__IStore;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__IStore;
 
 			~IStore() override;  // 00
 

@@ -26,8 +26,8 @@ namespace RE
 	class NiStream
 	{
 	public:
-		inline static auto RTTI = RTTI_NiStream;
-		inline static auto VTABLE = VTABLE_NiStream;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiStream;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_NiStream;
 
 		virtual ~NiStream();  // 00
 

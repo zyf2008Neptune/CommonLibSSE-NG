@@ -7,8 +7,8 @@ namespace RE
 	class CombatInventoryItemPotion : public CombatInventoryItemMagic
 	{
 	public:
-		inline static auto RTTI = RTTI_CombatInventoryItemPotion;
-		inline static auto VTABLE = VTABLE_CombatInventoryItemPotion;
+		SKYRIM_ADDR static auto RTTI = RTTI_CombatInventoryItemPotion;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_CombatInventoryItemPotion;
 
 		~CombatInventoryItemPotion() override;  // 00
 

@@ -8,8 +8,8 @@ namespace RE
 	class BGSAcousticSpace : public TESBoundObject
 	{
 	public:
-		inline static auto           RTTI = RTTI_BGSAcousticSpace;
-		inline static auto           VTABLE = VTABLE_BGSAcousticSpace;
+		SKYRIM_ADDR static auto           RTTI = RTTI_BGSAcousticSpace;
+		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSAcousticSpace;
 		inline static constexpr auto FORMTYPE = FormType::AcousticSpace;
 
 		struct RecordFlags

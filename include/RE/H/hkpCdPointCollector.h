@@ -7,7 +7,7 @@ namespace RE
 	class hkpCdPointCollector
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpCdPointCollector;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpCdPointCollector;
 
 		virtual ~hkpCdPointCollector();  // 00
 

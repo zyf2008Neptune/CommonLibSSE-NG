@@ -11,7 +11,7 @@ namespace RE
 		public hkpShapeContainer  // 20
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpShapeCollection;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpShapeCollection;
 
 		enum class CollectionType
 		{

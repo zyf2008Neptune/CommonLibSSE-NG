@@ -8,7 +8,7 @@ namespace RE
 	class ExtraObjectHealth : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraObjectHealth;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraObjectHealth;
 		inline static auto EXTRADATATYPE = ExtraDataType::kObjectHealth;
 
 		virtual ~ExtraObjectHealth();  // 00

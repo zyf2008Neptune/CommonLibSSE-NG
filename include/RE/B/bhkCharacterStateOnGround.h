@@ -7,7 +7,7 @@ namespace RE
 	class bhkCharacterStateOnGround : public bhkCharacterState
 	{
 	public:
-		inline static auto RTTI = RTTI_bhkCharacterStateOnGround;
+		SKYRIM_ADDR static auto RTTI = RTTI_bhkCharacterStateOnGround;
 
 		~bhkCharacterStateOnGround() override;  // 00
 

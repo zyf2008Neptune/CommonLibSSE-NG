@@ -8,8 +8,8 @@ namespace RE
 	class BSLightingShaderMaterialSnow : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static auto RTTI = RTTI_BSLightingShaderMaterialSnow;
-		inline static auto VTABLE = VTABLE_BSLightingShaderMaterialSnow;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderMaterialSnow;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_BSLightingShaderMaterialSnow;
 		inline static auto FEATURE = Feature::kMultiIndexTriShapeSnow;
 
 		~BSLightingShaderMaterialSnow() override;  // 00

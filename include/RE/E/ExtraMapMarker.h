@@ -100,7 +100,7 @@ namespace RE
 	class ExtraMapMarker : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraMapMarker;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraMapMarker;
 		inline static auto EXTRADATATYPE = ExtraDataType::kMapMarker;
 
 		virtual ~ExtraMapMarker();  // 00

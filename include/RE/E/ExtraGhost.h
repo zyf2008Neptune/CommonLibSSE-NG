@@ -8,7 +8,7 @@ namespace RE
 	class ExtraGhost : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraGhost;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraGhost;
 		inline static auto EXTRADATATYPE = ExtraDataType::kGhost;
 
 		~ExtraGhost() override;  // 00

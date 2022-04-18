@@ -29,8 +29,8 @@ namespace RE
 		public TESModelTextureSwap  // 30
 	{
 	public:
-		inline static auto           RTTI = RTTI_TESObjectSTAT;
-		inline static auto           VTABLE = VTABLE_TESObjectSTAT;
+		SKYRIM_ADDR static auto           RTTI = RTTI_TESObjectSTAT;
+		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESObjectSTAT;
 		inline static constexpr auto FORMTYPE = FormType::Static;
 
 		struct RecordFlags

@@ -26,7 +26,7 @@ namespace RE
 	class TESLeveledList : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_TESLeveledList;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESLeveledList;
 
 		enum Flag : std::uint8_t  // LVLF
 		{

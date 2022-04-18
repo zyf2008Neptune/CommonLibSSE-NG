@@ -11,7 +11,7 @@ namespace RE
 	class ExtraActivateRefChildren : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraActivateRefChildren;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraActivateRefChildren;
 		inline static auto EXTRADATATYPE = ExtraDataType::kActivateRefChildren;
 
 		virtual ~ExtraActivateRefChildren();  // 00

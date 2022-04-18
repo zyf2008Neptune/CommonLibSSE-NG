@@ -8,8 +8,8 @@ namespace RE
 	class BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_BSExtraData;
-		inline static auto VTABLE = VTABLE_BSExtraData;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSExtraData;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_BSExtraData;
 		inline static auto EXTRADATATYPE = ExtraDataType::kNone;
 
 		BSExtraData();

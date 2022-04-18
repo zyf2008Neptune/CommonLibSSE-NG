@@ -21,7 +21,7 @@ namespace RE
 	class InputEvent
 	{
 	public:
-		inline static auto RTTI = RTTI_InputEvent;
+		SKYRIM_ADDR static auto RTTI = RTTI_InputEvent;
 
 		virtual ~InputEvent();  // 00
 

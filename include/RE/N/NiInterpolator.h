@@ -15,7 +15,7 @@ namespace RE
 	class NiInterpolator : public NiObject
 	{
 	public:
-		inline static auto RTTI = RTTI_NiInterpolator;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiInterpolator;
 		inline static auto Ni_RTTI = NiRTTI_NiInterpolator;
 
 		~NiInterpolator() override;  // 00

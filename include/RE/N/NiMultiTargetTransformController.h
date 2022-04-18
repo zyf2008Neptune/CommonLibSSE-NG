@@ -10,7 +10,7 @@ namespace RE
 	class NiMultiTargetTransformController : public NiInterpController
 	{
 	public:
-		inline static auto RTTI = RTTI_NiMultiTargetTransformController;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiMultiTargetTransformController;
 		inline static auto Ni_RTTI = NiRTTI_NiMultiTargetTransformController;
 
 		~NiMultiTargetTransformController() override;  // 00

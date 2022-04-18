@@ -9,7 +9,7 @@ namespace RE
 	class ExtraItemDropper : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraItemDropper;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraItemDropper;
 		inline static auto EXTRADATATYPE = ExtraDataType::kItemDropper;
 
 		~ExtraItemDropper() override;  // 00

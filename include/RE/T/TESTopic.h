@@ -134,8 +134,8 @@ namespace RE
 		public TESFullName  // 20
 	{
 	public:
-		inline static auto           RTTI = RTTI_TESTopic;
-		inline static auto           VTABLE = VTABLE_TESTopic;
+		SKYRIM_ADDR static auto           RTTI = RTTI_TESTopic;
+		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESTopic;
 		inline static constexpr auto FORMTYPE = FormType::Dialogue;
 
 		struct RecordFlags

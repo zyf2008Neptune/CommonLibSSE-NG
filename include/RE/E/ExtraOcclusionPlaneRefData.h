@@ -15,7 +15,7 @@ namespace RE
 	class ExtraOcclusionPlaneRefData : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraOcclusionPlaneRefData;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraOcclusionPlaneRefData;
 		inline static auto EXTRADATATYPE = ExtraDataType::kOcclusionPlaneRefData;
 
 		~ExtraOcclusionPlaneRefData() override;  // 00

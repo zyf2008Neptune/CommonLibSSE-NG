@@ -8,8 +8,8 @@ namespace RE
 	class TESKey : public TESObjectMISC
 	{
 	public:
-		inline static auto           RTTI = RTTI_TESKey;
-		inline static auto           VTABLE = VTABLE_TESKey;
+		SKYRIM_ADDR static auto           RTTI = RTTI_TESKey;
+		SKYRIM_ADDR static auto           VTABLE = VTABLE_TESKey;
 		inline static constexpr auto FORMTYPE = FormType::KeyMaster;
 
 		struct RecordFlags

@@ -10,8 +10,8 @@ namespace RE
 	class ExtraOwnership : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraOwnership;
-		inline static auto VTABLE = VTABLE_ExtraOwnership;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraOwnership;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraOwnership;
 		inline static auto EXTRADATATYPE = ExtraDataType::kOwnership;
 
 		ExtraOwnership();

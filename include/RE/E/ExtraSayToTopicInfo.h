@@ -13,7 +13,7 @@ namespace RE
 	class ExtraSayToTopicInfo : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraSayToTopicInfo;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraSayToTopicInfo;
 		inline static auto EXTRADATATYPE = ExtraDataType::kSayTopicInfo;
 
 		virtual ~ExtraSayToTopicInfo();  // 00

@@ -7,7 +7,7 @@ namespace RE
 	class TESTexture1024 : public TESTexture
 	{
 	public:
-		inline static auto RTTI = RTTI_TESTexture1024;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESTexture1024;
 
 		~TESTexture1024() override;  // 00
 

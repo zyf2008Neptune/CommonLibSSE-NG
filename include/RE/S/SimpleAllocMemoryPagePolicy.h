@@ -10,7 +10,7 @@ namespace RE
 		class SimpleAllocMemoryPagePolicy : public IMemoryPagePolicy
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__SimpleAllocMemoryPagePolicy;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__SimpleAllocMemoryPagePolicy;
 
 			~SimpleAllocMemoryPagePolicy() override;  // 00
 

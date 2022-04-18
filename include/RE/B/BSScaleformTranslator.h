@@ -17,7 +17,7 @@ namespace RE
 	class BSScaleformTranslator : public GFxTranslator
 	{
 	public:
-		inline static auto RTTI = RTTI_BSScaleformTranslator;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSScaleformTranslator;
 
 		~BSScaleformTranslator() override;  // 00
 

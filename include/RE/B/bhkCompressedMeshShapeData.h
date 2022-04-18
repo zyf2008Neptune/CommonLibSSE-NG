@@ -9,7 +9,7 @@ namespace RE
 	class bhkCompressedMeshShapeData : public NiObject
 	{
 	public:
-		inline static auto RTTI = RTTI_bhkCompressedMeshShapeData;
+		SKYRIM_ADDR static auto RTTI = RTTI_bhkCompressedMeshShapeData;
 		inline static auto Ni_RTTI = NiRTTI_bhkCompressedMeshShapeData;
 
 		~bhkCompressedMeshShapeData() override;  // 00

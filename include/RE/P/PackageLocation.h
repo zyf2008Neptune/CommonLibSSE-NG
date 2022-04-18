@@ -10,7 +10,7 @@ namespace RE
 	class PackageLocation : public IAIWorldLocationHandle
 	{
 	public:
-		inline static auto RTTI = RTTI_PackageLocation;
+		SKYRIM_ADDR static auto RTTI = RTTI_PackageLocation;
 
 		enum class Type
 		{

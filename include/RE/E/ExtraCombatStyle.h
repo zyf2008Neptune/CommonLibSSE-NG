@@ -10,7 +10,7 @@ namespace RE
 	class ExtraCombatStyle : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraCombatStyle;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCombatStyle;
 		inline static auto EXTRADATATYPE = ExtraDataType::kCombatStyle;
 
 		~ExtraCombatStyle() override;  // 00

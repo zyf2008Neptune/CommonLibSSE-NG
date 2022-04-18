@@ -10,7 +10,7 @@ namespace RE
 	class ExtraGlobal : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraGlobal;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraGlobal;
 		inline static auto EXTRADATATYPE = ExtraDataType::kGlobal;
 
 		~ExtraGlobal() override;  // 00

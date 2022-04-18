@@ -12,7 +12,7 @@ namespace RE
 		BSTEventSource<CellAttachDetachEvent>                // 08
 	{
 	public:
-		inline static auto RTTI = RTTI_ICellAttachDetachEventSource;
+		SKYRIM_ADDR static auto RTTI = RTTI_ICellAttachDetachEventSource;
 
 		virtual ~ICellAttachDetachEventSource();  // 00
 	};

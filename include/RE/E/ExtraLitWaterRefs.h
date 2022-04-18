@@ -11,7 +11,7 @@ namespace RE
 	class ExtraLitWaterRefs : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraLitWaterRefs;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLitWaterRefs;
 		inline static auto EXTRADATATYPE = ExtraDataType::kLitWaterRefs;
 
 		virtual ~ExtraLitWaterRefs();  // 00

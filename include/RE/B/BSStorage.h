@@ -13,7 +13,7 @@ namespace RE
 	class BSStorage : public BSIntrusiveRefCounted
 	{
 	public:
-		inline static auto RTTI = RTTI_BSStorage;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSStorage;
 
 		struct UnkData
 		{

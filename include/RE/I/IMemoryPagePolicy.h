@@ -7,7 +7,7 @@ namespace RE
 		struct IMemoryPagePolicy
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__IMemoryPagePolicy;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__IMemoryPagePolicy;
 
 			virtual ~IMemoryPagePolicy();  // 00
 

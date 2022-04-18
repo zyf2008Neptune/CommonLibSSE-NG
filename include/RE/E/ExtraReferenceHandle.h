@@ -12,8 +12,8 @@ namespace RE
 	class ExtraReferenceHandle : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraReferenceHandle;
-		inline static auto VTABLE = VTABLE_ExtraReferenceHandle;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraReferenceHandle;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraReferenceHandle;
 		inline static auto EXTRADATATYPE = ExtraDataType::kReferenceHandle;
 
 		ExtraReferenceHandle();

@@ -10,7 +10,7 @@ namespace RE
 	class SkyObject
 	{
 	public:
-		inline static auto RTTI = RTTI_SkyObject;
+		SKYRIM_ADDR static auto RTTI = RTTI_SkyObject;
 
 		virtual ~SkyObject();  // 00
 

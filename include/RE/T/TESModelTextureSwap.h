@@ -9,7 +9,7 @@ namespace RE
 	class TESModelTextureSwap : public TESModel
 	{
 	public:
-		inline static auto RTTI = RTTI_TESModelTextureSwap;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESModelTextureSwap;
 
 		struct AlternateTexture  // MODS
 		{

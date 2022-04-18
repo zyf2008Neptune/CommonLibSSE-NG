@@ -21,7 +21,7 @@ namespace RE
 		public BSTEventSink<BSAnimationGraphEvent>  // 60
 	{
 	public:
-		inline static auto           RTTI = RTTI_SummonPlacementEffect;
+		SKYRIM_ADDR static auto           RTTI = RTTI_SummonPlacementEffect;
 		inline static auto           Ni_RTTI = NiRTTI_SummonPlacementEffect;
 		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kMagicSummon;
 

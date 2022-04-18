@@ -8,7 +8,7 @@ namespace RE
 	class TESFullName : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_TESFullName;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESFullName;
 
 		~TESFullName() override;
 

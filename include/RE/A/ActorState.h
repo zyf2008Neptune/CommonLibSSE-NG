@@ -92,7 +92,7 @@ namespace RE
 	class ActorState : public IMovementState
 	{
 	public:
-		inline static auto RTTI = RTTI_ActorState;
+		SKYRIM_ADDR static auto RTTI = RTTI_ActorState;
 
 		struct ActorState1
 		{

@@ -7,7 +7,7 @@ namespace RE
 	class NiProperty : public NiObjectNET
 	{
 	public:
-		inline static auto RTTI = RTTI_NiProperty;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiProperty;
 		inline static auto Ni_RTTI = NiRTTI_NiProperty;
 
 		enum class Type

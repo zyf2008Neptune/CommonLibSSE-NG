@@ -16,7 +16,7 @@ namespace RE
 		struct ILoader
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__ILoader;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__ILoader;
 
 			virtual ~ILoader();  // 00
 

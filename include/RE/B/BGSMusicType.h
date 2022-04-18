@@ -12,8 +12,8 @@ namespace RE
 		public BSIMusicType  // 20
 	{
 	public:
-		inline static auto           RTTI = RTTI_BGSMusicType;
-		inline static auto           VTABLE = VTABLE_BGSMusicType;
+		SKYRIM_ADDR static auto           RTTI = RTTI_BGSMusicType;
+		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSMusicType;
 		inline static constexpr auto FORMTYPE = FormType::MusicType;
 
 		struct RecordFlags

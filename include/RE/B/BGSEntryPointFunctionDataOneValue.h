@@ -7,7 +7,7 @@ namespace RE
 	class BGSEntryPointFunctionDataOneValue : public BGSEntryPointFunctionData
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSEntryPointFunctionDataOneValue;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSEntryPointFunctionDataOneValue;
 
 		~BGSEntryPointFunctionDataOneValue() override;  // 00
 

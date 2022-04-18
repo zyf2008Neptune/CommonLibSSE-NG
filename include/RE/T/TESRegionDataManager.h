@@ -17,7 +17,7 @@ namespace RE
 	class TESRegionDataManager
 	{
 	public:
-		inline static auto RTTI = RTTI_TESRegionDataManager;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESRegionDataManager;
 
 		virtual ~TESRegionDataManager();  // 00
 

@@ -13,12 +13,12 @@ namespace RE
 	class LocalMapCamera : public TESCamera
 	{
 	public:
-		inline static auto RTTI = RTTI_LocalMapCamera;
+		SKYRIM_ADDR static auto RTTI = RTTI_LocalMapCamera;
 
 		class DefaultState : public TESCameraState
 		{
 		public:
-			inline static auto RTTI = RTTI_LocalMapCamera__DefaultState;
+			SKYRIM_ADDR static auto RTTI = RTTI_LocalMapCamera__DefaultState;
 
 			~DefaultState() override;  // 00
 

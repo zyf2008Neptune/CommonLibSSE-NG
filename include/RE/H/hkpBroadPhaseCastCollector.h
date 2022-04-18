@@ -7,7 +7,7 @@ namespace RE
 	class hkpBroadPhaseCastCollector
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpBroadPhaseCastCollector;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpBroadPhaseCastCollector;
 
 		virtual ~hkpBroadPhaseCastCollector() = default;  // 00
 

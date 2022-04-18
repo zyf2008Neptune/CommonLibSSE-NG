@@ -7,7 +7,7 @@ namespace RE
 	class BSIInputDevice
 	{
 	public:
-		inline static auto RTTI = RTTI_BSIInputDevice;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSIInputDevice;
 
 		virtual ~BSIInputDevice();  // 00
 

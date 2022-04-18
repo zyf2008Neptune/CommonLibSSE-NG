@@ -7,7 +7,7 @@ namespace RE
 	class ScrapHeap : public IMemoryStore
 	{
 	public:
-		inline static auto RTTI = RTTI_ScrapHeap;
+		SKYRIM_ADDR static auto RTTI = RTTI_ScrapHeap;
 
 		struct Block
 		{

@@ -8,7 +8,7 @@ namespace RE
 	class BGSProcedureTreeBranch : public BGSProcedureTreeConditionalItem
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSProcedureTreeBranch;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSProcedureTreeBranch;
 
 		~BGSProcedureTreeBranch() override;  // 00
 

@@ -8,7 +8,7 @@ namespace RE
 	class bhkShape : public bhkSerializable
 	{
 	public:
-		inline static auto RTTI = RTTI_bhkShape;
+		SKYRIM_ADDR static auto RTTI = RTTI_bhkShape;
 		inline static auto Ni_RTTI = NiRTTI_bhkShape;
 
 		~bhkShape() override;  // 00

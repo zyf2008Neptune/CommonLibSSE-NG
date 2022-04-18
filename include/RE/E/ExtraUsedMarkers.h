@@ -10,7 +10,7 @@ namespace RE
 	class ExtraUsedMarkers : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraUsedMarkers;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraUsedMarkers;
 		inline static auto EXTRADATATYPE = ExtraDataType::kUsedMarkers;
 
 		~ExtraUsedMarkers() override;  // 00

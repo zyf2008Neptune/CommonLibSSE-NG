@@ -12,7 +12,7 @@ namespace RE
 	class Atmosphere : public SkyObject
 	{
 	public:
-		inline static auto RTTI = RTTI_Atmosphere;
+		SKYRIM_ADDR static auto RTTI = RTTI_Atmosphere;
 
 		virtual ~Atmosphere();  // 00
 

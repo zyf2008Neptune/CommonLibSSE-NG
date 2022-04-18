@@ -10,7 +10,7 @@ namespace RE
 	class ExtraPackageData : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraPackageData;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPackageData;
 		inline static auto EXTRADATATYPE = ExtraDataType::kPackageData;
 
 		~ExtraPackageData() override;  // 00

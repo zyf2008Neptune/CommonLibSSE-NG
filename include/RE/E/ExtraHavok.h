@@ -12,7 +12,7 @@ namespace RE
 	class ExtraHavok : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraHavok;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraHavok;
 		inline static auto EXTRADATATYPE = ExtraDataType::kHavok;
 
 		~ExtraHavok() override;  // 00

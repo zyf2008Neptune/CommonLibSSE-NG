@@ -9,7 +9,7 @@ namespace RE
 	class NiCollisionObject : public NiObject
 	{
 	public:
-		inline static auto RTTI = RTTI_NiCollisionObject;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiCollisionObject;
 		inline static auto Ni_RTTI = NiRTTI_NiCollisionObject;
 
 		~NiCollisionObject() override = 0;  // 00

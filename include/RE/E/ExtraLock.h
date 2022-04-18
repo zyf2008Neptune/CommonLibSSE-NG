@@ -48,7 +48,7 @@ namespace RE
 	class ExtraLock : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraLock;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLock;
 		inline static auto EXTRADATATYPE = ExtraDataType::kLock;
 
 		~ExtraLock() override;  // 00

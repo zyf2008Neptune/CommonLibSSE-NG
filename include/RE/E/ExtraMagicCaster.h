@@ -11,7 +11,7 @@ namespace RE
 		public MagicCaster   // 10
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraMagicCaster;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraMagicCaster;
 		inline static auto EXTRADATATYPE = ExtraDataType::kMagicCaster;
 
 		~ExtraMagicCaster() override;  // 00

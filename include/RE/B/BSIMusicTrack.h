@@ -5,7 +5,7 @@ namespace RE
 	class BSIMusicTrack
 	{
 	public:
-		inline static auto RTTI = RTTI_BSIMusicTrack;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSIMusicTrack;
 
 		enum class TrackType : std::uint32_t
 		{

@@ -10,7 +10,7 @@ namespace RE
 	class ExtraPromotedRef : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraPromotedRef;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPromotedRef;
 		inline static auto EXTRADATATYPE = ExtraDataType::kPromotedRef;
 
 		~ExtraPromotedRef() override;  // 00

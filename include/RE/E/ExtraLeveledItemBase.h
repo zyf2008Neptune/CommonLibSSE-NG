@@ -10,7 +10,7 @@ namespace RE
 	class ExtraLeveledItemBase : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraLeveledItemBase;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLeveledItemBase;
 		inline static auto EXTRADATATYPE = ExtraDataType::kLeveledItemBase;
 
 		virtual ~ExtraLeveledItemBase();  // 00

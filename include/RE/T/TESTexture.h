@@ -9,7 +9,7 @@ namespace RE
 	class TESTexture : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_TESTexture;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESTexture;
 
 		~TESTexture() override;  // 00
 

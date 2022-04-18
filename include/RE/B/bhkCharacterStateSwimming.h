@@ -7,7 +7,7 @@ namespace RE
 	class bhkCharacterStateSwimming : public bhkCharacterState
 	{
 	public:
-		inline static auto RTTI = RTTI_bhkCharacterStateSwimming;
+		SKYRIM_ADDR static auto RTTI = RTTI_bhkCharacterStateSwimming;
 
 		~bhkCharacterStateSwimming() override;  // 00
 

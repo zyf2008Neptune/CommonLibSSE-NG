@@ -11,7 +11,7 @@ namespace RE
 	class AbstractHeap : public IMemoryHeap
 	{
 	public:
-		inline static auto RTTI = RTTI_AbstractHeap;
+		SKYRIM_ADDR static auto RTTI = RTTI_AbstractHeap;
 
 		virtual ~AbstractHeap();  // 00
 

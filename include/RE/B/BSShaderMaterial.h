@@ -8,7 +8,7 @@ namespace RE
 	class BSShaderMaterial : public BSIntrusiveRefCounted
 	{
 	public:
-		inline static auto RTTI = RTTI_BSShaderMaterial;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSShaderMaterial;
 
 		enum class Feature
 		{

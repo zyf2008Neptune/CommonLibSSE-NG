@@ -12,7 +12,7 @@ namespace RE
 	class ExtraAnimationSequencer : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraAnimationSequencer;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAnimationSequencer;
 		inline static auto EXTRADATATYPE = ExtraDataType::kAnimationSequencer;
 
 		virtual ~ExtraAnimationSequencer();  // 00

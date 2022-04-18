@@ -10,7 +10,7 @@ namespace RE
 		public IMovementControllerRegisterInterface  // 000
 	{
 	public:
-		inline static auto RTTI = RTTI_MovementControllerAI;
+		SKYRIM_ADDR static auto RTTI = RTTI_MovementControllerAI;
 
 		~MovementControllerAI() override;  // 00
 

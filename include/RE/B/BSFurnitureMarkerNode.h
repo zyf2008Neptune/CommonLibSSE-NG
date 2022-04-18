@@ -34,7 +34,7 @@ namespace RE
 	class BSFurnitureMarkerNode : public NiExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_BSFurnitureMarkerNode;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSFurnitureMarkerNode;
 		inline static auto NiRTTI = NiRTTI_BSFurnitureMarkerNode;
 
 		BSTArray<BSFurnitureMarker> markers;  // 18

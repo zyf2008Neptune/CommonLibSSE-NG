@@ -8,7 +8,7 @@ namespace RE
 	class BSShadowLight : public BSLight
 	{
 	public:
-		inline static auto RTTI = RTTI_BSShadowLight;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSShadowLight;
 
 		struct Data
 		{

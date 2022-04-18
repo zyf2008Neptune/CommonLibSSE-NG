@@ -11,8 +11,8 @@ namespace RE
 	class BSLightingShaderMaterialLandscape : public BSLightingShaderMaterialBase
 	{
 	public:
-		inline static auto RTTI = RTTI_BSLightingShaderMaterialLandscape;
-		inline static auto VTABLE = VTABLE_BSLightingShaderMaterialLandscape;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderMaterialLandscape;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_BSLightingShaderMaterialLandscape;
 		inline static auto FEATURE = Feature::kMultiTexLandLODBlend;
 
 		~BSLightingShaderMaterialLandscape() override;  // 00

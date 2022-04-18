@@ -10,7 +10,7 @@ namespace RE
 	class ExtraLockList : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraLockList;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLockList;
 		inline static auto EXTRADATATYPE = ExtraDataType::kLockList;
 
 		~ExtraLockList() override;  // 00

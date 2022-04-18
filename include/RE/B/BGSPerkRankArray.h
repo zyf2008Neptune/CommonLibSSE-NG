@@ -27,7 +27,7 @@ namespace RE
 	class BGSPerkRankArray : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSPerkRankArray;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSPerkRankArray;
 
 		~BGSPerkRankArray() override;  // 00
 

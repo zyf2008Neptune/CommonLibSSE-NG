@@ -36,7 +36,7 @@ namespace RE
 	class NiObject : public NiRefObject
 	{
 	public:
-		inline static auto RTTI = RTTI_NiObject;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiObject;
 		inline static auto Ni_RTTI = NiRTTI_NiObject;
 
 		~NiObject() override = default;  // 00

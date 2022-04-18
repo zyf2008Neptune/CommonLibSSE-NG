@@ -7,7 +7,7 @@ namespace RE
 		class IVMDebugInterface
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__IVMDebugInterface;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__IVMDebugInterface;
 
 			virtual ~IVMDebugInterface();  // 00
 

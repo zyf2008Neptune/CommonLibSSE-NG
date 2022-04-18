@@ -14,7 +14,7 @@ namespace RE
 		public BSTEventSink<BSMusicEvent>        // 08
 	{
 	public:
-		inline static auto RTTI = RTTI_BSMusicManager;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSMusicManager;
 
 		~BSMusicManager() override;  // 00
 

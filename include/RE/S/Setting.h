@@ -7,7 +7,7 @@ namespace RE
 	class Setting
 	{
 	public:
-		inline static auto RTTI = RTTI_Setting;
+		SKYRIM_ADDR static auto RTTI = RTTI_Setting;
 
 		enum class Type
 		{

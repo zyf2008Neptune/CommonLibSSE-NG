@@ -12,7 +12,7 @@ namespace RE
 	class BGSPackageDataLocation : public BGSPackageDataPointerTemplate<IPackageDataAIWorldLocationHandle, PackageLocation /*, kPackageDataLocationTypeName*/>
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSPackageDataLocation;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSPackageDataLocation;
 
 		~BGSPackageDataLocation() override;  // 00
 

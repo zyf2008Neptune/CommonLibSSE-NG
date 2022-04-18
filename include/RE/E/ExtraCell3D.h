@@ -11,7 +11,7 @@ namespace RE
 	class ExtraCell3D : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraCell3D;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCell3D;
 		inline static auto EXTRADATATYPE = ExtraDataType::kCell3D;
 
 		~ExtraCell3D() override;  // 00

@@ -7,7 +7,7 @@ namespace RE
 	struct LookHandler : public PlayerInputHandler
 	{
 	public:
-		inline static auto RTTI = RTTI_LookHandler;
+		SKYRIM_ADDR static auto RTTI = RTTI_LookHandler;
 
 		~LookHandler() override;  // 00
 

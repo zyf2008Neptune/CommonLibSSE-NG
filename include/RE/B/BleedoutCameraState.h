@@ -12,7 +12,7 @@ namespace RE
 	class BleedoutCameraState : public ThirdPersonState
 	{
 	public:
-		inline static auto RTTI = RTTI_BleedoutCameraState;
+		SKYRIM_ADDR static auto RTTI = RTTI_BleedoutCameraState;
 
 		~BleedoutCameraState() override;  // 00
 

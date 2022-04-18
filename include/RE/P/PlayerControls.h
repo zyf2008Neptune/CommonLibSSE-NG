@@ -35,7 +35,7 @@ namespace RE
 		public BSTEventSink<TESFurnitureEvent>     // 018
 	{
 	public:
-		inline static auto RTTI = RTTI_PlayerControls;
+		SKYRIM_ADDR static auto RTTI = RTTI_PlayerControls;
 
 		PlayerControls();
 		~PlayerControls() override = default;  // 00

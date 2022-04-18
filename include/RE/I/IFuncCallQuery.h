@@ -17,7 +17,7 @@ namespace RE
 			class IFuncCallQuery : public BSIntrusiveRefCounted
 			{
 			public:
-				inline static auto RTTI = RTTI_BSScript__Internal__IFuncCallQuery;
+				SKYRIM_ADDR static auto RTTI = RTTI_BSScript__Internal__IFuncCallQuery;
 
 				enum class CallType
 				{

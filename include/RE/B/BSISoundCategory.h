@@ -5,7 +5,7 @@ namespace RE
 	class BSISoundCategory
 	{
 	public:
-		inline static auto RTTI = RTTI_BSISoundCategory;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSISoundCategory;
 
 		virtual ~BSISoundCategory();  // 00
 

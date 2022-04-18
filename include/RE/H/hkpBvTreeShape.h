@@ -11,7 +11,7 @@ namespace RE
 	class hkpBvTreeShape : public hkpShape
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpBvTreeShape;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpBvTreeShape;
 
 		enum class BvTreeType
 		{

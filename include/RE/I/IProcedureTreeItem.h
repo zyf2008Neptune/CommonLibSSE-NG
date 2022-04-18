@@ -7,7 +7,7 @@ namespace RE
 	class IProcedureTreeItem
 	{
 	public:
-		inline static auto RTTI = RTTI_IProcedureTreeItem;
+		SKYRIM_ADDR static auto RTTI = RTTI_IProcedureTreeItem;
 
 		virtual ~IProcedureTreeItem();  // 00
 

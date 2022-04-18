@@ -11,7 +11,7 @@ namespace RE
 		class IFunctionArguments
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__IFunctionArguments;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__IFunctionArguments;
 
 			IFunctionArguments() = default;
 			virtual ~IFunctionArguments() = default;  // 00

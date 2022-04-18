@@ -13,7 +13,7 @@ namespace RE
 	class BSMultiBoundNode : public BSNiNode
 	{
 	public:
-		inline static auto RTTI = RTTI_BSMultiBoundNode;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSMultiBoundNode;
 		inline static auto Ni_RTTI = NiRTTI_BSMultiBoundNode;
 
 		struct RUNTIME_DATA

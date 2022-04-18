@@ -11,7 +11,7 @@ namespace RE
 			class Request : public BSIntrusiveRefCounted
 			{
 			public:
-				inline static auto RTTI = RTTI_bgs__saveload__Request;
+				SKYRIM_ADDR static auto RTTI = RTTI_bgs__saveload__Request;
 
 				virtual ~Request();  // 00
 

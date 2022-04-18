@@ -7,7 +7,7 @@ namespace RE
 	class MouseMoveEvent : public IDEvent
 	{
 	public:
-		inline static auto RTTI = RTTI_MouseMoveEvent;
+		SKYRIM_ADDR static auto RTTI = RTTI_MouseMoveEvent;
 
 		~MouseMoveEvent() override;  // 00
 

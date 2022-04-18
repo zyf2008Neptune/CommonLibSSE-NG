@@ -8,7 +8,7 @@ namespace RE
 	class BGSPackageDataBool : public BGSNamedPackageData<IPackageData>
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSPackageDataBool;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSPackageDataBool;
 
 		~BGSPackageDataBool() override;  // 00
 

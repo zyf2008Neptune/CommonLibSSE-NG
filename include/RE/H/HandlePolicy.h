@@ -10,7 +10,7 @@ namespace RE
 		class HandlePolicy : public BSScript::IObjectHandlePolicy
 		{
 		public:
-			inline static auto RTTI = RTTI_SkyrimScript__HandlePolicy;
+			SKYRIM_ADDR static auto RTTI = RTTI_SkyrimScript__HandlePolicy;
 
 			~HandlePolicy() override;  // 00
 

@@ -9,7 +9,7 @@ namespace RE
 	class ExtraWeaponIdleSound : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraWeaponIdleSound;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraWeaponIdleSound;
 		inline static auto EXTRADATATYPE = ExtraDataType::kWeaponIdleSound;
 
 		~ExtraWeaponIdleSound() override;  // 00

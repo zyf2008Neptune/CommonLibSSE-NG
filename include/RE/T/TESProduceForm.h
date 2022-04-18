@@ -24,7 +24,7 @@ namespace RE
 	class TESProduceForm : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_TESProduceForm;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESProduceForm;
 
 		~TESProduceForm() override;  // 00
 

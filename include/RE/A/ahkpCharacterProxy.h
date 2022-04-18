@@ -7,7 +7,7 @@ namespace RE
 	class ahkpCharacterProxy : public hkpCharacterProxy
 	{
 	public:
-		inline static auto RTTI = RTTI_ahkpCharacterProxy;
+		SKYRIM_ADDR static auto RTTI = RTTI_ahkpCharacterProxy;
 
 		~ahkpCharacterProxy() override;  // 00
 

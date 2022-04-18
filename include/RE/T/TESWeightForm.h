@@ -7,7 +7,7 @@ namespace RE
 	class TESWeightForm : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_TESWeightForm;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESWeightForm;
 
 		~TESWeightForm() override;  // 00
 

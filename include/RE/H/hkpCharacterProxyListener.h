@@ -39,7 +39,7 @@ namespace RE
 	class hkpCharacterProxyListener
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpCharacterProxyListener;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpCharacterProxyListener;
 
 		virtual ~hkpCharacterProxyListener();  // 00
 

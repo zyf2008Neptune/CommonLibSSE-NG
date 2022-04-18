@@ -10,7 +10,7 @@ namespace RE
 	class GSysAllocPaged : public GSysAllocBase
 	{
 	public:
-		inline static auto RTTI{ RTTI_GSysAllocPaged };
+		SKYRIM_ADDR static auto RTTI{ RTTI_GSysAllocPaged };
 
 		struct Info
 		{

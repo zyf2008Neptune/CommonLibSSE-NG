@@ -7,7 +7,7 @@ namespace RE
 	class StandardItemData
 	{
 	public:
-		inline static auto RTTI = RTTI_StandardItemData;
+		SKYRIM_ADDR static auto RTTI = RTTI_StandardItemData;
 
 		virtual ~StandardItemData();  // 00
 

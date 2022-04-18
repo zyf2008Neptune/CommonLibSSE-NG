@@ -94,7 +94,7 @@ namespace RE
 		class InputHandler : public MenuEventHandler
 		{
 		public:
-			inline static auto RTTI = RTTI_LocalMapMenu__InputHandler;
+			SKYRIM_ADDR static auto RTTI = RTTI_LocalMapMenu__InputHandler;
 
 			~InputHandler() override;  // 00
 

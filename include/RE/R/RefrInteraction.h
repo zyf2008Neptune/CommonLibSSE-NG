@@ -8,7 +8,7 @@ namespace RE
 	class RefrInteraction : public SyncQueueObj
 	{
 	public:
-		inline static auto RTTI = RTTI_RefrInteraction;
+		SKYRIM_ADDR static auto RTTI = RTTI_RefrInteraction;
 
 		~RefrInteraction() override;  // 00
 

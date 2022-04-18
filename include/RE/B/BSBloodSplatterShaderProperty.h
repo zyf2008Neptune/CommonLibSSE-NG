@@ -12,7 +12,7 @@ namespace RE
 	class BSBloodSplatterShaderProperty : public BSShaderProperty
 	{
 	public:
-		inline static auto RTTI = RTTI_BSBloodSplatterShaderProperty;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSBloodSplatterShaderProperty;
 		inline static auto Ni_RTTI = NiRTTI_BSBloodSplatterShaderProperty;
 
 		enum : std::uint32_t

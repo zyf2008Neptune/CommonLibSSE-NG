@@ -14,7 +14,7 @@ namespace RE
 	class NiTexture : public NiObject
 	{
 	public:
-		inline static auto RTTI = RTTI_NiTexture;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiTexture;
 		inline static auto Ni_RTTI = NiRTTI_NiTexture;
 
 		class FormatPrefs

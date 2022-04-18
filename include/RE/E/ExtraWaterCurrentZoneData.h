@@ -18,7 +18,7 @@ namespace RE
 	class ExtraWaterCurrentZoneData : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraWaterCurrentZoneData;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraWaterCurrentZoneData;
 		inline static auto EXTRADATATYPE = ExtraDataType::kWaterCurrentZoneData;
 
 		virtual ~ExtraWaterCurrentZoneData();  // 00

@@ -23,7 +23,7 @@ namespace RE
 		public hkpPhantomListener   // 18
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpCharacterProxy;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpCharacterProxy;
 
 		~hkpCharacterProxy() override;  // 00
 

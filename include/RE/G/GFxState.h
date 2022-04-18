@@ -8,7 +8,7 @@ namespace RE
 	class GFxState : public GRefCountBase<GFxState, GStatGroups::kGStat_Default_Mem>
 	{
 	public:
-		inline static auto RTTI = RTTI_GFxState;
+		SKYRIM_ADDR static auto RTTI = RTTI_GFxState;
 
 		// An enumeration type defining the type of a State object, such as kRenderConfig, kFSCommandHandler, State_Log, etc. Only one State object of each type can be set on the loader or a movie.
 		enum class StateType

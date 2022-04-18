@@ -7,7 +7,7 @@ namespace RE
 	class BSAnimNote : public NiObject
 	{
 	public:
-		inline static auto RTTI = RTTI_BSAnimNote;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSAnimNote;
 		inline static auto Ni_RTTI = NiRTTI_BSAnimNote;
 
 		enum class AnimNoteType

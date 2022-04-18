@@ -22,7 +22,7 @@ namespace RE
 	class Projectile : public TESObjectREFR
 	{
 	public:
-		inline static auto RTTI = RTTI_Projectile;
+		SKYRIM_ADDR static auto RTTI = RTTI_Projectile;
 
 		struct ImpactData
 		{

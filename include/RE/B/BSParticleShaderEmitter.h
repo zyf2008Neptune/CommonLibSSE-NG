@@ -10,7 +10,7 @@ namespace RE
 	class BSParticleShaderEmitter : public NiRefObject
 	{
 	public:
-		inline static auto RTTI = RTTI_BSParticleShaderEmitter;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSParticleShaderEmitter;
 
 		enum class PARTICLE_EMITTER_TYPE
 		{

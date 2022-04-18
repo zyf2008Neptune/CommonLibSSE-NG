@@ -18,7 +18,7 @@ namespace RE
 	class TESWaterObject : public NiRefObject
 	{
 	public:
-		inline static auto RTTI = RTTI_TESWaterObject;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESWaterObject;
 
 		virtual ~TESWaterObject();  // 00
 

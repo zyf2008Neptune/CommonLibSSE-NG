@@ -9,7 +9,7 @@ namespace RE
 	class BSPCGamepadDeviceHandler : public BSIInputDevice
 	{
 	public:
-		inline static auto RTTI = RTTI_BSPCGamepadDeviceHandler;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSPCGamepadDeviceHandler;
 
 		~BSPCGamepadDeviceHandler() override;  // 00
 

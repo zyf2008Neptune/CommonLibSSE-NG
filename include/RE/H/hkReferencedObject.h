@@ -10,7 +10,7 @@ namespace RE
 	class hkReferencedObject : public hkBaseObject
 	{
 	public:
-		inline static auto RTTI = RTTI_hkReferencedObject;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkReferencedObject;
 
 		enum class LockMode
 		{

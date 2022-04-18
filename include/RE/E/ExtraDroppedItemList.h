@@ -10,7 +10,7 @@ namespace RE
 	class ExtraDroppedItemList : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraDroppedItemList;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraDroppedItemList;
 		inline static auto EXTRADATATYPE = ExtraDataType::kDroppedItemList;
 
 		virtual ~ExtraDroppedItemList();  // 00

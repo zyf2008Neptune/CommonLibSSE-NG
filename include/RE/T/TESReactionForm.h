@@ -18,7 +18,7 @@ namespace RE
 	class TESReactionForm : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_TESReactionForm;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESReactionForm;
 
 		~TESReactionForm() override;  // 00
 

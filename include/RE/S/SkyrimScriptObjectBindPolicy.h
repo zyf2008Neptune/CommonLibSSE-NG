@@ -10,7 +10,7 @@ namespace RE
 		class ObjectBindPolicy : public BSScript::ObjectBindPolicy
 		{
 		public:
-			inline static auto RTTI = RTTI_SkyrimScript__ObjectBindPolicy;
+			SKYRIM_ADDR static auto RTTI = RTTI_SkyrimScript__ObjectBindPolicy;
 
 			~ObjectBindPolicy() override;  // 00
 

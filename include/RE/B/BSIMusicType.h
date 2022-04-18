@@ -10,7 +10,7 @@ namespace RE
 	class BSIMusicType
 	{
 	public:
-		inline static auto RTTI = RTTI_BSIMusicType;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSIMusicType;
 
 		enum class MST  // FNAM
 		{

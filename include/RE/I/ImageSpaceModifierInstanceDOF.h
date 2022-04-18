@@ -39,7 +39,7 @@ namespace RE
 	class ImageSpaceModifierInstanceDOF : public ImageSpaceModifierInstanceTemp
 	{
 	public:
-		inline static auto RTTI = RTTI_ImageSpaceModifierInstanceDOF;
+		SKYRIM_ADDR static auto RTTI = RTTI_ImageSpaceModifierInstanceDOF;
 
 		enum class DepthOfFieldMode
 		{

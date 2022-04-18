@@ -7,7 +7,7 @@ namespace RE
 	class BSHandleRefObject : public NiRefObject
 	{
 	public:
-		inline static auto RTTI = RTTI_BSHandleRefObject;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSHandleRefObject;
 
 		enum
 		{

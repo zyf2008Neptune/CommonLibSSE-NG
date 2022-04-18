@@ -18,7 +18,7 @@ namespace RE
 	class ExtraPatrolRefData : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraPatrolRefData;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPatrolRefData;
 		inline static auto EXTRADATATYPE = ExtraDataType::kPatrolRefData;
 
 		virtual ~ExtraPatrolRefData();  // 00

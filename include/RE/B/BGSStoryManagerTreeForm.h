@@ -15,7 +15,7 @@ namespace RE
 	class BGSStoryManagerTreeVisitor
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSStoryManagerTreeVisitor;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSStoryManagerTreeVisitor;
 
 		enum class VisitControl
 		{
@@ -43,7 +43,7 @@ namespace RE
 	class BGSStoryManagerTreeForm : public TESForm
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSStoryManagerTreeForm;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSStoryManagerTreeForm;
 
 		~BGSStoryManagerTreeForm() override;  // 00
 

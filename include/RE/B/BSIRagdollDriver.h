@@ -7,7 +7,7 @@ namespace RE
 	class BSIRagdollDriver
 	{
 	public:
-		inline static auto RTTI = RTTI_BSIRagdollDriver;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSIRagdollDriver;
 
 		virtual ~BSIRagdollDriver();  // 00
 

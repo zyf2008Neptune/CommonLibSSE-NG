@@ -7,7 +7,7 @@ namespace RE
 	class IMovementState : public IMovementInterface
 	{
 	public:
-		inline static auto RTTI = RTTI_IMovementState;
+		SKYRIM_ADDR static auto RTTI = RTTI_IMovementState;
 
 		~IMovementState() override;  // 00
 

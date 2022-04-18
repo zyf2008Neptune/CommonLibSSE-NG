@@ -11,7 +11,7 @@ namespace RE
 	class IPackageData
 	{
 	public:
-		inline static auto RTTI = RTTI_IPackageData;
+		SKYRIM_ADDR static auto RTTI = RTTI_IPackageData;
 
 		virtual ~IPackageData();  // 00
 

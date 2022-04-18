@@ -8,7 +8,7 @@ namespace RE
 	class TESRegionDataMap : public TESRegionData
 	{
 	public:
-		inline static auto           RTTI = RTTI_TESRegionDataMap;
+		SKYRIM_ADDR static auto           RTTI = RTTI_TESRegionDataMap;
 		inline static constexpr auto TYPE = Type::kMap;
 
 		~TESRegionDataMap() override;  // 00

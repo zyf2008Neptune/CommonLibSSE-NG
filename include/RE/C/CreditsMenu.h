@@ -17,7 +17,7 @@ namespace RE
 #endif
 	{
 	public:
-		inline static auto                RTTI = RTTI_CreditsMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_CreditsMenu;
 		constexpr static std::string_view MENU_NAME = "Credits Menu";
 
 		~CreditsMenu() override;  // 00

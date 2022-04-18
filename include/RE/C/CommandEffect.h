@@ -7,8 +7,8 @@ namespace RE
 	class CommandEffect : public ActiveEffect
 	{
 	public:
-		inline static auto RTTI = RTTI_CommandEffect;
-		inline static auto VTABLE = VTABLE_CommandEffect;
+		SKYRIM_ADDR static auto RTTI = RTTI_CommandEffect;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_CommandEffect;
 
 		// override (ActiveEffect)
 		void           Unk_01(void) override;                        // 01

@@ -54,7 +54,7 @@ namespace RE
 	class TESCustomPackageData : public TESPackageData
 	{
 	public:
-		inline static auto RTTI = RTTI_TESCustomPackageData;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESCustomPackageData;
 
 		~TESCustomPackageData() override;  // 00
 

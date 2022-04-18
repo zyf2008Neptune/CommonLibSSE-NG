@@ -15,7 +15,7 @@ namespace RE
 	class NiGeometryData : public NiObject
 	{
 	public:
-		inline static auto RTTI = RTTI_NiGeometryData;
+		SKYRIM_ADDR static auto RTTI = RTTI_NiGeometryData;
 		inline static auto Ni_RTTI = NiRTTI_NiGeometryData;
 
 		enum class DataFlag

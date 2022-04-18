@@ -12,7 +12,7 @@ namespace RE
 	class TESRegionDataSound : public TESRegionData
 	{
 	public:
-		inline static auto           RTTI = RTTI_TESRegionDataSound;
+		SKYRIM_ADDR static auto           RTTI = RTTI_TESRegionDataSound;
 		inline static constexpr auto TYPE = Type::kSound;
 
 		struct Sound

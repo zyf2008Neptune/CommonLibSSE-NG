@@ -7,7 +7,7 @@ namespace RE
 	class CombatGroupDetectionListener : public DetectionListener
 	{
 	public:
-		inline static auto RTTI = RTTI_CombatGroupDetectionListener;
+		SKYRIM_ADDR static auto RTTI = RTTI_CombatGroupDetectionListener;
 
 		~CombatGroupDetectionListener() override;  // 00
 

@@ -7,7 +7,7 @@ namespace RE
 	class TESModelRDT : public TESModel
 	{
 	public:
-		inline static auto RTTI = RTTI_TESModelRDT;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESModelRDT;
 
 		~TESModelRDT() override;  // 00
 	};

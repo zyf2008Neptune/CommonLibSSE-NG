@@ -9,8 +9,8 @@ namespace RE
 	class BSStream : public NiStream
 	{
 	public:
-		inline static auto RTTI = RTTI_BSStream;
-		inline static auto VTABLE = VTABLE_BSStream;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSStream;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_BSStream;
 
 		~BSStream() override;  // 00
 

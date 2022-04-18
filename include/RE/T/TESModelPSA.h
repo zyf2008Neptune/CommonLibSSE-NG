@@ -7,7 +7,7 @@ namespace RE
 	class TESModelPSA : public TESModel
 	{
 	public:
-		inline static auto RTTI = RTTI_TESModelPSA;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESModelPSA;
 
 		~TESModelPSA() override;  // 00
 	};

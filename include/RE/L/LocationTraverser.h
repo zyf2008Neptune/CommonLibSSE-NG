@@ -9,7 +9,7 @@ namespace RE
 		class LocationTraverser
 		{
 		public:
-			inline static auto RTTI = RTTI_BSResource__LocationTraverser;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSResource__LocationTraverser;
 
 			// add
 			virtual void ProcessName(const char* a_name, Location& a_location) = 0;  // 00

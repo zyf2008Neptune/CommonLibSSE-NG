@@ -9,7 +9,7 @@ namespace RE
 	class ExtraGuardedRefData : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraGuardedRefData;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraGuardedRefData;
 		inline static auto EXTRADATATYPE = ExtraDataType::kGuardedRefData;
 
 		struct GuardInfo

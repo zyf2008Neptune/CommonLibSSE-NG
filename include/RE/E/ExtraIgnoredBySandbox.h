@@ -8,7 +8,7 @@ namespace RE
 	class ExtraIgnoredBySandbox : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraIgnoredBySandbox;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraIgnoredBySandbox;
 		inline static auto EXTRADATATYPE = ExtraDataType::kIgnoredBySandbox;
 
 		~ExtraIgnoredBySandbox() override;  // 00

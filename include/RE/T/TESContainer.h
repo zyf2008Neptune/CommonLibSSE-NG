@@ -30,7 +30,7 @@ namespace RE
 	class TESContainer : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_TESContainer;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESContainer;
 
 		~TESContainer() override;  // 00
 

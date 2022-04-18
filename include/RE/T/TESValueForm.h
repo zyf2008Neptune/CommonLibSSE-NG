@@ -7,7 +7,7 @@ namespace RE
 	class TESValueForm : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_TESValueForm;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESValueForm;
 
 		~TESValueForm() override;  // 00
 

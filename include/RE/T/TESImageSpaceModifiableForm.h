@@ -9,7 +9,7 @@ namespace RE
 	class TESImageSpaceModifiableForm : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_TESImageSpaceModifiableForm;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESImageSpaceModifiableForm;
 
 		~TESImageSpaceModifiableForm() override;  // 00
 

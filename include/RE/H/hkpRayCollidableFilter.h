@@ -9,7 +9,7 @@ namespace RE
 	class hkpRayCollidableFilter
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpRayCollidableFilter;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpRayCollidableFilter;
 
 		virtual ~hkpRayCollidableFilter();  // 00
 

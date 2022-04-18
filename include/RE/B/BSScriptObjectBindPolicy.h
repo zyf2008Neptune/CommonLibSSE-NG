@@ -15,7 +15,7 @@ namespace RE
 		class ObjectBindPolicy
 		{
 		public:
-			inline static auto RTTI = RTTI_BSScript__ObjectBindPolicy;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__ObjectBindPolicy;
 
 			virtual ~ObjectBindPolicy();  // 00
 

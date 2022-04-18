@@ -117,7 +117,7 @@ namespace RE
 	class TESAIForm : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_TESAIForm;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESAIForm;
 
 		~TESAIForm() override;  // 00
 

@@ -8,7 +8,7 @@ namespace RE
 	class BSMultiBoundOBB : public BSMultiBoundAABB
 	{
 	public:
-		inline static auto RTTI = RTTI_BSMultiBoundOBB;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSMultiBoundOBB;
 		inline static auto Ni_RTTI = NiRTTI_BSMultiBoundOBB;
 
 		~BSMultiBoundOBB() override;  // 00

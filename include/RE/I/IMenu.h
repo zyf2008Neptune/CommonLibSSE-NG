@@ -54,7 +54,7 @@ namespace RE
 	class IMenu : public FxDelegateHandler
 	{
 	public:
-		inline static auto RTTI = RTTI_IMenu;
+		SKYRIM_ADDR static auto RTTI = RTTI_IMenu;
 
 		using Context = UserEvents::INPUT_CONTEXT_ID;
 		using Flag = UI_MENU_FLAGS;

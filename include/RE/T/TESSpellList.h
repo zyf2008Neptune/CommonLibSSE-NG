@@ -12,7 +12,7 @@ namespace RE
 	class TESSpellList : BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_TESSpellList;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESSpellList;
 
 		struct SpellData  // SPLO
 		{

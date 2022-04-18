@@ -7,7 +7,7 @@ namespace RE
 	class BSKeyboardDevice : public BSInputDevice
 	{
 	public:
-		inline static auto RTTI = RTTI_BSKeyboardDevice;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSKeyboardDevice;
 
 		struct Keys
 		{

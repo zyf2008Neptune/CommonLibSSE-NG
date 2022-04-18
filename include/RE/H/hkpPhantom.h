@@ -14,7 +14,7 @@ namespace RE
 	class hkpPhantom : public hkpWorldObject
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpPhantom;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpPhantom;
 
 		~hkpPhantom() override;  // 00
 

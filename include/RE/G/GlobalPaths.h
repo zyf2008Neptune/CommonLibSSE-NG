@@ -14,7 +14,7 @@ namespace RE
 			public BSTSingletonSDM<GlobalPaths>  // 10
 		{
 		public:
-			inline static auto RTTI = RTTI_BSResource____GlobalPaths;
+			SKYRIM_ADDR static auto RTTI = RTTI_BSResource____GlobalPaths;
 
 			~GlobalPaths() override;  // 00
 

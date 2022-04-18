@@ -137,7 +137,7 @@ namespace RE
 		public BSTEventSource<BSScript::StatsEvent>            // 01A8
 	{
 	public:
-		inline static auto RTTI = RTTI_SkyrimVM;
+		SKYRIM_ADDR static auto RTTI = RTTI_SkyrimVM;
 
 		~SkyrimVM() override;  // 00
 

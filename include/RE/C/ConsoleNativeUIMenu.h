@@ -10,7 +10,7 @@ namespace RE
 	class ConsoleNativeUIMenu : public IMenu
 	{
 	public:
-		inline static auto                RTTI = RTTI_ConsoleNativeUIMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_ConsoleNativeUIMenu;
 		constexpr static std::string_view MENU_NAME = "Console Native UI Menu";
 
 		struct RUNTIME_DATA

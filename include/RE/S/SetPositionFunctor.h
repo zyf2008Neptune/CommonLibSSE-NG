@@ -16,7 +16,7 @@ namespace RE
 		class SetPositionFunctor : public DelayFunctor
 		{
 		public:
-			inline static auto RTTI = RTTI_SkyrimScript____SetPositionFunctor;
+			SKYRIM_ADDR static auto RTTI = RTTI_SkyrimScript____SetPositionFunctor;
 
 			virtual ~SetPositionFunctor();  // 00
 

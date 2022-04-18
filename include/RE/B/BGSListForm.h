@@ -9,8 +9,8 @@ namespace RE
 	class BGSListForm : public TESForm
 	{
 	public:
-		inline static auto           RTTI = RTTI_BGSListForm;
-		inline static auto           VTABLE = VTABLE_BGSListForm;
+		SKYRIM_ADDR static auto           RTTI = RTTI_BGSListForm;
+		SKYRIM_ADDR static auto           VTABLE = VTABLE_BGSListForm;
 		inline static constexpr auto FORMTYPE = FormType::FormList;
 
 		struct ChangeFlags

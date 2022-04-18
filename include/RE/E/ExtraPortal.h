@@ -11,7 +11,7 @@ namespace RE
 	class ExtraPortal : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraPortal;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPortal;
 		inline static auto EXTRADATATYPE = ExtraDataType::kPortal;
 
 		~ExtraPortal() override;  // 00

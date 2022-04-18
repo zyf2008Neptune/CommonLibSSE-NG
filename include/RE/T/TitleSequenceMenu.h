@@ -10,7 +10,7 @@ namespace RE
 	class TitleSequenceMenu : public IMenu
 	{
 	public:
-		inline static auto                RTTI = RTTI_TitleSequenceMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_TitleSequenceMenu;
 		constexpr static std::string_view MENU_NAME = "TitleSequence Menu";
 
 		~TitleSequenceMenu() override;  // 00

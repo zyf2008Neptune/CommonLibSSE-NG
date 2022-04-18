@@ -7,7 +7,7 @@ namespace RE
 	struct SneakHandler : public PlayerInputHandler
 	{
 	public:
-		inline static auto RTTI = RTTI_SneakHandler;
+		SKYRIM_ADDR static auto RTTI = RTTI_SneakHandler;
 
 		~SneakHandler() override;  // 00
 

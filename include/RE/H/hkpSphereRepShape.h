@@ -9,7 +9,7 @@ namespace RE
 	class hkpSphereRepShape : public hkpShape
 	{
 	public:
-		inline static auto RTTI = RTTI_hkpSphereRepShape;
+		SKYRIM_ADDR static auto RTTI = RTTI_hkpSphereRepShape;
 
 		virtual ~hkpSphereRepShape();  // 00
 

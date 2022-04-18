@@ -16,7 +16,7 @@ namespace RE
 		public BSTEventSink<TESQuestStageItemDoneEvent>  // 00
 	{
 	public:
-		inline static auto RTTI = RTTI_BGSStoryTeller;
+		SKYRIM_ADDR static auto RTTI = RTTI_BGSStoryTeller;
 
 		~BGSStoryTeller() override;  // 00
 

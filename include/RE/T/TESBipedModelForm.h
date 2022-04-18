@@ -11,7 +11,7 @@ namespace RE
 	class TESBipedModelForm : public BaseFormComponent
 	{
 	public:
-		inline static auto RTTI = RTTI_TESBipedModelForm;
+		SKYRIM_ADDR static auto RTTI = RTTI_TESBipedModelForm;
 
 		struct Sexes
 		{

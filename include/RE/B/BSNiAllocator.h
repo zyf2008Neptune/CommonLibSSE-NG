@@ -7,7 +7,7 @@ namespace RE
 	class BSNiAllocator : public NiAllocator
 	{
 	public:
-		inline static auto RTTI = RTTI_BSNiAllocator;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSNiAllocator;
 
 		~BSNiAllocator() override;  // 00
 

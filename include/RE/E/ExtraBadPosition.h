@@ -8,7 +8,7 @@ namespace RE
 	class ExtraBadPosition : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraBadPosition;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraBadPosition;
 		inline static auto EXTRADATATYPE = ExtraDataType::kBadPosition;
 
 		~ExtraBadPosition() override;  // 00

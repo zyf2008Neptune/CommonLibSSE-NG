@@ -9,7 +9,7 @@ namespace RE
 	class ExtraHorse : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraHorse;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraHorse;
 		inline static auto EXTRADATATYPE = ExtraDataType::kHorse;
 
 		~ExtraHorse() override;  // 00

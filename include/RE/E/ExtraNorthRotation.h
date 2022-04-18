@@ -8,8 +8,8 @@ namespace RE
 	class ExtraNorthRotation : public BSExtraData
 	{
 	public:
-		inline static auto RTTI = RTTI_ExtraNorthRotation;
-		inline static auto VTABLE = VTABLE_ExtraNorthRotation;
+		SKYRIM_ADDR static auto RTTI = RTTI_ExtraNorthRotation;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraNorthRotation;
 		inline static auto EXTRADATATYPE = ExtraDataType::kNorthRotation;
 
 		ExtraNorthRotation();

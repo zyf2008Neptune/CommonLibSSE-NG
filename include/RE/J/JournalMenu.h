@@ -25,7 +25,7 @@ namespace RE
 #endif
 	{
 	public:
-		inline static auto                RTTI = RTTI_JournalMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_JournalMenu;
 		constexpr static std::string_view MENU_NAME = "Journal Menu";
 
 		struct RUNTIME_DATA

@@ -11,8 +11,8 @@ namespace RE
 	class CombatInventoryItemMagic : public CombatInventoryItem
 	{
 	public:
-		inline static auto RTTI = RTTI_CombatInventoryItemMagic;
-		inline static auto VTABLE = VTABLE_CombatInventoryItemMagic;
+		SKYRIM_ADDR static auto RTTI = RTTI_CombatInventoryItemMagic;
+		SKYRIM_ADDR static auto VTABLE = VTABLE_CombatInventoryItemMagic;
 
 		~CombatInventoryItemMagic() override;  // 00
 

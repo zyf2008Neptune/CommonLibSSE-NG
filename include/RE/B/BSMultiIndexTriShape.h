@@ -16,7 +16,7 @@ namespace RE
 	class BSMultiIndexTriShape : public BSTriShape
 	{
 	public:
-		inline static auto RTTI = RTTI_BSMultiIndexTriShape;
+		SKYRIM_ADDR static auto RTTI = RTTI_BSMultiIndexTriShape;
 		inline static auto Ni_RTTI = NiRTTI_BSMultiIndexTriShape;
 
 		struct MULTI_INDEX_TRISHAPE_RUNTIME_DATA

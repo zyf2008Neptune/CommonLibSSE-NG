@@ -28,8 +28,8 @@ namespace RE
 #endif
 	{
 	public:
-		inline static auto                RTTI = RTTI_BookMenu;
-		inline static auto                VTABLE = VTABLE_BookMenu;
+		SKYRIM_ADDR static auto                RTTI = RTTI_BookMenu;
+		SKYRIM_ADDR static auto                VTABLE = VTABLE_BookMenu;
 		constexpr static std::string_view MENU_NAME = "Book Menu";
 
 		struct RUNTIME_DATA
