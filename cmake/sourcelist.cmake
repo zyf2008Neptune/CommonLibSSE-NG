@@ -333,10 +333,10 @@ set(SOURCES
 	include/RE/B/BSTriShape.h
 	include/RE/B/BSUIMessageData.h
 	include/RE/B/BSUIScaleformData.h
+	include/RE/B/BSVRInterface.h
 	include/RE/B/BSVirtualKeyboardDevice.h
 	include/RE/B/BSVisit.h
 	include/RE/B/BSVolumetricLightingRenderData.h
-	include/RE/B/BSVRInterface.h
 	include/RE/B/BSWin32GamepadDevice.h
 	include/RE/B/BSWin32KeyboardDevice.h
 	include/RE/B/BSWin32MouseDevice.h

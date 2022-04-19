@@ -9,8 +9,8 @@ namespace RE
 	class BGSEquipSlot : public TESForm
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_BGSEquipSlot;
-		inline static constexpr auto      VTABLE = VTABLE_BGSEquipSlot;
+		inline static constexpr auto RTTI = RTTI_BGSEquipSlot;
+		inline static constexpr auto VTABLE = VTABLE_BGSEquipSlot;
 		inline static constexpr auto FORMTYPE = FormType::EquipSlot;
 
 		enum class Flag  // DATA

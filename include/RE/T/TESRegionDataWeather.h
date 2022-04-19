@@ -10,7 +10,7 @@ namespace RE
 	class TESRegionDataWeather : public TESRegionData
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_TESRegionDataWeather;
+		inline static constexpr auto RTTI = RTTI_TESRegionDataWeather;
 		inline static constexpr auto TYPE = Type::kWeather;
 
 		~TESRegionDataWeather() override;  // 00

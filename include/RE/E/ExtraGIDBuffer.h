@@ -9,7 +9,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraGIDBuffer;
-		inline static auto      EXTRADATATYPE = ExtraDataType::kGIDBuffer;
+		inline static auto           EXTRADATATYPE = ExtraDataType::kGIDBuffer;
 
 		virtual ~ExtraGIDBuffer();  // 00
 

@@ -11,8 +11,8 @@ namespace RE
 	class TESLoadScreen : public TESForm
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_TESLoadScreen;
-		inline static constexpr auto      VTABLE = VTABLE_TESLoadScreen;
+		inline static constexpr auto RTTI = RTTI_TESLoadScreen;
+		inline static constexpr auto VTABLE = VTABLE_TESLoadScreen;
 		inline static constexpr auto FORMTYPE = FormType::LoadScreen;
 
 		struct RecordFlags

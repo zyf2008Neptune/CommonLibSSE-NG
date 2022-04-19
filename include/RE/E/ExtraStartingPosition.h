@@ -19,7 +19,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraStartingPosition;
-		inline static auto      EXTRADATATYPE = ExtraDataType::kStartingPosition;
+		inline static auto           EXTRADATATYPE = ExtraDataType::kStartingPosition;
 
 		virtual ~ExtraStartingPosition();  // 00
 

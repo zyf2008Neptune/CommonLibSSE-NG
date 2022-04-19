@@ -247,8 +247,8 @@ namespace RE
 	class TESPackage : public TESForm
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_TESPackage;
-		inline static constexpr auto      VTABLE = VTABLE_TESPackage;
+		inline static constexpr auto RTTI = RTTI_TESPackage;
+		inline static constexpr auto VTABLE = VTABLE_TESPackage;
 		inline static constexpr auto FORMTYPE = FormType::Package;
 
 		struct ChangeFlags

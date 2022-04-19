@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraPersistentCell;
-		inline static auto      EXTRADATATYPE = ExtraDataType::kPersistentCell;
+		inline static auto           EXTRADATATYPE = ExtraDataType::kPersistentCell;
 
 		virtual ~ExtraPersistentCell();  // 00
 

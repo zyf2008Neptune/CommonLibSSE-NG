@@ -41,8 +41,8 @@ namespace RE
 	class TESTopicInfo : public TESForm
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_TESTopicInfo;
-		inline static constexpr auto      VTABLE = VTABLE_TESTopicInfo;
+		inline static constexpr auto RTTI = RTTI_TESTopicInfo;
+		inline static constexpr auto VTABLE = VTABLE_TESTopicInfo;
 		inline static constexpr auto FORMTYPE = FormType::Info;
 
 		enum class FavorLevel  // CNAM

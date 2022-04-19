@@ -50,7 +50,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiAVObject;
-		inline static auto      Ni_RTTI = NiRTTI_NiAVObject;
+		inline static auto           Ni_RTTI = NiRTTI_NiAVObject;
 
 		enum class Flag
 		{

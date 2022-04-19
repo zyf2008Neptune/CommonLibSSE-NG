@@ -110,8 +110,8 @@ namespace RE
 	class TESImageSpaceModifier : public TESForm
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_TESImageSpaceModifier;
-		inline static constexpr auto      VTABLE = VTABLE_TESImageSpaceModifier;
+		inline static constexpr auto RTTI = RTTI_TESImageSpaceModifier;
+		inline static constexpr auto VTABLE = VTABLE_TESImageSpaceModifier;
 		inline static constexpr auto FORMTYPE = FormType::ImageAdapter;
 
 		struct RecordFlags

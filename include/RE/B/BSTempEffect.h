@@ -28,7 +28,7 @@ namespace RE
 	class BSTempEffect : public NiObject
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_BSTempEffect;
+		inline static constexpr auto RTTI = RTTI_BSTempEffect;
 		inline static auto           Ni_RTTI = NiRTTI_BSTempEffect;
 		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kDefault;
 

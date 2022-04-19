@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSDismemberSkinInstance;
-		inline static auto      Ni_RTTI = NiRTTI_BSDismemberSkinInstance;
+		inline static auto           Ni_RTTI = NiRTTI_BSDismemberSkinInstance;
 
 		struct Data
 		{

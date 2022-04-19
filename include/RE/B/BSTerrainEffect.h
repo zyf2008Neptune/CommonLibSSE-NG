@@ -17,7 +17,7 @@ namespace RE
 		public BSTEventSink<PositionPlayerEvent>  // 30
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_BSTerrainEffect;
+		inline static constexpr auto RTTI = RTTI_BSTerrainEffect;
 		inline static constexpr auto TYPE = TEMP_EFFECT_TYPE::kTerrain;
 
 		~BSTerrainEffect() override;  // 00

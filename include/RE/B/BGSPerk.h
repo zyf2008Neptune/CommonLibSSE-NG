@@ -30,8 +30,8 @@ namespace RE
 		public TESIcon          // 40
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_BGSPerk;
-		inline static constexpr auto      VTABLE = VTABLE_BGSPerk;
+		inline static constexpr auto RTTI = RTTI_BGSPerk;
+		inline static constexpr auto VTABLE = VTABLE_BGSPerk;
 		inline static constexpr auto FORMTYPE = FormType::Perk;
 
 		struct RecordFlags

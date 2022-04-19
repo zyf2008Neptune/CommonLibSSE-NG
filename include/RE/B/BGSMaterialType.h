@@ -11,8 +11,8 @@ namespace RE
 	class BGSMaterialType : public TESForm
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_BGSMaterialType;
-		inline static constexpr auto      VTABLE = VTABLE_BGSMaterialType;
+		inline static constexpr auto RTTI = RTTI_BGSMaterialType;
+		inline static constexpr auto VTABLE = VTABLE_BGSMaterialType;
 		inline static constexpr auto FORMTYPE = FormType::MaterialType;
 
 		enum class FLAG

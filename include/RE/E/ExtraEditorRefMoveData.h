@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraEditorRefMoveData;
-		inline static auto      EXTRADATATYPE = ExtraDataType::kEditorRefMoveData;
+		inline static auto           EXTRADATATYPE = ExtraDataType::kEditorRefMoveData;
 
 		virtual ~ExtraEditorRefMoveData();  // 00
 

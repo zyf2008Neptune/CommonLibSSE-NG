@@ -27,7 +27,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraRoomRefData;
-		inline static auto      EXTRADATATYPE = ExtraDataType::kRoomRefData;
+		inline static auto           EXTRADATATYPE = ExtraDataType::kRoomRefData;
 
 		~ExtraRoomRefData() override;  // 00
 

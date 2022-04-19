@@ -9,8 +9,8 @@ namespace RE
 	class MissileProjectile : public Projectile
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_MissileProjectile;
-		inline static constexpr auto      VTABLE = VTABLE_MissileProjectile;
+		inline static constexpr auto RTTI = RTTI_MissileProjectile;
+		inline static constexpr auto VTABLE = VTABLE_MissileProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileMissile;
 
 		struct RecordFlags

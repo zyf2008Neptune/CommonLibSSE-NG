@@ -14,7 +14,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraReferenceHandle;
 		inline static constexpr auto VTABLE = VTABLE_ExtraReferenceHandle;
-		inline static auto      EXTRADATATYPE = ExtraDataType::kReferenceHandle;
+		inline static auto           EXTRADATATYPE = ExtraDataType::kReferenceHandle;
 
 		ExtraReferenceHandle();
 		explicit ExtraReferenceHandle(ObjectRefHandle a_containerRef);

@@ -9,8 +9,8 @@ namespace RE
 	class BGSDialogueBranch : public TESForm
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_BGSDialogueBranch;
-		inline static constexpr auto      VTABLE = VTABLE_BGSDialogueBranch;
+		inline static constexpr auto RTTI = RTTI_BGSDialogueBranch;
+		inline static constexpr auto VTABLE = VTABLE_BGSDialogueBranch;
 		inline static constexpr auto FORMTYPE = FormType::DialogueBranch;
 
 		enum class Flag

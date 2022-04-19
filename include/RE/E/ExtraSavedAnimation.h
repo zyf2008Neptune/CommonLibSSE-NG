@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraSavedAnimation;
-		inline static auto      EXTRADATATYPE = ExtraDataType::kSavedAnimation;
+		inline static auto           EXTRADATATYPE = ExtraDataType::kSavedAnimation;
 
 		virtual ~ExtraSavedAnimation();  // 00
 

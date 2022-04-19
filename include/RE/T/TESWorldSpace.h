@@ -117,8 +117,8 @@ namespace RE
 		public TESModel      // 030
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_TESWorldSpace;
-		inline static constexpr auto      VTABLE = VTABLE_TESWorldSpace;
+		inline static constexpr auto RTTI = RTTI_TESWorldSpace;
+		inline static constexpr auto VTABLE = VTABLE_TESWorldSpace;
 		inline static constexpr auto FORMTYPE = FormType::WorldSpace;
 
 		enum class Flag

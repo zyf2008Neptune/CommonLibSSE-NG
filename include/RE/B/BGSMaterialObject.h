@@ -15,8 +15,8 @@ namespace RE
 		public BSMaterialObject  // 48
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_BGSMaterialObject;
-		inline static constexpr auto      VTABLE = VTABLE_BGSMaterialObject;
+		inline static constexpr auto RTTI = RTTI_BGSMaterialObject;
+		inline static constexpr auto VTABLE = VTABLE_BGSMaterialObject;
 		inline static constexpr auto FORMTYPE = FormType::MaterialObject;
 
 		struct RecordFlags

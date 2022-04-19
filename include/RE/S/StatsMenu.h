@@ -36,7 +36,7 @@ namespace RE
 #endif
 	{
 	public:
-		inline static constexpr auto           RTTI = RTTI_StatsMenu;
+		inline static constexpr auto      RTTI = RTTI_StatsMenu;
 		constexpr static std::string_view MENU_NAME = "StatsMenu";
 
 		enum

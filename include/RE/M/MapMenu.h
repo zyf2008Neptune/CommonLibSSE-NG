@@ -40,7 +40,7 @@ namespace RE
 #endif
 	{
 	public:
-		inline static constexpr auto           RTTI = RTTI_MapMenu;
+		inline static constexpr auto      RTTI = RTTI_MapMenu;
 		constexpr static std::string_view MENU_NAME = "MapMenu";
 
 		struct RUNTIME_DATA

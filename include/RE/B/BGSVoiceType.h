@@ -24,8 +24,8 @@ namespace RE
 	class BGSVoiceType : public TESForm
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_BGSVoiceType;
-		inline static constexpr auto      VTABLE = VTABLE_BGSVoiceType;
+		inline static constexpr auto RTTI = RTTI_BGSVoiceType;
+		inline static constexpr auto VTABLE = VTABLE_BGSVoiceType;
 		inline static constexpr auto FORMTYPE = FormType::VoiceType;
 
 		struct RecordFlags

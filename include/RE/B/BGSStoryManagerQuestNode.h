@@ -10,8 +10,8 @@ namespace RE
 	class BGSStoryManagerQuestNode : public BGSStoryManagerNodeBase
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_BGSStoryManagerQuestNode;
-		inline static constexpr auto      VTABLE = VTABLE_BGSStoryManagerQuestNode;
+		inline static constexpr auto RTTI = RTTI_BGSStoryManagerQuestNode;
+		inline static constexpr auto VTABLE = VTABLE_BGSStoryManagerQuestNode;
 		inline static constexpr auto FORMTYPE = FormType::StoryManagerQuestNode;
 
 		struct ChangeFlags

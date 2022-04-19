@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiLight;
-		inline static auto      Ni_RTTI = NiRTTI_NiLight;
+		inline static auto           Ni_RTTI = NiRTTI_NiLight;
 
 		struct LIGHT_RUNTIME_DATA
 		{

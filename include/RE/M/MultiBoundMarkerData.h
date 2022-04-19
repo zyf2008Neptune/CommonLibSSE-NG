@@ -9,7 +9,7 @@ namespace RE
 	class MultiBoundMarkerData : public BSExtraData
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_MultiBoundMarkerData;
+		inline static constexpr auto RTTI = RTTI_MultiBoundMarkerData;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMultiBoundMarkerData;
 
 		~MultiBoundMarkerData() override;  // 00

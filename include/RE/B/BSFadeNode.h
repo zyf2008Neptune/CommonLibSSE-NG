@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSFadeNode;
-		inline static auto      Ni_RTTI = NiRTTI_BSFadeNode;
+		inline static auto           Ni_RTTI = NiRTTI_BSFadeNode;
 
 		struct RUNTIME_DATA
 		{

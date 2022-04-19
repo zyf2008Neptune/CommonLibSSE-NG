@@ -8,8 +8,8 @@ namespace RE
 	class BGSLocationRefType : public BGSKeyword
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_BGSLocationRefType;
-		inline static constexpr auto      VTABLE = VTABLE_BGSLocationRefType;
+		inline static constexpr auto RTTI = RTTI_BGSLocationRefType;
+		inline static constexpr auto VTABLE = VTABLE_BGSLocationRefType;
 		inline static constexpr auto FORMTYPE = FormType::LocationRefType;
 
 		struct RecordFlags

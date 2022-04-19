@@ -134,8 +134,8 @@ namespace RE
 		public TESFullName  // 20
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_TESTopic;
-		inline static constexpr auto      VTABLE = VTABLE_TESTopic;
+		inline static constexpr auto RTTI = RTTI_TESTopic;
+		inline static constexpr auto VTABLE = VTABLE_TESTopic;
 		inline static constexpr auto FORMTYPE = FormType::Dialogue;
 
 		struct RecordFlags

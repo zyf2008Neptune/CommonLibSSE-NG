@@ -12,7 +12,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialMultiLayerParallax;
 		inline static constexpr auto VTABLE = VTABLE_BSLightingShaderMaterialMultiLayerParallax;
-		inline static auto      FEATURE = Feature::kMultilayerParallax;
+		inline static auto           FEATURE = Feature::kMultilayerParallax;
 
 		~BSLightingShaderMaterialMultiLayerParallax() override;  // 00
 

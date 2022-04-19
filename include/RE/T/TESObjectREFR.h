@@ -110,8 +110,8 @@ namespace RE
 		public IAnimationGraphManagerHolder          // 38
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_TESObjectREFR;
-		inline static constexpr auto      VTABLE = VTABLE_TESObjectREFR;
+		inline static constexpr auto RTTI = RTTI_TESObjectREFR;
+		inline static constexpr auto VTABLE = VTABLE_TESObjectREFR;
 		inline static constexpr auto FORMTYPE = FormType::Reference;
 
 		using Count = std::int32_t;

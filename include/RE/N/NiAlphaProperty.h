@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_NiAlphaProperty;
-		inline static auto      Ni_RTTI = NiRTTI_NiAlphaProperty;
+		inline static auto           Ni_RTTI = NiRTTI_NiAlphaProperty;
 
 		enum class AlphaFunction
 		{

@@ -14,8 +14,8 @@ namespace RE
 	class ConeProjectile : public Projectile
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_ConeProjectile;
-		inline static constexpr auto      VTABLE = VTABLE_ConeProjectile;
+		inline static constexpr auto RTTI = RTTI_ConeProjectile;
+		inline static constexpr auto VTABLE = VTABLE_ConeProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileCone;
 
 		struct RecordFlags

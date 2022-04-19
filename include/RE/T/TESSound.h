@@ -8,8 +8,8 @@ namespace RE
 	class TESSound : public TESBoundAnimObject
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_TESSound;
-		inline static constexpr auto      VTABLE = VTABLE_TESSound;
+		inline static constexpr auto RTTI = RTTI_TESSound;
+		inline static constexpr auto VTABLE = VTABLE_TESSound;
 		inline static constexpr auto FORMTYPE = FormType::Sound;
 
 		struct RecordFlags

@@ -11,7 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraEncounterZone;
-		inline static auto      EXTRADATATYPE = ExtraDataType::kEncounterZone;
+		inline static auto           EXTRADATATYPE = ExtraDataType::kEncounterZone;
 
 		~ExtraEncounterZone() override;  // 00
 

@@ -10,7 +10,7 @@ namespace RE
 	class MessageBoxMenu : public IMenu
 	{
 	public:
-		inline static constexpr auto           RTTI = RTTI_MessageBoxMenu;
+		inline static constexpr auto      RTTI = RTTI_MessageBoxMenu;
 		constexpr static std::string_view MENU_NAME = "MessageBoxMenu";
 
 		struct RUNTIME_DATA

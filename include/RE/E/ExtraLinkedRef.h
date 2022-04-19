@@ -13,7 +13,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraLinkedRef;
-		inline static auto      EXTRADATATYPE = ExtraDataType::kLinkedRef;
+		inline static auto           EXTRADATATYPE = ExtraDataType::kLinkedRef;
 
 		struct LinkedRef
 		{

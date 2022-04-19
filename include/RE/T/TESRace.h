@@ -145,8 +145,8 @@ namespace RE
 		public BGSAttackDataForm    // 088
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_TESRace;
-		inline static constexpr auto      VTABLE = VTABLE_TESRace;
+		inline static constexpr auto RTTI = RTTI_TESRace;
+		inline static constexpr auto VTABLE = VTABLE_TESRace;
 		inline static constexpr auto FORMTYPE = FormType::Race;
 
 		enum class EquipmentFlag

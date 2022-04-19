@@ -10,7 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraGuardedRefData;
-		inline static auto      EXTRADATATYPE = ExtraDataType::kGuardedRefData;
+		inline static auto           EXTRADATATYPE = ExtraDataType::kGuardedRefData;
 
 		struct GuardInfo
 		{

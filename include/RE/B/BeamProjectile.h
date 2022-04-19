@@ -15,7 +15,7 @@ namespace RE
 		public BSTEventSink<BSProceduralGeomEvent>         // 1D8
 	{
 	public:
-		inline static constexpr auto      RTTI = RTTI_BeamProjectile;
+		inline static constexpr auto RTTI = RTTI_BeamProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileBeam;
 
 		struct RecordFlags
