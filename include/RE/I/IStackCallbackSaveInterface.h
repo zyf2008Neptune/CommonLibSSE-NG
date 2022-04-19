@@ -7,7 +7,7 @@ namespace RE
 		class IStackCallbackSaveInterface
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScript__IStackCallbackSaveInterface;
+			inline static constexpr auto RTTI = RTTI_BSScriptːːIStackCallbackSaveInterface;
 
 			virtual ~IStackCallbackSaveInterface();  // 00
 

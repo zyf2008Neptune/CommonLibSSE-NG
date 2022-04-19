@@ -16,7 +16,7 @@ namespace RE
 		class DropObjectFunctor : public DelayFunctor
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_SkyrimScript____DropObjectFunctor;
+			inline static constexpr auto RTTI = RTTI_SkyrimScriptːːːːDropObjectFunctor;
 
 			~DropObjectFunctor() override;  // 00
 

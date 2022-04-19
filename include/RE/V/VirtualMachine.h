@@ -45,7 +45,7 @@ namespace RE
 				public BSTEventSource<StatsEvent>  // 0028
 			{
 			public:
-				inline static constexpr auto RTTI = RTTI_BSScript__Internal__VirtualMachine;
+				inline static constexpr auto RTTI = RTTI_BSScriptːːInternalːːVirtualMachine;
 
 				struct QueuedUnbindRefs
 				{

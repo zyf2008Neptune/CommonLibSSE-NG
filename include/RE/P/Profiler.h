@@ -11,7 +11,7 @@ namespace RE
 		class Profiler : public BSScript::IProfilePolicy
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_SkyrimScript__Profiler;
+			inline static constexpr auto RTTI = RTTI_SkyrimScriptːːProfiler;
 
 			~Profiler() override;  // 00
 

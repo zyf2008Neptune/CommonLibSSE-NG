@@ -9,7 +9,7 @@ namespace RE
 		class ZeroFunctionArguments : public IFunctionArguments
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScript__ZeroFunctionArguments;
+			inline static constexpr auto RTTI = RTTI_BSScriptːːZeroFunctionArguments;
 
 			// override (IFunctionArguments)
 			bool operator()(BSScrapArray<Variable>& a_dst) const override;  // 01

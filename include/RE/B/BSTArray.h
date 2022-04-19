@@ -14,7 +14,7 @@ namespace RE
 		class IAllocatorFunctor
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSTArrayBase__IAllocatorFunctor;
+			inline static constexpr auto RTTI = RTTI_BSTArrayBaseːːIAllocatorFunctor;
 
 			// add
 			virtual bool Allocate(std::uint32_t a_num, std::uint32_t a_elemSize) = 0;                                                                                                             // 00

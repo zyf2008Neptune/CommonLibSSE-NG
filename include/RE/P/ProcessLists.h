@@ -23,7 +23,7 @@ namespace RE
 		class GetActorsFilter
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_ProcessLists__GetActorsFilter;
+			inline static constexpr auto RTTI = RTTI_ProcessListsːːGetActorsFilter;
 
 			virtual ~GetActorsFilter();  // 00
 

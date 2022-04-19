@@ -17,7 +17,7 @@ namespace RE
 		class LinkerProcessor : public IObjectProcessor
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScript__LinkerProcessor;
+			inline static constexpr auto RTTI = RTTI_BSScriptːːLinkerProcessor;
 
 			~LinkerProcessor() override;  // 00
 

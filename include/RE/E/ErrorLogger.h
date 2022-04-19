@@ -12,7 +12,7 @@ namespace RE
 		class ErrorLogger : public BSTEventSource<LogEvent>
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScript__ErrorLogger;
+			inline static constexpr auto RTTI = RTTI_BSScriptːːErrorLogger;
 
 			enum class Severity
 			{

@@ -7,7 +7,7 @@ namespace RE
 	class ArmorRatingVisitorBase : public InventoryChanges::IItemChangeVisitor
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI___ArmorRatingVisitorBase;
+		inline static constexpr auto RTTI = RTTI_ːːArmorRatingVisitorBase;
 
 		virtual ~ArmorRatingVisitorBase();  // 00
 

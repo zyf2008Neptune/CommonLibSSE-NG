@@ -70,6 +70,7 @@ if (MSVC)
 		"${PROJECT_NAME}"
 		PRIVATE
 			/bigobj # support large object file format
+			/utf-8  # assume UTF-8 sources even without a BOM
 
 			# warnings -> errors
 			/we4715	# 'function' : not all control paths return a value

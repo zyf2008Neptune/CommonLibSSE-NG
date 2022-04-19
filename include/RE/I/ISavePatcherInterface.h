@@ -10,7 +10,7 @@ namespace RE
 		class ISavePatcherInterface
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScript__ISavePatcherInterface;
+			inline static constexpr auto RTTI = RTTI_BSScriptːːISavePatcherInterface;
 
 			virtual ~ISavePatcherInterface();  // 00
 

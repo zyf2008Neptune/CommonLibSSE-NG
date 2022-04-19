@@ -15,7 +15,7 @@ namespace RE
 		class ObjectBindPolicy
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScript__ObjectBindPolicy;
+			inline static constexpr auto RTTI = RTTI_BSScriptːːObjectBindPolicy;
 
 			virtual ~ObjectBindPolicy();  // 00
 

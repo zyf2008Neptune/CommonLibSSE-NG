@@ -12,7 +12,7 @@ namespace RE
 		struct IVMObjectBindInterface
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScript__IVMObjectBindInterface;
+			inline static constexpr auto RTTI = RTTI_BSScriptːːIVMObjectBindInterface;
 
 			virtual ~IVMObjectBindInterface();  // 00
 

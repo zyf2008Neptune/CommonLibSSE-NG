@@ -37,7 +37,7 @@ namespace RE
 		class IVirtualMachine : public BSIntrusiveRefCounted
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScript__IVirtualMachine;
+			inline static constexpr auto RTTI = RTTI_BSScriptːːIVirtualMachine;
 
 			using Severity = BSScript::ErrorLogger::Severity;
 

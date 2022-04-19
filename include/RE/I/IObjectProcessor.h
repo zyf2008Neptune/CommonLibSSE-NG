@@ -11,7 +11,7 @@ namespace RE
 		class IObjectProcessor
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScript__IObjectProcessor;
+			inline static constexpr auto RTTI = RTTI_BSScriptːːIObjectProcessor;
 
 			virtual ~IObjectProcessor();  // 00
 

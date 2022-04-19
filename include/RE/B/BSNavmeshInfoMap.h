@@ -15,7 +15,7 @@ namespace RE
 		struct IVisitor
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSNavmeshInfoMap__IVisitor;
+			inline static constexpr auto RTTI = RTTI_BSNavmeshInfoMapːːIVisitor;
 
 			virtual ~IVisitor();  // 00
 

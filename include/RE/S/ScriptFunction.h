@@ -15,7 +15,7 @@ namespace RE
 			class ScriptFunction : public IFunction
 			{
 			public:
-				inline static constexpr auto RTTI = RTTI_BSScript__Internal__ScriptFunction;
+				inline static constexpr auto RTTI = RTTI_BSScriptːːInternalːːScriptFunction;
 
 				~ScriptFunction() override;  // 00
 
