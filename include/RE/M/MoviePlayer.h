@@ -5,7 +5,7 @@ namespace RE
 	class MoviePlayer
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_MoviePlayer;
+		inline static constexpr auto RTTI = RTTI_MoviePlayer;
 
 		virtual ~MoviePlayer();  // 00
 

@@ -148,7 +148,7 @@ namespace RE
 	class BSNavmesh : public BSIntrusiveRefCounted  // NVNM
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSNavmesh;
+		inline static constexpr auto RTTI = RTTI_BSNavmesh;
 
 		virtual ~BSNavmesh();  // 00
 

@@ -11,7 +11,7 @@ namespace RE
 	class PlayerInputHandler
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_PlayerInputHandler;
+		inline static constexpr auto RTTI = RTTI_PlayerInputHandler;
 
 		virtual ~PlayerInputHandler();  // 00
 

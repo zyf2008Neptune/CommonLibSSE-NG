@@ -9,7 +9,7 @@ namespace RE
 	class hkpSingleShapeContainer : public hkpShapeContainer
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkpSingleShapeContainer;
+		inline static constexpr auto RTTI = RTTI_hkpSingleShapeContainer;
 
 		~hkpSingleShapeContainer() override;  // 00
 

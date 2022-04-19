@@ -10,8 +10,8 @@ namespace RE
 	class ExtraContainerChanges : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraContainerChanges;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraContainerChanges;
+		inline static constexpr auto RTTI = RTTI_ExtraContainerChanges;
+		inline static constexpr auto VTABLE = VTABLE_ExtraContainerChanges;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kContainerChanges;
 
 		ExtraContainerChanges();

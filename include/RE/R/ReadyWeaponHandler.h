@@ -7,7 +7,7 @@ namespace RE
 	struct ReadyWeaponHandler : public PlayerInputHandler
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ReadyWeaponHandler;
+		inline static constexpr auto RTTI = RTTI_ReadyWeaponHandler;
 
 		~ReadyWeaponHandler() override;  // 00
 

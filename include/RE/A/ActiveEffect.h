@@ -23,13 +23,13 @@ namespace RE
 	class ActiveEffect
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ActiveEffect;
+		inline static constexpr auto RTTI = RTTI_ActiveEffect;
 		inline static auto      VMTYPEID = static_cast<VMTypeID>(142);
 
 		class ForEachHitEffectVisitor
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_ActiveEffect__ForEachHitEffectVisitor;
+			inline static constexpr auto RTTI = RTTI_ActiveEffect__ForEachHitEffectVisitor;
 
 			virtual ~ForEachHitEffectVisitor();  // 00
 

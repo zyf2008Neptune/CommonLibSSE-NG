@@ -12,7 +12,7 @@ namespace RE
 		public BSReloadShaderI       // 18
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSShader;
+		inline static constexpr auto RTTI = RTTI_BSShader;
 
 		~BSShader() override;  // 00
 

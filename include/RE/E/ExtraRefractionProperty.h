@@ -8,7 +8,7 @@ namespace RE
 	class ExtraRefractionProperty : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraRefractionProperty;
+		inline static constexpr auto RTTI = RTTI_ExtraRefractionProperty;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kRefractionProperty;
 
 		~ExtraRefractionProperty() override;  // 00

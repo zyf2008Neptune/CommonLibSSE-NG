@@ -24,7 +24,7 @@ namespace RE
 #endif
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_LoadWaitSpinner;
+		inline static constexpr auto           RTTI = RTTI_LoadWaitSpinner;
 		constexpr static std::string_view MENU_NAME = "LoadWaitSpinner";
 
 		struct RUNTIME_DATA

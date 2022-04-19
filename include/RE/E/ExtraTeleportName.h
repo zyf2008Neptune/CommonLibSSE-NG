@@ -10,7 +10,7 @@ namespace RE
 	class ExtraTeleportName : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraTeleportName;
+		inline static constexpr auto RTTI = RTTI_ExtraTeleportName;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kTeleportName;
 
 		~ExtraTeleportName() override;  // 00

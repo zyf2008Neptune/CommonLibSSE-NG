@@ -11,8 +11,8 @@ namespace RE
 		public TESModelTextureSwap  // 30
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSStaticCollection;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSStaticCollection;
+		inline static constexpr auto      RTTI = RTTI_BGSStaticCollection;
+		inline static constexpr auto      VTABLE = VTABLE_BGSStaticCollection;
 		inline static constexpr auto FORMTYPE = FormType::StaticCollection;
 
 		struct RecordFlags

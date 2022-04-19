@@ -11,7 +11,7 @@ namespace RE
 	class ExtraScriptedAnimDependence : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraScriptedAnimDependence;
+		inline static constexpr auto RTTI = RTTI_ExtraScriptedAnimDependence;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kScriptedAnimDependence;
 
 		virtual ~ExtraScriptedAnimDependence();  // 00

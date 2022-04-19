@@ -8,7 +8,7 @@ namespace RE
 	class ValueModifierEffect : public ActiveEffect
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ValueModifierEffect;
+		inline static constexpr auto RTTI = RTTI_ValueModifierEffect;
 
 		// override (ActiveEffect)
 		void Unk_01(void) override;  // 01

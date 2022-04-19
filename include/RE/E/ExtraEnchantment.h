@@ -9,8 +9,8 @@ namespace RE
 	class ExtraEnchantment : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraEnchantment;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraEnchantment;
+		inline static constexpr auto RTTI = RTTI_ExtraEnchantment;
+		inline static constexpr auto VTABLE = VTABLE_ExtraEnchantment;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kEnchantment;
 
 		ExtraEnchantment();

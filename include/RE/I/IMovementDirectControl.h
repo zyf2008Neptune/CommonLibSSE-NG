@@ -7,7 +7,7 @@ namespace RE
 	class IMovementDirectControl : public IMovementInterface
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_IMovementDirectControl;
+		inline static constexpr auto RTTI = RTTI_IMovementDirectControl;
 
 		~IMovementDirectControl() override;  // 00
 

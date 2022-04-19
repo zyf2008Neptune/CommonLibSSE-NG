@@ -7,7 +7,7 @@ namespace RE
 	class ActorMover
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ActorMover;
+		inline static constexpr auto RTTI = RTTI_ActorMover;
 
 		virtual ~ActorMover();  // 00
 

@@ -11,7 +11,7 @@ namespace RE
 	class ExtraMultiBound : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraMultiBound;
+		inline static constexpr auto RTTI = RTTI_ExtraMultiBound;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kMultiBound;
 
 		~ExtraMultiBound() override;  // 00

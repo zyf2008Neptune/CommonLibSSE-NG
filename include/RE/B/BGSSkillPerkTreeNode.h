@@ -10,7 +10,7 @@ namespace RE
 	class BGSSkillPerkTreeNode
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSSkillPerkTreeNode;
+		inline static constexpr auto RTTI = RTTI_BGSSkillPerkTreeNode;
 
 		virtual ~BGSSkillPerkTreeNode();  // 00
 

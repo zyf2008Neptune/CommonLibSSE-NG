@@ -12,7 +12,7 @@ namespace RE
 	class NiObjectNET : public NiObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_NiObjectNET;
+		inline static constexpr auto RTTI = RTTI_NiObjectNET;
 		inline static auto      Ni_RTTI = NiRTTI_NiObjectNET;
 
 		~NiObjectNET() override;  // 00

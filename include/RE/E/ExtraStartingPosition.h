@@ -18,7 +18,7 @@ namespace RE
 	class ExtraStartingPosition : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraStartingPosition;
+		inline static constexpr auto RTTI = RTTI_ExtraStartingPosition;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kStartingPosition;
 
 		virtual ~ExtraStartingPosition();  // 00

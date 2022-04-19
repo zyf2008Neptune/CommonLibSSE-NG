@@ -10,8 +10,8 @@ namespace RE
 	class ExtraLocationRefType : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLocationRefType;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraLocationRefType;
+		inline static constexpr auto RTTI = RTTI_ExtraLocationRefType;
+		inline static constexpr auto VTABLE = VTABLE_ExtraLocationRefType;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kLocationRefType;
 
 		virtual ~ExtraLocationRefType();  // 00

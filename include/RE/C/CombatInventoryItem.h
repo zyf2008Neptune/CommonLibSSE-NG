@@ -32,7 +32,7 @@ namespace RE
 	class CombatInventoryItem : public CombatObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_CombatInventoryItem;
+		inline static constexpr auto RTTI = RTTI_CombatInventoryItem;
 
 		enum class TYPE
 		{

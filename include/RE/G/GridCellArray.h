@@ -10,7 +10,7 @@ namespace RE
 	class GridCellArray : public GridArray
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_GridCellArray;
+		inline static constexpr auto RTTI = RTTI_GridCellArray;
 
 		~GridCellArray() override;  // 00
 

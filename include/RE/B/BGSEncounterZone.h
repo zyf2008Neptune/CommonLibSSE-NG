@@ -42,8 +42,8 @@ namespace RE
 	class BGSEncounterZone : public TESForm
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSEncounterZone;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSEncounterZone;
+		inline static constexpr auto      RTTI = RTTI_BGSEncounterZone;
+		inline static constexpr auto      VTABLE = VTABLE_BGSEncounterZone;
 		inline static constexpr auto FORMTYPE = FormType::EncounterZone;
 
 		struct ChangeFlags

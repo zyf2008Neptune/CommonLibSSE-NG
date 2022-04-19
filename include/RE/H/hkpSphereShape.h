@@ -7,7 +7,7 @@ namespace RE
 	class hkpSphereShape : public hkpConvexShape
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkpSphereShape;
+		inline static constexpr auto RTTI = RTTI_hkpSphereShape;
 
 		~hkpSphereShape() override;  // 00
 

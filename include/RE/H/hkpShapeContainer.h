@@ -5,7 +5,7 @@ namespace RE
 	class hkpShapeContainer
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkpShapeContainer;
+		inline static constexpr auto RTTI = RTTI_hkpShapeContainer;
 
 		enum class ReferencePolicy
 		{

@@ -188,8 +188,8 @@ namespace RE
 		public TESFullName               // 028
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_TESQuest;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_TESQuest;
+		inline static constexpr auto RTTI = RTTI_TESQuest;
+		inline static constexpr auto VTABLE = VTABLE_TESQuest;
 
 		using DT = DIALOGUE_TYPE;
 		inline static constexpr auto FORMTYPE = FormType::Quest;

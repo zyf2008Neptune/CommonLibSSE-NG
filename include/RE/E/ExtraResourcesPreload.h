@@ -8,7 +8,7 @@ namespace RE
 	class ExtraResourcesPreload : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraResourcesPreload;
+		inline static constexpr auto RTTI = RTTI_ExtraResourcesPreload;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kResourcesPreload;
 
 		virtual ~ExtraResourcesPreload();  // 00

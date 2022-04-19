@@ -9,8 +9,8 @@ namespace RE
 	class TESSoulGem : public TESObjectMISC
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_TESSoulGem;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESSoulGem;
+		inline static constexpr auto      RTTI = RTTI_TESSoulGem;
+		inline static constexpr auto      VTABLE = VTABLE_TESSoulGem;
 		inline static constexpr auto FORMTYPE = FormType::SoulGem;
 
 		struct RecordFlags

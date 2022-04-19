@@ -8,7 +8,7 @@ namespace RE
 	class ExtraShouldWear : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraShouldWear;
+		inline static constexpr auto RTTI = RTTI_ExtraShouldWear;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kShouldWear;
 
 		~ExtraShouldWear() override;  // 00

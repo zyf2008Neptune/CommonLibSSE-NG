@@ -7,7 +7,7 @@ namespace RE
 	struct JumpHandler : public PlayerInputHandler
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_JumpHandler;
+		inline static constexpr auto RTTI = RTTI_JumpHandler;
 
 		~JumpHandler() override;  // 00
 

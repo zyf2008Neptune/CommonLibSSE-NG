@@ -8,8 +8,8 @@ namespace RE
 	class ExtraUniqueID : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraUniqueID;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraUniqueID;
+		inline static constexpr auto RTTI = RTTI_ExtraUniqueID;
+		inline static constexpr auto VTABLE = VTABLE_ExtraUniqueID;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kUniqueID;
 
 		ExtraUniqueID();

@@ -24,8 +24,8 @@ namespace RE
 	class BGSFootstepSet : public TESForm
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSFootstepSet;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSFootstepSet;
+		inline static constexpr auto      RTTI = RTTI_BGSFootstepSet;
+		inline static constexpr auto      VTABLE = VTABLE_BGSFootstepSet;
 		inline static constexpr auto FORMTYPE = FormType::FootstepSet;
 
 		struct RecordFlags

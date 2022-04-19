@@ -7,7 +7,7 @@ namespace RE
 	struct ShoutHandler : public PlayerInputHandler
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ShoutHandler;
+		inline static constexpr auto RTTI = RTTI_ShoutHandler;
 
 		~ShoutHandler() override;  // 00
 

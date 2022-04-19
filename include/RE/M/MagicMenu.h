@@ -14,7 +14,7 @@ namespace RE
 	class MagicMenu : public IMenu
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_MagicMenu;
+		inline static constexpr auto           RTTI = RTTI_MagicMenu;
 		constexpr static std::string_view MENU_NAME = "MagicMenu";
 
 		struct RUNTIME_DATA

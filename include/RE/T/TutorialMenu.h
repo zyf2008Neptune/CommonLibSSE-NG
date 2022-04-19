@@ -11,7 +11,7 @@ namespace RE
 	class TutorialMenu : public IMenu
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_TutorialMenu;
+		inline static constexpr auto           RTTI = RTTI_TutorialMenu;
 		constexpr static std::string_view MENU_NAME = "Tutorial Menu";
 
 		~TutorialMenu() override;  // 00

@@ -39,9 +39,9 @@ namespace RE
 		public BGSOpenCloseForm            // B0
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_TESObjectCONT;
+		inline static constexpr auto      RTTI = RTTI_TESObjectCONT;
 		inline static constexpr auto FORMTYPE = FormType::Container;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESObjectCONT;
+		inline static constexpr auto      VTABLE = VTABLE_TESObjectCONT;
 
 		struct RecordFlags
 		{

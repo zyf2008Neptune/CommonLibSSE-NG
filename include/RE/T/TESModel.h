@@ -15,8 +15,8 @@ namespace RE
 	class TESModel : public BaseFormComponent
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_TESModel;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_TESModel;
+		inline static constexpr auto RTTI = RTTI_TESModel;
+		inline static constexpr auto VTABLE = VTABLE_TESModel;
 
 		~TESModel() override;  // 00
 

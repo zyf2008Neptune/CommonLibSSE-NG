@@ -34,7 +34,7 @@ namespace RE
 	class TESForm : public BaseFormComponent
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_TESForm;
+		inline static constexpr auto      RTTI = RTTI_TESForm;
 		inline static constexpr auto FORMTYPE = FormType::None;
 
 		struct ChangeFlags

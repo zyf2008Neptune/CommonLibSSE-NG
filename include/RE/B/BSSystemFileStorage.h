@@ -7,7 +7,7 @@ namespace RE
 	class BSSystemFileStorage : public BSStorage
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSSystemFileStorage;
+		inline static constexpr auto RTTI = RTTI_BSSystemFileStorage;
 
 		struct Attributes
 		{

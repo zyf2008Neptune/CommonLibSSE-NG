@@ -11,7 +11,7 @@ namespace RE
 		class AttachLightHitEffectVisitor : public ActiveEffect::ForEachHitEffectVisitor
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI___AttachLightHitEffectVisitor;
+			inline static constexpr auto RTTI = RTTI___AttachLightHitEffectVisitor;
 
 			virtual ~AttachLightHitEffectVisitor();  // 00
 

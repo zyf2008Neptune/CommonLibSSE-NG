@@ -7,7 +7,7 @@ namespace RE
 	struct TogglePOVHandler : public HeldStateHandler
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_TogglePOVHandler;
+		inline static constexpr auto RTTI = RTTI_TogglePOVHandler;
 
 		~TogglePOVHandler() override;  // 00
 

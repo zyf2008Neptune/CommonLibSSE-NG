@@ -15,7 +15,7 @@ namespace RE
 	class IAnimationGraphManagerHolder
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_IAnimationGraphManagerHolder;
+		inline static constexpr auto RTTI = RTTI_IAnimationGraphManagerHolder;
 
 		virtual ~IAnimationGraphManagerHolder();  // 00
 

@@ -9,7 +9,7 @@ namespace RE
 	class BSParticleShaderObjectEmitter : public BSParticleShaderEmitter
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSParticleShaderObjectEmitter;
+		inline static constexpr auto RTTI = RTTI_BSParticleShaderObjectEmitter;
 
 		~BSParticleShaderObjectEmitter() override;  // 00
 

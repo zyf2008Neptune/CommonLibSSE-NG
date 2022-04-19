@@ -7,7 +7,7 @@ namespace RE
 		class IFreezeQuery
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__IFreezeQuery;
+			inline static constexpr auto RTTI = RTTI_BSScript__IFreezeQuery;
 
 			virtual ~IFreezeQuery();  // 00
 

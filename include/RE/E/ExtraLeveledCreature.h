@@ -11,7 +11,7 @@ namespace RE
 	class ExtraLeveledCreature : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLeveledCreature;
+		inline static constexpr auto RTTI = RTTI_ExtraLeveledCreature;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kLeveledCreature;
 
 		virtual ~ExtraLeveledCreature();  // 00

@@ -12,7 +12,7 @@ namespace RE
 	class hkbBindable : public hkReferencedObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkbBindable;
+		inline static constexpr auto RTTI = RTTI_hkbBindable;
 
 		~hkbBindable() override;  // 00
 

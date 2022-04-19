@@ -8,8 +8,8 @@ namespace RE
 	class ExtraCount : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCount;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraCount;
+		inline static constexpr auto RTTI = RTTI_ExtraCount;
+		inline static constexpr auto VTABLE = VTABLE_ExtraCount;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kCount;
 
 		ExtraCount();

@@ -16,8 +16,8 @@ namespace RE
 	class TESWeather : public TESForm
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_TESWeather;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESWeather;
+		inline static constexpr auto      RTTI = RTTI_TESWeather;
+		inline static constexpr auto      VTABLE = VTABLE_TESWeather;
 		inline static constexpr auto FORMTYPE = FormType::Weather;
 
 		enum

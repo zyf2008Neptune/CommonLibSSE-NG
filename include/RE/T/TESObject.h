@@ -10,7 +10,7 @@ namespace RE
 	class TESObject : public TESForm
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_TESObject;
+		inline static constexpr auto RTTI = RTTI_TESObject;
 
 		struct ChangeFlags
 		{

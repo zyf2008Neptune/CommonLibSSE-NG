@@ -8,8 +8,8 @@ namespace RE
 	class BSLightingShaderMaterialFacegenTint : public BSLightingShaderMaterialBase
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderMaterialFacegenTint;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_BSLightingShaderMaterialFacegenTint;
+		inline static constexpr auto RTTI = RTTI_BSLightingShaderMaterialFacegenTint;
+		inline static constexpr auto VTABLE = VTABLE_BSLightingShaderMaterialFacegenTint;
 		inline static auto      FEATURE = Feature::kFaceGenRGBTint;
 
 		~BSLightingShaderMaterialFacegenTint() override;  // 00

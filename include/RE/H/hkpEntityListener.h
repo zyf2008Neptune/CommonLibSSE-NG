@@ -7,7 +7,7 @@ namespace RE
 	class hkpEntityListener
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkpEntityListener;
+		inline static constexpr auto RTTI = RTTI_hkpEntityListener;
 
 		virtual ~hkpEntityListener();  // 00
 

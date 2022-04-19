@@ -9,7 +9,7 @@ namespace RE
 	class ExtraOpenCloseActivateRef : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraOpenCloseActivateRef;
+		inline static constexpr auto RTTI = RTTI_ExtraOpenCloseActivateRef;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kOpenCloseActivateRef;
 
 		virtual ~ExtraOpenCloseActivateRef();  // 00

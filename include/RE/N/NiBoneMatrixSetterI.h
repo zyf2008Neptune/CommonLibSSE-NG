@@ -5,7 +5,7 @@ namespace RE
 	class NiBoneMatrixSetterI
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_NiBoneMatrixSetterI;
+		inline static constexpr auto RTTI = RTTI_NiBoneMatrixSetterI;
 
 		virtual ~NiBoneMatrixSetterI();  // 00
 

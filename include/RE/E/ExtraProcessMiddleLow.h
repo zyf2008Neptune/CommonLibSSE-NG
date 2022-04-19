@@ -8,7 +8,7 @@ namespace RE
 	class ExtraProcessMiddleLow : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraProcessMiddleLow;
+		inline static constexpr auto RTTI = RTTI_ExtraProcessMiddleLow;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kProcessMiddleLow;
 
 		virtual ~ExtraProcessMiddleLow();  // 00

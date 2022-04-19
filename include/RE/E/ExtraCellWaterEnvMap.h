@@ -9,7 +9,7 @@ namespace RE
 	class ExtraCellWaterEnvMap : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCellWaterEnvMap;
+		inline static constexpr auto RTTI = RTTI_ExtraCellWaterEnvMap;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kCellWaterEnvMap;
 
 		virtual ~ExtraCellWaterEnvMap();  // 00

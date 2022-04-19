@@ -9,7 +9,7 @@ namespace RE
 	class BGSLocAlias : public BGSBaseAlias
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSLocAlias;
+		inline static constexpr auto RTTI = RTTI_BGSLocAlias;
 		inline static auto      VMTYPEID = static_cast<VMTypeID>(141);
 
 		~BGSLocAlias() override;  // 00

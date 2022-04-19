@@ -18,7 +18,7 @@ namespace RE
 		public BSTEventSink<BSAnimationGraphEvent>  // 60
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ActorMagicCaster;
+		inline static constexpr auto RTTI = RTTI_ActorMagicCaster;
 
 		enum class Flags
 		{

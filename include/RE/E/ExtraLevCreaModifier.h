@@ -17,7 +17,7 @@ namespace RE
 	class ExtraLevCreaModifier : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLevCreaModifier;
+		inline static constexpr auto RTTI = RTTI_ExtraLevCreaModifier;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kLevCreaModifier;
 
 		virtual ~ExtraLevCreaModifier();  // 00

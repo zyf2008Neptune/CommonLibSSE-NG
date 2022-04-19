@@ -8,7 +8,7 @@ namespace RE
 	class BSTextureSet : public NiObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSTextureSet;
+		inline static constexpr auto RTTI = RTTI_BSTextureSet;
 		inline static auto      Ni_RTTI = NiRTTI_BSTextureSet;
 
 		struct Textures

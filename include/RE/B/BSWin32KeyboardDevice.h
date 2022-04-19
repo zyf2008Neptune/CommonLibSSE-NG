@@ -7,7 +7,7 @@ namespace RE
 	class BSWin32KeyboardDevice : public BSKeyboardDevice
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSWin32KeyboardDevice;
+		inline static constexpr auto RTTI = RTTI_BSWin32KeyboardDevice;
 
 		~BSWin32KeyboardDevice() override;  // 00
 

@@ -12,7 +12,7 @@ namespace RE
 	class MessageBoxData : public IUIMessageData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_MessageBoxData;
+		inline static constexpr auto RTTI = RTTI_MessageBoxData;
 
 		~MessageBoxData() override;  // 00
 

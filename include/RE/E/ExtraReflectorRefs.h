@@ -10,7 +10,7 @@ namespace RE
 	class ExtraReflectorRefs : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraReflectorRefs;
+		inline static constexpr auto RTTI = RTTI_ExtraReflectorRefs;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kReflectorRefs;
 
 		virtual ~ExtraReflectorRefs();  // 00

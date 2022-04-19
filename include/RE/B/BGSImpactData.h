@@ -15,8 +15,8 @@ namespace RE
 		public TESModel  // 20
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSImpactData;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSImpactData;
+		inline static constexpr auto      RTTI = RTTI_BGSImpactData;
+		inline static constexpr auto      VTABLE = VTABLE_BGSImpactData;
 		inline static constexpr auto FORMTYPE = FormType::Impact;
 
 		enum class ORIENTATION

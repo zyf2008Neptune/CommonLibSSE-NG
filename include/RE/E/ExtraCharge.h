@@ -8,8 +8,8 @@ namespace RE
 	class ExtraCharge : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCharge;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraCharge;
+		inline static constexpr auto RTTI = RTTI_ExtraCharge;
+		inline static constexpr auto VTABLE = VTABLE_ExtraCharge;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kCharge;
 
 		ExtraCharge();

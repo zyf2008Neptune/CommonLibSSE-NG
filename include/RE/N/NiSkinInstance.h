@@ -13,7 +13,7 @@ namespace RE
 	class NiSkinInstance : public NiObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_NiSkinInstance;
+		inline static constexpr auto RTTI = RTTI_NiSkinInstance;
 		inline static auto      Ni_RTTI = NiRTTI_NiSkinInstance;
 
 		~NiSkinInstance() override;  // 00

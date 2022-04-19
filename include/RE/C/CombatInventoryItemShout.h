@@ -7,8 +7,8 @@ namespace RE
 	class CombatInventoryItemShout : public CombatInventoryItemMagic
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_CombatInventoryItemShout;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_CombatInventoryItemShout;
+		inline static constexpr auto RTTI = RTTI_CombatInventoryItemShout;
+		inline static constexpr auto VTABLE = VTABLE_CombatInventoryItemShout;
 
 		~CombatInventoryItemShout() override;  // 00
 

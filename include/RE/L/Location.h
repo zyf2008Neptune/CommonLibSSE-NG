@@ -16,7 +16,7 @@ namespace RE
 		class Location
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BSResource__Location;
+			inline static constexpr auto RTTI = RTTI_BSResource__Location;
 
 			Location();
 			virtual ~Location();  // 00

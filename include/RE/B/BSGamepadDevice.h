@@ -12,7 +12,7 @@ namespace RE
 		public BSTEventSource<BSGamepadEvent>  // 70
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSGamepadDevice;
+		inline static constexpr auto RTTI = RTTI_BSGamepadDevice;
 
 		~BSGamepadDevice() override;  // 00
 

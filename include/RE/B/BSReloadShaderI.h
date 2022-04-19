@@ -7,7 +7,7 @@ namespace RE
 	class BSReloadShaderI
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSReloadShaderI;
+		inline static constexpr auto RTTI = RTTI_BSReloadShaderI;
 
 		virtual void Unk_00(void) = 0;  // 00
 	};

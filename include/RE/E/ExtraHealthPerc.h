@@ -8,7 +8,7 @@ namespace RE
 	class ExtraHealthPerc : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraHealthPerc;
+		inline static constexpr auto RTTI = RTTI_ExtraHealthPerc;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kHealthPerc;
 
 		~ExtraHealthPerc() override;  // 00

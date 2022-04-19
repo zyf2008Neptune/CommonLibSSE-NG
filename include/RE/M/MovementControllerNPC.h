@@ -20,7 +20,7 @@ namespace RE
 		public IAnimationSetCallbackFunctor    // 148
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_MovementControllerNPC;
+		inline static constexpr auto RTTI = RTTI_MovementControllerNPC;
 
 		~MovementControllerNPC() override;  // 00
 

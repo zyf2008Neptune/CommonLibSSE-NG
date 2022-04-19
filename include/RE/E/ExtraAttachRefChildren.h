@@ -10,7 +10,7 @@ namespace RE
 	class ExtraAttachRefChildren : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAttachRefChildren;
+		inline static constexpr auto RTTI = RTTI_ExtraAttachRefChildren;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kAttachRefChildren;
 
 		virtual ~ExtraAttachRefChildren();  // 00

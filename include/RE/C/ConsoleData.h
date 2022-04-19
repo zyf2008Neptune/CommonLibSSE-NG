@@ -11,7 +11,7 @@ namespace RE
 	class ConsoleData : public IUIMessageData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ConsoleData;
+		inline static constexpr auto RTTI = RTTI_ConsoleData;
 
 		enum class DataType
 		{

@@ -7,8 +7,8 @@ namespace RE
 	class LoadStorageWrapper : public BSMemStorage
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_LoadStorageWrapper;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_LoadStorageWrapper;
+		inline static constexpr auto RTTI = RTTI_LoadStorageWrapper;
+		inline static constexpr auto VTABLE = VTABLE_LoadStorageWrapper;
 
 		~LoadStorageWrapper() override;  // 00
 

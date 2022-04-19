@@ -7,7 +7,7 @@ namespace RE
 	class BSPathingCell : public BSIntrusiveRefCounted
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSPathingCell;
+		inline static constexpr auto RTTI = RTTI_BSPathingCell;
 
 		virtual ~BSPathingCell();  // 00
 

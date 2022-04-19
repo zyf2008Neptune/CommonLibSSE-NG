@@ -7,7 +7,7 @@ namespace RE
 	class BSFile : public NiFile
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSFile;
+		inline static constexpr auto RTTI = RTTI_BSFile;
 
 		virtual ~BSFile();  // 00
 

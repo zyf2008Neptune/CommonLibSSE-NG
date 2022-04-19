@@ -5,7 +5,7 @@ namespace RE
 	class BSThread
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSThread;
+		inline static constexpr auto RTTI = RTTI_BSThread;
 
 		virtual ~BSThread();  // 00
 

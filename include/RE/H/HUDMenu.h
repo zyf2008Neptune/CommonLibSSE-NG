@@ -34,7 +34,7 @@ namespace RE
 #endif
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_HUDMenu;
+		inline static constexpr auto           RTTI = RTTI_HUDMenu;
 		constexpr static std::string_view MENU_NAME = "HUD Menu";
 
 		struct RUNTIME_DATA

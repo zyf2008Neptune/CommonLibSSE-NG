@@ -17,7 +17,7 @@ namespace RE
 		class LinkerProcessor : public IObjectProcessor
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__LinkerProcessor;
+			inline static constexpr auto RTTI = RTTI_BSScript__LinkerProcessor;
 
 			~LinkerProcessor() override;  // 00
 

@@ -8,7 +8,7 @@ namespace RE
 	class ExtraTimeLeft : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraTimeLeft;
+		inline static constexpr auto RTTI = RTTI_ExtraTimeLeft;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kTimeLeft;
 
 		~ExtraTimeLeft() override;  // 00

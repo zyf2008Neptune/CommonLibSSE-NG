@@ -10,7 +10,7 @@ namespace RE
 	class ImageSpaceShaderParam : public ImageSpaceEffectParam
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ImageSpaceShaderParam;
+		inline static constexpr auto RTTI = RTTI_ImageSpaceShaderParam;
 
 		~ImageSpaceShaderParam() override;  // 00
 

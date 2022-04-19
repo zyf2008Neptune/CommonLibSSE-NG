@@ -7,7 +7,7 @@ namespace RE
 	class BSAudioManagerThread : public BSThread
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSAudioManagerThread;
+		inline static constexpr auto RTTI = RTTI_BSAudioManagerThread;
 
 		~BSAudioManagerThread() override;  // 00
 

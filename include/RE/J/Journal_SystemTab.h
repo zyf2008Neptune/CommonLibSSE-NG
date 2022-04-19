@@ -18,7 +18,7 @@ namespace RE
 		public BSTEventSink<BSRemoteGamepadEvent>      // 30
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_Journal_SystemTab;
+		inline static constexpr auto RTTI = RTTI_Journal_SystemTab;
 
 		~Journal_SystemTab() override;  // 00
 

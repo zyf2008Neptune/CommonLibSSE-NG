@@ -19,7 +19,7 @@ namespace RE
 	class ExtraLight : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLight;
+		inline static constexpr auto RTTI = RTTI_ExtraLight;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kLight;
 
 		~ExtraLight() override;  // 00

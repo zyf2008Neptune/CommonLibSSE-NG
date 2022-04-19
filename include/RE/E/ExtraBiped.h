@@ -11,7 +11,7 @@ namespace RE
 	class ExtraBiped : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraBiped;
+		inline static constexpr auto RTTI = RTTI_ExtraBiped;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kBiped;
 
 		~ExtraBiped() override;  // 00

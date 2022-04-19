@@ -8,7 +8,7 @@ namespace RE
 	class BSAnimationGraphChannel : public BSIntrusiveRefCounted
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSAnimationGraphChannel;
+		inline static constexpr auto RTTI = RTTI_BSAnimationGraphChannel;
 
 		virtual ~BSAnimationGraphChannel();  // 00
 

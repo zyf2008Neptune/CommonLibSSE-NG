@@ -7,7 +7,7 @@ namespace RE
 	class bhkCharacterStateClimbing : public bhkCharacterState
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_bhkCharacterStateClimbing;
+		inline static constexpr auto RTTI = RTTI_bhkCharacterStateClimbing;
 
 		~bhkCharacterStateClimbing() override;  // 00
 

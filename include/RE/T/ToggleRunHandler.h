@@ -7,7 +7,7 @@ namespace RE
 	struct ToggleRunHandler : public PlayerInputHandler
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ToggleRunHandler;
+		inline static constexpr auto RTTI = RTTI_ToggleRunHandler;
 
 		~ToggleRunHandler() override;  // 00
 

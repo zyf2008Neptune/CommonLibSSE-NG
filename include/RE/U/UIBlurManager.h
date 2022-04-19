@@ -13,7 +13,7 @@ namespace RE
 		public BSTEventSink<DefaultObjectsReadyEvent::Event>  // 00
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_UIBlurManager;
+		inline static constexpr auto RTTI = RTTI_UIBlurManager;
 
 		~UIBlurManager() override;  // 00
 

@@ -7,7 +7,7 @@ namespace RE
 	class TESBoundAnimObject : public TESBoundObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_TESBoundAnimObject;
+		inline static constexpr auto RTTI = RTTI_TESBoundAnimObject;
 
 		~TESBoundAnimObject() override;  // 00
 

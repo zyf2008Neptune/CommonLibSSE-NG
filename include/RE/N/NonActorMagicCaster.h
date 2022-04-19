@@ -11,7 +11,7 @@ namespace RE
 	class NonActorMagicCaster : public ExtraMagicCaster
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_NonActorMagicCaster;
+		inline static constexpr auto      RTTI = RTTI_NonActorMagicCaster;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kMagicCaster;
 
 		~NonActorMagicCaster() override;  // 00

@@ -14,7 +14,7 @@ namespace RE
 	class hkbStateMachine : public hkbGenerator
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkbStateMachine;
+		inline static constexpr auto RTTI = RTTI_hkbStateMachine;
 
 		enum class StartStateMode
 		{
@@ -34,7 +34,7 @@ namespace RE
 		class StateInfo : public hkbBindable
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_hkbStateMachine__StateInfo;
+			inline static constexpr auto RTTI = RTTI_hkbStateMachine__StateInfo;
 
 			~StateInfo() override;  // 00
 
@@ -54,7 +54,7 @@ namespace RE
 		class TransitionInfoArray : public hkReferencedObject
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_hkbStateMachine__TransitionInfoArray;
+			inline static constexpr auto RTTI = RTTI_hkbStateMachine__TransitionInfoArray;
 
 			~TransitionInfoArray() override;  // 00
 

@@ -10,7 +10,7 @@ namespace RE
 	class bhkRefObject : public NiObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_bhkRefObject;
+		inline static constexpr auto RTTI = RTTI_bhkRefObject;
 		inline static auto      Ni_RTTI = NiRTTI_bhkRefObject;
 
 		~bhkRefObject() override;  // 00

@@ -11,7 +11,7 @@ namespace RE
 	class ExtraActorCause : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraActorCause;
+		inline static constexpr auto RTTI = RTTI_ExtraActorCause;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kActorCause;
 
 		virtual ~ExtraActorCause();  // 00

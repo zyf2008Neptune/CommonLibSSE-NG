@@ -7,7 +7,7 @@ namespace RE
 	class TESQualityForm : public BaseFormComponent
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_TESQualityForm;
+		inline static constexpr auto RTTI = RTTI_TESQualityForm;
 
 		enum class Quality
 		{

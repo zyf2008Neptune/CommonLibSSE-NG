@@ -9,7 +9,7 @@ namespace RE
 	class BGSIdleCollection : public BaseFormComponent
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSIdleCollection;
+		inline static constexpr auto RTTI = RTTI_BGSIdleCollection;
 
 		enum class IdleFlags
 		{

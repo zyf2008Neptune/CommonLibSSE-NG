@@ -9,7 +9,7 @@ namespace RE
 	class BGSPickupPutdownSounds : public BaseFormComponent
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSPickupPutdownSounds;
+		inline static constexpr auto RTTI = RTTI_BGSPickupPutdownSounds;
 
 		~BGSPickupPutdownSounds() override;  // 00
 

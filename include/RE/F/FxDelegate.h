@@ -14,7 +14,7 @@ namespace RE
 	class FxDelegate : public GFxExternalInterface
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_FxDelegate;
+		inline static constexpr auto RTTI = RTTI_FxDelegate;
 
 		struct CallbackDefn
 		{

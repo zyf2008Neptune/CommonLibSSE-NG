@@ -11,7 +11,7 @@ namespace RE
 	class ExtraModelSwap : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraModelSwap;
+		inline static constexpr auto RTTI = RTTI_ExtraModelSwap;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kModelSwap;
 
 		virtual ~ExtraModelSwap();  // 00

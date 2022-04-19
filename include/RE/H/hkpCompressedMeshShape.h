@@ -15,7 +15,7 @@ namespace RE
 	class hkpCompressedMeshShape : public hkpShapeCollection
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkpCompressedMeshShape;
+		inline static constexpr auto RTTI = RTTI_hkpCompressedMeshShape;
 
 		enum class MaterialType
 		{

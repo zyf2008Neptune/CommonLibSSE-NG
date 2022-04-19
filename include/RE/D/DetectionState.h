@@ -8,7 +8,7 @@ namespace RE
 	class DetectionState : public NiRefObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_DetectionState;
+		inline static constexpr auto RTTI = RTTI_DetectionState;
 
 		~DetectionState() override;  // 00
 

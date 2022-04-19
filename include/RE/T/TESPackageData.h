@@ -9,7 +9,7 @@ namespace RE
 	class TESPackageData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_TESPackageData;
+		inline static constexpr auto RTTI = RTTI_TESPackageData;
 
 		virtual ~TESPackageData();  // 00
 

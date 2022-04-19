@@ -10,7 +10,7 @@ namespace RE
 	class BGSSceneActionPackage : public BGSSceneAction
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSSceneActionPackage;
+		inline static constexpr auto      RTTI = RTTI_BGSSceneActionPackage;
 		inline static constexpr auto TYPE = Type::kPackage;
 
 		~BGSSceneActionPackage() override;  // 00

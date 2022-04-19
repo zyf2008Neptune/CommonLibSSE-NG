@@ -5,7 +5,7 @@ namespace RE
 	class BSIReverbType
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSIReverbType;
+		inline static constexpr auto RTTI = RTTI_BSIReverbType;
 
 		// add
 		[[nodiscard]] virtual std::int32_t DoGetRoomLevel() const = 0;        // 00

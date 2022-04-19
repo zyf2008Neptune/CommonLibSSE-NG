@@ -9,7 +9,7 @@ namespace RE
 	class BSUIMessageData : public IUIMessageData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSUIMessageData;
+		inline static constexpr auto RTTI = RTTI_BSUIMessageData;
 
 		union Data
 		{

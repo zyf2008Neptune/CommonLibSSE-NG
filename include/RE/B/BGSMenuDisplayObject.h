@@ -9,7 +9,7 @@ namespace RE
 	class BGSMenuDisplayObject : public BaseFormComponent
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSMenuDisplayObject;
+		inline static constexpr auto RTTI = RTTI_BGSMenuDisplayObject;
 
 		~BGSMenuDisplayObject() override;  // 00
 

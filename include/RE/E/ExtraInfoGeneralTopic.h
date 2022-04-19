@@ -8,7 +8,7 @@ namespace RE
 	class ExtraInfoGeneralTopic : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraInfoGeneralTopic;
+		inline static constexpr auto RTTI = RTTI_ExtraInfoGeneralTopic;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kInfoGeneralTopic;
 
 		struct Data

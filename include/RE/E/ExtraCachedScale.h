@@ -8,7 +8,7 @@ namespace RE
 	class ExtraCachedScale : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCachedScale;
+		inline static constexpr auto RTTI = RTTI_ExtraCachedScale;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kCachedScale;
 
 		~ExtraCachedScale() override;  // 00

@@ -21,8 +21,8 @@ namespace RE
 	class ExtraAliasInstanceArray : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAliasInstanceArray;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraAliasInstanceArray;
+		inline static constexpr auto RTTI = RTTI_ExtraAliasInstanceArray;
+		inline static constexpr auto VTABLE = VTABLE_ExtraAliasInstanceArray;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kAliasInstanceArray;
 
 		ExtraAliasInstanceArray();

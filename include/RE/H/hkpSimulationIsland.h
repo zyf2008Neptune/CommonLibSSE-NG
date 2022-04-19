@@ -15,7 +15,7 @@ namespace RE
 	class hkpSimulationIsland : public hkpConstraintOwner
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkpSimulationIsland;
+		inline static constexpr auto RTTI = RTTI_hkpSimulationIsland;
 
 		~hkpSimulationIsland() override;  // 00
 

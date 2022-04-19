@@ -14,7 +14,7 @@ namespace RE
 	class PlayerCameraTransitionState : public TESCameraState
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_PlayerCameraTransitionState;
+		inline static constexpr auto RTTI = RTTI_PlayerCameraTransitionState;
 
 		virtual ~PlayerCameraTransitionState();  // 00
 

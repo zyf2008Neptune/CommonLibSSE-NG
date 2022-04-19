@@ -7,7 +7,7 @@ namespace RE
 	class PathingCell : public BSPathingCell
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_PathingCell;
+		inline static constexpr auto RTTI = RTTI_PathingCell;
 
 		virtual ~PathingCell();  // 00
 

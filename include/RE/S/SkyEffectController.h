@@ -7,7 +7,7 @@ namespace RE
 	class SkyEffectController : public ReferenceEffectController
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_SkyEffectController;
+		inline static constexpr auto RTTI = RTTI_SkyEffectController;
 
 		~SkyEffectController() override;  // 00
 

@@ -5,7 +5,7 @@ namespace RE
 	class IPostAnimationChannelUpdateFunctor
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_IPostAnimationChannelUpdateFunctor;
+		inline static constexpr auto RTTI = RTTI_IPostAnimationChannelUpdateFunctor;
 
 		virtual ~IPostAnimationChannelUpdateFunctor();  // 00
 

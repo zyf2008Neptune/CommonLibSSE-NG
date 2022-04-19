@@ -13,7 +13,7 @@ namespace RE
 	class Sun : public SkyObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_Sun;
+		inline static constexpr auto RTTI = RTTI_Sun;
 
 		~Sun() override;  // 00
 

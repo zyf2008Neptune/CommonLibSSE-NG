@@ -7,7 +7,7 @@ namespace RE
 	class GRefCountImpl : GRefCountImplCore
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_GRefCountImpl;
+		inline static constexpr auto RTTI = RTTI_GRefCountImpl;
 
 		~GRefCountImpl() override = default;  // 00
 

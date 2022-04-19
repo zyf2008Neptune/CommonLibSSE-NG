@@ -15,7 +15,7 @@ namespace RE
 	class ShadowSceneNode : NiNode
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ShadowSceneNode;
+		inline static constexpr auto RTTI = RTTI_ShadowSceneNode;
 		inline static auto      Ni_RTTI = NiRTTI_ShadowSceneNode;
 
 		struct LIGHT_CREATE_PARAMS

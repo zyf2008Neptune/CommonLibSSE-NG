@@ -15,7 +15,7 @@ namespace RE
 	class ExtraCollisionData : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCollisionData;
+		inline static constexpr auto RTTI = RTTI_ExtraCollisionData;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kCollisionData;
 
 		~ExtraCollisionData() override;  // 00

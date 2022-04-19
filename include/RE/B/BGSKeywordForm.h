@@ -9,7 +9,7 @@ namespace RE
 	class BGSKeywordForm : public BaseFormComponent
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSKeywordForm;
+		inline static constexpr auto RTTI = RTTI_BGSKeywordForm;
 
 		~BGSKeywordForm() override;  // 00
 

@@ -9,7 +9,7 @@ namespace RE
 	class ExtraActivateLoopSound : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraActivateLoopSound;
+		inline static constexpr auto RTTI = RTTI_ExtraActivateLoopSound;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kActivateLoopSound;
 
 		virtual ~ExtraActivateLoopSound();  // 00

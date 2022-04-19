@@ -19,7 +19,7 @@ namespace RE
 	class BGSPerkEntry
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSPerkEntry;
+		inline static constexpr auto RTTI = RTTI_BGSPerkEntry;
 
 		using EntryPoint = BGSEntryPoint::ENTRY_POINT;
 

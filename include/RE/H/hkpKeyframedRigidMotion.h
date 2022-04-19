@@ -9,7 +9,7 @@ namespace RE
 	class hkpKeyframedRigidMotion : public hkpMotion
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkpKeyframedRigidMotion;
+		inline static constexpr auto RTTI = RTTI_hkpKeyframedRigidMotion;
 
 		~hkpKeyframedRigidMotion() override;  // 00
 
@@ -39,7 +39,7 @@ namespace RE
 	class hkpMaxSizeMotion : public hkpKeyframedRigidMotion
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkpMaxSizeMotion;
+		inline static constexpr auto RTTI = RTTI_hkpMaxSizeMotion;
 	};
 	static_assert(sizeof(hkpMaxSizeMotion) == 0x140);
 }

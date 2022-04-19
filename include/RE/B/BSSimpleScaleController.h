@@ -7,7 +7,7 @@ namespace RE
 	class BSSimpleScaleController : public NiTimeController
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSSimpleScaleController;
+		inline static constexpr auto RTTI = RTTI_BSSimpleScaleController;
 		inline static auto      Ni_RTTI = NiRTTI_BSSimpleScaleController;
 
 		~BSSimpleScaleController() override;  // 00

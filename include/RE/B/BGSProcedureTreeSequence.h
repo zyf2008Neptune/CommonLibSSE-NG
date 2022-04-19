@@ -8,7 +8,7 @@ namespace RE
 	class BGSProcedureTreeSequence : public BGSTypedItem<BGSProcedureTreeSequence, BGSProcedureTreeBranch>
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSProcedureTreeSequence;
+		inline static constexpr auto RTTI = RTTI_BGSProcedureTreeSequence;
 
 		~BGSProcedureTreeSequence() override;  // 00
 

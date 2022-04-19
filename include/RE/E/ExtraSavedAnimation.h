@@ -9,7 +9,7 @@ namespace RE
 	class ExtraSavedAnimation : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraSavedAnimation;
+		inline static constexpr auto RTTI = RTTI_ExtraSavedAnimation;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kSavedAnimation;
 
 		virtual ~ExtraSavedAnimation();  // 00

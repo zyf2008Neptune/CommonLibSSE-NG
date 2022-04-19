@@ -18,8 +18,8 @@ namespace RE
 		public BGSPickupPutdownSounds  // 78
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSNote;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSNote;
+		inline static constexpr auto      RTTI = RTTI_BGSNote;
+		inline static constexpr auto      VTABLE = VTABLE_BGSNote;
 		inline static constexpr auto FORMTYPE = FormType::Note;
 
 		struct ChangeFlags

@@ -9,7 +9,7 @@ namespace RE
 	class MapInputHandler : public MenuEventHandler
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_MapInputHandler;
+		inline static constexpr auto RTTI = RTTI_MapInputHandler;
 
 		virtual ~MapInputHandler();  // 00
 

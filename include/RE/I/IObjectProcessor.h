@@ -11,7 +11,7 @@ namespace RE
 		class IObjectProcessor
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__IObjectProcessor;
+			inline static constexpr auto RTTI = RTTI_BSScript__IObjectProcessor;
 
 			virtual ~IObjectProcessor();  // 00
 

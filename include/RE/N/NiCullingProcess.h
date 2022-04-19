@@ -33,7 +33,7 @@ namespace RE
 	class NiCullingProcess
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_NiCullingProcess;
+		inline static constexpr auto RTTI = RTTI_NiCullingProcess;
 		inline static auto      Ni_RTTI = NiRTTI_NiCullingProcess;
 
 		// add

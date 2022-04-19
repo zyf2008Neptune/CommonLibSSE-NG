@@ -12,7 +12,7 @@ namespace RE
 	class Clouds : public SkyObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_Clouds;
+		inline static constexpr auto RTTI = RTTI_Clouds;
 
 		enum
 		{

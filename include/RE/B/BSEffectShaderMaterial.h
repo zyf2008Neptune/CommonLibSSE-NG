@@ -11,7 +11,7 @@ namespace RE
 	class BSEffectShaderMaterial : public BSShaderMaterial
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSEffectShaderMaterial;
+		inline static constexpr auto RTTI = RTTI_BSEffectShaderMaterial;
 
 		~BSEffectShaderMaterial() override;  // 00
 

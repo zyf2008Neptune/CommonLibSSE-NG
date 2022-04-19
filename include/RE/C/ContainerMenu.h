@@ -16,7 +16,7 @@ namespace RE
 	class ContainerMenu : public IMenu
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_ContainerMenu;
+		inline static constexpr auto           RTTI = RTTI_ContainerMenu;
 		constexpr static std::string_view MENU_NAME = "ContainerMenu";
 
 		enum class ContainerMode : std::uint32_t

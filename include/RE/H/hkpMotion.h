@@ -15,7 +15,7 @@ namespace RE
 	class hkpMotion : public hkReferencedObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkpMotion;
+		inline static constexpr auto RTTI = RTTI_hkpMotion;
 
 		enum
 		{

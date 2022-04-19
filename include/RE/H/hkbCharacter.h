@@ -15,7 +15,7 @@ namespace RE
 	class hkbCharacter : public hkReferencedObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkbCharacter;
+		inline static constexpr auto RTTI = RTTI_hkbCharacter;
 
 		~hkbCharacter() override;  // 00
 

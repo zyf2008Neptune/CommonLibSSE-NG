@@ -11,7 +11,7 @@ namespace RE
 	class ActiveEffectReferenceEffectController : public ReferenceEffectController
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ActiveEffectReferenceEffectController;
+		inline static constexpr auto RTTI = RTTI_ActiveEffectReferenceEffectController;
 
 		virtual ~ActiveEffectReferenceEffectController();  // 00
 

@@ -22,7 +22,7 @@ namespace RE
 #endif
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_FavoritesMenu;
+		inline static constexpr auto           RTTI = RTTI_FavoritesMenu;
 		constexpr static std::string_view MENU_NAME = "FavoritesMenu";
 
 		struct Entry

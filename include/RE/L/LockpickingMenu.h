@@ -38,7 +38,7 @@ namespace RE
 #endif
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_LockpickingMenu;
+		inline static constexpr auto           RTTI = RTTI_LockpickingMenu;
 		constexpr static std::string_view MENU_NAME = "Lockpicking Menu";
 
 		struct RUNTIME_DATA

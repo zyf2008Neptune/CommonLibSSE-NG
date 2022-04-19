@@ -11,7 +11,7 @@ namespace RE
 	class ExtraLargeRefOwnerCells : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLargeRefOwnerCells;
+		inline static constexpr auto RTTI = RTTI_ExtraLargeRefOwnerCells;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kLargeRefOwnerCells;
 
 		virtual ~ExtraLargeRefOwnerCells();  // 00

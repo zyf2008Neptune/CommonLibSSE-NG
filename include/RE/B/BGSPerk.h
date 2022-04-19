@@ -30,8 +30,8 @@ namespace RE
 		public TESIcon          // 40
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSPerk;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSPerk;
+		inline static constexpr auto      RTTI = RTTI_BGSPerk;
+		inline static constexpr auto      VTABLE = VTABLE_BGSPerk;
 		inline static constexpr auto FORMTYPE = FormType::Perk;
 
 		struct RecordFlags
@@ -47,7 +47,7 @@ namespace RE
 		class FindPerkInRanksVisitor : public PerkRankVisitor
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BGSPerk__FindPerkInRanksVisitor;
+			inline static constexpr auto RTTI = RTTI_BGSPerk__FindPerkInRanksVisitor;
 
 			// override (PerkRankVisitor)
 			bool operator()(const PerkRankData* a_entry) override;  // 00
@@ -57,7 +57,7 @@ namespace RE
 		class ApplyPerksVisitor : public PerkRankVisitor
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BGSPerk__ApplyPerksVisitor;
+			inline static constexpr auto RTTI = RTTI_BGSPerk__ApplyPerksVisitor;
 
 			// override (PerkRankVisitor)
 			bool operator()(const PerkRankData* a_entry) override;  // 00
@@ -67,7 +67,7 @@ namespace RE
 		class AddPerkVisitor : public PerkRankVisitor
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BGSPerk__AddPerkVisitor;
+			inline static constexpr auto RTTI = RTTI_BGSPerk__AddPerkVisitor;
 
 			// override (PerkRankVisitor)
 			bool operator()(const PerkRankData* a_entry) override;  // 00

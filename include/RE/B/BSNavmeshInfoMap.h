@@ -10,12 +10,12 @@ namespace RE
 	class BSNavmeshInfoMap : public BSTSingletonExplicit<BSNavmeshInfoMap>
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSNavmeshInfoMap;
+		inline static constexpr auto RTTI = RTTI_BSNavmeshInfoMap;
 
 		struct IVisitor
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BSNavmeshInfoMap__IVisitor;
+			inline static constexpr auto RTTI = RTTI_BSNavmeshInfoMap__IVisitor;
 
 			virtual ~IVisitor();  // 00
 

@@ -15,7 +15,7 @@ namespace RE
 	class ExtraPortalRefData : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPortalRefData;
+		inline static constexpr auto RTTI = RTTI_ExtraPortalRefData;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kPortalRefData;
 
 		virtual ~ExtraPortalRefData();  // 00

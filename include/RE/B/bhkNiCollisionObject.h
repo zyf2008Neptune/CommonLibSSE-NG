@@ -10,7 +10,7 @@ namespace RE
 	class bhkNiCollisionObject : public NiCollisionObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_bhkNiCollisionObject;
+		inline static constexpr auto RTTI = RTTI_bhkNiCollisionObject;
 		inline static auto      Ni_RTTI = NiRTTI_bhkNiCollisionObject;
 
 		enum class Flag

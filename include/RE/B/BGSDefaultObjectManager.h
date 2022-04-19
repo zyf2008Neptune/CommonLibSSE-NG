@@ -987,8 +987,8 @@ namespace RE
 		public BSTSingletonImplicit<BGSDefaultObjectManager>  // 020
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSDefaultObjectManager;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_BGSDefaultObjectManager;
+		inline static constexpr auto RTTI = RTTI_BGSDefaultObjectManager;
+		inline static constexpr auto VTABLE = VTABLE_BGSDefaultObjectManager;
 
 		using DefaultObject = DEFAULT_OBJECT;
 		inline static constexpr auto FORMTYPE = FormType::DefaultObject;

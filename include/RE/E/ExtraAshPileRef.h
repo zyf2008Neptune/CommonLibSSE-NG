@@ -9,8 +9,8 @@ namespace RE
 	class ExtraAshPileRef : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAshPileRef;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraAshPileRef;
+		inline static constexpr auto RTTI = RTTI_ExtraAshPileRef;
+		inline static constexpr auto VTABLE = VTABLE_ExtraAshPileRef;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kAshPileRef;
 
 		ExtraAshPileRef();

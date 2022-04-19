@@ -10,7 +10,7 @@ namespace RE
 	class ExtraCellImageSpace : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCellImageSpace;
+		inline static constexpr auto RTTI = RTTI_ExtraCellImageSpace;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kCellImageSpace;
 
 		virtual ~ExtraCellImageSpace();  // 00

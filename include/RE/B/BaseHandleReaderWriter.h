@@ -7,8 +7,8 @@ namespace RE::SkyrimScript
 	class BaseHandleReaderWriter : public RE::BSScript::IHandleReaderWriter
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_SkyrimScript__BaseHandleReaderWriter;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_SkyrimScript__BaseHandleReaderWriter;
+		inline static constexpr auto RTTI = RTTI_SkyrimScript__BaseHandleReaderWriter;
+		inline static constexpr auto VTABLE = VTABLE_SkyrimScript__BaseHandleReaderWriter;
 
 		~BaseHandleReaderWriter() override;  // 0
 	};

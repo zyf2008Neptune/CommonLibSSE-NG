@@ -8,7 +8,7 @@ namespace RE
 	class ExtraPatrolRefInUseData : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraPatrolRefInUseData;
+		inline static constexpr auto RTTI = RTTI_ExtraPatrolRefInUseData;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kPatrolRefInUseData;
 
 		virtual ~ExtraPatrolRefInUseData();  // 00

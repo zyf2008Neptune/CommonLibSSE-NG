@@ -7,7 +7,7 @@ namespace RE
 	class IMovementSelectIdle : public IMovementInterface
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_IMovementSelectIdle;
+		inline static constexpr auto RTTI = RTTI_IMovementSelectIdle;
 
 		~IMovementSelectIdle() override;  // 00
 

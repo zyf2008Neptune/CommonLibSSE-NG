@@ -7,7 +7,7 @@ namespace RE
 	class SyncQueueObj : public BSIntrusiveRefCounted
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_SyncQueueObj;
+		inline static constexpr auto RTTI = RTTI_SyncQueueObj;
 
 		virtual ~SyncQueueObj();  // 00
 

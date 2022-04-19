@@ -7,7 +7,7 @@ namespace RE
 	struct AutoMoveHandler : public PlayerInputHandler
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_AutoMoveHandler;
+		inline static constexpr auto RTTI = RTTI_AutoMoveHandler;
 
 		~AutoMoveHandler() override;  // 00
 

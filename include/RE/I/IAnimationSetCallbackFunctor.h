@@ -5,7 +5,7 @@ namespace RE
 	class IAnimationSetCallbackFunctor
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_IAnimationSetCallbackFunctor;
+		inline static constexpr auto RTTI = RTTI_IAnimationSetCallbackFunctor;
 
 		virtual ~IAnimationSetCallbackFunctor();  // 00
 

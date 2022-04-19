@@ -34,8 +34,8 @@ namespace RE
 	class TESIdleForm : public TESForm
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_TESIdleForm;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESIdleForm;
+		inline static constexpr auto      RTTI = RTTI_TESIdleForm;
+		inline static constexpr auto      VTABLE = VTABLE_TESIdleForm;
 		inline static constexpr auto FORMTYPE = FormType::Idle;
 
 		struct RecordFlags

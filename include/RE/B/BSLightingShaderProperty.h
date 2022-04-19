@@ -9,7 +9,7 @@ namespace RE
 	class BSLightingShaderProperty : public BSShaderProperty
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSLightingShaderProperty;
+		inline static constexpr auto RTTI = RTTI_BSLightingShaderProperty;
 		inline static auto      Ni_RTTI = NiRTTI_BSLightingShaderProperty;
 
 		struct Data

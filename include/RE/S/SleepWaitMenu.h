@@ -12,7 +12,7 @@ namespace RE
 	class SleepWaitMenu : public IMenu
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_SleepWaitMenu;
+		inline static constexpr auto           RTTI = RTTI_SleepWaitMenu;
 		constexpr static std::string_view MENU_NAME = "Sleep/Wait Menu";
 
 		struct RUNTIME_DATA

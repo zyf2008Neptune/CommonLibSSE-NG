@@ -8,7 +8,7 @@ namespace RE
 	class ExtraFavorCost : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraFavorCost;
+		inline static constexpr auto RTTI = RTTI_ExtraFavorCost;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kFavorCost;
 
 		~ExtraFavorCost() override;  // 00

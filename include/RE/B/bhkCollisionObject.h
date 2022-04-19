@@ -7,7 +7,7 @@ namespace RE
 	class bhkCollisionObject : public bhkNiCollisionObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_bhkCollisionObject;
+		inline static constexpr auto RTTI = RTTI_bhkCollisionObject;
 		inline static auto      Ni_RTTI = NiRTTI_bhkCollisionObject;
 
 		~bhkCollisionObject() override;  // 00

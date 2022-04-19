@@ -7,7 +7,7 @@ namespace RE
 	class SummonCreatureEffect : public ActiveEffect
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_SummonCreatureEffect;
+		inline static constexpr auto RTTI = RTTI_SummonCreatureEffect;
 
 		// override (ActiveEffect)
 		void Unk_04(void) override;                        // 04

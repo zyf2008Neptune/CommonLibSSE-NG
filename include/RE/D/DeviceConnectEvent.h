@@ -7,7 +7,7 @@ namespace RE
 	class DeviceConnectEvent : public InputEvent
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_DeviceConnectEvent;
+		inline static constexpr auto RTTI = RTTI_DeviceConnectEvent;
 
 		~DeviceConnectEvent() override;  // 00
 

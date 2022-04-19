@@ -8,7 +8,7 @@ namespace RE
 	class BGSEquipType : public BaseFormComponent  // EQUP
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSEquipType;
+		inline static constexpr auto RTTI = RTTI_BGSEquipType;
 
 		enum class EQUIPPED_ITEM_TYPE
 		{

@@ -9,7 +9,7 @@ namespace RE
 	class hkpCachingShapePhantom : public hkpShapePhantom
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkpCachingShapePhantom;
+		inline static constexpr auto RTTI = RTTI_hkpCachingShapePhantom;
 
 		class OrderByUid
 		{

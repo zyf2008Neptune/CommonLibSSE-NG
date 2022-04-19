@@ -7,7 +7,7 @@ namespace RE
 	class BSVirtualKeyboardDevice : public BSKeyboardDevice
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSVirtualKeyboardDevice;
+		inline static constexpr auto RTTI = RTTI_BSVirtualKeyboardDevice;
 
 		~BSVirtualKeyboardDevice() override;  // 00
 

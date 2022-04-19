@@ -13,8 +13,8 @@ namespace RE
 		public BSISoundCategory  // 30
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSSoundCategory;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSSoundCategory;
+		inline static constexpr auto      RTTI = RTTI_BGSSoundCategory;
+		inline static constexpr auto      VTABLE = VTABLE_BGSSoundCategory;
 		inline static constexpr auto FORMTYPE = FormType::SoundCategory;
 
 		enum class Flag  // FNAM

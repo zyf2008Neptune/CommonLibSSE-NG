@@ -7,7 +7,7 @@ namespace RE
 	class TESRegionData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_TESRegionData;
+		inline static constexpr auto RTTI = RTTI_TESRegionData;
 
 		enum class Type
 		{

@@ -5,7 +5,7 @@ namespace RE
 	class IUIMessageData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_IUIMessageData;
+		inline static constexpr auto RTTI = RTTI_IUIMessageData;
 
 		virtual ~IUIMessageData() = default;  // 00
 

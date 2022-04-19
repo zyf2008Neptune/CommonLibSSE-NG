@@ -9,7 +9,7 @@ namespace RE
 	class BGSOverridePackCollection : public BaseFormComponent
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSOverridePackCollection;
+		inline static constexpr auto RTTI = RTTI_BGSOverridePackCollection;
 
 		~BGSOverridePackCollection() override;  // 00
 

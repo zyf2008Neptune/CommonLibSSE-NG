@@ -14,8 +14,8 @@ namespace RE
 		public TESModel  // 020
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSRagdoll;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSRagdoll;
+		inline static constexpr auto      RTTI = RTTI_BGSRagdoll;
+		inline static constexpr auto      VTABLE = VTABLE_BGSRagdoll;
 		inline static constexpr auto FORMTYPE = FormType::Ragdoll;
 
 		struct RecordFlags

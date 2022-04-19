@@ -17,7 +17,7 @@ namespace RE
 		class IProfilePolicy
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__IProfilePolicy;
+			inline static constexpr auto RTTI = RTTI_BSScript__IProfilePolicy;
 
 			virtual ~IProfilePolicy();  // 00
 

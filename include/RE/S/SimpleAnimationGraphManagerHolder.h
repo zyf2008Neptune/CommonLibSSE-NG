@@ -10,7 +10,7 @@ namespace RE
 	class SimpleAnimationGraphManagerHolder : public IAnimationGraphManagerHolder
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_SimpleAnimationGraphManagerHolder;
+		inline static constexpr auto RTTI = RTTI_SimpleAnimationGraphManagerHolder;
 
 		// override (IAnimationGraphManagerHolder)
 		bool GetAnimationGraphManagerImpl(BSTSmartPointer<BSAnimationGraphManager>& a_out) const override;  // 02 - { a_out = animationGraphManager; return a_out; }

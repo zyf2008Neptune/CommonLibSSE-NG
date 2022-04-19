@@ -7,7 +7,7 @@ namespace RE
 	class hkpRigidBody : public hkpEntity
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkpRigidBody;
+		inline static constexpr auto RTTI = RTTI_hkpRigidBody;
 
 		~hkpRigidBody() override;  // 00
 

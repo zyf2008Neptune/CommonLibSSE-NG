@@ -7,7 +7,7 @@ namespace RE
 	class ActorValueOwner
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ActorValueOwner;
+		inline static constexpr auto RTTI = RTTI_ActorValueOwner;
 
 		virtual ~ActorValueOwner();  // 00
 

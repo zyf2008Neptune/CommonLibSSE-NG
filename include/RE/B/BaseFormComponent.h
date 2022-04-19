@@ -7,7 +7,7 @@ namespace RE
 	class BaseFormComponent
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BaseFormComponent;
+		inline static constexpr auto RTTI = RTTI_BaseFormComponent;
 
 		virtual ~BaseFormComponent();  // 00
 

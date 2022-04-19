@@ -5,7 +5,7 @@ namespace RE
 	class NiBinaryStream
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_NiBinaryStream;
+		inline static constexpr auto RTTI = RTTI_NiBinaryStream;
 
 		using int_type = std::int32_t;
 		using pos_type = std::uint32_t;

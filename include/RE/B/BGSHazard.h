@@ -43,8 +43,8 @@ namespace RE
 		public TESImageSpaceModifiableForm  // 70
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSHazard;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSHazard;
+		inline static constexpr auto      RTTI = RTTI_BGSHazard;
+		inline static constexpr auto      VTABLE = VTABLE_BGSHazard;
 		inline static constexpr auto FORMTYPE = FormType::Hazard;
 
 		struct RecordFlags

@@ -7,7 +7,7 @@ namespace RE
 	class CombatMagicCasterTargetEffect : public CombatMagicCaster
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_CombatMagicCasterTargetEffect;
+		inline static constexpr auto RTTI = RTTI_CombatMagicCasterTargetEffect;
 
 		~CombatMagicCasterTargetEffect() override;  // 00
 

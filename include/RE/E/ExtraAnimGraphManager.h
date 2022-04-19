@@ -11,7 +11,7 @@ namespace RE
 	class ExtraAnimGraphManager : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAnimGraphManager;
+		inline static constexpr auto RTTI = RTTI_ExtraAnimGraphManager;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kAnimGraphManager;
 
 		~ExtraAnimGraphManager() override;  // 00

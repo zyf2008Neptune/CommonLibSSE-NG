@@ -11,7 +11,7 @@ namespace RE
 	class BGSBaseAlias
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSBaseAlias;
+		inline static constexpr auto RTTI = RTTI_BGSBaseAlias;
 		inline static auto      VMTYPEID = static_cast<VMTypeID>(139);
 
 		enum class FLAGS

@@ -8,7 +8,7 @@ namespace RE
 	class BSInstanceTriShape : public BSTriShape
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSInstanceTriShape;
+		inline static constexpr auto RTTI = RTTI_BSInstanceTriShape;
 		inline static auto      Ni_RTTI = NiRTTI_BSInstanceTriShape;
 
 		~BSInstanceTriShape() override;  // 00

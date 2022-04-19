@@ -23,7 +23,7 @@ namespace RE
 	class TESBoundObject : public TESObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_TESBoundObject;
+		inline static constexpr auto RTTI = RTTI_TESBoundObject;
 
 		struct BOUND_DATA  // OBND
 		{

@@ -18,8 +18,8 @@ namespace RE
 		public BGSOpenCloseForm            // 88
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_TESObjectDOOR;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESObjectDOOR;
+		inline static constexpr auto      RTTI = RTTI_TESObjectDOOR;
+		inline static constexpr auto      VTABLE = VTABLE_TESObjectDOOR;
 		inline static constexpr auto FORMTYPE = FormType::Door;
 
 		enum class Flag

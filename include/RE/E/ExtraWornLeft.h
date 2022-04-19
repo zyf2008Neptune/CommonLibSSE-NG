@@ -8,7 +8,7 @@ namespace RE
 	class ExtraWornLeft : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraWornLeft;
+		inline static constexpr auto RTTI = RTTI_ExtraWornLeft;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kWornLeft;
 
 		~ExtraWornLeft() override;  // 00

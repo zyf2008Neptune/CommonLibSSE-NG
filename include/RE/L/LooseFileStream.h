@@ -15,7 +15,7 @@ namespace RE
 			public Stream                // 00
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BSResource____LooseFileStream;
+			inline static constexpr auto RTTI = RTTI_BSResource____LooseFileStream;
 
 			~LooseFileStream() override;  // 00
 

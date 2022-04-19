@@ -49,7 +49,7 @@ namespace RE
 	class NiAVObject : public NiObjectNET
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_NiAVObject;
+		inline static constexpr auto RTTI = RTTI_NiAVObject;
 		inline static auto      Ni_RTTI = NiRTTI_NiAVObject;
 
 		enum class Flag

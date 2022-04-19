@@ -9,8 +9,8 @@ namespace RE
 	class BGSKeyword : public TESForm
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSKeyword;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSKeyword;
+		inline static constexpr auto      RTTI = RTTI_BGSKeyword;
+		inline static constexpr auto      VTABLE = VTABLE_BGSKeyword;
 		inline static constexpr auto FORMTYPE = FormType::Keyword;
 
 		struct RecordFlags

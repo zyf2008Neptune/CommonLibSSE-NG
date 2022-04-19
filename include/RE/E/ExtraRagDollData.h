@@ -30,7 +30,7 @@ namespace RE
 	class ExtraRagDollData : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraRagDollData;
+		inline static constexpr auto RTTI = RTTI_ExtraRagDollData;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kRagDollData;
 
 		~ExtraRagDollData() override;  // 00

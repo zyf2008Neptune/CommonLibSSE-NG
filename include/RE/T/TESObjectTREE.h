@@ -52,8 +52,8 @@ namespace RE
 		public TESProduceForm   // 68
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_TESObjectTREE;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESObjectTREE;
+		inline static constexpr auto      RTTI = RTTI_TESObjectTREE;
+		inline static constexpr auto      VTABLE = VTABLE_TESObjectTREE;
 		inline static constexpr auto FORMTYPE = FormType::Tree;
 
 		enum class etTreeType

@@ -60,7 +60,7 @@ namespace RE
 	class BGSDestructibleObjectForm : public BaseFormComponent
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSDestructibleObjectForm;
+		inline static constexpr auto RTTI = RTTI_BGSDestructibleObjectForm;
 
 		~BGSDestructibleObjectForm() override;  // 00
 

@@ -7,7 +7,7 @@ namespace RE
 	struct MenuOpenHandler : public MenuEventHandler
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_MenuOpenHandler;
+		inline static constexpr auto RTTI = RTTI_MenuOpenHandler;
 
 		~MenuOpenHandler() override;  // 00
 

@@ -11,7 +11,7 @@ namespace RE
 	class ExtraGroupConstraint : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraGroupConstraint;
+		inline static constexpr auto RTTI = RTTI_ExtraGroupConstraint;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kGroupConstraint;
 
 		virtual ~ExtraGroupConstraint();  // 00

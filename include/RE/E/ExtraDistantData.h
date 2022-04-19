@@ -9,7 +9,7 @@ namespace RE
 	class ExtraDistantData : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraDistantData;
+		inline static constexpr auto RTTI = RTTI_ExtraDistantData;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kDistantData;
 
 		~ExtraDistantData() override;  // 00

@@ -16,7 +16,7 @@ namespace RE
 		public BSTEventSink<BGSSaveLoadManagerEvent>  // 08
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_UISaveLoadManager;
+		inline static constexpr auto RTTI = RTTI_UISaveLoadManager;
 
 		~UISaveLoadManager() override;  // 00
 

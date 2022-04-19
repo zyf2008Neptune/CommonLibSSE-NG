@@ -7,7 +7,7 @@ namespace RE
 	class InventoryUpdateData : public IUIMessageData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_InventoryUpdateData;
+		inline static constexpr auto RTTI = RTTI_InventoryUpdateData;
 
 		~InventoryUpdateData() override = default;  // 00
 

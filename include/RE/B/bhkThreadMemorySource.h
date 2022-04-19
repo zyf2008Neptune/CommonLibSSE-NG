@@ -13,7 +13,7 @@ namespace RE
 		public IMemoryHeap         // 08
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_bhkThreadMemorySource;
+		inline static constexpr auto RTTI = RTTI_bhkThreadMemorySource;
 
 		struct FreeBlock
 		{

@@ -7,7 +7,7 @@ namespace RE
 	class Journal_StatsTab : public JournalTab
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_Journal_StatsTab;
+		inline static constexpr auto RTTI = RTTI_Journal_StatsTab;
 
 		~Journal_StatsTab() override;  // 00
 

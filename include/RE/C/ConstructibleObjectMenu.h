@@ -11,12 +11,12 @@ namespace RE
 		class ConstructibleObjectMenu : public CraftingSubMenu
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_CraftingSubMenus__ConstructibleObjectMenu;
+			inline static constexpr auto RTTI = RTTI_CraftingSubMenus__ConstructibleObjectMenu;
 
 			class CreationConfirmCallback : public IMessageBoxCallback
 			{
 			public:
-				SKYRIM_ADDR static auto RTTI = RTTI_CraftingSubMenus__ConstructibleObjectMenu__CreationConfirmCallback;
+				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__ConstructibleObjectMenu__CreationConfirmCallback;
 
 				~CreationConfirmCallback() override;  // 00
 

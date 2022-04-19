@@ -7,7 +7,7 @@ namespace RE
 	class bhkShapeCollection : public bhkShape
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_bhkShapeCollection;
+		inline static constexpr auto RTTI = RTTI_bhkShapeCollection;
 		inline static auto      Ni_RTTI = NiRTTI_bhkShapeCollection;
 
 		~bhkShapeCollection() override;  // 00

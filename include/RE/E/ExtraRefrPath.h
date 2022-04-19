@@ -9,7 +9,7 @@ namespace RE
 	class ExtraRefrPath : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraRefrPath;
+		inline static constexpr auto RTTI = RTTI_ExtraRefrPath;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kRefrPath;
 
 		enum class PATH_TYPE

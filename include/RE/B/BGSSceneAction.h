@@ -8,7 +8,7 @@ namespace RE
 	class BGSSceneAction
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSSceneAction;
+		inline static constexpr auto RTTI = RTTI_BGSSceneAction;
 
 		enum class Type
 		{

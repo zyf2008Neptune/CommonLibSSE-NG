@@ -542,20 +542,22 @@ namespace REL
 		 */
 		enum class Runtime : uint8_t
 		{
+			Unknown = 0,
+
 			/**
 			 * The Skyrim runtime is a post-Anniversary Edition Skyrim SE release (version 1.6.x and later).
 			 */
-			AE,
+			AE = 1 << 0,
 
 			/**
 			 * The Skyrim runtime is a pre-Anniversary Edition Skyrim SE release (version 1.5.97 and prior).
 			 */
-			SE,
+			SE = 1 << 1,
 
 			/**
 			 * The Skyrim runtime is Skyrim VR.
 			 */
-			VR
+			VR = 1 << 2
 		};
 
 		[[nodiscard]] static Module& get()
@@ -754,12 +756,12 @@ namespace REL
 			{
 				const mapping_t elem{ 0, a_offset };
 				const auto      it = std::lower_bound(
-                    _offset2id.begin(),
-                    _offset2id.end(),
-                    elem,
-                    [](auto&& a_lhs, auto&& a_rhs) {
+						 _offset2id.begin(),
+						 _offset2id.end(),
+						 elem,
+						 [](auto&& a_lhs, auto&& a_rhs) {
                         return a_lhs.offset < a_rhs.offset;
-                    });
+						 });
 				if (it == _offset2id.end()) {
 					stl::report_and_fail(
 						fmt::format(
@@ -883,7 +885,7 @@ namespace REL
 				const auto filename =
 					stl::utf8_to_utf16(
 						Module::IsAE() ?
-                            fmt::format("Data/SKSE/Plugins/versionlib-{}.bin"sv,
+							fmt::format("Data/SKSE/Plugins/versionlib-{}.bin"sv,
 								version.string()) :
                             fmt::format("Data/SKSE/Plugins/version-{}.bin"sv,
 								version.string()))
@@ -1085,6 +1087,67 @@ namespace REL
 		std::size_t _offset{ 0 };
 	};
 
+	class VariantOffset
+	{
+	public:
+		constexpr VariantOffset() noexcept = default;
+
+		explicit constexpr VariantOffset([[maybe_unused]] std::size_t a_seOffset, [[maybe_unused]] std::size_t a_aeOffset,
+			[[maybe_unused]] std::size_t a_vrOffset) noexcept
+		{
+#ifdef ENABLE_SKYRIM_SE
+			_seOffset = a_seOffset;
+#endif
+#ifdef ENABLE_SKYRIM_AE
+			_aeOffset = a_aeOffset;
+#endif
+#ifdef ENABLE_SKYRIM_VR
+			_vrOffset = a_vrOffset;
+#endif
+		}
+
+		[[nodiscard]] std::uintptr_t address() const
+		{
+			auto thisOffset = offset();
+			return thisOffset ? base() + thisOffset : 0;
+		}
+
+		[[nodiscard]] SKYRIM_REL std::size_t offset() const noexcept
+		{
+			switch (Module::GetRuntime()) {
+#ifdef ENABLE_SKYRIM_AE
+			case Module::Runtime::AE:
+				return _aeOffset;
+#endif
+#ifdef ENABLE_SKYRIM_SE
+			case Module::Runtime::SE:
+				return _seOffset;
+#endif
+#ifdef ENABLE_SKYRIM_VR
+			case Module::Runtime::VR:
+				return _vrOffset;
+#endif
+			default:
+				return 0;
+			}
+		}
+
+		[[nodiscard]] SKYRIM_REL explicit operator Offset() const noexcept { return Offset(offset()); }
+
+	private:
+		[[nodiscard]] static std::uintptr_t base() { return Module::get().base(); }
+
+#ifdef ENABLE_SKYRIM_SE
+		std::size_t _seOffset{ 0 };
+#endif
+#ifdef ENABLE_SKYRIM_AE
+		std::size_t _aeOffset{ 0 };
+#endif
+#ifdef ENABLE_SKYRIM_VR
+		std::size_t _vrOffset{ 0 };
+#endif
+	};
+
 	class ID
 	{
 	public:
@@ -1110,6 +1173,148 @@ namespace REL
 		std::uint64_t _id{ 0 };
 	};
 
+	class RelocationID
+	{
+	public:
+		constexpr RelocationID() noexcept = default;
+
+		explicit constexpr RelocationID([[maybe_unused]] std::uint64_t a_seID, [[maybe_unused]] std::uint64_t a_aeID) noexcept
+		{
+#ifdef ENABLE_SKYRIM_SE
+			_seID = a_seID;
+#endif
+#ifdef ENABLE_SKYRIM_AE
+			_aeID = a_aeID;
+#endif
+#ifdef ENABLE_SKYRIM_VR
+			_vrID = a_seID;
+#endif
+		}
+
+		explicit constexpr RelocationID([[maybe_unused]] std::uint64_t a_seID, [[maybe_unused]] std::uint64_t a_aeID,
+			[[maybe_unused]] std::uint64_t a_vrID) noexcept
+		{
+#ifdef ENABLE_SKYRIM_SE
+			_seID = a_seID;
+#endif
+#ifdef ENABLE_SKYRIM_AE
+			_aeID = a_aeID;
+#endif
+#ifdef ENABLE_SKYRIM_VR
+			_vrID = a_vrID;
+#endif
+		}
+
+		[[nodiscard]] std::uintptr_t address() const
+		{
+			auto thisOffset = offset();
+			return thisOffset ? base() + offset() : 0;
+		}
+
+		[[nodiscard]] std::size_t offset() const
+		{
+			auto thisID = id();
+			return thisID ? IDDatabase::get().id2offset(thisID) : 0;
+		}
+
+		[[nodiscard]] SKYRIM_REL std::uint64_t id() const noexcept
+		{
+			switch (Module::GetRuntime()) {
+#ifdef ENABLE_SKYRIM_AE
+			case Module::Runtime::AE:
+				return _aeID;
+#endif
+#ifdef ENABLE_SKYRIM_SE
+			case Module::Runtime::SE:
+				return _seID;
+#endif
+#ifdef ENABLE_SKYRIM_VR
+			case Module::Runtime::VR:
+				return _vrID;
+#endif
+			default:
+				return 0;
+			}
+		}
+
+		[[nodiscard]] SKYRIM_REL explicit operator ID() const noexcept
+		{
+			return ID(id());
+		}
+
+	private:
+		[[nodiscard]] static std::uintptr_t base() { return Module::get().base(); }
+
+#ifdef ENABLE_SKYRIM_SE
+		std::uint64_t _seID{ 0 };
+#endif
+#ifdef ENABLE_SKYRIM_AE
+		std::uint64_t _aeID{ 0 };
+#endif
+#ifdef ENABLE_SKYRIM_VR
+		std::uint64_t _vrID{ 0 };
+#endif
+	};
+
+	class VariantID
+	{
+	public:
+		constexpr VariantID() noexcept = default;
+
+		explicit constexpr VariantID([[maybe_unused]] std::uint64_t a_seID, [[maybe_unused]] std::uint64_t a_aeID,
+			[[maybe_unused]] std::uint64_t a_vrOffset) noexcept
+		{
+#ifdef ENABLE_SKYRIM_SE
+			_seID = a_seID;
+#endif
+#ifdef ENABLE_SKYRIM_AE
+			_aeID = a_aeID;
+#endif
+#ifdef ENABLE_SKYRIM_VR
+			_vrOffset = a_vrOffset;
+#endif
+		}
+
+		[[nodiscard]] std::uintptr_t address() const
+		{
+			auto thisOffset = offset();
+			return thisOffset ? base() + offset() : 0;
+		}
+
+		[[nodiscard]] std::size_t offset() const
+		{
+			switch (Module::GetRuntime()) {
+#ifdef ENABLE_SKYRIM_AE
+			case Module::Runtime::AE:
+				return _aeID ? IDDatabase::get().id2offset(_aeID) : 0;
+#endif
+#ifdef ENABLE_SKYRIM_SE
+			case Module::Runtime::SE:
+				return _seID ? IDDatabase::get().id2offset(_seID) : 0;
+#endif
+#ifdef ENABLE_SKYRIM_VR
+			case Module::Runtime::VR:
+				return _vrOffset;
+#endif
+			default:
+				return 0;
+			}
+		}
+
+	private:
+		[[nodiscard]] static std::uintptr_t base() { return Module::get().base(); }
+
+#ifdef ENABLE_SKYRIM_SE
+		std::uint64_t _seID{ 0 };
+#endif
+#ifdef ENABLE_SKYRIM_AE
+		std::uint64_t _aeID{ 0 };
+#endif
+#ifdef ENABLE_SKYRIM_VR
+		std::uint64_t _vrOffset{ 0 };
+#endif
+	};
+
 	template <class T>
 	class Relocation
 	{
@@ -1130,12 +1335,32 @@ namespace REL
 			_impl{ a_offset.address() }
 		{}
 
+		explicit Relocation(VariantOffset a_offset) :
+			_impl{ a_offset.address() }
+		{}
+
 		explicit Relocation(ID a_id) :
 			_impl{ a_id.address() }
 		{}
 
 		explicit Relocation(ID a_id, std::ptrdiff_t a_offset) :
 			_impl{ a_id.address() + a_offset }
+		{}
+
+		explicit Relocation(RelocationID a_id) :
+			_impl{ a_id.address() }
+		{}
+
+		explicit Relocation(RelocationID a_id, std::ptrdiff_t a_offset) :
+			_impl{ a_id.address() + a_offset }
+		{}
+
+		explicit Relocation(VariantID a_id) :
+			_impl{ a_id.address() }
+		{}
+
+		explicit Relocation(VariantID a_id, std::ptrdiff_t a_offset) :
+			_impl{ a_id.address() }
 		{}
 
 		constexpr Relocation& operator=(std::uintptr_t a_address) noexcept
@@ -1150,7 +1375,25 @@ namespace REL
 			return *this;
 		}
 
+		Relocation& operator=(VariantOffset a_offset)
+		{
+			_impl = a_offset.address();
+			return *this;
+		}
+
 		Relocation& operator=(ID a_id)
+		{
+			_impl = a_id.address();
+			return *this;
+		}
+
+		Relocation& operator=(RelocationID a_id)
+		{
+			_impl = a_id.address();
+			return *this;
+		}
+
+		Relocation& operator=(VariantID a_id)
 		{
 			_impl = a_id.address();
 			return *this;
@@ -1395,78 +1638,6 @@ namespace REL
 		detail::make_byte_array(0x40, 0x10, 0xF2, 0x41)));
 	static_assert(make_pattern<"B8 D0 ?? ?? D4 6E">().match(
 		detail::make_byte_array(0xB8, 0xD0, 0x35, 0x2A, 0xD4, 0x6E)));
-
-	/**
-	 * Selects a proper <code>REL::ID</code> based on the current Skyrim runtime.
-	 *
-	 * <p>
-	 * Skyrim SE and Skyrim AE have different databases of address library IDs. Using this function
-	 * allows both to be provided, letting the compiled code dynamically select at runtime which is
-	 * correct to use. This lets a single SKSE plugin target multiple versions of Skyrim.
-	 * </p>
-	 *
-	 * <p>
-	 * The Address Library for Skyrim VR reuses the same IDs as SE, so usually no VR alternative is
-	 * required. However, the SE ID must be manually mapped to a VR offset in the VR Adress Library
-	 * database. To support VR, you must verify that the ID is already mapped or map it yourself and
-	 * submit a PR upstream to add the changes.
-	 * </p>
-	 *
-	 * @param a_seAndVR the ID to use for Skyrim SE and VR.
-	 * @param a_ae the ID to sue for Skyrim AE.
-	 * @return The correct ID based on the currently running Skyrim executable.
-	 */
-	[[nodiscard]] SKYRIM_ADDR REL::ID RelocationID([[maybe_unused]] uint64_t a_seAndVR, [[maybe_unused]] uint64_t a_ae) noexcept
-	{
-#ifndef ENABLE_SKYRIM_AE
-		return REL::ID(a_seAndVR);
-#elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)
-		return REL::ID(a_ae);
-#else
-		return REL::ID(Module::IsAE() ? a_ae : a_seAndVR);
-#endif
-	}
-
-	/**
-	 * Selects a proper <code>REL::ID</code> based on the current Skyrim runtime.
-	 *
-	 * <p>
-	 * Skyrim SE and Skyrim AE have different databases of address library IDs. Using this function
-	 * allows both to be provided, letting the compiled code dynamically select at runtime which is
-	 * correct to use. This lets a single SKSE plugin target multiple versions of Skyrim.
-	 * </p>
-	 *
-	 * <p>
-	 * The Address Library for Skyrim VR reuses the same IDs as SE, however sometimes VR can be fundamentally
-	 * different and needs to hook a different function entirely. Hence this overload allows selecting a
-	 * different VR ID.
-	 * </p>
-	 *
-	 * @param a_se the ID to use for Skyrim SE.
-	 * @param a_ae the ID to use for Skyrim AE.
-	 * @param a_vr the ID To use for Skyrim VR.
-	 * @return the correct ID for the current runtime of Skyrim.
-	 */
-	[[nodiscard]] SKYRIM_REL REL::ID RelocationID([[maybe_unused]] std::uint64_t a_se, [[maybe_unused]] std::uint64_t a_ae,
-		[[maybe_unused]] std::uint64_t a_vr) noexcept
-	{
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR)
-		return REL::ID(a_se);
-#elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)
-		return REL::ID(a_ae);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-		return REL::ID(a_vr);
-#else
-		switch (Module::get().GetRuntime()) {
-		case Module::Runtime::AE:
-			return REL::ID(a_ae);
-		case Module::Runtime::VR:
-			return REL::ID(a_vr);
-		default:
-			return REL::ID(a_se);
-		}
-#endif
-	}
 
 	/**
 	 * Return the correct value of two choices between SE/VR, and AE versions of Skyrim.

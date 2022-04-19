@@ -11,7 +11,7 @@ namespace RE
 	class ExtraOcclusionShape : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraOcclusionShape;
+		inline static constexpr auto RTTI = RTTI_ExtraOcclusionShape;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kOcclusionShape;
 
 		virtual ~ExtraOcclusionShape();  // 00

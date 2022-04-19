@@ -59,8 +59,8 @@ namespace RE
 #endif
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_TESAmmo;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESAmmo;
+		inline static constexpr auto      RTTI = RTTI_TESAmmo;
+		inline static constexpr auto      VTABLE = VTABLE_TESAmmo;
 		inline static constexpr auto FORMTYPE = FormType::Ammo;
 
 		struct RecordFlags

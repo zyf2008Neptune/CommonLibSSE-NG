@@ -7,7 +7,7 @@ namespace RE
 	class PerkEntryVisitor
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_PerkEntryVisitor;
+		inline static constexpr auto RTTI = RTTI_PerkEntryVisitor;
 
 		enum class ReturnType
 		{

@@ -9,7 +9,7 @@ namespace RE
 		class AsyncStream : public StreamBase
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BSResource__AsyncStream;
+			inline static constexpr auto RTTI = RTTI_BSResource__AsyncStream;
 
 			virtual ~AsyncStream() = default;  // 00
 

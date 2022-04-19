@@ -30,7 +30,7 @@ namespace RE
 	class IMemoryHeap : public IMemoryStore
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_IMemoryHeap;
+		inline static constexpr auto RTTI = RTTI_IMemoryHeap;
 
 		~IMemoryHeap() override = default;  // 00
 

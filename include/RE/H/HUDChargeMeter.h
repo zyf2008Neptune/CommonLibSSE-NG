@@ -7,8 +7,8 @@ namespace RE
 	class HUDChargeMeter : public HUDObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_HUDChargeMeter;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_HUDChargeMeter;
+		inline static constexpr auto RTTI = RTTI_HUDChargeMeter;
+		inline static constexpr auto VTABLE = VTABLE_HUDChargeMeter;
 
 		virtual ~HUDChargeMeter();  // 00
 

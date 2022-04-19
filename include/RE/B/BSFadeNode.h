@@ -10,7 +10,7 @@ namespace RE
 	class BSFadeNode : public NiNode
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSFadeNode;
+		inline static constexpr auto RTTI = RTTI_BSFadeNode;
 		inline static auto      Ni_RTTI = NiRTTI_BSFadeNode;
 
 		struct RUNTIME_DATA

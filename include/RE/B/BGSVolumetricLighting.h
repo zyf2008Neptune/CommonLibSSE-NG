@@ -11,7 +11,7 @@ namespace RE
 		public BSVolumetricLightingRenderData  // 20
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSVolumetricLighting;
+		inline static constexpr auto      RTTI = RTTI_BGSVolumetricLighting;
 		inline static constexpr auto FORMTYPE = FormType::VolumetricLighting;
 
 		struct RecordFlags

@@ -8,7 +8,7 @@ namespace RE
 	class ZeroOverheadHeap : public IMemoryHeap
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ZeroOverheadHeap;
+		inline static constexpr auto RTTI = RTTI_ZeroOverheadHeap;
 
 		~ZeroOverheadHeap() override;  // 00
 

@@ -10,7 +10,7 @@ namespace RE
 		public ImageSpaceEffect  // 090
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSImagespaceShader;
+		inline static constexpr auto RTTI = RTTI_BSImagespaceShader;
 
 		~BSImagespaceShader() override;  // 00
 

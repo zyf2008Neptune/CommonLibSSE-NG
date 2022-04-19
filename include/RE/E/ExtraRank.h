@@ -8,8 +8,8 @@ namespace RE
 	class ExtraRank : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraRank;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraRank;
+		inline static constexpr auto RTTI = RTTI_ExtraRank;
+		inline static constexpr auto VTABLE = VTABLE_ExtraRank;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kRank;
 
 		ExtraRank();

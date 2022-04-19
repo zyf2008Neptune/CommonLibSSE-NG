@@ -7,7 +7,7 @@ namespace RE
 	class ArmorRatingVisitorBase : public InventoryChanges::IItemChangeVisitor
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI___ArmorRatingVisitorBase;
+		inline static constexpr auto RTTI = RTTI___ArmorRatingVisitorBase;
 
 		virtual ~ArmorRatingVisitorBase();  // 00
 

@@ -12,7 +12,7 @@ namespace RE
 	class hkp3AxisSweep : public hkpBroadPhase
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkp3AxisSweep;
+		inline static constexpr auto RTTI = RTTI_hkp3AxisSweep;
 
 		using BpInt = std::uint16_t;
 

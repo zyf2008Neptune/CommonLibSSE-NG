@@ -15,7 +15,7 @@ namespace RE
 	class TESCameraState : public BSIntrusiveRefCounted
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_TESCameraState;
+		inline static constexpr auto RTTI = RTTI_TESCameraState;
 
 		virtual ~TESCameraState();  // 00
 

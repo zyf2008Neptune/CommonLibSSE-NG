@@ -8,7 +8,7 @@ namespace RE
 	class ExtraTerminalState : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraTerminalState;
+		inline static constexpr auto RTTI = RTTI_ExtraTerminalState;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kTerminalState;
 
 		virtual ~ExtraTerminalState();  // 00

@@ -11,7 +11,7 @@ namespace RE
 	class ExtraRaceData : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraRaceData;
+		inline static constexpr auto RTTI = RTTI_ExtraRaceData;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kRaceData;
 
 		~ExtraRaceData() override;  // 00

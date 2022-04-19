@@ -9,7 +9,7 @@ namespace RE
 	class CombatMagicCasterRestore : public CombatMagicCaster
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_CombatMagicCasterRestore;
+		inline static constexpr auto RTTI = RTTI_CombatMagicCasterRestore;
 
 		~CombatMagicCasterRestore() override;  // 00
 

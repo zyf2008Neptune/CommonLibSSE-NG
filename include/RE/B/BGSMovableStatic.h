@@ -27,8 +27,8 @@ namespace RE
 		public TESObjectSTAT               // 20
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSMovableStatic;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSMovableStatic;
+		inline static constexpr auto      RTTI = RTTI_BGSMovableStatic;
+		inline static constexpr auto      VTABLE = VTABLE_BGSMovableStatic;
 		inline static constexpr auto FORMTYPE = FormType::MovableStatic;
 
 		struct RecordFlags

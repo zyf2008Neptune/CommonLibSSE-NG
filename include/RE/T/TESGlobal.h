@@ -9,8 +9,8 @@ namespace RE
 	class TESGlobal : public TESForm
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_TESGlobal;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_TESGlobal;
+		inline static constexpr auto      RTTI = RTTI_TESGlobal;
+		inline static constexpr auto      VTABLE = VTABLE_TESGlobal;
 		inline static constexpr auto FORMTYPE = FormType::Global;
 
 		enum class Type

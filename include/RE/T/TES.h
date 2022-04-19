@@ -38,12 +38,12 @@ namespace RE
 		public BSTEventSink<PositionPlayerEvent>                    // 068
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_TES;
+		inline static constexpr auto RTTI = RTTI_TES;
 
 		class SystemEventAdapter : public BSTEventSink<BSSystemEvent>
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_TES;
+			inline static constexpr auto RTTI = RTTI_TES;
 
 			~SystemEventAdapter() override;  // 00
 

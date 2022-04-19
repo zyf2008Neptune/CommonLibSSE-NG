@@ -22,7 +22,7 @@ namespace RE
 		class IFunction : public BSIntrusiveRefCounted
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__IFunction;
+			inline static constexpr auto RTTI = RTTI_BSScript__IFunction;
 
 			enum class FunctionType
 			{

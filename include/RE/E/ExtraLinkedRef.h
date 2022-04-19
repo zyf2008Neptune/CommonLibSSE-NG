@@ -12,7 +12,7 @@ namespace RE
 	class ExtraLinkedRef : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraLinkedRef;
+		inline static constexpr auto RTTI = RTTI_ExtraLinkedRef;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kLinkedRef;
 
 		struct LinkedRef

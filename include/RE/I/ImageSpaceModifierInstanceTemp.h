@@ -7,7 +7,7 @@ namespace RE
 	class ImageSpaceModifierInstanceTemp : public ImageSpaceModifierInstance
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ImageSpaceModifierInstanceTemp;
+		inline static constexpr auto RTTI = RTTI_ImageSpaceModifierInstanceTemp;
 
 		~ImageSpaceModifierInstanceTemp() override;  // 00
 

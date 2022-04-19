@@ -8,7 +8,7 @@ namespace RE
 	class ExtraAlphaCutoff : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraAlphaCutoff;
+		inline static constexpr auto RTTI = RTTI_ExtraAlphaCutoff;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kAlphaCutoff;
 
 		~ExtraAlphaCutoff() override;  // 00

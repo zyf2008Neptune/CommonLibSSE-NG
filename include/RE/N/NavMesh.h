@@ -13,8 +13,8 @@ namespace RE
 		public BSNavmesh      // 028
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_NavMesh;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_NavMesh;
+		inline static constexpr auto      RTTI = RTTI_NavMesh;
+		inline static constexpr auto      VTABLE = VTABLE_NavMesh;
 		inline static constexpr auto FORMTYPE = FormType::NavMesh;
 
 		struct RecordFlags

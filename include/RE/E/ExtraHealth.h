@@ -8,8 +8,8 @@ namespace RE
 	class ExtraHealth : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraHealth;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraHealth;
+		inline static constexpr auto RTTI = RTTI_ExtraHealth;
+		inline static constexpr auto VTABLE = VTABLE_ExtraHealth;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kHealth;
 
 		ExtraHealth();

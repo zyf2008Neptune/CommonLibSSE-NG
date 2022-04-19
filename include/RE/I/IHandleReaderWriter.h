@@ -10,8 +10,8 @@ namespace RE
 		class IHandleReaderWriter
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BSScript__IHandleReaderWriter;
-			SKYRIM_ADDR static auto VTABLE = VTABLE_BSScript__IHandleReaderWriter;
+			inline static constexpr auto RTTI = RTTI_BSScript__IHandleReaderWriter;
+			inline static constexpr auto VTABLE = VTABLE_BSScript__IHandleReaderWriter;
 
 			virtual ~IHandleReaderWriter();  // 0
 

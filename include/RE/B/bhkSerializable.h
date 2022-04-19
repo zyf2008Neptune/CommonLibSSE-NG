@@ -10,7 +10,7 @@ namespace RE
 	class bhkSerializable : public bhkRefObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_bhkSerializable;
+		inline static constexpr auto RTTI = RTTI_bhkSerializable;
 		inline static auto      Ni_RTTI = NiRTTI_bhkSerializable;
 
 		~bhkSerializable() override;  // 00

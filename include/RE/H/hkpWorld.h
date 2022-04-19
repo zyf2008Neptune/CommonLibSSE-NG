@@ -61,7 +61,7 @@ namespace RE
 	class hkpWorld : public hkReferencedObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkpWorld;
+		inline static constexpr auto RTTI = RTTI_hkpWorld;
 
 		~hkpWorld() override;  // 00
 

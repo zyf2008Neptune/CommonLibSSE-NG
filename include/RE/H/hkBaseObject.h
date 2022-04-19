@@ -5,7 +5,7 @@ namespace RE
 	class hkBaseObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkBaseObject;
+		inline static constexpr auto RTTI = RTTI_hkBaseObject;
 
 		virtual ~hkBaseObject() = default;  // 00
 	};

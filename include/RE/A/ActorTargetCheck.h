@@ -7,7 +7,7 @@ namespace RE
 	class ActorTargetCheck : public ProcessLists::GetActorsFilter
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ActorTargetCheck;
+		inline static constexpr auto RTTI = RTTI_ActorTargetCheck;
 
 		~ActorTargetCheck() override;  // 00
 

@@ -13,7 +13,7 @@ namespace RE
 			public BSTSingletonSDM<GlobalLocations>  // 10
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BSResource____GlobalLocations;
+			inline static constexpr auto RTTI = RTTI_BSResource____GlobalLocations;
 
 			struct Entry
 			{

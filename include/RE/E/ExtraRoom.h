@@ -11,7 +11,7 @@ namespace RE
 	class ExtraRoom : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraRoom;
+		inline static constexpr auto RTTI = RTTI_ExtraRoom;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kRoom;
 
 		~ExtraRoom() override;  // 00

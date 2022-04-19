@@ -9,7 +9,7 @@ namespace RE
 	class hkpAllCdPointCollector : public hkpCdPointCollector
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkpAllCdPointCollector;
+		inline static constexpr auto RTTI = RTTI_hkpAllCdPointCollector;
 
 		~hkpAllCdPointCollector() override;  // 00
 

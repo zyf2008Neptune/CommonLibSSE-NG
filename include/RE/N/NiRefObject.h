@@ -7,7 +7,7 @@ namespace RE
 	class NiRefObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_NiRefObject;
+		inline static constexpr auto RTTI = RTTI_NiRefObject;
 
 		NiRefObject();
 		virtual ~NiRefObject();  // 00

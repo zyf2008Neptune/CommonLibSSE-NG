@@ -8,8 +8,8 @@ namespace RE
 	class BGSTalkingActivator : public TESObjectACTI
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSTalkingActivator;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSTalkingActivator;
+		inline static constexpr auto      RTTI = RTTI_BGSTalkingActivator;
+		inline static constexpr auto      VTABLE = VTABLE_BGSTalkingActivator;
 		inline static constexpr auto FORMTYPE = FormType::TalkingActivator;
 
 		struct ChangeFlags

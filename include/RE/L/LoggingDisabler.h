@@ -8,7 +8,7 @@ namespace RE
 	{
 	public:
 #if !defined(ENABLE_SKYRIM_AE)
-		SKYRIM_ADDR static auto RTTI = RTTI___LoggingDisabler;
+		inline static constexpr auto RTTI = RTTI___LoggingDisabler;
 #endif
 
 		LoggingDisabler() = default;

@@ -10,7 +10,7 @@ namespace RE
 	class ExtraCellMusicType : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCellMusicType;
+		inline static constexpr auto RTTI = RTTI_ExtraCellMusicType;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kCellMusicType;
 
 		~ExtraCellMusicType() override;  // 00

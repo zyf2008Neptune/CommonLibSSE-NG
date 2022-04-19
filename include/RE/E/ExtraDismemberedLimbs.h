@@ -24,7 +24,7 @@ namespace RE
 	class ExtraDismemberedLimbs : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraDismemberedLimbs;
+		inline static constexpr auto RTTI = RTTI_ExtraDismemberedLimbs;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kDismemberedLimbs;
 
 		~ExtraDismemberedLimbs() override;  // 00

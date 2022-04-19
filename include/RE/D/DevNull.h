@@ -14,7 +14,7 @@ namespace RE
 			public BSTSingletonSDM<DevNull>  // 10
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BSResource____DevNull;
+			inline static constexpr auto RTTI = RTTI_BSResource____DevNull;
 
 			struct NullStream : public Stream
 			{

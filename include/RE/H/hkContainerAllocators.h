@@ -8,7 +8,7 @@ namespace RE
 	{
 		struct Allocator : public hkMemoryAllocator
 		{
-			SKYRIM_ADDR static auto RTTI = RTTI_hkContainerHeapAllocator__Allocator;
+			inline static constexpr auto RTTI = RTTI_hkContainerHeapAllocator__Allocator;
 
 			~Allocator() override;  // 00
 

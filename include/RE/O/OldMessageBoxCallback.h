@@ -7,7 +7,7 @@ namespace RE
 	class OldMessageBoxCallback : public IMessageBoxCallback
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI___OldMessageBoxCallback;
+		inline static constexpr auto RTTI = RTTI___OldMessageBoxCallback;
 
 		using Callback = void(Message);
 

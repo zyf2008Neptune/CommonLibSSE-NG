@@ -18,7 +18,7 @@ namespace RE
 	class MapCamera : public TESCamera
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_MapCamera;
+		inline static constexpr auto RTTI = RTTI_MapCamera;
 
 		~MapCamera() override;  // 00
 

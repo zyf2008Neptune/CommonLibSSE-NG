@@ -13,7 +13,7 @@ namespace RE
 	class HUDObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_HUDObject;
+		inline static constexpr auto RTTI = RTTI_HUDObject;
 
 		struct HudComponents
 		{

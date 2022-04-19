@@ -10,7 +10,7 @@ namespace RE
 	class GrenadeProjectile : public Projectile
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_GrenadeProjectile;
+		inline static constexpr auto      RTTI = RTTI_GrenadeProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileGrenade;
 
 		struct RecordFlags

@@ -78,8 +78,8 @@ namespace RE
 		public BGSDestructibleObjectForm  // 070
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSProjectile;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSProjectile;
+		inline static constexpr auto      RTTI = RTTI_BGSProjectile;
+		inline static constexpr auto      VTABLE = VTABLE_BGSProjectile;
 		inline static constexpr auto FORMTYPE = FormType::Projectile;
 
 		struct RecordFlags

@@ -8,7 +8,7 @@ namespace RE
 	class NiKeyBasedInterpolator : public NiInterpolator
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_NiKeyBasedInterpolator;
+		inline static constexpr auto RTTI = RTTI_NiKeyBasedInterpolator;
 		inline static auto      Ni_RTTI = NiRTTI_NiKeyBasedInterpolator;
 
 		using KeyType = NiAnimationKey::KeyType;

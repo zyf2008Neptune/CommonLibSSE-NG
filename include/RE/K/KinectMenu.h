@@ -20,7 +20,7 @@ namespace RE
 #endif
 	{
 	public:
-		SKYRIM_ADDR static auto           RTTI = RTTI_KinectMenu;
+		inline static constexpr auto           RTTI = RTTI_KinectMenu;
 		constexpr static std::string_view MENU_NAME = "Kinect Menu";
 
 		~KinectMenu() override;  // 00

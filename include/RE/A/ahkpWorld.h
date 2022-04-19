@@ -7,7 +7,7 @@ namespace RE
 	class ahkpWorld : public hkpWorld
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ahkpWorld;
+		inline static constexpr auto RTTI = RTTI_ahkpWorld;
 
 		~ahkpWorld() override;  // 00
 

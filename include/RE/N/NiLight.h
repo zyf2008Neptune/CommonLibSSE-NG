@@ -9,7 +9,7 @@ namespace RE
 	class NiLight : public NiAVObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_NiLight;
+		inline static constexpr auto RTTI = RTTI_NiLight;
 		inline static auto      Ni_RTTI = NiRTTI_NiLight;
 
 		struct LIGHT_RUNTIME_DATA

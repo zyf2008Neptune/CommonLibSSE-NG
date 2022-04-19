@@ -9,7 +9,7 @@ namespace RE
 	class BSPCGamepadDeviceDelegate : public BSGamepadDevice
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSPCGamepadDeviceDelegate;
+		inline static constexpr auto RTTI = RTTI_BSPCGamepadDeviceDelegate;
 
 		~BSPCGamepadDeviceDelegate() override;  // 00
 

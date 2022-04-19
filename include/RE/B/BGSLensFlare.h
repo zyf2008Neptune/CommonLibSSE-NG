@@ -11,8 +11,8 @@ namespace RE
 		public BSLensFlareRenderData  // 20
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_BGSLensFlare;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_BGSLensFlare;
+		inline static constexpr auto      RTTI = RTTI_BGSLensFlare;
+		inline static constexpr auto      VTABLE = VTABLE_BGSLensFlare;
 		inline static constexpr auto FORMTYPE = FormType::LensFlare;
 
 		struct RecordFlags

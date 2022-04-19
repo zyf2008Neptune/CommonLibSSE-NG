@@ -7,7 +7,7 @@ namespace RE
 	class DetectionListener : public NiRefObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_DetectionListener;
+		inline static constexpr auto RTTI = RTTI_DetectionListener;
 
 		~DetectionListener() override;  // 00
 

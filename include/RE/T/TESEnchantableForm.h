@@ -10,7 +10,7 @@ namespace RE
 	class TESEnchantableForm : public BaseFormComponent
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_TESEnchantableForm;
+		inline static constexpr auto RTTI = RTTI_TESEnchantableForm;
 
 		~TESEnchantableForm() override;  // 00
 

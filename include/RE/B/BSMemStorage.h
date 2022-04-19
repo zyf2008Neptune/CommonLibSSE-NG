@@ -9,8 +9,8 @@ namespace RE
 	class BSMemStorage : public BSStorage
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSMemStorage;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_BSMemStorage;
+		inline static constexpr auto RTTI = RTTI_BSMemStorage;
+		inline static constexpr auto VTABLE = VTABLE_BSMemStorage;
 
 		~BSMemStorage() override;  // 00
 

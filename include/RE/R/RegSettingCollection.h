@@ -8,7 +8,7 @@ namespace RE
 	class RegSettingCollection : public SettingCollectionList<Setting>
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_RegSettingCollection;
+		inline static constexpr auto RTTI = RTTI_RegSettingCollection;
 
 		~RegSettingCollection() override;  // 00
 

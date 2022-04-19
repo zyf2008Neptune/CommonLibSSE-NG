@@ -8,8 +8,8 @@ namespace RE
 	class ExtraHotkey : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraHotkey;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraHotkey;
+		inline static constexpr auto RTTI = RTTI_ExtraHotkey;
+		inline static constexpr auto VTABLE = VTABLE_ExtraHotkey;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kHotkey;
 
 		enum class Hotkey

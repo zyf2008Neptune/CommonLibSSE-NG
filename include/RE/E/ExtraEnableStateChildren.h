@@ -10,7 +10,7 @@ namespace RE
 	class ExtraEnableStateChildren : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraEnableStateChildren;
+		inline static constexpr auto RTTI = RTTI_ExtraEnableStateChildren;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kEnableStateChildren;
 
 		virtual ~ExtraEnableStateChildren();  // 00

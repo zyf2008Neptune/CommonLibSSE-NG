@@ -9,7 +9,7 @@ namespace RE
 	class ExtraEditorRefMoveData : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraEditorRefMoveData;
+		inline static constexpr auto RTTI = RTTI_ExtraEditorRefMoveData;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kEditorRefMoveData;
 
 		virtual ~ExtraEditorRefMoveData();  // 00

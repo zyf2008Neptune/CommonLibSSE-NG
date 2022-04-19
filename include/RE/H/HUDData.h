@@ -8,7 +8,7 @@ namespace RE
 	class HUDData : public IUIMessageData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_HUDData;
+		inline static constexpr auto RTTI = RTTI_HUDData;
 
 		enum class Type
 		{

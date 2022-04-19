@@ -22,7 +22,7 @@ namespace RE
 		public BSTEventSink<PositionPlayerEvent>   // 0x08
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_MenuTopicManager;
+		inline static constexpr auto RTTI = RTTI_MenuTopicManager;
 
 		struct Dialogue
 		{

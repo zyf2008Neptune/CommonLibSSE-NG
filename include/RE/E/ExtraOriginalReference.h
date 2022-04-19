@@ -9,7 +9,7 @@ namespace RE
 	class ExtraOriginalReference : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraOriginalReference;
+		inline static constexpr auto RTTI = RTTI_ExtraOriginalReference;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kOriginalReference;
 
 		virtual ~ExtraOriginalReference();  // 00

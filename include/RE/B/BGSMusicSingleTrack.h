@@ -10,7 +10,7 @@ namespace RE
 	class BGSMusicSingleTrack : public BGSMusicTrack
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BGSMusicSingleTrack;
+		inline static constexpr auto RTTI = RTTI_BGSMusicSingleTrack;
 
 		struct LoopData  // LNAM
 		{

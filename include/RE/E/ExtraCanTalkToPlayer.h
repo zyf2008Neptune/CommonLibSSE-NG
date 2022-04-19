@@ -8,8 +8,8 @@ namespace RE
 	class ExtraCanTalkToPlayer : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCanTalkToPlayer;
-		SKYRIM_ADDR static auto VTABLE = VTABLE_ExtraCanTalkToPlayer;
+		inline static constexpr auto RTTI = RTTI_ExtraCanTalkToPlayer;
+		inline static constexpr auto VTABLE = VTABLE_ExtraCanTalkToPlayer;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kCanTalkToPlayer;
 
 		ExtraCanTalkToPlayer();

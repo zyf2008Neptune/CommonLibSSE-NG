@@ -20,7 +20,7 @@ namespace RE
 	class hkpBroadPhase : public hkReferencedObject
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_hkpBroadPhase;
+		inline static constexpr auto RTTI = RTTI_hkpBroadPhase;
 
 		enum class BroadPhaseType
 		{

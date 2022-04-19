@@ -5,12 +5,12 @@ namespace RE
 	class BSISoundDescriptor
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSISoundDescriptor;
+		inline static constexpr auto RTTI = RTTI_BSISoundDescriptor;
 
 		class BSIPlaybackCharacteristics
 		{
 		public:
-			SKYRIM_ADDR static auto RTTI = RTTI_BSISoundDescriptor__BSIPlaybackCharacteristics;
+			inline static constexpr auto RTTI = RTTI_BSISoundDescriptor__BSIPlaybackCharacteristics;
 
 			virtual ~BSIPlaybackCharacteristics();  // 00
 

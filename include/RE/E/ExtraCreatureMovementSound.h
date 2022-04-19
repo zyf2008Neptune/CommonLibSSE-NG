@@ -9,7 +9,7 @@ namespace RE
 	class ExtraCreatureMovementSound : public BSExtraData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_ExtraCreatureMovementSound;
+		inline static constexpr auto RTTI = RTTI_ExtraCreatureMovementSound;
 		inline static auto      EXTRADATATYPE = ExtraDataType::kCreatureMovementSound;
 
 		virtual ~ExtraCreatureMovementSound();  // 00

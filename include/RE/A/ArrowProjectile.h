@@ -10,8 +10,8 @@ namespace RE
 	class ArrowProjectile : public MissileProjectile
 	{
 	public:
-		SKYRIM_ADDR static auto      RTTI = RTTI_ArrowProjectile;
-		SKYRIM_ADDR static auto      VTABLE = VTABLE_ArrowProjectile;
+		inline static constexpr auto      RTTI = RTTI_ArrowProjectile;
+		inline static constexpr auto      VTABLE = VTABLE_ArrowProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileArrow;
 
 		struct RecordFlags

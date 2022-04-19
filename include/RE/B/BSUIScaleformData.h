@@ -9,7 +9,7 @@ namespace RE
 	class BSUIScaleformData : public IUIMessageData
 	{
 	public:
-		SKYRIM_ADDR static auto RTTI = RTTI_BSUIScaleformData;
+		inline static constexpr auto RTTI = RTTI_BSUIScaleformData;
 
 		~BSUIScaleformData() override;  // 00
 
