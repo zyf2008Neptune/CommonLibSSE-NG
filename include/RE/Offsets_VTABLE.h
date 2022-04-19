@@ -7083,6 +7083,10 @@ namespace RE
 	constexpr std::array<REL::RelocationID, 1>  VTABLE_std__basic_stringstream_char_std__char_traits_char__std__allocator_char__{ REL::RelocationID(237775, 192105) };
 	constexpr std::array<REL::RelocationID, 1>  VTABLE_std__exception{ REL::RelocationID(298100, 248772) };
 	constexpr std::array<REL::RelocationID, 1>  VTABLE_type_info{ REL::RelocationID(306493, 256104) };
+
+	// Variant vtable structures between SE and AE.
+	constexpr std::array<REL::VariantID, 2> VTABLE_BSResource____LooseFileAsyncStream{ REL::VariantID(285902, 237046, 0x0), REL::VariantID(0, 237048, 0x0) };
+	constexpr std::array<REL::VariantID, 2> VTABLE_BSResource____LooseFileStream{ REL::VariantID(285903, 237050, 0x0), REL::VariantID(0, 237052, 0x0) };
 #if !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)
 	constexpr std::array<REL::ID, 1> VTABLE_BNETSystem__ModsChanged_ConfirmResetCallback{ REL::ID(206224) };
 	constexpr std::array<REL::ID, 1> VTABLE_BSResource____LooseFileStreamBase{ REL::ID(237040) };
