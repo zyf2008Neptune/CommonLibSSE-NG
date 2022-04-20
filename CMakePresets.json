@@ -51,7 +51,8 @@
                 "vcpkg",
                 "windows"
             ],
-            "name": "vs2022-windows-vcpkg",
+            "name": "Debug-All",
+            "displayName": "Debug (All)",
             "binaryDir": "${sourceDir}/build/all"
         },
         {
@@ -117,46 +118,6 @@
             "name": "pre-ae-only"
         },
         {
-            "inherits": [
-                "vs2022-windows-vcpkg",
-                "flatrim-only"
-            ],
-            "name": "vs2022-windows-vcpkg-flatrim",
-            "binaryDir": "${sourceDir}/build/flatrim"
-        },
-        {
-            "inherits": [
-                "vs2022-windows-vcpkg",
-                "vr-only"
-            ],
-            "name": "vs2022-windows-vcpkg-vr",
-            "binaryDir": "${sourceDir}/build/vr"
-        },
-        {
-            "inherits": [
-                "vs2022-windows-vcpkg",
-                "ae-only"
-            ],
-            "name": "vs2022-windows-vcpkg-ae",
-            "binaryDir": "${sourceDir}/build/ae"
-        },
-        {
-            "inherits": [
-                "vs2022-windows-vcpkg",
-                "se-only"
-            ],
-            "name": "vs2022-windows-vcpkg-se",
-            "binaryDir": "${sourceDir}/build/se"
-        },
-        {
-            "inherits": [
-                "vs2022-windows-vcpkg",
-                "pre-ae-only"
-            ],
-            "name": "vs2022-windows-vcpkg-pre-ae",
-            "binaryDir": "${sourceDir}/build/pre-ae"
-        },
-        {
             "cacheVariables": {
                 "ENABLE_SKYRIM_SE": {
                     "type": "STRING",
@@ -168,10 +129,56 @@
         },
         {
             "inherits": [
-                "vs2022-windows-vcpkg",
+                "Debug-All",
+                "flatrim-only"
+            ],
+            "name": "Debug-Flatrim",
+            "displayName": "Debug (Flatrim)",
+            "binaryDir": "${sourceDir}/build/flatrim"
+        },
+        {
+            "inherits": [
+                "Debug-All",
+                "vr-only"
+            ],
+            "name": "Debug-VR",
+            "displayName": "Debug (VR)",
+            "binaryDir": "${sourceDir}/build/vr"
+        },
+        {
+            "inherits": [
+                "Debug-All",
+                "ae-only"
+            ],
+            "name": "Debug-AE",
+            "displayName": "Debug (AE)",
+            "binaryDir": "${sourceDir}/build/ae"
+        },
+        {
+            "inherits": [
+                "Debug-All",
+                "se-only"
+            ],
+            "name": "Debug-SE",
+            "displayName": "Debug (SE)",
+            "binaryDir": "${sourceDir}/build/se"
+        },
+        {
+            "inherits": [
+                "Debug-All",
+                "pre-ae-only"
+            ],
+            "name": "Debug-Pre-AE",
+            "displayName": "Debug (Pre-AE)",
+            "binaryDir": "${sourceDir}/build/pre-ae"
+        },
+        {
+            "inherits": [
+                "Debug-All",
                 "current"
             ],
-            "name": "vs2022-windows-vcpkg-current",
+            "name": "Debug-Current",
+            "displayName": "Debug (Current)",
             "binaryDir": "${sourceDir}/build/current"
         }
     ],
@@ -179,37 +186,37 @@
         {
             "name": "Debug-All",
             "displayName": "Debug (All)",
-            "configurePreset": "vs2022-windows-vcpkg"
+            "configurePreset": "Debug-All"
         },
         {
             "name": "Debug-Flatrim",
             "displayName": "Debug (Flatrim)",
-            "configurePreset": "vs2022-windows-vcpkg-flatrim"
+            "configurePreset": "Debug-Flatrim"
         },
         {
             "name": "Debug-VR",
             "displayName": "Debug (VR)",
-            "configurePreset": "vs2022-windows-vcpkg-vr"
+            "configurePreset": "Debug-VR"
         },
         {
             "name": "Debug-AE",
             "displayName": "Debug (AE)",
-            "configurePreset": "vs2022-windows-vcpkg-ae"
+            "configurePreset": "Debug-AE"
         },
         {
             "name": "Debug-SE",
             "displayName": "Debug (SE)",
-            "configurePreset": "vs2022-windows-vcpkg-se"
+            "configurePreset": "Debug-SE"
         },
         {
             "name": "Debug-Pre-AE",
             "displayName": "Debug (Pre-AE)",
-            "configurePreset": "vs2022-windows-vcpkg-pre-ae"
+            "configurePreset": "Debug-Pre-AE"
         },
         {
             "name": "Debug-Current",
             "displayName": "Debug (Current)",
-            "configurePreset": "vs2022-windows-vcpkg-current"
+            "configurePreset": "Debug-Current"
         }
     ],
     "version": 2

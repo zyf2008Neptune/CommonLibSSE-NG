@@ -39,7 +39,7 @@ jobs:
         uses: lukka/run-cmake@v10.0
         with:
           cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
-          configurePreset: vs2022-windows-vcpkg
+          configurePreset: Debug-All
           buildPreset: Debug-All
   flatrim-only:
     runs-on: windows-latest
@@ -61,7 +61,7 @@ jobs:
         uses: lukka/run-cmake@v10.0
         with:
           cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
-          configurePreset: vs2022-windows-vcpkg-flatrim
+          configurePreset: Debug-Flatrim
           buildPreset: Debug-Flatrim
   pre-ae-runtimes:
     runs-on: windows-latest
@@ -83,7 +83,7 @@ jobs:
         uses: lukka/run-cmake@v10.0
         with:
           cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
-          configurePreset: vs2022-windows-vcpkg-pre-ae
+          configurePreset: Debug-Pre-AE
           buildPreset: Debug-Pre-AE
   current-runtimes:
     runs-on: windows-latest
@@ -105,7 +105,7 @@ jobs:
         uses: lukka/run-cmake@v10.0
         with:
           cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
-          configurePreset: vs2022-windows-vcpkg-current
+          configurePreset: Debug-Current
           buildPreset: Debug-Current
   se-only:
     runs-on: windows-latest
@@ -127,7 +127,7 @@ jobs:
         uses: lukka/run-cmake@v10.0
         with:
           cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
-          configurePreset: vs2022-windows-vcpkg-se
+          configurePreset: Debug-SE
           buildPreset: Debug-SE
   ae-only:
     runs-on: windows-latest
@@ -149,7 +149,7 @@ jobs:
         uses: lukka/run-cmake@v10.0
         with:
           cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
-          configurePreset: vs2022-windows-vcpkg-ae
+          configurePreset: Debug-AE
           buildPreset: Debug-AE
   vr-only:
     runs-on: windows-latest
@@ -171,5 +171,5 @@ jobs:
         uses: lukka/run-cmake@v10.0
         with:
           cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
-          configurePreset: vs2022-windows-vcpkg-vr
+          configurePreset: Debug-VR
           buildPreset: Debug-VR

@@ -1,4 +1,4 @@
-# `CommonLibSSE NG`
+# CommonLibSSE NG
 [![C++20](https://img.shields.io/static/v1?label=standard&message=C%2B%2B20&color=blue&logo=c%2B%2B&&logoColor=white&style=flat)](https://en.cppreference.com/w/cpp/compiler_support)
 [![Platform](https://img.shields.io/static/v1?label=platform&message=windows&color=dimgray&style=flat)](#)
 [![Main CI](https://github.com/CharmedBaryon/CommonLibSSE-NG/actions/workflows/main_ci.yml/badge.svg)](https://github.com/CharmedBaryon/CommonLibSSE-NG/actions/workflows/main_ci.yml)
@@ -10,6 +10,11 @@ CommonLibSSE NG is a fork of CommonLibSSE which tracks upstream updates but adds
 * Complete support (up to modern RE standards) for Skyrim VR, including the ability to use Skyrim VR and Skyrim SE
   functionality from a single DLL build even where Skyrim VR is normally ABI-incompatible.
 * Ability to build locked to a single runtime, where access to non-portable features is needed.
+* Ability to define offsets and address IDs for objects which can exist in only a subset of runtimes, while being able
+  dynamically test for feature support before using those offsets.
+* Completely regenerated RTTI and vtable offsets, now with consistent naming across all runtimes, unified offsets/IDs,
+  and a new human-readable naming scheme using UTF-8 identifiers.
+* New reverse engineering on core components needed to support next-generation advanced SKSE plugins, and VR functions.
 * Updated GitHub Actions CI workflows to build for all likely target runtime combinations.
 * Fully extensible native function binding traits (enables custom script object bindings in
   [Fully Dynamic Game Engine](https://gitlab.com/colorglass/fully-dynamic-game-engine)).
@@ -36,7 +41,12 @@ project root (next to `vcpkg.json`) with the following contents:
             // Update this baseline to the latest commit from the above repo.
             "baseline": "59ebdd824b295fad4effcdccfe6e6aaa47ff4764",
             "packages": [
-                "commonlibsse-ng"
+                "commonlibsse-ng",
+                "commonlibsse-ng-prebuilt",
+                "commonlibsse-ng-ae",
+                "commonlibsse-ng-se",
+                "commonlibsse-ng-vr",
+                "commonlibsse-ng-flatrim"
             ]
         }
     ]
