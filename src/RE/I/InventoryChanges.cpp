@@ -1,6 +1,7 @@
 #include "RE/I/InventoryChanges.h"
-
 #include "RE/A/Actor.h"
+#include "RE/F/FormTraits.h"
+#include "RE/T/TESObjectREFR.h"
 
 namespace RE
 {
