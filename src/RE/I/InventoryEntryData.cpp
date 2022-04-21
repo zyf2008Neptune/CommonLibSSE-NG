@@ -201,12 +201,12 @@ namespace RE
 		return HasExtraDataType<ExtraLeveledItem>();
 	}
 
-    bool InventoryEntryData::IsPoisoned() const
+	bool InventoryEntryData::IsPoisoned() const
 	{
 		return HasExtraDataType<ExtraPoison>();
 	}
 
-    bool InventoryEntryData::IsWorn() const
+	bool InventoryEntryData::IsWorn() const
 	{
 		if (extraLists) {
 			for (const auto& xList : *extraLists) {
