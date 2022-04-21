@@ -7996,7 +7996,6 @@ namespace RE
 	constexpr REL::VariantID RTTI_bnet__HttpRequest_bnet__Callback_bnet___impl__FixedString_2000_1_1_bnet___impl__StdAllocator_char___bnet__HttpResponseInfo__(0, 0, 0x0);
 	constexpr REL::VariantID RTTI_bnet__CallbackWrapper_bnet__Callback_bnet_std__void_t_bnet__HttpResponseInfo___lambda_60701eed7f9660644968404f5df4fc84__(0, 0, 0x0);
 
-
 	constexpr REL::VariantOffset RTTI_std___Ref_count_obj_BSLocklessSimpleList_ActiveEffect_____Node_(0, 0, 0x1ed9990);
 	constexpr REL::VariantOffset RTTI_BSTEventSink_VRDeviceConnectionChange_(0, 0, 0x1efe240);
 	constexpr REL::VariantOffset RTTI_VRMenuScene(0, 0, 0x1efe288);
