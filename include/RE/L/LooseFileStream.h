@@ -15,7 +15,7 @@ namespace RE
 			public Stream                // 00
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSResourceːːːːLooseFileStream;
+			inline static constexpr auto RTTI = RTTI_BSResource____LooseFileStream;
 
 			~LooseFileStream() override;  // 00
 

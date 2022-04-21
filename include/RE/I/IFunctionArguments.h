@@ -11,7 +11,7 @@ namespace RE
 		class IFunctionArguments
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScriptːːIFunctionArguments;
+			inline static constexpr auto RTTI = RTTI_BSScript__IFunctionArguments;
 
 			IFunctionArguments() = default;
 			virtual ~IFunctionArguments() = default;  // 00

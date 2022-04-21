@@ -10,7 +10,7 @@ namespace RE
 		class Logger : public BSScript::ErrorLogger
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_SkyrimScriptːːLogger;
+			inline static constexpr auto RTTI = RTTI_SkyrimScript__Logger;
 
 			~Logger() override;  // 00
 

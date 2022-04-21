@@ -10,7 +10,7 @@ namespace RE
 		class BSIPlaybackCharacteristics
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSISoundDescriptorːːBSIPlaybackCharacteristics;
+			inline static constexpr auto RTTI = RTTI_BSISoundDescriptor__BSIPlaybackCharacteristics;
 
 			virtual ~BSIPlaybackCharacteristics();  // 00
 

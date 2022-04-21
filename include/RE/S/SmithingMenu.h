@@ -10,12 +10,12 @@ namespace RE
 		class SmithingMenu : public CraftingSubMenu
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_CraftingSubMenusːːSmithingMenu;
+			inline static constexpr auto RTTI = RTTI_CraftingSubMenus__SmithingMenu;
 
 			class SmithingConfirmCallback : public IMessageBoxCallback
 			{
 			public:
-				inline static constexpr auto RTTI = RTTI_CraftingSubMenusːːSmithingMenuːːSmithingConfirmCallback;
+				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__SmithingMenu__SmithingConfirmCallback;
 
 				~SmithingConfirmCallback() override;  // 00
 

@@ -12,7 +12,7 @@ namespace RE
 		struct AttachTechniqueInput
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSAttachTechniquesːːAttachTechniqueInput;
+			inline static constexpr auto RTTI = RTTI_BSAttachTechniques__AttachTechniqueInput;
 
 			virtual ~AttachTechniqueInput();  // 00
 

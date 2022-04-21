@@ -12,7 +12,7 @@ namespace RE
 		struct IObjectHandlePolicy
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScriptːːIObjectHandlePolicy;
+			inline static constexpr auto RTTI = RTTI_BSScript__IObjectHandlePolicy;
 
 			virtual ~IObjectHandlePolicy();  // 00
 

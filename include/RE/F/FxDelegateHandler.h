@@ -18,7 +18,7 @@ namespace RE
 		class CallbackProcessor
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_FxDelegateHandlerːːCallbackProcessor;
+			inline static constexpr auto RTTI = RTTI_FxDelegateHandler__CallbackProcessor;
 
 			virtual ~CallbackProcessor() = default;  // 00
 

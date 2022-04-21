@@ -498,9 +498,14 @@ namespace SKSE
 		}
 
 		template <class T>
-		void emplace_vtable(T* a_ptr)
+		bool emplace_vtable(T* a_ptr)
 		{
-			reinterpret_cast<std::uintptr_t*>(a_ptr)[0] = T::VTABLE[0].address();
+			auto address = T::VTABLE[0].address();
+			if (!address) {
+				return false;
+			}
+			reinterpret_cast<std::uintptr_t*>(a_ptr)[0] = address;
+			return true;
 		}
 
 		template <class T>

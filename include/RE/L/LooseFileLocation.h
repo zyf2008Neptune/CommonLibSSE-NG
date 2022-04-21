@@ -22,7 +22,7 @@ namespace RE
 		class LooseFileLocation : public Location
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSResourceːːLooseFileLocation;
+			inline static constexpr auto RTTI = RTTI_BSResource__LooseFileLocation;
 
 			~LooseFileLocation() override;  // 00
 

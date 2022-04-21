@@ -22,7 +22,7 @@ namespace RE
 		class IFunction : public BSIntrusiveRefCounted
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScriptːːIFunction;
+			inline static constexpr auto RTTI = RTTI_BSScript__IFunction;
 
 			enum class FunctionType
 			{

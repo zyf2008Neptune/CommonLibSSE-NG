@@ -34,7 +34,7 @@ namespace RE
 		class StateInfo : public hkbBindable
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_hkbStateMachineːːStateInfo;
+			inline static constexpr auto RTTI = RTTI_hkbStateMachine__StateInfo;
 
 			~StateInfo() override;  // 00
 
@@ -54,7 +54,7 @@ namespace RE
 		class TransitionInfoArray : public hkReferencedObject
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_hkbStateMachineːːTransitionInfoArray;
+			inline static constexpr auto RTTI = RTTI_hkbStateMachine__TransitionInfoArray;
 
 			~TransitionInfoArray() override;  // 00
 

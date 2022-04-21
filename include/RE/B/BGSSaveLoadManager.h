@@ -53,7 +53,7 @@ namespace RE
 		class Thread : public BSThread
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BGSSaveLoadManagerːːThread;
+			inline static constexpr auto RTTI = RTTI_BGSSaveLoadManager__Thread;
 
 			~Thread() override;  // 00
 

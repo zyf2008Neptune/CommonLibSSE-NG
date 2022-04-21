@@ -10,7 +10,7 @@ namespace RE
 		class IStore : public BSStorage
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScriptːːIStore;
+			inline static constexpr auto RTTI = RTTI_BSScript__IStore;
 
 			~IStore() override;  // 00
 

@@ -29,7 +29,7 @@ namespace RE
 		class ForEachHitEffectVisitor
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_ActiveEffectːːForEachHitEffectVisitor;
+			inline static constexpr auto RTTI = RTTI_ActiveEffect__ForEachHitEffectVisitor;
 
 			virtual ~ForEachHitEffectVisitor();  // 00
 

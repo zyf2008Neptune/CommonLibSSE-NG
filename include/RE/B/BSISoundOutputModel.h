@@ -9,7 +9,7 @@ namespace RE
 
 		struct BSIAttenuationCharacteristics
 		{
-			inline static constexpr auto RTTI = RTTI_BSISoundOutputModelːːBSIAttenuationCharacteristics;
+			inline static constexpr auto RTTI = RTTI_BSISoundOutputModel__BSIAttenuationCharacteristics;
 
 			virtual ~BSIAttenuationCharacteristics();  // 00
 

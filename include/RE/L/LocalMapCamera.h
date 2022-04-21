@@ -18,7 +18,7 @@ namespace RE
 		class DefaultState : public TESCameraState
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_LocalMapCameraːːDefaultState;
+			inline static constexpr auto RTTI = RTTI_LocalMapCamera__DefaultState;
 
 			~DefaultState() override;  // 00
 

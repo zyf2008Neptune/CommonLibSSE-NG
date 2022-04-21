@@ -14,7 +14,7 @@ namespace RE
 		class Store : public IMemoryStoreBase
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_CompactingStoreːːStore;
+			inline static constexpr auto RTTI = RTTI_CompactingStore__Store;
 
 			~Store() override;  // 00
 

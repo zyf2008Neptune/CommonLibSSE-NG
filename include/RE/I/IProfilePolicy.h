@@ -17,7 +17,7 @@ namespace RE
 		class IProfilePolicy
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScriptːːIProfilePolicy;
+			inline static constexpr auto RTTI = RTTI_BSScript__IProfilePolicy;
 
 			virtual ~IProfilePolicy();  // 00
 

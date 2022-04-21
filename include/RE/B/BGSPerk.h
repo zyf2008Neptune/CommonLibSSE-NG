@@ -47,7 +47,7 @@ namespace RE
 		class FindPerkInRanksVisitor : public PerkRankVisitor
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BGSPerkːːFindPerkInRanksVisitor;
+			inline static constexpr auto RTTI = RTTI_BGSPerk__FindPerkInRanksVisitor;
 
 			// override (PerkRankVisitor)
 			bool operator()(const PerkRankData* a_entry) override;  // 00
@@ -57,7 +57,7 @@ namespace RE
 		class ApplyPerksVisitor : public PerkRankVisitor
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BGSPerkːːApplyPerksVisitor;
+			inline static constexpr auto RTTI = RTTI_BGSPerk__ApplyPerksVisitor;
 
 			// override (PerkRankVisitor)
 			bool operator()(const PerkRankData* a_entry) override;  // 00
@@ -67,7 +67,7 @@ namespace RE
 		class AddPerkVisitor : public PerkRankVisitor
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BGSPerkːːAddPerkVisitor;
+			inline static constexpr auto RTTI = RTTI_BGSPerk__AddPerkVisitor;
 
 			// override (PerkRankVisitor)
 			bool operator()(const PerkRankData* a_entry) override;  // 00

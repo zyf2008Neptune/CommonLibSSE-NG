@@ -7,7 +7,7 @@ namespace RE
 		class IVMDebugInterface
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScriptːːIVMDebugInterface;
+			inline static constexpr auto RTTI = RTTI_BSScript__IVMDebugInterface;
 
 			virtual ~IVMDebugInterface();  // 00
 

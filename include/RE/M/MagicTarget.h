@@ -30,7 +30,7 @@ namespace RE
 		class ForEachActiveEffectVisitor
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_MagicTargetːːForEachActiveEffectVisitor;
+			inline static constexpr auto RTTI = RTTI_MagicTarget__ForEachActiveEffectVisitor;
 
 			virtual ~ForEachActiveEffectVisitor();  // 00
 

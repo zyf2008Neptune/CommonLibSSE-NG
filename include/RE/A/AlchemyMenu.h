@@ -12,12 +12,12 @@ namespace RE
 		class AlchemyMenu : public CraftingSubMenu
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_CraftingSubMenusːːAlchemyMenu;
+			inline static constexpr auto RTTI = RTTI_CraftingSubMenus__AlchemyMenu;
 
 			class QuitMenuCallback : public IMessageBoxCallback
 			{
 			public:
-				inline static constexpr auto RTTI = RTTI_CraftingSubMenusːːAlchemyMenuːːQuitMenuCallback;
+				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__AlchemyMenu__QuitMenuCallback;
 
 				virtual ~QuitMenuCallback();  // 00
 

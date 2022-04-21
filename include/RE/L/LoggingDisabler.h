@@ -7,9 +7,7 @@ namespace RE
 	class LoggingDisabler : public GFxLog
 	{
 	public:
-#if !defined(ENABLE_SKYRIM_AE)
-		inline static constexpr auto RTTI = RTTI_ːːLoggingDisabler;
-#endif
+		inline static constexpr auto RTTI = RTTI___LoggingDisabler;
 
 		LoggingDisabler() = default;
 

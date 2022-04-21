@@ -10,7 +10,7 @@ namespace RE
 		class IHandleReaderWriter
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScriptːːIHandleReaderWriter;
+			inline static constexpr auto RTTI = RTTI_BSScript__IHandleReaderWriter;
 			inline static constexpr auto VTABLE = VTABLE_BSScript__IHandleReaderWriter;
 
 			virtual ~IHandleReaderWriter();  // 0

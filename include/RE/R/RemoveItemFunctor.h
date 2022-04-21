@@ -16,7 +16,7 @@ namespace RE
 		class RemoveItemFunctor : public DelayFunctor
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_SkyrimScriptːːːːRemoveItemFunctor;
+			inline static constexpr auto RTTI = RTTI_SkyrimScript____RemoveItemFunctor;
 
 			~RemoveItemFunctor() override;  // 00
 

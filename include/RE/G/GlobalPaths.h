@@ -14,7 +14,7 @@ namespace RE
 			public BSTSingletonSDM<GlobalPaths>  // 10
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSResourceːːːːGlobalPaths;
+			inline static constexpr auto RTTI = RTTI_BSResource____GlobalPaths;
 
 			~GlobalPaths() override;  // 00
 

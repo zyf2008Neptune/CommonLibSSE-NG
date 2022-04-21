@@ -7,7 +7,7 @@ namespace RE
 		class IFreezeQuery
 		{
 		public:
-			inline static constexpr auto RTTI = RTTI_BSScriptːːIFreezeQuery;
+			inline static constexpr auto RTTI = RTTI_BSScript__IFreezeQuery;
 
 			virtual ~IFreezeQuery();  // 00
 
