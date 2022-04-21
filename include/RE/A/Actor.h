@@ -305,7 +305,7 @@ namespace RE
 		bool                    ShouldPerformRevert() const override;                                                                                                                                                                                 // 07C
 		void                    UpdateAnimation(float a_delta) override;                                                                                                                                                                              // 07D
 		void                    Unk_82(void) override;                                                                                                                                                                                                // 082
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		// Override functions past where Skyrim VR breaks compatibility.
 		void     SetObjectReference(TESBoundObject* a_object) override;                                         // 084
 		void     MoveHavok(bool a_forceRec) override;                                                           // 085

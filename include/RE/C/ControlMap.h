@@ -46,7 +46,7 @@ namespace RE
 		public:
 			[[nodiscard]] static SKYRIM_REL_VR std::size_t GetNumDeviceMappings() noexcept
 			{
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 				return INPUT_DEVICES::kTotal;
 #else
 				if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {

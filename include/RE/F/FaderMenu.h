@@ -32,7 +32,7 @@ namespace RE
 		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
 
 		// members
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		RUNTIME_DATA_CONTENT  // 30 - smart ptr
 #endif
 	};

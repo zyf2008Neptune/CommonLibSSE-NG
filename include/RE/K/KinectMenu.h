@@ -12,7 +12,7 @@ namespace RE
 	// flags = kAllowSaving | kCustomRendering | kAssignCursorToRenderer
 	// context = kNone
 	class KinectMenu :
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		public IMenu,                            // 00
 		public BSTEventSink<MenuOpenCloseEvent>  // 30
 #else
@@ -28,7 +28,7 @@ namespace RE
 		// override (IMenu)
 		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
 
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		// override (BSTEventSink<MenuOpenCloseEvent>)
 		BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
 #endif
@@ -44,7 +44,7 @@ namespace RE
 		}
 
 		// members
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		GFxValue root;  // 38, 48 - "Menu_mc"
 #endif
 	};

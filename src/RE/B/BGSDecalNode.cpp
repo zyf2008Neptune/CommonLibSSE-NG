@@ -4,7 +4,7 @@ using namespace REL;
 
 namespace RE
 {
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifdef SKYRIM_CROSS_VR
 	std::uint8_t BGSDecalNode::Unk_3E()
 	{
 		return RelocateVirtual<decltype(&BGSDecalNode::Unk_3E)>(0x3E, 0x3F, this);

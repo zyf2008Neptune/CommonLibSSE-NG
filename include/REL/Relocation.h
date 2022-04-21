@@ -61,6 +61,13 @@
 	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(&, ##__VA_ARGS__) \
 	REL_MAKE_MEMBER_FUNCTION_NON_POD_TYPE_HELPER(&&, ##__VA_ARGS__)
 
+#if defined(ENABLE_SKYRIM_VR) && (defined(ENABLE_SKYRIM_AE) || defined(ENABLE_SKYRIM_SE))
+/**
+ * Defined to indicate that this build supports both VR and non-VR runtimes.
+ */
+#	define SKYRIM_CROSS_VR
+#endif
+
 #if !defined(ENABLE_SKYRIM_AE) || (!defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR))
 /**
  * A macro which defines a modifier for expressions that vary by Skyrim Address Library IDs.
@@ -119,7 +126,7 @@
 #	define SKYRIM_REL_CONSTEXPR
 #endif
 
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 /**
  * A macro which defines a modifier for expressions that vary between Skyrim SE/AE and Skyrim VR.
  *
@@ -169,7 +176,7 @@
  * A macro which defines a modifier for functions which may be <code>virtual</code> when using selectively VR or non-VR.
  *
  * <p>
- * Currently defined as empty> since this build is for both VR and non-VR.
+ * Currently defined as empty since this build is for both VR and non-VR.
  * </p>
  */
 #	define SKYRIM_REL_VR_VIRTUAL

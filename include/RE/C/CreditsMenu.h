@@ -9,7 +9,7 @@ namespace RE
 	// flags = kPausesGame
 	// context = kMenuMode
 	class CreditsMenu :
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		public IMenu,              // 00
 		public GFxFunctionHandler  // 30
 #else
@@ -25,7 +25,7 @@ namespace RE
 		// override (IMenu)
 		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
 
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		// override (GFxFunctionHandler)
 		void Call(Params& a_params) override;  // 01
 #endif

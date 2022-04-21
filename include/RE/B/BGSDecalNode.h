@@ -30,7 +30,7 @@ namespace RE
 		const NiRTTI* GetRTTI() const override;                            // 02
 		NiObject*     CreateClone(NiCloningProcess& a_cloning) override;   // 17
 		void          ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		// The following are virtual functions past the point where VR compatibility breaks.
 		void OnVisible(NiCullingProcess& a_process) override;  // 34
 #endif
@@ -50,7 +50,7 @@ namespace RE
 		}
 
 		// members
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		RUNTIME_DATA_CONTENT  // 128, 150
 #endif
 	};

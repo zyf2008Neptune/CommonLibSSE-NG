@@ -17,7 +17,7 @@ namespace RE
 	// context = kJournal
 	class JournalMenu :
 		public IMenu,  // 00
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		public MenuEventHandler,            // 30
 		public BSTEventSink<BSSystemEvent>  // 40
 #else
@@ -50,7 +50,7 @@ namespace RE
 		void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
 		void               PostDisplay() override;                                                // 06
 
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		// override (MenuEventHandler)
 		bool CanProcess(InputEvent* a_event) override;              // 01
 		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
@@ -70,7 +70,7 @@ namespace RE
 		}
 
 		// members
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		RUNTIME_DATA_CONTENT  // 48, 58
 #endif
 	};

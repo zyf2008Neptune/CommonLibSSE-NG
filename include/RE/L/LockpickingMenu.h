@@ -30,7 +30,7 @@ namespace RE
 	// context = kLockpicking
 	class LockpickingMenu :
 		public IMenu,  // 00
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		public MenuEventHandler,                 // 30
 		public BSTEventSink<MenuOpenCloseEvent>  // 40
 #else
@@ -86,7 +86,7 @@ namespace RE
 		// override (IMenu)
 		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
 
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		// override (MenuEventHandler)
 		bool CanProcess(InputEvent* a_event) override;              // 01
 		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
@@ -110,7 +110,7 @@ namespace RE
 		}
 
 		// members
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		RUNTIME_DATA_CONTENT  // 48, 58
 #endif
 	};

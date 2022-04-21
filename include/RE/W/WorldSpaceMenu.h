@@ -10,7 +10,7 @@ namespace RE
 	// menuDepth = 4
 	// context = 22
 	class WorldSpaceMenu :
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		public IMenu,                            // 00
 		public BSTEventSink<HudModeChangeEvent>  // 40
 #else

@@ -21,7 +21,7 @@ namespace RE
 		};
 		static_assert(sizeof(DYNAMIC_TRISHAPE_RUNTIME_DATA) == 0x20);
 
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		RUNTIME_DATA_CONTENT;  // 160, 1A8
 #endif
 

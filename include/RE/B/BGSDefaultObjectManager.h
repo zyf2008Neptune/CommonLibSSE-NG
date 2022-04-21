@@ -1068,7 +1068,7 @@ namespace RE
 
 		// members
 		TESForm* objects[DEFAULT_OBJECTS::kTotal];  // 020 - DNAM
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		bool          objectInit[DEFAULT_OBJECTS::kTotal];  // B80
 		std::uint32_t padCEC;                               // CEC
 #else

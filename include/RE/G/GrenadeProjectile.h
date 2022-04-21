@@ -28,7 +28,7 @@ namespace RE
 		void InitLoadGame(BGSLoadFormBuffer* a_buf) override;    // 10
 		void FinishLoadGame(BGSLoadFormBuffer* a_buf) override;  // 11
 		void Revert(BGSLoadFormBuffer* a_buf) override;          // 12
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		// Override functions past where Skyrim VR breaks compatibility.
 		BGSDecalGroup* GetDecalGroup() const override;       // 9F - { return decalGroup; }
 		void           Unk_A3(void) override;                // A3 - { return 1; }

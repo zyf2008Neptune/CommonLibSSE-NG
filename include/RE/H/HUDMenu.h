@@ -59,7 +59,7 @@ namespace RE
 		void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
 		void               RefreshPlatform() override;                                            // 08
 
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		// override (BSTEventSink<UserEventEnabledEvent>)
 		BSEventNotifyControl ProcessEvent(const UserEventEnabledEvent* a_event, BSTEventSource<UserEventEnabledEvent>* a_eventSource) override;  // 01
 
@@ -78,7 +78,7 @@ namespace RE
 		}
 
 		// members
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 #	if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 		std::uint64_t pad68;  // 68
 #	endif

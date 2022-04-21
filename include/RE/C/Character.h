@@ -38,7 +38,7 @@ namespace RE
 		BSFaceGenNiNode*        GetFaceNodeSkinned() override;                                 // 061
 		BSFaceGenAnimationData* GetFaceGenAnimationData() override;                            // 063
 		void                    SetBiped(const BSTSmartPointer<BipedAnim>& a_biped) override;  // 081
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		void  InitiateVampireFeedPackage(Actor* a_arg1, TESObjectREFR* a_arg2) override;  // 0C0
 		void  Unk_C4(void) override;                                                      // 0C4 - { unk272 = a_arg1; }
 		void  Unk_C5(void) override;                                                      // 0C5 - { return unk272; }

@@ -14,7 +14,7 @@ namespace RE
 	// flags = kUsesMenuContext | kDisablePauseMenu | kUpdateUsesCursor | kInventoryItemMenu | kDontHideCursorWhenTopmost
 	// context = kItemMenu
 	class CreationClubMenu :
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		public IMenu,                            // 00
 		public MenuEventHandler,                 // 30
 		public GFxFunctionHandler,               // 40
@@ -42,7 +42,7 @@ namespace RE
 		// override (IMenu)
 		void AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
 
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		// override (MenuEventHandler)
 		bool CanProcess(InputEvent* a_event) override;              // 01
 		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
@@ -65,7 +65,7 @@ namespace RE
 		}
 
 		// members
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		RUNTIME_DATA_CONTENT  // 58, 68
 #endif
 	};

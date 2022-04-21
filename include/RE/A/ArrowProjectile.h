@@ -26,7 +26,7 @@ namespace RE
 		// override (MissileProjectile)
 		void SaveGame(BGSSaveFormBuffer* a_buf) override;  // 0E
 		void LoadGame(BGSLoadFormBuffer* a_buf) override;  // 0F
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		void Unk_AA(void) override;               // AA
 		void UpdateImpl(float a_delta) override;  // AB
 		void Unk_AC(void) override;               // AC

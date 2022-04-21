@@ -11,7 +11,7 @@ namespace RE
 	// flags = kDisablePauseMenu | kAllowSaving | kDontHideCursorWhenTopmost
 	// context = kNone
 	class MistMenu :
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		public IMenu,                              // 00
 		public SimpleAnimationGraphManagerHolder,  // 30
 		public MenuEventHandler                    // 48
@@ -84,7 +84,7 @@ namespace RE
 		void               PostDisplay() override;                                                // 06
 
 		// override (MenuEventHandler)
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		bool CanProcess(InputEvent* a_event) override;              // 01
 		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
 		bool ProcessMouseMove(MouseMoveEvent* a_event) override;    // 04
@@ -102,7 +102,7 @@ namespace RE
 		}
 
 		// members
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		RUNTIME_DATA_CONTENT  // 58, 68
 #endif
 	};

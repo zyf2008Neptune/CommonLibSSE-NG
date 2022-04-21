@@ -27,7 +27,7 @@ namespace RE
 		void InitLoadGame(BGSLoadFormBuffer* a_buf) override;    // 10
 		void FinishLoadGame(BGSLoadFormBuffer* a_buf) override;  // 11
 		void Revert(BGSLoadFormBuffer* a_buf) override;          // 12
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		void Unk_A4(void) override;               // A4 - { return 1; }
 		void Unk_A9(void) override;               // A9
 		void UpdateImpl(float a_delta) override;  // AB

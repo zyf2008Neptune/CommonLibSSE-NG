@@ -95,7 +95,7 @@ namespace RE
 				void New_1C(void) override;
 				void New_1D(void) override;
 #endif
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 				bool                       FindBoundObject(VMHandle a_handle, const char* a_className, BSTSmartPointer<Object>& a_result) const override;                                                                                   // 1C
 				void                       MoveBoundObjects(VMHandle a_from, VMHandle a_to) override;                                                                                                                                       // 1D
 				void                       ResetAllBoundObjects(VMHandle a_handle) override;                                                                                                                                                // 1E

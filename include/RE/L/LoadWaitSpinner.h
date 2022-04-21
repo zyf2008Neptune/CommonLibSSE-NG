@@ -14,7 +14,7 @@ namespace RE
 	// flags = kAlwaysOpen | kAllowSaving
 	// context = kNone
 	class LoadWaitSpinner :
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		public IMenu,                                 // 00
 		public BSTEventSink<BSSystemEvent>,           // 30
 		public BSTEventSink<BSGamerProfileEvent>,     // 38
@@ -46,7 +46,7 @@ namespace RE
 		void               Accept(CallbackProcessor* a_processor) override;  // 01 - { return; }
 		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
 
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		// override (BSTEventSink<BSSystemEvent>)
 		BSEventNotifyControl ProcessEvent(const BSSystemEvent* a_event, BSTEventSource<BSSystemEvent>* a_eventSource) override;  // 01
 
@@ -68,7 +68,7 @@ namespace RE
 		}
 
 		// members
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		RUNTIME_DATA_CONTENT  // 48, 58
 #endif
 	};

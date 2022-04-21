@@ -894,7 +894,7 @@ namespace RE
 		return base ? base->crimeFaction : nullptr;
 	}
 
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifdef SKYRIM_CROSS_VR
 	void Actor::Unk_A2()
 	{
 		RelocateVirtual<decltype(&Actor::Unk_A2)>(0x0A2, 0x0A3, this);

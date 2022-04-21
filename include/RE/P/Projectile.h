@@ -62,7 +62,7 @@ namespace RE
 		void         InitHavok() override;                                              // 66
 		NiAVObject*  Load3D(bool a_backgroundLoading) override;                         // 6A
 		void         Set3D(NiAVObject* a_object, bool a_queue3DTasks = true) override;  // 6C
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		// Override functions past where Skyrim VR breaks compatibility.
 		void        MoveHavok(bool a_forceRec) override;                                   // 85 - { return; }
 		void        GetLinearVelocity(NiPoint3& a_velocity) const override;                // 86

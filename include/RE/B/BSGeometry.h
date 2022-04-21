@@ -89,7 +89,7 @@ namespace RE
 		bool          IsEqual(NiObject* a_object) override;                // 1C - { return false; }
 		void          ProcessClone(NiCloningProcess& a_cloning) override;  // 1D
 		void          PostLinkObject(NiStream& a_stream) override;         // 1E
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		// The following are virtual functions past the point where VR compatibility breaks.
 		void AttachProperty(NiAlphaProperty* a_property) override;                                                        // 27
 		void SetSelectiveUpdateFlags(bool& a_selectiveUpdate, bool a_selectiveUpdateTransforms, bool& a_rigid) override;  // 2B
@@ -136,7 +136,7 @@ namespace RE
 		}
 
 		// members
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		MODEL_DATA_CONTENT;    // 110, 138
 		RUNTIME_DATA_CONTENT;  // 120, 160
 #	ifndef ENABLE_SKYRIM_VR

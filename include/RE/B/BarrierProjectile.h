@@ -36,7 +36,7 @@ namespace RE
 		void        Revert(BGSLoadFormBuffer* a_buf) override;          // 12
 		void        InitHavok() override;                               // 66
 		NiAVObject* Load3D(bool a_backgroundLoading) override;          // 6A
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		void Unk_A7(void) override;               // A7 - { return 1; }
 		void UpdateImpl(float a_delta) override;  // AB
 		void Unk_AC(void) override;               // AC

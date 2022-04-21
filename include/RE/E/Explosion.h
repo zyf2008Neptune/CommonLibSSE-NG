@@ -42,7 +42,7 @@ namespace RE
 		MagicCaster* GetMagicCaster(MagicSystem::CastingSource a_source) override;  // 5C
 		void         InitHavok() override;                                          // 66
 		void         Release3DRelatedData() override;                               // 6B
-#if !defined(ENABLE_SKYRIM_VR) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE))
+#ifndef SKYRIM_CROSS_VR
 		// This is where in the TESObjectREFR vtable compatibility with SkyrimVR breaks.
 		Explosion* AsExplosion() override;                                                // 8E
 		bool       OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 90 - { return false; }
