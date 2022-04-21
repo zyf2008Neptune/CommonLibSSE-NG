@@ -193,32 +193,20 @@ namespace RE
 
 	bool InventoryEntryData::IsFavorited() const
 	{
-		if (extraLists) {
-			for (const auto& xList : *extraLists) {
-				const auto favorited = xList->HasType<ExtraHotkey>();
-				if (favorited) {
-					return true;
-				}
-			}
-		}
-
-		return false;
+		return HasExtraDataType<ExtraHotkey>();
 	}
 
 	bool InventoryEntryData::IsLeveled() const
 	{
-		if (extraLists) {
-			for (const auto& xList : *extraLists) {
-				if (xList && xList->HasType<ExtraLeveledItem>()) {
-					return true;
-				}
-			}
-		}
-
-		return false;
+		return HasExtraDataType<ExtraLeveledItem>();
 	}
 
-	bool InventoryEntryData::IsWorn() const
+    bool InventoryEntryData::IsPoisoned() const
+	{
+		return HasExtraDataType<ExtraPoison>();
+	}
+
+    bool InventoryEntryData::IsWorn() const
 	{
 		if (extraLists) {
 			for (const auto& xList : *extraLists) {
