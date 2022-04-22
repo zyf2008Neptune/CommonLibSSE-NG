@@ -49,7 +49,7 @@ namespace RE
 	const TESFile* TESDataHandler::LookupModByName(std::string_view a_modName)
 	{
 		for (auto& file : files) {
-			if (_stricmp(file->fileName, a_modName.data()) == 0) {
+			if (_strnicmp(file->fileName, a_modName.data(), a_modName.size()) == 0) {
 				return file;
 			}
 		}
@@ -65,7 +65,7 @@ namespace RE
 	const TESFile* TESDataHandler::LookupLoadedModByName(std::string_view a_modName)
 	{
 		for (auto& file : compiledFileCollection.files) {
-			if (_stricmp(file->fileName, a_modName.data()) == 0) {
+			if (_strnicmp(file->fileName, a_modName.data(), a_modName.size()) == 0) {
 				return file;
 			}
 		}
@@ -91,7 +91,7 @@ namespace RE
 	const TESFile* TESDataHandler::LookupLoadedLightModByName(std::string_view a_modName)
 	{
 		for (auto& smallFile : compiledFileCollection.smallFiles) {
-			if (_stricmp(smallFile->fileName, a_modName.data()) == 0) {
+			if (_strnicmp(smallFile->fileName, a_modName.data(), a_modName.size()) == 0) {
 				return smallFile;
 			}
 		}
