@@ -79,7 +79,8 @@ namespace SKSE
 
 		for (auto import = importDesc; import->Characteristics != 0; ++import) {
 			auto name = stl::adjust_pointer<const char>(dosHeader, import->Name);
-			if (_stricmp(a_dll.data(), name) != 0) {
+			if (a_dll.size() == strlen(name) &&
+				_strnicmp(a_dll.data(), name, a_dll.size()) != 0) {
 				continue;
 			}
 
@@ -90,7 +91,8 @@ namespace SKSE
 				}
 
 				auto importByName = stl::adjust_pointer<IMAGE_IMPORT_BY_NAME>(dosHeader, thunk[i].u1.AddressOfData);
-				if (_stricmp(a_function.data(), importByName->Name) == 0) {
+				if (a_function.size() == strlen(importByName->Name) &&
+					_strnicmp(a_function.data(), importByName->Name, a_function.size()) == 0) {
 					return stl::adjust_pointer<::IMAGE_THUNK_DATA>(dosHeader, import->FirstThunk) + i;
 				}
 			}
