@@ -209,7 +209,7 @@ namespace RE
 		[[nodiscard]] inline friend bool operator!=(const value_type* a_lhs, const BSStringT& a_rhs) { return !(a_lhs == a_rhs); }
 		[[nodiscard]] inline friend bool operator==(const BSStringT& a_lhs, const BSStringT& a_rhs) { return a_lhs == a_rhs.c_str(); }
 		[[nodiscard]] inline friend bool operator!=(const BSStringT& a_lhs, const BSStringT& a_rhs) { return !(a_lhs == a_rhs); }
-		[[nodiscard]] inline friend bool operator==(const BSStringT& a_lhs, const std::string_view& a_rhs) { return a_lhs == a_rhs.data(); }
+		[[nodiscard]] inline friend bool operator==(const BSStringT& a_lhs, const std::string_view& a_rhs) { return a_lhs._data == a_rhs.data() || strnicmp(a_lhs._data, a_rhs.data(), a_rhs.size()); }
 		[[nodiscard]] inline friend bool operator!=(const BSStringT& a_lhs, const std::string_view& a_rhs) { return !(a_lhs == a_rhs); }
 		[[nodiscard]] inline friend bool operator==(const std::string_view& a_lhs, const BSStringT& a_rhs) { return a_rhs == a_lhs; }
 		[[nodiscard]] inline friend bool operator!=(const std::string_view& a_lhs, const BSStringT& a_rhs) { return !(a_lhs == a_rhs); }
@@ -220,6 +220,10 @@ namespace RE
 		[[nodiscard]] static int stricmp(const char* a_lhs, const char* a_rhs) { return _stricmp(a_lhs, a_rhs); }
 
 		[[nodiscard]] static int stricmp(const wchar_t* a_lhs, const wchar_t* a_rhs) { return _wcsicmp(a_lhs, a_rhs); }
+
+		[[nodiscard]] static int strnicmp(const char* a_lhs, const char* a_rhs, std::size_t len) { return _strnicmp(a_lhs, a_rhs, len); }
+
+		[[nodiscard]] static int strnicmp(const wchar_t* a_lhs, const wchar_t* a_rhs, std::size_t len) { return _wcsnicmp(a_lhs, a_rhs, len); }
 
 		[[nodiscard]] pointer allocate(std::uint32_t a_num) { return allocator_type::allocate(a_num); }
 
