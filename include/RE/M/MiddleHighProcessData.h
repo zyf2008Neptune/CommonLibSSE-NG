@@ -239,7 +239,7 @@ namespace RE
 		TESIdleForm*                                   furnitureIdle;               // 228
 		void*                                          unk230;                      // 230 - smart ptr
 		BSFaceGenAnimationData*                        faceAnimationData;           // 238
-		std::uint64_t                                  unk240;                      // 240
+		MagicItem*                                     currentPackageSpell;         // 240
 		std::uint64_t                                  unk248;                      // 248
 		NiPointer<bhkCharacterController>              charController;              // 250
 		BSTSmartPointer<bhkRagdollPenetrationUtil>     penetrationDetectUtil;       // 258
@@ -247,7 +247,7 @@ namespace RE
 		InventoryEntryData*                            bothHands;                   // 268
 		NiPointer<QueuedFile>                          bodyPartPreload;             // 270
 		void*                                          unk278;                      // 278
-		std::uint64_t                                  unk280;                      // 280
+		TESIdleForm*                                   lastIdlePlayed;              // 280
 		AIPerkData*                                    perkData;                    // 288
 		std::uint32_t                                  unk290;                      // 290
 		std::uint32_t                                  currentFurnitureSubgraphID;  // 294
@@ -297,8 +297,8 @@ namespace RE
 		bool                                           unk320;                      // 320
 		bool                                           unk321;                      // 321
 		bool                                           beenAttacked;                // 322
-		bool                                           unk323;                      // 323
-		bool                                           unk324;                      // 324
+		bool                                           alwaysHit;                   // 323
+		bool                                           doNoDamage;                  // 324
 		bool                                           soulTrapped;                 // 325
 		bool                                           unk326;                      // 326
 		bool                                           unk327;                      // 327
@@ -311,7 +311,7 @@ namespace RE
 		bool                                           unk32E;                      // 32E
 		bool                                           unk32F;                      // 32F
 		bool                                           unk330;                      // 330
-		bool                                           unk331;                      // 331
+		bool                                           killQueued;                  // 331
 		bool                                           inDeferredKill;              // 332
 		bool                                           pad333;                      // 333
 		std::uint32_t                                  pad334;                      // 334

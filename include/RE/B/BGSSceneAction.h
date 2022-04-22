@@ -1,5 +1,7 @@
 #pragma once
 
+#include "RE/E/EmotionTypes.h"
+
 namespace RE
 {
 	class BGSLoadGameBuffer;
@@ -15,18 +17,6 @@ namespace RE
 			kDialogue = 0,
 			kPackage = 1,
 			kTimer = 2
-		};
-
-		enum class EmotionType
-		{
-			kNeutral = 0,
-			kAnger = 1,
-			kDisgust = 2,
-			kFear = 3,
-			kSad = 4,
-			kHappy = 5,
-			kSurprise = 6,
-			kPuzzled = 7,
 		};
 
 		enum class Flag

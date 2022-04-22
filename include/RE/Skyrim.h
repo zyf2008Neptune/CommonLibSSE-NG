@@ -454,6 +454,7 @@
 #include "RE/E/Effect.h"
 #include "RE/E/EffectArchetypes.h"
 #include "RE/E/EffectSetting.h"
+#include "RE/E/EmotionTypes.h"
 #include "RE/E/EnchantConstructMenu.h"
 #include "RE/E/EnchantmentItem.h"
 #include "RE/E/ErrorCodes.h"

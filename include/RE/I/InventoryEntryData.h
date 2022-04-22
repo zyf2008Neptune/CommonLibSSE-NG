@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSTList.h"
+#include "RE/E/ExtraDataList.h"
 #include "RE/F/FormTypes.h"
 #include "RE/M/MemoryManager.h"
 #include "RE/S/SoulLevels.h"

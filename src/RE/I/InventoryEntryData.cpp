@@ -1,10 +1,10 @@
 #include "RE/I/InventoryEntryData.h"
 
 #include "RE/E/ExtraCharge.h"
-#include "RE/E/ExtraDataList.h"
 #include "RE/E/ExtraEnchantment.h"
 #include "RE/E/ExtraHotkey.h"
 #include "RE/E/ExtraLeveledItem.h"
+#include "RE/E/ExtraPoison.h"
 #include "RE/E/ExtraTextDisplayData.h"
 #include "RE/E/ExtraWorn.h"
 #include "RE/E/ExtraWornLeft.h"
@@ -38,7 +38,7 @@ namespace RE
 			delete extraLists;
 			extraLists =
 				a_rhs.extraLists ?
-                    new BSSimpleList<ExtraDataList*>(*a_rhs.extraLists) :
+					new BSSimpleList<ExtraDataList*>(*a_rhs.extraLists) :
                     nullptr;
 
 			countDelta = a_rhs.countDelta;

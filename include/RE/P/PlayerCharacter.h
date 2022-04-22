@@ -304,8 +304,7 @@ namespace RE
 		}
 
 		// members
-		std::uint32_t                                           unk3D8;                                       // 3D8
-		std::uint32_t                                           unk3DC;                                       // 3DC
+		mutable BSSpinLock                                      questTargetsLock;                             // 3D8
 		BSTHashMap<const TESFaction*, CrimeGoldStruct>          crimeGoldMap;                                 // 3E0
 		BSTHashMap<const TESFaction*, StolenItemValueStruct>    stolenItemValueMap;                           // 410
 		ObjectRefHandle                                         commandWaitMarker;                            // 440
@@ -327,7 +326,7 @@ namespace RE
 		BSTArray<void*>                                         imageSpaceModifierAnims2;                     // 558
 		BSSimpleList<TESQuestStageItem*>                        questLog;                                     // 570
 		BSTArray<BGSInstancedQuestObjective>                    objectives;                                   // 580
-		BSTHashMap<UnkKey, UnkValue>                            unk598;                                       // 598
+		BSTHashMap<UnkKey, UnkValue>                            questTargets;                                 // 598
 		BSTHashMap<UnkKey, UnkValue>                            currentSayOnceInfosMap;                       // 5C8
 		BSSimpleList<ObjectRefHandle>                           droppedRefList;                               // 5F8
 		NiTMap<std::uint32_t, std::uint8_t>                     randomDoorSpaceMap;                           // 608
