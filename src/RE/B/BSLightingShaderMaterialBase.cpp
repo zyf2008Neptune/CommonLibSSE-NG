@@ -48,7 +48,7 @@ namespace RE
 			{
 				auto material = malloc<BSLightingShaderMaterial>();
 				if (material) {
-					std::memset(material, 0, sizeof(BSLightingShaderMaterial));
+					std::memset(reinterpret_cast<void*>(material), 0, sizeof(BSLightingShaderMaterial));
 					material->Ctor();
 					reinterpret_cast<std::uintptr_t*>(material)[0] = BSLightingShaderMaterial::VTABLE[0].address();
 				}

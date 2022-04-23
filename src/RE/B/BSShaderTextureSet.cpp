@@ -18,7 +18,7 @@ namespace RE
 		} else {
 			auto textureset = malloc<BSShaderTextureSet>();
 			if (textureset) {
-				std::memset(textureset, 0, sizeof(BSShaderTextureSet));
+				std::memset(reinterpret_cast<void*>(textureset), 0, sizeof(BSShaderTextureSet));
 				textureset->Ctor();
 			}
 			return textureset;
