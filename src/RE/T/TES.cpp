@@ -5,7 +5,7 @@
 #include "RE/N/NiAVObject.h"
 #include "RE/T/TESObjectCELL.h"
 #include "RE/T/TESObjectREFR.h"
-#include "RE/T/TESWorldspace.h"
+#include "RE/T/TESWorldSpace.h"
 
 namespace RE
 {
