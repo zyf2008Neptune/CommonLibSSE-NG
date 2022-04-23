@@ -66,23 +66,23 @@ namespace RE
 		virtual void AppendVirtual(BSGeometry& a_visible, std::uint32_t a_arg2);                             // 18
 
 		// members
-		const bool      useVirtualAppend;      // 008
-		std::uint8_t    pad009;                // 009
-		std::uint16_t   pad00A;                // 00A
-		std::uint32_t   pad00C;                // 00C
-		NiVisibleArray* visibleSet;            // 010
-		const NiCamera* camera;                // 018
-		NiFrustum       frustum;               // 020
-		NiFrustumPlanes planes;                // 03C
-		NiFrustumPlanes customCullPlanes;      // 0AC
-		bool            cameraRelatedUpdates;  // 11C
-		bool            updateAccumulateFlag;  // 11D
-		bool            ignorePreprocess;      // 11E
-		bool            doCustomCullPlanes;    // 11F
-		std::uint8_t    unk120;                // 120
-		std::uint8_t    unk121;                // 121
-		std::uint16_t   pad122;                // 122
-		std::uint32_t   pad124;                // 124
+		const bool      useVirtualAppend{ false };  // 008
+		std::uint8_t    pad009;                     // 009
+		std::uint16_t   pad00A;                     // 00A
+		std::uint32_t   pad00C;                     // 00C
+		NiVisibleArray* visibleSet;                 // 010
+		const NiCamera* camera;                     // 018
+		NiFrustum       frustum;                    // 020
+		NiFrustumPlanes planes;                     // 03C
+		NiFrustumPlanes customCullPlanes;           // 0AC
+		bool            cameraRelatedUpdates;       // 11C
+		bool            updateAccumulateFlag;       // 11D
+		bool            ignorePreprocess;           // 11E
+		bool            doCustomCullPlanes;         // 11F
+		std::uint8_t    unk120;                     // 120
+		std::uint8_t    unk121;                     // 121
+		std::uint16_t   pad122;                     // 122
+		std::uint32_t   pad124;                     // 124
 	};
 	static_assert(sizeof(NiCullingProcess) == 0x128);
 }
