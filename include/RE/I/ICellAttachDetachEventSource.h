@@ -8,8 +8,8 @@ namespace RE
 	struct CellAttachDetachEvent;
 
 	class ICellAttachDetachEventSource :
-		BSTSingletonExplicit<ICellAttachDetachEventSource>,  // 08
-		BSTEventSource<CellAttachDetachEvent>                // 08
+		public BSTSingletonExplicit<ICellAttachDetachEventSource>,  // 08
+		public BSTEventSource<CellAttachDetachEvent>                // 08
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ICellAttachDetachEventSource;
