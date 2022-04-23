@@ -64,8 +64,8 @@ namespace RE
 			}
 		}
 
-		template <class Event>
-		inline void AddEventSink(BSTEventSink<Event>* a_sink)
+		template <class SinkEvent>
+		inline void AddEventSink(BSTEventSink<SinkEvent>* a_sink)
 		{
 			AddEventSink(a_sink);
 		}
