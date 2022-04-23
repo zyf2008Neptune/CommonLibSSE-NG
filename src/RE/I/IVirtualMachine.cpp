@@ -125,7 +125,7 @@ namespace RE
 			TraceStack(message.c_str(), a_stackID, a_severity);
 		}
 
-		void IVirtualMachine::VTraceStack(const char* a_fmt, VMStackID a_stackID, Severity a_severity, ...)
+		void IVirtualMachine::VTraceStack(VMStackID a_stackID, Severity a_severity, const char* a_fmt, ...)
 		{
 			assert(a_fmt);
 

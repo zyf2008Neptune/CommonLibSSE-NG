@@ -121,7 +121,7 @@ namespace RE
 			void SetCallableFromTasklets(const char* a_className, const char* a_stateName, const char* a_fnName, bool a_callable);
 			void SetCallableFromTasklets(const char* a_className, const char* a_fnName, bool a_callable);
 			void TraceForm(TESForm* a_form, const char* a_str, VMStackID a_stackID, Severity a_severity = Severity::kError);
-			void VTraceStack(const char* a_fmt, VMStackID a_stackID, Severity a_severity = Severity::kInfo, ...);
+			void VTraceStack(VMStackID a_stackID, Severity a_severity, const char* a_fmt, ...);
 
 			// members
 			std::uint32_t pad0C;  // 0C
