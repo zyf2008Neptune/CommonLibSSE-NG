@@ -62,7 +62,7 @@ namespace RE
 		void ForceFirstPerson();
 		void ForceThirdPerson();
 		void ToggleFreeCameraMode(bool a_freezeTime);
-	    void UpdateThirdPerson(bool a_weaponDrawn);
+		void UpdateThirdPerson(bool a_weaponDrawn);
 
 		// members
 		std::uint8_t                                         pad039;                              // 039
