@@ -120,7 +120,7 @@ namespace RE
 		[[nodiscard]] bhkCollisionObject* GetCollisionObject() const;
 		[[nodiscard]] BSGeometry*         GetFirstGeometryOfShaderType(BSShaderMaterial::Feature a_type);
 		[[nodiscard]] TESObjectREFR*      GetUserData() const;
-		void                SetUserData(TESObjectREFR* a_ref) noexcept;
+		void                              SetUserData(TESObjectREFR* a_ref) noexcept;
 		[[nodiscard]] bool                HasAnimation() const;
 		[[nodiscard]] bool                HasShaderType(BSShaderMaterial::Feature a_type);
 		void                              RemoveDecals();
