@@ -1,5 +1,3 @@
-#pragma once
-
 #include "RE/C/ConeProjectile.h"
 
 using namespace REL;

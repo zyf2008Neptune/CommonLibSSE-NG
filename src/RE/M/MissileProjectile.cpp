@@ -1,5 +1,3 @@
-#pragma once
-
 #include "RE/M/MissileProjectile.h"
 
 using namespace REL;
