@@ -24,11 +24,11 @@ namespace RE
 		~NiPointLight() override;  // 00
 
 		// override (NiLight)
-		const NiRTTI* GetRTTI() const override;                  // 02
-		NiObject*     CreateClone(NiCloningProcess& a_cloning);  // 17
-		void          LoadBinary(NiStream& a_stream) override;   // 18
-		void          SaveBinary(NiStream& a_stream) override;   // 1B
-		bool          IsEqual(NiObject* a_object) override;      // 1C
+		const NiRTTI* GetRTTI() const override;                           // 02
+		NiObject*     CreateClone(NiCloningProcess& a_cloning) override;  // 17
+		void          LoadBinary(NiStream& a_stream) override;            // 18
+		void          SaveBinary(NiStream& a_stream) override;            // 1B
+		bool          IsEqual(NiObject* a_object) override;               // 1C
 
 		[[nodiscard]] inline POINT_LIGHT_RUNTIME_DATA& GetPointLightRuntimeData() noexcept
 		{
