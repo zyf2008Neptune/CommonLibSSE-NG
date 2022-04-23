@@ -105,7 +105,7 @@ namespace RE
 
 		// members
 		const stl::enumeration<BroadPhaseType, std::uint16_t> type;              // 10
-		const std::uint16_t                                   size;              // 12
+		const std::uint16_t                                   size{ 0 };         // 12
 		const stl::enumeration<Capabilities, std::uint32_t>   caps;              // 14
 		mutable hkMultiThreadCheck                            multiThreadCheck;  // 18
 		std::uint32_t                                         pad24;             // 24
