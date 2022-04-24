@@ -94,7 +94,9 @@ namespace RE
 		void               RefreshPlatform() override;                                            // 08
 
 		// override (BSTEventSink<MenuOpenCloseEvent>)
-		BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource);  // 01
+#ifndef SKYRIM_CROSS_VR
+		BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
+#endif
 
 		void PlaceMarker()
 		{
