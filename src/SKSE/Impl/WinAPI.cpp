@@ -229,6 +229,11 @@ namespace SKSE::WinAPI
 		::TerminateProcess(
 			static_cast<::HANDLE>(a_process),
 			static_cast<::UINT>(a_exitCode));
+#if defined(__clang__) || defined(__GNUC__)
+		__builtin_unreachable();
+#elifdef _MSC_VER
+		__assume(false);
+#endif
 	}
 
 	void* TlsGetValue(std::uint32_t a_tlsIndex) noexcept
