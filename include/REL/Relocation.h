@@ -319,15 +319,16 @@ namespace REL
 		}
 
 		template <class T>
-		[[nodiscard]] inline T read(std::istream& a_in) {
+		[[nodiscard]] inline T read(std::istream& a_in)
+		{
 			T result;
 			a_in.read(reinterpret_cast<char*>(&result), sizeof(result));
 			return result;
 		}
 
 		template <class... Args>
-		requires (sizeof...(Args) > 1)
-		[[nodiscard]] std::tuple<Args...> read(std::istream& a_in)
+		requires(sizeof...(Args) > 1)
+			[[nodiscard]] std::tuple<Args...> read(std::istream& a_in)
 		{
 			return std::make_tuple(read<Args>(a_in)...);
 		}
@@ -920,7 +921,7 @@ namespace REL
 		{
 			try {
 				std::ifstream in(std::filesystem::path{ a_filename });
-				header_t                header;
+				header_t      header;
 				header.read(in);
 				if (header.version() != a_version) {
 					stl::report_and_fail("version mismatch"sv);

@@ -106,7 +106,8 @@ namespace RE
 
 			union value_union
 			{
-				value_union() : value() { }
+				value_union() :
+					value() {}
 
 				~value_union() { value.~value_type(); }
 
