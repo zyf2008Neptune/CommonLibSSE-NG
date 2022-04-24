@@ -41,19 +41,27 @@
             "hidden": true,
             "name": "windows"
         },
+
         {
             "cacheVariables": {
                 "CMAKE_CXX_FLAGS": "/EHsc /MP /W4 /WX $penv{CXXFLAGS}"
             },
             "generator": "Ninja",
-            "inherits": [
-                "cmake-dev",
-                "vcpkg",
-                "windows"
-            ],
-            "name": "Debug-All",
-            "displayName": "Debug (All)",
-            "binaryDir": "${sourceDir}/build/all"
+            "hidden": true,
+            "name": "msvc"
+        },
+        {
+            "cacheVariables": {
+                "CMAKE_CXX_FLAGS": "/EHsc /MP /W4 /WX $penv{CXXFLAGS}"
+            },
+            "generator": "Ninja",
+            "vendor": {
+                "jetbrains.com/clion": {
+                    "toolchain": "Visual Studio (Clang)"
+                }
+            },
+            "hidden": true,
+            "name": "clangcl"
         },
         {
             "cacheVariables": {
@@ -129,94 +137,210 @@
         },
         {
             "inherits": [
-                "Debug-All",
+                "cmake-dev",
+                "vcpkg",
+                "windows",
+                "msvc"
+            ],
+            "name": "Debug-All-MSVC",
+            "displayName": "Debug (All, MSVC)",
+            "binaryDir": "${sourceDir}/build/all-msvc"
+        },
+        {
+            "inherits": [
+                "cmake-dev",
+                "vcpkg",
+                "windows",
+                "clangcl"
+            ],
+            "vendor": {
+                "jetbrains.com/clion": {
+                    "toolchain": "Visual Studio (Clang)"
+                }
+            },
+            "name": "Debug-All-ClangCL",
+            "displayName": "Debug (All, ClangCL)",
+            "binaryDir": "${sourceDir}/build/all-clangcl"
+        },
+        {
+            "inherits": [
+                "Debug-All-MSVC",
                 "flatrim-only"
             ],
-            "name": "Debug-Flatrim",
-            "displayName": "Debug (Flatrim)",
-            "binaryDir": "${sourceDir}/build/flatrim"
+            "name": "Debug-Flatrim-MSVC",
+            "displayName": "Debug (Flatrim, MSVC)",
+            "binaryDir": "${sourceDir}/build/flatrim-msvc"
         },
         {
             "inherits": [
-                "Debug-All",
+                "Debug-All-ClangCL",
+                "flatrim-only"
+            ],
+            "name": "Debug-Flatrim-ClangCL",
+            "displayName": "Debug (Flatrim, ClangCL)",
+            "binaryDir": "${sourceDir}/build/flatrim-clangcl"
+        },
+        {
+            "inherits": [
+                "Debug-All-MSVC",
                 "vr-only"
             ],
-            "name": "Debug-VR",
-            "displayName": "Debug (VR)",
-            "binaryDir": "${sourceDir}/build/vr"
+            "name": "Debug-VR-MSVC",
+            "displayName": "Debug (VR, MSVC)",
+            "binaryDir": "${sourceDir}/build/vr-msvc"
         },
         {
             "inherits": [
-                "Debug-All",
+                "Debug-All-ClangCL",
+                "vr-only"
+            ],
+            "name": "Debug-VR-ClangCL",
+            "displayName": "Debug (VR, ClangCL)",
+            "binaryDir": "${sourceDir}/build/vr-clangcl"
+        },
+        {
+            "inherits": [
+                "Debug-All-MSVC",
                 "ae-only"
             ],
-            "name": "Debug-AE",
-            "displayName": "Debug (AE)",
-            "binaryDir": "${sourceDir}/build/ae"
+            "name": "Debug-AE-MSVC",
+            "displayName": "Debug (AE, MSVC)",
+            "binaryDir": "${sourceDir}/build/ae-msvc"
         },
         {
             "inherits": [
-                "Debug-All",
+                "Debug-All-ClangCL",
+                "ae-only"
+            ],
+            "name": "Debug-AE-ClangCL",
+            "displayName": "Debug (AE, ClangCL)",
+            "binaryDir": "${sourceDir}/build/ae-clangcl"
+        },
+        {
+            "inherits": [
+                "Debug-All-MSVC",
                 "se-only"
             ],
-            "name": "Debug-SE",
-            "displayName": "Debug (SE)",
-            "binaryDir": "${sourceDir}/build/se"
+            "name": "Debug-SE-MSVC",
+            "displayName": "Debug (SE, MSVC)",
+            "binaryDir": "${sourceDir}/build/se-msvc"
         },
         {
             "inherits": [
-                "Debug-All",
+                "Debug-All-ClangCL",
+                "se-only"
+            ],
+            "name": "Debug-SE-ClangCL",
+            "displayName": "Debug (SE, ClangCL)",
+            "binaryDir": "${sourceDir}/build/se-clangcl"
+        },
+        {
+            "inherits": [
+                "Debug-All-MSVC",
                 "pre-ae-only"
             ],
-            "name": "Debug-Pre-AE",
-            "displayName": "Debug (Pre-AE)",
-            "binaryDir": "${sourceDir}/build/pre-ae"
+            "name": "Debug-Pre-AE-MSVC",
+            "displayName": "Debug (Pre-AE, MSVC)",
+            "binaryDir": "${sourceDir}/build/pre-ae-msvc"
         },
         {
             "inherits": [
-                "Debug-All",
+                "Debug-All-ClangCL",
+                "pre-ae-only"
+            ],
+            "name": "Debug-Pre-AE-ClangCL",
+            "displayName": "Debug (Pre-AE, ClangCL)",
+            "binaryDir": "${sourceDir}/build/pre-ae-clangcl"
+        },
+        {
+            "inherits": [
+                "Debug-All-MSVC",
                 "current"
             ],
-            "name": "Debug-Current",
-            "displayName": "Debug (Current)",
-            "binaryDir": "${sourceDir}/build/current"
+            "name": "Debug-Current-MSVC",
+            "displayName": "Debug (Current, MSVC)",
+            "binaryDir": "${sourceDir}/build/current-msvc"
+        },
+        {
+            "inherits": [
+                "Debug-All-ClangCL",
+                "current"
+            ],
+            "name": "Debug-Current-ClangCL",
+            "displayName": "Debug (Current, ClangCL)",
+            "binaryDir": "${sourceDir}/build/current-clangcl"
         }
     ],
     "buildPresets": [
         {
-            "name": "Debug-All",
-            "displayName": "Debug (All)",
-            "configurePreset": "Debug-All"
+            "name": "Debug-All-MSVC",
+            "displayName": "Debug (All, MSVC)",
+            "configurePreset": "Debug-All-MSVC"
         },
         {
-            "name": "Debug-Flatrim",
+            "name": "Debug-All-ClangCL",
+            "displayName": "Debug (All, ClangCL)",
+            "configurePreset": "Debug-All-ClangCL"
+        },
+        {
+            "name": "Debug-Flatrim-MSVC",
             "displayName": "Debug (Flatrim)",
-            "configurePreset": "Debug-Flatrim"
+            "configurePreset": "Debug-Flatrim-MSVC"
         },
         {
-            "name": "Debug-VR",
-            "displayName": "Debug (VR)",
-            "configurePreset": "Debug-VR"
+            "name": "Debug-Flatrim-ClangCL",
+            "displayName": "Debug (Flatrim, ClangCL)",
+            "configurePreset": "Debug-Flatrim-ClangCL"
         },
         {
-            "name": "Debug-AE",
-            "displayName": "Debug (AE)",
-            "configurePreset": "Debug-AE"
+            "name": "Debug-VR-MSVC",
+            "displayName": "Debug (VR, MSVC)",
+            "configurePreset": "Debug-VR-MSVC"
         },
         {
-            "name": "Debug-SE",
-            "displayName": "Debug (SE)",
-            "configurePreset": "Debug-SE"
+            "name": "Debug-VR-ClangCL",
+            "displayName": "Debug (VR, ClangCL)",
+            "configurePreset": "Debug-VR-ClangCL"
         },
         {
-            "name": "Debug-Pre-AE",
-            "displayName": "Debug (Pre-AE)",
-            "configurePreset": "Debug-Pre-AE"
+            "name": "Debug-AE-MSVC",
+            "displayName": "Debug (AE, MSVC)",
+            "configurePreset": "Debug-AE-MSVC"
         },
         {
-            "name": "Debug-Current",
-            "displayName": "Debug (Current)",
-            "configurePreset": "Debug-Current"
+            "name": "Debug-AE-ClangCL",
+            "displayName": "Debug (AE, ClangCL)",
+            "configurePreset": "Debug-AE-ClangCL"
+        },
+        {
+            "name": "Debug-SE-MSVC",
+            "displayName": "Debug (SE, MSVC)",
+            "configurePreset": "Debug-SE-MSVC"
+        },
+        {
+            "name": "Debug-SE-ClangCL",
+            "displayName": "Debug (SE, ClangCL)",
+            "configurePreset": "Debug-SE-ClangCL"
+        },
+        {
+            "name": "Debug-Pre-AE-MSVC",
+            "displayName": "Debug (Pre-AE, MSVC)",
+            "configurePreset": "Debug-Pre-AE-MSVC"
+        },
+        {
+            "name": "Debug-Pre-AE-ClangCL",
+            "displayName": "Debug (Pre-AE, ClangCL)",
+            "configurePreset": "Debug-Pre-AE-ClangCL"
+        },
+        {
+            "name": "Debug-Current-MSVC",
+            "displayName": "Debug (Current, MSVC)",
+            "configurePreset": "Debug-Current-MSVC"
+        },
+        {
+            "name": "Debug-Current-ClangCL",
+            "displayName": "Debug (Current, ClangCL)",
+            "configurePreset": "Debug-Current-ClangCL"
         }
     ],
     "version": 2

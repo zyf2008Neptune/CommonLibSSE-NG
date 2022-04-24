@@ -25,7 +25,6 @@ if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
 	message(FATAL_ERROR "in-source builds are not allowed")
 endif()
 
-find_package(binary_io REQUIRED CONFIG)
 find_package(Boost MODULE REQUIRED)
 find_package(spdlog REQUIRED CONFIG)
 find_path(FAST_CPP_CSV_PARSER_INCLUDE_DIRS "csv.h")
@@ -100,6 +99,18 @@ if (MSVC)
 			/wd5220 # 'member': a non-static data member with a volatile qualified type no longer implies that compiler generated copy / move constructors and copy / move assignment operators are not trivial
 	)
 endif()
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+	add_compile_definitions(
+			__cpp_lib_char8_t
+			__cpp_consteval
+	)
+	if(NOT MSVC)
+		target_compile_options("${PROJECT_NAME}"
+				PRIVATE
+				-stdlib=libc++
+		)
+	endif()
+endif()
 
 target_include_directories(
 	"${PROJECT_NAME}"
@@ -117,7 +128,6 @@ target_include_directories(
 target_link_libraries(
 	"${PROJECT_NAME}"
 	PUBLIC
-		binary_io::binary_io
 		Boost::headers
 		spdlog::spdlog
 		Version.lib

@@ -317,6 +317,20 @@ namespace REL
 
 			return func(std::forward<First>(a_first), std::addressof(result), std::forward<Rest>(a_rest)...);
 		}
+
+		template <class T>
+		[[nodiscard]] inline T read(std::istream& a_in) {
+			T result;
+			a_in.read(reinterpret_cast<char*>(&result), sizeof(result));
+			return result;
+		}
+
+		template <class... Args>
+		requires (sizeof...(Args) > 1)
+		[[nodiscard]] std::tuple<Args...> read(std::istream& a_in)
+		{
+			return std::make_tuple(read<Args>(a_in)...);
+		}
 	}
 
 	inline constexpr std::uint8_t NOP = 0x90;
@@ -831,9 +845,9 @@ namespace REL
 		class header_t
 		{
 		public:
-			void read(binary_io::file_istream& a_in)
+			void read(std::istream& a_in)
 			{
-				const auto [format] = a_in.read<std::int32_t>();
+				const std::int32_t format = detail::read<std::int32_t>(a_in);
 				if (format != (Module::IsAE() ? 2 : 1)) {
 					stl::report_and_fail(
 						fmt::format(
@@ -845,16 +859,17 @@ namespace REL
 				}
 
 				const auto [major, minor, patch, revision] =
-					a_in.read<std::int32_t, std::int32_t, std::int32_t, std::int32_t>();
+					detail::read<std::int32_t, std::int32_t, std::int32_t, std::int32_t>(a_in);
 				_version[0] = static_cast<std::uint16_t>(major);
 				_version[1] = static_cast<std::uint16_t>(minor);
 				_version[2] = static_cast<std::uint16_t>(patch);
 				_version[3] = static_cast<std::uint16_t>(revision);
 
-				const auto [nameLen] = a_in.read<std::int32_t>();
-				a_in.seek_relative(nameLen);
+				const auto nameLen = detail::read<std::int32_t>(a_in);
+				a_in.seekg(nameLen, std::ios::cur);
 
-				a_in.read(_pointerSize, _addressCount);
+				_pointerSize = detail::read<std::int32_t>(a_in);
+				_addressCount = detail::read<std::int32_t>(a_in);
 			}
 
 			[[nodiscard]] std::size_t   address_count() const noexcept { return static_cast<std::size_t>(_addressCount); }
@@ -904,7 +919,7 @@ namespace REL
 		void load_file(stl::zwstring a_filename, Version a_version)
 		{
 			try {
-				binary_io::file_istream in(a_filename);
+				std::ifstream in(std::filesystem::path{ a_filename });
 				header_t                header;
 				header.read(in);
 				if (header.version() != a_version) {
@@ -983,7 +998,7 @@ namespace REL
 			return true;
 		}
 
-		void unpack_file(binary_io::file_istream& a_in, header_t a_header)
+		void unpack_file(std::istream& a_in, header_t a_header)
 		{
 			std::uint8_t  type = 0;
 			std::uint64_t id = 0;
@@ -991,34 +1006,34 @@ namespace REL
 			std::uint64_t prevID = 0;
 			std::uint64_t prevOffset = 0;
 			for (auto& mapping : _id2offset) {
-				a_in.read(type);
+				type = detail::read<std::uint8_t>(a_in);
 				const auto lo = static_cast<std::uint8_t>(type & 0xF);
 				const auto hi = static_cast<std::uint8_t>(type >> 4);
 
 				switch (lo) {
 				case 0:
-					a_in.read(id);
+					id = detail::read<std::uint64_t>(a_in);
 					break;
 				case 1:
 					id = prevID + 1;
 					break;
 				case 2:
-					id = prevID + std::get<0>(a_in.read<std::uint8_t>());
+					id = prevID + detail::read<std::uint8_t>(a_in);
 					break;
 				case 3:
-					id = prevID - std::get<0>(a_in.read<std::uint8_t>());
+					id = prevID - detail::read<std::uint8_t>(a_in);
 					break;
 				case 4:
-					id = prevID + std::get<0>(a_in.read<std::uint16_t>());
+					id = prevID + detail::read<std::uint16_t>(a_in);
 					break;
 				case 5:
-					id = prevID - std::get<0>(a_in.read<std::uint16_t>());
+					id = prevID - detail::read<std::uint16_t>(a_in);
 					break;
 				case 6:
-					std::tie(id) = a_in.read<std::uint16_t>();
+					id = detail::read<std::uint16_t>(a_in);
 					break;
 				case 7:
-					std::tie(id) = a_in.read<std::uint32_t>();
+					id = detail::read<std::uint32_t>(a_in);
 					break;
 				default:
 					stl::report_and_fail("unhandled type"sv);
@@ -1028,28 +1043,28 @@ namespace REL
 
 				switch (hi & 7) {
 				case 0:
-					a_in.read(offset);
+					offset = detail::read<uint64_t>(a_in);
 					break;
 				case 1:
 					offset = tmp + 1;
 					break;
 				case 2:
-					offset = tmp + std::get<0>(a_in.read<std::uint8_t>());
+					offset = tmp + detail::read<std::uint8_t>(a_in);
 					break;
 				case 3:
-					offset = tmp - std::get<0>(a_in.read<std::uint8_t>());
+					offset = tmp - detail::read<std::uint8_t>(a_in);
 					break;
 				case 4:
-					offset = tmp + std::get<0>(a_in.read<std::uint16_t>());
+					offset = tmp + detail::read<std::uint16_t>(a_in);
 					break;
 				case 5:
-					offset = tmp - std::get<0>(a_in.read<std::uint16_t>());
+					offset = tmp - detail::read<std::uint16_t>(a_in);
 					break;
 				case 6:
-					std::tie(offset) = a_in.read<std::uint16_t>();
+					offset = detail::read<std::uint16_t>(a_in);
 					break;
 				case 7:
-					std::tie(offset) = a_in.read<std::uint32_t>();
+					offset = detail::read<std::uint32_t>(a_in);
 					break;
 				default:
 					stl::report_and_fail("unhandled type"sv);
@@ -1489,7 +1504,7 @@ namespace REL
 		{
 			namespace detail
 			{
-				[[nodiscard]] consteval std::byte hexacharacters_to_hexadecimal(char a_hi, char a_lo) noexcept
+				[[nodiscard]] constexpr std::byte hexacharacters_to_hexadecimal(char a_hi, char a_lo) noexcept
 				{
 					constexpr auto lut = []() noexcept {
 						std::array<std::uint8_t, std::numeric_limits<unsigned char>::max() + 1> a = {};
@@ -1579,7 +1594,7 @@ namespace REL
 				return this->match(*reinterpret_cast<const std::byte(*)[sizeof...(Rules)]>(a_address));
 			}
 
-			void match_or_fail(std::uintptr_t a_address, std::source_location a_loc = std::source_location::current()) const noexcept
+			void match_or_fail(std::uintptr_t a_address, SKSE::stl::source_location a_loc = SKSE::stl::source_location::current()) const noexcept
 			{
 				if (!this->match(a_address)) {
 					const auto version = Module::get().version();
@@ -1617,7 +1632,7 @@ namespace REL
 				} else {
 					if constexpr (S.length() <= 3) {
 						return do_make_pattern<S.template substr<2>(), Rules..., rule_t>();
-					} else if constexpr (characters::space(S[2])) {
+					} else if constexpr (characters::space(S.value_at(2))) {
 						return do_make_pattern<S.template substr<3>(), Rules..., rule_t>();
 					} else {
 						consteval_error("a space character is required to split byte patterns");

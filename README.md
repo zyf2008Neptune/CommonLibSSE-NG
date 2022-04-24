@@ -1,14 +1,15 @@
 # CommonLibSSE NG
-[![C++20](https://img.shields.io/static/v1?label=standard&message=C%2B%2B20&color=blue&logo=c%2B%2B&&logoColor=white&style=flat)](https://en.cppreference.com/w/cpp/compiler_support)
+[![C++23](https://img.shields.io/static/v1?label=standard&message=C%2B%2B20&color=blue&logo=c%2B%2B&&logoColor=white&style=flat)](https://en.cppreference.com/w/cpp/compiler_support)
 [![Platform](https://img.shields.io/static/v1?label=platform&message=windows&color=dimgray&style=flat)](#)
 [![Main CI](https://github.com/CharmedBaryon/CommonLibSSE-NG/actions/workflows/main_ci.yml/badge.svg)](https://github.com/CharmedBaryon/CommonLibSSE-NG/actions/workflows/main_ci.yml)
 
 CommonLibSSE NG is a fork of CommonLibSSE which tracks upstream updates but adds a number of enhancements:
-* Support for Address Libraries for SE, AE, and VR.
+* Can be compiled with Clang 13.x+ with MSVC ABI compatibility.
 * Dynamic cross-runtime support (ability to produce a single DLL that works on AE, SE, or VR), with access to all
   cross-compatible features.
 * Complete support (up to modern RE standards) for Skyrim VR, including the ability to use Skyrim VR and Skyrim SE
   functionality from a single DLL build even where Skyrim VR is normally ABI-incompatible.
+* Support for Address Libraries for SE, AE, and VR.
 * Ability to build locked to a single runtime, where access to non-portable features is needed.
 * Ability to define offsets and address IDs for objects which can exist in only a subset of runtimes, while being able
   dynamically test for feature support before using those offsets.

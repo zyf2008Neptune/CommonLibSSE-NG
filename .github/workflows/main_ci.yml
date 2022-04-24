@@ -39,8 +39,8 @@ jobs:
         uses: lukka/run-cmake@v10.0
         with:
           cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
-          configurePreset: Debug-All
-          buildPreset: Debug-All
+          configurePreset: Debug-All-MSVC
+          buildPreset: Debug-All-MSVC
   flatrim-only:
     runs-on: windows-latest
     steps:
@@ -61,8 +61,8 @@ jobs:
         uses: lukka/run-cmake@v10.0
         with:
           cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
-          configurePreset: Debug-Flatrim
-          buildPreset: Debug-Flatrim
+          configurePreset: Debug-Flatrim-MSVC
+          buildPreset: Debug-Flatrim-MSVC
   pre-ae-runtimes:
     runs-on: windows-latest
     steps:
@@ -83,8 +83,8 @@ jobs:
         uses: lukka/run-cmake@v10.0
         with:
           cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
-          configurePreset: Debug-Pre-AE
-          buildPreset: Debug-Pre-AE
+          configurePreset: Debug-Pre-AE-MSVC
+          buildPreset: Debug-Pre-AE-MSVC
   current-runtimes:
     runs-on: windows-latest
     steps:
@@ -105,8 +105,8 @@ jobs:
         uses: lukka/run-cmake@v10.0
         with:
           cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
-          configurePreset: Debug-Current
-          buildPreset: Debug-Current
+          configurePreset: Debug-Current-MSVC
+          buildPreset: Debug-Current-MSVC
   se-only:
     runs-on: windows-latest
     steps:
@@ -127,8 +127,8 @@ jobs:
         uses: lukka/run-cmake@v10.0
         with:
           cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
-          configurePreset: Debug-SE
-          buildPreset: Debug-SE
+          configurePreset: Debug-SE-MSVC
+          buildPreset: Debug-SE-MSVC
   ae-only:
     runs-on: windows-latest
     steps:
@@ -149,8 +149,8 @@ jobs:
         uses: lukka/run-cmake@v10.0
         with:
           cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
-          configurePreset: Debug-AE
-          buildPreset: Debug-AE
+          configurePreset: Debug-AE-MSVC
+          buildPreset: Debug-AE-MSVC
   vr-only:
     runs-on: windows-latest
     steps:
@@ -171,5 +171,5 @@ jobs:
         uses: lukka/run-cmake@v10.0
         with:
           cmakeListsTxtPath: ${{ github.workspace }}/main/CMakeLists.txt
-          configurePreset: Debug-VR
-          buildPreset: Debug-VR
+          configurePreset: Debug-VR-MSVC
+          buildPreset: Debug-VR-MSVC

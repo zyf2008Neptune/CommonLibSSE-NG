@@ -76,7 +76,7 @@ namespace RE
 				noexcept(std::is_nothrow_destructible_v<value_type>)
 			{
 				if (has_value()) {
-					std::destroy_at(std::addressof(value));
+					std::destroy_at(std::addressof(value_data.value));
 					next = nullptr;
 				}
 				assert(!has_value());
@@ -88,7 +88,7 @@ namespace RE
 			{
 				static_assert(std::same_as<std::decay_t<Arg>, value_type>);
 				destroy();
-				std::construct_at(std::addressof(value), std::forward<Arg>(a_value));
+				std::construct_at(std::addressof(value_data.value), std::forward<Arg>(a_value));
 				next = const_cast<entry_type*>(a_next);
 				assert(has_value());
 			}
@@ -98,17 +98,22 @@ namespace RE
 						std::is_nothrow_destructible_v<value_type>)
 			{
 				assert(has_value());
-				value_type val = std::move(value);
+				value_type val = std::move(value_data.value);
 				destroy();
 				assert(!has_value());
 				return val;
 			}
 
-			union
+			union value_union
 			{
+				value_union() : value() { }
+
+				~value_union() { value.~value_type(); }
+
 				value_type value;
 				std::byte  buffer[sizeof(value_type)]{ static_cast<std::byte>(0) };
 			};
+			value_union value_data;
 			entry_type* next{ nullptr };
 		};
 
@@ -160,7 +165,7 @@ namespace RE
 			{
 				assert(iterable());
 				assert(_first->has_value());
-				return _first->value;
+				return _first->value_data.value;
 			}
 
 			template <class V>
@@ -407,7 +412,7 @@ namespace RE
 			assert(entry->has_value());
 
 			if (entry->next == _sentinel) {  // end of chain
-				if (auto prev = &get_entry_for(unwrap_key(entry->value)); prev != entry) {
+				if (auto prev = &get_entry_for(unwrap_key(entry->value_data.value)); prev != entry) {
 					while (prev->next != entry) {
 						prev = prev->next;
 					}
@@ -434,7 +439,7 @@ namespace RE
 			auto entry = &get_entry_for(a_key);
 			if (entry->has_value()) {
 				do {  // follow chain
-					if (key_eq(unwrap_key(entry->value), a_key)) {
+					if (key_eq(unwrap_key(entry->value_data.value), a_key)) {
 						return make_iterator<Iter>(entry);
 					} else {
 						entry = entry->next;
@@ -462,7 +467,7 @@ namespace RE
 			const auto            entry = &get_entry_for(unwrap_key(a_value));
 			if (entry->has_value()) {  // slot is taken, resolve conflict
 				const auto free = &get_free_entry();
-				const auto wouldve = &get_entry_for(unwrap_key(entry->value));
+				const auto wouldve = &get_entry_for(unwrap_key(entry->value_data.value));
 				if (wouldve == entry) {  // hash collision
 					free->emplace(std::forward<P>(a_value), std::exchange(entry->next, free));
 					return std::make_pair(make_iterator<iterator>(free), true);

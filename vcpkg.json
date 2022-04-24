@@ -15,8 +15,6 @@
         "boost-stl-interfaces",
         "fast-cpp-csv-parser",
         "fmt",
-        "rsm-binary-io",
-        "spdlog",
-        "xbyak"
+        "spdlog"
     ]
 }
