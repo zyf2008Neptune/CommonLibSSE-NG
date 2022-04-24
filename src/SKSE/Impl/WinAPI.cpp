@@ -231,7 +231,7 @@ namespace SKSE::WinAPI
 			static_cast<::UINT>(a_exitCode));
 #if defined(__clang__) || defined(__GNUC__)
 		__builtin_unreachable();
-#elifdef _MSC_VER
+#	elifdef _MSC_VER
 		__assume(false);
 #endif
 	}
