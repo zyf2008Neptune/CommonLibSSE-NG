@@ -59,6 +59,36 @@ namespace RE
 		void Call(Params& a_params) override;  // 01
 #endif
 
+		[[nodiscard]] BSTEventSink<BSSystemEvent>* AsBSSystemEventSink() noexcept
+		{
+			return &REL::RelocateMember<BSTEventSink<BSSystemEvent>>(this, 0x30, 0x40);
+		}
+
+		[[nodiscard]] const BSTEventSink<BSSystemEvent>* AsBSSystemEventSink() const noexcept
+		{
+			return const_cast<MainMenu*>(this)->AsBSSystemEventSink();
+		}
+
+		[[nodiscard]] BSTEventSink<BSSaveDataEvent>* AsBSSaveDataEventSink() noexcept
+		{
+			return &REL::RelocateMember<BSTEventSink<BSSaveDataEvent>>(this, 0x38, 0x48);
+		}
+
+		[[nodiscard]] const BSTEventSink<BSSaveDataEvent>* AsBSSaveDataEventSink() const noexcept
+		{
+			return const_cast<MainMenu*>(this)->AsBSSaveDataEventSink();
+		}
+
+		[[nodiscard]] GFxFunctionHandler* AsGFxFunctionHandler() noexcept
+		{
+			return &REL::RelocateMember<GFxFunctionHandler>(this, 0x40, 0x50);
+		}
+
+		[[nodiscard]] const GFxFunctionHandler* AsGFxFunctionHandler() const noexcept
+		{
+			return const_cast<MainMenu*>(this)->AsGFxFunctionHandler();
+		}
+
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0x50, 0x60);

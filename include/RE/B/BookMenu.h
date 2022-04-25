@@ -69,6 +69,26 @@ namespace RE
 		[[nodiscard]] static TESObjectBOOK* GetTargetForm();
 		[[nodiscard]] static TESObjectREFR* GetTargetReference();  // returns null if opened from inventory
 
+		[[nodiscard]] SimpleAnimationGraphManagerHolder* AsSimpleAnimationGraphManagerHolder() noexcept
+		{
+			return &REL::RelocateMember<SimpleAnimationGraphManagerHolder>(this, 0x30, 0x40);
+		}
+
+		[[nodiscard]] const SimpleAnimationGraphManagerHolder* AsSimpleAnimationGraphManagerHolder() const noexcept
+		{
+			return const_cast<BookMenu*>(this)->AsSimpleAnimationGraphManagerHolder();
+		}
+
+		[[nodiscard]] BSTEventSink<BSAnimationGraphEvent>* AsBSAnimationGraphEventSink() noexcept
+		{
+			return &REL::RelocateMember<BSTEventSink<BSAnimationGraphEvent>>(this, 0x48, 0x58);
+		}
+
+		[[nodiscard]] const BSTEventSink<BSAnimationGraphEvent>* AsBSAnimationGraphEventSink() const noexcept
+		{
+			return const_cast<BookMenu*>(this)->AsBSAnimationGraphEventSink();
+		}
+
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0x50, 0x60);

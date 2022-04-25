@@ -4,14 +4,12 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/G/GFxValue.h"
 #include "RE/I/IMenu.h"
-
-#if !defined(ENABLE_SKYRIM_AE) && !(ENABLE_SKYRIM_SE)
-#	include "RE/W/WorldSpaceMenu.h"
-#endif
+#include "RE/W/WorldSpaceMenu.h"
 
 namespace RE
 {
 	class ActorValueMeter;
+	class HudModeChangeEvent;
 	class HUDObject;
 	class ShoutMeter;
 	class UserEventEnabledEvent;
@@ -66,6 +64,35 @@ namespace RE
 		// override (BSTEventSink<BSRemoteGamepadEvent>)
 		BSEventNotifyControl ProcessEvent(const BSRemoteGamepadEvent* a_event, BSTEventSource<BSRemoteGamepadEvent>* a_eventSource) override;  // 01
 #endif
+
+		[[nodiscard]] WorldSpaceMenu* AsWorldSpaceMenu() noexcept
+		{
+			if (!REL::Module::IsVR()) {
+				return nullptr;
+			}
+			return &REL::RelocateMember<WorldSpaceMenu>(this, 0, 0);
+		}
+
+		[[nodiscard]] const WorldSpaceMenu* AsWorldSpaceMenu() const noexcept
+		{
+			return const_cast<HUDMenu *>(this)->AsWorldSpaceMenu();
+		}
+
+		[[nodiscard]] BSTEventSink<UserEventEnabledEvent>* AsUserEventEnabledEventSink() noexcept {
+			return &REL::RelocateMember<BSTEventSink<UserEventEnabledEvent>>(this, 0x30, 0x58);
+		}
+
+		[[nodiscard]] const BSTEventSink<UserEventEnabledEvent>* AsUserEventEnabledEventSink() const noexcept {
+			return const_cast<HUDMenu*>(this)->AsUserEventEnabledEventSink();
+		}
+
+		[[nodiscard]] BSTEventSink<BSRemoteGamepadEvent>* AsBSRemoteGamepadEventSink() noexcept {
+			return &REL::RelocateMember<BSTEventSink<BSRemoteGamepadEvent>>(this, 0x38, 0x60);
+		}
+
+		[[nodiscard]] const BSTEventSink<BSRemoteGamepadEvent>* AsBSRemoteGamepadEventSink() const noexcept {
+			return const_cast<HUDMenu*>(this)->AsBSRemoteGamepadEventSink();
+		}
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{

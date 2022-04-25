@@ -59,6 +59,16 @@ namespace RE
 		bool ProcessButton(ButtonEvent* a_event) override;  // 05
 #endif
 
+		[[nodiscard]] MenuEventHandler* AsMenuEventHandler() noexcept
+		{
+			return &REL::RelocateMember<MenuEventHandler>(this, 0x30, 0x40);
+		}
+
+		[[nodiscard]] const MenuEventHandler* AsMenuEventHandler() const noexcept
+		{
+			return const_cast<FavoritesMenu*>(this)->AsMenuEventHandler();
+		}
+
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0x40, 0x50);

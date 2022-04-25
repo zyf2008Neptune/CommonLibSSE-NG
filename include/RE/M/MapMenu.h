@@ -9,10 +9,7 @@
 #include "RE/I/IMenu.h"
 #include "RE/L/LocalMapMenu.h"
 #include "RE/M/MapCamera.h"
-
-#if !defined(ENABLE_SKYRIM_AE) && !(ENABLE_SKYRIM_SE)
-#	include "RE/W/WorldSpaceMenu.h"
-#endif
+#include "RE/W/WorldSpaceMenu.h"
 
 namespace RE
 {
@@ -103,6 +100,39 @@ namespace RE
 			using func_t = decltype(&MapMenu::PlaceMarker);
 			REL::Relocation<func_t> func{ REL::RelocationID(52226, 53113) };
 			return func(this);
+		}
+
+		[[nodiscard]] WorldSpaceMenu* AsWorldSpaceMenu() noexcept
+		{
+			if (!REL::Module::IsVR()) {
+				return nullptr;
+			}
+			return &REL::RelocateMember<WorldSpaceMenu>(this, 0, 0);
+		}
+
+		[[nodiscard]] const WorldSpaceMenu* AsWorldSpaceMenu() const noexcept
+		{
+			return const_cast<MapMenu*>(this)->AsWorldSpaceMenu();
+		}
+
+		[[nodiscard]] BSTEventSink<MenuOpenCloseEvent>* AsMenuOpenCloseEventSink() noexcept
+		{
+			return &REL::RelocateMember<BSTEventSink<MenuOpenCloseEvent>>(this, 0x30, 0x58);
+		}
+
+		[[nodiscard]] const BSTEventSink<MenuOpenCloseEvent>* AsMenuOpenCloseEventSink() const noexcept
+		{
+			return const_cast<MapMenu*>(this)->AsMenuOpenCloseEventSink();
+		}
+
+		[[nodiscard]] IMapCameraCallbacks* AsIMapCameraCallbacks() noexcept
+		{
+			return &REL::RelocateMember<IMapCameraCallbacks>(this, 0x38, 0x60);
+		}
+
+		[[nodiscard]] const IMapCameraCallbacks* AsIMapCameraCallbacks() const noexcept
+		{
+			return const_cast<MapMenu*>(this)->AsIMapCameraCallbacks();
 		}
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept

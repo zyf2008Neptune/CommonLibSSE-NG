@@ -29,6 +29,16 @@ namespace RE
 		// override (GFxFunctionHandler)
 		void Call(Params& a_params) override;  // 01
 #endif
+
+		[[nodiscard]] GFxFunctionHandler* AsGFxFunctionHandler() noexcept
+		{
+			return &REL::RelocateMember<GFxFunctionHandler>(this, 0x30, 0x40);
+		}
+
+		[[nodiscard]] const GFxFunctionHandler* AsGFxFunctionHandler() const noexcept
+		{
+			return const_cast<CreditsMenu*>(this)->AsGFxFunctionHandler();
+		}
 	};
 #ifndef ENABLE_SKYRIM_VR
 	static_assert(sizeof(CreditsMenu) == 0x40);

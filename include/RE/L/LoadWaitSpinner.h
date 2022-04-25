@@ -57,6 +57,36 @@ namespace RE
 		BSEventNotifyControl ProcessEvent(const BGSSaveLoadManagerEvent* a_event, BSTEventSource<BGSSaveLoadManagerEvent>* a_eventSource) override;  // 01
 #endif
 
+		[[nodiscard]] BSTEventSink<BSSystemEvent>* AsBSSystemEventSink() noexcept
+		{
+			return &REL::RelocateMember<BSTEventSink<BSSystemEvent>>(this, 0x30, 0x40);
+		}
+
+		[[nodiscard]] const BSTEventSink<BSSystemEvent>* AsBSSystemEventSink() const noexcept
+		{
+			return const_cast<LoadWaitSpinner*>(this)->AsBSSystemEventSink();
+		}
+
+		[[nodiscard]] BSTEventSink<BSGamerProfileEvent>* AsBSGamerProfileEventSink() noexcept
+		{
+			return &REL::RelocateMember<BSTEventSink<BSGamerProfileEvent>>(this, 0x38, 0x48);
+		}
+
+		[[nodiscard]] const BSTEventSink<BSGamerProfileEvent>* AsBSGamerProfileEventSink() const noexcept
+		{
+			return const_cast<LoadWaitSpinner*>(this)->AsBSGamerProfileEventSink();
+		}
+
+		[[nodiscard]] BSTEventSink<BGSSaveLoadManagerEvent>* AsBGSSaveLoadManagerEvent() noexcept
+		{
+			return &REL::RelocateMember<BSTEventSink<BGSSaveLoadManagerEvent>>(this, 0x40, 0x50);
+		}
+
+		[[nodiscard]] const BSTEventSink<BGSSaveLoadManagerEvent>* AsBGSSaveLoadManagerEvent() const noexcept
+		{
+			return const_cast<LoadWaitSpinner*>(this)->AsBGSSaveLoadManagerEvent();
+		}
+
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0x48, 0x58);

@@ -31,6 +31,16 @@ namespace RE
 		bool ProcessThumbstick(ThumbstickEvent* a_event) override;  // 03
 		bool ProcessMouseMove(MouseMoveEvent* a_event) override;    // 04
 #endif
+
+		[[nodiscard]] MenuEventHandler* AsMenuEventHandler() noexcept
+		{
+			return &REL::RelocateMember<MenuEventHandler>(this, 0x30, 0x40);
+		}
+
+		[[nodiscard]] const MenuEventHandler* AsMenuEventHandler() const noexcept
+		{
+			return const_cast<CursorMenu*>(this)->AsMenuEventHandler();
+		}
 	};
 #ifndef ENABLE_SKYRIM_VR
 	static_assert(sizeof(CursorMenu) == 0x40);

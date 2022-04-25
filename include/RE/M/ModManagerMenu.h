@@ -10,12 +10,12 @@ namespace RE
 	// flags = kPausesGame | kUsesMenuContext | kModal | kDisablePauseMenu | kRequiresUpdate | kTopmostRenderedMenu | kUpdateUsesCursor
 	// context = kMenuMode
 	class ModManagerMenu :
-		public IMenu,  // 00
 #ifndef SKYRIM_CROSS_VR
+		public IMenu,  // 00
 		public MenuEventHandler,   // 30
 		public GFxFunctionHandler  // 40
 #else
-		public MenuEventHandler  // 30
+		public IMenu  // 00
 #endif
 	{
 	public:
@@ -48,6 +48,26 @@ namespace RE
 		// override (GFxFunctionHandler)
 		void Call(Params& a_params) override;  // 01
 #endif
+
+		[[nodiscard]] MenuEventHandler* AsMenuEventHandler() noexcept
+		{
+			return &REL::RelocateMember<MenuEventHandler>(this, 0x30, 0x40);
+		}
+
+		[[nodiscard]] const MenuEventHandler* AsMenuEventHandler() const noexcept
+		{
+			return const_cast<ModManagerMenu*>(this)->AsMenuEventHandler();
+		}
+
+		[[nodiscard]] GFxFunctionHandler* AsGFxFunctionHandler() noexcept
+		{
+			return &REL::RelocateMember<GFxFunctionHandler>(this, 0x40, 0x50);
+		}
+
+		[[nodiscard]] const GFxFunctionHandler* AsGFxFunctionHandler() const noexcept
+		{
+			return const_cast<ModManagerMenu*>(this)->AsGFxFunctionHandler();
+		}
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{

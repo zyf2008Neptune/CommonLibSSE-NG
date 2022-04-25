@@ -13,8 +13,8 @@ namespace RE
 	class MistMenu :
 #ifndef SKYRIM_CROSS_VR
 		public IMenu,                              // 00
-		public SimpleAnimationGraphManagerHolder,  // 30
-		public MenuEventHandler                    // 48
+		public SimpleAnimationGraphManagerHolder,  // 30, 40
+		public MenuEventHandler                    // 48, 58
 #else
 		public IMenu  // 00
 #endif
@@ -90,6 +90,26 @@ namespace RE
 		bool ProcessMouseMove(MouseMoveEvent* a_event) override;    // 04
 		bool ProcessButton(ButtonEvent* a_event) override;          // 05
 #endif
+
+		[[nodiscard]] SimpleAnimationGraphManagerHolder* AsSimpleAnimationGraphManagerHolder() noexcept
+		{
+			return &REL::RelocateMember<SimpleAnimationGraphManagerHolder>(this, 0x30, 0x40);
+		}
+
+		[[nodiscard]] const SimpleAnimationGraphManagerHolder* AsSimpleAnimationGraphManagerHolder() const noexcept
+		{
+			return const_cast<MistMenu*>(this)->AsSimpleAnimationGraphManagerHolder();
+		}
+
+		[[nodiscard]] MenuEventHandler* AsMenuEventHandler() noexcept
+		{
+			return &REL::RelocateMember<MenuEventHandler>(this, 0x48, 0x58);
+		}
+
+		[[nodiscard]] const MenuEventHandler* AsMenuEventHandler() const noexcept
+		{
+			return const_cast<MistMenu*>(this)->AsMenuEventHandler();
+		}
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{

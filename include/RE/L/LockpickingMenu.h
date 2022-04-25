@@ -99,6 +99,26 @@ namespace RE
 
 		[[nodiscard]] static TESObjectREFR* GetTargetReference();
 
+		[[nodiscard]] MenuEventHandler* AsMenuEventHandler() noexcept
+		{
+			return &REL::RelocateMember<MenuEventHandler>(this, 0x30, 0x40);
+		}
+
+		[[nodiscard]] const MenuEventHandler* AsMenuEventHandler() const noexcept
+		{
+			return const_cast<LockpickingMenu*>(this)->AsMenuEventHandler();
+		}
+
+		[[nodiscard]] BSTEventSink<MenuOpenCloseEvent>* AsMenuOpenCloseEventSink() noexcept
+		{
+			return &REL::RelocateMember<BSTEventSink<MenuOpenCloseEvent>>(this, 0x40, 0x50);
+		}
+
+		[[nodiscard]] const BSTEventSink<MenuOpenCloseEvent>* AsMenuOpenCloseEventSink() const noexcept
+		{
+			return const_cast<LockpickingMenu*>(this)->AsMenuOpenCloseEventSink();
+		}
+
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0x48, 0x58);

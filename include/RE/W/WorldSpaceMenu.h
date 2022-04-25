@@ -24,6 +24,19 @@ namespace RE
 
 		~WorldSpaceMenu() override;  // 00
 
+		[[nodiscard]] BSTEventSink<HudModeChangeEvent>* AsHudModeChangeEventSink() noexcept
+		{
+			if (!REL::Module::IsVR()) {
+				return nullptr;
+			}
+			return &REL::RelocateMember<BSTEventSink<HudModeChangeEvent>>(this, 0, 0x40);
+		}
+
+		[[nodiscard]] const BSTEventSink<HudModeChangeEvent>* AsHudModeChangeEventSink() const noexcept
+		{
+			return const_cast<WorldSpaceMenu*>(this)->AsHudModeChangeEventSink();
+		}
+
 #if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 		// add
 		virtual void Unk_11();

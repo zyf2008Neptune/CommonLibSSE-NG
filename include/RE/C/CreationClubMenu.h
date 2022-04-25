@@ -54,6 +54,36 @@ namespace RE
 		BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
 #endif
 
+		[[nodiscard]] MenuEventHandler* AsMenuEventHandler() noexcept
+		{
+			return &REL::RelocateMember<MenuEventHandler>(this, 0x30, 0x40);
+		}
+
+		[[nodiscard]] const MenuEventHandler* AsMenuEventHandler() const noexcept
+		{
+			return const_cast<CreationClubMenu*>(this)->AsMenuEventHandler();
+		}
+
+		[[nodiscard]] GFxFunctionHandler* AsGFxFunctionHandler() noexcept
+		{
+			return &REL::RelocateMember<GFxFunctionHandler>(this, 0x40, 0x50);
+		}
+
+		[[nodiscard]] const GFxFunctionHandler* AsGFxFunctionHandler() const noexcept
+		{
+			return const_cast<CreationClubMenu*>(this)->AsGFxFunctionHandler();
+		}
+
+		[[nodiscard]] BSTEventSink<MenuOpenCloseEvent>* AsMenuOpenCloseEventSink() noexcept
+		{
+			return &REL::RelocateMember<BSTEventSink<MenuOpenCloseEvent>>(this, 0x50, 0x60);
+		}
+
+		[[nodiscard]] const BSTEventSink<MenuOpenCloseEvent>* AsMenuOpenCloseEventSink() const noexcept
+		{
+			return const_cast<CreationClubMenu*>(this)->AsMenuOpenCloseEventSink();
+		}
+
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0x58, 0x68);

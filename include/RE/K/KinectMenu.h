@@ -33,6 +33,16 @@ namespace RE
 		BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
 #endif
 
+		[[nodiscard]] BSTEventSink<MenuOpenCloseEvent>* AsMenuOpenCloseEventSink() noexcept
+		{
+			return &REL::RelocateMember<BSTEventSink<MenuOpenCloseEvent>>(this, 0x30, 0x40);
+		}
+
+		[[nodiscard]] const BSTEventSink<MenuOpenCloseEvent>* AsMenuOpenCloseEventSink() const noexcept
+		{
+			return const_cast<KinectMenu*>(this)->AsMenuOpenCloseEventSink();
+		}
+
 		[[nodiscard]] inline GFxValue GetRoot() const noexcept
 		{
 			return REL::RelocateMember<GFxValue>(this, 0x38, 0x48);
