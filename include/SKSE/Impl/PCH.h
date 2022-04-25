@@ -774,6 +774,8 @@ namespace REL
 	namespace WinAPI = SKSE::WinAPI;
 }
 
+#define RELOCATION_ID(a_se, a_ae) REL::RelocationID(a_se, a_ae)
+
 #include "REL/Relocation.h"
 
 #include "RE/Offsets.h"
