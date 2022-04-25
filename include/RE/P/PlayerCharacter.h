@@ -554,7 +554,7 @@ namespace RE
 
 		// members
 #ifndef ENABLE_SKYRIM_VR                                                                     // Non-VR
-		mutable BSSpinLock                                      questTargetsLock;                          // 3D8
+		mutable BSSpinLock questTargetsLock;                                                 // 3D8
 		CRIME_VALUE_CONTENT;                                                                 // 3E0
 		ObjectRefHandle                                         commandWaitMarker;           // 440
 		std::uint32_t                                           unk444;                      // 444
@@ -575,7 +575,7 @@ namespace RE
 		BSTArray<void*>                                         imageSpaceModifierAnims2;    // 558
 		BSSimpleList<TESQuestStageItem*>                        questLog;                    // 570
 		BSTArray<BGSInstancedQuestObjective>                    objectives;                  // 580
-		BSTHashMap<UnkKey, UnkValue>                            questTargets;                      // 598
+		BSTHashMap<UnkKey, UnkValue>                            questTargets;                // 598
 		BSTHashMap<UnkKey, UnkValue>                            currentSayOnceInfosMap;      // 5C8
 		BSSimpleList<ObjectRefHandle>                           droppedRefList;              // 5F8
 		NiTMap<std::uint32_t, std::uint8_t>                     randomDoorSpaceMap;          // 608
