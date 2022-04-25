@@ -352,6 +352,15 @@ namespace RE
 		}
 	}
 
+	Actor* Actor::GetKiller() const
+	{
+		if (IsDead(false)) {
+			return nullptr;
+		}
+
+		return myKiller.get().get();
+	}
+
 	std::uint16_t Actor::GetLevel() const
 	{
 		using func_t = decltype(&Actor::GetLevel);

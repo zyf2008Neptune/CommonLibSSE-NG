@@ -91,4 +91,4 @@ namespace RE
 		mutable BSSpinLock                     lock;                     // B8
 	};
 	static_assert(sizeof(VATS) == 0xC0);
-};
+}

@@ -509,6 +509,7 @@ namespace RE
 		ActorHandle                  GetHandle();
 		[[nodiscard]] NiAVObject*    GetHeadPartObject(BGSHeadPart::HeadPartType a_type);
 		float                        GetHeight();
+		Actor*                       GetKiller() const;
 		std::uint16_t                GetLevel() const;
 		bool                         GetMount(NiPointer<Actor>& a_outMount);
 		ObjectRefHandle              GetOccupiedFurniture() const;

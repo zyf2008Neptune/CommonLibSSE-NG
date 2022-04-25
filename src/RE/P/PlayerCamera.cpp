@@ -22,6 +22,26 @@ namespace RE
 		return func(this);
 	}
 
+	bool PlayerCamera::QIsInBleedoutMode() const
+	{
+		return QCameraEquals(CameraState::kBleedout);
+	}
+
+	bool PlayerCamera::QIsInFirstPerson() const
+	{
+		return QCameraEquals(CameraState::kFirstPerson);
+	}
+
+	bool PlayerCamera::QIsInFreeCameraMode() const
+	{
+		return QCameraEquals(CameraState::kFree);
+	}
+
+	bool PlayerCamera::QIsInThirdPerson() const
+	{
+		return QCameraEquals(CameraState::kThirdPerson);
+	}
+
 	bool PlayerCamera::QCameraEquals(CameraState a_cameraState) const
 	{
 		return currentState && currentState == cameraStates[a_cameraState];
