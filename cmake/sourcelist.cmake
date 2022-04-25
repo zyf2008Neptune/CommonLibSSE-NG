@@ -737,6 +737,7 @@ set(SOURCES
 	include/RE/H/HeapBlockFreeHead.h
 	include/RE/H/HeldStateHandler.h
 	include/RE/H/HighProcessData.h
+	include/RE/H/HitData.h
 	include/RE/H/HorseCameraState.h
 	include/RE/H/hkAabb.h
 	include/RE/H/hkArray.h
@@ -1535,7 +1536,6 @@ set(SOURCES
 	src/RE/M/MemoryPage.cpp
 	src/RE/M/MenuControls.cpp
 	src/RE/M/MenuEventHandler.cpp
-	src/RE/M/MiddleHighProcessData.cpp
 	src/RE/M/Misc.cpp
 	src/RE/N/NativeFunctionBase.cpp
 	src/RE/N/NiAVObject.cpp

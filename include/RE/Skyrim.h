@@ -739,6 +739,7 @@
 #include "RE/H/HeapBlockFreeHead.h"
 #include "RE/H/HeldStateHandler.h"
 #include "RE/H/HighProcessData.h"
+#include "RE/H/HitData.h"
 #include "RE/H/HorseCameraState.h"
 #include "RE/H/hkAabb.h"
 #include "RE/H/hkArray.h"
