@@ -32,12 +32,12 @@ namespace RE
 		return QCameraEquals(CameraState::kFirstPerson);
 	}
 
-    bool PlayerCamera::QIsInFreeCameraMode() const
+	bool PlayerCamera::QIsInFreeCameraMode() const
 	{
 		return QCameraEquals(CameraState::kFree);
 	}
 
-    bool PlayerCamera::QIsInThirdPerson() const
+	bool PlayerCamera::QIsInThirdPerson() const
 	{
 		return QCameraEquals(CameraState::kThirdPerson);
 	}
