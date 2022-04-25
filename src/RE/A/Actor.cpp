@@ -1425,7 +1425,7 @@ namespace RE
 		RelocateVirtual<decltype(&Actor::SetEmotionType)>(0x10B, 0x10D, this, a_emotionType);
 	}
 
-	void std::uint32_t Actor::GetEmotionValue()
+	std::uint32_t Actor::GetEmotionValue()
 	{
 		return RelocateVirtual<decltype(&Actor::GetEmotionValue)>(0x10C, 0x10E, this);
 	}
