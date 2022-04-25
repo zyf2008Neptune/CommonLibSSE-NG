@@ -34,13 +34,13 @@ namespace RE
 		[[nodiscard]] NiTexture::RendererData* CreateRenderTexture(std::uint32_t width, std::uint32_t height)
 		{
 			using func_t = decltype(&BSRenderManager::CreateRenderTexture);
-			REL::Relocation<func_t> func{ REL::RelocationID(75507, 77299) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(75507, 77299) };
 			return func(this, width, height);
 		}
 
 		[[nodiscard]] static BSRenderManager* GetSingleton() noexcept
 		{
-			REL::Relocation<BSRenderManager*> instance{ REL::RelocationID(524907, 411393) };
+			REL::Relocation<BSRenderManager*> instance{ RELOCATION_ID(524907, 411393) };
 			return instance.get();
 		}
 

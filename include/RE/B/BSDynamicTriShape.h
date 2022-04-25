@@ -38,7 +38,7 @@ namespace RE
 		BSDynamicTriShape* ctor()
 		{
 			using func_t = decltype(&BSDynamicTriShape::ctor);
-			REL::Relocation<func_t> func{ REL::RelocationID(69564, 70948) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(69564, 70948) };
 			return func(this);
 		}
 		//DEFINE_MEMBER_FN_0(ctor, BSDynamicTriShape*, 0x00C71E50);

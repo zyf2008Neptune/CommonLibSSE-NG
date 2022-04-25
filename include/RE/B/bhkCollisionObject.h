@@ -30,7 +30,7 @@ namespace RE
 		bhkRigidBody* GetRigidBody() const
 		{
 			using func_t = decltype(&bhkCollisionObject::GetRigidBody);
-			REL::Relocation<func_t> func{ REL::RelocationID(12784, 20014) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(12784, 20014) };
 			return func(this);
 		}
 	};

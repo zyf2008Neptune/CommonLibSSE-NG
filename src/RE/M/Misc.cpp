@@ -67,7 +67,7 @@ namespace RE
 
 	float GetDurationOfApplicationRunTime()
 	{
-		REL::Relocation<float*> runtime{ REL::RelocationID(523662, 410201) };
+		REL::Relocation<float*> runtime{ RELOCATION_ID(523662, 410201) };
 		return *runtime;
 	}
 
@@ -104,7 +104,7 @@ namespace RE
 	float GetArmorFinalRating(RE::InventoryEntryData* a_armorEntryData, float a_armorPerks, float a_skillMultiplier)
 	{
 		using func_t = decltype(&GetArmorFinalRating);
-		REL::Relocation<func_t> func{ REL::RelocationID(15779, 16017) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(15779, 16017) };
 		return func(a_armorEntryData, a_armorPerks, a_skillMultiplier);
 	}
 }

@@ -35,7 +35,7 @@ namespace RE
 	bhkCollisionObject* NiAVObject::GetCollisionObject() const
 	{
 		using func_t = decltype(&NiAVObject::GetCollisionObject);
-		REL::Relocation<func_t> func{ REL::RelocationID(25482, 26022) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(25482, 26022) };
 		return func(this);
 	}
 
@@ -112,7 +112,7 @@ namespace RE
 	void NiAVObject::RemoveDecals()
 	{
 		using func_t = decltype(&NiAVObject::RemoveDecals);
-		REL::Relocation<func_t> func{ REL::RelocationID(15547, 15723) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(15547, 15723) };
 		return func(this);
 	}
 
@@ -124,14 +124,14 @@ namespace RE
 	void NiAVObject::SetCollisionLayer(COL_LAYER a_collisionLayer)
 	{
 		using func_t = decltype(&NiAVObject::SetCollisionLayer);
-		REL::Relocation<func_t> func{ REL::RelocationID(76170, 77998) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(76170, 77998) };
 		return func(this, a_collisionLayer);
 	}
 
 	void NiAVObject::SetCollisionLayerAndGroup(COL_LAYER a_collisionLayer, std::uint32_t a_group)
 	{
 		using func_t = decltype(&NiAVObject::SetCollisionLayerAndGroup);
-		REL::Relocation<func_t> func{ REL::RelocationID(76171, 77999) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(76171, 77999) };
 		return func(this, a_collisionLayer, a_group);
 	}
 
@@ -283,7 +283,7 @@ namespace RE
 	void NiAVObject::UpdateRigidConstraints(bool a_enable, std::uint8_t a_arg2, std::uint32_t a_arg3)
 	{
 		using func_t = decltype(&NiAVObject::UpdateRigidConstraints);
-		REL::Relocation<func_t> func{ REL::RelocationID(76271, 78103) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(76271, 78103) };
 		return func(this, a_enable, a_arg2, a_arg3);
 	}
 

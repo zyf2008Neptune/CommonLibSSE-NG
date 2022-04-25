@@ -154,7 +154,7 @@ namespace RE
 		void SetHeadtrackTarget(int32_t a_headtrackPriority, TESObjectREFR* a_target)
 		{
 			using func_t = decltype(&HighProcessData::SetHeadtrackTarget);
-			REL::Relocation<func_t> func{ REL::RelocationID(38760, 39783) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(38760, 39783) };
 			return func(this, a_headtrackPriority, a_target);
 		}
 

@@ -71,21 +71,21 @@ namespace RE
 		inline hkpPhantom* AddPhantom(hkpPhantom* a_phantom)
 		{
 			using func_t = decltype(&hkpWorld::AddPhantom);
-			REL::Relocation<func_t> func{ REL::RelocationID(60502, 61314) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(60502, 61314) };
 			return func(this, a_phantom);
 		}
 
 		inline void RemovePhantom(hkpPhantom* a_phantom)
 		{
 			using func_t = decltype(&hkpWorld::RemovePhantom);
-			REL::Relocation<func_t> func{ REL::RelocationID(60504, 61316) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(60504, 61316) };
 			return func(this, a_phantom);
 		}
 
 		inline void CastRay(const hkpWorldRayCastInput& a_input, hkpWorldRayCastOutput& a_output) const
 		{
 			using func_t = decltype(&hkpWorld::CastRay);
-			REL::Relocation<func_t> func{ REL::RelocationID(60551, 61399) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(60551, 61399) };
 			return func(this, a_input, a_output);
 		}
 

@@ -245,7 +245,7 @@ namespace RE
 	GString* GString::ctor(const char* a_str)
 	{
 		using func_t = decltype(&GString::ctor);
-		REL::Relocation<func_t> func{ REL::RelocationID(80446, 82562) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(80446, 82562) };
 		return func(this, a_str);
 	}
 

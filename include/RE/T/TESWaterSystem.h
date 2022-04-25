@@ -24,14 +24,14 @@ namespace RE
 	public:
 		[[nodiscard]] static TESWaterSystem* GetSingleton()
 		{
-			REL::Relocation<TESWaterSystem**> singleton{ REL::RelocationID(514290, 400450) };
+			REL::Relocation<TESWaterSystem**> singleton{ RELOCATION_ID(514290, 400450) };
 			return *singleton;
 		}
 
 		void AddRipple(const NiPoint3& a_pos, float a_scale)
 		{
 			using func_t = decltype(&TESWaterSystem::AddRipple);
-			REL::Relocation<func_t> func{ REL::RelocationID(31410, 32217) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(31410, 32217) };
 			return func(this, a_pos, a_scale);
 		}
 
