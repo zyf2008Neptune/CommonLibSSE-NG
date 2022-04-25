@@ -11,7 +11,7 @@ namespace RE
 	// context = kMenuMode
 	class ModManagerMenu :
 #ifndef SKYRIM_CROSS_VR
-		public IMenu,  // 00
+		public IMenu,              // 00
 		public MenuEventHandler,   // 30
 		public GFxFunctionHandler  // 40
 #else

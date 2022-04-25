@@ -75,22 +75,26 @@ namespace RE
 
 		[[nodiscard]] const WorldSpaceMenu* AsWorldSpaceMenu() const noexcept
 		{
-			return const_cast<HUDMenu *>(this)->AsWorldSpaceMenu();
+			return const_cast<HUDMenu*>(this)->AsWorldSpaceMenu();
 		}
 
-		[[nodiscard]] BSTEventSink<UserEventEnabledEvent>* AsUserEventEnabledEventSink() noexcept {
+		[[nodiscard]] BSTEventSink<UserEventEnabledEvent>* AsUserEventEnabledEventSink() noexcept
+		{
 			return &REL::RelocateMember<BSTEventSink<UserEventEnabledEvent>>(this, 0x30, 0x58);
 		}
 
-		[[nodiscard]] const BSTEventSink<UserEventEnabledEvent>* AsUserEventEnabledEventSink() const noexcept {
+		[[nodiscard]] const BSTEventSink<UserEventEnabledEvent>* AsUserEventEnabledEventSink() const noexcept
+		{
 			return const_cast<HUDMenu*>(this)->AsUserEventEnabledEventSink();
 		}
 
-		[[nodiscard]] BSTEventSink<BSRemoteGamepadEvent>* AsBSRemoteGamepadEventSink() noexcept {
+		[[nodiscard]] BSTEventSink<BSRemoteGamepadEvent>* AsBSRemoteGamepadEventSink() noexcept
+		{
 			return &REL::RelocateMember<BSTEventSink<BSRemoteGamepadEvent>>(this, 0x38, 0x60);
 		}
 
-		[[nodiscard]] const BSTEventSink<BSRemoteGamepadEvent>* AsBSRemoteGamepadEventSink() const noexcept {
+		[[nodiscard]] const BSTEventSink<BSRemoteGamepadEvent>* AsBSRemoteGamepadEventSink() const noexcept
+		{
 			return const_cast<HUDMenu*>(this)->AsBSRemoteGamepadEventSink();
 		}
 
