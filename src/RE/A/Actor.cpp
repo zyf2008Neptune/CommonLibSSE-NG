@@ -1415,24 +1415,24 @@ namespace RE
 		RelocateVirtual<decltype(&Actor::CreateMovementController)>(0x109, 0x10B, this);
 	}
 
-	void Actor::Unk_10A()
+	EmotionType Actor::GetEmotionType()
 	{
-		RelocateVirtual<decltype(&Actor::Unk_10A)>(0x10A, 0x10C, this);
+		return RelocateVirtual<decltype(&Actor::GetEmotionType)>(0x10A, 0x10C, this);
 	}
 
-	void Actor::Unk_10B()
+	void Actor::SetEmotionType(EmotionType a_emotionType)
 	{
-		RelocateVirtual<decltype(&Actor::Unk_10B)>(0x10B, 0x10D, this);
+		RelocateVirtual<decltype(&Actor::SetEmotionType)>(0x10B, 0x10D, this, a_emotionType);
 	}
 
-	void Actor::Unk_10C()
+	void std::uint32_t Actor::GetEmotionValue()
 	{
-		RelocateVirtual<decltype(&Actor::Unk_10C)>(0x10C, 0x10E, this);
+		return RelocateVirtual<decltype(&Actor::GetEmotionValue)>(0x10C, 0x10E, this);
 	}
 
-	void Actor::Unk_10D()
+	void Actor::SetEmotionValue(std::uint32_t a_emotionValue)
 	{
-		RelocateVirtual<decltype(&Actor::Unk_10D)>(0x10D, 0x10F, this);
+		RelocateVirtual<decltype(&Actor::SetEmotionValue)>(0x10D, 0x10F, this, a_emotionValue);
 	}
 
 	void Actor::KillImpl(Actor* a_attacker, float a_damage, bool a_sendEvent, bool a_ragdollInstant)

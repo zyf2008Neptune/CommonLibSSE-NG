@@ -461,6 +461,7 @@ set(SOURCES
 	include/RE/E/Effect.h
 	include/RE/E/EffectArchetypes.h
 	include/RE/E/EffectSetting.h
+	include/RE/E/EmotionTypes.h
 	include/RE/E/EnchantConstructMenu.h
 	include/RE/E/EnchantmentItem.h
 	include/RE/E/ErrorCodes.h
@@ -745,6 +746,7 @@ set(SOURCES
 	include/RE/H/HeapBlockFreeHead.h
 	include/RE/H/HeldStateHandler.h
 	include/RE/H/HighProcessData.h
+	include/RE/H/HitData.h
 	include/RE/H/HorseCameraState.h
 	include/RE/H/hkAabb.h
 	include/RE/H/hkArray.h
@@ -1561,7 +1563,6 @@ set(SOURCES
 	src/RE/M/MemoryPage.cpp
 	src/RE/M/MenuControls.cpp
 	src/RE/M/MenuEventHandler.cpp
-	src/RE/M/MiddleHighProcessData.cpp
 	src/RE/M/Misc.cpp
 	src/RE/M/MissileProjectile.cpp
 	src/RE/N/NativeFunctionBase.cpp

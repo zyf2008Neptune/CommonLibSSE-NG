@@ -59,6 +59,10 @@ namespace RE
 
 		static PlayerCamera* GetSingleton();
 
+		void ForceFirstPerson();
+		void ForceThirdPerson();
+		bool QCameraEquals(CameraState a_cameraState) const;
+		void ToggleFreeCameraMode(bool a_freezeTime);
 		void UpdateThirdPerson(bool a_weaponDrawn);
 
 		// members

@@ -113,6 +113,7 @@ namespace RE
 			kTargetActivated = 1 << 0,
 			kCurrentActionComplete = 1 << 1,
 			kAlert = 1 << 3,
+			kFollower = 1 << 4,
 			kPackageDoneOnce = 1 << 5,
 			kPackageIdleDone = 1 << 6
 		};
