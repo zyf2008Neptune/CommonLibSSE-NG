@@ -350,8 +350,8 @@ namespace RE
 		}
 	}
 
-    Actor* Actor::GetKiller() const
-    {
+	Actor* Actor::GetKiller() const
+	{
 		if (IsDead(false)) {
 			return nullptr;
 		}
@@ -359,7 +359,7 @@ namespace RE
 		return myKiller.get().get();
 	}
 
-    std::uint16_t Actor::GetLevel() const
+	std::uint16_t Actor::GetLevel() const
 	{
 		using func_t = decltype(&Actor::GetLevel);
 		REL::Relocation<func_t> func{ Offset::Actor::GetLevel };
