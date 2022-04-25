@@ -22,12 +22,12 @@ namespace RE
 		return func(this);
 	}
 
-    bool PlayerCamera::QCameraEquals(CameraState a_cameraState) const
-    {
+	bool PlayerCamera::QCameraEquals(CameraState a_cameraState) const
+	{
 		return currentState && currentState == cameraStates[a_cameraState];
 	}
 
-    void PlayerCamera::ToggleFreeCameraMode(bool a_freezeTime)
+	void PlayerCamera::ToggleFreeCameraMode(bool a_freezeTime)
 	{
 		using func_t = decltype(&PlayerCamera::ToggleFreeCameraMode);
 		REL::Relocation<func_t> func{ RELOCATION_ID(49876, 50809) };

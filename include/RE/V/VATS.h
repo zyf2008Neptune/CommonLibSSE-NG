@@ -41,11 +41,11 @@ namespace RE
 	public:
 		enum class VATS_MODE : std::uint32_t
 		{
-		    kNone = 0,
+			kNone = 0,
 			kKillCam = 4
 		};
 
-	    [[nodiscard]] static VATS* GetSingleton()
+		[[nodiscard]] static VATS* GetSingleton()
 		{
 			REL::Relocation<VATS**> singleton{ RELOCATION_ID(514725, 400883) };
 			return *singleton;
