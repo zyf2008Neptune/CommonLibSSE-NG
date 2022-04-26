@@ -828,12 +828,56 @@ namespace REL
 	private:
 		friend Offset2ID;
 
+		class istream_t
+		{
+		public:
+			using stream_type = std::ifstream;
+			using pointer = stream_type*;
+			using const_pointer = const stream_type*;
+			using reference = stream_type&;
+			using const_reference = const stream_type&;
+
+			inline istream_t(stl::zwstring a_filename, std::ios_base::openmode a_mode) :
+				_stream(a_filename.data(), a_mode)
+			{
+				if (!_stream.is_open()) {
+					stl::report_and_fail("failed to open address library file");
+				}
+
+				_stream.exceptions(std::ios::badbit | std::ios::failbit | std::ios::eofbit);
+			}
+
+			inline void ignore(std::streamsize a_count) { _stream.ignore(a_count); }
+
+			template <class T>
+			inline void readin(T& a_val)
+			{
+				_stream.read(reinterpret_cast<char*>(std::addressof(a_val)), sizeof(T));
+			}
+
+			template <
+				class T,
+				std::enable_if_t<
+					std::is_arithmetic_v<T>,
+					int> = 0>
+			inline T readout()
+			{
+				T val{};
+				readin(val);
+				return val;
+			}
+
+		private:
+			stream_type _stream;
+		};
+
 		class header_t
 		{
 		public:
-			void read(binary_io::file_istream& a_in)
+			void read(istream_t& a_input)
 			{
-				const auto [format] = a_in.read<std::int32_t>();
+				std::int32_t format{};
+				a_input.readin(format);
 				if (format != (Module::IsAE() ? 2 : 1)) {
 					stl::report_and_fail(
 						fmt::format(
@@ -844,17 +888,18 @@ namespace REL
 							format));
 				}
 
-				const auto [major, minor, patch, revision] =
-					a_in.read<std::int32_t, std::int32_t, std::int32_t, std::int32_t>();
-				_version[0] = static_cast<std::uint16_t>(major);
-				_version[1] = static_cast<std::uint16_t>(minor);
-				_version[2] = static_cast<std::uint16_t>(patch);
-				_version[3] = static_cast<std::uint16_t>(revision);
+				std::int32_t version[4]{};
+				std::int32_t nameLen{};
+				a_input.readin(version);
+				a_input.readin(nameLen);
+				a_input.ignore(nameLen);
 
-				const auto [nameLen] = a_in.read<std::int32_t>();
-				a_in.seek_relative(nameLen);
+				a_input.readin(_pointerSize);
+				a_input.readin(_addressCount);
 
-				a_in.read(_pointerSize, _addressCount);
+				for (std::size_t i = 0; i < std::extent_v<decltype(version)>; ++i) {
+					_version[i] = static_cast<std::uint16_t>(version[i]);
+				}
 			}
 
 			[[nodiscard]] std::size_t   address_count() const noexcept { return static_cast<std::size_t>(_addressCount); }
@@ -904,9 +949,9 @@ namespace REL
 		void load_file(stl::zwstring a_filename, Version a_version)
 		{
 			try {
-				binary_io::file_istream in(a_filename);
+				istream_t input(a_filename.data(), std::ios::in | std::ios::binary);
 				header_t                header;
-				header.read(in);
+				header.read(input);
 				if (header.version() != a_version) {
 					stl::report_and_fail("version mismatch"sv);
 				}
@@ -920,7 +965,7 @@ namespace REL
 				}
 
 				_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
-				unpack_file(in, header);
+				unpack_file(input, header);
 				std::sort(
 					_id2offset.begin(),
 					_id2offset.end(),
@@ -983,7 +1028,7 @@ namespace REL
 			return true;
 		}
 
-		void unpack_file(binary_io::file_istream& a_in, header_t a_header)
+		inline void unpack_file(istream_t& a_input, header_t a_header)
 		{
 			std::uint8_t  type = 0;
 			std::uint64_t id = 0;
@@ -991,68 +1036,68 @@ namespace REL
 			std::uint64_t prevID = 0;
 			std::uint64_t prevOffset = 0;
 			for (auto& mapping : _id2offset) {
-				a_in.read(type);
+				a_input.readin(type);
 				const auto lo = static_cast<std::uint8_t>(type & 0xF);
 				const auto hi = static_cast<std::uint8_t>(type >> 4);
 
 				switch (lo) {
 				case 0:
-					a_in.read(id);
+					a_input.readin(id);
 					break;
 				case 1:
 					id = prevID + 1;
 					break;
 				case 2:
-					id = prevID + std::get<0>(a_in.read<std::uint8_t>());
+					id = prevID + a_input.readout<std::uint8_t>();
 					break;
 				case 3:
-					id = prevID - std::get<0>(a_in.read<std::uint8_t>());
+					id = prevID - a_input.readout<std::uint8_t>();
 					break;
 				case 4:
-					id = prevID + std::get<0>(a_in.read<std::uint16_t>());
+					id = prevID + a_input.readout<std::uint16_t>();
 					break;
 				case 5:
-					id = prevID - std::get<0>(a_in.read<std::uint16_t>());
+					id = prevID - a_input.readout<std::uint16_t>();
 					break;
 				case 6:
-					std::tie(id) = a_in.read<std::uint16_t>();
+					id = a_input.readout<std::uint16_t>();
 					break;
 				case 7:
-					std::tie(id) = a_in.read<std::uint32_t>();
+					id = a_input.readout<std::uint32_t>();
 					break;
 				default:
-					stl::report_and_fail("unhandled type"sv);
+					stl::report_and_fail("unhandled type");
 				}
 
 				const std::uint64_t tmp = (hi & 8) != 0 ? (prevOffset / a_header.pointer_size()) : prevOffset;
 
 				switch (hi & 7) {
 				case 0:
-					a_in.read(offset);
+					a_input.readin(offset);
 					break;
 				case 1:
 					offset = tmp + 1;
 					break;
 				case 2:
-					offset = tmp + std::get<0>(a_in.read<std::uint8_t>());
+					offset = tmp + a_input.readout<std::uint8_t>();
 					break;
 				case 3:
-					offset = tmp - std::get<0>(a_in.read<std::uint8_t>());
+					offset = tmp - a_input.readout<std::uint8_t>();
 					break;
 				case 4:
-					offset = tmp + std::get<0>(a_in.read<std::uint16_t>());
+					offset = tmp + a_input.readout<std::uint16_t>();
 					break;
 				case 5:
-					offset = tmp - std::get<0>(a_in.read<std::uint16_t>());
+					offset = tmp - a_input.readout<std::uint16_t>();
 					break;
 				case 6:
-					std::tie(offset) = a_in.read<std::uint16_t>();
+					offset = a_input.readout<std::uint16_t>();
 					break;
 				case 7:
-					std::tie(offset) = a_in.read<std::uint32_t>();
+					offset = a_input.readout<std::uint32_t>();
 					break;
 				default:
-					stl::report_and_fail("unhandled type"sv);
+					stl::report_and_fail("unhandled type");
 				}
 
 				if ((hi & 8) != 0) {
