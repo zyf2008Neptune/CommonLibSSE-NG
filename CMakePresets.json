@@ -65,9 +65,6 @@
             },
             "generator": "Ninja",
             "vendor": {
-                "jetbrains.com/clion": {
-                    "toolchain": "Visual Studio (Clang)"
-                },
                 "microsoft.com/VisualStudioSettings/CMake/1.0": {
                     "intelliSenseMode": "windows-clang-x64",
                     "enableMicrosoftCodeAnalysis": true,
@@ -167,11 +164,6 @@
                 "windows",
                 "clangcl"
             ],
-            "vendor": {
-                "jetbrains.com/clion": {
-                    "toolchain": "Visual Studio (Clang)"
-                }
-            },
             "name": "Debug-All-ClangCL",
             "displayName": "Debug (All, ClangCL)",
             "binaryDir": "${sourceDir}/build/all-clangcl"

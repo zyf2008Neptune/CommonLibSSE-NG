@@ -546,24 +546,24 @@ namespace REL
 	public:
 		/**
 		 * Identifies a Skyrim runtime.
-		 */
+         */
 		enum class Runtime : uint8_t
 		{
 			Unknown = 0,
 
 			/**
 			 * The Skyrim runtime is a post-Anniversary Edition Skyrim SE release (version 1.6.x and later).
-			 */
+             */
 			AE = 1 << 0,
 
 			/**
 			 * The Skyrim runtime is a pre-Anniversary Edition Skyrim SE release (version 1.5.97 and prior).
-			 */
+             */
 			SE = 1 << 1,
 
 			/**
 			 * The Skyrim runtime is Skyrim VR.
-			 */
+             */
 			VR = 1 << 2
 		};
 
@@ -589,7 +589,7 @@ namespace REL
 
 		/**
 		 * Get the type of runtime the currently-loaded Skyrim module is.
-		 */
+         */
 		[[nodiscard]] static SKYRIM_REL Runtime GetRuntime() noexcept
 		{
 #if (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR))
@@ -605,7 +605,7 @@ namespace REL
 
 		/**
 		 * Returns whether the current Skyrim runtime is a post-Anniversary Edition Skyrim SE release.
-		 */
+         */
 		[[nodiscard]] static SKYRIM_REL bool IsAE() noexcept
 		{
 			return GetRuntime() == Runtime::AE;
@@ -613,7 +613,7 @@ namespace REL
 
 		/**
 		 * Returns whether the current Skyrim runtime is a pre-Anniversary Edition Skyrim SE release.
-		 */
+         */
 		[[nodiscard]] static SKYRIM_REL bool IsSE() noexcept
 		{
 			return GetRuntime() == Runtime::SE;
@@ -621,7 +621,7 @@ namespace REL
 
 		/**
 		 * Returns whether the current Skyrim runtime is a Skyrim VR release.
-		 */
+         */
 		[[nodiscard]] static SKYRIM_REL_VR bool IsVR() noexcept
 		{
 #ifndef ENABLE_SKYRIM_VR
@@ -763,10 +763,10 @@ namespace REL
 			{
 				const mapping_t elem{ 0, a_offset };
 				const auto      it = std::lower_bound(
-                    _offset2id.begin(),
-                    _offset2id.end(),
-                    elem,
-                    [](auto&& a_lhs, auto&& a_rhs) {
+						 _offset2id.begin(),
+						 _offset2id.end(),
+						 elem,
+						 [](auto&& a_lhs, auto&& a_rhs) {
                         return a_lhs.offset < a_rhs.offset;
                     });
 				if (it == _offset2id.end()) {
@@ -937,9 +937,9 @@ namespace REL
 				const auto filename =
 					stl::utf8_to_utf16(
 						Module::IsAE() ?
-                            fmt::format("Data/SKSE/Plugins/versionlib-{}.bin"sv,
+							fmt::format("Data/SKSE/Plugins/versionlib-{}.bin"sv,
 								version.string()) :
-                            fmt::format("Data/SKSE/Plugins/version-{}.bin"sv,
+							fmt::format("Data/SKSE/Plugins/version-{}.bin"sv,
 								version.string()))
 						.value_or(L"<unknown filename>"s);
 				load_file(filename, version);
@@ -1534,7 +1534,7 @@ namespace REL
 		{
 			namespace detail
 			{
-				[[nodiscard]] consteval std::byte hexacharacters_to_hexadecimal(char a_hi, char a_lo) noexcept
+				[[nodiscard]] constexpr std::byte hexacharacters_to_hexadecimal(char a_hi, char a_lo) noexcept
 				{
 					constexpr auto lut = []() noexcept {
 						std::array<std::uint8_t, std::numeric_limits<unsigned char>::max() + 1> a = {};
@@ -1662,7 +1662,7 @@ namespace REL
 				} else {
 					if constexpr (S.length() <= 3) {
 						return do_make_pattern<S.template substr<2>(), Rules..., rule_t>();
-					} else if constexpr (characters::space(S[2])) {
+					} else if constexpr (characters::space(S.value_at(2))) {
 						return do_make_pattern<S.template substr<3>(), Rules..., rule_t>();
 					} else {
 						consteval_error("a space character is required to split byte patterns");
@@ -1705,7 +1705,7 @@ namespace REL
 	 * @param a_seAndVR the value to use for SE and VR.
 	 * @param a_ae the value to use for AE.
 	 * @return Either <code>a_seAndVR</code> if the current runtime is Skyrim SE or VR, or <code>a_ae</code> if the runtime is AE.
-	 */
+     */
 	template <class T>
 	[[nodiscard]] SKYRIM_ADDR T Relocate([[maybe_unused]] T&& a_seAndVR, [[maybe_unused]] T&& a_ae) noexcept
 	{
@@ -1734,7 +1734,7 @@ namespace REL
 	 * @param a_vr the value to use for VR.
 	 * @return Either <code>a_se</code> if the current runtime is Skyrim SE, or <code>a_ae</code> if the runtime is AE, or
 	 * <code>a_vr</code> if running Skyrim VR.
-	 */
+     */
 	template <class T>
 	[[nodiscard]] SKYRIM_REL T Relocate([[maybe_unused]] T a_se, [[maybe_unused]] T a_ae,
 		[[maybe_unused]] T a_vr) noexcept
@@ -1832,7 +1832,7 @@ namespace REL
 	 * @param a_self the <code>this</code> argument for the call.
 	 * @param a_args the remaining arguments for the call, if any.
 	 * @return The result of the function call.
-	 */
+     */
 	template <class Fn, class... Args>
 	[[nodiscard]] inline typename detail::RelocateVirtualHelper<Fn>::return_type RelocateVirtual(
 		[[maybe_unused]] std::ptrdiff_t a_seAndAEVtableOffset, [[maybe_unused]] std::ptrdiff_t a_vrVtableOffset,
@@ -1876,7 +1876,7 @@ namespace REL
 	 * @param a_self the <code>this</code> argument for the call.
 	 * @param a_args the remaining arguments for the call, if any.
 	 * @return The result of the function call.
-	 */
+     */
 	template <class Fn, class... Args>
 	[[nodiscard]] inline typename detail::RelocateVirtualHelper<Fn>::return_type RelocateVirtual(
 		std::ptrdiff_t a_seAndAEVtableIndex, std::ptrdiff_t a_vrVtableIndex,
@@ -1901,7 +1901,7 @@ namespace REL
 	 * @param a_seAndAE the memory offset of the member in Skyrim SE and AE.
 	 * @param a_vr the memory offset of the member in Skyrim VR.
 	 * @return A reference to the member.
-	 */
+     */
 	template <class T, class This>
 	[[nodiscard]] inline T& RelocateMember(This* a_self, ptrdiff_t a_seAndAE, ptrdiff_t a_vr)
 	{
