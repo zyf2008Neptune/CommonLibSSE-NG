@@ -4,8 +4,8 @@
 #include "RE/N/NiObject.h"
 #include "RE/N/NiSmartPointer.h"
 
-class ID3D11Texture2D;
-class ID3D11ShaderResourceView;
+struct ID3D11Texture2D;
+struct ID3D11ShaderResourceView;
 
 namespace RE
 {
