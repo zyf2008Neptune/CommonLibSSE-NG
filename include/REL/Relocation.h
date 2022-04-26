@@ -950,7 +950,7 @@ namespace REL
 		{
 			try {
 				istream_t input(a_filename.data(), std::ios::in | std::ios::binary);
-				header_t                header;
+				header_t  header;
 				header.read(input);
 				if (header.version() != a_version) {
 					stl::report_and_fail("version mismatch"sv);
