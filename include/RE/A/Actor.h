@@ -496,6 +496,11 @@ namespace RE
 		void                         EvaluatePackage(bool a_immediate = false, bool a_resetAI = false);
 		TESNPC*                      GetActorBase();
 		const TESNPC*                GetActorBase() const;
+		TESNPC*                      GetRealActorBase();
+		const TESNPC*                GetRealActorBase() const;
+		TESNPC*                      GetDirectActorBase();
+		const TESNPC*                GetDirectActorBase() const;
+		bool                         IsLeveled() const;
 		float                        GetActorValueModifier(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_value) const;
 		InventoryEntryData*          GetAttackingWeapon();
 		const InventoryEntryData*    GetAttackingWeapon() const;

@@ -11,6 +11,7 @@
 #include "RE/B/bhkCharacterController.h"
 #include "RE/E/ExtraCanTalkToPlayer.h"
 #include "RE/E/ExtraFactionChanges.h"
+#include "RE/E/ExtraLeveledCreature.h"
 #include "RE/F/FormTraits.h"
 #include "RE/H/HighProcessData.h"
 #include "RE/I/InventoryEntryData.h"
@@ -223,6 +224,35 @@ namespace RE
 	{
 		auto obj = GetBaseObject();
 		return obj ? obj->As<TESNPC>() : nullptr;
+	}
+
+	TESNPC* Actor::GetRealActorBase()
+	{
+		auto* leveledData = extraList.GetByType<ExtraLeveledCreature>();
+		return leveledData ? (leveledData->templateBase ? leveledData->templateBase->As<TESNPC>() : nullptr) : GetDirectActorBase();
+	}
+
+	const TESNPC* Actor::GetRealActorBase() const
+	{
+		auto* leveledData = extraList.GetByType<ExtraLeveledCreature>();
+		return leveledData ? (leveledData->templateBase ? leveledData->templateBase->As<TESNPC>() : nullptr) : GetDirectActorBase();
+	}
+
+	TESNPC* Actor::GetDirectActorBase()
+	{
+		auto* leveledData = extraList.GetByType<ExtraLeveledCreature>();
+		return leveledData ? (leveledData->originalBase ? leveledData->originalBase->As<TESNPC>() : nullptr) : GetActorBase();
+	}
+
+	const TESNPC* Actor::GetDirectActorBase() const
+	{
+		auto* leveledData = extraList.GetByType<ExtraLeveledCreature>();
+		return leveledData ? (leveledData->originalBase ? leveledData->originalBase->As<TESNPC>() : nullptr) : GetActorBase();
+	}
+
+	bool Actor::IsLeveled() const
+	{
+		return extraList.GetByType<ExtraLeveledCreature>();
 	}
 
 	float Actor::GetActorValueModifier(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_value) const
