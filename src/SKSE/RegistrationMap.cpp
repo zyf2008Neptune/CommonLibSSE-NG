@@ -187,16 +187,16 @@ namespace SKSE
 			assert(a_intfc);
 			Locker locker(_lock);
 
-			// Key count
-			const std::size_t numKeys = _regs.size();
-			if (!a_intfc->WriteRecordData(numKeys)) {
-				log::error("Failed to save key count ({})!", numKeys);
+			// Reg count
+			const std::size_t numRegs = _regs.size();
+			if (!a_intfc->WriteRecordData(numRegs)) {
+				log::error("Failed to save reg count ({})!", numRegs);
 				return false;
 			}
 
 			for (auto& reg : _regs) {
 				// Key
-				auto   key = reg.first;
+				auto&  key = reg.first;
 				size_t keyIndex = key.index();
 				if (!a_intfc->WriteRecordData(keyIndex)) {
 					log::error("Failed to save key type ({})!", keyIndex);
@@ -222,16 +222,16 @@ namespace SKSE
 						return false;
 					}
 				}
-				// Reg count
-				std::size_t numRegs = reg.second.size();
-				if (!a_intfc->WriteRecordData(numRegs)) {
-					log::error("Failed to save number of regs ({})!", numRegs);
+				// Handle count
+				std::size_t numHandles = reg.second.size();
+				if (!a_intfc->WriteRecordData(numHandles)) {
+					log::error("Failed to save number of regs ({})!", numHandles);
 					return false;
 				}
-				// Regs
+				// Handle
 				for (auto& handle : reg.second) {
 					if (!a_intfc->WriteRecordData(handle)) {
-						log::error("Failed to save reg ({})", handle);
+						log::error("Failed to save handle ({})", handle);
 						return false;
 					}
 				}
@@ -243,8 +243,8 @@ namespace SKSE
 		bool RegistrationMapBase::Load(SerializationInterface* a_intfc)
 		{
 			assert(a_intfc);
-			std::size_t numKeys;
-			a_intfc->ReadRecordData(numKeys);
+			std::size_t numRegs;
+			a_intfc->ReadRecordData(numRegs);
 
 			Locker locker(_lock);
 			_regs.clear();
@@ -259,12 +259,12 @@ namespace SKSE
 			RE::FormID formID;
 			//formType
 			RE::FormType formType;
-			// Reg count
-			std::size_t numRegs;
-			// Regs
+			// Handle count
+			std::size_t numHandles;
+			// Handle
 			RE::VMHandle handle;
 
-			for (std::size_t i = 0; i < numKeys; ++i) {
+			for (std::size_t i = 0; i < numRegs; ++i) {
 				a_intfc->ReadRecordData(keyIndex);
 				if (keyIndex == 0) {
 					a_intfc->ReadRecordData(str_size);
@@ -283,8 +283,8 @@ namespace SKSE
 					a_intfc->ReadRecordData(formType);
 					curKey = formType;
 				}
-				a_intfc->ReadRecordData(numRegs);
-				for (std::size_t k = 0; k < numRegs; ++k) {
+				a_intfc->ReadRecordData(numHandles);
+				for (std::size_t j = 0; j < numHandles; ++j) {
 					a_intfc->ReadRecordData(handle);
 					if (a_intfc->ResolveHandle(handle, handle)) {
 						_regs[curKey].insert(handle);

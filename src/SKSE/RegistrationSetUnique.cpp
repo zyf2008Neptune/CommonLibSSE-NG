@@ -104,7 +104,7 @@ namespace SKSE
 			const auto formID = target ? target->GetFormID() : 0;
 
 			if (formID != 0) {
-				return Register(a_alias, std::move(formID), RE::BGSRefAlias::VMTYPEID);
+				return Register(a_alias, formID, RE::BGSRefAlias::VMTYPEID);
 			}
 
 			return false;
@@ -118,7 +118,7 @@ namespace SKSE
 			const auto formID = target ? target->GetFormID() : 0;
 
 			if (formID != 0) {
-				return Register(a_activeEffect, std::move(formID), RE::ActiveEffect::VMTYPEID);
+				return Register(a_activeEffect, formID, RE::ActiveEffect::VMTYPEID);
 			}
 
 			return false;
@@ -132,7 +132,7 @@ namespace SKSE
 			const auto formID = target ? target->GetFormID() : 0;
 
 			if (formID != 0) {
-				return Unregister(a_alias, std::move(formID), RE::BGSRefAlias::VMTYPEID);
+				return Unregister(a_alias, formID, RE::BGSRefAlias::VMTYPEID);
 			}
 
 			return false;
@@ -146,7 +146,7 @@ namespace SKSE
 			const auto formID = target ? target->GetFormID() : 0;
 
 			if (formID != 0) {
-				return Unregister(a_activeEffect, std::move(formID), RE::ActiveEffect::VMTYPEID);
+				return Unregister(a_activeEffect, formID, RE::ActiveEffect::VMTYPEID);
 			}
 
 			return false;
