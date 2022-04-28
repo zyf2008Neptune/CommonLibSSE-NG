@@ -44,11 +44,15 @@ namespace RE
 			return 0;
 		}
 
-		FormID formID = file->compileIndex << (3 * 8);
-		formID += file->smallFileCompileIndex << ((1 * 8) + 4);
-		formID += a_rawFormID;
-
-		return formID;
+		if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
+			// Use SkyrimVR lookup logic, ignore light plugin index which doesn't exist in VR
+			return (a_rawFormID & 0xFFFFFF) | (file->compileIndex << 24);
+		} else {
+			FormID formID = file->compileIndex << (3 * 8);
+			formID += file->smallFileCompileIndex << ((1 * 8) + 4);
+			formID += a_rawFormID;
+			return formID;
+		}
 	}
 
 	const TESFile* TESDataHandler::LookupModByName(std::string_view a_modName)
