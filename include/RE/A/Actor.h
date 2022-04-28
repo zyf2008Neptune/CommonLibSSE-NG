@@ -529,7 +529,7 @@ namespace RE
 		bool                         IsAnimationDriven() const;
 		bool                         IsBeingRidden() const;
 		bool                         IsBlocking() const;
-		bool                         IsCasting(MagicItem* a_magicItem) const;
+		bool                         IsCasting(MagicItem* a_spell) const;
 		bool                         IsCommandedActor() const;
 		bool                         IsEssential() const;
 		bool                         IsFactionInCrimeGroup(const TESFaction* a_faction) const;
