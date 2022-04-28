@@ -40,10 +40,14 @@ namespace RE
 		static TESDataHandler* GetSingleton();
 
 		std::uint32_t LoadScripts();
-		TESForm*      LookupForm(FormID a_rawFormID, std::string_view a_modName);
+		TESForm*      LookupForm(FormID a_localFormID, std::string_view a_modName);
+		TESForm*      LookupFormRaw(FormID a_rawFormID, std::string_view a_modName);
 		template <class T>
-		T*     LookupForm(FormID a_rawFormID, std::string_view a_modName);
-		FormID LookupFormID(FormID a_rawFormID, std::string_view a_modName);
+		T*     LookupForm(FormID a_localFormID, std::string_view a_modName);
+		template <class T>
+		T*     LookupFormRaw(FormID a_rawFormID, std::string_view a_modName);
+		FormID LookupFormID(FormID a_localFormID, std::string_view a_modName);
+		FormID LookupFormIDRaw(FormID a_rawFormID, std::string_view a_modName);
 
 		const TESFile*              LookupModByName(std::string_view a_modName);
 		std::optional<std::uint8_t> GetModIndex(std::string_view a_modName);
@@ -98,9 +102,20 @@ namespace RE
 	static_assert(sizeof(TESDataHandler) == 0xDC0);
 
 	template <class T>
-	T* TESDataHandler::LookupForm(FormID a_rawFormID, std::string_view a_modName)
+	T* TESDataHandler::LookupForm(FormID a_localFormID, std::string_view a_modName)
 	{
-		auto form = LookupForm(a_rawFormID, a_modName);
+		auto form = LookupForm(a_localFormID, a_modName);
+		if (!form) {
+			return 0;
+		}
+
+		return form->Is(T::FORMTYPE) ? static_cast<T*>(form) : 0;
+	}
+
+	template <class T>
+	T* TESDataHandler::LookupFormRaw(FormID a_rawFormID, std::string_view a_modName)
+	{
+		auto form = LookupFormRaw(a_rawFormID, a_modName);
 		if (!form) {
 			return 0;
 		}

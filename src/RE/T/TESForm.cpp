@@ -5,6 +5,7 @@
 #include "RE/F/FormTraits.h"
 #include "RE/I/IObjectHandlePolicy.h"
 #include "RE/I/InventoryEntryData.h"
+#include "RE/T/TESDataHandler.h"
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESGlobal.h"
 #include "RE/T/TESModel.h"
@@ -120,5 +121,54 @@ namespace RE
 	bool TESForm::HasWorldModel() const noexcept
 	{
 		return As<TESModel>() != nullptr;
+	}
+
+	FormID TESForm::GetRawFormID() const
+	{
+		const auto* modFile = GetFile(0);
+		if (!modFile) {
+			return 0;
+		}
+
+		const auto* expectedFile = (formID & 0xFF000000) == 0xFE000000 ?
+		                               TESDataHandler::GetSingleton()->LookupLoadedLightModByIndex(
+										   static_cast<uint16_t>((0x00FFF000 & formID) >> 12)) :
+		                               TESDataHandler::GetSingleton()->LookupLoadedModByIndex(
+										   static_cast<uint8_t>((0xFF000000 & formID) >> 24));
+
+		std::uint32_t fullMasters = 0;
+		std::uint32_t smallMasters = 0;
+
+		if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
+			for (std::uint32_t i = 0; i < modFile->masterCount; ++i) {
+				const auto* master = modFile->masterPtrs[i];
+				if (master == expectedFile) {
+					return (fullMasters << 24) | (formID & 0x00FFFFFF);
+				}
+				++fullMasters;
+			}
+			return (formID & 0x00FFFFFF) | (fullMasters << 24);
+		} else {
+			for (std::uint32_t i = 0; i < modFile->masterCount; ++i) {
+				const auto* master = modFile->masterPtrs[i];
+				if (master == expectedFile) {
+					if (master->compileIndex == 0xFE) {
+						return 0xFE000000 | (smallMasters << 12) | (formID & 0x00000FFF);
+					} else {
+						return (fullMasters << 24) | (formID & 0x00FFFFFF);
+					}
+				}
+				if (master->compileIndex == 0xFE) {
+					++smallMasters;
+				} else {
+					++fullMasters;
+				}
+			}
+			if (modFile->compileIndex == 0xFE) {
+				return (formID & 0x00000FFF) | 0xFE000000 | (smallMasters << 12);
+			} else {
+				return (formID & 0x00FFFFFF) | (fullMasters << 24);
+			}
+		}
 	}
 }

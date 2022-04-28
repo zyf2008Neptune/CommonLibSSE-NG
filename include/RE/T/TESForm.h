@@ -286,7 +286,8 @@ namespace RE
 		[[nodiscard]] FormType      GetFormType() const noexcept { return *formType; }
 		[[nodiscard]] std::int32_t  GetGoldValue() const;
 
-		[[nodiscard]] FormID GetLocalFormID()
+		[[nodiscard]] FormID GetRawFormID() const;
+		[[nodiscard]] FormID GetLocalFormID() const
 		{
 			auto file = GetFile(0);
 
