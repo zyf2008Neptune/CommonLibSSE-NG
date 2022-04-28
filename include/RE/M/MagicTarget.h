@@ -48,7 +48,7 @@ namespace RE
 		};
 		static_assert(sizeof(SpellDispelData) == 0x20);
 
-		struct CreationData
+		struct AddTargetData
 		{
 			TESObjectREFR*             caster;          // 00
 			MagicItem*                 magicItem;       // 08
@@ -65,20 +65,20 @@ namespace RE
 			std::uint16_t              pad4A;           // 4A
 			std::uint32_t              pad4C;           // 4C
 		};
-		static_assert(sizeof(CreationData) == 0x50);
+		static_assert(sizeof(AddTargetData) == 0x50);
 
 		virtual ~MagicTarget();  // 00
 
 		// add
-		virtual void                         Unk_01(void);                                                                             // 01
+		virtual bool                         AddTarget(AddTargetData& a_targetData);                                                   // 01
 		virtual TESObjectREFR*               GetTargetStatsObject();                                                                   // 02 - { return false; }
 		[[nodiscard]] virtual bool           MagicTargetIsActor() const;                                                               // 03 - { return false; }
 		virtual bool                         IsInvulnerable();                                                                         // 04 - { return false; }
 		virtual void                         InvalidateCommandedActorEffect(ActiveEffect* a_effect);                                   // 05 - { return; }
 		virtual bool                         CanAddActiveEffect() = 0;                                                                 // 06
 		virtual BSSimpleList<ActiveEffect*>* GetActiveEffectList() = 0;                                                                // 07
-		virtual void                         Unk_08(void);                                                                             // 08 - { return; }
-		virtual void                         Unk_09(void);                                                                             // 09 - { return; }
+		virtual void                         EffectAdded(ActiveEffect* a_effect);                                                      // 08 - { return; }
+		virtual void                         EffectRemoved(ActiveEffect* a_effect);                                                    // 09 - { return; }
 		virtual void                         CheckResistance(MagicItem* a_magicItem, EffectItem* a_effect, TESBoundObject* a_object);  // 0A - { return 1.0; }
 		virtual void                         CheckAbsorb(Actor* a_actor, MagicItem* a_magicItem, const EffectItem* a_effect);          // 0B - { return false; }
 
