@@ -1627,8 +1627,8 @@ set(SOURCES
 	src/RE/S/StreamBase.cpp
 	src/RE/Skyrim.cpp
 	src/RE/T/TES.cpp
-	src/RE/T/TESActorBase.cpp
 	src/RE/T/TESAIForm.cpp
+	src/RE/T/TESActorBase.cpp
 	src/RE/T/TESAmmo.cpp
 	src/RE/T/TESCamera.cpp
 	src/RE/T/TESClimate.cpp
