@@ -32,6 +32,16 @@ namespace RE
 		bool                                       RemoveKeyword(std::uint32_t a_index);
 		bool                                       RemoveKeyword(BGSKeyword* a_keyword);
 
+		[[nodiscard]] std::span<BGSKeyword*> GetKeywords()
+		{
+			return { keywords, numKeywords };
+		}
+
+		[[nodiscard]] std::span<BGSKeyword* const> GetKeywords() const
+		{
+			return { keywords, numKeywords };
+		}
+
 		// members
 		BGSKeyword**  keywords;     // 08 - KWDA
 		std::uint32_t numKeywords;  // 10 - KSIZ
