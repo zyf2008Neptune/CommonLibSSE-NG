@@ -42,8 +42,8 @@ namespace RE
 			}
 		}
 		if (scriptAddedTempForms) {
-			for (const auto& formID : *scriptAddedTempForms) {
-				if (const auto form = TESForm::LookupByID(formID); !a_callback(*form)) {
+			for (const auto& addedFormID : *scriptAddedTempForms) {
+				if (const auto addedForm = TESForm::LookupByID(addedFormID); !a_callback(*addedForm)) {
 					return;
 				}
 			}
