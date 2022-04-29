@@ -299,7 +299,7 @@ namespace RE
 		[[nodiscard]] const char* GetName() const;
 		[[nodiscard]] float       GetWeight() const;
 		[[nodiscard]] bool        HasKeywords(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const;
-		[[nodiscard]] bool        HasKeywords(BGSListForm* a_keywords, bool a_matchAll) const;
+		[[nodiscard]] bool        HasKeywords(BGSListForm* a_keywordList, bool a_matchAll) const;
 		[[nodiscard]] bool        HasVMAD() const;
 		[[nodiscard]] bool        HasWorldModel() const noexcept;
 		void                      InitItem() { InitItemImpl(); }

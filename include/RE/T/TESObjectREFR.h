@@ -410,6 +410,8 @@ namespace RE
 		bool                                    HasCollision() const;
 		bool                                    HasContainer() const;
 		bool                                    HasKeyword(const BGSKeyword* a_keyword) const;
+		bool                                    HasKeywords(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const;
+		bool                                    HasKeywords(BGSListForm* a_keywordList, bool a_matchAll) const;
 		bool                                    HasQuestObject() const;
 		void                                    InitChildActivates(TESObjectREFR* a_actionRef);
 		bool                                    InitInventoryIfRequired(bool a_ignoreContainerExtraData = false);
