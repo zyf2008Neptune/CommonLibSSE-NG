@@ -25,16 +25,28 @@ namespace RE
 		}
 
 		auto idIt = std::find(scriptAddedTempForms->begin(), scriptAddedTempForms->end(), a_form->formID);
-		if (idIt != scriptAddedTempForms->end()) {
-			return true;
-		}
-
-		return false;
+        return idIt != scriptAddedTempForms->end();
 	}
 
 	bool BGSListForm::HasForm(FormID a_formID) const
 	{
-		auto form = RE::TESForm::LookupByID(a_formID);
+		auto form = TESForm::LookupByID(a_formID);
 		return HasForm(form);
+	}
+
+	void BGSListForm::ForEachForm(std::function<bool(TESForm&)> a_callback) const
+	{
+		for (const auto& form : forms) {
+			if (form && !a_callback(*form)) {
+				return;
+			}
+		}
+		if (scriptAddedTempForms) {
+			for (const auto& formID : *scriptAddedTempForms) {
+				if (const auto form = TESForm::LookupByID(formID); !a_callback(*form)) {
+					return;
+				}
+			}
+		}
 	}
 }

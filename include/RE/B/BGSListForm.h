@@ -41,10 +41,11 @@ namespace RE
 		void InitItemImpl() override;                      // 13
 
 		void               AddForm(TESForm* a_form);
+		void               ForEachForm(std::function<bool(TESForm&)> a_callback) const;
 		bool               HasForm(const TESForm* a_form) const;
 		[[nodiscard]] bool HasForm(FormID a_formID) const;
 
-		// members
+        // members
 		BSTArray<TESForm*> forms;                 // 20 - LNAM
 		BSTArray<FormID>*  scriptAddedTempForms;  // 38
 		std::uint32_t      scriptAddedFormCount;  // 40
