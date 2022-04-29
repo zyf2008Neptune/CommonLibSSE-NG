@@ -44,13 +44,13 @@ namespace RE
 
 			struct MapData
 			{
-				void* unk00;
-				void* unk08;
+				void*         unk00;
+				void*         unk08;
 				std::uint32_t unk10;
 				std::uint32_t unk14;
 				std::uint32_t unk18;
-				NiPoint2 minimumCoordinates;
-				NiPoint2 maximumCoordinates;
+				NiPoint2      minimumCoordinates;
+				NiPoint2      maximumCoordinates;
 			};
 
 			NiPoint3      currentPosition;              // 20
