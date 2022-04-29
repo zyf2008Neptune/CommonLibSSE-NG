@@ -59,10 +59,7 @@ Then add `commonlibsse-ng` as a dependency in `vcpkg.json`. There are also runti
 
 The runtime-specific ports will not attempt to dynamically lookup the version of Skyrim at runtime, and will enable
 access to reverse engineered content that is specific to that version of Skyrim and non-portable (i.e. it does not exist
-in all versions of Skyrim, or has not been reverse engineered on all versions of Skyrim). Note that VR is only partially
-supported in this fork. It is treated largely as SE, but with VR Address Library support. Some functionality may still
-be exposed which is not available for VR (e.g. ESL-flagged plugins), and not all Address Library IDs are mapped by VR
-Address Library at this time.
+in all versions of Skyrim, or has not been reverse engineered on all versions of Skyrim).
 
 You should have the following in `CMakeLists.txt` to compile and link successfully:
 ```cmake
@@ -74,7 +71,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC CommonLibSSE::CommonLibSSE)
 For more information on how to use CommonLibSSE NG, you can look at the
 [example plugin](https://gitlab.com/colorglass/commonlibsse-sample-plugin).
 
-### Targeting Multiple Runtimes
+### Targeting Runtimes
 This fork of CommonLibSSE can target multiple Skyrim runtimes with a single build, allowing for a single DLL to work
 in Skyrim SE, AE, and even VR. Multitargeting for all runtimes is the default behavior. When targeting multiple runtimes
 certain functionality may become inaccessible or only indirectly accessible. This is because there are some fundamental
@@ -89,7 +86,8 @@ pointers structs which contain the member variables, which can be looked up at r
 If build to exclude VR, or for only VR, then the member variables become accessible directly on the class since this
 problem is eliminated, in order to maintain compatibility with other branches of CommonLibSSE (although the accessor
 function still remains, and is recommended for the broadest compatibility). In some classes there are multiple accessors
-due to multiple variant memory offsets.
+due to multiple variant memory offsets. Accessor functions that provide portable member access are usable in all builds
+of CommonLibSSE NG, but direct access to members are only available when all runtimes allow it.
 
 In general, classes and data not common to all runtimes is always available, despite it not always being present. For
 example, the `RE::PlayerCharacter` class always makes the VR data available via an accessor, `GetVRNodeData()`, which
@@ -108,22 +106,18 @@ runtimes to be supported:
 * `ENABLE_SKYRIM_AE`: For Skyrim SE versions post-AE (1.6.x).
 * `ENABLE_SKYRIM_VR`: For Skyrim VR.
 
-By default all three are enabled. Any runtime can be selectively disabled through CMake, by passing e.g.
+By default, all three are enabled. Any runtime can be selectively disabled through CMake, by passing e.g.
 `-DENABLE_SKYRIM_VR=off`. Any combination of runtime can be used, as long as at least one runtime is enabled. Accessors
 for multi-targeting are still usable in selectively targeted builds, but member functions become directly accessible
 again if using only VR or using only non-VR. If using only a single runtime the functions which do dynamic lookup of the
 current runtime will bypass the dynamic lookup.
 
 #### Cases of Inaccessible Functionality in SE+VR
-There is a limited number of cases of some functionality not yet being available at all when using VR and non-VR in the
-same build. Various sub-classes of `RE::IMenu` include some virtual callback functions for event handlers in the menu.
-These currently do not become accessible due to the complexity of handling the level of ABI incompatibility in these
-classes. The missing functionality is generally irrelevant (these are only callbacks the menu registers with events, not
-sources of events themselves, and unlikely to be needed by plugin authors).
-
-The `RE::PlayerCharacter` class has extremely complex differences between SE/AE and VR, and the VR version has not been
-fully reverse engineered to the point of finding all of the same member variables. Development of accessors that work
-across both runtimes for this class is still a work in progress.
+Currently, there is full coverage of all VR and non-VR functionality in a combined runtime build, with the exception of
+the `RE::PlayerCharacter` class. This class has major differences in VR and has not been reverse engineered in VR to the
+extent it has in non-VR runtimes. Therefore, mods which depend on member variables of this class should remain on a
+"flatrim" build (indeed, since the members are not RE'ed on VR, even doing a separate VR build is currently not an
+option, until reverse engineering on this class advances).
 
 ## Build Dependencies
 * [Boost](https://www.boost.org/)
