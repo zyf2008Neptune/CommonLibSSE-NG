@@ -503,7 +503,7 @@ namespace RE
 		return HasKeywordHelper(a_keyword);
 	}
 
-    bool TESObjectREFR::HasKeywords(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const
+	bool TESObjectREFR::HasKeywords(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const
 	{
 		bool hasKeyword = false;
 
@@ -517,7 +517,7 @@ namespace RE
 		return hasKeyword;
 	}
 
-    bool TESObjectREFR::HasKeywords(BGSListForm* a_keywordList, bool a_matchAll) const
+	bool TESObjectREFR::HasKeywords(BGSListForm* a_keywordList, bool a_matchAll) const
 	{
 		if (!a_keywordList) {
 			return false;
@@ -537,7 +537,7 @@ namespace RE
 		return hasKeyword;
 	}
 
-    bool TESObjectREFR::HasQuestObject() const
+	bool TESObjectREFR::HasQuestObject() const
 	{
 		using func_t = decltype(&TESObjectREFR::HasQuestObject);
 		REL::Relocation<func_t> func{ RELOCATION_ID(19201, 19627) };

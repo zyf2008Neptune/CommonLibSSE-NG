@@ -74,7 +74,7 @@ namespace RE
 			}
 		}
 
-	    return hasKeyword;
+		return hasKeyword;
 	}
 
 	bool TESForm::HasKeywords(BGSListForm* a_keywordList, bool a_matchAll) const
