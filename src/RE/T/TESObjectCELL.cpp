@@ -22,7 +22,7 @@ namespace RE
 	void TESObjectCELL::ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR&)> a_callback) const
 	{
 		const float squaredRadius = a_radius * a_radius;
-	    ForEachReference([&](TESObjectREFR& ref) {
+		ForEachReference([&](TESObjectREFR& ref) {
 			const auto distance = a_origin.GetSquaredDistance(ref.GetPosition());
 			return distance <= squaredRadius ?
                        a_callback(ref) :
