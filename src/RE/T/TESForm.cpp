@@ -58,7 +58,7 @@ namespace RE
 		}
 	}
 
-	bool TESForm::HasKeywords(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const
+	bool TESForm::HasKeywordInArray(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const
 	{
 		const auto keywordForm = As<BGSKeywordForm>();
 		if (!keywordForm) {
@@ -77,7 +77,7 @@ namespace RE
 		return hasKeyword;
 	}
 
-	bool TESForm::HasKeywords(BGSListForm* a_keywordList, bool a_matchAll) const
+	bool TESForm::HasKeywordInList(BGSListForm* a_keywordList, bool a_matchAll) const
 	{
 		if (!a_keywordList) {
 			return false;
@@ -90,9 +90,8 @@ namespace RE
 
 		bool hasKeyword = false;
 
-		a_keywordList->ForEachForm([&](TESForm& a_form) {
-			const auto keyword = a_form.As<BGSKeyword>();
-			hasKeyword = keyword && keywordForm->HasKeyword(keyword);
+		a_keywordList->ForEachForm([&](const TESForm& a_form) {
+			hasKeyword = keywordForm->HasKeywordID(a_form.GetFormID());
 			if (a_matchAll && !hasKeyword || hasKeyword) {
 				return false;
 			}

@@ -503,7 +503,7 @@ namespace RE
 		return HasKeywordHelper(a_keyword);
 	}
 
-	bool TESObjectREFR::HasKeywords(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const
+	bool TESObjectREFR::HasKeywordInArray(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const
 	{
 		bool hasKeyword = false;
 
@@ -517,7 +517,7 @@ namespace RE
 		return hasKeyword;
 	}
 
-	bool TESObjectREFR::HasKeywords(BGSListForm* a_keywordList, bool a_matchAll) const
+	bool TESObjectREFR::HasKeywordInList(BGSListForm* a_keywordList, bool a_matchAll) const
 	{
 		if (!a_keywordList) {
 			return false;
