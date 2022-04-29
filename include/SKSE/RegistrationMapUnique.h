@@ -18,7 +18,7 @@
 namespace SKSE
 {
 	template <class... Filter>
-	class RegistrationMap
+	class RegistrationFilter
 	{
 	protected:
 		using FilterTuple = std::tuple<Filter...>;
@@ -26,19 +26,19 @@ namespace SKSE
 
 		using FilterMatchFunc = std::function<bool(const FilterTuple&, bool)>;
 
-		class UniqueBase
+		class MapUniqueBase
 		{
 		public:
-			using Handles = std::pair<RE::FormID, RE::VMHandle>;
+			using UniqueHandle = std::pair<RE::FormID, RE::VMHandle>;
 
-			UniqueBase() = delete;
-			UniqueBase(const std::string_view& a_eventName);
-			UniqueBase(const UniqueBase& a_rhs);
-			UniqueBase(UniqueBase&& a_rhs) noexcept;
-			~UniqueBase();
+			MapUniqueBase() = delete;
+			MapUniqueBase(const std::string_view& a_eventName);
+			MapUniqueBase(const MapUniqueBase& a_rhs);
+			MapUniqueBase(MapUniqueBase&& a_rhs) noexcept;
+			~MapUniqueBase();
 
-			UniqueBase& operator=(const UniqueBase& a_rhs);
-			UniqueBase& operator=(UniqueBase&& a_rhs) noexcept;
+			MapUniqueBase& operator=(const MapUniqueBase& a_rhs);
+			MapUniqueBase& operator=(MapUniqueBase&& a_rhs) noexcept;
 
 			bool Register(RE::ActiveEffect* a_activeEffect, Key a_key);
 			bool Register(RE::BGSRefAlias* a_alias, Key a_key);
@@ -82,39 +82,39 @@ namespace SKSE
 				}
 			}
 
-			std::map<Key, std::set<Handles>> _regs;
-			std::string                      _eventName;
-			mutable Lock                     _lock;
+			std::map<Key, std::set<UniqueHandle>> _regs;
+			std::string                           _eventName;
+			mutable Lock                          _lock;
 		};
 
 	public:
 		template <class Enable, class... Args>
-		class Unique;
+		class MapUnique;
 
 		template <class... Args>
-		class Unique<
+		class MapUnique<
 			std::enable_if_t<
 				std::conjunction_v<
 					RE::BSScript::is_return_convertible<Args>...>>,
 			Args...> :
-			public UniqueBase
+			public MapUniqueBase
 		{
 		private:
-			using super = UniqueBase;
+			using super = MapUniqueBase;
 
 		public:
-			Unique() = delete;
-			Unique(const Unique&) = default;
-			Unique(Unique&&) = default;
+			MapUnique() = delete;
+			MapUnique(const MapUnique&) = default;
+			MapUnique(MapUnique&&) = default;
 
-			inline Unique(const std::string_view& a_eventName) :
+			inline MapUnique(const std::string_view& a_eventName) :
 				super(a_eventName)
 			{}
 
-			~Unique() = default;
+			~MapUnique() = default;
 
-			Unique& operator=(const Unique&) = default;
-			Unique& operator=(Unique&&) = default;
+			MapUnique& operator=(const MapUnique&) = default;
+			MapUnique& operator=(MapUnique&&) = default;
 
 			inline void SendEvent(const RE::TESObjectREFR* a_target, FilterMatchFunc a_callback, Args... a_args)
 			{
@@ -156,24 +156,24 @@ namespace SKSE
 		};
 
 		template <>
-		class Unique<void> : public UniqueBase
+		class MapUnique<void> : public MapUniqueBase
 		{
 		private:
-			using super = UniqueBase;
+			using super = MapUniqueBase;
 
 		public:
-			Unique() = delete;
-			Unique(const Unique&) = default;
-			Unique(Unique&&) = default;
+			MapUnique() = delete;
+			MapUnique(const MapUnique&) = default;
+			MapUnique(MapUnique&&) = default;
 
-			inline Unique(const std::string_view& a_eventName) :
+			inline MapUnique(const std::string_view& a_eventName) :
 				super(a_eventName)
 			{}
 
-			~Unique() = default;
+			~MapUnique() = default;
 
-			Unique& operator=(const Unique&) = default;
-			Unique& operator=(Unique&&) = default;
+			MapUnique& operator=(const MapUnique&) = default;
+			MapUnique& operator=(MapUnique&&) = default;
 
 			inline void SendEvent(const RE::TESObjectREFR* a_target, FilterMatchFunc a_callback)
 			{
@@ -206,14 +206,14 @@ namespace SKSE
 	};
 
 	template <class... Filter>
-	RegistrationMap<Filter...>::UniqueBase::UniqueBase(const std::string_view& a_eventName) :
+	RegistrationFilter<Filter...>::MapUniqueBase::MapUniqueBase(const std::string_view& a_eventName) :
 		_regs(),
 		_eventName(a_eventName),
 		_lock()
 	{}
 
 	template <class... Filter>
-	RegistrationMap<Filter...>::UniqueBase::UniqueBase(const UniqueBase& a_rhs) :
+	RegistrationFilter<Filter...>::MapUniqueBase::MapUniqueBase(const MapUniqueBase& a_rhs) :
 		_regs(),
 		_eventName(a_rhs._eventName),
 		_lock()
@@ -234,7 +234,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	RegistrationMap<Filter...>::UniqueBase::UniqueBase(UniqueBase&& a_rhs) noexcept :
+	RegistrationFilter<Filter...>::MapUniqueBase::MapUniqueBase(MapUniqueBase&& a_rhs) noexcept :
 		_regs(),
 		_eventName(a_rhs._eventName),
 		_lock()
@@ -245,7 +245,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	RegistrationMap<Filter...>::UniqueBase::~UniqueBase()
+	RegistrationFilter<Filter...>::MapUniqueBase::~MapUniqueBase()
 	{
 		auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 		auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
@@ -259,7 +259,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	typename RegistrationMap<Filter...>::template UniqueBase& RegistrationMap<Filter...>::UniqueBase::operator=(const UniqueBase& a_rhs)
+	typename RegistrationFilter<Filter...>::template MapUniqueBase& RegistrationFilter<Filter...>::MapUniqueBase::operator=(const MapUniqueBase& a_rhs)
 	{
 		if (this == &a_rhs) {
 			return *this;
@@ -288,7 +288,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	typename RegistrationMap<Filter...>::template UniqueBase& RegistrationMap<Filter...>::UniqueBase::operator=(UniqueBase&& a_rhs) noexcept
+	typename RegistrationFilter<Filter...>::template MapUniqueBase& RegistrationFilter<Filter...>::MapUniqueBase::operator=(MapUniqueBase&& a_rhs) noexcept
 	{
 		if (this == &a_rhs) {
 			return *this;
@@ -308,7 +308,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	bool RegistrationMap<Filter...>::UniqueBase::Register(RE::ActiveEffect* a_activeEffect, Key a_key)
+	bool RegistrationFilter<Filter...>::MapUniqueBase::Register(RE::ActiveEffect* a_activeEffect, Key a_key)
 	{
 		assert(a_activeEffect);
 
@@ -323,7 +323,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	bool RegistrationMap<Filter...>::UniqueBase::Register(RE::BGSRefAlias* a_alias, Key a_key)
+	bool RegistrationFilter<Filter...>::MapUniqueBase::Register(RE::BGSRefAlias* a_alias, Key a_key)
 	{
 		assert(a_alias);
 
@@ -338,7 +338,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	bool RegistrationMap<Filter...>::UniqueBase::Unregister(RE::ActiveEffect* a_activeEffect, Key a_key)
+	bool RegistrationFilter<Filter...>::MapUniqueBase::Unregister(RE::ActiveEffect* a_activeEffect, Key a_key)
 	{
 		assert(a_activeEffect);
 
@@ -353,7 +353,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	bool RegistrationMap<Filter...>::UniqueBase::Unregister(RE::BGSRefAlias* a_alias, Key a_key)
+	bool RegistrationFilter<Filter...>::MapUniqueBase::Unregister(RE::BGSRefAlias* a_alias, Key a_key)
 	{
 		assert(a_alias);
 
@@ -368,7 +368,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	void RegistrationMap<Filter...>::UniqueBase::UnregisterAll(RE::ActiveEffect* a_activeEffect)
+	void RegistrationFilter<Filter...>::MapUniqueBase::UnregisterAll(RE::ActiveEffect* a_activeEffect)
 	{
 		assert(a_activeEffect);
 
@@ -381,7 +381,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	void RegistrationMap<Filter...>::UniqueBase::UnregisterAll(RE::BGSRefAlias* a_alias)
+	void RegistrationFilter<Filter...>::MapUniqueBase::UnregisterAll(RE::BGSRefAlias* a_alias)
 	{
 		assert(a_alias);
 
@@ -394,7 +394,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	void RegistrationMap<Filter...>::UniqueBase::UnregisterAll(RE::VMHandle a_handle)
+	void RegistrationFilter<Filter...>::MapUniqueBase::UnregisterAll(RE::VMHandle a_handle)
 	{
 		auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 		auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
@@ -413,7 +413,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	void RegistrationMap<Filter...>::UniqueBase::Clear()
+	void RegistrationFilter<Filter...>::MapUniqueBase::Clear()
 	{
 		auto   vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 		auto   policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
@@ -429,7 +429,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	bool RegistrationMap<Filter...>::UniqueBase::Save(SerializationInterface* a_intfc, std::uint32_t a_type, std::uint32_t a_version)
+	bool RegistrationFilter<Filter...>::MapUniqueBase::Save(SerializationInterface* a_intfc, std::uint32_t a_type, std::uint32_t a_version)
 	{
 		assert(a_intfc);
 		if (!a_intfc->OpenRecord(a_type, a_version)) {
@@ -441,7 +441,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	bool RegistrationMap<Filter...>::UniqueBase::Save(SerializationInterface* a_intfc)
+	bool RegistrationFilter<Filter...>::MapUniqueBase::Save(SerializationInterface* a_intfc)
 	{
 		assert(a_intfc);
 		Locker locker(_lock);
@@ -461,12 +461,12 @@ namespace SKSE
 				return false;
 			}
 			// Handle count
-			std::size_t numHandles = reg.second.size();
-			if (!a_intfc->WriteRecordData(numHandles)) {
-				log::error("Failed to save handle count ({})!", numHandles);
+			std::size_t numUniqueHandle = reg.second.size();
+			if (!a_intfc->WriteRecordData(numUniqueHandle)) {
+				log::error("Failed to save handle count ({})!", numUniqueHandle);
 				return false;
 			}
-			// Handles
+			// UniqueHandle
 			for (auto& [formID, vmHandle] : reg.second) {
 				if (!a_intfc->WriteRecordData(formID)) {
 					log::error("Failed to save handle formID ({:X})", formID);
@@ -483,7 +483,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	bool RegistrationMap<Filter...>::UniqueBase::Load(SerializationInterface* a_intfc)
+	bool RegistrationFilter<Filter...>::MapUniqueBase::Load(SerializationInterface* a_intfc)
 	{
 		assert(a_intfc);
 		std::size_t numRegs;
@@ -496,8 +496,8 @@ namespace SKSE
 		Key  curKey;
 		bool match;
 		// Handle count
-		std::size_t numHandles;
-		// Handles
+		std::size_t numUniqueHandle;
+		// UniqueHandle
 		RE::FormID   formID;
 		RE::VMHandle vmHandle;
 
@@ -507,8 +507,8 @@ namespace SKSE
 			a_intfc->ReadRecordData(match);
 			curKey = std::pair{ filters, match };
 
-			a_intfc->ReadRecordData(numHandles);
-			for (std::size_t j = 0; j < numHandles; ++j) {
+			a_intfc->ReadRecordData(numUniqueHandle);
+			for (std::size_t j = 0; j < numUniqueHandle; ++j) {
 				a_intfc->ReadRecordData(formID);
 				if (!a_intfc->ResolveFormID(formID, formID)) {
 					log::warn("Failed to resolve target formID ({:X})", formID);
@@ -525,13 +525,13 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	void RegistrationMap<Filter...>::UniqueBase::Revert(SerializationInterface*)
+	void RegistrationFilter<Filter...>::MapUniqueBase::Revert(SerializationInterface*)
 	{
 		Clear();
 	}
 
 	template <class... Filter>
-	bool RegistrationMap<Filter...>::UniqueBase::Register(const void* a_object, RE::FormID a_formID, Key a_key, RE::VMTypeID a_typeID)
+	bool RegistrationFilter<Filter...>::MapUniqueBase::Register(const void* a_object, RE::FormID a_formID, Key a_key, RE::VMTypeID a_typeID)
 	{
 		assert(a_object);
 		auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
@@ -560,7 +560,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	bool RegistrationMap<Filter...>::UniqueBase::Unregister(const void* a_object, RE::FormID a_formID, Key a_key, RE::VMTypeID a_typeID)
+	bool RegistrationFilter<Filter...>::MapUniqueBase::Unregister(const void* a_object, RE::FormID a_formID, Key a_key, RE::VMTypeID a_typeID)
 	{
 		assert(a_object);
 		auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
@@ -590,7 +590,7 @@ namespace SKSE
 	}
 
 	template <class... Filter>
-	void RegistrationMap<Filter...>::UniqueBase::UnregisterAll(const void* a_object, RE::FormID a_formID, RE::VMTypeID a_typeID)
+	void RegistrationFilter<Filter...>::MapUniqueBase::UnregisterAll(const void* a_object, RE::FormID a_formID, RE::VMTypeID a_typeID)
 	{
 		assert(a_object);
 		auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
