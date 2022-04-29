@@ -25,7 +25,7 @@ namespace RE
 		}
 
 		auto idIt = std::find(scriptAddedTempForms->begin(), scriptAddedTempForms->end(), a_form->formID);
-        return idIt != scriptAddedTempForms->end();
+		return idIt != scriptAddedTempForms->end();
 	}
 
 	bool BGSListForm::HasForm(FormID a_formID) const
