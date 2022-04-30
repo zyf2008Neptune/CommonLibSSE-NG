@@ -43,7 +43,7 @@ namespace RE
 		TESForm*      LookupForm(FormID a_localFormID, std::string_view a_modName);
 		TESForm*      LookupFormRaw(FormID a_rawFormID, std::string_view a_modName);
 		template <class T>
-		T*     LookupForm(FormID a_localFormID, std::string_view a_modName);
+		T* LookupForm(FormID a_localFormID, std::string_view a_modName);
 		template <class T>
 		T*     LookupFormRaw(FormID a_rawFormID, std::string_view a_modName);
 		FormID LookupFormID(FormID a_localFormID, std::string_view a_modName);
