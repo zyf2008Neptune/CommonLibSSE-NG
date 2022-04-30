@@ -100,16 +100,12 @@ if (MSVC)
 	)
 endif()
 if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-	add_compile_definitions(
-			__cpp_lib_char8_t
-			__cpp_consteval
+	target_compile_options(
+			"${PROJECT_NAME}"
+			PRIVATE
+				-Wno-overloaded-virtual                   # function matches parent virtual function but is not an override (Clang gives false positives on this warning)
+				-Wno-delete-non-abstract-non-virtual-dtor # deletion of polymorphic type which has a non-virtual destructor (necessary for SKSE proxy types, as SKSE does this)
 	)
-	if(NOT MSVC)
-		target_compile_options("${PROJECT_NAME}"
-				PRIVATE
-				-stdlib=libc++
-		)
-	endif()
 endif()
 
 target_include_directories(
