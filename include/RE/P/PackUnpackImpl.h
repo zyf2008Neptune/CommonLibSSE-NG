@@ -75,13 +75,12 @@ namespace RE
 			assert(a_src);
 
 			std::remove_const_t<T> container;
-			if (a_src->IsNoneObject()) {
+			if (a_src->IsNoneObject() || a_src->IsNoneArray()) {
 				return container;
 			}
 
 			auto array = a_src->GetArray();
 			if (!array) {
-				assert(false);
 				return container;
 			}
 
