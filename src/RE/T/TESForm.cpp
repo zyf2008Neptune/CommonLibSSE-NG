@@ -43,63 +43,47 @@ namespace RE
 		return func(this);
 	}
 
-	bool TESForm::HasKeywords(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const
+	bool TESForm::HasKeywordInArray(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const
 	{
-		if (!a_keywords.empty()) {
-			const auto keywordForm = As<BGSKeywordForm>();
-			if (keywordForm) {
-				const auto has_keyword = [&]() {
-					return [&](const BGSKeyword* a_keyword) {
-						return a_keyword && keywordForm->HasKeyword(a_keyword);
-					};
-				};
-				if (a_matchAll) {
-					return std::ranges::all_of(a_keywords, has_keyword());
-				} else {
-					return std::ranges::any_of(a_keywords, has_keyword());
-				}
+		const auto keywordForm = As<BGSKeywordForm>();
+		if (!keywordForm) {
+			return false;
+		}
+
+		bool hasKeyword = false;
+
+		for (const auto& keyword : a_keywords) {
+			hasKeyword = keyword && keywordForm->HasKeyword(keyword);
+			if ((a_matchAll && !hasKeyword) || hasKeyword) {
+				break;
 			}
 		}
-		return true;
+
+		return hasKeyword;
 	}
 
-	bool TESForm::HasKeywords(BGSListForm* a_keywords, bool a_matchAll) const
+	bool TESForm::HasKeywordInList(BGSListForm* a_keywordList, bool a_matchAll) const
 	{
-		if (a_keywords) {
-			const auto keywordForm = As<BGSKeywordForm>();
-			if (keywordForm) {
-				const auto form_has_keyword = [&]() {
-					return [&](const TESForm* a_form) {
-						const auto keyword = a_form ? a_form->As<BGSKeyword>() : nullptr;
-						return keyword && keywordForm->HasKeyword(keyword);
-					};
-				};
-				const auto id_has_keyword = [&]() {
-					return [&](const std::uint32_t a_ID) {
-						const auto keyword = LookupByID<BGSKeyword>(a_ID);
-						return keyword && keywordForm->HasKeyword(keyword);
-					};
-				};
-				if (a_matchAll) {
-					if (std::ranges::none_of(a_keywords->forms, form_has_keyword())) {
-						return false;
-					}
-					if (a_keywords->scriptAddedTempForms && std::ranges::none_of(*a_keywords->scriptAddedTempForms, id_has_keyword())) {
-						return false;
-					}
-					return true;
-				} else {
-					if (std::ranges::any_of(a_keywords->forms, form_has_keyword())) {
-						return true;
-					}
-					if (a_keywords->scriptAddedTempForms && std::ranges::any_of(*a_keywords->scriptAddedTempForms, id_has_keyword())) {
-						return true;
-					}
-					return false;
-				}
-			}
+		if (!a_keywordList) {
+			return false;
 		}
-		return true;
+
+		const auto keywordForm = As<BGSKeywordForm>();
+		if (!keywordForm) {
+			return false;
+		}
+
+		bool hasKeyword = false;
+
+		a_keywordList->ForEachForm([&](const TESForm& a_form) {
+			hasKeyword = keywordForm->HasKeywordID(a_form.GetFormID());
+			if ((a_matchAll && !hasKeyword) || hasKeyword) {
+				return false;
+			}
+			return true;
+		});
+
+		return hasKeyword;
 	}
 
 	bool TESForm::HasVMAD() const

@@ -18,10 +18,10 @@ namespace RE
 
 		// override (MagicCaster)
 		void           CastSpellImmediate(SpellItem* a_spell, bool a_noHitEffectArt, TESObjectREFR* a_target, float a_effectiveness, bool a_hostileEffectivenessOnly, float a_magnitudeOverride, Actor* a_blameActor) override;  // 01
-		void           Unk_07(void) override;                                                                                                                                                                                    // 07 - { return; }
-		TESObjectREFR* GetTarget() override;                                                                                                                                                                                     // 0B - { return 0; }
-		Actor*         GetCaster() override;                                                                                                                                                                                     // 0C - { return 0; }
-		void           Unk_0D(void) override;                                                                                                                                                                                    // 0D
+		void           FinishCastImpl() override;                                                                                                                                                                                // 07 - { return; }
+		TESObjectREFR* GetCasterStatsObject() const override;                                                                                                                                                                    // 0B - { return 0; }
+		Actor*         GetCasterAsActor() const override;                                                                                                                                                                        // 0C - { return 0; }
+		TESObjectREFR* GetCasterObjectReference(Actor** a_outCaster) const override;                                                                                                                                             // 0D
 		NiNode*        GetMagicNode() override;                                                                                                                                                                                  // 0E - { return 0; }
 		void           SaveGame(BGSSaveGameBuffer* a_buf) override;                                                                                                                                                              // 18
 		void           LoadGame(BGSLoadGameBuffer* a_buf) override;                                                                                                                                                              // 19
