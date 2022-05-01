@@ -203,8 +203,10 @@ namespace SKSE
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			if (auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr) {
 				for (auto& reg : _regs) {
-					for (auto& keyHandle : reg->second) {
-						policy->PersistHandle(keyHandle.second);
+					for (auto& keyHandles : reg.second) {
+						for (auto& handle : keyHandles.second) {
+							policy->PersistHandle(handle);
+						}
 					}
 				}
 			}
@@ -227,8 +229,10 @@ namespace SKSE
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			if (auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr) {
 				for (auto& reg : _regs) {
-					for (auto& keyHandle : reg->second) {
-						policy->ReleaseHandle(keyHandle.second);
+					for (auto& keyHandles : reg.second) {
+						for (auto& handle : keyHandles.second) {
+							policy->ReleaseHandle(handle);
+						}
 					}
 				}
 			}
@@ -253,8 +257,10 @@ namespace SKSE
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			if (auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr) {
 				for (auto& reg : _regs) {
-					for (auto& keyHandle : reg->second) {
-						policy->PersistHandle(keyHandle.second);
+					for (auto& keyHandles : reg.second) {
+						for (auto& handle : keyHandles.second) {
+							policy->PersistHandle(handle);
+						}
 					}
 				}
 			}
@@ -380,8 +386,10 @@ namespace SKSE
 
 			Locker locker(_lock);
 			for (auto& reg : _regs) {
-				if (auto result = reg.second.erase(a_handle); result != 0) {
-					policy->ReleaseHandle(a_handle);
+				for (auto& keyHandle : reg.second) {
+					if (auto result = keyHandle.second.erase(a_handle); result != 0) {
+						policy->ReleaseHandle(a_handle);
+					}
 				}
 			}
 		}
@@ -394,8 +402,10 @@ namespace SKSE
 			Locker locker(_lock);
 			if (policy) {
 				for (auto& reg : _regs) {
-					for (auto& keyHandle : reg->second) {
-						policy->ReleaseHandle(keyHandle.second);
+					for (auto& keyHandle : reg.second) {
+						for (auto& handle : keyHandle.second) {
+							policy->ReleaseHandle(handle);
+						}
 					}
 				}
 			}
@@ -440,7 +450,7 @@ namespace SKSE
 				// UniqueHandle
 				for (auto& [key, handles] : reg.second) {
 					// Key
-					auto [eventFilter, match] = reg.first;
+					auto [eventFilter, match] = key;
 					if (!eventFilter.SaveFilters(a_intfc)) {
 						log::error("Failed to save event filters!");
 						return false;
