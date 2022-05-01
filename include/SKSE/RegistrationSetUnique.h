@@ -20,8 +20,6 @@ namespace SKSE
 		class RegistrationSetUniqueBase
 		{
 		public:
-			using Handles = std::pair<RE::FormID, RE::VMHandle>;
-
 			RegistrationSetUniqueBase() = delete;
 			RegistrationSetUniqueBase(const std::string_view& a_eventName);
 			RegistrationSetUniqueBase(const RegistrationSetUniqueBase& a_rhs);
@@ -49,9 +47,9 @@ namespace SKSE
 			bool Register(const void* a_object, RE::FormID a_formID, RE::VMTypeID a_typeID);
 			bool Unregister(const void* a_object, RE::FormID a_formID, RE::VMTypeID a_typeID);
 
-			std::set<Handles> _handles;
-			std::string       _eventName;
-			mutable Lock      _lock;
+			std::map<RE::FormID, std::set<RE::VMHandle>> _uniqueHandles;
+			std::string                                  _eventName;
+			mutable Lock                                 _lock;
 		};
 
 		template <class Enable, class... Args>
@@ -87,13 +85,13 @@ namespace SKSE
 			{
 				RE::BSFixedString eventName(_eventName);
 
-				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-
-				const auto targetFormID = a_target->GetFormID();
-				for (auto& [formID, vmHandle] : _handles) {
-					if (formID == targetFormID) {
-						auto args = RE::MakeFunctionArguments(std::forward<Args>(a_args)...);
-						vm->SendEvent(vmHandle, eventName, args);
+				if (auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton()) {
+					const auto targetID = a_target->GetFormID();
+					if (const auto it = _uniqueHandles.find(targetID); it != _uniqueHandles.end()) {
+						for (auto& handle : it->second) {
+							auto args = RE::MakeFunctionArguments(std::forward<Args>(a_args)...);
+							vm->SendEvent(handle, eventName, args);
+						}
 					}
 				}
 			}
@@ -143,13 +141,12 @@ namespace SKSE
 			{
 				RE::BSFixedString eventName(_eventName);
 
-				auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
-				if (vm) {
-					const auto targetFormID = a_target->GetFormID();
-					for (auto& [formID, vmHandle] : _handles) {
-						if (formID == targetFormID) {
+				if (auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton()) {
+					const auto targetID = a_target->GetFormID();
+					if (const auto it = _uniqueHandles.find(targetID); it != _uniqueHandles.end()) {
+						for (auto& handle : it->second) {
 							auto args = RE::MakeFunctionArguments();
-							vm->SendEvent(vmHandle, eventName, args);
+							vm->SendEvent(handle, eventName, args);
 						}
 					}
 				}
