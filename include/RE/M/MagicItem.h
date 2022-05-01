@@ -79,7 +79,7 @@ namespace RE
 		[[nodiscard]] virtual MagicSystem::CastingType GetCastingType() const = 0;                                   // 55
 		virtual void                                   SetDelivery(MagicSystem::Delivery a_delivery);                // 56 - { return; }
 		[[nodiscard]] virtual MagicSystem::Delivery    GetDelivery() const = 0;                                      // 57
-		virtual bool                                   IsValidDelivery(MagicSystem::Delivery a_delivery);            // 58 - { return true; }
+		[[nodiscard]] virtual bool                     IsValidDelivery(MagicSystem::Delivery a_delivery);            // 58 - { return true; }
 		[[nodiscard]] virtual float                    GetFixedCastDuration() const;                                 // 59 - { return 0.0; }
 		[[nodiscard]] virtual float                    GetRange() const;                                             // 5A - { return 0.0; }
 		[[nodiscard]] virtual bool                     IgnoresResistance() const;                                    // 5B - { return false; }
@@ -95,22 +95,22 @@ namespace RE
 		[[nodiscard]] virtual std::uint32_t            GetMaxEffectCount() const;                                    // 65 - { return 0; }
 		[[nodiscard]] virtual ActorValue               GetAssociatedSkill() const;                                   // 66 - { return ActorValue::kNone; }
 		[[nodiscard]] virtual bool                     IsTwoHanded() const;                                          // 67 - { return false; }
-		virtual std::uint32_t                          GetChunkID() = 0;                                             // 68
+		[[nodiscard]] virtual std::uint32_t            GetChunkID() = 0;                                             // 68
 		virtual void                                   CopyMagicItemData(MagicItem* a_src) = 0;                      // 69
 		virtual void                                   LoadMagicItemChunk(TESFile* a_mod, std::uint32_t a_chunkID);  // 6A - { return; }
 		virtual void                                   LoadChunkDataPostProcess(TESFile* a_mod);                     // 6B - { return; }
 		[[nodiscard]] virtual const Data*              GetData1() const = 0;                                         // 6C
-		virtual Data*                                  GetData2() = 0;                                               // 6D
+		[[nodiscard]] virtual Data*                    GetData2() = 0;                                               // 6D
 		[[nodiscard]] virtual std::uint32_t            GetDataSize() const = 0;                                      // 6E
 		virtual void                                   InitFromChunk(TESFile* a_mod) = 0;                            // 6F
 		virtual void                                   InitChunk() = 0;                                              // 70
 
-		float                     CalculateMagickaCost(Actor* a_caster) const;
-		float                     CalculateTotalGoldValue(Actor* a_caster = nullptr) const;
-		Effect*                   GetCostliestEffectItem(std::uint32_t a_arg1 = 5, bool a_arg2 = false);
-		Data*                     GetData();
+		[[nodiscard]] float       CalculateMagickaCost(Actor* a_caster) const;
+		[[nodiscard]] float       CalculateTotalGoldValue(Actor* a_caster = nullptr) const;
+		[[nodiscard]] Effect*     GetCostliestEffectItem(std::uint32_t a_arg1 = 5, bool a_arg2 = false);
+		[[nodiscard]] Data*       GetData();
 		[[nodiscard]] const Data* GetData() const;
-		bool                      IsValid() const;
+		[[nodiscard]] bool        IsValid() const;
 
 		// members
 		BSTArray<Effect*>           effects;          // 58

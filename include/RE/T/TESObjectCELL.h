@@ -167,22 +167,22 @@ namespace RE
 		~TESObjectCELL() override;  // 00
 
 		// override (TESForm)
-		void        ClearData() override;                                                                 // 05
-		bool        Load(TESFile* a_mod) override;                                                        // 06
-		TESForm*    CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;                    // 09 - { return 0; }
-		bool        FindInFileFast(TESFile* a_mod) override;                                              // 0C
-		void        SaveGame(BGSSaveFormBuffer* a_buf) override;                                          // 0E
-		void        LoadGame(BGSLoadFormBuffer* a_buf) override;                                          // 0F
-		void        Revert(BGSLoadFormBuffer* a_buf) override;                                            // 12
-		void        InitItemImpl() override;                                                              // 13
-		void        GetFormDetailedString(char* a_buf, std::uint32_t a_bufLen) override;                  // 16
-		void        SetAltered(bool a_set) override;                                                      // 24
-		bool        BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly) override;  // 30
-		void        CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;                          // 31
-		const char* GetFormEditorID() const override;                                                     // 32
-		bool        SetFormEditorID(const char* a_str) override;                                          // 33
-		bool        IsParentForm() override;                                                              // 34 - { return true; }
-		bool        IsFormTypeChild(FormType a_type) override;                                            // 36
+		void               ClearData() override;                                                                 // 05
+		bool               Load(TESFile* a_mod) override;                                                        // 06
+		TESForm*           CreateDuplicateForm(bool a_createEditorID, void* a_arg2) override;                    // 09 - { return 0; }
+		bool               FindInFileFast(TESFile* a_mod) override;                                              // 0C
+		void               SaveGame(BGSSaveFormBuffer* a_buf) override;                                          // 0E
+		void               LoadGame(BGSLoadFormBuffer* a_buf) override;                                          // 0F
+		void               Revert(BGSLoadFormBuffer* a_buf) override;                                            // 12
+		void               InitItemImpl() override;                                                              // 13
+		void               GetFormDetailedString(char* a_buf, std::uint32_t a_bufLen) override;                  // 16
+		void               SetAltered(bool a_set) override;                                                      // 24
+		bool               BelongsInGroup(FORM* a_form, bool a_allowParentGroups, bool a_currentOnly) override;  // 30
+		void               CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;                          // 31
+		const char*        GetFormEditorID() const override;                                                     // 32
+		bool               SetFormEditorID(const char* a_str) override;                                          // 33
+		[[nodiscard]] bool IsParentForm() override;                                                              // 34 - { return true; }
+		[[nodiscard]] bool IsFormTypeChild(FormType a_type) override;                                            // 36
 
 		TESNPC* GetActorOwner();
 
@@ -193,35 +193,35 @@ namespace RE
 			return func(this);
 		}
 
-		void           ForEachReference(std::function<bool(TESObjectREFR&)> a_callback) const;
-		void           ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR&)> a_callback) const;
-		EXTERIOR_DATA* GetCoordinates();
-		TESFaction*    GetFactionOwner();
-		INTERIOR_DATA* GetLighting();
+		void                         ForEachReference(std::function<bool(TESObjectREFR&)> a_callback) const;
+		void                         ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<bool(TESObjectREFR&)> a_callback) const;
+		[[nodiscard]] EXTERIOR_DATA* GetCoordinates();
+		[[nodiscard]] TESFaction*    GetFactionOwner();
+		[[nodiscard]] INTERIOR_DATA* GetLighting();
 
-		inline BGSLocation* GetLocation() const
+		[[nodiscard]] inline BGSLocation* GetLocation() const
 		{
 			using func_t = decltype(&TESObjectCELL::GetLocation);
 			REL::Relocation<func_t> func{ RELOCATION_ID(18474, 18905) };
 			return func(this);
 		}
 
-		float    GetNorthRotation();
-		TESForm* GetOwner();
-		float    GetExteriorWaterHeight() const;
-		bool     GetWaterHeight(const NiPoint3& a_pos, float& a_waterHeight);
-		bool     IsAttached() const;
-		bool     IsExteriorCell() const;
-		bool     IsInteriorCell() const;
-		void     SetActorOwner(TESNPC* a_owner);
-		void     SetFactionOwner(TESFaction* a_owner);
-		void     SetFogColor(Color a_near, Color a_far);
-		void     SetFogPlanes(float a_near, float a_far);
-		void     SetFogPower(float a_power);
-		void     SetHandChanged(bool a_changed);
-		void     SetOwner(TESForm* a_owner);
-		void     SetPublic(bool a_public);
-		bool     UsesSkyLighting() const;
+		[[nodiscard]] float    GetNorthRotation();
+		[[nodiscard]] TESForm* GetOwner();
+		[[nodiscard]] float    GetExteriorWaterHeight() const;
+		bool                   GetWaterHeight(const NiPoint3& a_pos, float& a_waterHeight);
+		[[nodiscard]] bool     IsAttached() const;
+		[[nodiscard]] bool     IsExteriorCell() const;
+		[[nodiscard]] bool     IsInteriorCell() const;
+		void                   SetActorOwner(TESNPC* a_owner);
+		void                   SetFactionOwner(TESFaction* a_owner);
+		void                   SetFogColor(Color a_near, Color a_far);
+		void                   SetFogPlanes(float a_near, float a_far);
+		void                   SetFogPower(float a_power);
+		void                   SetHandChanged(bool a_changed);
+		void                   SetOwner(TESForm* a_owner);
+		void                   SetPublic(bool a_public);
+		[[nodiscard]] bool     UsesSkyLighting() const;
 
 		// members
 		mutable BSSpinLock                        grassCreateLock;   // 030

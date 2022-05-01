@@ -64,46 +64,46 @@ namespace RE
 		void         Set3D(NiAVObject* a_object, bool a_queue3DTasks = true) override;  // 6C
 #ifndef SKYRIM_CROSS_VR
 		// Override functions past where Skyrim VR breaks compatibility.
-		void        MoveHavok(bool a_forceRec) override;                                   // 85 - { return; }
-		void        GetLinearVelocity(NiPoint3& a_velocity) const override;                // 86
-		void        Unk_8B(void) override;                                                 // 8B
-		Projectile* AsProjectile() override;                                               // 8F - { return this; }
-		bool        OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 90 - { return false; }
+		void                      MoveHavok(bool a_forceRec) override;                                   // 85 - { return; }
+		void                      GetLinearVelocity(NiPoint3& a_velocity) const override;                // 86
+		void                      Unk_8B(void) override;                                                 // 8B
+		[[nodiscard]] Projectile* AsProjectile() override;                                               // 8F - { return this; }
+		bool                      OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 90 - { return false; }
 #endif
 
 		// add
-		SKYRIM_REL_VR_VIRTUAL void Unk_A2(void);                // A2 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_A3(void);                // A3 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_A4(void);                // A4 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_A5(void);                // A5 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_A6(void);                // A6 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_A7(void);                // A7 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_A8(void);                // A8 - { return; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_A9(void);                // A9 - { return; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_AA(void);                // AA
-		SKYRIM_REL_VR_VIRTUAL void UpdateImpl(float a_delta);   // AB
-		SKYRIM_REL_VR_VIRTUAL void Unk_AC(void);                // AC
-		SKYRIM_REL_VR_VIRTUAL void Unk_AD(void);                // AD
-		SKYRIM_REL_VR_VIRTUAL void Unk_AE(void);                // AE - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_AF(void);                // AF - { if (unk158) return 1.0; else return unk188; } - "float GetSpeed()"?
-		SKYRIM_REL_VR_VIRTUAL void Unk_B0(void);                // B0 - { return 1.0; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_B1(void);                // B1 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_B2(void);                // B2 - { return; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_B3(void);                // B3
-		SKYRIM_REL_VR_VIRTUAL bool IsNotGeneratedForm() const;  // B4 - { return TESDataHandler::GetSingleton()->IsGeneratedFormID(formID) == 0; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_B5(void);                // B5 - { void* var = unk40; if ((var->unk80 >> 17) & 1) return 1.0; else return var->unk84; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_B6(void);                // B6
-		SKYRIM_REL_VR_VIRTUAL void Unk_B7(void);                // B7
-		SKYRIM_REL_VR_VIRTUAL void Unk_B8(void);                // B8 - { return 1; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_B9(void);                // B9 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_BA(void);                // BA - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_BB(void);                // BB
-		SKYRIM_REL_VR_VIRTUAL void Unk_BC(void);                // BC
-		SKYRIM_REL_VR_VIRTUAL void Unk_BD(void);                // BD
-		SKYRIM_REL_VR_VIRTUAL void Unk_BE(void);                // BE
-		SKYRIM_REL_VR_VIRTUAL void Unk_BF(void);                // BF - { return; }
-		SKYRIM_REL_VR_VIRTUAL void Handle3DLoaded();            // C0 - { return; }
-		SKYRIM_REL_VR_VIRTUAL void Unk_C1(void);                // C1 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_A2(void);                // A2 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_A3(void);                // A3 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_A4(void);                // A4 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_A5(void);                // A5 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_A6(void);                // A6 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_A7(void);                // A7 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_A8(void);                // A8 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_A9(void);                // A9 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_AA(void);                // AA
+		SKYRIM_REL_VR_VIRTUAL void               UpdateImpl(float a_delta);   // AB
+		SKYRIM_REL_VR_VIRTUAL void               Unk_AC(void);                // AC
+		SKYRIM_REL_VR_VIRTUAL void               Unk_AD(void);                // AD
+		SKYRIM_REL_VR_VIRTUAL void               Unk_AE(void);                // AE - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_AF(void);                // AF - { if (unk158) return 1.0; else return unk188; } - "float GetSpeed()"?
+		SKYRIM_REL_VR_VIRTUAL void               Unk_B0(void);                // B0 - { return 1.0; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_B1(void);                // B1 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_B2(void);                // B2 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_B3(void);                // B3
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool IsNotGeneratedForm() const;  // B4 - { return TESDataHandler::GetSingleton()->IsGeneratedFormID(formID) == 0; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_B5(void);                // B5 - { void* var = unk40; if ((var->unk80 >> 17) & 1) return 1.0; else return var->unk84; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_B6(void);                // B6
+		SKYRIM_REL_VR_VIRTUAL void               Unk_B7(void);                // B7
+		SKYRIM_REL_VR_VIRTUAL void               Unk_B8(void);                // B8 - { return 1; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_B9(void);                // B9 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_BA(void);                // BA - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_BB(void);                // BB
+		SKYRIM_REL_VR_VIRTUAL void               Unk_BC(void);                // BC
+		SKYRIM_REL_VR_VIRTUAL void               Unk_BD(void);                // BD
+		SKYRIM_REL_VR_VIRTUAL void               Unk_BE(void);                // BE
+		SKYRIM_REL_VR_VIRTUAL void               Unk_BF(void);                // BF - { return; }
+		SKYRIM_REL_VR_VIRTUAL void               Handle3DLoaded();            // C0 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void               Unk_C1(void);                // C1 - { return 0; }
 
 		inline float GetHeight() const
 		{

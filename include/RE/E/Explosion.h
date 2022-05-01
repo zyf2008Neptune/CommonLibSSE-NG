@@ -44,8 +44,8 @@ namespace RE
 		void         Release3DRelatedData() override;                               // 6B
 #ifndef SKYRIM_CROSS_VR
 		// This is where in the TESObjectREFR vtable compatibility with SkyrimVR breaks.
-		Explosion* AsExplosion() override;                                                // 8E
-		bool       OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 90 - { return false; }
+		[[nodiscard]] Explosion* AsExplosion() override;                                                // 8E
+		bool                     OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 90 - { return false; }
 #endif
 
 		// add
