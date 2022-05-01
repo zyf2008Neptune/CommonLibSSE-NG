@@ -1649,7 +1649,6 @@ set(SOURCES
 	src/SKSE/Impl/WinAPI.cpp
 	src/SKSE/Interfaces.cpp
 	src/SKSE/Logger.cpp
-	src/SKSE/RegistrationMap.cpp
 	src/SKSE/RegistrationSet.cpp
 	src/SKSE/RegistrationSetUnique.cpp
 	src/SKSE/Trampoline.cpp

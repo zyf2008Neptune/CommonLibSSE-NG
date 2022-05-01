@@ -47,7 +47,7 @@ namespace SKSE
 			bool Register(const void* a_object, RE::FormID a_formID, RE::VMTypeID a_typeID);
 			bool Unregister(const void* a_object, RE::FormID a_formID, RE::VMTypeID a_typeID);
 
-			std::map<RE::FormID, std::set<RE::VMHandle>> _uniqueHandles;
+			std::map<RE::FormID, std::set<RE::VMHandle>> _regs;
 			std::string                                  _eventName;
 			mutable Lock                                 _lock;
 		};
@@ -87,7 +87,7 @@ namespace SKSE
 
 				if (auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton()) {
 					const auto targetID = a_target->GetFormID();
-					if (const auto it = _uniqueHandles.find(targetID); it != _uniqueHandles.end()) {
+					if (const auto it = _regs.find(targetID); it != _regs.end()) {
 						for (auto& handle : it->second) {
 							auto args = RE::MakeFunctionArguments(std::forward<Args>(a_args)...);
 							vm->SendEvent(handle, eventName, args);
@@ -143,7 +143,7 @@ namespace SKSE
 
 				if (auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton()) {
 					const auto targetID = a_target->GetFormID();
-					if (const auto it = _uniqueHandles.find(targetID); it != _uniqueHandles.end()) {
+					if (const auto it = _regs.find(targetID); it != _regs.end()) {
 						for (auto& handle : it->second) {
 							auto args = RE::MakeFunctionArguments();
 							vm->SendEvent(handle, eventName, args);
