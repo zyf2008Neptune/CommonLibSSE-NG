@@ -384,7 +384,7 @@ namespace SKSE
 		bool EventFilter<Filter>::RegistrationMapBase::SaveFilter(SerializationInterface* a_intfc, Filter a_filter)
 		{
 			if constexpr (std::is_same_v<std::string, Filter>) {
-				std::size_t length = str.length() + 1;
+				std::size_t length = a_filter.length() + 1;
 				if (!a_intfc->WriteRecordData(length) || !a_intfc->WriteRecordData(a_filter.c_str(), static_cast<std::uint32_t>(length))) {
 					return false;
 				}
