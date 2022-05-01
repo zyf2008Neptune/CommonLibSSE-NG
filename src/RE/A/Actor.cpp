@@ -226,30 +226,6 @@ namespace RE
 		return obj ? obj->As<TESNPC>() : nullptr;
 	}
 
-	TESNPC* Actor::GetRealActorBase()
-	{
-		auto* leveledData = extraList.GetByType<ExtraLeveledCreature>();
-		return leveledData ? (leveledData->templateBase ? leveledData->templateBase->As<TESNPC>() : nullptr) : GetDirectActorBase();
-	}
-
-	const TESNPC* Actor::GetRealActorBase() const
-	{
-		auto* leveledData = extraList.GetByType<ExtraLeveledCreature>();
-		return leveledData ? (leveledData->templateBase ? leveledData->templateBase->As<TESNPC>() : nullptr) : GetDirectActorBase();
-	}
-
-	TESNPC* Actor::GetDirectActorBase()
-	{
-		auto* leveledData = extraList.GetByType<ExtraLeveledCreature>();
-		return leveledData ? (leveledData->originalBase ? leveledData->originalBase->As<TESNPC>() : nullptr) : GetActorBase();
-	}
-
-	const TESNPC* Actor::GetDirectActorBase() const
-	{
-		auto* leveledData = extraList.GetByType<ExtraLeveledCreature>();
-		return leveledData ? (leveledData->originalBase ? leveledData->originalBase->As<TESNPC>() : nullptr) : GetActorBase();
-	}
-
 	bool Actor::IsLeveled() const
 	{
 		return extraList.GetByType<ExtraLeveledCreature>();
