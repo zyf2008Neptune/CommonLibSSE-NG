@@ -54,7 +54,7 @@ namespace RE
 
 		for (const auto& keyword : a_keywords) {
 			hasKeyword = keyword && keywordForm->HasKeyword(keyword);
-			if (a_matchAll && !hasKeyword || hasKeyword) {
+			if ((a_matchAll && !hasKeyword) || hasKeyword) {
 				break;
 			}
 		}
@@ -77,7 +77,7 @@ namespace RE
 
 		a_keywordList->ForEachForm([&](const TESForm& a_form) {
 			hasKeyword = keywordForm->HasKeywordID(a_form.GetFormID());
-			if (a_matchAll && !hasKeyword || hasKeyword) {
+			if ((a_matchAll && !hasKeyword) || hasKeyword) {
 				return false;
 			}
 			return true;
