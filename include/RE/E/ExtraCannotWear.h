@@ -12,10 +12,10 @@ namespace RE
 		inline static auto           EXTRADATATYPE = ExtraDataType::kCannotWear;
 
 		ExtraCannotWear();
-		virtual ~ExtraCannotWear() = default;  // 00
+		~ExtraCannotWear() override = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kCannotWear; }
+		ExtraDataType GetType() const override;  // 01 - { return kCannotWear; }
 	};
 	static_assert(sizeof(ExtraCannotWear) == 0x10);
 }

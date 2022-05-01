@@ -13,10 +13,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraTresPassPackage;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kTresPassPackage;
 
-		virtual ~ExtraTresPassPackage();  // 00
+		~ExtraTresPassPackage() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kTresPassPackage; }
+		ExtraDataType GetType() const override;  // 01 - { return kTresPassPackage; }
 
 		// members
 		TrespassPackage* pack;   // 10

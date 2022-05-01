@@ -27,11 +27,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraWaterData;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kWaterData;
 
-		virtual ~ExtraWaterData();  // 00
+		~ExtraWaterData() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kWaterData; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		ExtraDataType GetType() const override;                             // 01 - { return kWaterData; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		std::uint64_t                unk10;         // 10

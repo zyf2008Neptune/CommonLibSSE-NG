@@ -23,10 +23,10 @@ namespace RE
 		};
 		static_assert(sizeof(LinkedRefChild) == 0x10);
 
-		virtual ~ExtraLinkedRefChildren();  // 00
+		~ExtraLinkedRefChildren() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kLinkedRefChildren; }
+		ExtraDataType GetType() const override;  // 01 - { return kLinkedRefChildren; }
 
 		// members
 		BSTSmallArray<LinkedRefChild> linkedChildren;  // 10

@@ -31,10 +31,10 @@ namespace RE
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuDisenchantCallback;
 
-				virtual ~EnchantMenuDisenchantCallback();  // 00
+				~EnchantMenuDisenchantCallback() override;  // 00
 
 				// override (EnchantMenuCallback)
-				virtual void Run(Message a_msg) override;  // 01
+				void Run(Message a_msg) override;  // 01
 			};
 			static_assert(sizeof(EnchantMenuDisenchantCallback) == 0x18);
 
@@ -43,10 +43,10 @@ namespace RE
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuCraftCallback;
 
-				virtual ~EnchantMenuCraftCallback();  // 00
+				~EnchantMenuCraftCallback() override;  // 00
 
 				// override (EnchantMenuCallback)
-				virtual void Run(Message a_msg) override;  // 01
+				void Run(Message a_msg) override;  // 01
 			};
 			static_assert(sizeof(EnchantMenuCraftCallback) == 0x18);
 
@@ -55,20 +55,20 @@ namespace RE
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuExitCallback;
 
-				virtual ~EnchantMenuExitCallback();  // 00
+				~EnchantMenuExitCallback() override;  // 00
 
 				// override (EnchantMenuCallback)
-				virtual void Run(Message a_msg) override;  // 01
+				void Run(Message a_msg) override;  // 01
 			};
 			static_assert(sizeof(EnchantMenuExitCallback) == 0x18);
 
-			virtual ~EnchantConstructMenu();  // 00
+			~EnchantConstructMenu() override;  // 00
 
 			// override (CraftingSubMenu)
-			virtual void Accept(CallbackProcessor* a_cbReg) override;  // 01
-			virtual void Unk_04(void) override;                        // 04 - { return unk20C != 3 || unk1A0; }
-			virtual void Unk_05(void) override;                        // 05
-			virtual void Unk_07(void) override;                        // 07
+			void Accept(CallbackProcessor* a_cbReg) override;  // 01
+			void Unk_04(void) override;                        // 04 - { return unk20C != 3 || unk1A0; }
+			void Unk_05(void) override;                        // 05
+			void Unk_07(void) override;                        // 07
 
 			// members
 			std::uint64_t unk100;  // 100

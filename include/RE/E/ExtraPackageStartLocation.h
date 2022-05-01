@@ -22,11 +22,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraPackageStartLocation;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kPackageStartLocation;
 
-		virtual ~ExtraPackageStartLocation();  // 00
+		~ExtraPackageStartLocation() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kPackageStartLocation; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		ExtraDataType GetType() const override;                             // 01 - { return kPackageStartLocation; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		WORLD_LOCATION worldLoc;  // 10

@@ -103,11 +103,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraMapMarker;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kMapMarker;
 
-		virtual ~ExtraMapMarker();  // 00
+		~ExtraMapMarker() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kMapMarker; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
+		ExtraDataType GetType() const override;                             // 01 - { return kMapMarker; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02
 
 		// members
 		MapMarkerData* mapData;  // 10

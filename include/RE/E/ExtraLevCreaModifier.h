@@ -20,11 +20,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraLevCreaModifier;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kLevCreaModifier;
 
-		virtual ~ExtraLevCreaModifier();  // 00
+		~ExtraLevCreaModifier() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kLevCreaModifier; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return modifier != a_rhs->modifier; }
+		ExtraDataType GetType() const override;                             // 01 - { return kLevCreaModifier; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return modifier != a_rhs->modifier; }
 
 		// members
 		stl::enumeration<LEV_CREA_MODIFIER, std::uint32_t> modifier;  // 10

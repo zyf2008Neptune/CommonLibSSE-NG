@@ -14,10 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraLeveledCreature;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kLeveledCreature;
 
-		virtual ~ExtraLeveledCreature();  // 00
+		~ExtraLeveledCreature() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kLeveledCreature; }
+		ExtraDataType GetType() const override;  // 01 - { return kLeveledCreature; }
 
 		// members
 		TESActorBase* originalBase;  // 10

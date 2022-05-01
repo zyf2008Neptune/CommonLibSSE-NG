@@ -12,10 +12,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraWeaponAttackSound;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kWeaponAttackSound;
 
-		virtual ~ExtraWeaponAttackSound();  // 00
+		~ExtraWeaponAttackSound() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kWeaponAttackSound; }
+		ExtraDataType GetType() const override;  // 01 - { return kWeaponAttackSound; }
 
 		// members
 		BSSoundHandle handle;  // 10

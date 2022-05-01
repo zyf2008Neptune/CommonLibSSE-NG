@@ -82,7 +82,7 @@ namespace RE
 		void                                   InitChunk() override;                                                  // 70
 
 		// override (BGSKeywordForm)
-		[[nodiscard]] virtual BGSKeyword* GetDefaultKeyword() const override;  // 05
+		[[nodiscard]] BGSKeyword* GetDefaultKeyword() const override;  // 05
 
 		// members
 		Data    data;         // 138 - ENIT

@@ -11,10 +11,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraTerminalState;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kTerminalState;
 
-		virtual ~ExtraTerminalState();  // 00
+		~ExtraTerminalState() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kTerminalState; }
+		ExtraDataType GetType() const override;  // 01 - { return kTerminalState; }
 
 		// members
 		std::uint64_t unk10;  // 10

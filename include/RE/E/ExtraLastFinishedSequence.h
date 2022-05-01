@@ -12,11 +12,11 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraLastFinishedSequence;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kLastFinishedSequence;
 
-		virtual ~ExtraLastFinishedSequence();  // 00
+		~ExtraLastFinishedSequence() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;                             // 01 - { return kLastFinishedSequence; }
-		virtual bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return lastSequenceName != a_rhs->lastSequenceName; }
+		ExtraDataType GetType() const override;                             // 01 - { return kLastFinishedSequence; }
+		bool          IsNotEqual(const BSExtraData* a_rhs) const override;  // 02 - { return lastSequenceName != a_rhs->lastSequenceName; }
 
 		// members
 		BSFixedString lastSequenceName;  // 10

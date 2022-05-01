@@ -26,10 +26,10 @@ namespace RE
 		ExtraTextDisplayData();
 		explicit ExtraTextDisplayData(const char* a_name);
 		ExtraTextDisplayData(TESBoundObject* a_form, float a_temperFactor);
-		virtual ~ExtraTextDisplayData() = default;  // 00
+		~ExtraTextDisplayData() override = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kTextDisplayData; }
+		ExtraDataType GetType() const override;  // 01 - { return kTextDisplayData; }
 
 		const char* GetDisplayName(TESBoundObject* a_form, float a_temperFactor);
 		bool        IsPlayerSet() const;

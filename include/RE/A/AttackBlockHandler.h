@@ -9,13 +9,13 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_AttackBlockHandler;
 
-		virtual ~AttackBlockHandler();  // 00
+		~AttackBlockHandler() override;  // 00
 
 		// override (PlayerInputHandler)
-		virtual bool CanProcess(InputEvent* a_event) override;                                  // 01
-		virtual void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data) override;  // 04
-		virtual void UpdateHeldStateActive(const ButtonEvent* a_event) override;                // 05
-		virtual void SetHeldStateActive(bool a_flag) override;                                  // 06
+		bool CanProcess(InputEvent* a_event) override;                                  // 01
+		void ProcessButton(ButtonEvent* a_event, PlayerControlsData* a_data) override;  // 04
+		void UpdateHeldStateActive(const ButtonEvent* a_event) override;                // 05
+		void SetHeldStateActive(bool a_flag) override;                                  // 06
 
 		// members
 		std::uint64_t unk18;  // 18

@@ -16,10 +16,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraSayToTopicInfo;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kSayTopicInfo;
 
-		virtual ~ExtraSayToTopicInfo();  // 00
+		~ExtraSayToTopicInfo() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kSayTopicInfo; }
+		ExtraDataType GetType() const override;  // 01 - { return kSayTopicInfo; }
 
 		// members
 		TESTopic*          topic;                // 10

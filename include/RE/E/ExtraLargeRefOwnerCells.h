@@ -14,10 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraLargeRefOwnerCells;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kLargeRefOwnerCells;
 
-		virtual ~ExtraLargeRefOwnerCells();  // 00
+		~ExtraLargeRefOwnerCells() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kLargeRefOwnerCells; }
+		ExtraDataType GetType() const override;  // 01 - { return kLargeRefOwnerCells; }
 
 		// members
 		BSTArray<TESForm*> ownerCells;  // 10

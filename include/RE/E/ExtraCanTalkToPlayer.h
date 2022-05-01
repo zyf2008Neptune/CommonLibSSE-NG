@@ -14,10 +14,10 @@ namespace RE
 
 		ExtraCanTalkToPlayer();
 		explicit ExtraCanTalkToPlayer(bool a_canTalk);
-		virtual ~ExtraCanTalkToPlayer() = default;  // 00
+		~ExtraCanTalkToPlayer() override = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kCanTalkToPlayer; }
+		ExtraDataType GetType() const override;  // 01 - { return kCanTalkToPlayer; }
 
 		// members
 		bool          talk;   // 10

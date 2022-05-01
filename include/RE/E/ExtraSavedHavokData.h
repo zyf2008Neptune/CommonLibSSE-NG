@@ -12,10 +12,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraSavedHavokData;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kSavedHavokData;
 
-		virtual ~ExtraSavedHavokData();  // 00
+		~ExtraSavedHavokData() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kSavedHavokData; }
+		ExtraDataType GetType() const override;  // 01 - { return kSavedHavokData; }
 
 		// members
 		BGSLoadGameSubBuffer havokBuffer;  // 10

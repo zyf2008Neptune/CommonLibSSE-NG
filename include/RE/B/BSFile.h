@@ -9,13 +9,13 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSFile;
 
-		virtual ~BSFile();  // 00
+		~BSFile() override;  // 00
 
 		// override (NiFile)
-		virtual void          seek(std::int32_t a_numBytes) override;                     // 02
-		virtual void          set_endian_swap(bool a_doSwap) override;                    // 05
-		virtual void          seek(std::int32_t a_offset, std::int32_t a_from) override;  // 06
-		virtual std::uint32_t size() const override;                                      // 07
+		void          seek(std::int32_t a_numBytes) override;                     // 02
+		void          set_endian_swap(bool a_doSwap) override;                    // 05
+		void          seek(std::int32_t a_offset, std::int32_t a_from) override;  // 06
+		std::uint32_t size() const override;                                      // 07
 
 		// add
 		virtual void Unk_08(void);  // 08

@@ -14,10 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraActorCause;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kActorCause;
 
-		virtual ~ExtraActorCause();  // 00
+		~ExtraActorCause() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kActorCause; }
+		ExtraDataType GetType() const override;  // 01 - { return kActorCause; }
 
 		// members
 		NiPointer<ActorCause> actorCause;  // 10

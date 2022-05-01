@@ -13,10 +13,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraReservedMarkers;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kReservedMarkers;
 
-		virtual ~ExtraReservedMarkers();  // 00
+		~ExtraReservedMarkers() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kReservedMarkers; }
+		ExtraDataType GetType() const override;  // 01 - { return kReservedMarkers; }
 
 		// members
 		BSTArray<MarkerUsedData> reservedMarkerArray;  // 10

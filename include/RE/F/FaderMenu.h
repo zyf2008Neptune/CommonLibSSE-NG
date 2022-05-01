@@ -26,10 +26,10 @@ namespace RE
 		};
 		static_assert(sizeof(RUNTIME_DATA) == 0x10);
 
-		virtual ~FaderMenu();  // 00
+		~FaderMenu() override;  // 00
 
 		// override (IMenu)
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
 
 		// members
 #ifndef SKYRIM_CROSS_VR

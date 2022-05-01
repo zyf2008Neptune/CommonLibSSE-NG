@@ -14,10 +14,10 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_ExtraModelSwap;
 		inline static auto           EXTRADATATYPE = ExtraDataType::kModelSwap;
 
-		virtual ~ExtraModelSwap();  // 00
+		~ExtraModelSwap() override;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kModelSwap; }
+		ExtraDataType GetType() const override;  // 01 - { return kModelSwap; }
 
 		// members
 		TESModel* modelSwap;      // 10

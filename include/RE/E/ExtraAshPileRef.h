@@ -15,10 +15,10 @@ namespace RE
 
 		ExtraAshPileRef();
 		explicit ExtraAshPileRef(ObjectRefHandle a_ashPileRef);
-		virtual ~ExtraAshPileRef() = default;  // 00
+		~ExtraAshPileRef() override = default;  // 00
 
 		// override (BSExtraData)
-		virtual ExtraDataType GetType() const override;  // 01 - { return kAshPileRef; }
+		ExtraDataType GetType() const override;  // 01 - { return kAshPileRef; }
 
 		// members
 		ObjectRefHandle ashPileRef;  // 10
