@@ -42,7 +42,7 @@ namespace RE
 		void CreateGroupData(FORM* a_form, FORM_GROUP* a_group) override;                          // 31
 
 		// add
-		virtual void Save();                        // 3B - { return; }
+		virtual void               Save();                        // 3B - { return; }
 		[[nodiscard]] virtual bool SavesBefore(FORM* a_form);     // 3C - { return fa;se; }
 		[[nodiscard]] virtual bool SavesBefore(TESForm* a_form);  // 3D - { return false; }
 		[[nodiscard]] virtual bool ProcessBeforeSave();           // 3E - { return false; }

@@ -49,7 +49,7 @@ namespace RE
 		void InitItemImpl() override;        // 13
 
 		[[nodiscard]] bool IsValidRace(TESRace* a_sourceRace) const;
-		void GetNodeName(char* a_dstBuff, const TESObjectREFR* a_refr, const TESObjectARMO* a_armor, float a_weightOverride);
+		void               GetNodeName(char* a_dstBuff, const TESObjectREFR* a_refr, const TESObjectARMO* a_armor, float a_weightOverride);
 
 		// members
 		OBJ_ARMA            data;                                 // 040 - DNAM
