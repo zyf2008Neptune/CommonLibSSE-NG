@@ -9,6 +9,18 @@ namespace RE
 		return func(this, a_form);
 	}
 
+	bool BGSListForm::ContainsOnlyType(FormType a_formType) const
+    {
+		bool result = true;
+	    ForEachForm([&](const TESForm& a_form) {
+			if (a_form.GetFormType() != a_formType) {
+				result = false;
+			}
+			return result;
+		});
+		return result;
+	}
+
 	bool BGSListForm::HasForm(const TESForm* a_form) const
 	{
 		if (!a_form) {

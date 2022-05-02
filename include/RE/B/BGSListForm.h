@@ -41,8 +41,9 @@ namespace RE
 		void InitItemImpl() override;                      // 13
 
 		void               AddForm(TESForm* a_form);
+		[[nodiscard]] bool ContainsOnlyType(FormType a_formType) const;
 		void               ForEachForm(std::function<bool(TESForm&)> a_callback) const;
-		bool               HasForm(const TESForm* a_form) const;
+		[[nodiscard]] bool HasForm(const TESForm* a_form) const;
 		[[nodiscard]] bool HasForm(FormID a_formID) const;
 
 		// members
