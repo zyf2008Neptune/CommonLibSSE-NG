@@ -10,9 +10,9 @@ namespace RE
 	}
 
 	bool BGSListForm::ContainsOnlyType(FormType a_formType) const
-    {
+	{
 		bool result = true;
-	    ForEachForm([&](const TESForm& a_form) {
+		ForEachForm([&](const TESForm& a_form) {
 			if (a_form.GetFormType() != a_formType) {
 				result = false;
 			}
