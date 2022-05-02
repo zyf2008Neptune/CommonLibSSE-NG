@@ -67,7 +67,7 @@ target_compile_features(
 if (MSVC)
 	target_compile_options(
 		"${PROJECT_NAME}"
-		PRIVATE
+		PUBLIC
 			/bigobj # support large object file format
 			/utf-8  # assume UTF-8 sources even without a BOM
 
@@ -102,7 +102,7 @@ endif()
 if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 	target_compile_options(
 			"${PROJECT_NAME}"
-			PRIVATE
+			PUBLIC
 				-Wno-overloaded-virtual                   # function matches parent virtual function but is not an override (Clang gives false positives on this warning)
 				-Wno-delete-non-abstract-non-virtual-dtor # deletion of polymorphic type which has a non-virtual destructor (necessary for SKSE proxy types, as SKSE does this)
 	)
