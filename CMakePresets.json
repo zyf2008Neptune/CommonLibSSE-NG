@@ -60,7 +60,6 @@
         {
             "cacheVariables": {
                 "CMAKE_CXX_FLAGS": "/EHsc /W4 /WX $penv{CXXFLAGS}",
-                "CMAKE_C_COMPILER": "clang-cl",
                 "CMAKE_CXX_COMPILER": "clang-cl"
             },
             "generator": "Ninja",
