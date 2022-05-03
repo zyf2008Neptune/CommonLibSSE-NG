@@ -154,6 +154,7 @@ namespace RE
 		[[nodiscard]] bool      GetIsSummonedCreature() const noexcept;
 		ObjectRefHandle         GetOccupiedFurniture() const;
 		TESPackage*             GetRunningPackage() const;
+		Actor*                  GetUserData() const;
 		bool                    InHighProcess() const;
 		bool                    InMiddleHighProcess() const;
 		bool                    InMiddleLowProcess() const;

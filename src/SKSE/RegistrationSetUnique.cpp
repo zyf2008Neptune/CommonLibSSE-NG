@@ -7,23 +7,23 @@ namespace SKSE
 	namespace Impl
 	{
 		RegistrationSetUniqueBase::RegistrationSetUniqueBase(const std::string_view& a_eventName) :
-			_uniqueHandles(),
+			_regs(),
 			_eventName(a_eventName),
 			_lock()
 		{}
 
 		RegistrationSetUniqueBase::RegistrationSetUniqueBase(const RegistrationSetUniqueBase& a_rhs) :
-			_uniqueHandles(),
+			_regs(),
 			_eventName(a_rhs._eventName),
 			_lock()
 		{
 			a_rhs._lock.lock();
-			_uniqueHandles = a_rhs._uniqueHandles;
+			_regs = a_rhs._regs;
 			a_rhs._lock.unlock();
 
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			if (auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr) {
-				for (auto& uniqueHandle : _uniqueHandles) {
+				for (auto& uniqueHandle : _regs) {
 					for (auto& handle : uniqueHandle.second) {
 						policy->PersistHandle(handle);
 					}
@@ -32,20 +32,20 @@ namespace SKSE
 		}
 
 		RegistrationSetUniqueBase::RegistrationSetUniqueBase(RegistrationSetUniqueBase&& a_rhs) :
-			_uniqueHandles(),
+			_regs(),
 			_eventName(a_rhs._eventName),
 			_lock()
 		{
 			Locker locker(a_rhs._lock);
-			_uniqueHandles = std::move(a_rhs._uniqueHandles);
-			a_rhs._uniqueHandles.clear();
+			_regs = std::move(a_rhs._regs);
+			a_rhs._regs.clear();
 		}
 
 		RegistrationSetUniqueBase::~RegistrationSetUniqueBase()
 		{
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			if (auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr) {
-				for (auto& uniqueHandle : _uniqueHandles) {
+				for (auto& uniqueHandle : _regs) {
 					for (auto& handle : uniqueHandle.second) {
 						policy->ReleaseHandle(handle);
 					}
@@ -64,13 +64,13 @@ namespace SKSE
 
 			{
 				Locker rhsLocker(a_rhs._lock);
-				_uniqueHandles = a_rhs._uniqueHandles;
+				_regs = a_rhs._regs;
 				_eventName = a_rhs._eventName;
 			}
 
 			auto vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
 			if (auto policy = vm ? vm->GetObjectHandlePolicy() : nullptr) {
-				for (auto& uniqueHandle : _uniqueHandles) {
+				for (auto& uniqueHandle : _regs) {
 					for (auto& handle : uniqueHandle.second) {
 						policy->PersistHandle(handle);
 					}
@@ -93,8 +93,8 @@ namespace SKSE
 
 			_eventName = a_rhs._eventName;
 
-			_uniqueHandles = std::move(a_rhs._uniqueHandles);
-			a_rhs._uniqueHandles.clear();
+			_regs = std::move(a_rhs._regs);
+			a_rhs._regs.clear();
 
 			return *this;
 		}
@@ -161,13 +161,13 @@ namespace SKSE
 			auto   policy = vm ? vm->GetObjectHandlePolicy() : nullptr;
 			Locker locker(_lock);
 			if (policy) {
-				for (auto& uniqueHandle : _uniqueHandles) {
+				for (auto& uniqueHandle : _regs) {
 					for (auto& handle : uniqueHandle.second) {
 						policy->ReleaseHandle(handle);
 					}
 				}
 			}
-			_uniqueHandles.clear();
+			_regs.clear();
 		}
 
 		bool RegistrationSetUniqueBase::Save(SerializationInterface* a_intfc, std::uint32_t a_type, std::uint32_t a_version)
@@ -186,13 +186,13 @@ namespace SKSE
 			assert(a_intfc);
 
 			Locker            locker(_lock);
-			const std::size_t numUniqueHandles = _uniqueHandles.size();
+			const std::size_t numUniqueHandles = _regs.size();
 			if (!a_intfc->WriteRecordData(numUniqueHandles)) {
 				log::error("Failed to save unique handle count ({})", numUniqueHandles);
 				return false;
 			}
 
-			for (auto& [formID, handleSet] : _uniqueHandles) {
+			for (auto& [formID, handleSet] : _regs) {
 				if (!a_intfc->WriteRecordData(formID)) {
 					log::error("Failed to save target formID ({:X})", formID);
 					return false;
@@ -220,7 +220,7 @@ namespace SKSE
 			a_intfc->ReadRecordData(numUniqueHandles);
 
 			Locker locker(_lock);
-			_uniqueHandles.clear();
+			_regs.clear();
 
 			RE::FormID formID;
 
@@ -237,7 +237,7 @@ namespace SKSE
 				for (std::size_t j = 0; j < numHandles; ++j) {
 					a_intfc->ReadRecordData(vmHandle);
 					if (a_intfc->ResolveHandle(vmHandle, vmHandle)) {
-						_uniqueHandles[formID].insert(vmHandle);
+						_regs[formID].insert(vmHandle);
 					}
 				}
 			}
@@ -268,7 +268,7 @@ namespace SKSE
 			}
 
 			_lock.lock();
-			auto result = _uniqueHandles[a_formID].insert(handle);
+			auto result = _regs[a_formID].insert(handle);
 			_lock.unlock();
 
 			if (result.second) {
@@ -296,7 +296,7 @@ namespace SKSE
 			}
 
 			Locker locker(_lock);
-			if (auto it = _uniqueHandles.find(a_formID); it != _uniqueHandles.end()) {
+			if (auto it = _regs.find(a_formID); it != _regs.end()) {
 				if (auto result = it->second.erase(handle); result != 0) {
 					policy->ReleaseHandle(handle);
 					return true;
@@ -315,7 +315,7 @@ namespace SKSE
 			}
 
 			Locker locker(_lock);
-			for (auto& uniqueHandle : _uniqueHandles) {
+			for (auto& uniqueHandle : _regs) {
 				if (auto result = uniqueHandle.second.erase(a_handle); result != 0) {
 					policy->ReleaseHandle(a_handle);
 					return true;

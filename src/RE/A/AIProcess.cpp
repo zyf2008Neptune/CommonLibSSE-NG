@@ -1,7 +1,9 @@
 #include "RE/A/AIProcess.h"
 
+#include "RE/F/FormTraits.h"
 #include "RE/H/HighProcessData.h"
 #include "RE/M/MiddleHighProcessData.h"
+#include "RE/N/NiAVObject.h"
 #include "SKSE/API.h"
 
 namespace RE
@@ -69,6 +71,14 @@ namespace RE
 			package = currentPackage.package;
 		}
 		return package;
+	}
+
+	Actor* AIProcess::GetUserData() const
+	{
+		const auto torsoNode = middleHigh ? middleHigh->torsoNode : nullptr;
+		const auto userData = torsoNode ? torsoNode->GetUserData() : nullptr;
+
+		return userData ? userData->As<Actor>() : nullptr;
 	}
 
 	bool AIProcess::InHighProcess() const
