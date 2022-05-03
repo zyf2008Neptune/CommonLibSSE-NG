@@ -194,7 +194,7 @@ namespace RE
 			} else {
 				auto mapped = std::make_pair(count, container_t());
 				mapped.second.push_back(handle);
-				auto insIt = results.emplace(object, std::move(mapped));
+				[[maybe_unused]] auto insIt = results.emplace(object, std::move(mapped));
 				assert(insIt.second);
 			}
 		}

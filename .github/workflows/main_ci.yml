@@ -39,6 +39,20 @@ jobs:
           - Debug-SE-ClangCL
           - Debug-VR-MSVC
           - Debug-VR-ClangCL
+          - Release-All-MSVC
+          - Release-All-ClangCL
+          - Release-Flatrim-MSVC
+          - Release-Flatrim-ClangCL
+          - Release-Current-MSVC
+          - Release-Current-ClangCL
+          - Release-PreAE-MSVC
+          - Release-PreAE-ClangCL
+          - Release-AE-MSVC
+          - Release-AE-ClangCL
+          - Release-SE-MSVC
+          - Release-SE-ClangCL
+          - Release-VR-MSVC
+          - Release-VR-ClangCL
     steps:
       - name: Checkout
         uses: actions/checkout@v2

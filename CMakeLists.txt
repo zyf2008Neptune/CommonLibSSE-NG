@@ -108,6 +108,10 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 	)
 endif()
 
+target_compile_options(${PROJECT_NAME}
+		PUBLIC
+		"$<$<CONFIG:RELEASE>:/O2;/Ob2;/Gw>")
+
 target_include_directories(
 	"${PROJECT_NAME}"
 	PUBLIC
