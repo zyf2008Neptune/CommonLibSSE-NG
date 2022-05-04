@@ -5,12 +5,17 @@
 
 CommonLibSSE NG is a fork of CommonLibSSE which tracks upstream updates but adds a number of enhancements:
 * Can be compiled with Clang 13.x+ with MSVC ABI compatibility.
+  [More information...](https://github.com/CharmedBaryon/CommonLibSSE-NG/wiki/Compiling-with-Clang)
 * Dynamic cross-runtime support (ability to produce a single DLL that works on AE, SE, or VR), with access to all
   cross-compatible features.
+  [More information...](https://github.com/CharmedBaryon/CommonLibSSE-NG/wiki/Runtime-Targeting)
 * Complete support (up to modern RE standards) for Skyrim VR, including the ability to use Skyrim VR and Skyrim SE
   functionality from a single DLL build even where Skyrim VR is normally ABI-incompatible.
+  [More information...](https://github.com/CharmedBaryon/CommonLibSSE-NG/wiki/Runtime-Targeting)
 * Support for Address Libraries for SE, AE, and VR.
+  [More information...](https://github.com/CharmedBaryon/CommonLibSSE-NG/wiki/Runtime-Targeting)
 * Ability to build locked to a single runtime, where access to non-portable features is needed.
+  [More information...](https://github.com/CharmedBaryon/CommonLibSSE-NG/wiki/Runtime-Targeting)
 * Ability to define offsets and address IDs for objects which can exist in only a subset of runtimes, while being able
   dynamically test for feature support before using those offsets.
 * Completely regenerated RTTI and vtable offsets, now with consistent naming and access across all runtimes.
@@ -34,7 +39,7 @@ project root (next to `vcpkg.json`) with the following contents:
             "kind": "git",
             "repository": "https://gitlab.com/colorglass/vcpkg-colorglass",
             // Update this baseline to the latest commit from the above repo.
-            "baseline": "59ebdd824b295fad4effcdccfe6e6aaa47ff4764",
+            "baseline": "7abd808aa0ae8d65710f3a9f77f15937530309aa",
             "packages": [
                 "commonlibsse-ng",
                 "commonlibsse-ng-prebuilt",
@@ -70,54 +75,6 @@ target_link_libraries(${PROJECT_NAME} PUBLIC CommonLibSSE::CommonLibSSE)
 
 For more information on how to use CommonLibSSE NG, you can look at the
 [example plugin](https://gitlab.com/colorglass/commonlibsse-sample-plugin).
-
-### Targeting Runtimes
-This fork of CommonLibSSE can target multiple Skyrim runtimes with a single build, allowing for a single DLL to work
-in Skyrim SE, AE, and even VR. Multitargeting for all runtimes is the default behavior. When targeting multiple runtimes
-certain functionality may become inaccessible or only indirectly accessible. This is because there are some fundamental
-ABI incompatibilities between SE/AE and VR in particular. In much fewer cases, there may be differences between AE and
-SE (a tiny number of offsets remain which are not found in AE).
-
-The largest difference caused by multi-targeting is found when enabling VR and SE, AE, or both. Some classes have
-different ABIs in VR. As a result only a portion, or even none of their member variables may be accessible, since the
-correct offset cannot be determined at compile time. To handle this, accesors have been provided which can return
-pointers structs which contain the member variables, which can be looked up at runtime. This accessor is usually called
-`GetRuntimeData()` and returns a reference to a `RUNTIME_DATA` struct with the variables which are common to SE and VR.
-If build to exclude VR, or for only VR, then the member variables become accessible directly on the class since this
-problem is eliminated, in order to maintain compatibility with other branches of CommonLibSSE (although the accessor
-function still remains, and is recommended for the broadest compatibility). In some classes there are multiple accessors
-due to multiple variant memory offsets. Accessor functions that provide portable member access are usable in all builds
-of CommonLibSSE NG, but direct access to members are only available when all runtimes allow it.
-
-In general, classes and data not common to all runtimes is always available, despite it not always being present. For
-example, the `RE::PlayerCharacter` class always makes the VR data available via an accessor, `GetVRNodeData()`, which
-returns a pointer to a struct with the data. If the current runtime is not Skyrim VR, this accessor returns a `nullptr`.
-This behavior allows a plugin author to dynamically check for VR and add special handling for that case if found. Even
-classes specific to one runtime are always available (e.g. `RE::BSOpenVRControllerDevice` for VR controllers), but when
-using multi-targeting their member variables and even member functions cannot be directly invoked without proxy
-accessors or invokers that handle the non-VR case gracefully.
-
-#### Selective Targeting
-To allow for direct access to more functionality (and more compatibility with other CommonLibSSE forks and the
-upstream), it is possible to build with a limited number of runtimes supported. There are three options that enable
-runtimes to be supported:
-
-* `ENABLE_SKYRIM_SE`: For Skyrim SE versions prior to AE (1.5.x).
-* `ENABLE_SKYRIM_AE`: For Skyrim SE versions post-AE (1.6.x).
-* `ENABLE_SKYRIM_VR`: For Skyrim VR.
-
-By default, all three are enabled. Any runtime can be selectively disabled through CMake, by passing e.g.
-`-DENABLE_SKYRIM_VR=off`. Any combination of runtime can be used, as long as at least one runtime is enabled. Accessors
-for multi-targeting are still usable in selectively targeted builds, but member functions become directly accessible
-again if using only VR or using only non-VR. If using only a single runtime the functions which do dynamic lookup of the
-current runtime will bypass the dynamic lookup.
-
-#### Cases of Inaccessible Functionality in SE+VR
-Currently, there is full coverage of all VR and non-VR functionality in a combined runtime build, with the exception of
-the `RE::PlayerCharacter` class. This class has major differences in VR and has not been reverse engineered in VR to the
-extent it has in non-VR runtimes. Therefore, mods which depend on member variables of this class should remain on a
-"flatrim" build (indeed, since the members are not RE'ed on VR, even doing a separate VR build is currently not an
-option, until reverse engineering on this class advances).
 
 ## Build Dependencies
 * [Boost](https://www.boost.org/)
