@@ -239,7 +239,7 @@ namespace SKSE
 		}
 
 		template <class Filter>
-		typename EventFilterUnique<Filter>::template RegistrationMapUniqueBase& EventFilterUnique<Filter>::RegistrationMapUniqueBase::operator=(const RegistrationMapUniqueBase& a_rhs)
+		typename EventFilterUnique<Filter>::RegistrationMapUniqueBase& EventFilterUnique<Filter>::RegistrationMapUniqueBase::operator=(const RegistrationMapUniqueBase& a_rhs)
 		{
 			if (this == &a_rhs) {
 				return *this;
@@ -269,7 +269,7 @@ namespace SKSE
 		}
 
 		template <class Filter>
-		typename EventFilterUnique<Filter>::template RegistrationMapUniqueBase& EventFilterUnique<Filter>::RegistrationMapUniqueBase::operator=(RegistrationMapUniqueBase&& a_rhs) noexcept
+		typename EventFilterUnique<Filter>::RegistrationMapUniqueBase& EventFilterUnique<Filter>::RegistrationMapUniqueBase::operator=(RegistrationMapUniqueBase&& a_rhs) noexcept
 		{
 			if (this == &a_rhs) {
 				return *this;
