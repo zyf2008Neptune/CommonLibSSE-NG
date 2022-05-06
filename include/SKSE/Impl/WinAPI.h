@@ -38,6 +38,7 @@ namespace SKSE::WinAPI
 
 	struct HINSTANCE__;
 	using HINSTANCE = HINSTANCE__*;
+	using HMODULE = HINSTANCE;
 
 	struct _WIN32_FIND_DATAA
 	{
@@ -56,6 +57,8 @@ namespace SKSE::WinAPI
 	};
 	static_assert(sizeof(_WIN32_FIND_DATAA) == 0x140);
 	using WIN32_FIND_DATAA = _WIN32_FIND_DATAA;
+
+	bool FreeLibrary(HMODULE a_module) noexcept;
 
 	[[nodiscard]] void* GetCurrentModule() noexcept;
 
@@ -105,15 +108,19 @@ namespace SKSE::WinAPI
 		wchar_t*      a_filename,
 		std::uint32_t a_size) noexcept;
 
-	[[nodiscard]] void* GetModuleHandle(const char* a_moduleName) noexcept;
+	[[nodiscard]] HMODULE GetModuleHandle(const char* a_moduleName) noexcept;
 
-	[[nodiscard]] void* GetModuleHandle(const wchar_t* a_moduleName) noexcept;
+	[[nodiscard]] HMODULE GetModuleHandle(const wchar_t* a_moduleName) noexcept;
 
 	[[nodiscard]] void* GetProcAddress(
 		void*       a_module,
 		const char* a_procName) noexcept;
 
 	[[nodiscard]] bool IsDebuggerPresent() noexcept;
+
+	[[nodiscard]] HMODULE LoadLibrary(const char* a_libFileName) noexcept;
+
+	[[nodiscard]] HMODULE LoadLibrary(const wchar_t* a_libFileName) noexcept;
 
 	std::int32_t MessageBox(
 		void*        a_wnd,

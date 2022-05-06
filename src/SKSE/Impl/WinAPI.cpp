@@ -7,14 +7,21 @@
 #undef GetFileVersionInfoSize
 #undef GetModuleFileName
 #undef GetModuleHandle
+#undef LoadLibrary
 #undef MessageBox
 #undef OutputDebugString
+#undef RegQueryValueEx
 #undef VerQueryValue
 
 extern "C" IMAGE_DOS_HEADER __ImageBase;
 
 namespace SKSE::WinAPI
 {
+	bool FreeLibrary(HMODULE a_module) noexcept
+	{
+		return ::FreeLibrary(reinterpret_cast<::HMODULE>(a_module));
+	}
+
 	void* GetCurrentModule() noexcept
 	{
 		return static_cast<void*>(
@@ -134,16 +141,16 @@ namespace SKSE::WinAPI
 				static_cast<::DWORD>(a_size)));
 	}
 
-	void* GetModuleHandle(const char* a_moduleName) noexcept
+	HMODULE GetModuleHandle(const char* a_moduleName) noexcept
 	{
-		return static_cast<void*>(
+		return reinterpret_cast<HMODULE>(
 			::GetModuleHandleA(
 				static_cast<::LPCSTR>(a_moduleName)));
 	}
 
-	void* GetModuleHandle(const wchar_t* a_moduleName) noexcept
+	HMODULE GetModuleHandle(const wchar_t* a_moduleName) noexcept
 	{
-		return static_cast<void*>(
+		return reinterpret_cast<HMODULE>(
 			::GetModuleHandleW(
 				static_cast<::LPCWSTR>(a_moduleName)));
 	}
@@ -161,6 +168,16 @@ namespace SKSE::WinAPI
 	{
 		return static_cast<bool>(
 			::IsDebuggerPresent());
+	}
+
+	HMODULE LoadLibrary(const char* a_libFileName) noexcept
+	{
+		return reinterpret_cast<HMODULE>(::LoadLibraryA(static_cast<::LPCSTR>(a_libFileName)));
+	}
+
+	HMODULE LoadLibrary(const wchar_t* a_libFileName) noexcept
+	{
+		return reinterpret_cast<HMODULE>(::LoadLibraryW(static_cast<::LPCWSTR>(a_libFileName)));
 	}
 
 	std::int32_t MessageBox(

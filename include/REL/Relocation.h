@@ -488,7 +488,7 @@ namespace REL
 			Version result;
 			result._impl[0] = static_cast<value_type>((a_packedVersion >> 24) & 0x0FF);
 			result._impl[1] = static_cast<value_type>((a_packedVersion >> 16) & 0x0FF);
-			result._impl[2] = static_cast<value_type>((a_packedVersion >> 8) & 0xFFF);
+			result._impl[2] = static_cast<value_type>((a_packedVersion >> 4) & 0xFFF);
 			result._impl[3] = static_cast<value_type>(a_packedVersion & 0x0F);
 			return result;
 		}
@@ -599,8 +599,54 @@ namespace REL
 
 		[[nodiscard]] static Module& get()
 		{
-			static Module singleton;
-			return singleton;
+			if (_initialized.load(std::memory_order_relaxed)) {
+				return _instance;
+			}
+			[[maybe_unused]] std::unique_lock lock(_initLock);
+			_instance.init();
+			_initialized = true;
+			return _instance;
+		}
+
+		/**
+		 * Forcibly set the singleton <code>Module</code> instance to a specific executable file.
+		 *
+		 * <p>
+		 * This function should only be used in a unit testing environment, where there is no Skyrim process hosting
+		 * the SKSE plugin. It is not thread-safe and assumes it will be run synchronously with serial test execution.
+		 * </p>
+		 *
+		 * @param a_filePath The path to the executable to use a Skyrim executable.
+		 * @return <code>true</code> if the module injection works; <code>false</code> otherwise.
+		 */
+		static bool inject(std::wstring_view a_filePath)
+		{
+			_instance.clear();
+			_initialized = true;
+			return _instance.init(a_filePath);
+		}
+
+		/**
+		 * Forcibly set the singleton <code>Module</code> instance to an installed Skyrim executable.
+		 *
+		 * <p>
+		 * This overload accepts only a <code>Runtime</code> value, and based on that value attempts to find the
+		 * executable, using the Windows registry to find an installed copy of Skyrim of the given runtime.
+		 * </p>
+		 *
+		 * <p>
+		 * This function should only be used in a unit testing environment, where there is no Skyrim process hosting
+		 * the SKSE plugin. It is not thread-safe and assumes it will be run synchronously with serial test execution.
+		 * </p>
+		 *
+		 * @param a_runtime The type of Skyrim runtime to inject.
+		 */
+		static bool inject(Runtime a_runtime);
+
+		static void reset()
+		{
+			_initialized = false;
+			_instance.clear();
 		}
 
 		[[nodiscard]] std::uintptr_t base() const noexcept { return _base; }
@@ -665,7 +711,16 @@ namespace REL
 		}
 
 	private:
-		Module()
+		Module() = default;
+		Module(const Module&) = delete;
+		Module(Module&&) = delete;
+
+		~Module() noexcept = default;
+
+		Module& operator=(const Module&) = delete;
+		Module& operator=(Module&&) = delete;
+
+		bool init()
 		{
 			const auto getFilename = [&]() {
 				return WinAPI::GetEnvironmentVariable(
@@ -687,47 +742,69 @@ namespace REL
 					}
 				}
 			}
-			if (moduleHandle) {
-				load(moduleHandle);
+			_filePath = _filename;
+			if (!moduleHandle) {
+				stl::report_and_fail(
+					fmt::format(
+						"Failed to obtain module handle for: \"{0}\".\n"
+						"You have likely renamed the executable to something unexpected. "
+						"Renaming the executable back to \"{0}\" may resolve the issue."sv,
+						stl::utf16_to_utf8(_filename).value_or("<unicode conversion error>"s)));
 			}
+			return load(moduleHandle, true);
 		}
 
-		Module(const Module&) = delete;
-		Module(Module&&) = delete;
-
-		~Module() noexcept = default;
-
-		Module& operator=(const Module&) = delete;
-		Module& operator=(Module&&) = delete;
-
-		void load(void* handle)
+		bool init(std::wstring_view a_filePath)
 		{
-			if (_filename == L"SkyrimVR.exe") {
-				_runtime = Runtime::VR;
+			std::filesystem::path exePath(a_filePath);
+			_filename = exePath.filename().wstring();
+			_filePath = exePath.wstring();
+			_injectedModule = WinAPI::LoadLibrary(_filePath.c_str());
+			if (_injectedModule) {
+				return load(_injectedModule, false);
 			}
-			_base = reinterpret_cast<std::uintptr_t>(handle);
-			load_version();
+			return false;
+		}
+
+		[[nodiscard]] bool load(void* a_handle, bool a_failOnError)
+		{
+			_base = reinterpret_cast<std::uintptr_t>(a_handle);
+			if (!load_version(a_failOnError)) {
+				return false;
+			}
 			load_segments();
+			return true;
 		}
 
 		void load_segments();
 
-		void load_version()
+		bool load_version(bool a_failOnError)
 		{
-			const auto version = get_file_version(_filename);
+			const auto version = get_file_version(_filePath);
 			if (version) {
 				_version = *version;
-				if (_version[1] == 5) {
+				switch (_version[1]) {
+				case 4:
+					_runtime = Runtime::VR;
+					break;
+				case 5:
 					_runtime = Runtime::SE;
+					break;
+				default:
+					_runtime = Runtime::AE;
 				}
-			} else {
+				return true;
+			} else if (a_failOnError) {
 				stl::report_and_fail(
 					fmt::format(
 						"Failed to obtain file version info for: {}\n"
 						"Please contact the author of this script extender plugin for further assistance."sv,
 						stl::utf16_to_utf8(_filename).value_or("<unicode conversion error>"s)));
 			}
+			return false;
 		}
+
+		void clear();
 
 		static constexpr std::array SEGMENTS{
 			std::make_pair(".text"sv, WinAPI::IMAGE_SCN_MEM_EXECUTE),
@@ -744,7 +821,12 @@ namespace REL
 		static constexpr std::array<std::wstring_view, 2> RUNTIMES{ { L"SkyrimVR.exe",
 			L"SkyrimSE.exe" } };
 
+		static Module                       _instance;
+		static inline std::atomic_bool      _initialized{ false };
+		static inline std::mutex            _initLock;
+		WinAPI::HMODULE                     _injectedModule{ nullptr };
 		std::wstring                        _filename;
+		std::wstring                        _filePath;
 		std::array<Segment, Segment::total> _segments;
 		Version                             _version;
 		std::uintptr_t                      _base{ 0 };
@@ -761,6 +843,13 @@ namespace REL
 		};
 
 	public:
+		enum class Format
+		{
+			SSEv1,
+			SSEv2,
+			VR
+		};
+
 		class Offset2ID
 		{
 		public:
@@ -794,10 +883,10 @@ namespace REL
 			{
 				const mapping_t elem{ 0, a_offset };
 				const auto      it = std::lower_bound(
-                    _offset2id.begin(),
-                    _offset2id.end(),
-                    elem,
-                    [](auto&& a_lhs, auto&& a_rhs) {
+						 _offset2id.begin(),
+						 _offset2id.end(),
+						 elem,
+						 [](auto&& a_lhs, auto&& a_rhs) {
                         return a_lhs.offset < a_rhs.offset;
                     });
 				if (it == _offset2id.end()) {
@@ -830,8 +919,40 @@ namespace REL
 
 		[[nodiscard]] static IDDatabase& get()
 		{
-			static IDDatabase singleton;
-			return singleton;
+			if (_initialized.load(std::memory_order_relaxed)) {
+				return _instance;
+			}
+			[[maybe_unused]] std::unique_lock lock(_initLock);
+			_instance.load();
+			_initialized.store(true, std::memory_order_relaxed);
+			return _instance;
+		}
+
+		[[nodiscard]] static bool inject(std::wstring_view a_filePath, Format a_format)
+		{
+			return inject(a_filePath, a_format, Module::get().version());
+		}
+
+		[[nodiscard]] static bool inject(std::wstring_view a_filePath, Format a_format, Version a_version)
+		{
+			_initialized = true;
+			_instance.clear();
+			switch (a_format) {
+			case Format::SSEv1:
+				return _instance.load_file(a_filePath.data(), a_version, 1, false);
+			case Format::SSEv2:
+				return _instance.load_file(a_filePath.data(), a_version, 2, false);
+			case Format::VR:
+				return _instance.load_csv(a_filePath.data(), a_version, false);
+			default:
+				return false;
+			}
+		}
+
+		static void reset()
+		{
+			_instance.clear();
+			_initialized = false;
 		}
 
 		[[nodiscard]] inline std::size_t id2offset(std::uint64_t a_id) const
@@ -844,7 +965,17 @@ namespace REL
 				[](auto&& a_lhs, auto&& a_rhs) {
 					return a_lhs.id < a_rhs.id;
 				});
+
+			bool failed = false;
 			if (it == _id2offset.end()) {
+				failed = true;
+			}
+			else if SKYRIM_REL_VR_CONSTEXPR (Module::IsVR()) {
+				if (it->id != a_id) {
+					failed = true;
+				}
+			}
+			if (failed) {
 				stl::report_and_fail(
 					fmt::format(
 						"Failed to find the id within the address library: {}\n"
@@ -862,10 +993,10 @@ namespace REL
 		class header_t
 		{
 		public:
-			void read(binary_io::file_istream& a_in)
+			void read(binary_io::file_istream& a_in, std::uint8_t a_formatVersion)
 			{
 				const auto [format] = a_in.read<std::int32_t>();
-				if (format != (Module::IsAE() ? 2 : 1)) {
+				if (format != a_formatVersion) {
 					stl::report_and_fail(
 						fmt::format(
 							"Unsupported address library format: {}\n"
@@ -898,7 +1029,7 @@ namespace REL
 			std::int32_t _addressCount{ 0 };
 		};
 
-		IDDatabase() { load(); }
+		IDDatabase() = default;
 
 		IDDatabase(const IDDatabase&) = delete;
 		IDDatabase(IDDatabase&&) = delete;
@@ -918,27 +1049,30 @@ namespace REL
 							"Data/SKSE/Plugins/version-{}.csv"sv,
 							version.string()))
 						.value_or(L"<unknown filename>"s);
-				load_csv(filename, version);
+				load_csv(filename, version, true);
 			} else {
 				const auto filename =
 					stl::utf8_to_utf16(
 						Module::IsAE() ?
-                            fmt::format("Data/SKSE/Plugins/versionlib-{}.bin"sv,
+							fmt::format("Data/SKSE/Plugins/versionlib-{}.bin"sv,
 								version.string()) :
-                            fmt::format("Data/SKSE/Plugins/version-{}.bin"sv,
+							fmt::format("Data/SKSE/Plugins/version-{}.bin"sv,
 								version.string()))
 						.value_or(L"<unknown filename>"s);
-				load_file(filename, version);
+				load_file(filename, version, Module::IsAE() ? 2 : 1, true);
 			}
 		}
 
-		void load_file(stl::zwstring a_filename, Version a_version)
+		bool load_file(stl::zwstring a_filename, Version a_version, std::uint8_t a_formatVersion, bool a_failOnError)
 		{
 			try {
 				binary_io::file_istream in(a_filename);
 				header_t                header;
-				header.read(in);
+				header.read(in, a_formatVersion);
 				if (header.version() != a_version) {
+					if (!a_failOnError) {
+						return false;
+					}
 					stl::report_and_fail("version mismatch"sv);
 				}
 
@@ -947,11 +1081,16 @@ namespace REL
 				const auto byteSize = static_cast<std::size_t>(header.address_count()) * sizeof(mapping_t);
 				if (!_mmap.open(mapname, byteSize) &&
 					!_mmap.create(mapname, byteSize)) {
+					if (!a_failOnError) {
+						return false;
+					}
 					stl::report_and_fail("failed to create shared mapping"sv);
 				}
 
 				_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
-				unpack_file(in, header);
+				if (!unpack_file(in, header, a_failOnError)) {
+					return false;
+				}
 				std::sort(
 					_id2offset.begin(),
 					_id2offset.end(),
@@ -959,19 +1098,23 @@ namespace REL
 						return a_lhs.id < a_rhs.id;
 					});
 			} catch (const std::system_error&) {
-				stl::report_and_fail(
-					fmt::format(
-						"Failed to locate an appropriate address library with the path: {}\n"
-						"This means you are missing the address library for this specific version of "
-						"the game. Please continue to the mod page for address library to download "
-						"an appropriate version. If one is not available, then it is likely that "
-						"address library has not yet added support for this version of the game."sv,
-						stl::utf16_to_utf8(a_filename).value_or("<unknown filename>"s)));
+				if (a_failOnError) {
+					stl::report_and_fail(
+						fmt::format(
+							"Failed to locate an appropriate address library with the path: {}\n"
+							"This means you are missing the address library for this specific version of "
+							"the game. Please continue to the mod page for address library to download "
+							"an appropriate version. If one is not available, then it is likely that "
+							"address library has not yet added support for this version of the game."sv,
+							stl::utf16_to_utf8(a_filename).value_or("<unknown filename>"s)));
+				}
+				return false;
 			}
+			return true;
 		}
 
 		// Ported from alandtse's CommonLibVR branch with CSV support.
-		bool load_csv(stl::zwstring a_filename, Version a_version)
+		bool load_csv(stl::zwstring a_filename, Version a_version, bool a_failOnError)
 		{
 			// conversion code from https://docs.microsoft.com/en-us/cpp/text/how-to-convert-between-various-string-types?view=msvc-170
 			const wchar_t*    orig = a_filename.data();
@@ -980,8 +1123,12 @@ namespace REL
 			const std::size_t newsize = origsize * 2;
 			char*             nstring = new char[newsize];
 			wcstombs_s(&convertedChars, nstring, newsize, orig, _TRUNCATE);
-			if (!std::filesystem::exists(nstring))
+			if (!std::filesystem::exists(nstring)) {
+				if (!a_failOnError) {
+					return false;
+				}
 				stl::report_and_fail(fmt::format("Required VR Address Library file {} does not exist"sv, nstring));
+			}
 			io::CSVReader<2, io::trim_chars<>, io::no_quote_escape<','>> in(nstring);
 			in.read_header(io::ignore_missing_column, "id", "offset");
 			std::size_t id, address_count;
@@ -992,6 +1139,9 @@ namespace REL
 			const auto byteSize = static_cast<std::size_t>(address_count * sizeof(mapping_t));
 			if (!_mmap.open(mapname, byteSize) &&
 				!_mmap.create(mapname, byteSize)) {
+				if (!a_failOnError) {
+					return false;
+				}
 				stl::report_and_fail("failed to create shared mapping"sv);
 			}
 			_id2offset = { static_cast<mapping_t*>(_mmap.data()), static_cast<std::size_t>(address_count) };
@@ -1002,8 +1152,12 @@ namespace REL
 				_id2offset[index++] = { static_cast<std::uint64_t>(id),
 					static_cast<std::uint64_t>(std::stoul(offset, nullptr, 16)) };
 			}
-			if (index != address_count)
+			if (index != address_count) {
+				if (!a_failOnError) {
+					return false;
+				}
 				stl::report_and_fail(fmt::format("VR Address Library {} loaded only {} entries but expected {}. Please redownload."sv, version, index, address_count));
+			}
 			std::sort(
 				_id2offset.begin(),
 				_id2offset.end(),
@@ -1014,7 +1168,7 @@ namespace REL
 			return true;
 		}
 
-		void unpack_file(binary_io::file_istream& a_in, header_t a_header)
+		bool unpack_file(binary_io::file_istream& a_in, header_t a_header, bool a_failOnError)
 		{
 			std::uint8_t  type = 0;
 			std::uint64_t id = 0;
@@ -1052,6 +1206,9 @@ namespace REL
 					std::tie(id) = a_in.read<std::uint32_t>();
 					break;
 				default:
+					if (!a_failOnError) {
+						return false;
+					}
 					stl::report_and_fail("unhandled type"sv);
 				}
 
@@ -1083,6 +1240,9 @@ namespace REL
 					std::tie(offset) = a_in.read<std::uint32_t>();
 					break;
 				default:
+					if (!a_failOnError) {
+						return false;
+					}
 					stl::report_and_fail("unhandled type"sv);
 				}
 
@@ -1095,10 +1255,20 @@ namespace REL
 				prevOffset = offset;
 				prevID = id;
 			}
+			return true;
 		}
 
-		detail::memory_map   _mmap;
-		std::span<mapping_t> _id2offset;
+		void clear()
+		{
+			_mmap.close();
+			_id2offset = {};
+		}
+
+		static IDDatabase              _instance;
+		static inline std::atomic_bool _initialized{ false };
+		static inline std::mutex       _initLock;
+		detail::memory_map             _mmap;
+		std::span<mapping_t>           _id2offset;
 	};
 
 	class Offset
@@ -1486,7 +1656,7 @@ namespace REL
 			return write_vfunc(a_idx, stl::unrestricted_cast<std::uintptr_t>(a_newFunc));
 		}
 
-	private :
+	private:
 		// clang-format off
 		[[nodiscard]] static std::uintptr_t base() { return Module::get().base(); }
 		// clang-format on
@@ -1586,11 +1756,13 @@ namespace REL
 
 			template <char C1, char C2>
 			Hexadecimal<C1, C2> rule_for() noexcept
-				requires(characters::hexadecimal(C1) && characters::hexadecimal(C2));
+				requires(characters::hexadecimal(C1) && characters::hexadecimal(C2))
+			;
 
 			template <char C1, char C2>
 			Wildcard rule_for() noexcept
-				requires(characters::wildcard(C1) && characters::wildcard(C2));
+				requires(characters::wildcard(C1) && characters::wildcard(C2))
+			;
 		}
 
 		template <class... Rules>

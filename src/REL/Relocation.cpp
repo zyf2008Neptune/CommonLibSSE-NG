@@ -43,6 +43,7 @@
 #define NOMCX
 
 #include <Windows.h>
+#include <winreg.h>
 
 namespace REL
 {
@@ -129,6 +130,25 @@ namespace REL
 		}
 	}
 
+	Module Module::_instance;
+
+	bool Module::inject(Runtime a_runtime)
+	{
+		constexpr std::size_t bufferSize = 4096;  // Max NTFS path length.
+		const wchar_t*        subKey =
+            a_runtime == Runtime::VR ?
+					   LR"(SOFTWARE\Bethesda Softworks\Skyrim VR)" :
+					   LR"(SOFTWARE\Bethesda Softworks\Skyrim Special Edition)";
+		unsigned long length = bufferSize * sizeof(wchar_t);
+		std::uint8_t  value[bufferSize];
+		if (RegGetValueW(HKEY_LOCAL_MACHINE, subKey, L"Installed Path", 0x20002, nullptr, value, &length) != ERROR_SUCCESS) {
+			return false;
+		}
+		std::filesystem::path installPath(reinterpret_cast<wchar_t*>(value));
+		installPath /= a_runtime == Runtime::VR ? L"SkyrimVR.exe" : L"SkyrimSE.exe";
+		return inject(installPath.c_str());
+	}
+
 	void Module::load_segments()
 	{
 		auto        dosHeader = reinterpret_cast<const IMAGE_DOS_HEADER*>(_base);
@@ -138,9 +158,9 @@ namespace REL
 		for (std::size_t i = 0; i < size; ++i) {
 			const auto& section = sections[i];
 			const auto  it = std::find_if(
-                SEGMENTS.begin(),
-                SEGMENTS.end(),
-                [&](auto&& a_elem) {
+				 SEGMENTS.begin(),
+				 SEGMENTS.end(),
+				 [&](auto&& a_elem) {
                     constexpr auto size = std::extent_v<decltype(section.Name)>;
                     const auto     len = std::min(a_elem.first.size(), size);
                     return std::memcmp(a_elem.first.data(), section.Name, len) == 0 &&
@@ -152,4 +172,23 @@ namespace REL
 			}
 		}
 	}
+
+	void Module::clear()
+	{
+		if (_injectedModule) {
+			WinAPI::FreeLibrary(_injectedModule);
+			_injectedModule = nullptr;
+		}
+		_base = 0;
+		_filename.clear();
+		_filePath.clear();
+		_runtime = Runtime::AE;
+		_version = { 0, 0, 0, 0 };
+		for (auto& segment : _segments) {
+			segment = {};
+		}
+		IDDatabase::reset();
+	}
+
+	IDDatabase IDDatabase::_instance;
 }
