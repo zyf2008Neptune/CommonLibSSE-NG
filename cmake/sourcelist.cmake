@@ -1502,6 +1502,7 @@ set(SOURCES
 	src/RE/E/ExtraSoul.cpp
 	src/RE/E/ExtraTextDisplayData.cpp
 	src/RE/E/ExtraUniqueID.cpp
+    src/RE/F/FormTypes.cpp
 	src/RE/F/FxDelegate.cpp
 	src/RE/F/FxDelegateArgs.cpp
 	src/RE/G/GAtomic.cpp
