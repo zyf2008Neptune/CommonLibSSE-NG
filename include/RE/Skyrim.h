@@ -198,6 +198,7 @@
 #include "RE/B/BSBound.h"
 #include "RE/B/BSCullingProcess.h"
 #include "RE/B/BSDismemberSkinInstance.h"
+#include "RE/B/BSDynamicTriShape.h"
 #include "RE/B/BSEffectShaderData.h"
 #include "RE/B/BSEffectShaderMaterial.h"
 #include "RE/B/BSEffectShaderProperty.h"
