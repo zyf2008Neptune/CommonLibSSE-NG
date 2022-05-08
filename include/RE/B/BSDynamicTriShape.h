@@ -13,14 +13,14 @@ namespace RE
 		~BSDynamicTriShape() override;  // 00
 
 		// override (BSTriShape)
-        const NiRTTI*      GetRTTI() const override;                          // 02
-        BSDynamicTriShape* AsDynamicTriShape() override;                      // 0C
-        NiObject*          CreateClone(NiCloningProcess& a_cloning) override; // 17
-        void               LoadBinary(NiStream& a_stream) override;           // 18
-        void               LinkObject(NiStream& a_stream) override;           // 19 - { BSTriShape::LinkObject(a_stream); }
-        bool               RegisterStreamables(NiStream& a_stream) override;  // 1A - { return BSTriShape::RegisterStreamables(a_stream); }
-        void               SaveBinary(NiStream& a_stream) override;           // 1B
-        bool               IsEqual(NiObject* a_object) override;              // 1C
+		const NiRTTI*      GetRTTI() const override;                           // 02
+		BSDynamicTriShape* AsDynamicTriShape() override;                       // 0C
+		NiObject*          CreateClone(NiCloningProcess& a_cloning) override;  // 17
+		void               LoadBinary(NiStream& a_stream) override;            // 18
+		void               LinkObject(NiStream& a_stream) override;            // 19 - { BSTriShape::LinkObject(a_stream); }
+		bool               RegisterStreamables(NiStream& a_stream) override;   // 1A - { return BSTriShape::RegisterStreamables(a_stream); }
+		void               SaveBinary(NiStream& a_stream) override;            // 1B
+		bool               IsEqual(NiObject* a_object) override;               // 1C
 
 		// members
 		void*              dynamicData;  // 160
