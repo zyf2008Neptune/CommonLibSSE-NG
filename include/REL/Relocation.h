@@ -441,12 +441,32 @@ namespace REL
 				(_impl[3] & 0x00F) << 0u);
 		}
 
+		[[nodiscard]] constexpr value_type major() const noexcept
+		{
+			return _impl[0];
+		}
+
+		[[nodiscard]] constexpr value_type minor() const noexcept
+		{
+			return _impl[1];
+		}
+
+		[[nodiscard]] constexpr value_type patch() const noexcept
+		{
+			return _impl[2];
+		}
+
+		[[nodiscard]] constexpr value_type build() const noexcept
+		{
+			return _impl[3];
+		}
+
 		[[nodiscard]] std::string string() const
 		{
 			std::string result;
 			for (auto&& ver : _impl) {
 				result += std::to_string(ver);
-				result += '-';
+				result += '.';
 			}
 			result.pop_back();
 			return result;
@@ -457,9 +477,19 @@ namespace REL
 			std::wstring result;
 			for (auto&& ver : _impl) {
 				result += std::to_wstring(ver);
-				result += L'-';
+				result += L'.';
 			}
 			result.pop_back();
+			return result;
+		}
+
+		[[nodiscard]] static Version unpack(std::uint32_t a_packedVersion) noexcept
+		{
+			Version result;
+			result._impl[0] = static_cast<value_type>((a_packedVersion >> 24) & 0x0FF);
+			result._impl[1] = static_cast<value_type>((a_packedVersion >> 16) & 0x0FF);
+			result._impl[2] = static_cast<value_type>((a_packedVersion >> 8) & 0xFFF);
+			result._impl[3] = static_cast<value_type>(a_packedVersion & 0x0F);
 			return result;
 		}
 
@@ -575,6 +605,7 @@ namespace REL
 
 		[[nodiscard]] std::uintptr_t base() const noexcept { return _base; }
 		[[nodiscard]] stl::zwstring  filename() const noexcept { return _filename; }
+		[[nodiscard]] stl::zwstring  filePath() const noexcept { return _filePath; }
 		[[nodiscard]] Version        version() const noexcept { return _version; }
 
 		[[nodiscard]] Segment segment(Segment::Name a_segment) const noexcept { return _segments[a_segment]; }
