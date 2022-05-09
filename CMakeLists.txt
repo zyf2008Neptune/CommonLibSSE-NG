@@ -61,6 +61,7 @@ target_compile_definitions(
 		"$<$<BOOL:${ENABLE_SKYRIM_SE}>:ENABLE_SKYRIM_SE=1>"
 		"$<$<BOOL:${ENABLE_SKYRIM_AE}>:ENABLE_SKYRIM_AE=1>"
 		"$<$<BOOL:${ENABLE_SKYRIM_VR}>:ENABLE_SKYRIM_VR=1>"
+		HAS_SKYRIM_MULTI_TARGETING=1
 )
 
 target_compile_features(
