@@ -19,6 +19,7 @@ project(
 	VERSION 3.1.0
 )
 
+include(CheckIPOSupported)
 include(GNUInstallDirs)
 
 if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
@@ -35,6 +36,11 @@ source_group(
 	TREE "${CMAKE_CURRENT_SOURCE_DIR}"
 	FILES ${SOURCES}
 )
+
+check_ipo_supported(RESULT USE_IPO OUTPUT IPO_OUTPUT)
+if(USE_IPO)
+	set(CMAKE_INTERPROCEDURAL_OPTIMIZATION "$<$<CONFIG:RELEASE>:ON>")
+endif()
 
 add_library(
 	"${PROJECT_NAME}"
@@ -106,10 +112,6 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 				-Wno-delete-non-abstract-non-virtual-dtor # deletion of polymorphic type which has a non-virtual destructor (necessary for SKSE proxy types, as SKSE does this)
 	)
 endif()
-
-target_compile_options(${PROJECT_NAME}
-		PUBLIC
-		"$<$<CONFIG:RELEASE>:/O2;/Ob2;/Gw>")
 
 target_include_directories(
 	"${PROJECT_NAME}"

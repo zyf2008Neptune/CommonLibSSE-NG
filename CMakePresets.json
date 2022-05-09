@@ -34,7 +34,7 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": {
                     "type": "STRING",
-                    "value": "RelWithDebInfo"
+                    "value": "Release"
                 }
             }
         },
@@ -310,7 +310,7 @@
             ],
             "name": "Release-All-MSVC",
             "displayName": "Release (All, MSVC)",
-            "binaryDir": "${sourceDir}/build/relwithdebinfo-all-msvc"
+            "binaryDir": "${sourceDir}/build/release-all-msvc"
         },
         {
             "inherits": [
@@ -321,7 +321,7 @@
             ],
             "name": "Release-All-ClangCL",
             "displayName": "Release (All, ClangCL)",
-            "binaryDir": "${sourceDir}/build/relwithdebinfo-all-clangcl"
+            "binaryDir": "${sourceDir}/build/release-all-clangcl"
         },
         {
             "inherits": [
@@ -330,7 +330,7 @@
             ],
             "name": "Release-Flatrim-MSVC",
             "displayName": "Release (Flatrim, MSVC)",
-            "binaryDir": "${sourceDir}/build/relwithdebinfo-flatrim-msvc"
+            "binaryDir": "${sourceDir}/build/release-flatrim-msvc"
         },
         {
             "inherits": [
@@ -339,7 +339,7 @@
             ],
             "name": "Release-Flatrim-ClangCL",
             "displayName": "Release (Flatrim, ClangCL)",
-            "binaryDir": "${sourceDir}/build/relwithdebinfo-flatrim-clangcl"
+            "binaryDir": "${sourceDir}/build/release-flatrim-clangcl"
         },
         {
             "inherits": [
@@ -348,7 +348,7 @@
             ],
             "name": "Release-VR-MSVC",
             "displayName": "Release (VR, MSVC)",
-            "binaryDir": "${sourceDir}/build/relwithdebinfo-vr-msvc"
+            "binaryDir": "${sourceDir}/build/release-vr-msvc"
         },
         {
             "inherits": [
@@ -357,7 +357,7 @@
             ],
             "name": "Release-VR-ClangCL",
             "displayName": "Release (VR, ClangCL)",
-            "binaryDir": "${sourceDir}/build/relwithdebinfo-vr-clangcl"
+            "binaryDir": "${sourceDir}/build/release-vr-clangcl"
         },
         {
             "inherits": [
@@ -366,7 +366,7 @@
             ],
             "name": "Release-AE-MSVC",
             "displayName": "Release (AE, MSVC)",
-            "binaryDir": "${sourceDir}/build/relwithdebinfo-ae-msvc"
+            "binaryDir": "${sourceDir}/build/release-ae-msvc"
         },
         {
             "inherits": [
@@ -375,7 +375,7 @@
             ],
             "name": "Release-AE-ClangCL",
             "displayName": "Release (AE, ClangCL)",
-            "binaryDir": "${sourceDir}/build/relwithdebinfo-ae-clangcl"
+            "binaryDir": "${sourceDir}/build/release-ae-clangcl"
         },
         {
             "inherits": [
@@ -384,7 +384,7 @@
             ],
             "name": "Release-SE-MSVC",
             "displayName": "Release (SE, MSVC)",
-            "binaryDir": "${sourceDir}/build/relwithdebinfo-se-msvc"
+            "binaryDir": "${sourceDir}/build/release-se-msvc"
         },
         {
             "inherits": [
@@ -393,7 +393,7 @@
             ],
             "name": "Release-SE-ClangCL",
             "displayName": "Release (SE, ClangCL)",
-            "binaryDir": "${sourceDir}/build/relwithdebinfo-se-clangcl"
+            "binaryDir": "${sourceDir}/build/release-se-clangcl"
         },
         {
             "inherits": [
@@ -402,7 +402,7 @@
             ],
             "name": "Release-PreAE-MSVC",
             "displayName": "Release (PreAE, MSVC)",
-            "binaryDir": "${sourceDir}/build/relwithdebinfo-pre-ae-msvc"
+            "binaryDir": "${sourceDir}/build/release-pre-ae-msvc"
         },
         {
             "inherits": [
@@ -411,7 +411,7 @@
             ],
             "name": "Release-PreAE-ClangCL",
             "displayName": "Release (PreAE, ClangCL)",
-            "binaryDir": "${sourceDir}/build/relwithdebinfo-pre-ae-clangcl"
+            "binaryDir": "${sourceDir}/build/release-pre-ae-clangcl"
         },
         {
             "inherits": [
@@ -420,7 +420,7 @@
             ],
             "name": "Release-Current-MSVC",
             "displayName": "Release (Current, MSVC)",
-            "binaryDir": "${sourceDir}/build/relwithdebinfo-current-msvc"
+            "binaryDir": "${sourceDir}/build/release-current-msvc"
         },
         {
             "inherits": [
@@ -429,7 +429,7 @@
             ],
             "name": "Release-Current-ClangCL",
             "displayName": "Release (Current, ClangCL)",
-            "binaryDir": "${sourceDir}/build/relwithdebinfo-current-clangcl"
+            "binaryDir": "${sourceDir}/build/release-current-clangcl"
         }
     ],
     "buildPresets": [
