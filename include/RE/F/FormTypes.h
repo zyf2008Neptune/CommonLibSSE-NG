@@ -313,9 +313,12 @@ namespace fmt
 namespace std
 {
 	template <class CharT>
-	struct formatter<RE::FormType, CharT> {
-		auto format(RE::FormType a_formType, format_context& a_ctx) {
-			return formatter<std::basic_string<CharT>>::format("{}", RE::FormTypeToString(a_formType), a_ctx);
+	struct formatter<RE::FormType, CharT> : std::formatter<std::string_view, CharT>
+	{
+		template <class FormatContext>
+		auto format(RE::FormType a_formType, FormatContext& a_ctx)
+		{
+			return formatter<std::string_view, CharT>::format(RE::FormTypeToString(a_formType), a_ctx);
 		}
 	};
 }

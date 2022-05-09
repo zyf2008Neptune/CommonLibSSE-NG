@@ -48,10 +48,13 @@ namespace fmt
 namespace std
 {
 	template <class CharT>
-	struct formatter<RE::ActorValue, CharT> {
-		auto format(RE::ActorValue a_actorValue, format_context& a_ctx) {
+	struct formatter<RE::ActorValue, CharT> : formatter<std::string_view, CharT>
+	{
+		template <class FormatContext>
+		auto format(RE::ActorValue a_actorValue, FormatContext& a_ctx)
+		{
 			auto* info = RE::ActorValueList::GetSingleton()->GetActorValue(a_actorValue);
-			return formatter<std::basic_string<CharT>>::format("{}", info ? info->enumName : "None", a_ctx);
+			return formatter<std::string_view, CharT>::format(info ? info->enumName : "None", a_ctx);
 		}
 	};
 }
