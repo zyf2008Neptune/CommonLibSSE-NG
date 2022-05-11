@@ -1,5 +1,7 @@
 #include "RE/E/Effect.h"
 
+#include "RE/E/EffectSetting.h"
+
 namespace RE
 {
 	Effect::EffectItem::EffectItem() :
@@ -22,5 +24,33 @@ namespace RE
 
 		return baseEffect == a_base &&
 		       FLOAT::essentially_equal(effectItem.magnitude, a_mag) && effectItem.area == a_area && effectItem.duration == a_dur && FLOAT::essentially_equal(cost, a_cost);
+
+	float Effect::GetMagnitude() const
+	{
+		if (baseEffect->data.flags.any(EffectSetting::EffectSettingData::Flag::kNoMagnitude)) {
+			return 0.0f;
+		}
+		return effectItem.magnitude;
+	}
+
+	std::uint32_t Effect::GetArea() const
+	{
+		if (baseEffect->data.flags.any(EffectSetting::EffectSettingData::Flag::kNoArea)) {
+			return 0;
+		}
+		return effectItem.area;
+	}
+
+	std::uint32_t Effect::GetDuration() const
+	{
+		if (baseEffect->data.flags.any(EffectSetting::EffectSettingData::Flag::kNoDuration)) {
+			return 0;
+		}
+		return effectItem.duration;
+	}
+
+	bool Effect::IsHostile() const
+	{
+		return baseEffect->IsHostile();
 	}
 }

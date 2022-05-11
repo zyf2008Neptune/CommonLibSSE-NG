@@ -20,7 +20,7 @@ namespace RE
 
 		static INISettingCollection* GetSingleton();
 
-		Setting* GetSetting(const char* a_name);
+		Setting* GetSetting(std::string_view a_name);
 	};
 	static_assert(sizeof(INISettingCollection) == 0x128);
 }

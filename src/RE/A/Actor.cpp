@@ -281,11 +281,7 @@ namespace RE
 		}
 
 		auto proc = currentProcess->middleHigh;
-		if (proc->bothHands) {
-			return proc->bothHands;
-		} else {
-			return a_leftHand ? proc->leftHand : proc->rightHand;
-		}
+		return a_leftHand ? proc->leftHand : proc->rightHand;
 	}
 
 	TESForm* Actor::GetEquippedObject(bool a_leftHand) const
@@ -348,6 +344,15 @@ namespace RE
 		} else {
 			return cachedHeight;
 		}
+	}
+
+	Actor* Actor::GetKiller() const
+	{
+		if (IsDead(false)) {
+			return nullptr;
+		}
+
+		return myKiller.get().get();
 	}
 
 	std::uint16_t Actor::GetLevel() const
@@ -470,7 +475,7 @@ namespace RE
 	bool Actor::HasKeywordString(std::string_view a_formEditorID)
 	{
 		const auto base = GetActorBase();
-		return base && base->HasKeyword(a_formEditorID);
+		return base && base->HasApplicableKeywordString(a_formEditorID);
 	}
 
 	bool Actor::HasLineOfSight(TESObjectREFR* a_ref, bool& a_arg2)
@@ -529,11 +534,11 @@ namespace RE
 		return func(this);
 	}
 
-	bool Actor::IsCasting(MagicItem* a_magicItem) const
+	bool Actor::IsCasting(MagicItem* a_spell) const
 	{
 		using func_t = decltype(&Actor::IsCasting);
 		REL::Relocation<func_t> func{ RELOCATION_ID(37810, 38759) };
-		return func(this, a_magicItem);
+		return func(this, a_spell);
 	}
 
 	bool Actor::IsCommandedActor() const

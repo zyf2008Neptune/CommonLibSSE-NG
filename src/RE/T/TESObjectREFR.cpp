@@ -503,6 +503,40 @@ namespace RE
 		return HasKeywordHelper(a_keyword);
 	}
 
+	bool TESObjectREFR::HasKeywordInArray(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const
+	{
+		bool hasKeyword = false;
+
+		for (const auto& keyword : a_keywords) {
+			hasKeyword = keyword && HasKeyword(keyword);
+			if (a_matchAll && !hasKeyword || hasKeyword) {
+				break;
+			}
+		}
+
+		return hasKeyword;
+	}
+
+	bool TESObjectREFR::HasKeywordInList(BGSListForm* a_keywordList, bool a_matchAll) const
+	{
+		if (!a_keywordList) {
+			return false;
+		}
+
+		bool hasKeyword = false;
+
+		a_keywordList->ForEachForm([&](TESForm& a_form) {
+			const auto keyword = a_form.As<BGSKeyword>();
+			hasKeyword = keyword && HasKeyword(keyword);
+			if (a_matchAll && !hasKeyword || hasKeyword) {
+				return false;
+			}
+			return true;
+		});
+
+		return hasKeyword;
+	}
+
 	bool TESObjectREFR::HasQuestObject() const
 	{
 		using func_t = decltype(&TESObjectREFR::HasQuestObject);

@@ -15,6 +15,7 @@
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/B/BSTTuple.h"
 #include "RE/D/DetectionPriorities.h"
+#include "RE/E/EmotionTypes.h"
 #include "RE/F/FormTypes.h"
 #include "RE/I/IPostAnimationChannelUpdateFunctor.h"
 #include "RE/M/MagicSystem.h"
@@ -459,10 +460,10 @@ namespace RE
 		virtual bool                    QSpeakingDone() const;                                                                                                                                                           // 107 - { return ~(unk0E0 >> 5) & 1; }
 		virtual void                    SetSpeakingDone(bool a_set);                                                                                                                                                     // 108
 		virtual void                    CreateMovementController();                                                                                                                                                      // 109
-		virtual void                    Unk_10A(void);                                                                                                                                                                   // 10A - { return unk16C; }
-		virtual void                    Unk_10B(void);                                                                                                                                                                   // 10B - { unk16C = a_arg1; }
-		virtual void                    Unk_10C(void);                                                                                                                                                                   // 10C - { return unk170; }
-		virtual void                    Unk_10D(void);                                                                                                                                                                   // 10D - { unk170 = a_arg1; }
+		virtual EmotionType             GetEmotionType();                                                                                                                                                                // 10A - { return unk16C; }
+		virtual void                    SetEmotionType(EmotionType a_emotionType);                                                                                                                                       // 10B - { unk16C = a_arg1; }
+		virtual std::uint32_t           GetEmotionValue();                                                                                                                                                               // 10C - { return unk170; }
+		virtual void                    SetEmotionValue(std::uint32_t a_emotionValue);                                                                                                                                   // 10D - { unk170 = a_arg1; }
 		virtual void                    KillImpl(Actor* a_attacker, float a_damage, bool a_sendEvent, bool a_ragdollInstant);                                                                                            // 10E
 		virtual bool                    DrinkPotion(AlchemyItem* a_potion, ExtraDataList* a_extralist);                                                                                                                  // 10F
 		virtual bool                    CheckCast(MagicItem* a_spell, bool a_dualCast, MagicSystem::CannotCastReason* a_reason);                                                                                         // 110
@@ -664,6 +665,7 @@ namespace RE
 		ActorHandle                  GetHandle();
 		[[nodiscard]] NiAVObject*    GetHeadPartObject(BGSHeadPart::HeadPartType a_type);
 		float                        GetHeight();
+		Actor*                       GetKiller() const;
 		std::uint16_t                GetLevel() const;
 		bool                         GetMount(NiPointer<Actor>& a_outMount);
 		ObjectRefHandle              GetOccupiedFurniture() const;
@@ -687,7 +689,7 @@ namespace RE
 		bool                         IsAnimationDriven() const;
 		bool                         IsBeingRidden() const;
 		bool                         IsBlocking() const;
-		bool                         IsCasting(MagicItem* a_magicItem) const;
+		bool                         IsCasting(MagicItem* a_spell) const;
 		bool                         IsCommandedActor() const;
 		bool                         IsEssential() const;
 		bool                         IsFactionInCrimeGroup(const TESFaction* a_faction) const;
@@ -753,8 +755,8 @@ namespace RE
 		CombatController*                                     combatController;                   // 158
 		TESFaction*                                           vendorFaction;                      // 160
 		AITimeStamp                                           calculateVendorFactionTimer;        // 168
-		std::uint32_t                                         unk16C;                             // 16C
-		std::uint32_t                                         unk170;                             // 170
+		EmotionType                                           emotionType;                        // 16C
+		std::uint32_t                                         emotionValue;                       // 170
 		std::uint32_t                                         unk174;                             // 174
 		std::uint32_t                                         unk178;                             // 178
 		std::uint32_t                                         intimidateBribeDayStamp;            // 17C

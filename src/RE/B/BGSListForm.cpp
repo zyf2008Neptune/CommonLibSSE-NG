@@ -9,6 +9,18 @@ namespace RE
 		return func(this, a_form);
 	}
 
+	bool BGSListForm::ContainsOnlyType(FormType a_formType) const
+	{
+		bool result = true;
+		ForEachForm([&](const TESForm& a_form) {
+			if (a_form.GetFormType() != a_formType) {
+				result = false;
+			}
+			return result;
+		});
+		return result;
+	}
+
 	bool BGSListForm::HasForm(const TESForm* a_form) const
 	{
 		if (!a_form) {
@@ -25,16 +37,28 @@ namespace RE
 		}
 
 		auto idIt = std::find(scriptAddedTempForms->begin(), scriptAddedTempForms->end(), a_form->formID);
-		if (idIt != scriptAddedTempForms->end()) {
-			return true;
-		}
-
-		return false;
+		return idIt != scriptAddedTempForms->end();
 	}
 
 	bool BGSListForm::HasForm(FormID a_formID) const
 	{
-		auto form = RE::TESForm::LookupByID(a_formID);
+		auto form = TESForm::LookupByID(a_formID);
 		return HasForm(form);
+	}
+
+	void BGSListForm::ForEachForm(std::function<bool(TESForm&)> a_callback) const
+	{
+		for (const auto& form : forms) {
+			if (form && !a_callback(*form)) {
+				return;
+			}
+		}
+		if (scriptAddedTempForms) {
+			for (const auto& addedFormID : *scriptAddedTempForms) {
+				if (const auto addedForm = TESForm::LookupByID(addedFormID); !a_callback(*addedForm)) {
+					return;
+				}
+			}
+		}
 	}
 }

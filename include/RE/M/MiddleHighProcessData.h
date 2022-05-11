@@ -10,6 +10,7 @@
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/F/FormTypes.h"
+#include "RE/H/HitData.h"
 #include "RE/M/MagicSystem.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
@@ -91,68 +92,6 @@ namespace RE
 		std::uint32_t         pad44;        // 44
 	};
 	static_assert(sizeof(QueuedItem) == 0x48);
-
-	class HitData
-	{
-	public:
-		enum class Flag
-		{
-			kBlocked = 1 << 0,
-			kBlockWithWeapon = 1 << 1,
-			kBlockCandidate = 1 << 2,
-			kCritical = 1 << 3,
-			kCriticalOnDeath = 1 << 4,
-			kFatal = 1 << 5,
-			kDismemberLimb = 1 << 6,
-			kExplodeLimb = 1 << 7,
-			kCrippleLimb = 1 << 8,
-			kDisarm = 1 << 9,
-			kDisableWeapon = 1 << 10,
-			kSneakAttack = 1 << 11,
-			kIgnoreCritical = 1 << 12,
-			kPredictDamage = 1 << 13,
-			kPredictBaseDamage = 1 << 14,
-			kBash = 1 << 15,
-			kTimedBash = 1 << 16,
-			kPowerAttack = 1 << 17,
-			kMeleeAttack = 1 << 18,
-			kRicochet = 1 << 19,
-			kExplosion = 1 << 20
-		};
-
-		void Populate(Actor* a_aggressor, Actor* a_target, InventoryEntryData* a_weapon);
-
-		// members
-		NiPoint3                 unk00;                   // 00
-		NiPoint3                 unk0C;                   // 0C
-		ActorHandle              aggressor;               // 18
-		ActorHandle              target;                  // 1C
-		ObjectRefHandle          sourceRef;               // 20
-		std::uint32_t            pad24;                   // 24
-		NiPointer<BGSAttackData> attackData;              // 28
-		TESObjectWEAP*           weapon;                  // 30
-		MagicItem*               magicItem;               // 38
-		std::uint64_t            unk40;                   // 40
-		std::uint32_t            unk48;                   // 48
-		float                    healthDamage;            // 4C
-		float                    totalDamage;             // 50
-		float                    physicalDamage;          // 54
-		float                    targetedLimbDamage;      // 58
-		float                    percentBlocked;          // 5C
-		float                    resistedPhysicalDamage;  // 60
-		float                    resistedTypedDamage;     // 64
-		std::uint32_t            stagger;                 // 68
-		float                    sneakAttackBonus;        // 6C
-		float                    bonusHealthDamageMult;   // 70
-		float                    pushBack;                // 74
-		float                    reflectedDamage;         // 78
-		float                    criticalDamageMult;      // 7C
-		Flag                     flags;                   // 80
-		std::uint32_t            equipIndex;              // 84
-		std::uint32_t            material;                // 88
-		std::uint32_t            damageLimb;              // 8C
-	};
-	static_assert(sizeof(HitData) == 0x90);
 
 	struct DeferredHideLimb
 	{
@@ -239,7 +178,7 @@ namespace RE
 		TESIdleForm*                                   furnitureIdle;               // 228
 		void*                                          unk230;                      // 230 - smart ptr
 		BSFaceGenAnimationData*                        faceAnimationData;           // 238
-		std::uint64_t                                  unk240;                      // 240
+		MagicItem*                                     currentPackageSpell;         // 240
 		std::uint64_t                                  unk248;                      // 248
 		NiPointer<bhkCharacterController>              charController;              // 250
 		BSTSmartPointer<bhkRagdollPenetrationUtil>     penetrationDetectUtil;       // 258
@@ -247,7 +186,7 @@ namespace RE
 		InventoryEntryData*                            bothHands;                   // 268
 		NiPointer<QueuedFile>                          bodyPartPreload;             // 270
 		void*                                          unk278;                      // 278
-		std::uint64_t                                  unk280;                      // 280
+		TESIdleForm*                                   lastIdlePlayed;              // 280
 		AIPerkData*                                    perkData;                    // 288
 		std::uint32_t                                  unk290;                      // 290
 		std::uint32_t                                  currentFurnitureSubgraphID;  // 294
@@ -297,8 +236,8 @@ namespace RE
 		bool                                           unk320;                      // 320
 		bool                                           unk321;                      // 321
 		bool                                           beenAttacked;                // 322
-		bool                                           unk323;                      // 323
-		bool                                           unk324;                      // 324
+		bool                                           alwaysHit;                   // 323
+		bool                                           doNoDamage;                  // 324
 		bool                                           soulTrapped;                 // 325
 		bool                                           unk326;                      // 326
 		bool                                           unk327;                      // 327
@@ -311,7 +250,7 @@ namespace RE
 		bool                                           unk32E;                      // 32E
 		bool                                           unk32F;                      // 32F
 		bool                                           unk330;                      // 330
-		bool                                           unk331;                      // 331
+		bool                                           killQueued;                  // 331
 		bool                                           inDeferredKill;              // 332
 		bool                                           pad333;                      // 333
 		std::uint32_t                                  pad334;                      // 334

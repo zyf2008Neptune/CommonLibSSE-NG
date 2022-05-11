@@ -295,10 +295,10 @@ namespace RE
 		using Condition_t = bool(TESObjectREFR* a_thisObj, void* a_param1, void* a_param2, double& a_result);
 
 		static SCRIPT_FUNCTION* GetFirstScriptCommand();
-		static SCRIPT_FUNCTION* LocateScriptCommand(const char* a_longName);
+		static SCRIPT_FUNCTION* LocateScriptCommand(std::string_view a_longName);
 
 		static SCRIPT_FUNCTION* GetFirstConsoleCommand();
-		static SCRIPT_FUNCTION* LocateConsoleCommand(const char* a_longName);
+		static SCRIPT_FUNCTION* LocateConsoleCommand(std::string_view a_longName);
 
 		template <std::uint16_t SIZE>
 		inline void SetParameters(SCRIPT_PARAMETER (&a_params)[SIZE])

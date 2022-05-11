@@ -59,6 +59,13 @@ namespace RE
 
 		static PlayerCamera* GetSingleton();
 
+		void ForceFirstPerson();
+		void ForceThirdPerson();
+		bool IsInBleedoutMode() const;
+		bool IsInFirstPerson() const;
+		bool IsInFreeCameraMode() const;
+		bool IsInThirdPerson() const;
+		void ToggleFreeCameraMode(bool a_freezeTime);
 		void UpdateThirdPerson(bool a_weaponDrawn);
 
 		// members
@@ -85,6 +92,9 @@ namespace RE
 		std::uint8_t                                         unk164;                              // 164
 		std::uint8_t                                         unk165;                              // 165
 		std::uint16_t                                        pad166;                              // 166
+
+	private:
+		bool QCameraEquals(CameraState a_cameraState) const;
 	};
 	static_assert(sizeof(PlayerCamera) == 0x168);
 }

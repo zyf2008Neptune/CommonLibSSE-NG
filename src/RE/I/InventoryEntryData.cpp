@@ -1,10 +1,10 @@
 #include "RE/I/InventoryEntryData.h"
 
 #include "RE/E/ExtraCharge.h"
-#include "RE/E/ExtraDataList.h"
 #include "RE/E/ExtraEnchantment.h"
 #include "RE/E/ExtraHotkey.h"
 #include "RE/E/ExtraLeveledItem.h"
+#include "RE/E/ExtraPoison.h"
 #include "RE/E/ExtraTextDisplayData.h"
 #include "RE/E/ExtraWorn.h"
 #include "RE/E/ExtraWornLeft.h"
@@ -193,29 +193,17 @@ namespace RE
 
 	bool InventoryEntryData::IsFavorited() const
 	{
-		if (extraLists) {
-			for (const auto& xList : *extraLists) {
-				const auto favorited = xList->HasType<ExtraHotkey>();
-				if (favorited) {
-					return true;
-				}
-			}
-		}
-
-		return false;
+		return HasExtraDataType<ExtraHotkey>();
 	}
 
 	bool InventoryEntryData::IsLeveled() const
 	{
-		if (extraLists) {
-			for (const auto& xList : *extraLists) {
-				if (xList && xList->HasType<ExtraLeveledItem>()) {
-					return true;
-				}
-			}
-		}
+		return HasExtraDataType<ExtraLeveledItem>();
+	}
 
-		return false;
+	bool InventoryEntryData::IsPoisoned() const
+	{
+		return HasExtraDataType<ExtraPoison>();
 	}
 
 	bool InventoryEntryData::IsWorn() const

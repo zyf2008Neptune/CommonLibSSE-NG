@@ -249,6 +249,7 @@ set(SOURCES
 	include/RE/B/BSLightingShaderMaterialSnow.h
 	include/RE/B/BSLightingShaderProperty.h
 	include/RE/B/BSMaterialObject.h
+	include/RE/B/BSMemStorage.h
 	include/RE/B/BSMouseDevice.h
 	include/RE/B/BSMultiBound.h
 	include/RE/B/BSMultiBoundAABB.h
@@ -276,6 +277,7 @@ set(SOURCES
 	include/RE/B/BSPortalGraph.h
 	include/RE/B/BSPrecomputedNavmeshInfoPathMap.h
 	include/RE/B/BSReloadShaderI.h
+	include/RE/B/BSRenderManager.h
 	include/RE/B/BSResourceNiBinaryStream.h
 	include/RE/B/BSResponse.h
 	include/RE/B/BSSaveDataSystemUtility.h
@@ -343,6 +345,7 @@ set(SOURCES
 	include/RE/B/BarrierProjectile.h
 	include/RE/B/BarterMenu.h
 	include/RE/B/BaseFormComponent.h
+	include/RE/B/BaseHandleReaderWriter.h
 	include/RE/B/BeamProjectile.h
 	include/RE/B/BipedAnim.h
 	include/RE/B/BipedObjects.h
@@ -456,6 +459,7 @@ set(SOURCES
 	include/RE/E/EffectArchetypes.h
 	include/RE/E/EffectSetting.cpp
 	include/RE/E/EffectSetting.h
+	include/RE/E/EmotionTypes.h
 	include/RE/E/EnchantConstructMenu.h
 	include/RE/E/EnchantmentItem.h
 	include/RE/E/ErrorCodes.h
@@ -740,6 +744,7 @@ set(SOURCES
 	include/RE/H/HeapBlockFreeHead.h
 	include/RE/H/HeldStateHandler.h
 	include/RE/H/HighProcessData.h
+	include/RE/H/HitData.h
 	include/RE/H/HorseCameraState.h
 	include/RE/H/hkAabb.h
 	include/RE/H/hkArray.h
@@ -860,6 +865,7 @@ set(SOURCES
 	include/RE/I/IFuncCallQuery.h
 	include/RE/I/IFunction.h
 	include/RE/I/IFunctionArguments.h
+	include/RE/I/IHandleReaderWriter.h
 	include/RE/I/IHandlerFunctor.h
 	include/RE/I/ILoader.h
 	include/RE/I/IMapCameraCallbacks.h
@@ -933,6 +939,7 @@ set(SOURCES
 	include/RE/L/LevelUpMenu.h
 	include/RE/L/LightEffect.h
 	include/RE/L/LinkerProcessor.h
+	include/RE/L/LoadStorageWrapper.h
 	include/RE/L/LoadWaitSpinner.h
 	include/RE/L/LoadingMenu.h
 	include/RE/L/LocalMapCamera.h
@@ -1129,7 +1136,9 @@ set(SOURCES
 	include/RE/RTTI.h
 	include/RE/S/SFTypes.h
 	include/RE/S/SafeZoneMenu.h
+	include/RE/S/SaveFileHandleReaderWriter.h
 	include/RE/S/SavePatcher.h
+	include/RE/S/SaveStorageWrapper.h
 	include/RE/S/ScrapHeap.h
 	include/RE/S/ScreenSplatter.h
 	include/RE/S/Script.h
@@ -1545,7 +1554,6 @@ set(SOURCES
 	src/RE/M/MemoryPage.cpp
 	src/RE/M/MenuControls.cpp
 	src/RE/M/MenuEventHandler.cpp
-	src/RE/M/MiddleHighProcessData.cpp
 	src/RE/M/Misc.cpp
 	src/RE/N/NativeFunctionBase.cpp
 	src/RE/N/NiAVObject.cpp
@@ -1652,8 +1660,6 @@ set(SOURCES
 	src/SKSE/Impl/WinAPI.cpp
 	src/SKSE/Interfaces.cpp
 	src/SKSE/Logger.cpp
-	src/SKSE/RegistrationMap.cpp
-	src/SKSE/RegistrationMapUnique.cpp
 	src/SKSE/RegistrationSet.cpp
 	src/SKSE/RegistrationSetUnique.cpp
 	src/SKSE/Trampoline.cpp

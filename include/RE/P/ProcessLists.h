@@ -50,7 +50,8 @@ namespace RE
 		bool                                    processLow;                                    // 009
 		bool                                    processMHigh;                                  // 00A
 		bool                                    processMLow;                                   // 00B
-		std::uint16_t                           unk00C;                                        // 00C
+		bool                                    runEditorSchedules;                            // 00C
+		bool                                    showDialogueSubtitles;                         // 00D
 		std::uint8_t                            unk00E;                                        // 00E
 		std::uint8_t                            pad00F;                                        // 00F
 		std::int32_t                            numberHighActors;                              // 010

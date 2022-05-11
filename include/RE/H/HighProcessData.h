@@ -12,6 +12,7 @@
 #include "RE/B/BSTTuple.h"
 #include "RE/N/NiPoint3.h"
 #include "RE/N/NiSmartPointer.h"
+#include "RE/P/PlayerCharacter.h"
 #include "RE/T/TESShout.h"
 
 namespace RE
@@ -66,6 +67,13 @@ namespace RE
 			kTeleportOut = 4,
 			kOutDisable = 5,
 			kOutDelete = 6
+		};
+
+		enum class BUMP_TYPE
+		{
+			kNone = static_cast<std::underlying_type_t<BUMP_TYPE>>(-1),
+			kSmall = 0,
+			kBig = 1
 		};
 
 		struct Data190 : public BSIntrusiveRefCounted
@@ -171,10 +179,11 @@ namespace RE
 		NiPoint3                                              pathingDesiredOrientation;      // 0AC
 		NiPoint3                                              pathingDesiredMovementSpeed;    // 0B8
 		NiPoint3                                              pathingDesiredRotationSpeed;    // 0C4
-		std::uint64_t                                         unk0D0;                         // 0D0
+		std::uint32_t                                         unk0D0;                         // 0D0
+		float                                                 lastBumpDirection;              // 0D4
 		ObjectRefHandle                                       lastExtDoorActivated;           // 0D8
 		float                                                 activationHeight;               // 0DC
-		RefHandle                                             unk0E0;                         // 0E0
+		ActorHandle                                           reanimateCaster;                // 0E0
 		std::uint32_t                                         unk0E4;                         // 0E4
 		MagicItem*                                            reanimateSpell;                 // 0E8
 		BSFixedString                                         voiceSubtitle;                  // 0F0
@@ -230,13 +239,14 @@ namespace RE
 		float                                                 cachedActorHeight;              // 1E4
 		NiPointer<NiRefObject>                                unk1E8;                         // 1E8
 		std::uint32_t                                         unk1F0;                         // 1F0
-		float                                                 unk1F4;                         // 1F4
-		std::uint32_t                                         unk1F8;                         // 1F8
-		float                                                 unk1FC;                         // 1FC
+		AITimeStamp                                           bumpTimer;                      // 1F4
+		AITimeStamp                                           unk1F8;                         // 1F8
+		BUMP_TYPE                                             bumpedState;                    // 1FC
 		float                                                 takeBackTimer;                  // 200
 		std::uint32_t                                         pad204;                         // 204
 		Data208*                                              unk208;                         // 208
-		std::uint64_t                                         unk210;                         // 210
+		std::uint32_t                                         unk210;                         // 210
+		PLAYER_ACTION                                         playerActionReaction;           // 214
 		BSFixedString                                         unk218;                         // 218
 		BSTArray<BSTTuple<FormID, NiPointer<ActorKnowledge>>> knowledgeArray;                 // 220
 		mutable BSReadWriteLock                               knowledgeLock;                  // 238
@@ -262,7 +272,7 @@ namespace RE
 		std::uint64_t                                         unk2C0;                         // 2C0
 		std::uint64_t                                         unk2C8;                         // 2C8
 		std::uint64_t                                         unk2D0;                         // 2D0
-		std::uint32_t                                         unk2D8;                         // 2D8
+		std::uint32_t                                         animAction;                     // 2D8
 		NiPoint3                                              leftWeaponLastPos;              // 2DC
 		NiPoint3                                              rightWeaponLastPos;             // 2E8
 		ObjectRefHandle                                       greetActor;                     // 2F4
@@ -314,10 +324,18 @@ namespace RE
 		NiPoint3                                              animationDelta;                 // 418
 		NiPoint3                                              animationAngleMod;              // 424
 		BSTSmartPointer<IAnimationSetCallbackFunctor>         unk430;                         // 430
-		std::uint64_t                                         unk438;                         // 438
+		float                                                 absorbTimer;                    // 438
+		float                                                 unk43C;                         // 43C
 		Crime*                                                crimeToReactTo;                 // 440
 		std::uint64_t                                         unk448;                         // 448
-		std::uint64_t                                         unk450;                         // 450
+		bool                                                  unk450;                         // 450
+		std::uint8_t                                          unk451;                         // 451
+		std::uint8_t                                          unk452;                         // 452
+		std::uint8_t                                          unk453;                         // 453
+		bool                                                  greetingPlayer;                 // 454
+		std::uint8_t                                          unk455;                         // 455
+		std::uint8_t                                          unk456;                         // 456
+		std::uint8_t                                          unk457;                         // 457
 		bool                                                  talkingToPC;                    // 458
 		bool                                                  inCommandState;                 // 459
 		std::uint8_t                                          unk45A;                         // 45A
@@ -326,7 +344,8 @@ namespace RE
 		std::uint8_t                                          unk45D;                         // 45D
 		std::uint8_t                                          unk45E;                         // 45E
 		bool                                                  isDualCasting;                  // 45F
-		std::uint16_t                                         unk460;                         // 460
+		bool                                                  getPlantedExplosive;            // 460
+		bool                                                  approachingAutoTeleportDoor;    // 461
 		bool                                                  arrested;                       // 462
 		bool                                                  unk463;                         // 463
 		bool                                                  unk464;                         // 464

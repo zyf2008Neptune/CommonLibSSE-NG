@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSTList.h"
+#include "RE/E/ExtraDataList.h"
 #include "RE/F/FormTypes.h"
 #include "RE/M/MemoryManager.h"
 #include "RE/S/SoulLevels.h"
@@ -50,6 +51,7 @@ namespace RE
 		[[nodiscard]] bool  IsEnchanted() const;
 		[[nodiscard]] bool  IsFavorited() const;
 		[[nodiscard]] bool  IsLeveled() const;
+		[[nodiscard]] bool  IsPoisoned() const;
 		[[nodiscard]] bool  IsWorn() const;
 
 		[[nodiscard]] bool IsOwnedBy(Actor* a_testOwner, bool a_defaultTo = true)
@@ -83,6 +85,20 @@ namespace RE
 			using func_t = decltype(&InventoryEntryData::IsOwnedBy_Impl);
 			REL::Relocation<func_t> func{ RELOCATION_ID(15782, 16020) };
 			return func(this, a_testOwner, a_itemOwner, a_defaultTo);
+		}
+
+		template <class T>
+		[[nodiscard]] bool HasExtraDataType() const
+		{
+			if (extraLists) {
+				for (const auto& xList : *extraLists) {
+					if (xList && xList->HasType<T>()) {
+						return true;
+					}
+				}
+			}
+
+			return false;
 		}
 	};
 	static_assert(sizeof(InventoryEntryData) == 0x18);

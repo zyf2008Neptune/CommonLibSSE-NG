@@ -2,14 +2,12 @@
 
 namespace RE
 {
-#ifndef SKYRIM_SUPPORT_AE
 	BSShaderTextureSet* BSShaderTextureSet::Ctor()
 	{
 		using func_t = decltype(&BSShaderTextureSet::Ctor);
 		REL::Relocation<func_t> func{ REL::ID(99886) };
 		return func(this);
 	}
-#endif
 
 	BSShaderTextureSet* BSShaderTextureSet::Create()
 	{

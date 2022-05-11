@@ -7,22 +7,28 @@ namespace RE
 	class BSDynamicTriShape : public BSTriShape
 	{
 	public:
-		void*         pDynamicData;  // 1A0
-		BSSpinLock    lock;          // 1A8
-		std::uint32_t dataSize;      // 1B0
-		std::uint32_t frameCount;    // 1B4
-		std::uint32_t unk1B8;        // 1B8
-		std::uint32_t unk1BC;        // 1BC
+		inline static constexpr auto RTTI = RTTI_BSDynamicTriShape;
+		inline static constexpr auto Ni_RTTI = NiRTTI_BSDynamicTriShape;
 
-		BSDynamicTriShape* ctor()
-		{
-			using func_t = decltype(&BSDynamicTriShape::ctor);
-			REL::Relocation<func_t> func{ REL::Offset(0x00C71E50) };
-			return func(this);
-		}
-		//DEFINE_MEMBER_FN_0(ctor, BSDynamicTriShape*, 0x00C71E50);
+		~BSDynamicTriShape() override;  // 00
+
+		// override (BSTriShape)
+		const NiRTTI*      GetRTTI() const override;                           // 02
+		BSDynamicTriShape* AsDynamicTriShape() override;                       // 0C
+		NiObject*          CreateClone(NiCloningProcess& a_cloning) override;  // 17
+		void               LoadBinary(NiStream& a_stream) override;            // 18
+		void               LinkObject(NiStream& a_stream) override;            // 19 - { BSTriShape::LinkObject(a_stream); }
+		bool               RegisterStreamables(NiStream& a_stream) override;   // 1A - { return BSTriShape::RegisterStreamables(a_stream); }
+		void               SaveBinary(NiStream& a_stream) override;            // 1B
+		bool               IsEqual(NiObject* a_object) override;               // 1C
+
+		// members
+		void*              dynamicData;  // 160
+		mutable BSSpinLock lock;         // 168
+		std::uint32_t      dataSize;     // 170
+		std::uint32_t      frameCount;   // 174
+		std::uint32_t      unk178;       // 178
+		std::uint32_t      unk17C;       // 17C
 	};
-#ifndef SKYRIMVR
-	//static_assert(sizeof(BSDynamicTriShape) == 0x1C0);
-#endif
+	static_assert(sizeof(BSDynamicTriShape) == 0x180);
 }

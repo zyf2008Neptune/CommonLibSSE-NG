@@ -166,12 +166,12 @@ namespace RE
 		return static_cast<float>(interpolationValue) / static_cast<float>(100.0);
 	}
 
-	bool TESNPC::HasKeyword(std::string_view a_editorID)
+	bool TESNPC::HasApplicableKeywordString(std::string_view a_editorID)
 	{
 		if (HasKeywordString(a_editorID)) {
 			return true;
 		}
-		if (auto npcRace = GetRace(); npcRace && npcRace->HasKeywordString(a_editorID)) {
+		if (const auto npcRace = GetRace(); npcRace && npcRace->HasKeywordString(a_editorID)) {
 			return true;
 		}
 		return false;

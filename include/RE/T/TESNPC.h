@@ -250,7 +250,7 @@ namespace RE
 		TESNPC*                      GetRootFaceNPC();
 		[[nodiscard]] const TESNPC*  GetRootFaceNPC() const;
 		[[nodiscard]] SEX            GetSex() const;
-		bool                         HasKeyword(std::string_view a_editorID);
+		bool                         HasApplicableKeywordString(std::string_view a_editorID);
 		bool                         HasOverlays();
 		bool                         IsInClass(TESClass* a_class) const;
 		bool                         IsInFaction(TESFaction* a_faction) const;

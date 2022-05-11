@@ -222,9 +222,7 @@ namespace SKSE
 			auto result = _handles.insert(handle);
 			_lock.unlock();
 
-			if (!result.second) {
-				log::warn("Handle already registered ({})", handle);
-			} else {
+			if (result.second) {
 				policy->PersistHandle(handle);
 			}
 

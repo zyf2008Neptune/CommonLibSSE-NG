@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BSAnimationGraphManager.h"
 #include "RE/B/BSIntrusiveRefCounted.h"
 #include "RE/I/IAnimationGraphManagerHolder.h"
 
