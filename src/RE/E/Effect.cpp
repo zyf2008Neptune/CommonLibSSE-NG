@@ -24,6 +24,7 @@ namespace RE
 
 		return baseEffect == a_base &&
 		       FLOAT::essentially_equal(effectItem.magnitude, a_mag) && effectItem.area == a_area && effectItem.duration == a_dur && FLOAT::essentially_equal(cost, a_cost);
+	}
 
 	float Effect::GetMagnitude() const
 	{

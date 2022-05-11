@@ -30,5 +30,9 @@ namespace RE
 		std::uint32_t      unk178;       // 178
 		std::uint32_t      unk17C;       // 17C
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BSDynamicTriShape) == 0x180);
+#else
+	static_assert(sizeof(BSDynamicTriShape) == 0x1C8);
+#endif
 }
