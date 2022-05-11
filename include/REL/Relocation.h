@@ -466,7 +466,7 @@ namespace REL
 			std::string result;
 			for (auto&& ver : _impl) {
 				result += std::to_string(ver);
-				result += '.';
+				result += '-';
 			}
 			result.pop_back();
 			return result;
@@ -477,7 +477,7 @@ namespace REL
 			std::wstring result;
 			for (auto&& ver : _impl) {
 				result += std::to_wstring(ver);
-				result += L'.';
+				result += L'-';
 			}
 			result.pop_back();
 			return result;
