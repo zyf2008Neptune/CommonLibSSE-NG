@@ -14,16 +14,23 @@ namespace RE
 		~ImageSpaceModifierInstanceForm() override;  // 00
 
 		// override (ImageSpaceModifierInstance)
-		bool                    Unk_25(void) override;               // 25
-		void                    Apply() override;                    // 26
-		ImageSpaceModifierForm* IsForm() override;                   // 27
-		void                    PrintInfo(char* a_dstBuf) override;  // 28
+		bool                            Unk_25(void) override;               // 25
+		void                            Apply() override;                    // 26
+		ImageSpaceModifierInstanceForm* IsForm() override;                   // 27
+		void                            PrintInfo(char* a_dstBuf) override;  // 28
 
 		static ImageSpaceModifierInstanceForm* Trigger(TESImageSpaceModifier* a_imod, float a_strength, NiAVObject* a_target)
 		{
 			using func_t = decltype(&ImageSpaceModifierInstanceForm::Trigger);
 			REL::Relocation<func_t> func{ RELOCATION_ID(18185, 18570) };
 			return func(a_imod, a_strength, a_target);
+		}
+
+		static void Stop(TESImageSpaceModifier* a_imod)
+		{
+			using func_t = decltype(&ImageSpaceModifierInstanceForm::Stop);
+			REL::Relocation<func_t> func{ RELOCATION_ID(18188, 18573) };
+			return func(a_imod);
 		}
 
 		// members

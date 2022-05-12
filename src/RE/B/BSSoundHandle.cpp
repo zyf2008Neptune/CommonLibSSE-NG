@@ -12,7 +12,7 @@ namespace RE
 
 	bool BSSoundHandle::FadeOutAndRelease(std::uint16_t a_fadeTimeMS)
 	{
-		using func_t = decltype(&FadeOutAndRelease);
+		using func_t = decltype(&BSSoundHandle::FadeOutAndRelease);
 		REL::Relocation<func_t> func{ RELOCATION_ID(66385, 67646) };
 		return func(this, a_fadeTimeMS);
 	}
