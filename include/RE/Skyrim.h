@@ -909,6 +909,7 @@
 #include "RE/I/ImageSpaceEffectParam.h"
 #include "RE/I/ImageSpaceModifierInstance.h"
 #include "RE/I/ImageSpaceModifierInstanceDOF.h"
+#include "RE/I/ImageSpaceModifierInstanceForm.h"
 #include "RE/I/ImageSpaceModifierInstanceTemp.h"
 #include "RE/I/ImageSpaceShaderParam.h"
 #include "RE/I/ImpactResults.h"
