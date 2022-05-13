@@ -2,7 +2,6 @@
 
 #include "RE/B/BSFaceGenManager.h"
 #include "RE/B/BSFixedString.h"
-using namespace RE;
 
 namespace RE
 {
