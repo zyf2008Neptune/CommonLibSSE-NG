@@ -30,8 +30,6 @@ jobs:
         runtime:
           - All
           - Flatrim
-          - Current
-          - PreAE
           - AE
           - SE
           - VR
