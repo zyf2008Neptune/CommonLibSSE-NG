@@ -31,7 +31,7 @@ features) when that runtime is present.
 https://github.com/CharmedBaryon/CommonLibSSE-NG/wiki/Runtime-Targeting)
 
 ### Clang Support
-![stability-beta](https://img.shields.io/static/v1?label=stability&message=stable&color=dimgreen&style=flat)
+![stability-beta](https://img.shields.io/static/v1?label=stability&message=beta&color=yellow&style=flat)
 
 Clang 13.x and newer are supported when built for MSVC ABI compatibility (versions built natively for Windows). It is
 even hypothetically possible, with the proper setup, to cross-compile with Clang from a Linux host (testing and
