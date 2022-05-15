@@ -11,7 +11,7 @@ namespace RE
 		inline static constexpr auto VTABLE = VTABLE_AbsorbEffect;
 
 		// override (ValueModifierEffect)
-        ~AbsorbEffect() override;  // 13
+		~AbsorbEffect() override;  // 13
 
 		void ModifyOnStart() override;                                                  // 1B
 		void ModifyOnUpdate(float a_delta) override;                                    // 1D
