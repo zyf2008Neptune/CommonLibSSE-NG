@@ -33,6 +33,13 @@ namespace RE
 			return func(a_imod);
 		}
 
+		static void StopCrossFade(float a_seconds)
+		{
+			using func_t = decltype(&ImageSpaceModifierInstanceForm::StopCrossFade);
+			REL::Relocation<func_t> func{ RELOCATION_ID(18192, 18577) };
+			return func(a_seconds);
+		}
+
 		// members
 		TESImageSpaceModifier* imod;   // 28
 		std::uint64_t          unk30;  // 30
