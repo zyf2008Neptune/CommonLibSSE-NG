@@ -21,7 +21,7 @@ namespace RE
 		void          AdjustRefCount(bool a_increment) override;         // 26
 		hkpWorld*     GetWorld1() override;                              // 27 - { return world; }
 		ahkpWorld*    GetWorld2() override;                              // 28 - { return world; }
-		void          Unk_29(void) override;                             // 29
+		void          MoveToWorld(bhkWorld* a_world) override;           // 29
 
 		// add
 		virtual void Unk_32(void);  // 32 - { return Unk_29(); }

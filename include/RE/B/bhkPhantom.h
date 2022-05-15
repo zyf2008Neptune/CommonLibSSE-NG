@@ -13,8 +13,8 @@ namespace RE
 		~bhkPhantom() override;  // 00
 
 		// override (bhkWorldObject)
-		const NiRTTI* GetRTTI() const override;  // 02
-		void          Unk_2A(void) override;     // 2A
+		const NiRTTI* GetRTTI() const override;           // 02
+		void          RemoveFromCurrentWorld() override;  // 2A
 
 		// members
 		std::uint64_t unk28;  // 28
