@@ -286,7 +286,7 @@ namespace std
 {
 	[[nodiscard]] inline std::string to_string(RE::FormType a_formType)
 	{
-        return RE::FormTypeToString(a_formType).data();
+		return RE::FormTypeToString(a_formType).data();
 	}
 }
 
