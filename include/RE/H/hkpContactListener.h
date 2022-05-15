@@ -2,18 +2,18 @@
 
 namespace RE
 {
-    struct hkpCollisionEvent;
+	struct hkpCollisionEvent;
 	struct hkpContactPointEvent;
 	struct hkpContactPointAddedEvent;
 	struct hkpContactPointRemovedEvent;
 	struct hkpContactProcessEvent;
-    
+
 	class hkpContactListener
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_hkpContactListener;
 
-        // add
+		// add
 		virtual void ContactPointCallback(const hkpContactPointEvent&) {}   // 00
 		virtual void CollisionAddedCallback(const hkpCollisionEvent&) {}    // 01
 		virtual void CollisionRemovedCallback(const hkpCollisionEvent&) {}  // 02

@@ -76,7 +76,7 @@ namespace RE
 		virtual void             RemoveInstance(hkpConstraintInstance* a_constraint, hkpConstraintRuntime* a_runtime, int32_t a_sizeOfRuntime) const;  // 0F
 
 		// members
-		uint64_t userData; // 10
+		uint64_t userData;  // 10
 	};
 	static_assert(sizeof(hkpConstraintData) == 0x18);
 }

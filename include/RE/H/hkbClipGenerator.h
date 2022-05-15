@@ -2,9 +2,9 @@
 
 #include "RE/H/hkQsTransform.h"
 #include "RE/H/hkaDefaultAnimationControl.h"
-#include "RE/H/hkbGenerator.h"
 #include "RE/H/hkbContext.h"
 #include "RE/H/hkbEventBase.h"
+#include "RE/H/hkbGenerator.h"
 
 namespace RE
 {
@@ -15,11 +15,11 @@ namespace RE
 	class hkClipTrigger
 	{
 	public:
-		float              localTime;
-		hkbEventProperty   event;
-		bool               relativeToEndOfClip;
-		bool               acyclic;
-		bool               isAnnotation;
+		float            localTime;
+		hkbEventProperty event;
+		bool             relativeToEndOfClip;
+		bool             acyclic;
+		bool             isAnnotation;
 	};
 
 	class hkbClipTriggerArray : public hkReferencedObject

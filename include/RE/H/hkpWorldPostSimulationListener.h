@@ -12,8 +12,8 @@ namespace RE
 		// add
 		virtual ~hkpWorldPostSimulationListener() = default;  // 00
 
-		virtual void PostSimulationCallback(hkpWorld* a_world) = 0;                      // 01
-		virtual void InactiveEntityMovedCallback(hkpWorld*) {}  // 02
+		virtual void PostSimulationCallback(hkpWorld* a_world) = 0;  // 01
+		virtual void InactiveEntityMovedCallback(hkpWorld*) {}       // 02
 	};
 	static_assert(sizeof(hkpWorldPostSimulationListener) == 0x8);
 }

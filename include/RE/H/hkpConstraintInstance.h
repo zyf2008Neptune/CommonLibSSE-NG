@@ -26,10 +26,10 @@ namespace RE
 		}
 
 		// members
-		hkpConstraintOwner*             owner;                // 10
-		hkpConstraintData*              data;                 // 18
-		hkpModifierConstraintAtom*      constraintModifiers;  // 20
-		hkpEntity*                      entities[2];          // 28
+		hkpConstraintOwner*        owner;                // 10
+		hkpConstraintData*         data;                 // 18
+		hkpModifierConstraintAtom* constraintModifiers;  // 20
+		hkpEntity*                 entities[2];          // 28
 	};
 	static_assert(sizeof(hkpConstraintInstance) == 0x38);
 }

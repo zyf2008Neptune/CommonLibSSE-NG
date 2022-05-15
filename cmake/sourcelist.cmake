@@ -1605,13 +1605,13 @@ set(SOURCES
 	src/RE/N/NiPoint2.cpp
 	src/RE/N/NiPoint3.cpp
 	src/RE/N/NiRefObject.cpp
-	src/RE/N/NiTransform.cpp
 	src/RE/N/NiSkinInstance.cpp
 	src/RE/N/NiStringsExtraData.cpp
 	src/RE/N/NiSystem.cpp
 	src/RE/N/NiTCollection.cpp
 	src/RE/N/NiTexture.cpp
 	src/RE/N/NiTimeController.cpp
+	src/RE/N/NiTransform.cpp
 	src/RE/O/Object.cpp
 	src/RE/O/ObjectTypeInfo.cpp
 	src/RE/P/PackUnpack.cpp

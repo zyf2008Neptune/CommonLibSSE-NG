@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/H/hkpConstraintData.h"
 #include "RE/H/hkpConstraintAtom.h"
+#include "RE/H/hkpConstraintData.h"
 
 namespace RE
 {
