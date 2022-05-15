@@ -10,12 +10,6 @@ CommonLibSSE NG is a fork of CommonLibSSE which tracks upstream updates but adds
 
 ## New Features
 ### Multiple Runtime Targets
-<style>
-table, td, th, tr {
-   border: none!important;
-}
-</style>
-
 |                                      |                                                                                                              |
 |--------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | <sup><sub>Non-VR Only</sub></sup>    | ![stability-beta](https://img.shields.io/static/v1?label=stability&message=stable&color=dimgreen&style=flat) |
