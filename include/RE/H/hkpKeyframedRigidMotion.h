@@ -33,6 +33,12 @@ namespace RE
 		// add
 		virtual void SetStepPosition(float a_position, float a_timestep);  // 1A - { return; }
 		virtual void SetStoredMotion(hkpMaxSizeMotion* a_savedMotion);     // 1B
+
+		hkVector4 GetPointVelocity(const hkVector4& a_point) const
+		{
+			hkVector4 centerOfMassInWorld = motionState.sweptTransform.centerOfMass1;
+			return linearVelocity + angularVelocity.Cross(a_point - centerOfMassInWorld);
+		}
 	};
 	static_assert(sizeof(hkpKeyframedRigidMotion) == 0x140);
 

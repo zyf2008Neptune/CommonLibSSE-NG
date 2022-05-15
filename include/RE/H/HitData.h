@@ -49,8 +49,8 @@ namespace RE
 		}
 
 		// members
-		NiPoint3                              unk00;                   // 00 - hitLocation?
-		NiPoint3                              unk0C;                   // 0C - hitDirection?
+		NiPoint3                              hitPosition;             // 00
+		NiPoint3                              hitDirection;            // 0C
 		ActorHandle                           aggressor;               // 18
 		ActorHandle                           target;                  // 1C
 		ObjectRefHandle                       sourceRef;               // 20
