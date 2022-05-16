@@ -286,14 +286,15 @@ namespace RE
 		NiPointer<TESObjectREFR> GetGrabbedRef();
 		std::uint32_t            GetNumTints(std::uint32_t a_tintType);
 #ifndef SKYRIMVR
-		TintMask*            GetOverlayTintMask(TintMask* a_original);
-		BSTArray<TintMask*>& GetTintList();
-		TintMask*            GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
+		TintMask*                GetOverlayTintMask(TintMask* a_original);
+		BSTArray<TintMask*>&     GetTintList();
+		TintMask*                GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
 #endif
-		bool HasActorDoingCommand() const;
-		bool IsGrabbing() const;
-		void PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
-		void StartGrabObject();
+		bool                     HasActorDoingCommand() const;
+		bool                     IsGrabbing() const;
+		void                     PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
+		void                     SetAIDriven(bool a_enable);
+		void                     StartGrabObject();
 
 		template <class T>
 		inline BSTEventSource<T>* GetEventSource()
@@ -394,7 +395,7 @@ namespace RE
 		ActorHandle                                             lightTarget;                                  // 918
 		float                                                   sortActorDistanceTimer;                       // 91C
 		float                                                   sitHeadingDelta;                              // 920
-		std::uint32_t                                           unk924;                                       // 924
+		ObjectRefHandle                                         unk924;                                       // 924
 		Data928*                                                unk928;                                       // 928
 		std::uint32_t                                           skillTrainingsThisLevel;                      // 930
 		std::uint32_t                                           unk934;                                       // 934
@@ -443,7 +444,7 @@ namespace RE
 		std::uint32_t                                           unkAF0;                                       // AF0
 		stl::enumeration<GrabbingType, std::uint32_t>           grabType;                                     // AF4
 		std::int32_t                                            difficulty;                                   // AF8
-		std::uint32_t                                           unkAFC;                                       // AFC
+		ActorHandle                                             assumedIdentity;                              // AFC
 		std::int8_t                                             murder;                                       // B00
 		std::int8_t                                             perkCount;                                    // B01
 		stl::enumeration<ByCharGenFlag, std::uint8_t>           byCharGenFlag;                                // B02

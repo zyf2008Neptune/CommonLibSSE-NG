@@ -259,6 +259,13 @@ namespace RE
 		return currentProcess ? currentProcess->GetCharController() : nullptr;
 	}
 
+	uint32_t Actor::GetCollisionFilterInfo(uint32_t& a_outCollisionFilterInfo)
+	{
+		using func_t = decltype(&Actor::GetCollisionFilterInfo);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36559, 37560) };
+		return func(this, a_outCollisionFilterInfo);
+	}
+
 	ActorHandle Actor::GetCommandingActor() const
 	{
 		return currentProcess ? currentProcess->GetCommandingActor() : ActorHandle{};
@@ -367,6 +374,13 @@ namespace RE
 		using func_t = decltype(&Actor::GetMount);
 		REL::Relocation<func_t> func{ RELOCATION_ID(37757, 38702) };
 		return func(this, a_outMount);
+	}
+
+	bool Actor::GetMountedBy(NiPointer<Actor>& a_outRider)
+	{
+		using func_t = decltype(&Actor::GetMountedBy);
+		REL::Relocation<func_t> func{ RELOCATION_ID(37758, 38703) };
+		return func(this, a_outRider);
 	}
 
 	ObjectRefHandle Actor::GetOccupiedFurniture() const
@@ -595,6 +609,13 @@ namespace RE
 	{
 		using func_t = decltype(&Actor::IsInMidair);
 		REL::Relocation<func_t> func{ RELOCATION_ID(36259, 37243) };
+		return func(this);
+	}
+
+	bool Actor::IsInRagdollState() const
+	{
+		using func_t = decltype(&Actor::IsInRagdollState);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36492, 37491) };
 		return func(this);
 	}
 

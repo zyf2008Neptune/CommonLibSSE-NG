@@ -278,4 +278,48 @@ namespace RE
 
 		Max  //	8A
 	};
+
+	[[nodiscard]] std::string_view FormTypeToString(RE::FormType a_formType) noexcept;
 }
+
+namespace std
+{
+	[[nodiscard]] inline std::string to_string(RE::FormType a_formType)
+	{
+		return RE::FormTypeToString(a_formType).data();
+	}
+}
+
+namespace fmt
+{
+	template <>
+	struct formatter<RE::FormType>
+	{
+		template <class ParseContext>
+		constexpr auto parse(ParseContext& a_ctx)
+		{
+			return a_ctx.begin();
+		}
+
+		template <class FormatContext>
+		auto format(const RE::FormType& a_formType, FormatContext& a_ctx)
+		{
+			return fmt::format_to(a_ctx.out(), "{}", RE::FormTypeToString(a_formType));
+		}
+	};
+}
+
+#ifdef __cpp_lib_format
+namespace std
+{
+	template <class CharT>
+	struct formatter<RE::FormType, CharT> : std::formatter<std::string_view, CharT>
+	{
+		template <class FormatContext>
+		auto format(RE::FormType a_formType, FormatContext& a_ctx)
+		{
+			return formatter<std::string_view, CharT>::format(RE::FormTypeToString(a_formType), a_ctx);
+		}
+	};
+}
+#endif

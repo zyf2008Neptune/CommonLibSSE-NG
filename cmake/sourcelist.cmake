@@ -5,6 +5,7 @@ set(SOURCES
 	include/RE/A/AITimer.h
 	include/RE/A/AbsorbEffect.h
 	include/RE/A/AbstractHeap.h
+	include/RE/A/ActionInput.h
 	include/RE/A/ActivateHandler.h
 	include/RE/A/ActiveEffect.h
 	include/RE/A/ActiveEffectReferenceEffectController.h
@@ -48,6 +49,7 @@ set(SOURCES
 	include/RE/B/BGSAbilityPerkEntry.h
 	include/RE/B/BGSAcousticSpace.h
 	include/RE/B/BGSAction.h
+	include/RE/B/BGSActionData.h
 	include/RE/B/BGSActorCellEvent.h
 	include/RE/B/BGSActorEvent.h
 	include/RE/B/BGSAddonNode.h
@@ -773,9 +775,20 @@ set(SOURCES
 	include/RE/H/hkSweptTransform.h
 	include/RE/H/hkTransform.h
 	include/RE/H/hkVector4.h
+	include/RE/H/hkaAnimatedReferenceFrame.h
+	include/RE/H/hkaAnimation.h
+	include/RE/H/hkaAnimationBinding.h
+	include/RE/H/hkaAnimationControl.h
+	include/RE/H/hkaAnnotationTrack.h
+	include/RE/H/hkaDefaultAnimationControl.h
+	include/RE/H/hkaRagdollInstance.h
 	include/RE/H/hkbBehaviorGraph.h
+	include/RE/H/hkbBehaviorGraphData.h
+	include/RE/H/hkbBehaviorGraphStringData.h
 	include/RE/H/hkbBindable.h
 	include/RE/H/hkbCharacter.h
+	include/RE/H/hkbClipGenerator.h
+	include/RE/H/hkbContext.h
 	include/RE/H/hkbEvent.h
 	include/RE/H/hkbEventBase.h
 	include/RE/H/hkbGenerator.h
@@ -783,8 +796,10 @@ set(SOURCES
 	include/RE/H/hkbRagdollDriver.h
 	include/RE/H/hkbStateMachine.h
 	include/RE/H/hkp3AxisSweep.h
+	include/RE/H/hkpAction.h
 	include/RE/H/hkpAgentNnTrack.h
 	include/RE/H/hkpAllCdPointCollector.h
+	include/RE/H/hkpArrayAction.h
 	include/RE/H/hkpBoxShape.h
 	include/RE/H/hkpBroadPhase.h
 	include/RE/H/hkpBroadPhaseCastCollector.h
@@ -793,6 +808,7 @@ set(SOURCES
 	include/RE/H/hkpCachingShapePhantom.h
 	include/RE/H/hkpCapsuleShape.h
 	include/RE/H/hkpCdBody.h
+	include/RE/H/hkpCdPoint.h
 	include/RE/H/hkpCdPointCollector.h
 	include/RE/H/hkpCharacterContext.h
 	include/RE/H/hkpCharacterControl.h
@@ -803,17 +819,25 @@ set(SOURCES
 	include/RE/H/hkpClosestRayHitCollector.h
 	include/RE/H/hkpCollidable.h
 	include/RE/H/hkpCollidableCollidableFilter.h
+	include/RE/H/hkpCollisionEvent.h
 	include/RE/H/hkpCollisionFilter.h
 	include/RE/H/hkpCollisionInput.h
 	include/RE/H/hkpCompressedMeshShape.h
+	include/RE/H/hkpConstraintAtom.h
+	include/RE/H/hkpConstraintData.h
 	include/RE/H/hkpConstraintInfo.h
+	include/RE/H/hkpConstraintInstance.h
 	include/RE/H/hkpConstraintOwner.h
+	include/RE/H/hkpContactListener.h
+	include/RE/H/hkpContactPointEvent.h
 	include/RE/H/hkpConvexListFilter.h
 	include/RE/H/hkpConvexShape.h
+	include/RE/H/hkpEaseConstraintsAction.h
 	include/RE/H/hkpEntity.h
 	include/RE/H/hkpEntityListener.h
 	include/RE/H/hkpFixedRigidMotion.h
 	include/RE/H/hkpKeyframedRigidMotion.h
+	include/RE/H/hkpLimitedHingeConstraintData.h
 	include/RE/H/hkpLinearCastCollisionInput.h
 	include/RE/H/hkpLinearCastInput.h
 	include/RE/H/hkpLinkedCollidable.h
@@ -828,6 +852,7 @@ set(SOURCES
 	include/RE/H/hkpPhantomListener.h
 	include/RE/H/hkpPhantomType.h
 	include/RE/H/hkpProperty.h
+	include/RE/H/hkpRagdollConstraintData.h
 	include/RE/H/hkpRayCollidableFilter.h
 	include/RE/H/hkpRayHitCollector.h
 	include/RE/H/hkpRayShapeCollectionFilter.h
@@ -854,6 +879,7 @@ set(SOURCES
 	include/RE/H/hkpWorldCinfo.h
 	include/RE/H/hkpWorldLinearCaster.h
 	include/RE/H/hkpWorldObject.h
+	include/RE/H/hkpWorldPostSimulationListener.h
 	include/RE/H/hkpWorldRayCastInput.h
 	include/RE/H/hkpWorldRayCastOutput.h
 	include/RE/I/IAIWorldLocationHandle.h
@@ -910,6 +936,7 @@ set(SOURCES
 	include/RE/I/ImageSpaceEffectParam.h
 	include/RE/I/ImageSpaceModifierInstance.h
 	include/RE/I/ImageSpaceModifierInstanceDOF.h
+	include/RE/I/ImageSpaceModifierInstanceForm.h
 	include/RE/I/ImageSpaceModifierInstanceTemp.h
 	include/RE/I/ImageSpaceShaderParam.h
 	include/RE/I/ImpactResults.h
@@ -1200,6 +1227,7 @@ set(SOURCES
 	include/RE/Skyrim.h
 	include/RE/T/TES.h
 	include/RE/T/TESAIForm.h
+	include/RE/T/TESActionData.h
 	include/RE/T/TESActivateEvent.h
 	include/RE/T/TESActiveEffectApplyRemoveEvent.h
 	include/RE/T/TESActorBase.h
@@ -1484,6 +1512,7 @@ set(SOURCES
 	src/RE/E/ExtraSoul.cpp
 	src/RE/E/ExtraTextDisplayData.cpp
 	src/RE/E/ExtraUniqueID.cpp
+	src/RE/F/FormTypes.cpp
 	src/RE/F/FxDelegate.cpp
 	src/RE/F/FxDelegateArgs.cpp
 	src/RE/G/GAtomic.cpp
@@ -1593,6 +1622,7 @@ set(SOURCES
 	src/RE/N/NiTCollection.cpp
 	src/RE/N/NiTexture.cpp
 	src/RE/N/NiTimeController.cpp
+	src/RE/N/NiTransform.cpp
 	src/RE/O/Object.cpp
 	src/RE/O/ObjectTypeInfo.cpp
 	src/RE/P/PackUnpack.cpp
