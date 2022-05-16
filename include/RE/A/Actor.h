@@ -497,6 +497,7 @@ namespace RE
 		InventoryEntryData*          GetAttackingWeapon();
 		const InventoryEntryData*    GetAttackingWeapon() const;
 		bhkCharacterController*      GetCharController() const;
+		uint32_t                     GetCollisionFilterInfo(uint32_t& a_outCollisionFilterInfo);
 		ActorHandle                  GetCommandingActor() const;
 		TESFaction*                  GetCrimeFaction();
 		const TESFaction*            GetCrimeFaction() const;
@@ -509,6 +510,7 @@ namespace RE
 		Actor*                       GetKiller() const;
 		std::uint16_t                GetLevel() const;
 		bool                         GetMount(NiPointer<Actor>& a_outMount);
+		bool                         GetMountedBy(NiPointer<Actor>& a_outRider);
 		ObjectRefHandle              GetOccupiedFurniture() const;
 		TESRace*                     GetRace() const;
 		bool                         GetRider(NiPointer<Actor>& a_outRider);
@@ -539,6 +541,7 @@ namespace RE
 		bool                         IsLimbGone(std::uint32_t a_limb);
 		[[nodiscard]] constexpr bool IsInKillMove() const noexcept { return boolFlags.all(BOOL_FLAGS::kIsInKillMove); }
 		bool                         IsInMidair() const;
+		bool                         IsInRagdollState() const;
 		bool                         IsOnMount() const;
 		bool                         IsOverEncumbered() const;
 		bool                         IsPlayerTeammate() const;

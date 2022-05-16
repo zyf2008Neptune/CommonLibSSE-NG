@@ -417,6 +417,13 @@ namespace RE
 		return func(this);
 	}
 
+	float TESObjectREFR::GetScale() const
+	{
+		using func_t = decltype(&TESObjectREFR::GetScale);
+		REL::Relocation<func_t> func{ RELOCATION_ID(19238, 19664) };
+		return func(this);
+	}
+
 	NiControllerSequence* TESObjectREFR::GetSequence(stl::zstring a_name) const
 	{
 		auto node = Get3D();

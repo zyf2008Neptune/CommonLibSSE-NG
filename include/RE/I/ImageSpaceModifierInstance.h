@@ -6,6 +6,7 @@
 namespace RE
 {
 	class NiAVObject;
+	class ImageSpaceModifierInstanceForm;
 
 	class ImageSpaceModifierInstance : NiObject
 	{
@@ -15,10 +16,10 @@ namespace RE
 		~ImageSpaceModifierInstance() override;  // 00
 
 		// add
-		virtual void Unk_25(void);      // 25 - { return 0; }
-		virtual void Unk_26(void) = 0;  // 26
-		virtual void Unk_27(void);      // 27 - { return 0; }
-		virtual void Unk_28(void) = 0;  // 28
+		virtual bool                            Unk_25(void);                   // 25 - { return 0; }
+		virtual void                            Apply() = 0;                    // 26
+		virtual ImageSpaceModifierInstanceForm* IsForm();                       // 27 - { return 0; }
+		virtual void                            PrintInfo(char* a_dstBuf) = 0;  // 28
 
 		// members
 		std::uint32_t         unk10;     // 10

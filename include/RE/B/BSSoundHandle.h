@@ -33,6 +33,7 @@ namespace RE
 		BSSoundHandle();
 		~BSSoundHandle() = default;
 
+		bool               FadeOutAndRelease(std::uint16_t a_fadeTimeMS);
 		[[nodiscard]] bool IsValid() const;
 		bool               SetFrequency(float a_frequency);
 		bool               SetPosition(NiPoint3 a_pos);

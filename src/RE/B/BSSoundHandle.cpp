@@ -10,6 +10,13 @@ namespace RE
 		state(AssumedState::kInitialized)
 	{}
 
+	bool BSSoundHandle::FadeOutAndRelease(std::uint16_t a_fadeTimeMS)
+	{
+		using func_t = decltype(&BSSoundHandle::FadeOutAndRelease);
+		REL::Relocation<func_t> func{ RELOCATION_ID(66385, 67646) };
+		return func(this, a_fadeTimeMS);
+	}
+
 	bool BSSoundHandle::IsValid() const
 	{
 		using func_t = decltype(&BSSoundHandle::IsValid);
