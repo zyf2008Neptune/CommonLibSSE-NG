@@ -1,10 +1,9 @@
 #pragma once
 
-#include <RE/N/NiAVObject.h>
-#include <RE/N/NiGeometryData.h>
-#include <RE/N/NiProperty.h>
-#include <RE/N/NiSkinInstance.h>
-#include <cstdint>
+#include "RE/N/NiAVObject.h"
+#include "RE/N/NiGeometryData.h"
+#include "RE/N/NiProperty.h"
+#include "RE/N/NiSkinInstance.h"
 
 namespace RE
 {
