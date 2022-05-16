@@ -24,7 +24,7 @@ namespace RE
 	// flags = kPausesGame | kUsesCursor | kRendersOffscreenTargets | kCustomRendering
 	// context = kMap
 	class MapMenu :
-#if !defined(ENABLE_SKYRIM_AE) && !(ENABLE_SKYRIM_SE)
+#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 		public WorldSpaceMenu,                    // 00000
 		public BSTEventSink<MenuOpenCloseEvent>,  // 00058
 		public IMapCameraCallbacks                // 00060

@@ -19,7 +19,7 @@ namespace RE
 	// flags = kAlwaysOpen | kRequiresUpdate | kAllowSaving | kCustomRendering | kAssignCursorToRenderer
 	// context = kNone
 	class HUDMenu :
-#if !defined(ENABLE_SKYRIM_AE) && !(ENABLE_SKYRIM_SE)
+#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 		public WorldSpaceMenu,                       // 00
 		public BSTEventSink<UserEventEnabledEvent>,  // 58
 		public BSTEventSink<BSRemoteGamepadEvent>    // 60
