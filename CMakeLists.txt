@@ -179,7 +179,6 @@ if(BUILD_TESTS)
 	find_package(Catch2 CONFIG REQUIRED)
 	include(CTest)
 	include(Catch)
-	#enable_testing()
 
 	add_executable(
 		"${PROJECT_NAME}Tests"

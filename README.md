@@ -10,11 +10,11 @@ CommonLibSSE NG is a fork of CommonLibSSE which tracks upstream updates but adds
 
 ## New Features
 ### Multiple Runtime Targets
-|                                      |                                                                                                              |
-|--------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| <sup><sub>Non-VR Only</sub></sup>    | ![stability-beta](https://img.shields.io/static/v1?label=stability&message=stable&color=dimgreen&style=flat) |
-| <sup><sub>VR Only</sub></sup>        | ![stability-beta](https://img.shields.io/static/v1?label=stability&message=stable&color=dimgreen&style=flat) |
-| <sup><sub>VR and Non-VR </sub></sup> | ![stability-beta](https://img.shields.io/static/v1?label=stability&message=beta&color=yellow&style=flat)     |
+![stability-stable](https://img.shields.io/static/v1?label=stability%20(non-vr%20only)&message=stable&color=dimgreen&style=flat)
+
+![stability-stable](https://img.shields.io/static/v1?label=stability%20(vr%20only)&message=stable&color=dimgreen&style=flat)
+
+![stability-beta](https://img.shields.io/static/v1?label=stability%20(vr%20and%20non-vr)&message=beta&color=yellow&style=flat)
 
 CommonLibSSE NG has support for Skyrim SE, AE, and VR, and is able to create builds for any combination of these
 runtimes, including all three. This makes it possible to create SKSE plugins with a single DLL that works in any
@@ -93,7 +93,6 @@ project root (next to `vcpkg.json`) with the following contents:
             "baseline": "108a8b1a979f1fa4446cb5756af6b583d8491934",
             "packages": [
                 "commonlibsse-ng",
-                "commonlibsse-ng-prebuilt",
                 "commonlibsse-ng-ae",
                 "commonlibsse-ng-se",
                 "commonlibsse-ng-vr",
@@ -109,9 +108,6 @@ Then add `commonlibsse-ng` as a dependency in `vcpkg.json`. There are also runti
 * `commonlibsse-ng-se`: Supports pre-AE executables (1.5.x) only.
 * `commonlibsse-ng-vr`: Supports VR only.
 * `commonlibsse-ng-flatrim`: Support for SE/AE, but not VR.
-* `commonlibsse-ng-prebuilt`: A prebuilt binary for CommonLibSSE NG, avoids the overhead of compiling it. Recommended to
-  be used only with `x64-windows-static-md` triplet (or equivalent custom one), but can also be used with
-  `x64-windows-static` (or custom equivalent) if your project links against a compatible version of the MSVC 2022 CRT.
 
 The runtime-specific ports will not attempt to dynamically lookup the version of Skyrim at runtime, and will enable
 access to reverse engineered content that is specific to that version of Skyrim and non-portable (i.e. it does not exist
