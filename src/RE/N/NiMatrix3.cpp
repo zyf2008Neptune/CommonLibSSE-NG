@@ -5,19 +5,6 @@
 
 namespace RE
 {
-	constexpr NiMatrix3::NiMatrix3() noexcept
-	{
-		entry[0][0] = 1.0f;
-		entry[0][1] = 0.0f;
-		entry[0][2] = 0.0f;
-		entry[1][0] = 0.0f;
-		entry[1][1] = 1.0f;
-		entry[1][2] = 0.0f;
-		entry[2][0] = 0.0f;
-		entry[2][1] = 0.0f;
-		entry[2][2] = 1.0f;
-	}
-
 	NiMatrix3::NiMatrix3(const NiPoint3& a_point)
 	{
 		SetEulerAnglesXYZ(a_point);
