@@ -8,7 +8,12 @@ namespace RE
 	class NiTransform
 	{
 	public:
-		constexpr NiTransform() noexcept;
+		constexpr NiTransform() noexcept
+		{
+			translate = { 0.f, 0.f, 0.f };
+			rotate = NiMatrix3();
+			scale = 1.0f;
+		}
 
 		NiTransform Invert() const;
 
