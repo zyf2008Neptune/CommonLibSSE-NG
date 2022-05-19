@@ -78,19 +78,51 @@ TEST_CASE("Version/std::format")
 	CHECK(std::format("Hello {}", SKSE::RUNTIME_SSE_1_5_97) == "Hello 1.5.97.0");
 }
 
+TEST_CASE("Version/StringConstructor")
+{
+	SECTION("Handles good input")
+	{
+		CHECK(REL::Version("3") == REL::Version{ 3 });
+		CHECK(REL::Version("3.6") == REL::Version{ 3, 6 });
+		CHECK(REL::Version("3.6.123") == REL::Version{ 3, 6, 123 });
+		constexpr auto version = REL::Version("3.6.123.41");
+		CHECK(version == REL::Version{ 3, 6, 123, 41 });
+	}
+	SECTION("Throws exception on too many parts")
+	{
+		CHECK_THROWS(REL::Version("3.6.123.41.456"));
+	}
+	SECTION("Throws exception on invalid character")
+	{
+		CHECK_THROWS(REL::Version("3.6.123.abc"));
+	}
+}
+
 TEST_CASE("Version/StringLiteral")
 {
-	CHECK("3"_v == REL::Version{ 3 });
-	CHECK("3.6"_v == REL::Version{ 3, 6 });
-	CHECK("3.6.123"_v == REL::Version{ 3, 6, 123 });
-	CHECK("3.6.123.41"_v == REL::Version{ 3, 6, 123, 41 });
-	CHECK_THROWS("3.6.123.41.456"_v);
+	SECTION("Handles good input")
+	{
+		CHECK("3"_v == REL::Version{ 3 });
+		CHECK("3.6"_v == REL::Version{ 3, 6 });
+		CHECK("3.6.123"_v == REL::Version{ 3, 6, 123 });
+		constexpr auto version = "3.6.123.41"_v;
+		CHECK(version == REL::Version{ 3, 6, 123, 41 });
+	}
+	SECTION("Throws exception on too many parts")
+	{
+		CHECK_THROWS("3.6.123.41.456"_v);
+	}
+	SECTION("Throws exception on invalid character")
+	{
+		CHECK_THROWS("3.6.123.abc"_v);
+	}
 }
 
 TEST_CASE("Version/NumberLiteral")
 {
 	CHECK(33_v == REL::Version{ 33 });
-	CHECK(33.678_v == REL::Version{ 33, 678 });
+	constexpr auto version = 33.678_v;
+	CHECK(version == REL::Version{ 33, 678 });
 }
 
 TEST_CASE("Version/Iterator")
