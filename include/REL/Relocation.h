@@ -483,14 +483,14 @@ namespace REL
 			return result;
 		}
 
-		[[nodiscard]] static Version unpack(std::uint32_t a_packedVersion) noexcept
+		[[nodiscard]] static constexpr Version unpack(std::uint32_t a_packedVersion) noexcept
 		{
-			Version result;
-			result._impl[0] = static_cast<value_type>((a_packedVersion >> 24) & 0x0FF);
-			result._impl[1] = static_cast<value_type>((a_packedVersion >> 16) & 0x0FF);
-			result._impl[2] = static_cast<value_type>((a_packedVersion >> 4) & 0xFFF);
-			result._impl[3] = static_cast<value_type>(a_packedVersion & 0x0F);
-			return result;
+			return REL::Version{
+				static_cast<value_type>((a_packedVersion >> 24) & 0x0FF),
+				static_cast<value_type>((a_packedVersion >> 16) & 0x0FF),
+				static_cast<value_type>((a_packedVersion >> 4) & 0xFFF),
+				static_cast<value_type>(a_packedVersion & 0x0F)
+			};
 		}
 
 	private:
@@ -499,6 +499,76 @@ namespace REL
 
 	[[nodiscard]] constexpr bool                 operator==(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs) == std::strong_ordering::equal; }
 	[[nodiscard]] constexpr std::strong_ordering operator<=>(const Version& a_lhs, const Version& a_rhs) noexcept { return a_lhs.compare(a_rhs); }
+
+	namespace literals
+	{
+		namespace detail
+		{
+			struct version_literal
+			{
+				version_literal(const char* str, std::size_t len)
+				{
+
+				}
+			};
+
+			template <std::size_t Index, char C>
+			constexpr uint8_t read_version(std::array<typename REL::Version::value_type, 4>& result) {
+				static_assert(C >= '0' && C <= '9', "Invalid character in semantic version literal.");
+				static_assert(Index < 4, "Too many components in semantic version literal.");
+				result[Index] += (C - '0');
+				return 10;
+			}
+
+			template <std::size_t Index, char C, char... Rest>
+				requires (sizeof...(Rest) > 0)
+			constexpr uint8_t read_version(std::array<typename REL::Version::value_type, 4>& result) {
+				static_assert(C == '.' || (C >= '0' && C <= '9'), "Invalid character in semantic version literal.");
+				static_assert(Index < 4, "Too many components in semantic version literal.");
+				if constexpr (C == '.') {
+					read_version<Index + 1, Rest...>(result);
+					return 1;
+				} else {
+					auto position = read_version<Index, Rest...>(result);
+					result[Index] += (C - '0') * position;
+					return position * 10;
+				}
+			}
+		}
+
+		template <char... C>
+		[[nodiscard]] constexpr REL::Version operator ""_v() noexcept {
+			std::array<typename REL::Version::value_type, 4> result{0, 0, 0, 0};
+			detail::read_version<0, C...>(result);
+			return REL::Version(result);
+		}
+
+		[[nodiscard]] constexpr REL::Version operator ""_v(const char* str, std::size_t len) {
+			std::array<std::size_t, 4> powers{ 1, 1, 1, 1 };
+			std::size_t position = 0;
+			for (std::size_t i = 0; i < len; ++i) {
+				if (str[i] == '.') {
+					if (++position == powers.size()) {
+						throw std::invalid_argument("Too many parts in version literal.");
+					}
+				} else {
+					powers[position] *= 10;
+				}
+			}
+
+			std::array<typename REL::Version::value_type, 4> values{};
+			position = 0;
+			for (std::size_t i = 0; i < len; ++i) {
+				if (str[i] == '.') {
+					++position;
+				} else {
+					powers[position] /= 10;
+					values[position] += (str[i] - '0') * powers[position];
+				}
+			}
+			return REL::Version(values);
+		}
+	}
 
 	[[nodiscard]] inline std::optional<Version> get_file_version(stl::zwstring a_filename)
 	{
@@ -801,11 +871,11 @@ namespace REL
 				}
 				return true;
 			}
-            return stl::report_and_error(
-                fmt::format(
-                    "Failed to obtain file version info for: {}\n"
-                    "Please contact the author of this script extender plugin for further assistance."sv,
-                    stl::utf16_to_utf8(_filename).value_or("<unicode conversion error>"s)), a_failOnError);
+			return stl::report_and_error(
+				fmt::format(
+					"Failed to obtain file version info for: {}\n"
+					"Please contact the author of this script extender plugin for further assistance."sv,
+					stl::utf16_to_utf8(_filename).value_or("<unicode conversion error>"s)), a_failOnError);
 		}
 
 		void clear();
@@ -1097,14 +1167,14 @@ namespace REL
 						return a_lhs.id < a_rhs.id;
 					});
 			} catch (const std::system_error&) {
-                return stl::report_and_error(
-                    fmt::format(
-                        "Failed to locate an appropriate address library with the path: {}\n"
-                        "This means you are missing the address library for this specific version of "
-                        "the game. Please continue to the mod page for address library to download "
-                        "an appropriate version. If one is not available, then it is likely that "
-                        "address library has not yet added support for this version of the game."sv,
-                        stl::utf16_to_utf8(a_filename).value_or("<unknown filename>"s)), a_failOnError);
+				return stl::report_and_error(
+					fmt::format(
+						"Failed to locate an appropriate address library with the path: {}\n"
+						"This means you are missing the address library for this specific version of "
+						"the game. Please continue to the mod page for address library to download "
+						"an appropriate version. If one is not available, then it is likely that "
+						"address library has not yet added support for this version of the game."sv,
+						stl::utf16_to_utf8(a_filename).value_or("<unknown filename>"s)), a_failOnError);
 				return false;
 			}
 			return true;
@@ -1141,7 +1211,7 @@ namespace REL
 			while (in.read_row(id, offset)) {
 				if (index >= address_count) {
 					return stl::report_and_error(fmt::format("VR Address Library {} tried to exceed {} allocated entries."sv,
-											  version, address_count), a_failOnError);
+													 version, address_count), a_failOnError);
 				}
 				_id2offset[index++] = { static_cast<std::uint64_t>(id),
 					static_cast<std::uint64_t>(std::stoul(offset, nullptr, 16)) };

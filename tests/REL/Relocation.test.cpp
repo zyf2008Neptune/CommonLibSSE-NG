@@ -4,6 +4,8 @@
 #include "REL/Relocation.h"
 #include "SKSE/SKSE.h"
 
+using namespace REL::literals;
+
 TEST_CASE("Version/DefaultConstructor")
 {
 	REL::Version v;
@@ -74,6 +76,21 @@ TEST_CASE("Version/fmt::format")
 TEST_CASE("Version/std::format")
 {
 	CHECK(std::format("Hello {}", SKSE::RUNTIME_SSE_1_5_97) == "Hello 1.5.97.0");
+}
+
+TEST_CASE("Version/StringLiteral")
+{
+	CHECK("3"_v == REL::Version{ 3 });
+	CHECK("3.6"_v == REL::Version{ 3, 6 });
+	CHECK("3.6.123"_v == REL::Version{ 3, 6, 123 });
+	CHECK("3.6.123.41"_v == REL::Version{ 3, 6, 123, 41 });
+	CHECK_THROWS("3.6.123.41.456"_v);
+}
+
+TEST_CASE("Version/NumberLiteral")
+{
+	CHECK(33_v == REL::Version{ 33 });
+	CHECK(33.678_v == REL::Version{ 33, 678 });
 }
 
 TEST_CASE("Version/Iterator")
@@ -223,7 +240,7 @@ TEST_CASE("Module/SupportsSkyrimVR")
 	SECTION("Lookup by ID returns the correct offset")
 	{
 		CHECK(REL::IDDatabase::get().id2offset(11483) == 0x11fba0);
-    }
+	}
 	SECTION("REL::ID gets correct address and offset")
 	{
 		REL::ID id(11483);
