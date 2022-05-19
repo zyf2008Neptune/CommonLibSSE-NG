@@ -77,5 +77,6 @@ jobs:
           key: Debug-All-MSVC-${{ github.sha }}
 
       - name: Run unit tests
+        timeout-minutes: 5
         working-directory: ${{ github.workspace }}/main
         run: ctest --preset Unit-Tests
