@@ -323,7 +323,7 @@ namespace RE
 		{
 #define GAME_STATE_DATA_CONTENT                                          \
 	std::int32_t                                  difficulty;    /* 0 */ \
-	std::uint32_t                                 unk4;          /* 4 */ \
+	ActorHandle                                   assumedIdentity;  /* 4 */ \
 	std::int8_t                                   murder;        /* 8 */ \
 	std::int8_t                                   perkCount;     /* 9 */ \
 	stl::enumeration<ByCharGenFlag, std::uint8_t> byCharGenFlag; /* A */ \
@@ -412,7 +412,7 @@ namespace RE
 	ActorHandle                lightTarget;                                 /* 048 */ \
 	float                      sortActorDistanceTimer;                      /* 04C */ \
 	float                      sitHeadingDelta;                             /* 050 */ \
-	std::uint32_t              unk054;                                      /* 054 */ \
+	ObjectRefHandle            unk054;                                      /* 054 */ \
 	Data928*                   unk058;                                      /* 058 */ \
 	std::uint32_t              skillTrainingsThisLevel;                     /* 060 */ \
 	std::uint32_t              unk064;                                      /* 064 */ \
@@ -476,10 +476,10 @@ namespace RE
 		[[nodiscard]] TintMask*                GetOverlayTintMask(TintMask* a_original);
 		[[nodiscard]] BSTArray<TintMask*>*     GetTintList();
 		[[nodiscard]] TintMask*                GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
-
 		[[nodiscard]] bool HasActorDoingCommand() const;
 		[[nodiscard]] bool IsGrabbing() const;
 		void               PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
+		void                     SetAIDriven(bool a_enable);
 		void               StartGrabObject();
 
 		template <class T>

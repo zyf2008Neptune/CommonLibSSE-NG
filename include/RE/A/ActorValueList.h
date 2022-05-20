@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/A/ActorValues.h"
 #include "RE/A/ActorValueInfo.h"
+#include "RE/A/ActorValues.h"
 
 namespace RE
 {

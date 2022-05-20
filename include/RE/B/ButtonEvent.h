@@ -3,6 +3,7 @@
 #include "RE/B/BSFixedString.h"
 #include "RE/I/IDEvent.h"
 #include "RE/I/InputEvent.h"
+#include "RE/M/MemoryManager.h"
 
 namespace RE
 {
@@ -10,6 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ButtonEvent;
+		inline static constexpr auto VTABLE = VTABLE_ButtonEvent;
 
 		~ButtonEvent() override;  // 00
 
@@ -24,6 +26,23 @@ namespace RE
 		// members
 		float value;         // 28
 		float heldDownSecs;  // 2C
+
+		static ButtonEvent* Create(INPUT_DEVICE a_inputDevice, const BSFixedString& a_userEvent, uint32_t a_idCode, float a_value, float a_heldDownSecs)
+		{
+			auto buttonEvent = malloc<ButtonEvent>(sizeof(ButtonEvent));
+			std::memset(reinterpret_cast<void*>(buttonEvent), 0, sizeof(ButtonEvent));
+			if (buttonEvent) {
+				stl::emplace_vtable<ButtonEvent>(buttonEvent);
+				buttonEvent->device = a_inputDevice;
+				buttonEvent->eventType = INPUT_EVENT_TYPE::kButton;
+				buttonEvent->next = nullptr;
+				buttonEvent->userEvent = a_userEvent;
+				buttonEvent->idCode = a_idCode;
+				buttonEvent->value = a_value;
+				buttonEvent->heldDownSecs = a_heldDownSecs;
+			}
+			return buttonEvent;
+		}
 	};
 	static_assert(sizeof(ButtonEvent) == 0x30);
 }
