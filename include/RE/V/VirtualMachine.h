@@ -89,7 +89,7 @@ namespace RE
 #ifdef SKYRIMVR
 				void New_1B(void) override;  // added in VR 1.4.15
 #endif
-				void ForEachBoundObject(VMHandle a_handle, IForEachScriptObjectFunctor* a_functor) override;                                                         // 1C
+				void ForEachBoundObject(VMHandle a_handle, IForEachScriptObjectFunctor* a_functor) override;  // 1C
 #ifdef SKYRIMVR
 				void New_1D(void) override;  // added in VR 1.4.15
 #endif
