@@ -69,10 +69,12 @@ namespace RE
 			virtual bool CreateArray2(TypeInfo::RawType a_typeID, const BSFixedString& a_className, std::uint32_t a_size, BSTSmartPointer<Array>& a_arrayPtr) = 0;  // 17
 			virtual bool BindNativeMethod(IFunction* a_fn) = 0;                                                                                                     // 18
 			virtual void SetCallableFromTasklets1(const char* a_className, const char* a_stateName, const char* a_fnName, bool a_callable) = 0;                     // 19
-			virtual void SetCallableFromTasklets2(const char* a_className, const char* a_fnName, bool a_callable) = 0;                                              // 1A
-			virtual void ForEachBoundObject(VMHandle a_handle, IForEachScriptObjectFunctor* a_functor) = 0;                                                         // 1B
+			virtual void SetCallableFromTasklets2(const char* a_className, const char* a_fnName, bool a_callable) = 0; 												// 1A
 #ifdef SKYRIMVR
-			virtual void New_1C(void) = 0;  // added in VR 1.4.15
+			virtual void New_1B(void) = 0;  // added in VR 1.4.15
+#endif                                             
+			virtual void ForEachBoundObject(VMHandle a_handle, IForEachScriptObjectFunctor* a_functor) = 0;                                                         // 1C
+#ifdef SKYRIMVR
 			virtual void New_1D(void) = 0;  // added in VR 1.4.15
 #endif
 			virtual bool                       FindBoundObject(VMHandle a_handle, const char* a_className, BSTSmartPointer<Object>& a_result) const = 0;                                                                                   // 1C
