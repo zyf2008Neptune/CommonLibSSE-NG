@@ -25,8 +25,8 @@ namespace SKSE
 	constexpr REL::Version RUNTIME_SSE_1_6_342(1, 6, 342, 0);
 	constexpr REL::Version RUNTIME_SSE_1_6_353(1, 6, 353, 0);
 	constexpr auto         RUNTIME_SSE_LATEST_AE = RUNTIME_SSE_1_6_353;
-	constexpr auto         RUNTIME__SSE_LATEST_SE = RUNTIME_SSE_1_5_97;
-	constexpr auto         RUNTIME__SSE_LATEST = RUNTIME_SSE_LATEST_AE;
+	constexpr auto         RUNTIME_SSE_LATEST_SE = RUNTIME_SSE_1_5_97;
+	constexpr auto         RUNTIME_SSE_LATEST = RUNTIME_SSE_LATEST_AE;
 
 	constexpr REL::Version RUNTIME_VR_1_4_15(1, 4, 15, 0);
 	constexpr auto         RUNTIME_LATEST_VR = RUNTIME_VR_1_4_15;
