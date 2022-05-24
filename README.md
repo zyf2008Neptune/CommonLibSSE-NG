@@ -10,11 +10,7 @@ CommonLibSSE NG is a fork of CommonLibSSE which tracks upstream updates but adds
 
 ## New Features
 ### Multiple Runtime Targets
-![stability-stable](https://img.shields.io/static/v1?label=stability%20(non-vr%20only)&message=stable&color=dimgreen&style=flat)
-
-![stability-stable](https://img.shields.io/static/v1?label=stability%20(vr%20only)&message=stable&color=dimgreen&style=flat)
-
-![stability-beta](https://img.shields.io/static/v1?label=stability%20(vr%20and%20non-vr)&message=beta&color=yellow&style=flat)
+![stability](https://img.shields.io/static/v1?label=stability&message=stable&color=dimgreen&style=flat)
 
 CommonLibSSE NG has support for Skyrim SE, AE, and VR, and is able to create builds for any combination of these
 runtimes, including all three. This makes it possible to create SKSE plugins with a single DLL that works in any
@@ -35,14 +31,14 @@ https://github.com/CharmedBaryon/CommonLibSSE-NG/wiki/Runtime-Targeting)
 
 Clang 13.x and newer are supported when built for MSVC ABI compatibility (versions built natively for Windows). It is
 even hypothetically possible, with the proper setup, to cross-compile with Clang from a Linux host (testing and
-instructions for this are pending). Note that currently linking must still be done with the Microsoft linker, although
-support for LLVM's linker is being worked on.
+instructions for this are pending). Note that currently linking must still be done with the Microsoft linker, pending
+fixes to SKSE itself.
 
 [Read more on
 the project wiki.](https://github.com/CharmedBaryon/CommonLibSSE-NG/wiki/Compiling-with-Clang)
 
 ### Unit Testing Enhancements
-![stability-alpha](https://img.shields.io/static/v1?label=stability&message=experimental&color=orange&style=flat)
+![stability-beta](https://img.shields.io/static/v1?label=stability&message=beta&color=yellow&style=flat)
 
 Improvements have been made to the way in which the Skyrim executable module is accessed for the sake of memory
 relocation and handling of Address Library IDs. This makes it easier to run CommonLibSSE-based plugin code outside of
@@ -90,7 +86,7 @@ project root (next to `vcpkg.json`) with the following contents:
             "kind": "git",
             "repository": "https://gitlab.com/colorglass/vcpkg-colorglass",
             // Update this baseline to the latest commit from the above repo.
-            "baseline": "1a1a3c1ff3fc853cf7adf8c3475109763011d906",
+            "baseline": "0f58c21b7a7cc96c1ff7bd949c9f4530b514625d",
             "packages": [
                 "commonlibsse-ng",
                 "commonlibsse-ng-ae",
