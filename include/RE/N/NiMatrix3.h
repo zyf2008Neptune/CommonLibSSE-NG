@@ -7,7 +7,18 @@ namespace RE
 	class NiMatrix3
 	{
 	public:
-		constexpr NiMatrix3() noexcept;
+		constexpr NiMatrix3() noexcept
+		{
+			entry[0][0] = 1.0f;
+			entry[0][1] = 0.0f;
+			entry[0][2] = 0.0f;
+			entry[1][0] = 0.0f;
+			entry[1][1] = 1.0f;
+			entry[1][2] = 0.0f;
+			entry[2][0] = 0.0f;
+			entry[2][1] = 0.0f;
+			entry[2][2] = 1.0f;
+		}
 
 		NiMatrix3(const NiPoint3& a_point);
 		NiMatrix3(float a_x, float a_y, float a_z);

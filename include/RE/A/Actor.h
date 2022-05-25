@@ -498,7 +498,7 @@ namespace RE
 		const InventoryEntryData*    GetAttackingWeapon() const;
 		bhkCharacterController*      GetCharController() const;
 		uint32_t                     GetCollisionFilterInfo(uint32_t& a_outCollisionFilterInfo);
-		ActorHandle                  GetCommandingActor() const;
+		NiPointer<Actor>             GetCommandingActor() const;
 		TESFaction*                  GetCrimeFaction();
 		const TESFaction*            GetCrimeFaction() const;
 		InventoryEntryData*          GetEquippedEntryData(bool a_leftHand) const;

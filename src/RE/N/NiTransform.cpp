@@ -2,13 +2,6 @@
 
 namespace RE
 {
-	constexpr NiTransform::NiTransform() noexcept
-	{
-		translate = { 0.f, 0.f, 0.f };
-		rotate = NiMatrix3();
-		scale = 1.0f;
-	}
-
 	NiTransform NiTransform::Invert() const
 	{
 		NiTransform ret;
