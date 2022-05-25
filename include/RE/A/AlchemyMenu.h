@@ -29,6 +29,37 @@ namespace RE
 			};
 			static_assert(sizeof(QuitMenuCallback) == 0x18);
 
+			class UsableEffectMap
+			{
+			public:
+				std::uint32_t ingredientIndex;               // 00
+				std::uint32_t effectIndex;                   // 04
+				std::uint32_t nextCompatibleEffectMapIndex;  // 08
+			};
+			static_assert(sizeof(UsableEffectMap) == 0xC);
+
+			class MenuIngredientEntry
+			{
+			public:
+				RE::InventoryEntryData* ingredient;       // 00
+				std::uint8_t            effect1FilterID;  // 09
+				std::uint8_t            effect2FilterID;  // 0A
+				std::uint8_t            effect3FilterID;  // 0B
+				std::uint8_t            effect4FilterID;  // 0C
+				std::uint8_t            isSelected;       // 0D
+				std::uint8_t            isNotGreyed;      // 0E
+				std::uint16_t           padE;             // 0F
+			};
+			static_assert(sizeof(MenuIngredientEntry) == 0x10);
+
+			class PotionCreationData
+			{
+			public:
+				BSTArray<UsableEffectMap>      usableEffectsMaps;  // 0
+				BSTArray<MenuIngredientEntry>* ingredientEntries;  // 18
+			};
+			static_assert(sizeof(PotionCreationData) == 0x20);
+
 			virtual ~AlchemyMenu();  // 00
 
 			// override (CraftingSubMenu)
@@ -36,18 +67,17 @@ namespace RE
 			virtual void Unk_05(void) override;                        // 05
 
 			// members
-			BSTArray<void*> unk100;  // 100
-			BSTArray<void*> unk118;  // 118
-			std::uint64_t   unk130;  // 130
-			BSTArray<void*> unk138;  // 138
-			std::uint64_t   unk150;  // 150
-			GFxValue        unk158;  // 158
-			std::uint64_t   unk170;  // 170
-			TESForm*        unk178;  // 178
-			TESForm*        unk180;  // 180
-			std::uint64_t   unk188;  // 188
-			BSFixedString   unk190;  // 190
-			std::uint64_t   unk198;  // 198
+			BSTArray<MenuIngredientEntry> ingredientEntries;      // 100
+			BSTArray<void*>               unk118;                 // 118
+			std::uint64_t                 unk130;                 // 130
+			PotionCreationData            potionCreationData;     // 138
+			GFxValue                      unk158;                 // 158
+			std::uint64_t                 unk170;                 // 170
+			TESForm*                      unk178;                 // 178
+			TESForm*                      unk180;                 // 180
+			std::uint64_t                 unk188;                 // 188
+			BSFixedString                 newRecipeFormatString;  // 190
+			std::uint64_t                 playerHasPurityPerk;    // 198
 		};
 		static_assert(sizeof(AlchemyMenu) == 0x1A0);
 	}
