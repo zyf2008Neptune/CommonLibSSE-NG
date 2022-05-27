@@ -502,7 +502,7 @@ namespace RE
 		[[nodiscard]] const InventoryEntryData* GetAttackingWeapon() const;
 		[[nodiscard]] bhkCharacterController*   GetCharController() const;
 		[[nodiscard]] uint32_t                  GetCollisionFilterInfo(uint32_t& a_outCollisionFilterInfo);
-		[[nodiscard]] ActorHandle               GetCommandingActor() const;
+		[[nodiscard]] NiPointer<Actor>          GetCommandingActor() const;
 		[[nodiscard]] TESFaction*               GetCrimeFaction();
 		[[nodiscard]] const TESFaction*         GetCrimeFaction() const;
 		[[nodiscard]] InventoryEntryData*       GetEquippedEntryData(bool a_leftHand) const;

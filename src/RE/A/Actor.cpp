@@ -274,9 +274,9 @@ namespace RE
 		return func(this, a_outCollisionFilterInfo);
 	}
 
-	ActorHandle Actor::GetCommandingActor() const
+	NiPointer<Actor> Actor::GetCommandingActor() const
 	{
-		return currentProcess ? currentProcess->GetCommandingActor() : ActorHandle{};
+		return currentProcess ? currentProcess->GetCommandingActor().get() : NiPointer<Actor>{};
 	}
 
 	TESFaction* Actor::GetCrimeFaction()
