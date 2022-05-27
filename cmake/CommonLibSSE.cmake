@@ -118,7 +118,7 @@ function(add_commonlibsse_plugin TARGET)
 
     target_sources("${TARGET}" PRIVATE "${commonlibsse_plugin_file}")
     target_compile_definitions("${TARGET}" PRIVATE __CMAKE_COMMONLIBSSE_PLUGIN=1)
-    target_link_libraries("${TARGET}" PRIVATE CommonLibSSE::CommonLibSSE)
+    target_link_libraries("${TARGET}" PUBLIC CommonLibSSE::CommonLibSSE)
     set_property(TARGET "${TARGET}"
             APPEND PROPERTY ADDITIONAL_CLEAN_FILES "${commonlibsse_plugin_file}")
 endfunction()
