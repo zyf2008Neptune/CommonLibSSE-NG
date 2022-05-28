@@ -28,18 +28,18 @@ namespace RE
 		~BeamProjectile() override;  // 00
 
 		// override (Projectile)
-		void SaveGame(BGSSaveFormBuffer* a_buf) override;        // 0E
-		void LoadGame(BGSLoadFormBuffer* a_buf) override;        // 0F
-		void InitLoadGame(BGSLoadFormBuffer* a_buf) override;    // 10
-		void FinishLoadGame(BGSLoadFormBuffer* a_buf) override;  // 11
-		void Revert(BGSLoadFormBuffer* a_buf) override;          // 12
-		void Unk_A5(void) override;                              // A5
-		void Unk_A9(void) override;                              // A9
-		void UpdateImpl(float a_delta) override;                 // AB
-		void Unk_B8(void) override;                              // B8
-		void Unk_BD(void) override;                              // BD
-		void Handle3DLoaded() override;                          // C0
-		void Unk_C1(void) override;                              // C1
+		void SaveGame(BGSSaveFormBuffer* a_buf) override;                                                                                                                                // 0E
+		void LoadGame(BGSLoadFormBuffer* a_buf) override;                                                                                                                                // 0F
+		void InitLoadGame(BGSLoadFormBuffer* a_buf) override;                                                                                                                            // 10
+		void FinishLoadGame(BGSLoadFormBuffer* a_buf) override;                                                                                                                          // 11
+		void Revert(BGSLoadFormBuffer* a_buf) override;                                                                                                                                  // 12
+		bool IsBeamProjectile() override;                                                                                                                                                // A5
+		void Process3D() override;                                                                                                                                                       // A9
+		void UpdateImpl(float a_delta) override;                                                                                                                                         // AB
+		bool GetKillOnCollision() override;                                                                                                                                              // B8
+		void AddImpact(TESObjectREFR* a_ref, const NiPoint3& a_targetLoc, const NiPoint3& a_velocity, hkpCollidable* a_collidable, std::int32_t a_arg6, std::uint32_t a_arg7) override;  // BD
+		void Handle3DLoaded() override;                                                                                                                                                  // C0
+		bool ShouldUseDesiredTarget() override;                                                                                                                                          // C1
 
 		// override (BSTEventSink<BSProceduralGeomEvent>)
 		BSEventNotifyControl ProcessEvent(const BSProceduralGeomEvent* a_event, BSTEventSource<BSProceduralGeomEvent>* a_eventSource) override;  // 01
