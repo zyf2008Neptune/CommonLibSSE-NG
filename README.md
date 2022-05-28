@@ -38,9 +38,12 @@ plugin.
 ```cmake
 find_package(CommonLibSSE REQUIRED)
 
-add_commonlibsse_project(${PROJECT_NAME}
+add_commonlibsse_plugin(${PROJECT_NAME}
     SOURCES ${headers} ${sources})
 ```
+
+[Read more on
+the project wiki.](https://github.com/CharmedBaryon/CommonLibSSE-NG/wiki/Runtime-Targeting#cmake-integration)
 
 ### Clang Support
 ![stability-beta](https://img.shields.io/static/v1?label=stability&message=beta&color=yellow&style=flat)
