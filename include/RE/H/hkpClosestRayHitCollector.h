@@ -17,7 +17,7 @@ namespace RE
 			stl::emplace_vtable<hkpClosestRayHitCollector>(this);
 		}
 
-        // override (hkpRayHitCollector)
+		// override (hkpRayHitCollector)
 		void AddRayHit(const hkpCdBody& a_body, const hkpShapeRayCastCollectorOutput& a_hitInfo) override;  // 01
 
 		~hkpClosestRayHitCollector() override = default;  // 00

@@ -30,7 +30,7 @@ namespace RE
 		virtual void Unk_34(void);  // 34 - { return 0; }
 		virtual void Unk_35(void);  // 35
 
-        [[nodiscard]] MATERIAL_ID GetMaterialID(hkpShapeKey a_key) const
+		[[nodiscard]] MATERIAL_ID GetMaterialID(hkpShapeKey a_key) const
 		{
 			using func_t = decltype(&bhkShape::GetMaterialID);
 			REL::Relocation<func_t> func{ RELOCATION_ID(76799, 78676) };
