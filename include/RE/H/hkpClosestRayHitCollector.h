@@ -11,10 +11,24 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_hkpClosestRayHitCollector;
 		inline static constexpr auto VTABLE = VTABLE_hkpClosestRayHitCollector;
 
-		// override (hkpRayHitCollector)
+		hkpClosestRayHitCollector() noexcept :
+			hkpRayHitCollector()
+		{
+			stl::emplace_vtable<hkpClosestRayHitCollector>(this);
+		}
+
+        // override (hkpRayHitCollector)
 		void AddRayHit(const hkpCdBody& a_body, const hkpShapeRayCastCollectorOutput& a_hitInfo) override;  // 01
 
-		~hkpClosestRayHitCollector() override;  // 00
+		~hkpClosestRayHitCollector() override = default;  // 00
+
+		constexpr bool HasHit() noexcept { return rayHit.HasHit(); }
+
+		constexpr void Reset() noexcept
+		{
+			hkpRayHitCollector::Reset();
+			rayHit.Reset();
+		}
 
 		// members
 		hkpWorldRayCastOutput rayHit;  // 10
