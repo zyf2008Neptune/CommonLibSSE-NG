@@ -69,7 +69,7 @@ namespace RE
 		Projectile* AsProjectile() override;                                               // 8F - { return this; }
 		bool        OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 90 - { return false; }
 #else
-		NiNode*     GetFireNode() override;                                               // 8C
+		NiNode*     GetFireNode() override;                                                // 8C
 		Projectile* AsProjectile() override;                                               // 90 - { return this; }
 		bool        OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 91 - { return false; }
 #endif
