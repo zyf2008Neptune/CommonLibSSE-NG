@@ -15,6 +15,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkWorld;
 		inline static constexpr auto Ni_RTTI = NiRTTI_bhkWorld;
+		inline static constexpr auto VTABLE = VTABLE_bhkWorld;
 
 		class bhkConstraintProjector;
 
@@ -40,13 +41,13 @@ namespace RE
 
 		static float GetWorldScale()
 		{
-			REL::Relocation<float*> worldScale{ REL::ID(231896) };
+			REL::Relocation<float*> worldScale{ RELOCATION_ID(231896, 188105) };
 			return *worldScale;
 		}
 
 		static float GetWorldScaleInverse()
 		{
-			REL::Relocation<float*> worldScaleInverse{ REL::ID(230692) };
+			REL::Relocation<float*> worldScaleInverse{ RELOCATION_ID(230692, 187407) };
 			return *worldScaleInverse;
 		}
 

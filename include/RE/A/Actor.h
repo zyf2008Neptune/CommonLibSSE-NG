@@ -291,8 +291,8 @@ namespace RE
 		bool                    DetachHavok(NiAVObject* a_obj3D) override;                                                                                                                                                                            // 065
 		void                    InitHavok() override;                                                                                                                                                                                                 // 066
 		void                    Unk_67(void) override;                                                                                                                                                                                                // 067 - related to vampire lord cape
-		void                    Unk_68(void) override;                                                                                                                                                                                                // 068
-		void                    Unk_69(void) override;                                                                                                                                                                                                // 069
+		void                    Unk_68(void) override;                                                                                                                                                                                                // 068 - verlet physics
+		void                    Unk_69(void) override;                                                                                                                                                                                                // 069 - verlet physics
 		NiAVObject*             Load3D(bool a_arg1) override;                                                                                                                                                                                         // 06A
 		void                    Set3D(NiAVObject* a_object, bool a_queue3DTasks = true) override;                                                                                                                                                     // 06C
 		bool                    PopulateGraphProjectsToLoad(void) const override;                                                                                                                                                                     // 072
@@ -313,13 +313,13 @@ namespace RE
 		void     SetActionComplete(bool a_set) override;                                                        // 087
 		void     Disable() override;                                                                            // 089
 		void     ResetInventory(bool a_leveledOnly) override;                                                   // 08A
-		void     Unk_8B(void) override;                                                                         // 08B
-		void     Unk_8C(void) override;                                                                         // 08C
+		NiNode*  GetFireNode() override;                                                                        // 08B
+		void     SetFireNode(NiNode* a_fireNode) override;                                                      // 08C
 		bool     OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;                          // 090
 		void     DoMoveToHigh() override;                                                                       // 091
 		void     TryMoveToMiddleLow() override;                                                                 // 092
 		bool     TryChangeSkyCellActorsProcessLevel() override;                                                 // 093
-		void     Unk_95(void) override;                                                                         // 095
+		void     TryUpdateActorLastSeenTime() override;                                                         // 095
 		void     Unk_96(void) override;                                                                         // 096
 		void     SetParentCell(TESObjectCELL* a_cell) override;                                                 // 098
 		bool     IsDead(bool a_notEssential = true) const override;                                             // 099
@@ -334,13 +334,13 @@ namespace RE
 		void                            SetActionComplete(bool a_set) override;                                                                                                                                          // 088
 		void                            Disable() override;                                                                                                                                                              // 08A
 		void                            ResetInventory(bool a_leveledOnly) override;                                                                                                                                     // 08B
-		void                            Unk_8C(void) override;                                                                                                                                                           // 08C
-		void                            Unk_8D(void);                                                                                                                                                                    // 08D
+		NiNode*                         GetFireNode() override;                                                                                                                                                          // 08B
+		void                            SetFireNode(NiNode* a_fireNode) override;                                                                                                                                        // 08C
 		bool                            OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;                                                                                                            // 091
 		void                            DoMoveToHigh() override;                                                                                                                                                         // 092
 		void                            TryMoveToMiddleLow() override;                                                                                                                                                   // 093
 		bool                            TryChangeSkyCellActorsProcessLevel() override;                                                                                                                                   // 094
-		void                            Unk_96(void) override;                                                                                                                                                           // 096
+		void                            TryUpdateActorLastSeenTime() override;                                                                                                                                           // 095
 		void                            Unk_97(void);                                                                                                                                                                    // 097
 		void                            SetParentCell(TESObjectCELL* a_cell) override;                                                                                                                                   // 099
 		bool                            IsDead(bool a_notEssential = true) const override;                                                                                                                               // 09A
@@ -657,7 +657,7 @@ namespace RE
 		const InventoryEntryData*    GetAttackingWeapon() const;
 		bhkCharacterController*      GetCharController() const;
 		uint32_t                     GetCollisionFilterInfo(uint32_t& a_outCollisionFilterInfo);
-		ActorHandle                  GetCommandingActor() const;
+		NiPointer<Actor>             GetCommandingActor() const;
 		TESFaction*                  GetCrimeFaction();
 		const TESFaction*            GetCrimeFaction() const;
 		InventoryEntryData*          GetEquippedEntryData(bool a_leftHand) const;

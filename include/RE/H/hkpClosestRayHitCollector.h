@@ -16,6 +16,14 @@ namespace RE
 
 		~hkpClosestRayHitCollector() override;  // 00
 
+		constexpr bool HasHit() noexcept { return rayHit.HasHit(); }
+
+		constexpr void Reset() noexcept
+		{
+			hkpRayHitCollector::Reset();
+			rayHit.Reset();
+		}
+
 		// members
 		hkpWorldRayCastOutput rayHit;  // 10
 	};

@@ -328,8 +328,8 @@ namespace RE
 		virtual void                SetMovementComplete(bool a_set);                                                      // 88 - { return; }
 		virtual void                Disable();                                                                            // 89
 		virtual void                ResetInventory(bool a_leveledOnly);                                                   // 8A
-		virtual void                Unk_8B(void);                                                                         // 8B - { return 0; }
-		virtual void                Unk_8C(void);                                                                         // 8C - { return; }
+		virtual NiNode*             GetFireNode();                                                                        // 8B - { return 0; }
+		virtual void                SetFireNode(NiNode* a_fireNode);                                                      // 8C - { return; }
 		virtual NiAVObject*         GetCurrent3D() const;                                                                 // 8D - { return Get3D2(); }
 		virtual Explosion*          AsExplosion();                                                                        // 8E - { return 0; }
 		virtual Projectile*         AsProjectile();                                                                       // 8F - { return 0; }
@@ -338,7 +338,7 @@ namespace RE
 		virtual void                TryMoveToMiddleLow();                                                                 // 92 - { return; }
 		virtual bool                TryChangeSkyCellActorsProcessLevel();                                                 // 93 - { return false; }
 		virtual void                Unk_94(void);                                                                         // 94 - { return; }
-		virtual void                Unk_95(void);                                                                         // 95 - { return; }
+		virtual void                TryUpdateActorLastSeenTime();                                                         // 95 - { return; }
 		virtual void                Unk_96(void);                                                                         // 96 - related to lockpicking
 		virtual TESObjectCELL*      GetSaveParentCell() const;                                                            // 97
 		virtual void                SetParentCell(TESObjectCELL* a_cell);                                                 // 98
@@ -360,8 +360,8 @@ namespace RE
 		virtual void                SetMovementComplete(bool a_set);                                                      // 89
 		virtual void                Disable();                                                                            // 8A
 		virtual void                ResetInventory(bool a_leveledOnly);                                                   // 8B - { return 0; }
-		virtual void                Unk_8C(void);                                                                         // 8C - { return; }
-		virtual void                Unk_8D(void);                                                                         // 8D - { return Get3D2(); }
+		virtual NiNode*             GetFireNode();                                                                        // 8C - { return; }
+		virtual void                SetFireNode(NiNode* a_fireNode);                                                      // 8D - { return Get3D2(); }
 		virtual NiAVObject*         GetCurrent3D() const;                                                                 // 8E - { return 0; }
 		virtual Explosion*          AsExplosion();                                                                        // 8F - { return 0; }
 		virtual Projectile*         AsProjectile();                                                                       // 90 - { return true; }
@@ -370,7 +370,7 @@ namespace RE
 		virtual void                TryMoveToMiddleLow();                                                                 // 93 - { return false; }
 		virtual bool                TryChangeSkyCellActorsProcessLevel();                                                 // 94 - { return; }
 		virtual void                Unk_95(void);                                                                         // 95 - { return; }
-		virtual void                Unk_96(void);                                                                         // 96 - related to lockpicking
+		virtual void                TryUpdateActorLastSeenTime();                                                         // 96 - related to lockpicking
 		virtual void                Unk_97(void);                                                                         // 97 - related to lockpicking
 		virtual TESObjectCELL*      GetSaveParentCell() const;                                                            // 98
 		virtual void                SetParentCell(TESObjectCELL* a_cell);                                                 // 99

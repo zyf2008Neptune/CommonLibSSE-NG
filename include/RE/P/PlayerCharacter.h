@@ -173,6 +173,7 @@ namespace RE
 		enum class FlagBDB
 		{
 			kNone = 0,
+			kIsInThirdPersonMode = 1 << 0,
 			kIsInCombat = 1 << 5
 		};
 
