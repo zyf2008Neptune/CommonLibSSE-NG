@@ -138,7 +138,7 @@ namespace RE
 		float                      unk18C;             // 18C
 		float                      range;              // 190
 		float                      lifeRemaining;      // 194
-		float                      unk198;             // 198
+		float                      weaponDamage;       // 198
 		float                      unk19C;             // 19C
 		std::uint64_t              unk1A0;             // 1A0
 		std::uint64_t              unk1A8;             // 1A8
