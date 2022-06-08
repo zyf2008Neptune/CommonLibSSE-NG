@@ -8,7 +8,7 @@ from conans.tools import Version
 from os import mkdir, path, remove
 
 
-required_conan_version = ">=1.49.0"
+required_conan_version = ">=1.48.0"
 
 class CommonLibSSE(ConanFile):
     name = "commonlibsse-ng"
