@@ -57,7 +57,7 @@ fixes to SKSE itself.
 the project wiki.](https://github.com/CharmedBaryon/CommonLibSSE-NG/wiki/Compiling-with-Clang)
 
 ### Unit Testing Enhancements
-![stability-beta](https://img.shields.io/static/v1?label=stability&message=beta&color=yellow&style=flat)
+![stability-stable](https://img.shields.io/static/v1?label=stability&message=stable&color=dimgreen&style=flat)
 
 Improvements have been made to the way in which the Skyrim executable module is accessed for the sake of memory
 relocation and handling of Address Library IDs. This makes it easier to run CommonLibSSE-based plugin code outside of
@@ -69,7 +69,9 @@ example, tests to be run within a single test suite that vary between SE, AE, an
 the project wiki.](https://github.com/CharmedBaryon/CommonLibSSE-NG/wiki/Unit-Testing)
 
 ### Versioned Releases via Vcpkg and Conan
-![stability-stable](https://img.shields.io/static/v1?label=stability&message=stable&color=dimgreen&style=flat)
+![stability-stable](https://img.shields.io/static/v1?label=vcpkg&message=stable&color=dimgreen&style=flat)
+
+![stability-experimental](https://img.shields.io/static/v1?label=conan&message=stable&color=orange&style=flat)
 
 Traditionally CommonLibSSE is consumed via a Git submodule; this practice generally requires the project using it to add
 CommonLibSSE's own Vcpkg dependencies and parts of it CMake configuration, as CommonLibSSE is built as a part of the
