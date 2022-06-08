@@ -28,7 +28,8 @@ function(commonlibsse_parse_version VERSION)
     endif ()
 endfunction()
 
-function(add_commonlibsse_plugin TARGET)
+function(target_commonlibsse_properties TARGET)
+    # EXCLUDE_FROM_ALL and SOURCES are supported here to simplify passing arguments from add_commonlibsse_plugin.
     set(options OPTIONAL USE_ADDRESS_LIBRARY USE_SIGNATURE_SCANNING EXCLUDE_FROM_ALL)
     set(oneValueArgs NAME AUTHOR EMAIL VERSION MINIMUM_SKSE_VERSION)
     set(multiValueArgs COMPATIBLE_RUNTIMES SOURCES)
@@ -113,12 +114,20 @@ function(add_commonlibsse_plugin TARGET)
             "    .MinimumSKSEVersion = ${commonlibsse_min_skse_version}\n"
             ")\n")
 
-    add_library("${TARGET}" SHARED $<$<BOOL:${ADD_COMMONLIBSSE_PLUGIN_EXCLUDE_FROM_ALL}>:EXCLUDE_FROM_ALL>
-            ${ADD_COMMONLIBSSE_PLUGIN_SOURCES})
-
     target_sources("${TARGET}" PRIVATE "${commonlibsse_plugin_file}")
     target_compile_definitions("${TARGET}" PRIVATE __CMAKE_COMMONLIBSSE_PLUGIN=1)
     target_link_libraries("${TARGET}" PUBLIC CommonLibSSE::CommonLibSSE)
-    set_property(TARGET "${TARGET}"
-            APPEND PROPERTY ADDITIONAL_CLEAN_FILES "${commonlibsse_plugin_file}")
+    target_include_directories("${TARGET}" PUBLIC CommonLibSSE_INCLUDE_DIRS)
+endfunction()
+
+function(add_commonlibsse_plugin TARGET)
+    set(options OPTIONAL USE_ADDRESS_LIBRARY USE_SIGNATURE_SCANNING EXCLUDE_FROM_ALL)
+    set(oneValueArgs NAME AUTHOR EMAIL VERSION MINIMUM_SKSE_VERSION)
+    set(multiValueArgs COMPATIBLE_RUNTIMES SOURCES)
+    cmake_parse_arguments(PARSE_ARGV 1 ADD_COMMONLIBSSE_PLUGIN "${options}" "${oneValueArgs}"
+            "${multiValueArgs}")
+
+    add_library("${TARGET}" SHARED $<$<BOOL:${ADD_COMMONLIBSSE_PLUGIN_EXCLUDE_FROM_ALL}>:EXCLUDE_FROM_ALL>
+            ${ADD_COMMONLIBSSE_PLUGIN_SOURCES})
+    target_commonlibsse_properties("${TARGET}" ${ARGN})
 endfunction()
