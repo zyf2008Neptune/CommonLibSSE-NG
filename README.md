@@ -143,6 +143,12 @@ CommonLibSSE NG is now available via Conan. Add it as a requirement to your proj
 commonlibsse-ng/3.5.0
 ```
 
+```python
+class MyProject:
+    # ...
+    requires = 'commonlibsse-ng/3.5.0'
+```
+
 Update the version number to the version constraints you want. Conan support was added in version 3.5.0, making that the
 earliest version available. Currently Conan binaries are available for the following
 `build_type`/`arch`/`os`/`compiler`/`compiler.version` combinations:
@@ -162,6 +168,18 @@ commonlibsse-ng/3.5.0
 commonlibsse-ng:ae=True
 commonlibsse-ng:se=True
 commonlibsse-ng:vr=True
+```
+
+```python
+class MyProject:
+    # ...
+    requires = 'commonlibsse-ng/3.5.0'
+    default_options = {
+      # ...
+      'commonlibsse-ng:with_ae': True,
+      'commonlibsse-ng:with_se': True,
+      'commonlibsse-ng:with_vr': True
+    }
 ```
 
 The above shows the default values (which includes support for all runtimes). Disable any runtimes you do not want.
@@ -193,7 +211,7 @@ For more information on how to use CommonLibSSE NG, you can look at the
   [VR Address Library for SKSEVR](https://www.nexusmods.com/skyrimspecialedition/mods/58101)
 * [clang-format 12.0.0](https://github.com/llvm/llvm-project/releases)
 * [CMake](https://cmake.org/)
-* [vcpkg](https://github.com/microsoft/vcpkg)
+* [Conan](https://conan.io) or [Vcpkg](https://github.com/microsoft/vcpkg)
 
 ## Notes
 * CommonLib is incompatible with SKSE and is intended to replace it as a static dependency. However, you will still need
