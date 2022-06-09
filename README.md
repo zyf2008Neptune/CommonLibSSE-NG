@@ -198,3 +198,15 @@ For more information on how to use CommonLibSSE NG, you can look at the
 ## Notes
 * CommonLib is incompatible with SKSE and is intended to replace it as a static dependency. However, you will still need
 * the runtime component.
+
+## List of Projects Using CommonLibSSE NG
+| Name                                                                                          | Developer                    | SE  | AE  | VR  |
+|-----------------------------------------------------------------------------------------------|------------------------------|-----|-----|-----|
+| [Animated Static Reload Fix - NG](https://www.nexusmods.com/skyrimspecialedition/mods/69331)  | Doodlezoid & Maxsu           |  ✔️  |  ✔️  | ✔️   |
+| [Fully Dynamic Game Engine](https://gitlab.com/colorglass/fully-dynamic-game-engine)          | Charmed Baryon               |  ✔️  |  ✔️  | ✔️   |
+| [LibFire](https://github.com/fireundubh/LibFire)                                              | fireundubh                   |  ✔️  |  ✔️  | ❌   |
+| [LibMathf](https://github.com/fireundubh/LibMathf)                                            | fireundubh                   |  ✔️  |  ✔️  | ✔️   |
+| [LibTurtleClub](https://github.com/fireundubh/LibTurtleClub)                                  | fireundubh                   |  ✔️  |  ✔️  | ✔️   |
+| [NPC AI Process Position Fix - NG](https://www.nexusmods.com/skyrimspecialedition/mods/69326) | Doodlezoid & Maxsu           |  ✔️  |  ✔️  | ✔️   |
+| [OnHit Animations Framework - NG](https://www.nexusmods.com/skyrimspecialedition/mods/69298)  | Doodlezoid & Maxsu           |  ✔️  |  ✔️  | ✔️   |
+| [Stagger Direction Fix - NG](https://www.nexusmods.com/skyrimspecialedition/mods/69291)       | Doodlezoid, Maxsu & NickaNak |  ✔️  |  ✔️  | ✔️   |
