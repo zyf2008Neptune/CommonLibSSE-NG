@@ -114,8 +114,12 @@ namespace RE
 		public BSTEventSource<TESUniqueIDChangeEvent>,           // 10D8
 		public BSTEventSource<TESWaitStartEvent>,                // 1130 - ?
 		public BSTEventSource<TESWaitStopEvent>,                 // 1188 - ?
+#ifndef SKYRIMVR
 		public BSTEventSource<TESSwitchRaceCompleteEvent>,       // 11E0
 		public BSTEventSource<TESFastTravelEndEvent>             // 1238
+#else
+		public BSTEventSource<TESSwitchRaceCompleteEvent>        // 11E0 // VR ends here
+#endif
 	{
 	public:
 		static ScriptEventSourceHolder* GetSingleton();
@@ -147,5 +151,9 @@ namespace RE
 			GetEventSource<T>()->SendEvent(a_event);
 		}
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(ScriptEventSourceHolder) == 0x1290);
+#else
+	static_assert(sizeof(ScriptEventSourceHolder) == 0x1238);
+#endif
 }
