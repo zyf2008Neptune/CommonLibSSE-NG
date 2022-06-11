@@ -1,7 +1,7 @@
 #include "RE/B/BookMenu.h"
 
-#include "RE/T/TESObjectREFR.h"
 #include "RE/E/ExtraDataList.h"
+#include "RE/T/TESObjectREFR.h"
 
 namespace RE
 {
@@ -17,7 +17,7 @@ namespace RE
 		return refptr->get();
 	}
 
-    void BookMenu::OpenBookMenu(const BSString& a_description, const ExtraDataList* a_extraList, TESObjectREFR* a_ref, TESObjectBOOK* a_book, const NiPoint3& a_pos, const NiMatrix3& a_rot, float a_scale, bool a_useDefaultPos)
+	void BookMenu::OpenBookMenu(const BSString& a_description, const ExtraDataList* a_extraList, TESObjectREFR* a_ref, TESObjectBOOK* a_book, const NiPoint3& a_pos, const NiMatrix3& a_rot, float a_scale, bool a_useDefaultPos)
 	{
 		using func_t = decltype(&BookMenu::OpenBookMenu);
 		REL::Relocation<func_t> func{ RELOCATION_ID(50122, 51053) };
