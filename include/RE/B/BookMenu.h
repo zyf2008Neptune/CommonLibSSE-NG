@@ -1,9 +1,11 @@
 #pragma once
 
+#include "RE/B/BSString.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/G/GPtr.h"
 #include "RE/I/IMenu.h"
 #include "RE/I/ImageData.h"
+#include "RE/N/NiMatrix3.h"
 #include "RE/N/NiSmartPointer.h"
 #include "RE/S/SimpleAnimationGraphManagerHolder.h"
 
@@ -11,6 +13,7 @@ namespace RE
 {
 	struct BSAnimationGraphEvent;
 
+	class ExtraDataList;
 	class NiAVObject;
 	class TESObjectBOOK;
 	class TESObjectREFR;
@@ -41,6 +44,8 @@ namespace RE
 
 		[[nodiscard]] static TESObjectBOOK* GetTargetForm();
 		[[nodiscard]] static TESObjectREFR* GetTargetReference();  // returns null if opened from inventory
+
+		static void OpenBookMenu(const BSString& a_description, const ExtraDataList* a_extraList, TESObjectREFR* a_ref, TESObjectBOOK* a_book, const NiPoint3& a_pos, const NiMatrix3& a_rot, float a_scale, bool a_useDefaultPos);
 
 		// members
 		BSTArray<ImageData>   unk50;      // 50
