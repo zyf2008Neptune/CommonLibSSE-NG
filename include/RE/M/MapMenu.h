@@ -143,7 +143,7 @@ namespace RE
 
 		[[nodiscard]] WorldSpaceMenu* AsWorldSpaceMenu() noexcept
 		{
-			if (!REL::Module::IsVR()) {
+			if SKYRIM_REL_CONSTEXPR (!REL::Module::IsVR()) {
 				return nullptr;
 			}
 			return &REL::RelocateMember<WorldSpaceMenu>(this, 0, 0);
