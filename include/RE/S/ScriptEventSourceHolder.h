@@ -115,10 +115,10 @@ namespace RE
 		public BSTEventSource<TESWaitStartEvent>,                // 1130 - ?
 		public BSTEventSource<TESWaitStopEvent>,                 // 1188 - ?
 #ifndef SKYRIMVR
-		public BSTEventSource<TESSwitchRaceCompleteEvent>,       // 11E0
-		public BSTEventSource<TESFastTravelEndEvent>             // 1238
+		public BSTEventSource<TESSwitchRaceCompleteEvent>,  // 11E0
+		public BSTEventSource<TESFastTravelEndEvent>        // 1238
 #else
-		public BSTEventSource<TESSwitchRaceCompleteEvent>        // 11E0 // VR ends here
+		public BSTEventSource<TESSwitchRaceCompleteEvent>  // 11E0 // VR ends here
 #endif
 	{
 	public:
