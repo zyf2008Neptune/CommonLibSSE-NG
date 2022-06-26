@@ -52,6 +52,7 @@ set(SOURCES
 	include/RE/B/BGSActionData.h
 	include/RE/B/BGSActorCellEvent.h
 	include/RE/B/BGSActorEvent.h
+	include/RE/B/BGSAddToPlayerInventoryEvent.h
 	include/RE/B/BGSAddonNode.h
 	include/RE/B/BGSAnimationSequencer.h
 	include/RE/B/BGSApparatus.h
@@ -168,6 +169,7 @@ set(SOURCES
 	include/RE/B/BGSSoundOutput.h
 	include/RE/B/BGSStandardSoundDef.h
 	include/RE/B/BGSStaticCollection.h
+	include/RE/B/BGSStoryEventManager.h
 	include/RE/B/BGSStoryManagerBranchNode.h
 	include/RE/B/BGSStoryManagerEventNode.h
 	include/RE/B/BGSStoryManagerNodeBase.h
