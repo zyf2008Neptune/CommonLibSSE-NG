@@ -46,6 +46,7 @@ namespace RE
 		};
 
 		TESFile*                              Duplicate(std::uint32_t a_cacheSize = 0x4000);
+		[[nodiscard]] std::uint32_t           GetCombinedIndex() const noexcept { return static_cast<std::uint32_t>(compileIndex + smallFileCompileIndex); }
 		[[nodiscard]] std::uint8_t            GetCompileIndex() const noexcept { return compileIndex; }
 		std::uint32_t                         GetCurrentSubRecordType();
 		[[nodiscard]] constexpr std::uint32_t GetCurrentSubRecordSize() const noexcept { return actualChunkSize; }
