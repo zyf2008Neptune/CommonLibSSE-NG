@@ -108,12 +108,12 @@ namespace RE
 		return func(this, a_position);
 	}
 
-    bool TES::GetLandHeight(const NiPoint3& a_positionIn, float& a_heightOut)
-    {
+	bool TES::GetLandHeight(const NiPoint3& a_positionIn, float& a_heightOut)
+	{
 		using func_t = decltype(&TES::GetLandHeight);
 		REL::Relocation<func_t> func{ RELOCATION_ID(13198, 13344) };
 		return func(this, a_positionIn, a_heightOut);
-    }
+	}
 
 	TESLandTexture* TES::GetLandTexture(const NiPoint3& a_position) const
 	{
@@ -122,7 +122,7 @@ namespace RE
 		return func(this, a_position);
 	}
 
-    float TES::GetWaterHeight(const NiPoint3& a_pos, TESObjectCELL* a_cell) const
+	float TES::GetWaterHeight(const NiPoint3& a_pos, TESObjectCELL* a_cell) const
 	{
 		using func_t = decltype(&TES::GetWaterHeight);
 		REL::Relocation<func_t> func{ RELOCATION_ID(13212, 13358) };
