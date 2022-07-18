@@ -6,9 +6,9 @@
 
 namespace RE
 {
-    class NiNode;
-    class NiCamera;
-    class ScrapHeap;
+	class NiNode;
+	class NiCamera;
+	class ScrapHeap;
 	struct BSGamerProfileEvent;
 	struct BSPackedTask;
 	struct PositionPlayerEvent;

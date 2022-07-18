@@ -21,7 +21,7 @@ namespace RE
 
 		std::uint32_t GetNewSystemGroup()
 		{
-			nextSystemGroup = nextSystemGroup + 1;  
+			nextSystemGroup = nextSystemGroup + 1;
 			if (nextSystemGroup == 65535) {
 				nextSystemGroup = 10;
 			}

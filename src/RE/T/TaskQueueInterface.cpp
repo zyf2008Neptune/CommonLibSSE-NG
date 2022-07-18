@@ -22,14 +22,14 @@ namespace RE
 		return func(this, a_scale, a_pos);
 	}
 
-    void TaskQueueInterface::QueueForceWeather(TESWeather* a_weather, bool a_forceOverride)
+	void TaskQueueInterface::QueueForceWeather(TESWeather* a_weather, bool a_forceOverride)
 	{
 		using func_t = decltype(&TaskQueueInterface::QueueForceWeather);
 		REL::Relocation<func_t> func{ RELOCATION_ID(35991, 36966) };
 		return func(this, a_weather, a_forceOverride);
 	}
 
-    void TaskQueueInterface::QueueRemoveSpell(ActorHandle& a_actorHandle, SpellItem* a_spellItem)
+	void TaskQueueInterface::QueueRemoveSpell(ActorHandle& a_actorHandle, SpellItem* a_spellItem)
 	{
 		using func_t = decltype(&TaskQueueInterface::QueueRemoveSpell);
 		REL::Relocation<func_t> func{ RELOCATION_ID(35987, 36962) };
