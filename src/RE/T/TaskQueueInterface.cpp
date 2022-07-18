@@ -15,14 +15,21 @@ namespace RE
 		return func();
 	}
 
-	std::uint32_t TaskQueueInterface::QueueAddRipple(float a_scale, const NiPoint3& a_pos)
+	void TaskQueueInterface::QueueAddRipple(float a_scale, const NiPoint3& a_pos)
 	{
 		using func_t = decltype(&TaskQueueInterface::QueueAddRipple);
 		REL::Relocation<func_t> func{ RELOCATION_ID(35978, 36953) };
 		return func(this, a_scale, a_pos);
 	}
 
-	std::uint32_t TaskQueueInterface::QueueRemoveSpell(RE::ActorHandle& a_actorHandle, RE::SpellItem* a_spellItem)
+    void TaskQueueInterface::QueueForceWeather(TESWeather* a_weather, bool a_forceOverride)
+	{
+		using func_t = decltype(&TaskQueueInterface::QueueForceWeather);
+		REL::Relocation<func_t> func{ RELOCATION_ID(35991, 36966) };
+		return func(this, a_weather, a_forceOverride);
+	}
+
+    void TaskQueueInterface::QueueRemoveSpell(ActorHandle& a_actorHandle, SpellItem* a_spellItem)
 	{
 		using func_t = decltype(&TaskQueueInterface::QueueRemoveSpell);
 		REL::Relocation<func_t> func{ RELOCATION_ID(35987, 36962) };

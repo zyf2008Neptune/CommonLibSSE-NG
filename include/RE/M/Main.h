@@ -6,7 +6,9 @@
 
 namespace RE
 {
-	class ScrapHeap;
+    class NiNode;
+    class NiCamera;
+    class ScrapHeap;
 	struct BSGamerProfileEvent;
 	struct BSPackedTask;
 	struct PositionPlayerEvent;
@@ -63,6 +65,8 @@ namespace RE
 		static Main* GetSingleton();
 
 		static float QFrameAnimTime();
+
+		static NiCamera* WorldRootCamera();
 
 		// members
 		bool                         quitGame;                     // 010

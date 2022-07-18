@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/N/NiSmartPointer.h"
+#include "RE/N/NiPoint3.h"
 
 namespace RE
 {
@@ -27,6 +28,12 @@ namespace RE
 		static_assert(sizeof(OcclusionMapData) == 0x60);
 
 		virtual ~Precipitation();  // 00
+
+		static NiPoint3 GetDirection()
+		{
+			REL::Relocation<NiPoint3*> precipDirection{ RELOCATION_ID(515509, 401648) };
+			return *precipDirection;
+		}
 
 		// members
 		OcclusionMapData      occlusionData;           // 10

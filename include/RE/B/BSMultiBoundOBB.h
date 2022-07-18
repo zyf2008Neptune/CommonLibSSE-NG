@@ -27,7 +27,7 @@ namespace RE
 		bool          Unk_29() override;                                  // 29
 		void          Unk_2A() override;                                  // 2A
 		void          Unk_2B() override;                                  // 2B
-		bool          WithinPoint(const NiPoint3& a_pos) override;        // 2C
+		bool          GetWithinPoint(const NiPoint3& a_pos) override;     // 2C
 		void          Unk_2E() override;                                  // 2E
 
 		// members
