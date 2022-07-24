@@ -17,7 +17,7 @@ namespace RE
 		[[nodiscard]] static BGSStoryEventManager* GetSingleton()
 		{
 			using func_t = decltype(&BGSStoryEventManager::GetSingleton);
-			REL::Relocation<func_t> func{ REL::ID(22790) };
+			REL::Relocation<func_t> func{ RELOCATION_ID(22317, 22790) };
 			return func();
 		}
 
@@ -34,12 +34,14 @@ namespace RE
 		mutable BSSpinLock                       eventArrayLock;      // 60
 
 	private:
+#ifdef SKYRIM_SUPPORT_AE
 		std::uint32_t AddEvent_Impl(std::uint32_t a_index, const void* a_event)
 		{
 			using func_t = decltype(&BGSStoryEventManager::AddEvent_Impl);
 			REL::Relocation<func_t> func{ REL::ID(32359) };
 			return func(this, a_index, a_event);
 		}
+#endif
 	};
 	static_assert(sizeof(BGSStoryEventManager) == 0x68);
 }
