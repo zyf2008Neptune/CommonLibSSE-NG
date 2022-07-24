@@ -49,7 +49,7 @@ namespace RE
 		std::uint32_t                                unk080;                   // 080
 		NiPoint2                                     unk084;                   // 084
 		std::uint32_t                                pad08C;                   // 08C
-		NiPointer<NiNode>                            proceduralWaterNode;      // 090
+		NiPointer<NiNode>                            waterRoot;                // 090
 		std::uint64_t                                unk098;                   // 098
 		std::uint32_t                                reflectionExteriorCount;  // 0A0
 		std::uint32_t                                reflectionInteriorCount;  // 0A4

@@ -19,6 +19,11 @@
 
 namespace RE
 {
+	namespace BGSWaterCollisionManager
+	{
+		class BGSWaterUpdateI;
+	}
+
 	class BSTempEffectParticle;
 	class bhkWorld;
 	class BSPortalGraph;
@@ -224,30 +229,30 @@ namespace RE
 		bool     UsesSkyLighting() const;
 
 		// members
-		mutable BSSpinLock                        grassCreateLock;   // 030
-		mutable BSSpinLock                        grassTaskLock;     // 038
-		stl::enumeration<Flag, std::uint16_t>     cellFlags;         // 040
-		std::uint16_t                             cellGameFlags;     // 042
-		stl::enumeration<CellState, std::uint8_t> cellState;         // 044
-		bool                                      autoWaterLoaded;   // 045
-		bool                                      cellDetached;      // 046
-		std::uint8_t                              pad047;            // 047
-		ExtraDataList                             extraList;         // 048
-		CellData                                  cellData;          // 060 - XCLL if interior, XCLC if exterior
-		TESObjectLAND*                            cellLand;          // 068
-		float                                     waterHeight;       // 070 - XCLW
-		NavMeshArray*                             navMeshes;         // 078
-		BSTSet<NiPointer<TESObjectREFR>>          references;        // 080
-		TESForm*                                  unk0B0;            // 0B0 - REFR owner of cell?
-		BSTArray<TESObjectREFR*>                  objectList;        // 0B8 - persistent
-		BSTArray<void*>                           unk0D0;            // 0D0
-		BSTArray<void*>                           unk0E8;            // 0E8
-		BSTArray<void*>                           unk100;            // 100
-		mutable BSSpinLock                        spinLock;          // 118
-		TESWorldSpace*                            worldSpace;        // 120
-		LOADED_CELL_DATA*                         loadedData;        // 128
-		BGSLightingTemplate*                      lightingTemplate;  // 130 - LTMP
-		std::uint64_t                             unk138;            // 138
+		mutable BSSpinLock                                   grassCreateLock;   // 030
+		mutable BSSpinLock                                   grassTaskLock;     // 038
+		stl::enumeration<Flag, std::uint16_t>                cellFlags;         // 040
+		std::uint16_t                                        cellGameFlags;     // 042
+		stl::enumeration<CellState, std::uint8_t>            cellState;         // 044
+		bool                                                 autoWaterLoaded;   // 045
+		bool                                                 cellDetached;      // 046
+		std::uint8_t                                         pad047;            // 047
+		ExtraDataList                                        extraList;         // 048
+		CellData                                             cellData;          // 060 - XCLL if interior, XCLC if exterior
+		TESObjectLAND*                                       cellLand;          // 068
+		float                                                waterHeight;       // 070 - XCLW
+		NavMeshArray*                                        navMeshes;         // 078
+		BSTSet<NiPointer<TESObjectREFR>>                     references;        // 080
+		TESForm*                                             unk0B0;            // 0B0 - REFR owner of cell?
+		BSTArray<TESObjectREFR*>                             objectList;        // 0B8 - persistent
+		BSTArray<void*>                                      unk0D0;            // 0D0
+		BSTArray<BGSWaterCollisionManager::BGSWaterUpdateI*> waterObjects;      // 0E8
+		BSTArray<void*>                                      unk100;            // 100
+		mutable BSSpinLock                                   spinLock;          // 118
+		TESWorldSpace*                                       worldSpace;        // 120
+		LOADED_CELL_DATA*                                    loadedData;        // 128
+		BGSLightingTemplate*                                 lightingTemplate;  // 130 - LTMP
+		std::uint64_t                                        unk138;            // 138
 	};
 	static_assert(sizeof(TESObjectCELL) == 0x140);
 }

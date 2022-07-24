@@ -110,6 +110,7 @@ namespace RE
 		[[nodiscard]] bool       IsNoteScroll() const;
 		[[nodiscard]] ActorValue GetSkill() const;
 		SpellItem*               GetSpell();
+		bool                     Read(TESObjectREFR* a_reader);
 
 		// members
 		OBJ_BOOK       data;                 // 110 - DATA

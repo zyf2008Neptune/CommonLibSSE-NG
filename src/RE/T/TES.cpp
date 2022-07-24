@@ -101,17 +101,24 @@ namespace RE
 		return func(this, a_position);
 	}
 
-	TESLandTexture* TES::GetLandTexture(const NiPoint3& a_position) const
-	{
-		using func_t = decltype(&TES::GetLandTexture);
-		REL::Relocation<func_t> func{ RELOCATION_ID(13202, 13348) };
-		return func(this, a_position);
-	}
-
 	MATERIAL_ID TES::GetLandMaterialType(const NiPoint3& a_position) const
 	{
 		using func_t = decltype(&TES::GetLandMaterialType);
 		REL::Relocation<func_t> func{ RELOCATION_ID(13203, 13349) };
+		return func(this, a_position);
+	}
+
+	bool TES::GetLandHeight(const NiPoint3& a_positionIn, float& a_heightOut)
+	{
+		using func_t = decltype(&TES::GetLandHeight);
+		REL::Relocation<func_t> func{ RELOCATION_ID(13198, 13344) };
+		return func(this, a_positionIn, a_heightOut);
+	}
+
+	TESLandTexture* TES::GetLandTexture(const NiPoint3& a_position) const
+	{
+		using func_t = decltype(&TES::GetLandTexture);
+		REL::Relocation<func_t> func{ RELOCATION_ID(13202, 13348) };
 		return func(this, a_position);
 	}
 

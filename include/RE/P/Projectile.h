@@ -5,6 +5,7 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTList.h"
+#include "RE/C/CollisionLayers.h"
 #include "RE/F/FormTypes.h"
 #include "RE/I/ImpactResults.h"
 #include "RE/N/NiSmartPointer.h"
@@ -34,7 +35,7 @@ namespace RE
 			NiPointer<bhkCollisionObject> colObj;              // 20
 			BGSMaterialType*              material;            // 28
 			std::int32_t                  damageRootNodeType;  // 30
-			std::uint32_t                 unk34;               // 34
+			COL_LAYER                     collidedLayer;       // 34
 			NiNode*                       damageRootNode;      // 38
 			ImpactResult                  impactResult;        // 40
 			std::uint16_t                 unk44;               // 44

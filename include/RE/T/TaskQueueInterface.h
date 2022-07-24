@@ -6,6 +6,7 @@
 namespace RE
 {
 	class SpellItem;
+	class TESWeather;
 
 	class TaskQueueInterface
 	{
@@ -14,8 +15,9 @@ namespace RE
 
 		static bool ShouldUseTaskQueue();
 
-		std::uint32_t QueueAddRipple(float a_scale, const NiPoint3& a_pos);                          // 45
-		std::uint32_t QueueRemoveSpell(RE::ActorHandle& a_actorHandle, RE::SpellItem* a_spellItem);  // 93
+		void QueueAddRipple(float a_scale, const NiPoint3& a_pos);                  // 45
+		void QueueForceWeather(TESWeather* a_weather, bool a_forceOverride);        // 64
+		void QueueRemoveSpell(ActorHandle& a_actorHandle, SpellItem* a_spellItem);  // 93
 	};
 	//static_assert(sizeof(TaskQueueInterface) == 0x);
 }
