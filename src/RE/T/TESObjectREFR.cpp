@@ -543,9 +543,9 @@ namespace RE
 			const auto keyword = a_form.As<BGSKeyword>();
 			hasKeyword = keyword && HasKeyword(keyword);
 			if (a_matchAll && !hasKeyword || hasKeyword) {
-				return false;
+				return BSContainer::ForEachResult::kStop;
 			}
-			return true;
+			return BSContainer::ForEachResult::kContinue;
 		});
 
 		return hasKeyword;

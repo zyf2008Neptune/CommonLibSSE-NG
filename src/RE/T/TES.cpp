@@ -15,7 +15,7 @@ namespace RE
 		return *singleton;
 	}
 
-	void TES::ForEachReference(std::function<bool(TESObjectREFR& a_ref)> a_callback)
+	void TES::ForEachReference(std::function<BSContainer::ForEachResult(TESObjectREFR& a_ref)> a_callback)
 	{
 		if (interiorCell) {
 			interiorCell->ForEachReference([&](TESObjectREFR& a_ref) {
@@ -45,7 +45,7 @@ namespace RE
 		}
 	}
 
-	void TES::ForEachReferenceInRange(TESObjectREFR* a_origin, float a_radius, std::function<bool(TESObjectREFR& a_ref)> a_callback)
+	void TES::ForEachReferenceInRange(TESObjectREFR* a_origin, float a_radius, std::function<BSContainer::ForEachResult(TESObjectREFR& a_ref)> a_callback)
 	{
 		if (a_origin && a_radius > 0.0f) {
 			const auto originPos = a_origin->GetPosition();

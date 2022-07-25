@@ -1347,8 +1347,11 @@ set(SOURCES
 	include/RE/T/TESUniqueIDChangeEvent.h
 	include/RE/T/TESValueForm.h
 	include/RE/T/TESWaitStopEvent.h
+	include/RE/T/TESWaterDisplacement.h
 	include/RE/T/TESWaterForm.h
+	include/RE/T/TESWaterNormals.h
 	include/RE/T/TESWaterObject.h
+	include/RE/T/TESWaterReflections.h
 	include/RE/T/TESWaterSystem.h
 	include/RE/T/TESWeather.h
 	include/RE/T/TESWeightForm.h

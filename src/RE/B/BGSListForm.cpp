@@ -15,8 +15,9 @@ namespace RE
 		ForEachForm([&](const TESForm& a_form) {
 			if (a_form.GetFormType() != a_formType) {
 				result = false;
+				return BSContainer::ForEachResult::kStop;
 			}
-			return result;
+			return BSContainer::ForEachResult::kContinue;
 		});
 		return result;
 	}
@@ -46,16 +47,17 @@ namespace RE
 		return HasForm(form);
 	}
 
-	void BGSListForm::ForEachForm(std::function<bool(TESForm&)> a_callback) const
+	void BGSListForm::ForEachForm(std::function<BSContainer::ForEachResult(TESForm&)> a_callback) const
 	{
 		for (const auto& form : forms) {
-			if (form && !a_callback(*form)) {
+			if (form && a_callback(*form) == BSContainer::ForEachResult::kStop) {
 				return;
 			}
 		}
 		if (scriptAddedTempForms) {
 			for (const auto& addedFormID : *scriptAddedTempForms) {
-				if (const auto addedForm = TESForm::LookupByID(addedFormID); !a_callback(*addedForm)) {
+				const auto addedForm = TESForm::LookupByID(addedFormID);
+				if (addedForm && a_callback(*addedForm) == BSContainer::ForEachResult::kStop) {
 					return;
 				}
 			}

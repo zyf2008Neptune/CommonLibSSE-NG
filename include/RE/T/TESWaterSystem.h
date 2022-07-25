@@ -16,8 +16,11 @@ namespace RE
 	class NiNode;
 	class TESObjectCELL;
 	class TESWorldSpace;
-	class WadingWaterData;
+	class TESWaterDisplacement;
+	class TESWaterNormals;
 	class TESWaterObject;
+	class TESWaterReflections;
+	class WadingWaterData;
 
 	class TESWaterSystem : public BSTSingletonSDM<TESWaterSystem>
 	{
@@ -36,16 +39,16 @@ namespace RE
 		}
 
 		// members
-		std::uint32_t                                pad00;                    // 000
+		std::uint32_t                                pad000;                   // 000
 		BSFixedString*                               type;                     // 008
-		std::uint32_t                                unk10;                    // 010
+		std::uint32_t                                unk010;                   // 010
 		std::uint32_t                                pad014;                   // 014
-		std::uint32_t                                unk18;                    // 018
-		std::uint32_t                                unk1C;                    // 01C
-		BSTArray<TESWaterObject*>                    waterObjects;             // 020
-		BSTArray<void*>                              unk038;                   // 038 - TESWaterReflection
-		BSTArray<void*>                              unk050;                   // 050
-		BSTArray<void*>                              unk068;                   // 068
+		std::uint32_t                                unk018;                   // 018
+		std::uint32_t                                unk01C;                   // 01C
+		BSTArray<NiPointer<TESWaterObject>>          waterObjects;             // 020
+		BSTArray<NiPointer<TESWaterReflections>>     waterReflections;         // 038
+		BSTArray<NiPointer<TESWaterDisplacement>>    waterDisplacement;        // 050
+		BSTArray<NiPointer<TESWaterNormals>>         waterNormals;             // 068
 		std::uint32_t                                unk080;                   // 080
 		NiPoint2                                     unk084;                   // 084
 		std::uint32_t                                pad08C;                   // 08C
@@ -59,8 +62,8 @@ namespace RE
 		std::uint16_t                                pad0B2;                   // 0B2
 		std::uint32_t                                unk0B4;                   // 0B4
 		std::uint8_t                                 unk0B8;                   // 0B8
-		std::uint8_t                                 pad0B9;                   // 0B9
-		std::int8_t                                  unk0BA;                   // 0BA
+		bool                                         unk0B9;                   // 0B9
+		bool                                         unk0BA;                   // 0BA
 		std::uint8_t                                 pad0BB;                   // 0BB
 		std::uint32_t                                unk0BC;                   // 0BC
 		float                                        unk0C0;                   // 0C0
@@ -85,7 +88,7 @@ namespace RE
 		std::uint32_t                                pad114;                   // 114
 		TESObjectCELL*                               unk118;                   // 118
 		mutable BSSpinLock                           lock;                     // 120
-		NiPointer<BSTriShape>                        water2048;                // 128
+		NiPointer<BSTriShape>                        autoWater;                // 128
 	};
 	static_assert(sizeof(TESWaterSystem) == 0x130);
 };
