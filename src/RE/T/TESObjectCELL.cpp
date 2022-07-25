@@ -25,7 +25,7 @@ namespace RE
 		ForEachReference([&](TESObjectREFR& ref) {
 			const auto distance = a_origin.GetSquaredDistance(ref.GetPosition());
 			return distance <= squaredRadius ?
-			           a_callback(ref) :
+                       a_callback(ref) :
                        BSContainer::ForEachResult::kContinue;
 		});
 	}
