@@ -65,12 +65,13 @@ namespace RE
 
 		static TES* GetSingleton();
 
-		void ForEachReference(std::function<bool(TESObjectREFR& a_ref)> a_callback);
-		void ForEachReferenceInRange(TESObjectREFR* a_origin, float a_radius, std::function<bool(TESObjectREFR& a_ref)> a_callback);
+		void ForEachReference(std::function<BSContainer::ForEachResult(TESObjectREFR& a_ref)> a_callback);
+		void ForEachReferenceInRange(TESObjectREFR* a_origin, float a_radius, std::function<BSContainer::ForEachResult(TESObjectREFR& a_ref)> a_callback);
 
 		TESObjectCELL*  GetCell(const NiPoint3& a_position) const;
-		TESLandTexture* GetLandTexture(const NiPoint3& a_position) const;
 		MATERIAL_ID     GetLandMaterialType(const NiPoint3& a_position) const;
+		bool            GetLandHeight(const NiPoint3& a_positionIn, float& a_heightOut);
+		TESLandTexture* GetLandTexture(const NiPoint3& a_position) const;
 		float           GetWaterHeight(const NiPoint3& a_pos, TESObjectCELL* a_cell) const;
 		NiAVObject*     Pick(bhkPickData& a_pickData);
 		void            PurgeBufferedCells();

@@ -21,13 +21,11 @@ namespace RE
 
 		std::uint32_t GetNewSystemGroup()
 		{
-			auto systemGroup = nextSystemGroup + 1;
+			nextSystemGroup = nextSystemGroup + 1;
 			if (nextSystemGroup == 65535) {
-				systemGroup = 10;
+				nextSystemGroup = 10;
 			}
-			nextSystemGroup = systemGroup;
-
-			return systemGroup;
+			return nextSystemGroup;
 		}
 
 		// members
