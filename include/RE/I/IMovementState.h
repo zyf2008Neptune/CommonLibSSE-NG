@@ -5,7 +5,7 @@
 namespace RE
 {
 	class NiPoint3;
-	
+
 	class IMovementState : public IMovementInterface
 	{
 	public:
