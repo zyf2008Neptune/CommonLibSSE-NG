@@ -43,8 +43,8 @@ namespace RE
 		BSFixedString*                               type;                     // 008
 		std::uint32_t                                unk010;                   // 010
 		std::uint32_t                                pad014;                   // 014
-		std::uint32_t                                unk018;                   // 018
-		std::uint32_t                                unk01C;                   // 01C
+		float                                        unk018;                   // 018
+		float                                        unk01C;                   // 01C
 		BSTArray<NiPointer<TESWaterObject>>          waterObjects;             // 020
 		BSTArray<NiPointer<TESWaterReflections>>     waterReflections;         // 038
 		BSTArray<NiPointer<TESWaterDisplacement>>    waterDisplacement;        // 050
@@ -61,12 +61,12 @@ namespace RE
 		std::uint8_t                                 pad0B1;                   // 0B1
 		std::uint16_t                                pad0B2;                   // 0B2
 		std::uint32_t                                unk0B4;                   // 0B4
-		std::uint8_t                                 unk0B8;                   // 0B8
+		bool                                         playerUnderwater;         // 0B8
 		bool                                         unk0B9;                   // 0B9
 		bool                                         unk0BA;                   // 0BA
 		std::uint8_t                                 pad0BB;                   // 0BB
 		std::uint32_t                                unk0BC;                   // 0BC
-		float                                        unk0C0;                   // 0C0
+		float                                        underwaterHeight;         // 0C0
 		bool                                         waterRadiusState;         // 0C4
 		std::uint8_t                                 pad0C5;                   // 0C5
 		std::uint8_t                                 unk0C6;                   // 0C6

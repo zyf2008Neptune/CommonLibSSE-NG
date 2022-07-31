@@ -48,7 +48,7 @@ namespace RE
 		std::uint32_t              pad44;                           // 44
 		NiPointer<NiSourceTexture> diffuseTexture;                  // 48
 		std::int32_t               diffuseRenderTargetSourceIndex;  // 50
-		std::uint32_t              pad54;                           // 54
+		float                      pad54;                           // 54
 		NiPointer<NiSourceTexture> normalTexture;                   // 58
 		NiPointer<NiSourceTexture> rimSoftLightingTexture;          // 60
 		NiPointer<NiSourceTexture> specularBackLightingTexture;     // 68

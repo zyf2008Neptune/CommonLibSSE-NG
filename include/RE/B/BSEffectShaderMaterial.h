@@ -16,7 +16,7 @@ namespace RE
 		~BSEffectShaderMaterial() override;  // 00
 
 		// override (BSShaderMaterial)
-		BSShaderMaterial* Create() override = 0;                            // 01
+		BSShaderMaterial* Create() override;                                // 01
 		void              CopyMembers(BSShaderMaterial* a_other) override;  // 02
 		bool              DoIsCopy(BSShaderMaterial* a_other) override;     // 03
 		std::uint32_t     ComputeCRC32(void) override;                      // 04

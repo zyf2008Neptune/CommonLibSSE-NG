@@ -336,6 +336,8 @@ set(SOURCES
 	include/RE/B/BSVirtualKeyboardDevice.h
 	include/RE/B/BSVisit.h
 	include/RE/B/BSVolumetricLightingRenderData.h
+	include/RE/B/BSWaterShaderMaterial.h
+	include/RE/B/BSWaterShaderProperty.h
 	include/RE/B/BSWin32GamepadDevice.h
 	include/RE/B/BSWin32KeyboardDevice.h
 	include/RE/B/BSWin32MouseDevice.h
