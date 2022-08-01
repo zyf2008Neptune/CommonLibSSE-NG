@@ -27,7 +27,7 @@ namespace RE
 		return func(a_handle, a_refrOut);
 	}
 
-    void CreateMessage(const char* a_message, IMessageBoxCallback* a_callback, std::uint32_t a_arg3, std::uint32_t a_arg4, std::uint32_t a_arg5, const char* a_buttonText, const char* a_secondaryButtonText)
+	void CreateMessage(const char* a_message, IMessageBoxCallback* a_callback, std::uint32_t a_arg3, std::uint32_t a_arg4, std::uint32_t a_arg5, const char* a_buttonText, const char* a_secondaryButtonText)
 	{
 		using func_t = decltype(&CreateMessage);
 		REL::Relocation<func_t> func{ RELOCATION_ID(51420, 52269) };
@@ -53,7 +53,7 @@ namespace RE
 		CreateMessage(a_message, nullptr, 0, 4, 10, GameSettingCollection::GetSingleton()->GetSetting("sOk")->GetString(), nullptr);
 	}
 
-    float GetArmorFinalRating(RE::InventoryEntryData* a_armorEntryData, float a_armorPerks, float a_skillMultiplier)
+	float GetArmorFinalRating(RE::InventoryEntryData* a_armorEntryData, float a_armorPerks, float a_skillMultiplier)
 	{
 		using func_t = decltype(&GetArmorFinalRating);
 		REL::Relocation<func_t> func{ RELOCATION_ID(15779, 16017) };
@@ -102,7 +102,7 @@ namespace RE
 		return func(a_editorID);
 	}
 
-    void ShakeCamera(float a_strength, const NiPoint3& a_position, float a_duration)
+	void ShakeCamera(float a_strength, const NiPoint3& a_position, float a_duration)
 	{
 		using func_t = decltype(&ShakeCamera);
 		REL::Relocation<func_t> func{ RELOCATION_ID(32275, 33012) };
