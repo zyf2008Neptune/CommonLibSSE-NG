@@ -76,7 +76,7 @@ namespace RE
 		std::uint64_t                           unk148;                                        // 148
 		std::uint64_t                           unk150;                                        // 150
 		BSTArray<ObjectRefHandle>               tempShouldMoves;                               // 158
-		BSSimpleList<ActorHandle>               unk170;                                        // 170
+		BSSimpleList<ActorHandle>               aliveActorList;                                // 170
 		BSTArray<ActorHandle>                   initPackageLocationsQueue;                     // 180
 		mutable BSSpinLock                      packageLocationsQueueLock;                     // 198
 		BSTArray<ActorHandle>                   initAnimPositionQueue;                         // 1A0
