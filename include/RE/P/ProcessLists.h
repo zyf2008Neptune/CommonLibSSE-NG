@@ -3,10 +3,10 @@
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTArray.h"
+#include "RE/B/BSTEvent.h"
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/B/BSTSmartPointer.h"
-#include "RE/B/BSTEvent.h"
 #include "RE/C/Crime.h"
 #include "RE/N/NiSmartPointer.h"
 
