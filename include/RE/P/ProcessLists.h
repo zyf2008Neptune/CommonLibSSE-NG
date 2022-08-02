@@ -6,6 +6,7 @@
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/B/BSTSmartPointer.h"
+#include "RE/B/BSTEvent.h"
 #include "RE/C/Crime.h"
 #include "RE/N/NiSmartPointer.h"
 
@@ -35,9 +36,10 @@ namespace RE
 		static ProcessLists* GetSingleton();
 
 		void ClearCachedFactionFightReactions() const;
-		void GetMagicEffects(std::function<bool(BSTempEffect& a_tempEffect)> a_fn);
-		void GetModelEffects(std::function<bool(ModelReferenceEffect& a_modelEffect)> a_fn);
-		void GetShaderEffects(std::function<bool(ShaderReferenceEffect& a_shaderEffect)> a_fn);
+		void ForEachHighActor(std::function<BSContainer::ForEachResult(Actor&)> a_callback);
+		void ForEachMagicTempEffect(std::function<BSContainer::ForEachResult(BSTempEffect&)> a_callback);
+		void ForEachModelEffect(std::function<BSContainer::ForEachResult(ModelReferenceEffect&)> a_callback);
+		void ForEachShaderEffect(std::function<BSContainer::ForEachResult(ShaderReferenceEffect&)> a_callback);
 		void StopAllMagicEffects(TESObjectREFR& a_ref);
 		void StopCombatAndAlarmOnActor(Actor* a_actor, bool a_notAlarm);
 
