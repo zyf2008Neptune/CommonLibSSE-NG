@@ -72,6 +72,13 @@ namespace RE
 			return func(this);
 		}
 
+		void PoisonObject(AlchemyItem* a_alchItem, std::uint32_t a_count)
+		{
+			using func_t = decltype(&InventoryEntryData::PoisonObject);
+			REL::Relocation<func_t> func{ RELOCATION_ID(15786, 16024) };
+			return func(this, a_alchItem, a_count);
+		}
+
 		TES_HEAP_REDEFINE_NEW();
 
 		// members

@@ -24,8 +24,8 @@ namespace RE
 	void ProcessLists::ForEachHighActor(std::function<BSContainer::ForEachResult(Actor&)> a_callback)
 	{
 		for (auto& highActorHandle : highActorHandles) {
-			const auto highActor = highActorHandle.get();
-			if (highActor && a_callback(*highActor.get()) == BSContainer::ForEachResult::kStop) {
+			const auto& highActor = highActorHandle.get();
+			if (highActor && a_callback(*highActor) == BSContainer::ForEachResult::kStop) {
 				break;
 			}
 		}
@@ -36,7 +36,7 @@ namespace RE
 		BSSpinLockGuard locker(magicEffectsLock);
 
 		for (auto& tempEffectPtr : magicEffects) {
-			const auto tempEffect = tempEffectPtr.get();
+			const auto& tempEffect = tempEffectPtr.get();
 			if (tempEffect && a_callback(*tempEffect) == BSContainer::ForEachResult::kStop) {
 				break;
 			}
