@@ -651,6 +651,11 @@ namespace RE
 		return std::fminf((waterHeight - a_zPos) / GetHeight(), 1.0f);
 	}
 
+	bool Actor::IsProtected() const
+	{
+		return boolFlags.all(BOOL_FLAGS::kProtected);
+	}
+
 	bool Actor::IsRunning() const
 	{
 		using func_t = decltype(&Actor::IsRunning);

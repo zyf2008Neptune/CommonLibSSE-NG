@@ -97,9 +97,9 @@ namespace RE
 		a_keywordList->ForEachForm([&](const TESForm& a_form) {
 			hasKeyword = keywordForm->HasKeywordID(a_form.GetFormID());
 			if (a_matchAll && !hasKeyword || hasKeyword) {
-				return false;
+				return BSContainer::ForEachResult::kStop;
 			}
-			return true;
+			return BSContainer::ForEachResult::kContinue;
 		});
 
 		return hasKeyword;

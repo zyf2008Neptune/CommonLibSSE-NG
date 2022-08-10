@@ -29,19 +29,19 @@ namespace RE
 		{
 		public:
 			// members
-			NiPoint3                      desiredTargetLoc;    // 00
-			NiPoint3                      negativeVelocity;    // 0C
-			ObjectRefHandle               collidee;            // 18
-			NiPointer<bhkCollisionObject> colObj;              // 20
-			BGSMaterialType*              material;            // 28
-			std::int32_t                  damageRootNodeType;  // 30
-			COL_LAYER                     collidedLayer;       // 34
-			NiNode*                       damageRootNode;      // 38
-			ImpactResult                  impactResult;        // 40
-			std::uint16_t                 unk44;               // 44
-			std::uint16_t                 unk46;               // 46
-			std::uint8_t                  unk48;               // 48
-			std::uint8_t                  unk49;               // 49
+			NiPoint3                                  desiredTargetLoc;    // 00
+			NiPoint3                                  negativeVelocity;    // 0C
+			ObjectRefHandle                           collidee;            // 18
+			NiPointer<bhkCollisionObject>             colObj;              // 20
+			BGSMaterialType*                          material;            // 28
+			std::int32_t                              damageRootNodeType;  // 30
+			stl::enumeration<COL_LAYER, std::int32_t> collidedLayer;       // 34
+			NiNode*                                   damageRootNode;      // 38
+			ImpactResult                              impactResult;        // 40
+			std::uint16_t                             unk44;               // 44
+			std::uint16_t                             unk46;               // 46
+			std::uint8_t                              unk48;               // 48
+			std::uint8_t                              unk49;               // 49
 		};
 		static_assert(sizeof(ImpactData) == 0x50);
 

@@ -37,11 +37,11 @@ namespace RE
 
 		// members;
 		NiQuaternion          orientation;      // 38
-		NiPoint3              unk48;            // 48
+		NiPoint3              location;         // 48
 		std::uint32_t         unk54;            // 54
 		BSTArray<void*>       unk58;            // 58
 		BSTArray<void*>       unk70;            // 70
-		NiAVObject*           unk88;            // 88
+		NiPointer<NiAVObject> effectModel;      // 88
 		NiPoint3              unk90;            // 90
 		ObjectRefHandle       unk9C;            // 9C
 		NiPointer<bhkWorld>   physicsWorld;     // A0

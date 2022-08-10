@@ -282,6 +282,7 @@ set(SOURCES
 	include/RE/B/BSPrecomputedNavmeshInfoPathMap.h
 	include/RE/B/BSReloadShaderI.h
 	include/RE/B/BSRenderManager.h
+	include/RE/B/BSRenderPass.h
 	include/RE/B/BSResourceNiBinaryStream.h
 	include/RE/B/BSResponse.h
 	include/RE/B/BSSaveDataSystemUtility.h
@@ -338,6 +339,8 @@ set(SOURCES
 	include/RE/B/BSVirtualKeyboardDevice.h
 	include/RE/B/BSVisit.h
 	include/RE/B/BSVolumetricLightingRenderData.h
+	include/RE/B/BSWaterShaderMaterial.h
+	include/RE/B/BSWaterShaderProperty.h
 	include/RE/B/BSWin32GamepadDevice.h
 	include/RE/B/BSWin32KeyboardDevice.h
 	include/RE/B/BSWin32MouseDevice.h
@@ -1355,8 +1358,11 @@ set(SOURCES
 	include/RE/T/TESUniqueIDChangeEvent.h
 	include/RE/T/TESValueForm.h
 	include/RE/T/TESWaitStopEvent.h
+	include/RE/T/TESWaterDisplacement.h
 	include/RE/T/TESWaterForm.h
+	include/RE/T/TESWaterNormals.h
 	include/RE/T/TESWaterObject.h
+	include/RE/T/TESWaterReflections.h
 	include/RE/T/TESWaterSystem.h
 	include/RE/T/TESWeather.h
 	include/RE/T/TESWeightForm.h

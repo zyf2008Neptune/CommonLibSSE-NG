@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSTArray.h"
+#include "RE/B/BSTEvent.h"
 #include "RE/F/FormTypes.h"
 #include "RE/T/TESForm.h"
 
@@ -28,6 +29,15 @@ namespace RE
 		void ClearData() override;           // 05
 		bool Load(TESFile* a_mod) override;  // 06
 		void InitItemImpl() override;        // 13
+
+		void ForEachItem(std::function<BSContainer::ForEachResult(TESForm&)> a_callback) const
+		{
+			for (auto& item : outfitItems) {
+				if (item && a_callback(*item) == BSContainer::ForEachResult::kStop) {
+					return;
+				}
+			}
+		}
 
 		// members
 		BSTArray<TESForm*> outfitItems;  // 20 - INAM

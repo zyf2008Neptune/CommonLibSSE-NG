@@ -230,7 +230,7 @@ namespace RE
 		bool                                           unk31A;                      // 31A
 		bool                                           pickPocketed;                // 31B
 		bool                                           summonedCreature;            // 31C
-		bool                                           unk31D;                      // 31D
+		bool                                           forceNextUpdate;             // 31D
 		bool                                           unk31E;                      // 31E
 		bool                                           unk31F;                      // 31F
 		bool                                           unk320;                      // 320

@@ -3,6 +3,7 @@
 #include "RE/B/BSAtomic.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTArray.h"
+#include "RE/B/BSTEvent.h"
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/B/BSTSmartPointer.h"
@@ -35,9 +36,10 @@ namespace RE
 		static ProcessLists* GetSingleton();
 
 		void ClearCachedFactionFightReactions() const;
-		void GetMagicEffects(std::function<bool(BSTempEffect& a_tempEffect)> a_fn);
-		void GetModelEffects(std::function<bool(ModelReferenceEffect& a_modelEffect)> a_fn);
-		void GetShaderEffects(std::function<bool(ShaderReferenceEffect& a_shaderEffect)> a_fn);
+		void ForEachHighActor(std::function<BSContainer::ForEachResult(Actor&)> a_callback);
+		void ForEachMagicTempEffect(std::function<BSContainer::ForEachResult(BSTempEffect&)> a_callback);
+		void ForEachModelEffect(std::function<BSContainer::ForEachResult(ModelReferenceEffect&)> a_callback);
+		void ForEachShaderEffect(std::function<BSContainer::ForEachResult(ShaderReferenceEffect&)> a_callback);
 		void StopAllMagicEffects(TESObjectREFR& a_ref);
 		void StopCombatAndAlarmOnActor(Actor* a_actor, bool a_notAlarm);
 
@@ -76,7 +78,7 @@ namespace RE
 		std::uint64_t                           unk148;                                        // 148
 		std::uint64_t                           unk150;                                        // 150
 		BSTArray<ObjectRefHandle>               tempShouldMoves;                               // 158
-		BSSimpleList<ActorHandle>               unk170;                                        // 170
+		BSSimpleList<ActorHandle>               aliveActorList;                                // 170
 		BSTArray<ActorHandle>                   initPackageLocationsQueue;                     // 180
 		mutable BSSpinLock                      packageLocationsQueueLock;                     // 198
 		BSTArray<ActorHandle>                   initAnimPositionQueue;                         // 1A0
