@@ -25,8 +25,6 @@ namespace RE
 		auto g = static_cast<std::uint32_t>(a_rhs.green * 255);
 		auto b = static_cast<std::uint32_t>(a_rhs.blue * 255);
 
-		char hexcol[16];
-		snprintf(hexcol, sizeof(hexcol), "%02x%02x%02x", r, g, b);
-		return std::string(hexcol);
+		return fmt::format("{:X}{:X}{:X}", r, g, b);
 	}
 }
