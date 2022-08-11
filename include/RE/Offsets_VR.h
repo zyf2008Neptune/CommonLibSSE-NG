@@ -874,7 +874,7 @@ namespace RE
 		namespace SCRIPT_FUNCTION
 		{
 			// E8 ? ? ? ? 48 8D 1D ? ? ? ? BF ? ? ? ? 0F 1F 44 00 ?
-			inline constexpr REL::Offset FirstConsoleCommand(0x01DC6F60);  // 1_5_97
+			inline constexpr REL::Offset FirstConsoleCommand(0x01e83fb0);  // VR 1_4_15
 			// 48 8D 1D ? ? ? ? BF ? ? ? ? 0F 1F 00
 			inline constexpr REL::Offset FirstScriptCommand(0x01DB8910);  // 1_5_97
 		}
