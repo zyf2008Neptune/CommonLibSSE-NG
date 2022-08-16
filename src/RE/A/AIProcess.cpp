@@ -148,7 +148,7 @@ namespace RE
 		REL::Relocation<func_t> func{ RELOCATION_ID(38858, 39895) };
 		return func(this, a_actor, a_location, a_magnitude);
 	}
-	
+
 	void AIProcess::SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_ref)
 	{
 		using func_t = decltype(&AIProcess::SetActorsDetectionEvent);
