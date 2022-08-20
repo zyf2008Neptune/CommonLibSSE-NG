@@ -724,6 +724,7 @@ namespace RE
 		void                         StopInteractingQuick(bool a_unk02);
 		void                         StopMoving(float a_delta);
 		void                         SwitchRace(TESRace* a_race, bool a_player);
+		void                         TrespassAlarm(TESObjectREFR* a_ref, TESForm* a_ownership, std::int32_t a_crime);
 		void                         UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData);
 		void                         Update3DModel();
 		void                         UpdateHairColor();

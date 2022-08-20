@@ -289,6 +289,7 @@ namespace RE
 		float                    GetArmorValue(InventoryEntryData* a_form);
 		float                    GetDamage(InventoryEntryData* a_form);
 		NiPointer<TESObjectREFR> GetGrabbedRef();
+		std::int32_t             GetItemCount(TESBoundObject* a_object);
 		std::uint32_t            GetNumTints(std::uint32_t a_tintType);
 #ifndef SKYRIMVR
 		TintMask*            GetOverlayTintMask(TintMask* a_original);
@@ -299,6 +300,7 @@ namespace RE
 		bool IsGrabbing() const;
 		void PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void SetAIDriven(bool a_enable);
+		void                     SetEscaping(bool a_flag, bool a_escaped);
 		void StartGrabObject();
 
 		template <class T>

@@ -65,6 +65,13 @@ namespace RE
 		});
 	}
 
+	std::int16_t ProcessLists::RequestHighestDetectionLevelAgainstActor(Actor* a_actor, std::uint32_t& a_LOSCount)
+	{
+		using func_t = decltype(&ProcessLists::RequestHighestDetectionLevelAgainstActor);
+		REL::Relocation<func_t> func{ RELOCATION_ID(40394, 41408) };
+		return func(this, a_actor, a_LOSCount);
+	}
+
 	void ProcessLists::StopAllMagicEffects(TESObjectREFR& a_ref)
 	{
 		auto handle = a_ref.CreateRefHandle();

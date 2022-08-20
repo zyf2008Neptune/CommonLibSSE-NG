@@ -140,19 +140,20 @@ namespace RE
 		NiPointer<QueuedFile>      projectileDBFiles;  // 170
 		std::uint64_t              unk178;             // 178
 		std::uint64_t              unk180;             // 180
-		float                      unk188;             // 188
-		float                      unk18C;             // 18C
+		float                      power;              // 188 - 14074B774
+		float                      speedMult;          // 18C - 1407501B2
 		float                      range;              // 190
-		float                      lifeRemaining;      // 194
+		float                      livingTime;         // 194
 		float                      weaponDamage;       // 198
-		float                      unk19C;             // 19C
+		float                      transparency;       // 19C - for beam disappearing
 		std::uint64_t              unk1A0;             // 1A0
-		std::uint64_t              unk1A8;             // 1A8
+		float                      unk1A8;             // 1A8
+		float                      unk1AC;             // 1AC
 		TESObjectWEAP*             weaponSource;       // 1B0
 		TESAmmo*                   ammoSource;         // 1B8
 		float                      distanceMoved;      // 1C0
-		std::uint32_t              unk1C4;             // 1C4
-		std::uint32_t              unk1C8;             // 1C8
+		std::uint32_t              unk1C4;             // 1C4 - pad?
+		float                      scale;              // 1C8 - for double cast model scale
 		std::uint32_t              flags;              // 1CC
 		std::uint64_t              unk1D0;             // 1D0
 	};

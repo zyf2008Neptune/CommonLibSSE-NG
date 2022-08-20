@@ -163,6 +163,8 @@ namespace RE
 		bool                    IsArrested() const;
 		bool                    IsGhost() const;
 		void                    SetActorRefraction(float a_refraction);
+		void                    KnockExplosion(Actor* a_actor, const NiPoint3& a_location, float a_magnitude);
+		void                    SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_ref);
 		void                    SetArrested(bool a_arrested);
 		void                    SetCachedHeight(float a_height);
 		void                    SetRefraction(float a_refraction);
