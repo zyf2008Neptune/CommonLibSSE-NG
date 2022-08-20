@@ -159,9 +159,11 @@ namespace RE
 		SkyrimScript::Profiler                                                profiler;                   // 0590
 		SkyrimScript::SavePatcher                                             savePatcher;                // 0670
 		std::uint64_t                                                         unk0678;                    // 0678
-		std::uint64_t                                                         unk0680;                    // 0680
-		std::uint64_t                                                         unk0688;                    // 0688
-		std::uint64_t                                                         unk0690;                    // 0690
+		std::uint32_t                                                         unk0680;                    // 0680
+		mutable BSSpinLock                                                    currentVMTimeLock;          // 0684
+		std::uint32_t                                                         currentVMTime;              // 068C
+		std::uint32_t                                                         currentVMMenuModeTime;      // 0690
+		std::uint32_t                                                         currentVMGameTime;          // 0694
 		std::uint64_t                                                         unk0698;                    // 0698
 		std::uint64_t                                                         unk06A0;                    // 06A0
 		BSTArray<void*>                                                       unk06A8;                    // 06A8
