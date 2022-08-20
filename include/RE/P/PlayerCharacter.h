@@ -300,7 +300,7 @@ namespace RE
 		bool IsGrabbing() const;
 		void PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void SetAIDriven(bool a_enable);
-		void                     SetEscaping(bool a_flag, bool a_escaped);
+		void SetEscaping(bool a_flag, bool a_escaped);
 		void StartGrabObject();
 
 		template <class T>
