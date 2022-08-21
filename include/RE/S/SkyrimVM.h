@@ -158,8 +158,8 @@ namespace RE
 		SkyrimScript::FragmentSystem                                          fragmentSystem;             // 0478
 		SkyrimScript::Profiler                                                profiler;                   // 0590
 		SkyrimScript::SavePatcher                                             savePatcher;                // 0670
-		std::uint64_t                                                         unk0678;                    // 0678
-		std::uint32_t                                                         unk0680;                    // 0680
+		mutable BSSpinLock                                                    frozenLock;                 // 0678
+		std::uint32_t                                                         isFrozen;                   // 0680
 		mutable BSSpinLock                                                    currentVMTimeLock;          // 0684
 		std::uint32_t                                                         currentVMTime;              // 068C
 		std::uint32_t                                                         currentVMMenuModeTime;      // 0690
@@ -196,9 +196,10 @@ namespace RE
 		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>* postRenderQueueToWriteTo;   // 88F0
 		mutable BSSpinLock                                                    unk88F8;                    // 88F8
 		BSTHashMap<UnkKey, UnkValue>                                          unk8900;                    // 8900
-		std::uint64_t                                                         unk8930;                    // 8930
-		std::uint64_t                                                         unk8938;                    // 8938
-		std::uint64_t                                                         unk8940;                    // 8940
+		mutable BSSpinLock                                                    currentVMOverstressTimeLock;// 8930
+		std::uint32_t                                                         currentVMOverstressTime;    // 8938
+		std::uint32_t                                                         lastVMStackDumpTime;        // 893C
+		mutable BSSpinLock                                                    unk8940;                    // 8940
 		BSTHashMap<UnkKey, UnkValue>                                          unk8948;                    // 8948
 	};
 	static_assert(sizeof(SkyrimVM) == 0x8978);
