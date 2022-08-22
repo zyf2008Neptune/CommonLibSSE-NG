@@ -144,25 +144,25 @@ namespace RE
 		public:
 			enum class UpdateType : bool
 			{
-				kRepeat = 0,					// RegisterForUpdate/RegisterForUpdateGameTime
-				kNoRepeat = 1,					// RegisterForSingleUpdate/RegisterForSingleUpdateGameTime
+				kRepeat = 0,    // RegisterForUpdate/RegisterForUpdateGameTime
+				kNoRepeat = 1,  // RegisterForSingleUpdate/RegisterForSingleUpdateGameTime
 			};
 			// members
-			std::uint32_t unk00;				// 00 - Possibly BSIntrusiveRefCounted?
-			UpdateType    updateType;           // 04
-			std::uint16_t pad06;				// 06
-			std::uint32_t timeToSendEvent;		// 08 - updateTime + currentVMMenuMode/currentVMDaysPassed 
-			std::uint32_t updateTime;			// 0C
-			VMHandle      handle;				// 10
+			std::uint32_t unk00;            // 00 - Possibly BSIntrusiveRefCounted?
+			UpdateType    updateType;       // 04
+			std::uint16_t pad06;            // 06
+			std::uint32_t timeToSendEvent;  // 08 - updateTime + currentVMMenuMode/currentVMDaysPassed
+			std::uint32_t updateTime;       // 0C
+			VMHandle      handle;           // 10
 		};
 		static_assert(sizeof(UpdateDataEvent) == 0x18);
 
 		struct WaitCall
 		{
 		public:
-			std::uint32_t timeToSendEvent;		// 00 - Same as UpdateDataEvent, updateTime is discarded
-			VMStackID stackID;					// 04 - used for vm->ReturnFromLatent()
-			BSScript::IVirtualMachine *vm;		// 08
+			std::uint32_t timeToSendEvent;	// 00 - Same as UpdateDataEvent, updateTime is discarded
+			VMStackID stackID;					    // 04 - used for vm->ReturnFromLatent()
+			BSScript::IVirtualMachine *vm;	// 08
 		};
 		static_assert(sizeof(WaitCall) == 0x10);
 
@@ -191,19 +191,19 @@ namespace RE
 		std::uint32_t                                                         currentVMTime;                // 068C
 		std::uint32_t                                                         currentVMMenuModeTime;        // 0690
 		std::uint32_t                                                         currentVMGameTime;            // 0694
-		std::uint32_t                                                         currentVMDaysPassed;			// 0698 - Calender.GetDaysPassed() * 1000
-		mutable BSSpinLock                                                    queuedWaitEventLock;			// 069C
-		std::uint32_t                                                         pad06A4;						// 06A4
-		BSTArray<WaitCall>													  queuedWaitCalls;				// 06A8 - Utility.Wait() calls
+		std::uint32_t                                                         currentVMDaysPassed;			    // 0698 - Calender.GetDaysPassed() * 1000
+		mutable BSSpinLock                                                    queuedWaitEventLock;			    // 069C
+		std::uint32_t                                                         pad06A4;						          // 06A4
+		BSTArray<WaitCall>													                          queuedWaitCalls;				      // 06A8 - Utility.Wait() calls
 		BSTArray<WaitCall>                                                    queuedWaitMenuModeCalls;      // 06C0 - Utility.WaitMenuMode() calls
-		BSTArray<WaitCall>                                                    queuedWaitGameCalls;			// 06D8 - Utility.WaitGameTime() calls
+		BSTArray<WaitCall>                                                    queuedWaitGameCalls;			    // 06D8 - Utility.WaitGameTime() calls
 		std::uint64_t                                                         unk06F0;                      // 06F0
 		BSTArray<void*>                                                       unk06F8;                      // 06F8
 		std::uint32_t                                                         unk0710;                      // 0710
-		mutable BSSpinLock                                                    queuedOnUpdateEventLock;		// 0714
-		std::uint32_t                                                         pad071C;						// 071C
-		BSTArray<UpdateDataEvent*>										      queuedOnUpdateEvents;			// 0720
-		BSTArray<UpdateDataEvent*>                                            queuedOnUpdateGameEvents;		// 0738
+		mutable BSSpinLock                                                    queuedOnUpdateEventLock;      // 0714
+		std::uint32_t                                                         pad071C;                      // 071C
+		BSTArray<UpdateDataEvent*>                                            queuedOnUpdateEvents;         // 0720
+		BSTArray<UpdateDataEvent*>                                            queuedOnUpdateGameEvents;     // 0738
 		std::uint64_t                                                         unk0750;                      // 0750
 		std::uint64_t                                                         unk0758;                      // 0758
 		BSTHashMap<UnkKey, UnkValue>                                          unk0760;                      // 0760
