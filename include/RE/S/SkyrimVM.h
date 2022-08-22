@@ -157,6 +157,15 @@ namespace RE
 		};
 		static_assert(sizeof(UpdateDataEvent) == 0x18);
 
+		struct WaitCall
+		{
+		public:
+			std::uint32_t timeToSendEvent;		// 00 - Same as UpdateDataEvent, updateTime is discarded
+			VMStackID stackID;					// 04 - used for vm->ReturnFromLatent()
+			BSScript::IVirtualMachine *vm;		// 08
+		};
+		static_assert(sizeof(WaitCall) == 0x10);
+
 		~SkyrimVM() override;  // 00
 
 		static SkyrimVM* GetSingleton();
@@ -183,11 +192,11 @@ namespace RE
 		std::uint32_t                                                         currentVMMenuModeTime;        // 0690
 		std::uint32_t                                                         currentVMGameTime;            // 0694
 		std::uint32_t                                                         currentVMDaysPassed;			// 0698 - Calender.GetDaysPassed() * 1000
-		mutable BSSpinLock                                                    unk069C;						// 069C
-		std::uint32_t                                                         unk06A4;						// 06A4
-		BSTArray<void*>                                                       unk06A8;                      // 06A8
-		BSTArray<void*>                                                       unk06C0;                      // 06C0
-		BSTArray<void*>                                                       unk06D8;                      // 06D8
+		mutable BSSpinLock                                                    queuedWaitEventLock;			// 069C
+		std::uint32_t                                                         pad06A4;						// 06A4
+		BSTArray<WaitCall>													  queuedWaitCalls;				// 06A8 - Utility.Wait() calls
+		BSTArray<WaitCall>                                                    queuedWaitMenuModeCalls;      // 06C0 - Utility.WaitMenuMode() calls
+		BSTArray<WaitCall>                                                    queuedWaitGameCalls;			// 06D8 - Utility.WaitGameTime() calls
 		std::uint64_t                                                         unk06F0;                      // 06F0
 		BSTArray<void*>                                                       unk06F8;                      // 06F8
 		std::uint32_t                                                         unk0710;                      // 0710
