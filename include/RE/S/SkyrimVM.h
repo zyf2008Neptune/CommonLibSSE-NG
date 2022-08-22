@@ -160,9 +160,9 @@ namespace RE
 		struct WaitCall
 		{
 		public:
-			std::uint32_t timeToSendEvent;	// 00 - Same as UpdateDataEvent, updateTime is discarded
-			VMStackID stackID;					    // 04 - used for vm->ReturnFromLatent()
-			BSScript::IVirtualMachine *vm;	// 08
+			std::uint32_t              timeToSendEvent;  // 00 - Same as UpdateDataEvent, updateTime is discarded
+			VMStackID                  stackID;          // 04 - used for vm->ReturnFromLatent()
+			BSScript::IVirtualMachine* vm;               // 08
 		};
 		static_assert(sizeof(WaitCall) == 0x10);
 
@@ -191,12 +191,12 @@ namespace RE
 		std::uint32_t                                                         currentVMTime;                // 068C
 		std::uint32_t                                                         currentVMMenuModeTime;        // 0690
 		std::uint32_t                                                         currentVMGameTime;            // 0694
-		std::uint32_t                                                         currentVMDaysPassed;			    // 0698 - Calender.GetDaysPassed() * 1000
-		mutable BSSpinLock                                                    queuedWaitEventLock;			    // 069C
-		std::uint32_t                                                         pad06A4;						          // 06A4
-		BSTArray<WaitCall>													                          queuedWaitCalls;				      // 06A8 - Utility.Wait() calls
+		std::uint32_t                                                         currentVMDaysPassed;          // 0698 - Calender.GetDaysPassed() * 1000
+		mutable BSSpinLock                                                    queuedWaitEventLock;          // 069C
+		std::uint32_t                                                         pad06A4;                      // 06A4
+		BSTArray<WaitCall>                                                    queuedWaitCalls;              // 06A8 - Utility.Wait() calls
 		BSTArray<WaitCall>                                                    queuedWaitMenuModeCalls;      // 06C0 - Utility.WaitMenuMode() calls
-		BSTArray<WaitCall>                                                    queuedWaitGameCalls;			    // 06D8 - Utility.WaitGameTime() calls
+		BSTArray<WaitCall>                                                    queuedWaitGameCalls;          // 06D8 - Utility.WaitGameTime() calls
 		std::uint64_t                                                         unk06F0;                      // 06F0
 		BSTArray<void*>                                                       unk06F8;                      // 06F8
 		std::uint32_t                                                         unk0710;                      // 0710
