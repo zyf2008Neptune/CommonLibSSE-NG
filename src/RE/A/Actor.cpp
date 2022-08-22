@@ -204,7 +204,14 @@ namespace RE
 		}
 	}
 
-	void Actor::EvaluatePackage(bool a_immediate, bool a_resetAI)
+    void Actor::EndInterruptPackage(bool a_skipDialogue)
+	{
+		using func_t = decltype(&Actor::EndInterruptPackage);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36475, 37474) };
+		return func(this, a_skipDialogue);
+	}
+
+    void Actor::EvaluatePackage(bool a_immediate, bool a_resetAI)
 	{
 		using func_t = decltype(&Actor::EvaluatePackage);
 		REL::Relocation<func_t> func{ RELOCATION_ID(36407, 37401) };
@@ -281,7 +288,23 @@ namespace RE
 		return GetCrimeFactionImpl();
 	}
 
-	InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand) const
+    TESPackage* Actor::GetCurrentPackage()
+    {
+		if (currentProcess) {
+			return currentProcess->GetRunningPackage();
+		}
+		return nullptr;
+    }
+
+    const TESPackage* Actor::GetCurrentPackage() const
+    {
+		if (currentProcess) {
+			return currentProcess->GetRunningPackage();
+		}
+		return nullptr;
+    }
+
+    InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand) const
 	{
 		if (!currentProcess || !currentProcess->middleHigh) {
 			return nullptr;
@@ -520,7 +543,13 @@ namespace RE
 		return boolBits.all(BOOL_BITS::kProcessMe);
 	}
 
-	bool Actor::IsAMount() const
+    bool Actor::IsAlarmed() const
+    {
+		auto currentPackage = GetCurrentPackage();
+		return currentPackage && currentPackage->packData.packType.get() == PACKAGE_PROCEDURE_TYPE::kAlarm;
+    }
+
+    bool Actor::IsAMount() const
 	{
 		return boolFlags.all(BOOL_FLAGS::kIsAMount);
 	}
@@ -766,7 +795,16 @@ namespace RE
 		return func(this, a_ref, a_object, a_num, a_total, a_owner, a_allowWarning);
 	}
 
-	void Actor::StopInteractingQuick(bool a_unk02)
+    void Actor::StopAlarmOnActor()
+	{
+		EndInterruptPackage(false);
+
+	    if (currentProcess) {
+			currentProcess->ClearActionHeadtrackTarget(true);
+		}
+	}
+
+    void Actor::StopInteractingQuick(bool a_unk02)
 	{
 		using func_t = decltype(&Actor::StopInteractingQuick);
 		REL::Relocation<func_t> func{ RELOCATION_ID(37752, 38697) };

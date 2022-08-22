@@ -8,6 +8,13 @@
 
 namespace RE
 {
+	void AIProcess::ClearActionHeadtrackTarget(bool a_defaultHold)
+	{
+		if (high) {
+			high->ClearHeadtrackTarget(HighProcessData::HEAD_TRACK_TYPE::kAction, a_defaultHold);
+		}
+	}
+
 	void AIProcess::ClearMuzzleFlashes()
 	{
 		using func_t = decltype(&AIProcess::ClearMuzzleFlashes);
