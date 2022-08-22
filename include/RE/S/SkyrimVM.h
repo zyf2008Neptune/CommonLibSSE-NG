@@ -139,7 +139,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_SkyrimVM;
 
-		struct UnkUpdateDataEvent
+		struct UpdateDataEvent
 		{
 		public:
 			enum class UpdateType : bool
@@ -150,12 +150,12 @@ namespace RE
 			// members
 			std::uint32_t unk00;				// 00 - Possibly BSIntrusiveRefCounted?
 			UpdateType    updateType;           // 04
-			std::uint16_t pad_06;               // 06
+			std::uint16_t pad06;				// 06
 			std::uint32_t timeToSendEvent;		// 08 - updateTime + currentVMMenuMode/currentVMDaysPassed 
 			std::uint32_t updateTime;			// 0C
 			VMHandle      handle;				// 10
 		};
-		static_assert(sizeof(UnkUpdateDataEvent) == 0x18);
+		static_assert(sizeof(UpdateDataEvent) == 0x18);
 
 		~SkyrimVM() override;  // 00
 
@@ -193,8 +193,8 @@ namespace RE
 		std::uint32_t                                                         unk0710;                      // 0710
 		mutable BSSpinLock                                                    queuedOnUpdateEventLock;		// 0714
 		std::uint32_t                                                         pad071C;						// 071C
-		BSTArray<UnkUpdateDataEvent*>                                         queuedOnUpdateEvents;			// 0720
-		BSTArray<UnkUpdateDataEvent*>                                         queuedOnUpdateGameEvents;		// 0738
+		BSTArray<UpdateDataEvent*>										      queuedOnUpdateEvents;			// 0720
+		BSTArray<UpdateDataEvent*>                                            queuedOnUpdateGameEvents;		// 0738
 		std::uint64_t                                                         unk0750;                      // 0750
 		std::uint64_t                                                         unk0758;                      // 0758
 		BSTHashMap<UnkKey, UnkValue>                                          unk0760;                      // 0760
