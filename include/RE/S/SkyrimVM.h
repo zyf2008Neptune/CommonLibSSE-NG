@@ -139,7 +139,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_SkyrimVM;
 
-		struct UpdateDataEvent : BSIntrusiveRefCounted
+		struct UpdateDataEvent : public BSIntrusiveRefCounted
 		{
 		public:
 			enum class UpdateType : bool
@@ -147,6 +147,7 @@ namespace RE
 				kRepeat = 0,    // RegisterForUpdate/RegisterForUpdateGameTime
 				kNoRepeat = 1,  // RegisterForSingleUpdate/RegisterForSingleUpdateGameTime
 			};
+
 			// members
 			UpdateType    updateType;       // 04
 			std::uint16_t pad06;            // 06
@@ -159,20 +160,21 @@ namespace RE
 		struct WaitCall
 		{
 		public:
+			// members
 			std::uint32_t              timeToSendEvent;  // 00 - Same as UpdateDataEvent, updateTime is discarded
 			VMStackID                  stackID;          // 04 - used for vm->ReturnFromLatent()
 			BSScript::IVirtualMachine* vm;               // 08
 		};
 		static_assert(sizeof(WaitCall) == 0x10);
 
-		struct LOSDataEvent : BSIntrusiveRefCounted
+		struct LOSDataEvent : public BSIntrusiveRefCounted
 		{
 		public:
 			enum class LOSEventType
 			{
 				kGain = 0,
-				kLost = 1,
-				kBoth = 2,
+				kLost,
+				kBoth,
 			};
 
 			enum class PreviousLOS
@@ -180,6 +182,8 @@ namespace RE
 				kLOS = 1,
 				kNoLOS = 2
 			};
+
+			// members
 			std::uint32_t pad04;               // 04
 			VMHandle      handle;              // 08
 			FormID        akViewerFormID;      // 10
