@@ -139,7 +139,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_SkyrimVM;
 
-		struct UpdateDataEvent
+		struct UpdateDataEvent : BSIntrusiveRefCounted
 		{
 		public:
 			enum class UpdateType : bool
@@ -148,7 +148,6 @@ namespace RE
 				kNoRepeat = 1,  // RegisterForSingleUpdate/RegisterForSingleUpdateGameTime
 			};
 			// members
-			std::uint32_t unk00;            // 00 - Possibly BSIntrusiveRefCounted?
 			UpdateType    updateType;       // 04
 			std::uint16_t pad06;            // 06
 			std::uint32_t timeToSendEvent;  // 08 - updateTime + currentVMMenuMode/currentVMDaysPassed
@@ -165,6 +164,30 @@ namespace RE
 			BSScript::IVirtualMachine* vm;               // 08
 		};
 		static_assert(sizeof(WaitCall) == 0x10);
+
+		struct LOSDataEvent : BSIntrusiveRefCounted
+		{
+		public:
+			enum class LOSEventType
+			{
+				kGain = 0,
+				kLost = 1,
+				kBoth = 2,
+			};
+
+			enum class PreviousLOS
+			{
+				kLOS = 1,
+				kNoLOS = 2
+			};
+			std::uint32_t pad04;               // 04
+			VMHandle      handle;              // 08
+			FormID        akViewerFormID;      // 10
+			FormID        akTargetFormID;      // 14
+			LOSEventType  losEventType;        // 18
+			PreviousLOS   lastLOSCheckResult;  // 1C - (2 - (akViewer::HasLOS(akTarget) != 0))
+		};
+		static_assert(sizeof(LOSDataEvent) == 0x20);
 
 		~SkyrimVM() override;  // 00
 
@@ -197,13 +220,13 @@ namespace RE
 		BSTArray<WaitCall>                                                    queuedWaitCalls;              // 06A8 - Utility.Wait() calls
 		BSTArray<WaitCall>                                                    queuedWaitMenuModeCalls;      // 06C0 - Utility.WaitMenuMode() calls
 		BSTArray<WaitCall>                                                    queuedWaitGameCalls;          // 06D8 - Utility.WaitGameTime() calls
-		std::uint64_t                                                         unk06F0;                      // 06F0
-		BSTArray<void*>                                                       unk06F8;                      // 06F8
-		std::uint32_t                                                         unk0710;                      // 0710
+		mutable BSSpinLock                                                    queuedLOSEventCheckLock;      // 06F0
+		BSTArray<BSTSmartPointer<LOSDataEvent>>                               queuedLOSEventChecks;         // 06F8 - OnGainLOS/OnLostLOS
+		std::uint32_t                                                         currentLOSEventCheckIndex;    // 0710
 		mutable BSSpinLock                                                    queuedOnUpdateEventLock;      // 0714
 		std::uint32_t                                                         pad071C;                      // 071C
-		BSTArray<UpdateDataEvent*>                                            queuedOnUpdateEvents;         // 0720
-		BSTArray<UpdateDataEvent*>                                            queuedOnUpdateGameEvents;     // 0738
+		BSTArray<BSTSmartPointer<UpdateDataEvent>>                            queuedOnUpdateEvents;         // 0720
+		BSTArray<BSTSmartPointer<UpdateDataEvent>>                            queuedOnUpdateGameEvents;     // 0738
 		std::uint64_t                                                         unk0750;                      // 0750
 		std::uint64_t                                                         unk0758;                      // 0758
 		BSTHashMap<UnkKey, UnkValue>                                          unk0760;                      // 0760
