@@ -239,6 +239,22 @@ namespace RE
 			}
 		}
 
+		inline iterator insert_after(iterator a_pos, const_reference a_value)
+		{
+			auto node = new Node(a_value);
+			return insert_after_impl(
+				a_pos.get_current(),
+				std::make_pair(node, node));
+		}
+
+		inline iterator insert_after(iterator a_pos, value_type&& a_value)
+		{
+			auto node = new Node(std::move(a_value));
+			return insert_after_impl(
+				a_pos.get_current(),
+				std::make_pair(node, node));
+		}
+
 		inline iterator insert_after(const_iterator a_pos, const_reference a_value)
 		{
 			auto node = new Node(a_value);
