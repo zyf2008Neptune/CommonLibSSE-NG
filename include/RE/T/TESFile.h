@@ -4,6 +4,7 @@
 #include "RE/B/BSTList.h"
 #include "RE/F/FORM.h"
 #include "RE/F/FormTypes.h"
+#include "RE/N/NiFile.h"
 
 namespace RE
 {
@@ -45,6 +46,7 @@ namespace RE
 			kSmallFile = 1 << 9
 		};
 
+		bool                                  CloseTES(bool a_force);
 		TESFile*                              Duplicate(std::uint32_t a_cacheSize = 0x4000);
 		[[nodiscard]] std::uint32_t           GetCombinedIndex() const noexcept { return static_cast<std::uint32_t>(compileIndex + smallFileCompileIndex); }
 		[[nodiscard]] std::uint8_t            GetCompileIndex() const noexcept { return compileIndex; }
@@ -58,8 +60,10 @@ namespace RE
 		[[nodiscard]] bool                    IsFormInMod(FormID a_formID) const;
 		[[nodiscard]] constexpr bool          IsLight() const noexcept { return recordFlags.all(RecordFlag::kSmallFile); };
 		[[nodiscard]] constexpr bool          IsLocalized() const noexcept { return recordFlags.all(RecordFlag::kDelocalized); }
-		void                                  ReadData(void* a_buf, std::uint32_t a_size);
+		bool                                  OpenTES(NiFile::OpenMode a_accessMode, bool a_lock);
+		bool                                  ReadData(void* a_buf, std::uint32_t a_size);
 		bool                                  Seek(std::uint32_t a_offset);
+		bool                                  SeekNextForm(bool a_skipIgnored);
 		bool                                  SeekNextSubrecord();
 
 		// members

@@ -1,5 +1,7 @@
 #include "RE/F/FormTypes.h"
 
+#include "RE/F/FORM_ENUM_STRING.h"
+
 namespace RE
 {
 	std::string_view FormTypeToString(RE::FormType a_formType) noexcept
@@ -282,5 +284,16 @@ namespace RE
 		default:
 			return "NONE";
 		}
+	}
+
+	RE::FormType StringToFormType(std::string_view a_formType)
+	{
+		for (auto& iter : FORM_ENUM_STRING::GetFormEnumString()) {
+			if (_stricmp(iter.formString, a_formType.data()) == 0) {
+				return iter.formType;
+			}
+		}
+
+		return RE::FormType::None;
 	}
 }

@@ -280,6 +280,7 @@ namespace RE
 	};
 
 	[[nodiscard]] std::string_view FormTypeToString(RE::FormType a_formType) noexcept;
+	[[nodiscard]] RE::FormType     StringToFormType(std::string_view a_formType);
 }
 
 namespace std
