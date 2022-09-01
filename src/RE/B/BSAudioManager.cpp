@@ -14,7 +14,7 @@ namespace RE
 		return func();
 	}
 
-	bool BSAudioManager::Play(RE::FormID a_soundFormID)
+	bool BSAudioManager::Play(FormID a_soundFormID)
 	{
 		auto descriptor = TESForm::LookupByID<BGSSoundDescriptorForm>(a_soundFormID);
 		return descriptor && Play(descriptor);
