@@ -47,6 +47,7 @@ namespace RE
 			bool operator<=(const Variable& a_rhs) const;
 			bool operator>=(const Variable& a_rhs) const;
 
+			[[nodiscard]] bool IsType(TypeInfo a_typeInfo) const;
 			[[nodiscard]] bool IsArray() const;
 			[[nodiscard]] bool IsBool() const;
 			[[nodiscard]] bool IsFloat() const;

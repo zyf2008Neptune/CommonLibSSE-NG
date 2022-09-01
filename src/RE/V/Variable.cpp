@@ -156,6 +156,10 @@ namespace RE
 			return !(*this < a_rhs);
 		}
 
+		bool Variable::IsType(TypeInfo a_typeInfo) const 
+		{
+			return varType == a_typeInfo;
+		}
 		bool Variable::IsArray() const
 		{
 			return varType.IsArray();
