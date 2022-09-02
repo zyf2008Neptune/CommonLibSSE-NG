@@ -86,7 +86,6 @@ namespace RE
 			} else {
 				return reinterpret_cast<ObjectTypeInfo*>(stl::to_underlying(GetRawType()) & ~stl::to_underlying(RawType::kObjectArray));
 			}
-			
 		}
 
 		auto TypeInfo::GetUnmangledRawType() const
