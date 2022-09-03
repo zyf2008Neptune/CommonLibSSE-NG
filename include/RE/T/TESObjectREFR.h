@@ -371,6 +371,7 @@ namespace RE
 		const TESBoundObject*                   GetBaseObject() const;
 		const BSTSmartPointer<BipedAnim>&       GetBiped() const;
 		const BSTSmartPointer<BipedAnim>&       GetBiped(bool a_firstPerson) const;
+		std::uint16_t                           GetCalcLevel(bool a_adjustLevel) const;
 		TESContainer*                           GetContainer() const;
 		BGSLocation*                            GetCurrentLocation() const;
 		const char*                             GetDisplayFullName();
