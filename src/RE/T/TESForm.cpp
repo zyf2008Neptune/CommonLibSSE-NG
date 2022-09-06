@@ -125,4 +125,28 @@ namespace RE
 	{
 		return As<TESModel>() != nullptr;
 	}
+
+	bool TESForm::IsInventoryObject() const
+	{
+		switch (GetFormType()) {
+		case FormType::Scroll:
+		case FormType::Armor:
+		case FormType::Book:
+		case FormType::Ingredient:
+		case FormType::Light:
+		case FormType::Misc:
+		case FormType::Apparatus:
+		case FormType::Weapon:
+		case FormType::Ammo:
+		case FormType::KeyMaster:
+		case FormType::AlchemyItem:
+		case FormType::Note:
+		case FormType::ConstructibleObject:
+		case FormType::SoulGem:
+		case FormType::LeveledItem:
+			return true;
+		default:
+			return false;
+		}
+	}
 }

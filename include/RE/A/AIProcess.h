@@ -144,6 +144,7 @@ namespace RE
 		};
 		static_assert(sizeof(Data0B8) == 0x38);
 
+		void                    ClearActionHeadtrackTarget(bool a_defaultHold);
 		void                    ClearMuzzleFlashes();
 		float                   GetCachedHeight() const;
 		bhkCharacterController* GetCharController();

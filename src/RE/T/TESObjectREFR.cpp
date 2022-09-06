@@ -142,6 +142,13 @@ namespace RE
 		return GetBiped1(a_firstPerson);
 	}
 
+	std::uint16_t TESObjectREFR::GetCalcLevel(bool a_adjustLevel) const
+	{
+		using func_t = decltype(&TESObjectREFR::GetCalcLevel);
+		REL::Relocation<func_t> func{ RELOCATION_ID(19800, 20205) };
+		return func(this, a_adjustLevel);
+	}
+
 	TESContainer* TESObjectREFR::GetContainer() const
 	{
 		auto obj = GetObjectReference();

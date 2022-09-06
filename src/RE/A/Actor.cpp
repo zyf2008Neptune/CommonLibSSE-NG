@@ -204,6 +204,13 @@ namespace RE
 		}
 	}
 
+	void Actor::EndInterruptPackage(bool a_skipDialogue)
+	{
+		using func_t = decltype(&Actor::EndInterruptPackage);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36475, 37474) };
+		return func(this, a_skipDialogue);
+	}
+
 	void Actor::EvaluatePackage(bool a_immediate, bool a_resetAI)
 	{
 		using func_t = decltype(&Actor::EvaluatePackage);
@@ -279,6 +286,22 @@ namespace RE
 	const TESFaction* Actor::GetCrimeFaction() const
 	{
 		return GetCrimeFactionImpl();
+	}
+
+	TESPackage* Actor::GetCurrentPackage()
+	{
+		if (currentProcess) {
+			return currentProcess->GetRunningPackage();
+		}
+		return nullptr;
+	}
+
+	const TESPackage* Actor::GetCurrentPackage() const
+	{
+		if (currentProcess) {
+			return currentProcess->GetRunningPackage();
+		}
+		return nullptr;
 	}
 
 	InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand) const
@@ -525,6 +548,12 @@ namespace RE
 		return boolBits.all(BOOL_BITS::kProcessMe);
 	}
 
+	bool Actor::IsAlarmed() const
+	{
+		auto currentPackage = GetCurrentPackage();
+		return currentPackage && currentPackage->packData.packType.get() == PACKAGE_PROCEDURE_TYPE::kAlarm;
+	}
+
 	bool Actor::IsAMount() const
 	{
 		return boolFlags.all(BOOL_FLAGS::kIsAMount);
@@ -769,6 +798,15 @@ namespace RE
 		using func_t = decltype(&Actor::StealAlarm);
 		REL::Relocation<func_t> func{ RELOCATION_ID(36427, 37422) };
 		return func(this, a_ref, a_object, a_num, a_total, a_owner, a_allowWarning);
+	}
+
+	void Actor::StopAlarmOnActor()
+	{
+		EndInterruptPackage(false);
+
+		if (currentProcess) {
+			currentProcess->ClearActionHeadtrackTarget(true);
+		}
 	}
 
 	void Actor::StopInteractingQuick(bool a_unk02)

@@ -320,6 +320,7 @@ namespace RE
 		[[nodiscard]] bool IsDynamicForm() const noexcept { return GetFormID() >= 0xFF000000; }
 		[[nodiscard]] bool IsGold() const noexcept { return GetFormID() == 0x0000000F; }
 		[[nodiscard]] bool IsIgnored() const noexcept { return (GetFormFlags() & RecordFlags::kIgnored) != 0; }
+		[[nodiscard]] bool IsInventoryObject() const;
 		[[nodiscard]] bool IsInitialized() const noexcept { return (GetFormFlags() & RecordFlags::kInitialized) != 0; }
 		[[nodiscard]] bool IsKey() const noexcept { return Is(FormType::KeyMaster); }
 		[[nodiscard]] bool IsLockpick() const noexcept { return GetFormID() == 0x0000000A; }

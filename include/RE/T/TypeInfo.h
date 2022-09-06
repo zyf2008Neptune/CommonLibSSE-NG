@@ -60,6 +60,7 @@ namespace RE
 			[[nodiscard]] bool            IsObject() const;
 			[[nodiscard]] bool            IsObjectArray() const;
 			[[nodiscard]] bool            IsString() const;
+			[[nodiscard]] std::string     TypeAsString() const;
 			void                          SetType(RawType a_type);
 
 		protected:

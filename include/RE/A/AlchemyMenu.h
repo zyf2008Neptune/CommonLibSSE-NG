@@ -41,14 +41,14 @@ namespace RE
 			class MenuIngredientEntry
 			{
 			public:
-				RE::InventoryEntryData* ingredient;       // 00
-				std::uint8_t            effect1FilterID;  // 09
-				std::uint8_t            effect2FilterID;  // 0A
-				std::uint8_t            effect3FilterID;  // 0B
-				std::uint8_t            effect4FilterID;  // 0C
-				std::uint8_t            isSelected;       // 0D
-				std::uint8_t            isNotGreyed;      // 0E
-				std::uint16_t           padE;             // 0F
+				InventoryEntryData* ingredient;       // 00
+				std::uint8_t        effect1FilterID;  // 09
+				std::uint8_t        effect2FilterID;  // 0A
+				std::uint8_t        effect3FilterID;  // 0B
+				std::uint8_t        effect4FilterID;  // 0C
+				std::uint8_t        isSelected;       // 0D
+				std::uint8_t        isNotGreyed;      // 0E
+				std::uint16_t       padE;             // 0F
 			};
 			static_assert(sizeof(MenuIngredientEntry) == 0x10);
 

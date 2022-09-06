@@ -649,6 +649,7 @@ namespace RE
 		void                         DispelWornItemEnchantments();
 		void                         DoReset3D(bool a_updateWeight);
 		void                         EnableAI(bool a_enable);
+		void                         EndInterruptPackage(bool a_skipDialogue);
 		void                         EvaluatePackage(bool a_immediate = false, bool a_resetAI = false);
 		TESNPC*                      GetActorBase();
 		const TESNPC*                GetActorBase() const;
@@ -660,6 +661,8 @@ namespace RE
 		NiPointer<Actor>             GetCommandingActor() const;
 		TESFaction*                  GetCrimeFaction();
 		const TESFaction*            GetCrimeFaction() const;
+		TESPackage*                  GetCurrentPackage();
+		const TESPackage*            GetCurrentPackage() const;
 		InventoryEntryData*          GetEquippedEntryData(bool a_leftHand) const;
 		TESForm*                     GetEquippedObject(bool a_leftHand) const;
 		std::int32_t                 GetGoldAmount();
@@ -687,6 +690,7 @@ namespace RE
 		bool                         HasSpell(SpellItem* a_spell) const;
 		void                         InterruptCast(bool a_restoreMagicka) const;
 		bool                         IsAIEnabled() const;
+		bool                         IsAlarmed() const;
 		bool                         IsAMount() const;
 		bool                         IsAnimationDriven() const;
 		bool                         IsBeingRidden() const;
@@ -721,6 +725,7 @@ namespace RE
 		void                         SetRotationZ(float a_angle);
 		void                         SetLifeState(ACTOR_LIFE_STATE a_lifeState);
 		void                         StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning);
+		void                         StopAlarmOnActor();
 		void                         StopInteractingQuick(bool a_unk02);
 		void                         StopMoving(float a_delta);
 		void                         SwitchRace(TESRace* a_race, bool a_player);
