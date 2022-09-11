@@ -53,7 +53,7 @@ namespace RE
 		BSTSmartPointer<MapMoveHandler> moveHandler;   // 00040
 		BSTSmartPointer<MapLookHandler> lookHandler;   // 00048
 		BSTSmartPointer<MapZoomHandler> zoomHandler;   // 00050
-		std::uint64_t                   unk00058;      // 00058
+		ObjectRefHandle                 mapMarker;     // 00058
 		LocalMapMenu                    localMapMenu;  // 00060
 		RefHandle                       unk30460;      // 30460
 		std::uint32_t                   unk30464;      // 30464
