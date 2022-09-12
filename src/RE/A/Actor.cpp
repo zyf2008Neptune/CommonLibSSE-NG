@@ -421,7 +421,7 @@ namespace RE
 			return race;
 		}
 
-	    auto base = GetActorBase();
+		auto base = GetActorBase();
 		return base ? base->race : nullptr;
 	}
 
