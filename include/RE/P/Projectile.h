@@ -19,11 +19,47 @@ namespace RE
 	class bhkSimpleShapePhantom;
 	class BGSMaterialType;
 	class QueuedFile;
+	class CombatController;
+	class MagicItem;
 
 	class Projectile : public TESObjectREFR
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Projectile;
+
+		struct LaunchData
+		{
+			virtual ~LaunchData();
+
+			NiPoint3					origin;					// 08
+			NiPoint3					contactNormal;			// 14
+			BGSProjectile*				projectileBase;			// 20
+			TESObjectREFR*				shooter;				// 28
+			CombatController*			combatController;		// 30
+			TESObjectWEAP*				fromWeapon;				// 38
+			TESAmmo*					fromAmmo;				// 40
+			float						zAngle;					// 48
+			float						xAngle;					// 4C
+			float						yAngle;					// 50
+			std::uint8_t				unk54[0x14];			// 5C
+			TESObjectCELL*				parentCell;				// 70
+			MagicItem*					spell;					// 78
+			MagicSystem::CastingSource	castingSource;			// 80
+			bool						unkBool1;				// 84
+			std::uint8_t				unk7D[0xB];				// 85
+			AlchemyItem*				poison;					// 90
+			std::int32_t				area;					// 98
+			float						power;					// 9C
+			float						scale;					// A0
+			bool						bAlwaysHit;				// A4
+			bool						bNoDamageOutsideCombat; // A5
+			bool						bAutoAim;				// A6
+			bool						bUnkBool2;				// A7
+			bool						bUseOrigin;				// A8
+			bool						bDeferInitialization;	// A9
+			bool						bForceConeOfFire;		// AA
+		};
+		static_assert(sizeof(LaunchData) == 0xA8);
 
 		struct ImpactData
 		{
@@ -109,6 +145,9 @@ namespace RE
 			auto projectile = obj ? obj->As<BGSProjectile>() : nullptr;
 			return projectile ? projectile->data.collisionRadius * 2 : 0.0f;
 		}
+
+		// Has been extensively tested in Skyrim Together, can leave the unknown fields null.
+		static BSPointerHandle<Projectile>* Launch(BSPointerHandle<Projectile>* a_result, LaunchData& a_data) noexcept;
 
 		// members
 		BSSimpleList<ImpactData*>  impacts;            // 098
