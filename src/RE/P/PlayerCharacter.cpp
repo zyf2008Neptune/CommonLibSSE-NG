@@ -26,6 +26,13 @@ namespace RE
 		return func(this);
 	}
 
+	void PlayerCharacter::AddPlayerAddItemEvent(TESObject* a_object, TESForm* a_owner, TESObjectREFR* a_container, AQUIRE_TYPE a_type)
+	{
+		using func_t = decltype(&PlayerCharacter::AddPlayerAddItemEvent);
+		REL::Relocation<func_t> func{ REL::ID(40456) };
+		return func(this, a_object, a_owner, a_container, a_type);
+	}
+
 	bool PlayerCharacter::AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer)
 	{
 		using func_t = decltype(&PlayerCharacter::AttemptPickpocket);
@@ -69,6 +76,13 @@ namespace RE
 		} else {
 			return REL::RelocateMember<ObjectRefHandle>(this, 0x8C8, 0).get();
 		}
+	}
+
+	std::int32_t PlayerCharacter::GetItemCount(TESBoundObject* a_object)
+	{
+		using func_t = decltype(&PlayerCharacter::GetItemCount);
+		REL::Relocation<func_t> func{ RELOCATION_ID(19275, 19701) };
+		return func(this, a_object);
 	}
 
 	std::uint32_t PlayerCharacter::GetNumTints(std::uint32_t a_tintType)
@@ -146,6 +160,13 @@ namespace RE
 		using func_t = decltype(&PlayerCharacter::SetAIDriven);
 		REL::Relocation<func_t> func{ RELOCATION_ID(39507, 40586) };
 		return func(this, a_enable);
+	}
+
+	void PlayerCharacter::SetEscaping(bool a_flag, bool a_escaped)
+	{
+		using func_t = decltype(&PlayerCharacter::SetEscaping);
+		REL::Relocation<func_t> func{ RELOCATION_ID(39574, 40660) };
+		return func(this, a_flag, a_escaped);
 	}
 
 	void PlayerCharacter::StartGrabObject()

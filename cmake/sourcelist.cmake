@@ -28,6 +28,7 @@ set(SOURCES
 	include/RE/A/AddCallbackVisitor.h
 	include/RE/A/AlchemyItem.h
 	include/RE/A/AlchemyMenu.h
+	include/RE/A/AnimationObjects.h
 	include/RE/A/Archive.h
 	include/RE/A/ArmorRatingVisitor.h
 	include/RE/A/ArmorRatingVisitorBase.h
@@ -52,6 +53,7 @@ set(SOURCES
 	include/RE/B/BGSActionData.h
 	include/RE/B/BGSActorCellEvent.h
 	include/RE/B/BGSActorEvent.h
+	include/RE/B/BGSAddToPlayerInventoryEvent.h
 	include/RE/B/BGSAddonNode.h
 	include/RE/B/BGSAnimationSequencer.h
 	include/RE/B/BGSApparatus.h
@@ -168,6 +170,7 @@ set(SOURCES
 	include/RE/B/BGSSoundOutput.h
 	include/RE/B/BGSStandardSoundDef.h
 	include/RE/B/BGSStaticCollection.h
+	include/RE/B/BGSStoryEventManager.h
 	include/RE/B/BGSStoryManagerBranchNode.h
 	include/RE/B/BGSStoryManagerEventNode.h
 	include/RE/B/BGSStoryManagerNodeBase.h
@@ -281,6 +284,7 @@ set(SOURCES
 	include/RE/B/BSPrecomputedNavmeshInfoPathMap.h
 	include/RE/B/BSReloadShaderI.h
 	include/RE/B/BSRenderManager.h
+	include/RE/B/BSRenderPass.h
 	include/RE/B/BSResourceNiBinaryStream.h
 	include/RE/B/BSResponse.h
 	include/RE/B/BSSaveDataSystemUtility.h
@@ -339,6 +343,8 @@ set(SOURCES
 	include/RE/B/BSVirtualKeyboardDevice.h
 	include/RE/B/BSVisit.h
 	include/RE/B/BSVolumetricLightingRenderData.h
+	include/RE/B/BSWaterShaderMaterial.h
+	include/RE/B/BSWaterShaderProperty.h
 	include/RE/B/BSWin32GamepadDevice.h
 	include/RE/B/BSWin32KeyboardDevice.h
 	include/RE/B/BSWin32MouseDevice.h
@@ -638,8 +644,10 @@ set(SOURCES
 	include/RE/E/ExtraWorn.h
 	include/RE/E/ExtraWornLeft.h
 	include/RE/F/FORM.h
+	include/RE/F/FORM_ENUM_STRING.h
 	include/RE/F/FactionRank.h
 	include/RE/F/FaderMenu.h
+	include/RE/F/FastTravelConfirmCallback.h
 	include/RE/F/FavoritesHandler.h
 	include/RE/F/FavoritesMenu.h
 	include/RE/F/FightReactions.h
@@ -1352,8 +1360,11 @@ set(SOURCES
 	include/RE/T/TESUniqueIDChangeEvent.h
 	include/RE/T/TESValueForm.h
 	include/RE/T/TESWaitStopEvent.h
+	include/RE/T/TESWaterDisplacement.h
 	include/RE/T/TESWaterForm.h
+	include/RE/T/TESWaterNormals.h
 	include/RE/T/TESWaterObject.h
+	include/RE/T/TESWaterReflections.h
 	include/RE/T/TESWaterSystem.h
 	include/RE/T/TESWeather.h
 	include/RE/T/TESWeightForm.h

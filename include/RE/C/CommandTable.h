@@ -132,11 +132,11 @@ namespace RE
 	{
 	public:
 		// members
-		const char*                                        paramName;  // 00
-		stl::enumeration<SCRIPT_PARAM_TYPE, std::uint32_t> paramType;  // 08
-		bool                                               optional;   // 0C
-		std::uint8_t                                       pad0D;      // 0D
-		std::uint16_t                                      pad0E;      // 0E
+		const char*                                        paramName;   // 00
+		stl::enumeration<SCRIPT_PARAM_TYPE, std::uint32_t> paramType;   // 08
+		bool                                               optional;    // 0C
+		std::uint8_t                                       pad0D{ 0 };  // 0D
+		std::uint16_t                                      pad0E{ 0 };  // 0E
 	};
 	static_assert(sizeof(SCRIPT_PARAMETER) == 0x10);
 

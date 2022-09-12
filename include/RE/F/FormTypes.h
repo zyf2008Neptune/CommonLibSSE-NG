@@ -279,7 +279,8 @@ namespace RE
 		Max  //	8A
 	};
 
-	[[nodiscard]] std::string_view FormTypeToString(RE::FormType a_formType) noexcept;
+	[[nodiscard]] std::string_view FormTypeToString(FormType a_formType) noexcept;
+	[[nodiscard]] FormType         StringToFormType(std::string_view a_formType);
 }
 
 namespace std

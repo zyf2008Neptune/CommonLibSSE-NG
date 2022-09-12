@@ -207,6 +207,13 @@ namespace RE
 		}
 	}
 
+	void Actor::EndInterruptPackage(bool a_skipDialogue)
+	{
+		using func_t = decltype(&Actor::EndInterruptPackage);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36475, 37474) };
+		return func(this, a_skipDialogue);
+	}
+
 	void Actor::EvaluatePackage(bool a_immediate, bool a_resetAI)
 	{
 		using func_t = decltype(&Actor::EvaluatePackage);
@@ -287,6 +294,22 @@ namespace RE
 	const TESFaction* Actor::GetCrimeFaction() const
 	{
 		return GetCrimeFactionImpl();
+	}
+
+	TESPackage* Actor::GetCurrentPackage()
+	{
+		if (currentProcess) {
+			return currentProcess->GetRunningPackage();
+		}
+		return nullptr;
+	}
+
+	const TESPackage* Actor::GetCurrentPackage() const
+	{
+		if (currentProcess) {
+			return currentProcess->GetRunningPackage();
+		}
+		return nullptr;
 	}
 
 	InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand) const
@@ -528,6 +551,12 @@ namespace RE
 		return boolBits.all(BOOL_BITS::kProcessMe);
 	}
 
+	bool Actor::IsAlarmed() const
+	{
+		auto currentPackage = GetCurrentPackage();
+		return currentPackage && currentPackage->packData.packType.get() == PACKAGE_PROCEDURE_TYPE::kAlarm;
+	}
+
 	bool Actor::IsAMount() const
 	{
 		return boolFlags.all(BOOL_FLAGS::kIsAMount);
@@ -654,6 +683,11 @@ namespace RE
 		return std::fminf((waterHeight - a_zPos) / GetHeight(), 1.0f);
 	}
 
+	bool Actor::IsProtected() const
+	{
+		return boolFlags.all(BOOL_FLAGS::kProtected);
+	}
+
 	bool Actor::IsRunning() const
 	{
 		using func_t = decltype(&Actor::IsRunning);
@@ -769,6 +803,15 @@ namespace RE
 		return func(this, a_ref, a_object, a_num, a_total, a_owner, a_allowWarning);
 	}
 
+	void Actor::StopAlarmOnActor()
+	{
+		EndInterruptPackage(false);
+
+		if (currentProcess) {
+			currentProcess->ClearActionHeadtrackTarget(true);
+		}
+	}
+
 	void Actor::StopInteractingQuick(bool a_unk02)
 	{
 		using func_t = decltype(&Actor::StopInteractingQuick);
@@ -788,6 +831,13 @@ namespace RE
 		using func_t = decltype(&Actor::SwitchRace);
 		REL::Relocation<func_t> func{ Offset::Actor::SwitchRace };
 		return func(this, a_race, a_player);
+	}
+
+	void Actor::TrespassAlarm(TESObjectREFR* a_ref, TESForm* a_ownership, std::int32_t a_crime)
+	{
+		using func_t = decltype(&Actor::TrespassAlarm);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36432, 37427) };
+		return func(this, a_ref, a_ownership, a_crime);
 	}
 
 	void Actor::UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData)

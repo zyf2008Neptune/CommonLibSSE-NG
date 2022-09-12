@@ -31,18 +31,18 @@ namespace RE
 #ifndef SKYRIM_CROSS_VR
 		// Override functions past where Skyrim VR breaks compatibility.
 		[[nodiscard]] BGSDecalGroup* GetDecalGroup() const override;       // 9F - { return decalGroup; }
-		void                         Unk_A3(void) override;                // A3 - { return 1; }
-		void                         Unk_A8(void) override;                // A8
-		void                         Unk_A9(void) override;                // A9
+		bool           IsGrenadeProjectile() override;                // A3 - { return 1; }
+		void           OnKill() override;                // A8
+		void           Process3D() override;                // A9
 		void                         UpdateImpl(float a_delta) override;   // AB
 		void                         Unk_AE(void) override;                // AE
-		void                         Unk_B2(void) override;                // B2
-		void                         Unk_B3(void) override;                // B3
-		[[nodiscard]] bool           IsNotGeneratedForm() const override;  // B4
-		void                         Unk_BA(void) override;                // BA - { return 1; }
-		void                         Unk_BB(void) override;                // BB
-		void                         Unk_BD(void) override;                // BD
-		void                         Unk_BF(void) override;                // BF - { flags |= 1 << 30; }
+		void           ReportHavokDeactivation() override;                // B2
+		bool           TurnOff(Actor* a_owner, bool a_noDeactivateSound) override;                                                                                                                 // B3
+		[[nodiscard]] bool           IsPermanent() const override;
+		bool           TargetsWholeBody() override;                // BA - { return 1; }
+		std::uint32_t  GetCollisionGroup() override;                // BB
+		void           AddImpact(TESObjectREFR* a_ref, const NiPoint3& a_targetLoc, const NiPoint3& a_velocity, hkpCollidable* a_collidable, std::int32_t a_arg6, std::uint32_t a_arg7) override;                // BD
+		void           OnTriggerEnter() override;                // BF - { flags |= 1 << 30; }
 		void                         Handle3DLoaded() override;            // C0
 #endif
 

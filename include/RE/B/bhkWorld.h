@@ -15,6 +15,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkWorld;
 		inline static auto           Ni_RTTI = NiRTTI_bhkWorld;
+		inline static constexpr auto VTABLE = VTABLE_bhkWorld;
 
 		class bhkConstraintProjector;
 
@@ -37,6 +38,18 @@ namespace RE
 		virtual void Unk_34(void);                                              // 34
 		virtual void Unk_35(void);                                              // 35
 		virtual void InitHavok(NiAVObject* a_sceneObject, NiAVObject* a_root);  // 36
+
+		static float GetWorldScale()
+		{
+			REL::Relocation<float*> worldScale{ RELOCATION_ID(231896, 188105) };
+			return *worldScale;
+		}
+
+		static float GetWorldScaleInverse()
+		{
+			REL::Relocation<float*> worldScaleInverse{ RELOCATION_ID(230692, 187407) };
+			return *worldScaleInverse;
+		}
 
 		// members
 		std::uint8_t                  unk0020[0x320];             // 0020

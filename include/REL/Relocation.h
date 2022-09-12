@@ -1218,21 +1218,20 @@ namespace REL {
                 auto mapname = L"CommonLibSSEOffsets-v2-"s;
                 mapname += a_version.wstring();
                 const auto byteSize = static_cast<std::size_t>(header.address_count()) * sizeof(mapping_t);
-                if (!_mmap.open(mapname, byteSize) &&
-                    !_mmap.create(mapname, byteSize)) {
-                    return stl::report_and_error("failed to create shared mapping"sv, a_failOnError);
-                }
-
-                _id2offset = {static_cast<mapping_t *>(_mmap.data()), header.address_count()};
-                if (!unpack_file(in, header, a_failOnError)) {
-                    return false;
-                }
-                std::sort(
-                        _id2offset.begin(),
-                        _id2offset.end(),
-                        [](auto &&a_lhs, auto &&a_rhs) {
-                            return a_lhs.id < a_rhs.id;
-                        });
+				if (_mmap.open(mapname, byteSize)) {
+					_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
+				} else if (_mmap.create(mapname, byteSize)) {
+					_id2offset = { static_cast<mapping_t*>(_mmap.data()), header.address_count() };
+					unpack_file(in, header, a_failOnError);
+					std::sort(
+						_id2offset.begin(),
+						_id2offset.end(),
+						[](auto&& a_lhs, auto&& a_rhs) {
+							return a_lhs.id < a_rhs.id;
+						});
+				} else {
+					return stl::report_and_error("failed to create shared mapping"sv, a_failOnError);
+				}
             } catch (const std::system_error &) {
                 return stl::report_and_error(
                         fmt::format(

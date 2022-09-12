@@ -97,7 +97,7 @@ namespace RE
 		void LoadGame(BGSLoadFormBuffer* a_buf) override;                                                                                                              // 0F
 		void InitItemImpl() override;                                                                                                                                  // 13
 		bool Activate(TESObjectREFR* a_targetRef, TESObjectREFR* a_activatorRef, std::uint8_t a_arg3, TESBoundObject* a_object, std::int32_t a_targetCount) override;  // 37
-		bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4D
+		bool GetActivateText(TESObjectREFR* a_activator, BSString& a_dst) override;                                                                                    // 4C
 
 		// override (BGSKeywordForm)
 		[[nodiscard]] BGSKeyword* GetDefaultKeyword() const override;  // 05
@@ -110,6 +110,7 @@ namespace RE
 		[[nodiscard]] bool       IsNoteScroll() const;
 		[[nodiscard]] ActorValue GetSkill() const;
 		[[nodiscard]] SpellItem* GetSpell();
+		bool                     Read(TESObjectREFR* a_reader);
 
 		// members
 		OBJ_BOOK       data;                 // 110 - DATA

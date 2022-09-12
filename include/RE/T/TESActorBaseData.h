@@ -110,6 +110,13 @@ namespace RE
 		[[nodiscard]] constexpr bool UsesOppositeGenderAnims() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kOppositeGenderanims); }
 		[[nodiscard]] constexpr bool UsesTemplate() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kUsesTemplate); }
 
+		[[nodiscard]] std::uint16_t GetLevel() const
+		{
+			using func_t = decltype(&TESActorBaseData::GetLevel);
+			REL::Relocation<func_t> func{ RELOCATION_ID(14262, 14384) };
+			return func(this);
+		}
+
 		// members
 		ACTOR_BASE_DATA        actorData;         // 08
 		TESLevItem*            deathItem;         // 20 - INAM

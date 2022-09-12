@@ -25,6 +25,8 @@ namespace RE
 			std::optional<std::uint32_t> GetIndex(SpellItem* a_spell);
 			std::optional<std::uint32_t> GetIndex(TESLevSpell* a_spell);
 			std::optional<std::uint32_t> GetIndex(TESShout* a_spell);
+			bool                         RemoveLevSpell(TESLevSpell* a_spell);
+			bool                         RemoveShout(TESShout* a_spell);
 			bool                         RemoveSpell(SpellItem* a_spell);
 
 			TES_HEAP_REDEFINE_NEW();

@@ -5,24 +5,24 @@ using namespace REL;
 namespace RE
 {
 #ifdef SKYRIM_CROSS_VR
-	void Projectile::Unk_A2()
+	bool Projectile::IsMissileProjectile()
 	{
-		RelocateVirtual<void(Projectile*)>(0xA2, 0xA3, this);
+		return RelocateVirtual<bool(Projectile*)>(0xA2, 0xA3, this);
 	}
 
-	void Projectile::Unk_A3()
+	bool Projectile::IsGrenadeProjectile()
 	{
-		RelocateVirtual<void(Projectile*)>(0xA3, 0xA4, this);
+		return RelocateVirtual<bool(Projectile*)>(0xA3, 0xA4, this);
 	}
 
-	void Projectile::Unk_A4()
+	bool Projectile::IsFlameProjectile()
 	{
-		RelocateVirtual<void(Projectile*)>(0xA4, 0xA5, this);
+		return RelocateVirtual<bool(Projectile*)>(0xA4, 0xA5, this);
 	}
 
-	void Projectile::Unk_A5()
+	bool Projectile::IsBeamProjectile()
 	{
-		RelocateVirtual<void(Projectile*)>(0xA5, 0xA6, this);
+		return RelocateVirtual<bool(Projectile*)>(0xA5, 0xA6, this);
 	}
 
 	void Projectile::Unk_A6()
@@ -30,24 +30,24 @@ namespace RE
 		RelocateVirtual<void(Projectile*)>(0xA6, 0xA7, this);
 	}
 
-	void Projectile::Unk_A7()
+	bool Projectile::IsBarrierProjectile()
 	{
-		RelocateVirtual<void(Projectile*)>(0xA7, 0xA8, this);
+		return RelocateVirtual<bool(Projectile*)>(0xA7, 0xA8, this);
 	}
 
-	void Projectile::Unk_A8()
+	void Projectile::OnKill()
 	{
 		RelocateVirtual<void(Projectile*)>(0xA8, 0xA9, this);
 	}
 
-	void Projectile::Unk_A9()
+	void Projectile::Process3D()
 	{
 		RelocateVirtual<void(Projectile*)>(0xA9, 0xAA, this);
 	}
 
-	void Projectile::Unk_AA()
+	void Projectile::PostLoad3D(NiAVObject* a_root)
 	{
-		RelocateVirtual<void(Projectile*)>(0xAA, 0xAB, this);
+		RelocateVirtual<void(Projectile*, NiAVObject*)>(0xAA, 0xAB, this, a_root);
 	}
 
 	void Projectile::UpdateImpl(float a_delta)
@@ -55,12 +55,12 @@ namespace RE
 		RelocateVirtual<decltype(&Projectile::UpdateImpl)>(0xAB, 0xAC, this, a_delta);
 	}
 
-	void Projectile::Unk_AC()
+	bool Projectile::ProcessImpacts()
 	{
-		RelocateVirtual<void(Projectile*)>(0xAC, 0xAD, this);
+		return RelocateVirtual<bool(Projectile*)>(0xAC, 0xAD, this);
 	}
 
-	void Projectile::Unk_AD()
+	void Projectile::Update3D()
 	{
 		RelocateVirtual<void(Projectile*)>(0xAD, 0xAE, this);
 	}
@@ -70,87 +70,87 @@ namespace RE
 		RelocateVirtual<void(Projectile*)>(0xAE, 0xAF, this);
 	}
 
-	void Projectile::Unk_AF()
+	float Projectile::GetPowerSpeedMult()
 	{
-		RelocateVirtual<void(Projectile*)>(0xAF, 0xB0, this);
+		return RelocateVirtual<float(Projectile*)>(0xAF, 0xB0, this);
 	}
 
-	void Projectile::Unk_B0()
+	float Projectile::GetWeaponSpeedMult()
 	{
-		RelocateVirtual<void(Projectile*)>(0xB0, 0xB1, this);
+		return RelocateVirtual<float(Projectile*)>(0xB0, 0xB1, this);
 	}
 
-	void Projectile::Unk_B1()
+	bool Projectile::GetStopMainSoundAfterImpact()
 	{
-		RelocateVirtual<void(Projectile*)>(0xB1, 0xB2, this);
+		return RelocateVirtual<bool(Projectile*)>(0xB1, 0xB2, this);
 	}
 
-	void Projectile::Unk_B2()
+	void Projectile::ReportHavokDeactivation()
 	{
 		RelocateVirtual<void(Projectile*)>(0xB2, 0xB3, this);
 	}
 
-	void Projectile::Unk_B3()
+	bool Projectile::TurnOff(Actor* a_owner, bool a_noDeactivateSound)
 	{
-		RelocateVirtual<void(Projectile*)>(0xB3, 0xB4, this);
+		return RelocateVirtual<bool(Projectile*, Actor*, bool)>(0xB3, 0xB4, this, a_owner, a_noDeactivateSound);
 	}
 
-	bool Projectile::IsNotGeneratedForm() const
+	bool Projectile::IsPermanent() const
 	{
-		return RelocateVirtual<decltype(&Projectile::IsNotGeneratedForm)>(0xB4, 0xB5, this);
+		return RelocateVirtual<decltype(&Projectile::IsPermanent)>(0xB4, 0xB5, this);
 	}
 
-	void Projectile::Unk_B5()
+	float Projectile::GetGravity()
 	{
-		RelocateVirtual<void(Projectile*)>(0xB5, 0xB6, this);
+		return RelocateVirtual<float(Projectile*)>(0xB5, 0xB6, this);
 	}
 
-	void Projectile::Unk_B6()
+	void Projectile::CleanUpPointersOnDisable()
 	{
 		RelocateVirtual<void(Projectile*)>(0xB6, 0xB7, this);
 	}
 
-	void Projectile::Unk_B7()
+	bool Projectile::RunTargetPick()
 	{
-		RelocateVirtual<void(Projectile*)>(0xB7, 0xB8, this);
+		return RelocateVirtual<bool(Projectile*)>(0xB7, 0xB8, this);
 	}
 
-	void Projectile::Unk_B8()
+	bool Projectile::GetKillOnCollision()
 	{
-		RelocateVirtual<void(Projectile*)>(0xB8, 0xB9, this);
+		return RelocateVirtual<bool(Projectile*)>(0xB8, 0xB9, this);
 	}
 
-	void Projectile::Unk_B9()
+	bool Projectile::ShouldBeLimited()
 	{
-		RelocateVirtual<void(Projectile*)>(0xB9, 0xBA, this);
+		return RelocateVirtual<bool(Projectile*)>(0xB9, 0xBA, this);
 	}
 
-	void Projectile::Unk_BA()
+	bool Projectile::TargetsWholeBody()
 	{
-		RelocateVirtual<void(Projectile*)>(0xBA, 0xBB, this);
+		return RelocateVirtual<bool(Projectile*)>(0xBA, 0xBB, this);
 	}
 
-	void Projectile::Unk_BB()
+	std::uint32_t Projectile::GetCollisionGroup()
 	{
-		RelocateVirtual<void(Projectile*)>(0xBB, 0xBC, this);
+		return RelocateVirtual<std::uint32_t(Projectile*)>(0xBB, 0xBC, this);
 	}
 
-	void Projectile::Unk_BC()
+	bhkShape* Projectile::GetCollisionShape()
 	{
-		RelocateVirtual<void(Projectile*)>(0xBC, 0xBD, this);
+		return RelocateVirtual<bhkShape*(Projectile*)>(0xBC, 0xBD, this);
 	}
 
-	void Projectile::Unk_BD()
+	void Projectile::AddImpact(TESObjectREFR* a_ref, const NiPoint3& a_targetLoc, const NiPoint3& a_velocity, hkpCollidable* a_collidable, std::int32_t a_arg6, std::uint32_t a_arg7)
 	{
-		RelocateVirtual<void(Projectile*)>(0xBD, 0xBE, this);
+		RelocateVirtual<decltype(&Projectile::AddImpact)>(0xBD, 0xBE, this, a_ref, a_targetLoc, a_velocity, a_collidable, a_arg6, a_arg7);
 	}
 
-	void Projectile::Unk_BE()
+	bool Projectile::HandleHits(hkpCollidable* a_collidable)
 	{
-		RelocateVirtual<void(Projectile*)>(0xBE, 0xBF, this);
+		return RelocateVirtual<bool(Projectile*, hkpCollidable*)>(0xBE, 0xBF, this, a_collidable);
 	}
 
-	void Projectile::Unk_BF()
+	void Projectile::OnTriggerEnter()
 	{
 		RelocateVirtual<void(Projectile*)>(0xBF, 0xC0, this);
 	}
@@ -160,9 +160,9 @@ namespace RE
 		RelocateVirtual<decltype(&Projectile::Handle3DLoaded)>(0xC0, 0xC1, this);
 	}
 
-	void Projectile::Unk_C1()
+	bool Projectile::ShouldUseDesiredTarget()
 	{
-		RelocateVirtual<void(Projectile*)>(0xC1, 0xC2, this);
+		return RelocateVirtual<bool(Projectile*)>(0xC1, 0xC2, this);
 	}
 #endif
 }

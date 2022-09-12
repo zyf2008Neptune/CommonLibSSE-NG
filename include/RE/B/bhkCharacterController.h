@@ -138,7 +138,8 @@ namespace RE
 		std::uint64_t                                    unk278;                     // 278
 		NiPointer<bhkShape>                              shapes[2];                  // 280
 		std::uint64_t                                    unk290;                     // 290
-		std::uint64_t                                    unk298;                     // 298
+		std::uint32_t                                    unk298;                     // 298
+		float                                            lodDistance;                // 29C
 		std::uint64_t                                    unk2A0;                     // 2A0
 		std::uint64_t                                    unk2A8;                     // 2A8
 		hkRefPtr<hkpRigidBody>                           supportBody;                // 2B0

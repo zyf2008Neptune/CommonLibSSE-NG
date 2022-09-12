@@ -1,11 +1,14 @@
 #pragma once
 
 #include "RE/B/BSEffectShaderData.h"
+#include "RE/B/BSShaderMaterial.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/N/NiShadeProperty.h"
 
 namespace RE
 {
+	class BSRenderPass;
+	class BSShaderAccumulator;
 	class BSShaderMaterial;
 	class BSShaderPropertyLightData;
 	class NiSourceTexture;
@@ -18,6 +21,23 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSShaderProperty;
 		inline static auto           Ni_RTTI = NiRTTI_BSShaderProperty;
+
+		class ForEachVisitor
+		{
+		public:
+			inline static constexpr auto RTTI = RTTI_BSShaderProperty__ForEachVisitor;
+
+			virtual ~ForEachVisitor();  // 00
+
+			// add
+			virtual std::uint32_t Accept(NiSourceTexture* a_texture) = 0;  // 01
+		};
+
+		struct RenderPassArray
+		{
+			BSRenderPass* head;  // 0
+		};
+		static_assert(sizeof(RenderPassArray) == 0x8);
 
 		enum class EShaderPropertyFlag : std::uint64_t
 		{
@@ -170,27 +190,27 @@ namespace RE
 		void          Unk_29(void) override;                              // 29
 
 		// add
-		virtual void                           Unk_2A(void) = 0;                           // 2A
-		virtual void                           Unk_2B(void);                               // 2B - { return 0; }
-		virtual void                           Unk_2C(void);                               // 2C - { return 0; }
-		virtual void                           Unk_2D(void);                               // 2D - { return 0; }
-		virtual void                           Unk_2E(void);                               // 2E - { return 1; }
-		virtual void                           Unk_2F(void);                               // 2F - { return 0; }
-		virtual bool                           CanMerge(const BSShaderProperty* a_other);  // 30
-		virtual void                           SetMaterialAlpha(float a_alpha);            // 31 - { return; }
-		[[nodiscard]] virtual float            QMaterialAlpha();                           // 32 - { return 1.0; }
-		virtual void                           Unk_33(void);                               // 33 - { return 1; }
-		virtual void                           Unk_34(void);                               // 34
-		virtual void                           Unk_35(void);                               // 35 - { return 0; }
-		virtual void                           Unk_36(void);                               // 36 - { return 0; }
-		[[nodiscard]] virtual NiSourceTexture* GetBaseTexture();                           // 37 - { return 0; }
-		virtual void                           Unk_38(void);                               // 38 - { return 0; }
-		[[nodiscard]] virtual bool             AcceptsEffectData() const;                  // 39 - { return false; }
-		virtual void                           Unk_3A(void);                               // 3A - { return; }
-		virtual void                           Unk_3B(void);                               // 3B - { return; }
-		virtual void                           Unk_3C(void);                               // 3C - { return 0; }
-		virtual void                           Unk_3D(void);                               // 3D - { return 0; }
-		virtual void                           Unk_3E(void);                               // 3E - { return 0; }
+		virtual RenderPassArray*               GetRenderPasses(BSGeometry* a_geometry, std::uint32_t a_arg2, BSShaderAccumulator* a_accumulator) = 0;  // 2A
+		virtual void                           Unk_2B(void);                                                                                           // 2B - { return 0; }
+		virtual void                           Unk_2C(void);                                                                                           // 2C - { return 0; }
+		virtual void                           Unk_2D(void);                                                                                           // 2D - { return 0; }
+		virtual void                           Unk_2E(void);                                                                                           // 2E - { return 1; }
+		virtual void                           Unk_2F(void);                                                                                           // 2F - { return 0; }
+		virtual bool                           CanMerge(const BSShaderProperty* a_other);                                                              // 30
+		virtual void                           SetMaterialAlpha(float a_alpha);                                                                        // 31 - { return; }
+		[[nodiscard]] virtual float            QMaterialAlpha();                                                                                       // 32 - { return 1.0; }
+		virtual std::int32_t                   ForEachTexture(ForEachVisitor& a_visitor);                                                              // 33 - { return 1; }
+		virtual void                           DoClearRenderPasses();                                                                                  // 34
+		virtual std::int32_t                   QShader();                                                                                              // 35 - { return 0; }
+		virtual void                           Unk_36(void);                                                                                           // 36 - { return 0; }
+		[[nodiscard]] virtual NiSourceTexture* GetBaseTexture();                                                                                       // 37 - { return 0; }
+		virtual void                           Unk_38(void);                                                                                           // 38 - { return 0; }
+		[[nodiscard]] virtual bool             AcceptsEffectData() const;                                                                              // 39 - { return false; }
+		virtual void                           Unk_3A(void);                                                                                           // 3A - { return; }
+		virtual void                           Unk_3B(void);                                                                                           // 3B - { return; }
+		virtual void                           Unk_3C(void);                                                                                           // 3C - { return 0; }
+		virtual std::uint32_t                  DetermineUtilityShaderDecl();                                                                           // 3D - { return 0; }
+		virtual BSShaderMaterial::Type         GetMaterialType();                                                                                      // 3E - { return 0; }
 
 		void SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
 		void SetMaterial(BSShaderMaterial* a_material, bool a_unk1);
@@ -200,9 +220,9 @@ namespace RE
 		float                                                alpha;                // 30
 		std::int32_t                                         lastRenderPassState;  // 34
 		stl::enumeration<EShaderPropertyFlag, std::uint64_t> flags;                // 38
-		void*                                                unk40;                // 40
+		RenderPassArray                                      renderPassList;       // 40
 		std::uint64_t                                        unk48;                // 48
-		void*                                                unk50;                // 50
+		RenderPassArray                                      debugRenderPassList;  // 50
 		std::uint64_t                                        unk58;                // 58
 		BSFadeNode*                                          fadeNode;             // 60
 		BSTSmartPointer<BSEffectShaderData>                  effectData;           // 68

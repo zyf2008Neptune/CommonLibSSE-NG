@@ -51,8 +51,8 @@ namespace RE
 
 		static Sky* GetSingleton();
 
-		[[nodiscard]] bool GetIsRaining() const;
-		[[nodiscard]] bool GetIsSnowing() const;
+		[[nodiscard]] bool IsRaining() const;
+		[[nodiscard]] bool IsSnowing() const;
 
 		// members
 		NiPointer<BSMultiBoundNode>           root;                            // 008

@@ -5,6 +5,7 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTList.h"
+#include "RE/C/CollisionLayers.h"
 #include "RE/F/FormTypes.h"
 #include "RE/I/ImpactResults.h"
 #include "RE/M/MagicItem.h"
@@ -15,6 +16,7 @@
 namespace RE
 {
 	class bhkCollisionObject;
+	class bhkShape;
 	class bhkSimpleShapePhantom;
 	class BGSMaterialType;
 	class QueuedFile;
@@ -28,19 +30,19 @@ namespace RE
 		{
 		public:
 			// members
-			NiPoint3                      desiredTargetLoc;    // 00
-			NiPoint3                      negativeVelocity;    // 0C
-			ObjectRefHandle               collidee;            // 18
-			NiPointer<bhkCollisionObject> colObj;              // 20
-			BGSMaterialType*              material;            // 28
-			std::int32_t                  damageRootNodeType;  // 30
-			std::uint32_t                 unk34;               // 34
-			NiNode*                       damageRootNode;      // 38
-			ImpactResult                  impactResult;        // 40
-			std::uint16_t                 unk44;               // 44
-			std::uint16_t                 unk46;               // 46
-			std::uint8_t                  unk48;               // 48
-			std::uint8_t                  unk49;               // 49
+			NiPoint3                                  desiredTargetLoc;    // 00
+			NiPoint3                                  negativeVelocity;    // 0C
+			ObjectRefHandle                           collidee;            // 18
+			NiPointer<bhkCollisionObject>             colObj;              // 20
+			BGSMaterialType*                          material;            // 28
+			std::int32_t                              damageRootNodeType;  // 30
+			stl::enumeration<COL_LAYER, std::int32_t> collidedLayer;       // 34
+			NiNode*                                   damageRootNode;      // 38
+			ImpactResult                              impactResult;        // 40
+			std::uint16_t                             unk44;               // 44
+			std::uint16_t                             unk46;               // 46
+			std::uint8_t                              unk48;               // 48
+			std::uint8_t                              unk49;               // 49
 		};
 		static_assert(sizeof(ImpactData) == 0x50);
 
@@ -66,44 +68,44 @@ namespace RE
 		// Override functions past where Skyrim VR breaks compatibility.
 		void                      MoveHavok(bool a_forceRec) override;                                   // 85 - { return; }
 		void                      GetLinearVelocity(NiPoint3& a_velocity) const override;                // 86
-		void                      Unk_8B(void) override;                                                 // 8B
+		NiNode*                   GetFireNode() override;                                                // 8B
 		[[nodiscard]] Projectile* AsProjectile() override;                                               // 8F - { return this; }
 		bool                      OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const override;  // 90 - { return false; }
 #endif
 
 		// add
-		SKYRIM_REL_VR_VIRTUAL void               Unk_A2(void);                // A2 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_A3(void);                // A3 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_A4(void);                // A4 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_A5(void);                // A5 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_A6(void);                // A6 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_A7(void);                // A7 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_A8(void);                // A8 - { return; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_A9(void);                // A9 - { return; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_AA(void);                // AA
-		SKYRIM_REL_VR_VIRTUAL void               UpdateImpl(float a_delta);   // AB
-		SKYRIM_REL_VR_VIRTUAL void               Unk_AC(void);                // AC
-		SKYRIM_REL_VR_VIRTUAL void               Unk_AD(void);                // AD
-		SKYRIM_REL_VR_VIRTUAL void               Unk_AE(void);                // AE - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_AF(void);                // AF - { if (unk158) return 1.0; else return unk188; } - "float GetSpeed()"?
-		SKYRIM_REL_VR_VIRTUAL void               Unk_B0(void);                // B0 - { return 1.0; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_B1(void);                // B1 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_B2(void);                // B2 - { return; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_B3(void);                // B3
-		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool IsNotGeneratedForm() const;  // B4 - { return TESDataHandler::GetSingleton()->IsGeneratedFormID(formID) == 0; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_B5(void);                // B5 - { void* var = unk40; if ((var->unk80 >> 17) & 1) return 1.0; else return var->unk84; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_B6(void);                // B6
-		SKYRIM_REL_VR_VIRTUAL void               Unk_B7(void);                // B7
-		SKYRIM_REL_VR_VIRTUAL void               Unk_B8(void);                // B8 - { return 1; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_B9(void);                // B9 - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_BA(void);                // BA - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_BB(void);                // BB
-		SKYRIM_REL_VR_VIRTUAL void               Unk_BC(void);                // BC
-		SKYRIM_REL_VR_VIRTUAL void               Unk_BD(void);                // BD
-		SKYRIM_REL_VR_VIRTUAL void               Unk_BE(void);                // BE
-		SKYRIM_REL_VR_VIRTUAL void               Unk_BF(void);                // BF - { return; }
-		SKYRIM_REL_VR_VIRTUAL void               Handle3DLoaded();            // C0 - { return; }
-		SKYRIM_REL_VR_VIRTUAL void               Unk_C1(void);                // C1 - { return 0; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool  IsMissileProjectile();                                                                                                                                                     // A2 - { return 0; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool  IsGrenadeProjectile();                                                                                                                                                     // A3 - { return 0; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool  IsFlameProjectile();                                                                                                                                                       // A4 - { return 0; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool  IsBeamProjectile();                                                                                                                                                        // A5 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void                Unk_A6(void);                                                                                                                                                              // A6 - { return 0; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool  IsBarrierProjectile();                                                                                                                                                     // A7 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void                OnKill();                                                                                                                                                                  // A8 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void                Process3D();                                                                                                                                                               // A9 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void                PostLoad3D(NiAVObject* a_root);                                                                                                                                            // AA
+		SKYRIM_REL_VR_VIRTUAL void                UpdateImpl(float a_delta);                                                                                                                                                 // AB
+		SKYRIM_REL_VR_VIRTUAL bool                ProcessImpacts();                                                                                                                                                          // AC
+		SKYRIM_REL_VR_VIRTUAL void                Update3D();                                                                                                                                                                // AD
+		SKYRIM_REL_VR_VIRTUAL void                Unk_AE(void);                                                                                                                                                              // AE - { return 0; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL float GetPowerSpeedMult();                                                                                                                                                       // AF - { if (unk158) return 1.0; else return unk188; } - "float GetSpeed()"?
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL float GetWeaponSpeedMult();                                                                                                                                                      // B0 - { return 1.0; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool  GetStopMainSoundAfterImpact();                                                                                                                                             // B1 - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void                ReportHavokDeactivation();                                                                                                                                                 // B2 - { return; }
+		SKYRIM_REL_VR_VIRTUAL bool                TurnOff(Actor* a_owner, bool a_noDeactivateSound);                                                                                                                         // B3
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool  IsPermanent() const;                                                                                                                                                       // B4 - { return TESDataHandler::GetSingleton()->IsGeneratedFormID(formID) == 0; }
+		SKYRIM_REL_VR_VIRTUAL float               GetGravity();                                                                                                                                                              // B5 - { void* var = unk40; if ((var->unk80 >> 17) & 1) return 1.0; else return var->unk84; }
+		SKYRIM_REL_VR_VIRTUAL void                CleanUpPointersOnDisable();                                                                                                                                                // B6
+		SKYRIM_REL_VR_VIRTUAL bool                RunTargetPick();                                                                                                                                                           // B7
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool  GetKillOnCollision();                                                                                                                                                      // B8 - { return 1; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool  ShouldBeLimited();                                                                                                                                                         // B9 - { return 0; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool  TargetsWholeBody();                                                                                                                                                        // BA - { return 0; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL std::uint32_t GetCollisionGroup();                                                                                                                                               // BB
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bhkShape*     GetCollisionShape();                                                                                                                                               // BC
+		SKYRIM_REL_VR_VIRTUAL void                        AddImpact(TESObjectREFR* a_ref, const NiPoint3& a_targetLoc, const NiPoint3& a_velocity, hkpCollidable* a_collidable, std::int32_t a_arg6, std::uint32_t a_arg7);  // BD
+		SKYRIM_REL_VR_VIRTUAL bool                        HandleHits(hkpCollidable* a_collidable);                                                                                                                           // BE
+		SKYRIM_REL_VR_VIRTUAL void                        OnTriggerEnter();                                                                                                                                                  // BF - { return; }
+		SKYRIM_REL_VR_VIRTUAL void                        Handle3DLoaded();                                                                                                                                                  // C0 - { return; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool          ShouldUseDesiredTarget();                                                                                                                                          // C1 - { return 0; }
 
 		inline float GetHeight() const
 		{
@@ -137,19 +139,20 @@ namespace RE
 		NiPointer<QueuedFile>      projectileDBFiles;  // 170
 		std::uint64_t              unk178;             // 178
 		std::uint64_t              unk180;             // 180
-		float                      unk188;             // 188
-		float                      unk18C;             // 18C
+		float                      power;              // 188 - 14074B774
+		float                      speedMult;          // 18C - 1407501B2
 		float                      range;              // 190
-		float                      lifeRemaining;      // 194
-		float                      unk198;             // 198
-		float                      unk19C;             // 19C
+		float                      livingTime;         // 194
+		float                      weaponDamage;       // 198
+		float                      transparency;       // 19C - for beam disappearing
 		std::uint64_t              unk1A0;             // 1A0
-		std::uint64_t              unk1A8;             // 1A8
+		float                      unk1A8;             // 1A8
+		float                      unk1AC;             // 1AC
 		TESObjectWEAP*             weaponSource;       // 1B0
 		TESAmmo*                   ammoSource;         // 1B8
 		float                      distanceMoved;      // 1C0
-		std::uint32_t              unk1C4;             // 1C4
-		std::uint32_t              unk1C8;             // 1C8
+		std::uint32_t              unk1C4;             // 1C4 - pad?
+		float                      scale;              // 1C8 - for double cast model scale
 		std::uint32_t              flags;              // 1CC
 		std::uint64_t              unk1D0;             // 1D0
 	};

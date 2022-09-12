@@ -11,13 +11,15 @@ namespace RE
 		return func();
 	}
 
-	bool Sky::GetIsRaining() const
+	bool Sky::IsRaining() const
 	{
-		return currentWeather && currentWeather->data.flags.all(TESWeather::WeatherDataFlag::kRainy);
+		return (currentWeather && currentWeather->data.flags.any(TESWeather::WeatherDataFlag::kRainy) && (currentWeather->data.precipitationBeginFadeIn * (1.0f / 255)) < currentWeatherPct) ||
+		       (lastWeather && lastWeather->data.flags.any(TESWeather::WeatherDataFlag::kRainy) && ((lastWeather->data.precipitationEndFadeOut * (1.0f / 255)) + 0.001f) > currentWeatherPct);
 	}
 
-	bool Sky::GetIsSnowing() const
+	bool Sky::IsSnowing() const
 	{
-		return currentWeather && currentWeather->data.flags.all(TESWeather::WeatherDataFlag::kSnow);
+		return (currentWeather && currentWeather->data.flags.any(TESWeather::WeatherDataFlag::kSnow) && (currentWeather->data.precipitationBeginFadeIn * (1.0f / 255)) < currentWeatherPct) ||
+		       (lastWeather && lastWeather->data.flags.any(TESWeather::WeatherDataFlag::kSnow) && ((lastWeather->data.precipitationEndFadeOut * (1.0f / 255)) + 0.001f) > currentWeatherPct);
 	}
 }

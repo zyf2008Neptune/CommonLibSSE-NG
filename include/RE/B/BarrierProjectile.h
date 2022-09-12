@@ -37,10 +37,10 @@ namespace RE
 		void        InitHavok() override;                               // 66
 		NiAVObject* Load3D(bool a_backgroundLoading) override;          // 6A
 #ifndef SKYRIM_CROSS_VR
-		void Unk_A7(void) override;               // A7 - { return 1; }
-		void UpdateImpl(float a_delta) override;  // AB
-		void Unk_AC(void) override;               // AC
-		void Unk_B8(void) override;               // B8 - { return 0; }
+		bool        IsBarrierProjectile() override;                              // A7 - { return 1; }
+		void        UpdateImpl(float a_delta) override;                 // AB
+		bool        ProcessImpacts() override;                              // AC
+		bool        GetKillOnCollision() override;                              // B8 - { return 0; }
 #endif
 
 		// members

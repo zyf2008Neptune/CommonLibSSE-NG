@@ -1,11 +1,25 @@
 #pragma once
 
+#include "RE/A/AITimeStamp.h"
+#include "RE/A/AITimer.h"
 #include "RE/B/BSAtomic.h"
-#include "RE/C/CombatGroup.h"
+#include "RE/B/BSTHashMap.h"
+#include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTArray.h"
 
 namespace RE
 {
+	class CombatGroup;
+	class CombatThreat;
+
+	struct CombatThreatMap
+	{
+		BSTHashMap<std::uint32_t, NiPointer<CombatThreat>> threats;                   // 00
+		mutable BSReadWriteLock                            lock;                      // 30
+		AITimeStamp                                        lastThreatAddedTimeStamp;  // 38
+	};
+	static_assert(sizeof(CombatThreatMap) == 0x40);
+
 	class CombatManager
 	{
 	public:
@@ -19,7 +33,7 @@ namespace RE
 		NiTPrimitiveArray<CombatGroup*> combatGroups;      // 00
 		mutable BSReadWriteLock         lock;              // 18
 		std::uint64_t                   unk20;             // 20
-		std::uint64_t                   combatThreats;     // 28
+		CombatThreatMap*                combatThreatMap;   // 28
 		std::uint64_t                   unk30;             // 30
 		std::uint64_t                   unk38;             // 38
 		std::uint64_t                   unk40;             // 40

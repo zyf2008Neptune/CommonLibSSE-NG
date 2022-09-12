@@ -49,6 +49,13 @@ namespace RE
 		return func(a_object3D);
 	}
 
+	bool TESObjectREFR::ActivateRef(TESObjectREFR* a_activator, uint8_t a_arg2, TESBoundObject* a_object, int32_t a_count, bool a_defaultProcessingOnly)
+	{
+		using func_t = decltype(&TESObjectREFR::ActivateRef);
+		REL::Relocation<func_t> func{ RELOCATION_ID(19369, 19796) };
+		return func(this, a_activator, a_arg2, a_object, a_count, a_defaultProcessingOnly);
+	}
+
 	ObjectRefHandle TESObjectREFR::CreateRefHandle()
 	{
 		return GetHandle();
@@ -133,6 +140,13 @@ namespace RE
 	const BSTSmartPointer<BipedAnim>& TESObjectREFR::GetBiped(bool a_firstPerson) const
 	{
 		return GetBiped1(a_firstPerson);
+	}
+
+	std::uint16_t TESObjectREFR::GetCalcLevel(bool a_adjustLevel) const
+	{
+		using func_t = decltype(&TESObjectREFR::GetCalcLevel);
+		REL::Relocation<func_t> func{ RELOCATION_ID(19800, 20205) };
+		return func(this, a_adjustLevel);
 	}
 
 	TESContainer* TESObjectREFR::GetContainer() const
@@ -313,8 +327,8 @@ namespace RE
 				const auto it = results.find(a_object);
 				const auto entryData =
 					it != results.end() ?
-                        it->second.second.get() :
-                        nullptr;
+						it->second.second.get() :
+						nullptr;
 				return entryData ? entryData->IsLeveled() : false;
 			};
 
@@ -536,9 +550,9 @@ namespace RE
 			const auto keyword = a_form.As<BGSKeyword>();
 			hasKeyword = keyword && HasKeyword(keyword);
 			if ((a_matchAll && !hasKeyword) || hasKeyword) {
-				return false;
+				return BSContainer::ForEachResult::kStop;
 			}
-			return true;
+			return BSContainer::ForEachResult::kContinue;
 		});
 
 		return hasKeyword;
@@ -864,14 +878,14 @@ namespace RE
 		REL::RelocateVirtual<decltype(&TESObjectREFR::ResetInventory)>(0x8A, 0x8B, this, a_leveledOnly);
 	}
 
-	void TESObjectREFR::Unk_8B()
+	NiNode* TESObjectREFR::GetFireNode()
 	{
-		REL::RelocateVirtual<decltype(&TESObjectREFR::Unk_8B)>(0x8B, 0x8C, this);
+		return REL::RelocateVirtual<decltype(&TESObjectREFR::GetFireNode)>(0x8B, 0x8C, this);
 	}
 
-	void TESObjectREFR::Unk_8C()
+	void TESObjectREFR::SetFireNode(NiNode* a_fireNode)
 	{
-		REL::RelocateVirtual<decltype(&TESObjectREFR::Unk_8C)>(0x8C, 0x8D, this);
+		REL::RelocateVirtual<decltype(&TESObjectREFR::SetFireNode)>(0x8C, 0x8D, this, a_fireNode);
 	}
 
 	NiAVObject* TESObjectREFR::GetCurrent3D() const
@@ -914,9 +928,9 @@ namespace RE
 		REL::RelocateVirtual<decltype(&TESObjectREFR::Unk_94)>(0x94, 0x95, this);
 	}
 
-	void TESObjectREFR::Unk_95()
+	void TESObjectREFR::TryUpdateActorLastSeenTime()
 	{
-		REL::RelocateVirtual<decltype(&TESObjectREFR::Unk_95)>(0x95, 0x96, this);
+		REL::RelocateVirtual<decltype(&TESObjectREFR::TryUpdateActorLastSeenTime)>(0x95, 0x96, this);
 	}
 
 	void TESObjectREFR::Unk_96()

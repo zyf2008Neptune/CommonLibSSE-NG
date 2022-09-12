@@ -324,41 +324,42 @@ namespace RE
 #if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 		virtual void Unk_84(void);  // 84 - sets flag 24 if the object has destructibles
 #endif
-		SKYRIM_REL_VR_VIRTUAL void          SetObjectReference(TESBoundObject* a_object);                                               // 84 - sets flag 24 if the object has destructibles
-		SKYRIM_REL_VR_VIRTUAL void          MoveHavok(bool a_forceRec);                                                                 // 85
-		SKYRIM_REL_VR_VIRTUAL void          GetLinearVelocity(NiPoint3& a_velocity) const;                                              // 86
-		SKYRIM_REL_VR_VIRTUAL void          SetActionComplete(bool a_set);                                                              // 87 - { return; }
-		SKYRIM_REL_VR_VIRTUAL void          SetMovementComplete(bool a_set);                                                            // 88 - { return; }
-		SKYRIM_REL_VR_VIRTUAL void          Disable();                                                                                  // 89
-		SKYRIM_REL_VR_VIRTUAL void          ResetInventory(bool a_leveledOnly);                                                         // 8A
-		SKYRIM_REL_VR_VIRTUAL void          Unk_8B(void);                                                                               // 8B - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL void          Unk_8C(void);                                                                               // 8C - { return; }
-		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL NiAVObject* GetCurrent3D() const;                                                           // 8D - { return Get3D2(); }
-		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL Explosion* AsExplosion();                                                                   // 8E - { return 0; }
-		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL Projectile* AsProjectile();                                                                 // 8F - { return 0; }
-		SKYRIM_REL_VR_VIRTUAL bool                      OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const;                    // 90 - { return true; }
-		SKYRIM_REL_VR_VIRTUAL void                      DoMoveToHigh();                                                                 // 91 - { return; }
-		SKYRIM_REL_VR_VIRTUAL void                      TryMoveToMiddleLow();                                                           // 92 - { return; }
-		SKYRIM_REL_VR_VIRTUAL bool                      TryChangeSkyCellActorsProcessLevel();                                           // 93 - { return false; }
-		SKYRIM_REL_VR_VIRTUAL void                      Unk_94(void);                                                                   // 94 - { return; }
-		SKYRIM_REL_VR_VIRTUAL void                      Unk_95(void);                                                                   // 95 - { return; }
-		SKYRIM_REL_VR_VIRTUAL void                      Unk_96(void);                                                                   // 96 - related to lockpicking
-		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL TESObjectCELL* GetSaveParentCell() const;                                                   // 97
-		SKYRIM_REL_VR_VIRTUAL void                         SetParentCell(TESObjectCELL* a_cell);                                        // 98
-		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool           IsDead(bool a_notEssential = true) const;                                    // 99
-		SKYRIM_REL_VR_VIRTUAL BSAnimNoteReceiver* CreateAnimNoteReceiver();                                                             // 9A
-		SKYRIM_REL_VR_VIRTUAL BSAnimNoteReceiver* GetAnimNoteReceiver();                                                                // 9B
-		SKYRIM_REL_VR_VIRTUAL bool                ProcessInWater(hkpCollidable* a_collidable, float a_waterHeight, float a_deltaTime);  // 9C
-		SKYRIM_REL_VR_VIRTUAL bool                ApplyCurrent(float a_velocityTime, const hkVector4& a_velocity);                      // 9D - { return 0; }
-		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL TESAmmo* GetCurrentAmmo() const;                                                            // 9E - { return 0; }
-		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL BGSDecalGroup* GetDecalGroup() const;                                                       // 9F
-		SKYRIM_REL_VR_VIRTUAL void                         Unk_A0(void);                                                                // A0
-		SKYRIM_REL_VR_VIRTUAL void                         UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object);                 // A1 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void                         SetObjectReference(TESBoundObject* a_object);                                         // 84 - sets flag 24 if the object has destructibles
+		SKYRIM_REL_VR_VIRTUAL void                         MoveHavok(bool a_forceRec);                                                           // 85
+		SKYRIM_REL_VR_VIRTUAL void                         GetLinearVelocity(NiPoint3& a_velocity) const;                                        // 86
+		SKYRIM_REL_VR_VIRTUAL void                         SetActionComplete(bool a_set);                                                        // 87 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void                         SetMovementComplete(bool a_set);                                                      // 88 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void                         Disable();                                                                            // 89
+		SKYRIM_REL_VR_VIRTUAL void                         ResetInventory(bool a_leveledOnly);                                                   // 8A
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL NiNode*        GetFireNode();                                                                        // 8B - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL void                         SetFireNode(NiNode* a_fireNode);                                                      // 8C - { return; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL NiAVObject*    GetCurrent3D() const;                                                                 // 8D - { return Get3D2(); }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL Explosion*     AsExplosion();                                                                        // 8E - { return 0; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL Projectile*    AsProjectile();                                                                       // 8F - { return 0; }
+		SKYRIM_REL_VR_VIRTUAL bool                         OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const;                          // 90 - { return true; }
+		SKYRIM_REL_VR_VIRTUAL void                         DoMoveToHigh();                                                                       // 91 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void                         TryMoveToMiddleLow();                                                                 // 92 - { return; }
+		SKYRIM_REL_VR_VIRTUAL bool                         TryChangeSkyCellActorsProcessLevel();                                                 // 93 - { return false; }
+		SKYRIM_REL_VR_VIRTUAL void                         Unk_94(void);                                                                         // 94 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void                         TryUpdateActorLastSeenTime();                                                         // 95 - { return; }
+		SKYRIM_REL_VR_VIRTUAL void                         Unk_96(void);                                                                         // 96 - related to lockpicking
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL TESObjectCELL* GetSaveParentCell() const;                                                            // 97
+		SKYRIM_REL_VR_VIRTUAL void                         SetParentCell(TESObjectCELL* a_cell);                                                 // 98
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool           IsDead(bool a_notEssential = true) const;                                             // 99
+		SKYRIM_REL_VR_VIRTUAL BSAnimNoteReceiver*          CreateAnimNoteReceiver();                                                             // 9A
+		SKYRIM_REL_VR_VIRTUAL BSAnimNoteReceiver*          GetAnimNoteReceiver();                                                                // 9B
+		SKYRIM_REL_VR_VIRTUAL bool                         ProcessInWater(hkpCollidable* a_collidable, float a_waterHeight, float a_deltaTime);  // 9C
+		SKYRIM_REL_VR_VIRTUAL bool                         ApplyCurrent(float a_velocityTime, const hkVector4& a_velocity);                      // 9D - { return 0; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL TESAmmo*       GetCurrentAmmo() const;                                                               // 9E - { return 0; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL BGSDecalGroup* GetDecalGroup() const;                                                                // 9F
+		SKYRIM_REL_VR_VIRTUAL void                         Unk_A0(void);                                                                         // A0
+		SKYRIM_REL_VR_VIRTUAL void                         UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object);                          // A1 - { return; }
 
 		static NiPointer<TESObjectREFR> LookupByHandle(RefHandle a_refHandle);
 		static bool                     LookupByHandle(RefHandle a_refHandle, NiPointer<TESObjectREFR>& a_refrOut);
 		static TESObjectREFR*           FindReferenceFor3D(NiAVObject* a_object3D);
 
+		bool                                            ActivateRef(TESObjectREFR* a_activator, uint8_t a_arg2, TESBoundObject* a_object, int32_t a_count, bool a_defaultProcessingOnly);
 		ObjectRefHandle                                 CreateRefHandle();
 		void                                            DoTrap(TrapData& a_data);
 		void                                            DoTrap(TrapEntry* a_trap, TargetEntry* a_target);
@@ -374,6 +375,7 @@ namespace RE
 		[[nodiscard]] const TESBoundObject*             GetBaseObject() const;
 		[[nodiscard]] const BSTSmartPointer<BipedAnim>& GetBiped() const;
 		[[nodiscard]] const BSTSmartPointer<BipedAnim>& GetBiped(bool a_firstPerson) const;
+		[[nodiscard]] std::uint16_t                     GetCalcLevel(bool a_adjustLevel) const;
 		[[nodiscard]] TESContainer*                     GetContainer() const;
 		[[nodiscard]] BGSLocation*                      GetCurrentLocation() const;
 		[[nodiscard]] const char*                       GetDisplayFullName();

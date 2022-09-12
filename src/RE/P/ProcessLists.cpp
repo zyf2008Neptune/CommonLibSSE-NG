@@ -1,5 +1,6 @@
 #include "RE/P/ProcessLists.h"
 
+#include "RE/A/Actor.h"
 #include "RE/M/ModelReferenceEffect.h"
 #include "RE/S/ShaderReferenceEffect.h"
 #include "RE/T/TESObjectREFR.h"
@@ -20,49 +21,66 @@ namespace RE
 		return func(this);
 	}
 
-	void ProcessLists::GetMagicEffects(std::function<bool(BSTempEffect& a_tempEffect)> a_fn)
+	void ProcessLists::ForEachHighActor(std::function<BSContainer::ForEachResult(Actor&)> a_callback)
 	{
-		BSSpinLockGuard locker(magicEffectsLock);
-
-		for (auto& tempEffectPtr : magicEffects) {
-			const auto& tempEffect = tempEffectPtr.get();
-			if (tempEffect && !a_fn(*tempEffect)) {
+		for (auto& highActorHandle : highActorHandles) {
+			const auto& highActor = highActorHandle.get();
+			if (highActor && a_callback(*highActor) == BSContainer::ForEachResult::kStop) {
 				break;
 			}
 		}
 	}
 
-	void ProcessLists::GetModelEffects(std::function<bool(ModelReferenceEffect& a_modelEffect)> a_fn)
+	void ProcessLists::ForEachMagicTempEffect(std::function<BSContainer::ForEachResult(BSTempEffect&)> a_callback)
 	{
-		GetMagicEffects([&](BSTempEffect& a_tempEffect) {
-			const auto modelEffect = a_tempEffect.As<ModelReferenceEffect>();
-			if (modelEffect && !a_fn(*modelEffect)) {
-				return false;
+		BSSpinLockGuard locker(magicEffectsLock);
+
+		for (auto& tempEffectPtr : magicEffects) {
+			const auto& tempEffect = tempEffectPtr.get();
+			if (tempEffect && a_callback(*tempEffect) == BSContainer::ForEachResult::kStop) {
+				break;
 			}
-			return true;
+		}
+	}
+
+	void ProcessLists::ForEachModelEffect(std::function<BSContainer::ForEachResult(ModelReferenceEffect&)> a_callback)
+	{
+		ForEachMagicTempEffect([a_callback](BSTempEffect& a_tempEffect) {
+			const auto modelEffect = a_tempEffect.As<ModelReferenceEffect>();
+			if (modelEffect && a_callback(*modelEffect) == BSContainer::ForEachResult::kStop) {
+				return BSContainer::ForEachResult::kStop;
+			}
+			return BSContainer::ForEachResult::kContinue;
 		});
 	}
 
-	void ProcessLists::GetShaderEffects(std::function<bool(ShaderReferenceEffect& a_shaderEffect)> a_fn)
+	void ProcessLists::ForEachShaderEffect(std::function<BSContainer::ForEachResult(ShaderReferenceEffect&)> a_callback)
 	{
-		GetMagicEffects([&](BSTempEffect& a_tempEffect) {
+		ForEachMagicTempEffect([a_callback](BSTempEffect& a_tempEffect) {
 			const auto shaderEffect = a_tempEffect.As<ShaderReferenceEffect>();
-			if (shaderEffect && !a_fn(*shaderEffect)) {
-				return false;
+			if (shaderEffect && a_callback(*shaderEffect) == BSContainer::ForEachResult::kStop) {
+				return BSContainer::ForEachResult::kStop;
 			}
-			return true;
+			return BSContainer::ForEachResult::kContinue;
 		});
+	}
+
+	std::int16_t ProcessLists::RequestHighestDetectionLevelAgainstActor(Actor* a_actor, std::uint32_t& a_LOSCount)
+	{
+		using func_t = decltype(&ProcessLists::RequestHighestDetectionLevelAgainstActor);
+		REL::Relocation<func_t> func{ RELOCATION_ID(40394, 41408) };
+		return func(this, a_actor, a_LOSCount);
 	}
 
 	void ProcessLists::StopAllMagicEffects(TESObjectREFR& a_ref)
 	{
 		auto handle = a_ref.CreateRefHandle();
-		GetMagicEffects([&](BSTempEffect& a_tempEffect) {
+		ForEachMagicTempEffect([&](BSTempEffect& a_tempEffect) {
 			const auto referenceEffect = a_tempEffect.As<ReferenceEffect>();
 			if (referenceEffect && referenceEffect->target == handle) {
 				referenceEffect->finished = true;
 			}
-			return true;
+			return BSContainer::ForEachResult::kContinue;
 		});
 	}
 

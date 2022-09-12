@@ -85,7 +85,7 @@ namespace RE
 	BSTSmartPointer<MapMoveHandler> moveHandler;  /* 00 */ \
 	BSTSmartPointer<MapLookHandler> lookHandler;  /* 08 */ \
 	BSTSmartPointer<MapZoomHandler> zoomHandler;  /* 10 */ \
-	std::uint64_t                   unk00058;     /* 18 */ \
+	ObjectRefHandle                 mapMarker;     /* 18 */ \
 	LocalMapMenu                    localMapMenu; /* 20 */
 
 			RUNTIME_DATA_CONTENT

@@ -52,7 +52,7 @@ namespace RE
 	std::uint32_t                      pad21C;             /* 21C */ \
 	NiPointer<BSFogProperty>           fogProperty;        /* 220 */ \
 	BSPortalGraph*                     portalGraph;        /* 228 */ \
-	BSTArray<NiPointer<BSShadowLight>> shadowCasterLights; /* 230 */ \
+	BSTArray<BSShadowLight*> shadowCasterLights; /* 230 */ \
 	std::uint64_t                      unk248;             /* 248 */ \
 	std::uint64_t                      unk250;             /* 250 */ \
 	std::uint64_t                      unk258;             /* 258 */ \
