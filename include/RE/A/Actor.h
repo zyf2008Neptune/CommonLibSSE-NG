@@ -601,7 +601,7 @@ namespace RE
 		BGSLocation*                                          editorLocation;                     // 138
 		ActorMover*                                           actorMover;                         // 140
 		BSTSmartPointer<MovementControllerNPC>                movementController;                 // 148
-		void*                                                 unk150;                             // 150
+		TESPackage*                                           unk150;                             // 150
 		CombatController*                                     combatController;                   // 158
 		TESFaction*                                           vendorFaction;                      // 160
 		AITimeStamp                                           calculateVendorFactionTimer;        // 168

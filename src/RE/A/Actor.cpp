@@ -417,7 +417,11 @@ namespace RE
 
 	TESRace* Actor::GetRace() const
 	{
-		auto base = GetActorBase();
+		if (race) {
+			return race;
+		}
+
+	    auto base = GetActorBase();
 		return base ? base->race : nullptr;
 	}
 
