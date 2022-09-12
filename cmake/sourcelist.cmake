@@ -642,6 +642,7 @@ set(SOURCES
 	include/RE/F/FORM_ENUM_STRING.h
 	include/RE/F/FactionRank.h
 	include/RE/F/FaderMenu.h
+	include/RE/F/FastTravelConfirmCallback.h
 	include/RE/F/FavoritesHandler.h
 	include/RE/F/FavoritesMenu.h
 	include/RE/F/FightReactions.h
