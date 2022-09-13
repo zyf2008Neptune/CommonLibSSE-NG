@@ -1125,6 +1125,7 @@ set(SOURCES
 	include/RE/Offsets_NiRTTI.h
 	include/RE/Offsets_NiRTTI_VR.h
 	include/RE/Offsets_RTTI.h
+	include/RE/Offsets_RTTI_VR.h
 	include/RE/Offsets_VR.h
 	include/RE/Offsets_VR_NiRTTI.h
 	include/RE/Offsets_VR_RTTI.h
