@@ -5,13 +5,13 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTList.h"
+#include "RE/B/BSTSingleton.h"
 #include "RE/C/CollisionLayers.h"
 #include "RE/F/FormTypes.h"
 #include "RE/I/ImpactResults.h"
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTransform.h"
 #include "RE/T/TESObjectREFR.h"
-#include "RE/B/BSTSingleton.h"
 
 namespace RE
 {
@@ -42,11 +42,11 @@ namespace RE
 			static Manager* GetSingleton();
 
 			// members
-			BSTArray<ProjectileHandle> unlimited;	   // 08
-			BSTArray<ProjectileHandle> limited;		   // 20
-			BSTArray<ProjectileHandle> pending;		   // 38
-			BSSpinLock                 projectileLock; // 50
-			BSTArray<WobbleControl>    wobble;         // 58
+			BSTArray<ProjectileHandle> unlimited;       // 08
+			BSTArray<ProjectileHandle> limited;         // 20
+			BSTArray<ProjectileHandle> pending;         // 38
+			BSSpinLock                 projectileLock;  // 50
+			BSTArray<WobbleControl>    wobble;          // 58
 		};
 
 		struct LaunchData
@@ -54,33 +54,33 @@ namespace RE
 			virtual ~LaunchData();
 
 			// members
-			NiPoint3					origin;					// 08
-			NiPoint3					contactNormal;			// 14
-			BGSProjectile*				projectileBase;			// 20
-			TESObjectREFR*				shooter;				// 28
-			CombatController*			combatController;		// 30
-			TESObjectWEAP*				fromWeapon;				// 38
-			TESAmmo*					fromAmmo;				// 40
-			float						zAngle;					// 48
-			float						xAngle;					// 4C
-			float						yAngle;					// 50
-			std::uint8_t				unk54[0x14];			// 5C
-			TESObjectCELL*				parentCell;				// 70
-			MagicItem*					spell;					// 78
-			MagicSystem::CastingSource	castingSource;			// 80
-			bool						unkBool1;				// 84
-			std::uint8_t				unk7D[0xB];				// 85
-			AlchemyItem*				poison;					// 90
-			std::int32_t				area;					// 98
-			float						power;					// 9C
-			float						scale;					// A0
-			bool						bAlwaysHit;				// A4
-			bool						bNoDamageOutsideCombat; // A5
-			bool						bAutoAim;				// A6
-			bool						bUnkBool2;				// A7
-			bool						bUseOrigin;				// A8
-			bool						bDeferInitialization;	// A9
-			bool						bForceConeOfFire;		// AA
+			NiPoint3                   origin;                  // 08
+			NiPoint3                   contactNormal;           // 14
+			BGSProjectile*             projectileBase;          // 20
+			TESObjectREFR*             shooter;                 // 28
+			CombatController*          combatController;        // 30
+			TESObjectWEAP*             fromWeapon;              // 38
+			TESAmmo*                   fromAmmo;                // 40
+			float                      zAngle;                  // 48
+			float                      xAngle;                  // 4C
+			float                      yAngle;                  // 50
+			std::uint8_t               unk54[0x14];             // 5C
+			TESObjectCELL*             parentCell;              // 70
+			MagicItem*                 spell;                   // 78
+			MagicSystem::CastingSource castingSource;           // 80
+			bool                       unkBool1;                // 84
+			std::uint8_t               unk7D[0xB];              // 85
+			AlchemyItem*               poison;                  // 90
+			std::int32_t               area;                    // 98
+			float                      power;                   // 9C
+			float                      scale;                   // A0
+			bool                       bAlwaysHit;              // A4
+			bool                       bNoDamageOutsideCombat;  // A5
+			bool                       bAutoAim;                // A6
+			bool                       bUnkBool2;               // A7
+			bool                       bUseOrigin;              // A8
+			bool                       bDeferInitialization;    // A9
+			bool                       bForceConeOfFire;        // AA
 		};
 		static_assert(sizeof(LaunchData) == 0xA8);
 
