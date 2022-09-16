@@ -118,10 +118,55 @@ namespace RE
 		return std::nullopt;
 	}
 
+	bool TESSpellList::SpellData::RemoveLevSpell(TESLevSpell* a_spell)
+	{
+		if (auto index = GetIndex(a_spell); index.has_value()) {
+			std::vector<TESLevSpell*> copiedData{ levSpells, levSpells + numlevSpells };
+			copiedData.erase(copiedData.cbegin() + *index);
+
+			auto newNum = static_cast<std::uint32_t>(copiedData.size());
+			auto newData = calloc<TESLevSpell*>(newNum);
+			std::ranges::copy(copiedData, newData);
+
+			auto oldData = levSpells;
+
+			numlevSpells = newNum;
+			levSpells = newData;
+
+			free(oldData);
+
+			return true;
+		}
+
+		return false;
+	}
+
+	bool TESSpellList::SpellData::RemoveShout(TESShout* a_shout)
+	{
+		if (auto index = GetIndex(a_shout); index.has_value()) {
+			std::vector<TESShout*> copiedData{ shouts, shouts + numShouts };
+			copiedData.erase(copiedData.cbegin() + *index);
+
+			auto newNum = static_cast<std::uint32_t>(copiedData.size());
+			auto newData = calloc<TESShout*>(newNum);
+			std::ranges::copy(copiedData, newData);
+
+			auto oldData = shouts;
+
+			numShouts = newNum;
+			shouts = newData;
+
+			free(oldData);
+
+			return true;
+		}
+
+		return false;
+	}
+
 	bool TESSpellList::SpellData::RemoveSpell(SpellItem* a_spell)
 	{
-		auto index = GetIndex(a_spell);
-		if (index) {
+		if (auto index = GetIndex(a_spell); index.has_value()) {
 			std::vector<SpellItem*> copiedData{ spells, spells + numSpells };
 			copiedData.erase(copiedData.cbegin() + *index);
 

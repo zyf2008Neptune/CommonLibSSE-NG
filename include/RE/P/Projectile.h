@@ -5,6 +5,7 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTList.h"
+#include "RE/B/BSTSingleton.h"
 #include "RE/C/CollisionLayers.h"
 #include "RE/F/FormTypes.h"
 #include "RE/I/ImpactResults.h"
@@ -19,11 +20,69 @@ namespace RE
 	class bhkSimpleShapePhantom;
 	class BGSMaterialType;
 	class QueuedFile;
+	class CombatController;
+	class MagicItem;
 
 	class Projectile : public TESObjectREFR
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Projectile;
+
+		struct WobbleControl
+		{
+		public:
+			// members
+			uint8_t unk00[0x2C];
+		};
+		static_assert(sizeof(WobbleControl) == 0x2C);
+
+		class Manager : public BSTSingletonSDM<Manager>
+		{
+		public:
+			static Manager* GetSingleton();
+
+			// members
+			BSTArray<ProjectileHandle> unlimited;       // 08
+			BSTArray<ProjectileHandle> limited;         // 20
+			BSTArray<ProjectileHandle> pending;         // 38
+			BSSpinLock                 projectileLock;  // 50
+			BSTArray<WobbleControl>    wobble;          // 58
+		};
+
+		struct LaunchData
+		{
+			virtual ~LaunchData();
+
+			// members
+			NiPoint3                   origin;                  // 08
+			NiPoint3                   contactNormal;           // 14
+			BGSProjectile*             projectileBase;          // 20
+			TESObjectREFR*             shooter;                 // 28
+			CombatController*          combatController;        // 30
+			TESObjectWEAP*             fromWeapon;              // 38
+			TESAmmo*                   fromAmmo;                // 40
+			float                      zAngle;                  // 48
+			float                      xAngle;                  // 4C
+			float                      yAngle;                  // 50
+			std::uint8_t               unk54[0x14];             // 5C
+			TESObjectCELL*             parentCell;              // 70
+			MagicItem*                 spell;                   // 78
+			MagicSystem::CastingSource castingSource;           // 80
+			bool                       unkBool1;                // 84
+			std::uint8_t               unk7D[0xB];              // 85
+			AlchemyItem*               poison;                  // 90
+			std::int32_t               area;                    // 98
+			float                      power;                   // 9C
+			float                      scale;                   // A0
+			bool                       bAlwaysHit;              // A4
+			bool                       bNoDamageOutsideCombat;  // A5
+			bool                       bAutoAim;                // A6
+			bool                       bUnkBool2;               // A7
+			bool                       bUseOrigin;              // A8
+			bool                       bDeferInitialization;    // A9
+			bool                       bForceConeOfFire;        // AA
+		};
+		static_assert(sizeof(LaunchData) == 0xA8);
 
 		struct ImpactData
 		{
@@ -88,8 +147,8 @@ namespace RE
 		virtual bool          ProcessImpacts();                                                                                                                                                  // AC
 		virtual void          Update3D();                                                                                                                                                        // AD
 		virtual void          Unk_AE(void);                                                                                                                                                      // AE - { return 0; }
-		virtual float         GetPowerSpeedMult();                                                                                                                                               // AF - { if (unk158) return 1.0; else return unk188; } - "float GetSpeed()"?
-		virtual float         GetWeaponSpeedMult();                                                                                                                                              // B0 - { return 1.0; }
+		virtual float         GetPowerSpeedMult() const;                                                                                                                                         // AF - { if (unk158) return 1.0; else return unk188; } - "float GetSpeed()"?
+		virtual float         GetWeaponSpeedMult() const;                                                                                                                                        // B0 - { return 1.0; }
 		virtual bool          GetStopMainSoundAfterImpact();                                                                                                                                     // B1 - { return 0; }
 		virtual void          ReportHavokDeactivation();                                                                                                                                         // B2 - { return; }
 		virtual bool          TurnOff(Actor* a_owner, bool a_noDeactivateSound);                                                                                                                 // B3
@@ -114,6 +173,18 @@ namespace RE
 			auto projectile = obj ? obj->As<BGSProjectile>() : nullptr;
 			return projectile ? projectile->data.collisionRadius * 2 : 0.0f;
 		}
+		inline float GetSpeed() const
+		{
+			auto obj = GetObjectReference();
+			auto projectile = obj ? obj->As<BGSProjectile>() : nullptr;
+			if (!projectile)
+				return 0.0f;
+
+			return projectile->data.speed * GetPowerSpeedMult() * GetWeaponSpeedMult() * speedMult;
+		}
+
+		// Has been extensively tested in Skyrim Together, can leave the unknown fields null.
+		static BSPointerHandle<Projectile>* Launch(BSPointerHandle<Projectile>* a_result, LaunchData& a_data) noexcept;
 
 		// members
 		BSSimpleList<ImpactData*>  impacts;            // 098
