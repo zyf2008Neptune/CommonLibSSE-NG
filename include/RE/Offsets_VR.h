@@ -869,7 +869,10 @@ namespace RE
 
 		namespace Sky
 		{
-			inline constexpr REL::Offset GetSingleton(static_cast<std::uint64_t>(0x1876A0));
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(13789));
+			inline constexpr REL::ID SetWeather(static_cast<std::uint64_t>(25694));
+			inline constexpr REL::ID ForceWeather(static_cast<std::uint64_t>(25696));
+			inline constexpr REL::ID ResetWeather(static_cast<std::uint64_t>(25695));
 		}
 
 		namespace SkyrimVM
