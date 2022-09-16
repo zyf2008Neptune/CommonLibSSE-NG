@@ -16,10 +16,10 @@ namespace RE
 		virtual bool Run(bool a_arg1);  //01
 
 		//members
-		std::uint64_t unk08;    // 08
-		MapMenu*      mapMenu;  // 10
-		std::uint32_t unk18;    // 18
-		std::uint32_t unk1C;    // 1C
+		std::uint64_t refCount;  // 08
+		MapMenu*      mapMenu;   // 10
+		std::uint32_t unk18;     // 18
+		std::uint32_t unk1C;     // 1C
 	};
 	static_assert(sizeof(FastTravelConfirmCallback) == 0x20);
 }
