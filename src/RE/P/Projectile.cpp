@@ -8,6 +8,26 @@ namespace RE
 		return *singleton;
 	}
 
+	float Projectile::GetHeight() const
+	{
+		auto obj = GetObjectReference();
+		auto projectile = obj ? obj->As<BGSProjectile>() : nullptr;
+
+		return projectile ? projectile->data.collisionRadius * 2 : 0.0f;
+	}
+
+	float Projectile::GetSpeed() const
+	{
+		auto obj = GetObjectReference();
+		auto projectile = obj ? obj->As<BGSProjectile>() : nullptr;
+
+		if (!projectile) {
+			return 0.0f;
+		}
+
+		return projectile->data.speed * GetPowerSpeedMult() * GetWeaponSpeedMult() * speedMult;
+	}
+
 	BSPointerHandle<Projectile>* Projectile::Launch(BSPointerHandle<Projectile>* a_result, LaunchData& a_data) noexcept
 	{
 		using func_t = decltype(&Projectile::Launch);
