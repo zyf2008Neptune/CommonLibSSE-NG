@@ -55,7 +55,7 @@ namespace RE
 		
 		struct EXPLOSION_RUNTIME_DATA
 		{
-#define EXPLOSION_RUNTIME_DATA_CONTENT
+#define EXPLOSION_RUNTIME_DATA_CONTENT \
 			std::uint64_t                          unk98;             /* 098, 0A0 */ \
 			float                                  startKeyTime;      /* 0A0 */ \
 			float                                  endKeyTime;        /* 0A4 */ \

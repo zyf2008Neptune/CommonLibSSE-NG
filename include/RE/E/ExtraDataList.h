@@ -37,7 +37,7 @@ namespace RE
 		[[nodiscard]] const PresenceBitfield*& GetPresence() const noexcept;
 
 #ifndef ENABLE_SKYRIM_AE
-		virtual ~BaseExtraList();  // 00
+		~BaseExtraList();  // 00, virtual on AE 1.6.629 and later.
 
 		// members
 		BSExtraData*      data = nullptr;      // 00, 08
@@ -45,7 +45,7 @@ namespace RE
 #endif
 	};
 #ifndef ENABLE_SKYRIM_AE
-	static_assert(sizeof(BaseExtraList) == 0x18);
+	static_assert(sizeof(BaseExtraList) == 0x10);
 #endif
 
 	class ExtraDataList

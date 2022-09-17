@@ -770,6 +770,9 @@ namespace RE
 		}
 
 		// members
+#if (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)) || (!defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_VR))
+		PLAYER_RUNTIME_DATA_CONTENT
+#endif
 
 	private:
 		bool CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell);
