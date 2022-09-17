@@ -5,6 +5,7 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTList.h"
+#include "RE/B/BSTSingleton.h"
 #include "RE/C/CollisionLayers.h"
 #include "RE/F/FormTypes.h"
 #include "RE/I/ImpactResults.h"
@@ -20,11 +21,77 @@ namespace RE
 	class bhkSimpleShapePhantom;
 	class BGSMaterialType;
 	class QueuedFile;
+	class CombatController;
+	class MagicItem;
 
 	class Projectile : public TESObjectREFR
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Projectile;
+		inline static constexpr auto VTABLE = VTABLE_Projectile;
+
+		struct WobbleControl
+		{
+		public:
+			// members
+			NiMatrix3        unk00;   // 00
+			ProjectileHandle handle;  // 24
+			float            wobble;  // 28
+		};
+		static_assert(sizeof(WobbleControl) == 0x2C);
+
+		class Manager : public BSTSingletonSDM<Manager>
+		{
+		public:
+			static Manager* GetSingleton();
+
+			// members
+			BSTArray<ProjectileHandle> unlimited;       // 08
+			BSTArray<ProjectileHandle> limited;         // 20
+			BSTArray<ProjectileHandle> pending;         // 38
+			mutable BSSpinLock         projectileLock;  // 50
+			BSTArray<WobbleControl>    wobble;          // 58
+		};
+
+		struct LaunchData
+		{
+			inline static constexpr auto RTTI = RTTI_Projectile__LaunchData;
+			inline static constexpr auto VTABLE = VTABLE_Projectile__LaunchData;
+
+			virtual ~LaunchData();
+
+			// members
+			NiPoint3                   origin;                 // 08
+			NiPoint3                   contactNormal;          // 14
+			BGSProjectile*             projectileBase;         // 20
+			TESObjectREFR*             shooter;                // 28
+			CombatController*          combatController;       // 30
+			TESObjectWEAP*             weaponSource;           // 38
+			TESAmmo*                   ammoSource;             // 40
+			float                      angleZ;                 // 48
+			float                      angleX;                 // 4C
+			void*                      unk50;                  // 50 - maps to Projectile unk110
+			TESObjectREFR*             desiredTarget;          // 58
+			float                      unk60;                  // 60 - maps to Projectile unk1A8
+			float                      unk64;                  // 64 - maps to Projectile unk1AC
+			TESObjectCELL*             parentCell;             // 68
+			MagicItem*                 spell;                  // 70
+			MagicSystem::CastingSource castingSource;          // 78
+			std::uint32_t              unk7C;                  // 7C
+			EnchantmentItem*           enchantItem;            // 80
+			AlchemyItem*               poison;                 // 88
+			std::int32_t               area;                   // 90
+			float                      power;                  // 94
+			float                      scale;                  // 98
+			bool                       alwaysHit;              // 9C
+			bool                       noDamageOutsideCombat;  // 9D
+			bool                       autoAim;                // 9E
+			bool                       unk9F;                  // 9F
+			bool                       useOrigin;              // A0
+			bool                       deferInitialization;    // A1
+			bool                       forceConeOfFire;        // A2
+		};
+		static_assert(sizeof(LaunchData) == 0xA8);
 
 		struct ImpactData
 		{
@@ -87,8 +154,8 @@ namespace RE
 		SKYRIM_REL_VR_VIRTUAL bool                ProcessImpacts();                                                                                                                                                          // AC
 		SKYRIM_REL_VR_VIRTUAL void                Update3D();                                                                                                                                                                // AD
 		SKYRIM_REL_VR_VIRTUAL void                Unk_AE(void);                                                                                                                                                              // AE - { return 0; }
-		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL float GetPowerSpeedMult();                                                                                                                                                       // AF - { if (unk158) return 1.0; else return unk188; } - "float GetSpeed()"?
-		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL float GetWeaponSpeedMult();                                                                                                                                                      // B0 - { return 1.0; }
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL float GetPowerSpeedMult() const;                                                                                                                                                       // AF - { if (unk158) return 1.0; else return unk188; } - "float GetSpeed()"?
+		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL float GetWeaponSpeedMult() const;                                                                                                                                                      // B0 - { return 1.0; }
 		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool  GetStopMainSoundAfterImpact();                                                                                                                                             // B1 - { return 0; }
 		SKYRIM_REL_VR_VIRTUAL void                ReportHavokDeactivation();                                                                                                                                                 // B2 - { return; }
 		SKYRIM_REL_VR_VIRTUAL bool                TurnOff(Actor* a_owner, bool a_noDeactivateSound);                                                                                                                         // B3
@@ -107,13 +174,11 @@ namespace RE
 		SKYRIM_REL_VR_VIRTUAL void                        Handle3DLoaded();                                                                                                                                                  // C0 - { return; }
 		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL bool          ShouldUseDesiredTarget();                                                                                                                                          // C1 - { return 0; }
 
-		inline float GetHeight() const
-		{
-			auto obj = GetObjectReference();
-			auto projectile = obj ? obj->As<BGSProjectile>() : nullptr;
-			return projectile ? projectile->data.collisionRadius * 2 : 0.0f;
-		}
-		
+		float GetHeight() const;
+		float GetSpeed() const;
+
+		static BSPointerHandle<Projectile>* Launch(BSPointerHandle<Projectile>* a_result, LaunchData& a_data) noexcept;
+
 		struct PROJECTILE_RUNTIME_DATA
 		{
 #define PROJECTILE_RUNTIME_DATA_CONTENT                                                   \
@@ -161,12 +226,12 @@ namespace RE
 			PROJECTILE_RUNTIME_DATA_CONTENT
 		};
 
-		[[nodiscard]] inline PROJECTILE_RUNTIME_DATA& GetHazardRuntimeData() noexcept
+		[[nodiscard]] inline PROJECTILE_RUNTIME_DATA& GetProjectileRuntimeData() noexcept
 		{
 			return REL::RelocateMemberIfNewer<PROJECTILE_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x98, 0xA0);
 		}
 
-		[[nodiscard]] inline const PROJECTILE_RUNTIME_DATA& GetHazardRuntimeData() const noexcept
+		[[nodiscard]] inline const PROJECTILE_RUNTIME_DATA& GetProjectileRuntimeData() const noexcept
 		{
 			return REL::RelocateMemberIfNewer<PROJECTILE_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x98, 0xA0);
 		}

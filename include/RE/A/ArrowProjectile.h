@@ -6,6 +6,7 @@
 namespace RE
 {
 	class AlchemyItem;
+	class EnchantmentItem;
 
 	class ArrowProjectile : public MissileProjectile
 	{
@@ -31,8 +32,8 @@ namespace RE
 		void UpdateImpl(float a_delta) override;           // AB
 		bool ProcessImpacts() override;                        // AC
 		void Update3D() override;                        // AD
-		float GetPowerSpeedMult() override;                        // AF
-		float GetWeaponSpeedMult() override;                        // B0
+		float GetPowerSpeedMult() const override;                        // AF
+		float GetWeaponSpeedMult() const override;                        // B0
 		bool  GetStopMainSoundAfterImpact() override;                        // B1 - { return 1; }
 		float GetGravity() override;                        // B5
 		bool  ShouldBeLimited() override;                        // B9 - { return (unk1CC >> 22) & 1; }
@@ -45,8 +46,8 @@ namespace RE
 		struct ARROW_RUNTIME_DATA
 		{
 #define ARROW_RUNTIME_DATA_CONTENT  \
-	std::uint64_t unk1E0; /* 1E0, 1E8 */ \
-	AlchemyItem*  poison; /* 1E8 */
+	EnchantmentItem* enchantItem; /* 1E0, 1E8 */ \
+	AlchemyItem*     poison; /* 1E8 */
 
 			ARROW_RUNTIME_DATA_CONTENT
 		};

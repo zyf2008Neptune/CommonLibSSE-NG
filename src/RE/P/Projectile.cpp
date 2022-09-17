@@ -70,14 +70,14 @@ namespace RE
 		RelocateVirtual<void(Projectile*)>(0xAE, 0xAF, this);
 	}
 
-	float Projectile::GetPowerSpeedMult()
+	float Projectile::GetPowerSpeedMult() const
 	{
-		return RelocateVirtual<float(Projectile*)>(0xAF, 0xB0, this);
+		return RelocateVirtual<float(const Projectile*)>(0xAF, 0xB0, this);
 	}
 
-	float Projectile::GetWeaponSpeedMult()
+	float Projectile::GetWeaponSpeedMult() const
 	{
-		return RelocateVirtual<float(Projectile*)>(0xB0, 0xB1, this);
+		return RelocateVirtual<float(const Projectile*)>(0xB0, 0xB1, this);
 	}
 
 	bool Projectile::GetStopMainSoundAfterImpact()
@@ -165,4 +165,37 @@ namespace RE
 		return RelocateVirtual<bool(Projectile*)>(0xC1, 0xC2, this);
 	}
 #endif
+
+	Projectile::Manager* Projectile::Manager::GetSingleton()
+	{
+		REL::Relocation<Projectile::Manager**> singleton{ RELOCATION_ID(514313, 400473) };
+		return *singleton;
+	}
+
+	float Projectile::GetHeight() const
+	{
+		auto obj = GetObjectReference();
+		auto projectile = obj ? obj->As<BGSProjectile>() : nullptr;
+
+		return projectile ? projectile->data.collisionRadius * 2 : 0.0f;
+	}
+
+	float Projectile::GetSpeed() const
+	{
+		auto obj = GetObjectReference();
+		auto projectile = obj ? obj->As<BGSProjectile>() : nullptr;
+
+		if (!projectile) {
+			return 0.0f;
+		}
+
+		return projectile->data.speed * GetPowerSpeedMult() * GetWeaponSpeedMult() * GetProjectileRuntimeData().speedMult;
+	}
+
+	BSPointerHandle<Projectile>* Projectile::Launch(BSPointerHandle<Projectile>* a_result, LaunchData& a_data) noexcept
+	{
+		using func_t = decltype(&Projectile::Launch);
+		REL::Relocation<func_t> func{ RELOCATION_ID(42928, 44108) };
+		return func(a_result, a_data);
+	}
 }
