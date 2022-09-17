@@ -71,7 +71,7 @@ the project wiki.](https://github.com/CharmedBaryon/CommonLibSSE-NG/wiki/Unit-Te
 ### Versioned Releases via Vcpkg and Conan
 ![stability-stable](https://img.shields.io/static/v1?label=vcpkg&message=stable&color=dimgreen&style=flat)
 
-![stability-experimental](https://img.shields.io/static/v1?label=conan&message=stable&color=orange&style=flat)
+![stability-experimental](https://img.shields.io/static/v1?label=conan&message=experimental&color=orange&style=flat)
 
 Traditionally CommonLibSSE is consumed via a Git submodule; this practice generally requires the project using it to add
 CommonLibSSE's own Vcpkg dependencies and parts of it CMake configuration, as CommonLibSSE is built as a part of the
