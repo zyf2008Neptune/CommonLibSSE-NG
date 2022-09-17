@@ -12,10 +12,8 @@
       "name": "vcpkg-cmake-config",
       "host": true
     },
-    "fast-cpp-csv-parser",
     "fmt",
     "rapidcsv",
-    "rsm-binary-io",
     "spdlog"
   ],
   "features": {
@@ -28,24 +26,5 @@
   },
   "default-features": [
     "tests"
-  ],
-  "overrides": [
-    {
-      "name": "catch2",
-      "version": "2.13.9#1"
-    },
-    {
-      "name": "fmt",
-      "version": "8.1.1#1"
-    },
-    {
-      "name": "rapidcsv",
-      "version": "8.53"
-    },
-    {
-      "name": "spdlog",
-      "version": "1.10.0#1"
-    }
-  ],
-  "builtin-baseline": "faed44dfa013088fe1910908a8a65887622f412f"
+  ]
 }

@@ -627,9 +627,9 @@ namespace RE
 			std::uint64_t unkA30[0x11];  /* A30 */ \
 			void*         perkArray;     /* AB8 */ \
 			std::uint64_t unk6C0[0x14];  /* AC0 */ \
-			/*BSTArray<PerkRankData*>								addedPerks;									  /* B60 */ \
-			/*BSTArray<BGSPerk*>									perks;										  /* B68 */ \
-			/*BSTArray<BGSPerk*>									standingStonePerks;							  /* B70 */ \
+			/*BSTArray<PerkRankData*>								addedPerks;									  // B60 */ \
+			/*BSTArray<BGSPerk*>									perks;										  // B68 */ \
+			/*BSTArray<BGSPerk*>									standingStonePerks;							  // B70 */ \
 			std::uint64_t addedPerks;                /* B60 - these 3 here gotta be fixed */ \
 			std::uint64_t perks;                     /* B68 */ \
 			std::uint64_t standingStonePerks;        /* B70 */ \
@@ -648,7 +648,7 @@ namespace RE
 			ActorHandle   actorDoingPlayerCommand;   /* E8C */ \
 			std::uint64_t unkE90;                    /* E90 */ \
 			std::uint64_t unkE98[0x27];              /* E98 */ \
-			/* BSTSmallArray<hkRefPtr<bhkMouseSpringAction>, 4>		grabSpring;                                   /* F00    /* not used in vr as far as i can tell   F08?????? */ \
+			/* BSTSmallArray<hkRefPtr<bhkMouseSpringAction>, 4>		grabSpring;                                   // F00    // not used in vr as far as i can tell   F08?????? */ \
 			INFO_RUNTIME_DATA_CONTENT;                    /* FD0 */ \
 			std::uint64_t unk1120[0x1A];             /* 1120 */ \
 			std::uint32_t unk11F0;                   /* 11F0 */ \
