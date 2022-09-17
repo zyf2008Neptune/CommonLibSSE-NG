@@ -27,6 +27,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Projectile;
+		inline static constexpr auto VTABLE = VTABLE_Projectile;
 
 		struct WobbleControl
 		{
@@ -53,6 +54,9 @@ namespace RE
 
 		struct LaunchData
 		{
+			inline static constexpr auto RTTI = RTTI_Projectile__LaunchData;
+			inline static constexpr auto VTABLE = VTABLE_Projectile__LaunchData;
+
 			virtual ~LaunchData();
 
 			// members
