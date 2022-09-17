@@ -42,6 +42,7 @@ class CommonLibSSE(ConanFile):
         self.requires("fmt/8.1.1")
         self.requires("rapidcsv/8.62")
         self.requires("spdlog/1.10.0")
+        self.requires("xbyak/6.61.2")
 
     def layout(self):
         cmake_layout(self)
