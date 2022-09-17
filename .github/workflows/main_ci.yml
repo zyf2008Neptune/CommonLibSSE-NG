@@ -18,7 +18,7 @@ on:
   workflow_dispatch:
 
 env:
-  VCPKG_COMMIT_ID: faed44dfa013088fe1910908a8a65887622f412f
+  VCPKG_COMMIT_ID: 01b29f6d8212bc845da64773b18665d682f5ab66
 
 jobs:
   build-and-test-vcpkg:
