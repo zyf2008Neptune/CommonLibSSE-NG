@@ -395,9 +395,9 @@ namespace RE
 		};
 		static_assert(sizeof(PlayerSkills) == 0x8);
 
-		struct RUNTIME_DATA
+		struct INFO_RUNTIME_DATA
 		{
-#define RUNTIME_DATA_CONTENT                                                          \
+#define INFO_RUNTIME_DATA_CONTENT                                                     \
 	float                      grabDistance;                                /* 000 */ \
 	float                      unk004;                                      /* 004 */ \
 	std::uint64_t              unk008;                                      /* 008 */ \
@@ -452,9 +452,9 @@ namespace RE
 	float                      drawSheatheSafetyTimer;                      /* 148 */ \
 	std::uint32_t              unk14C;                                      /* 14C */
 
-			RUNTIME_DATA_CONTENT
+			INFO_RUNTIME_DATA_CONTENT
 		};
-		static_assert(sizeof(RUNTIME_DATA) == 0x150);
+		static_assert(sizeof(INFO_RUNTIME_DATA) == 0x150);
 
 		~PlayerCharacter() override;  // 000
 
@@ -501,44 +501,254 @@ namespace RE
 			GetEventSource<T>()->AddEventSink(a_sink);
 		}
 
+		struct PLAYER_RUNTIME_DATA
+		{
+#ifndef ENABLE_SKYRIM_VR                                                                     // Non-VR
+#define PLAYER_RUNTIME_DATA_CONTENT \
+			mutable BSSpinLock questTargetsLock;                                                 /* 3D8, 3E0 */ \
+			CRIME_VALUE_CONTENT;                                                                 /* 3E0 */ \
+			ObjectRefHandle                                         commandWaitMarker;           /* 440 */ \
+			std::uint32_t                                           unk444;                      /* 444 */ \
+			BSTHashMap<const TESFaction*, FriendshipFactionsStruct> factionOwnerFriendsMap;      /* 448 */ \
+			NiPoint3                                                lastKnownGoodPosition;       /* 478 */ \
+			NiPoint3                                                bulletAutoAim;               /* 484 */ \
+			NiPoint3                                                cachedVelocity;              /* 490 */ \
+			float                                                   unk49C;                      /* 49C */ \
+			std::uint64_t                                           unk4A0;                      /* 4A0 */ \
+			std::uint64_t                                           unk4A8;                      /* 4A8 */ \
+			BSTArray<PerkRankData*>                                 addedPerks;                  /* 4B0 */ \
+			BSTArray<BGSPerk*>                                      perks;                       /* 4C8 */ \
+			BSTArray<BGSPerk*>                                      standingStonePerks;          /* 4E0 */ \
+			BSTArray<ObjectRefHandle>                               currentMapMarkers;           /* 4F8 */ \
+			BSTArray<BSTTuple<NiPoint3, AITimeStamp>>               velocityArray;               /* 510 */ \
+			BSTArray<ProjectileHandle>                              runesCast;                   /* 528 */ \
+			BSTArray<void*>                                         imageSpaceModifierAnims1;    /* 540 */ \
+			BSTArray<void*>                                         imageSpaceModifierAnims2;    /* 558 */ \
+			BSSimpleList<TESQuestStageItem*>                        questLog;                    /* 570 */ \
+			BSTArray<BGSInstancedQuestObjective>                    objectives;                  /* 580 */ \
+			BSTHashMap<UnkKey, UnkValue>                            questTargets;                /* 598 */ \
+			BSTHashMap<UnkKey, UnkValue>                            currentSayOnceInfosMap;      /* 5C8 */ \
+			BSSimpleList<ObjectRefHandle>                           droppedRefList;              /* 5F8 */ \
+			NiTMap<std::uint32_t, std::uint8_t>                     randomDoorSpaceMap;          /* 608 */ \
+			TESWorldSpace*                                          cachedWorldSpace;            /* 628 */ \
+			NiPoint3                                                exteriorPosition;            /* 630 */ \
+			std::uint32_t                                           unk63C;                      /* 63C */ \
+			PLAYER_TARGET_LOC                                       queuedTargetLoc;             /* 640 */ \
+			BSSoundHandle                                           unk688;                      /* 688 */ \
+			BSSoundHandle                                           magicFailureSound;           /* 694 */ \
+			BSSoundHandle                                           unk6A0;                      /* 6A0 */ \
+			std::uint32_t                                           pad6AC;                      /* 6AC */ \
+			DialoguePackage*                                        closestConversation;         /* 6B0 */ \
+			std::uint32_t                                           unk6B8;                      /* 6B8 */ \
+			std::uint32_t                                           unk6BC;                      /* 6BC */ \
+			DialoguePackage*                                        aiConversationRunning;       /* 6C0 */ \
+			std::int32_t                                            numberofStealWarnings;       /* 6C8 */ \
+			float                                                   stealWarningTimer;           /* 6CC */ \
+			std::int32_t                                            numberofPickpocketWarnings;  /* 6D0 */ \
+			float                                                   pickPocketWarningTimer;      /* 6D4 */ \
+			AITimeStamp                                             warnToLeaveTimeStamp;        /* 6D8 */ \
+			std::uint32_t                                           pad6DC;                      /* 6DC */ \
+			ImageSpaceModifierInstanceDOF*                          ironsightsDOFInstance;       /* 6E0 */ \
+			ImageSpaceModifierInstanceDOF*                          vatsDOFInstance;             /* 6E8 */ \
+			ImageSpaceModifierInstanceDOF*                          dynamicDOFInstance;          /* 6F0 */ \
+			float                                                   dynamicDOFFocusTime;         /* 6F8 */ \
+			bool                                                    dynamicDOFFocused;           /* 6FC */ \
+			std::uint8_t                                            unk6FD;                      /* 6FD */ \
+			std::uint16_t                                           unk6FE;                      /* 6FE */ \
+			NiPoint3                                                dynamicDOFLastAngle;         /* 700 */ \
+			NiPoint3                                                dynamicDOFLastPosition;      /* 70C */ \
+			TESFaction*                                             currentPrisonFaction;        /* 718 */ \
+			std::int32_t                                            jailSentence;                /* 720 */ \
+			std::uint32_t                                           pad724;                      /* 724 */ \
+			void*                                                   unk728;                      /* 728 - smart ptr */ \
+			std::uint8_t                                            unk730[0xA0];                /* 730 */ \
+			std::int32_t                                            vampireFeedDetection;        /* 7D0 */ \
+			std::uint32_t                                           mapMarkerIterator;           /* 7D4 */ \
+			RefHandle                                               forceActivateRef;            /* 7D8 */ \
+			PlayerActionObject                                      playerActionObjects[15];     /* 7DC */ \
+			PLAYER_ACTION                                           mostRecentAction;            /* 890 */ \
+			ActorHandle                                             actorDoingPlayerCommand;     /* 894 */ \
+			BSTSmallArray<hkRefPtr<bhkMouseSpringAction>, 4>        grabSpring;                  /* 898 */ \
+			ObjectRefHandle                                         grabbedObject;               /* 8C8 */ \
+			float                                                   grabObjectWeight;            /* 8CC */ \
+			INFO_RUNTIME_DATA_CONTENT;                                                           /* 8D0 */ \
+			std::uint8_t                                  unkA20[0xA0];                          /* A20 */ \
+			std::uint32_t                                 unkAC0;                                /* AC0 */ \
+			std::uint32_t                                 unkAC4;                                /* AC4 */ \
+			BGSLocation*                                  currentLocation;                       /* AC8 */ \
+			AITimeStamp                                   cachedVelocityTimeStamp;               /* AD0 */ \
+			float                                         telekinesisDistance;                   /* AD4 */ \
+			float                                         commandTimer;                          /* AD8 */ \
+			std::uint32_t                                 unkADC;                                /* ADC */ \
+			TESImageSpaceModifier*                        unkAE0;                                /* AE0 */ \
+			std::int32_t                                  unkAE8;                                /* AE8 */ \
+			std::uint32_t                                 unkAEC;                                /* AEC */ \
+			std::uint32_t                                 unkAF0;                                /* AF0 */ \
+			stl::enumeration<GrabbingType, std::uint32_t> grabType;                              /* AF4 */ \
+			GAME_STATE_DATA_CONTENT;                                                             /* AF8 */ \
+			std::uint32_t        unkB04;                                                         /* B04 */ \
+			Crime*               resistArrestCrime;                                              /* B08 */ \
+			BSTArray<TintMask*>  tintMasks;                                                      /* B10 */ \
+			BSTArray<TintMask*>* overlayTintMasks;                                               /* B28 */ \
+			RACE_DATA_CONTENT;                                                                   /* B30 */ \
+			std::int32_t                            unkB48;                                      /* B48 */ \
+			std::uint32_t                           padB4C;                                      /* B4C */ \
+			BSTArray<std::uint64_t>                 unkB50;                                      /* B50 */ \
+			std::uint64_t                           unkB68;                                      /* B68 */ \
+			std::uint64_t                           unkB70;                                      /* B70 */ \
+			std::uint64_t                           unkB78;                                      /* B78 */ \
+			std::uint64_t                           unkB80;                                      /* B80 */ \
+			std::int32_t                            unkB88;                                      /* B88 */ \
+			std::uint32_t                           padB8C;                                      /* B8C */ \
+			std::uint64_t                           unkB90;                                      /* B90 */ \
+			std::uint64_t                           unkB98;                                      /* B98 */ \
+			BSTSmallArray<void*, 4>                 unkBA0;                                      /* BA0 */ \
+			std::uint64_t                           unkBD0;                                      /* BD0 */ \
+			std::uint8_t                            unkBD8;                                      /* BD8 */ \
+			stl::enumeration<FlagBD9, std::uint8_t> unkBD9;                                      /* BD9 */ \
+			std::uint8_t                            unkBDA;                                      /* BDA */ \
+			stl::enumeration<FlagBDB, std::uint8_t> unkBDB;                                      /* BDB */ \
+			stl::enumeration<FlagBDC, std::uint8_t> unkBDC;                                      /* BDC */ \
+			stl::enumeration<FlagBDD, std::uint8_t> unkBDD;                                      /* BDD */ \
+			std::uint16_t                           padBDE;                                      /* BDE */
+#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)                               // VR
+#define PLAYER_RUNTIME_DATA_CONTENT \
+			std::uint64_t unk3D8;        /* 3D8 */ \
+			std::uint64_t unk3E0;        /* 3E0 */ \
+			std::uint64_t unk3E8;        /* 3E8 */ \
+			VR_NODE_DATA_CONTENT;        /* 3F0 */ \
+			std::uint64_t unk680;        /* 680 */ \
+			std::uint64_t unk688;        /* 688 */ \
+			std::uint64_t unk690;        /* 690 */ \
+			std::uint64_t unk698;        /* 698 */ \
+			std::uint64_t unk6A0;        /* 6A0 */ \
+			std::uint64_t unk6A8[0x65];  /* 6A8 */ \
+			CRIME_VALUE_CONTENT;         /* 9D0 */ \
+			std::uint64_t unkA30[0x11];  /* A30 */ \
+			void*         perkArray;     /* AB8 */ \
+			std::uint64_t unk6C0[0x14];  /* AC0 */ \
+			/*BSTArray<PerkRankData*>								addedPerks;									  /* B60 */ \
+			/*BSTArray<BGSPerk*>									perks;										  /* B68 */ \
+			/*BSTArray<BGSPerk*>									standingStonePerks;							  /* B70 */ \
+			std::uint64_t addedPerks;                /* B60 - these 3 here gotta be fixed */ \
+			std::uint64_t perks;                     /* B68 */ \
+			std::uint64_t standingStonePerks;        /* B70 */ \
+			std::uint64_t unkB78;                    /* B78 */ \
+			std::uint64_t unkB80;                    /* B80 */ \
+			std::uint64_t unkMessageArrayPtr;        /* B88 */ \
+			std::uint64_t unkB90;                    /* B90 */ \
+			std::uint64_t unkB98;                    /* B98 */ \
+			std::uint64_t unkBA0;                    /* BA0 */ \
+			std::uint64_t unkBA8;                    /* BA8 */ \
+			std::uint64_t unkBB0[0x25];              /* BB0 */ \
+			std::uint64_t imageSpaceModifierAnims1;  /* CD8 - Wrong Datatype from Below */ \
+			std::uint64_t imageSpaceModifierAnims2;  /* CE0 - Wrong Datatype from below */ \
+			std::uint64_t unkCE8[0x34];              /* CE8 */ \
+			std::uint32_t padE90;                    /* E88 */ \
+			ActorHandle   actorDoingPlayerCommand;   /* E8C */ \
+			std::uint64_t unkE90;                    /* E90 */ \
+			std::uint64_t unkE98[0x27];              /* E98 */ \
+			/* BSTSmallArray<hkRefPtr<bhkMouseSpringAction>, 4>		grabSpring;                                   /* F00    /* not used in vr as far as i can tell   F08?????? */ \
+			INFO_RUNTIME_DATA_CONTENT;                    /* FD0 */ \
+			std::uint64_t unk1120[0x1A];             /* 1120 */ \
+			std::uint32_t unk11F0;                   /* 11F0 */ \
+			GAME_STATE_DATA_CONTENT;                 /* 11F4 */ \
+			std::uint64_t unk1200;                   /* 1200 */ \
+			std::uint64_t unk1208;                   /* 1208 */ \
+			std::uint64_t unk1210;                   /* 1210 */ \
+			std::uint64_t unk1218;                   /* 1218 */ \
+			std::uint64_t unk1220;                   /* 1220 */ \
+			RACE_DATA_CONTENT;                       /* 1228 */ \
+			std::uint64_t unk1240[0x12];             /* 1240 */ \
+			std::uint8_t  pad12D0;                   /* 12D0 */ \
+			std::uint8_t  flags;                     /* 12D1  -- TODO MAP THESE FLAGS OUT */ \
+			std::uint16_t pad12D2;                   /* 12D2 */ \
+			std::uint32_t unk12D4;                   /* 12D4 */
+#else
+#define PLAYER_RUNTIME_DATA_CONTENT
+#endif
+
+			PLAYER_RUNTIME_DATA_CONTENT
+		};
+
+		[[nodiscard]] inline PLAYER_RUNTIME_DATA& GetPlayerRuntimeData() noexcept
+		{
+			return REL::RelocateMember<PLAYER_RUNTIME_DATA>(this, 0x3D8, 0x3E0);
+		}
+
+		[[nodiscard]] inline const PLAYER_RUNTIME_DATA& GetPlayerRuntimeData() const noexcept
+		{
+			return REL::RelocateMember<PLAYER_RUNTIME_DATA>(this, 0x3D8, 0x3E0);
+		}
+
 		[[nodiscard]] inline CrimeValue& GetCrimeValue() noexcept
 		{
+			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
+				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_6_629) != std::strong_ordering::less) {
+					return REL::RelocateMember<CrimeValue>(this, 0x3E8);
+				}
+			}
 			return REL::RelocateMember<CrimeValue>(this, 0x3E0, 0x9D0);
 		}
 
 		[[nodiscard]] inline const CrimeValue& GetCrimeValue() const noexcept
 		{
+			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
+				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_6_629) != std::strong_ordering::less) {
+					return REL::RelocateMember<CrimeValue>(this, 0x3E8);
+				}
+			}
 			return REL::RelocateMember<CrimeValue>(this, 0x3E0, 0x9D0);
 		}
 
 		[[nodiscard]] inline RaceData& GetRaceData() noexcept
 		{
+			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
+				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_6_629) != std::strong_ordering::less) {
+					return REL::RelocateMember<RaceData>(this, 0xB38);
+				}
+			}
 			return REL::RelocateMember<RaceData>(this, 0xB30, 0x1228);
 		}
 
 		[[nodiscard]] inline const RaceData& GetRaceData() const noexcept
 		{
+			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
+				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_6_629) != std::strong_ordering::less) {
+					return REL::RelocateMember<RaceData>(this, 0xB38);
+				}
+			}
 			return REL::RelocateMember<RaceData>(this, 0xB30, 0x1228);
 		}
 
 		[[nodiscard]] inline GameStateData& GetGameStatsData() noexcept
 		{
+			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
+				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_6_629) != std::strong_ordering::less) {
+					return REL::RelocateMember<GameStateData>(this, 0xB00);
+				}
+			}
 			return REL::RelocateMember<GameStateData>(this, 0xAF8, 0x11F4);
 		}
 
 		[[nodiscard]] inline const GameStateData& GetGameStatsData() const noexcept
 		{
+			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
+				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_6_629) != std::strong_ordering::less) {
+					return REL::RelocateMember<GameStateData>(this, 0xB00);
+				}
+			}
 			return REL::RelocateMember<GameStateData>(this, 0xAF8, 0x11F4);
 		}
 
-		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
+		[[nodiscard]] inline INFO_RUNTIME_DATA& GetInfoRuntimeData() noexcept
 		{
-			return REL::RelocateMember<RUNTIME_DATA>(this, 0x8D0, 0xFD0);
+			return REL::RelocateMember<INFO_RUNTIME_DATA>(this, 0x8D0, 0xFD0);
 		}
 
-		[[nodiscard]] inline const RUNTIME_DATA& GetRuntimeData() const noexcept
+		[[nodiscard]] inline const INFO_RUNTIME_DATA& GetInfoRuntimeData() const noexcept
 		{
-			return REL::RelocateMember<RUNTIME_DATA>(this, 0x8D0, 0xFD0);
+			return REL::RelocateMember<INFO_RUNTIME_DATA>(this, 0x8D0, 0xFD0);
 		}
 
 		[[nodiscard]] VR_NODE_DATA* GetVRNodeData() noexcept
@@ -560,179 +770,18 @@ namespace RE
 		}
 
 		// members
-#ifndef ENABLE_SKYRIM_VR                                                                     // Non-VR
-		mutable BSSpinLock questTargetsLock;                                                 // 3D8
-		CRIME_VALUE_CONTENT;                                                                 // 3E0
-		ObjectRefHandle                                         commandWaitMarker;           // 440
-		std::uint32_t                                           unk444;                      // 444
-		BSTHashMap<const TESFaction*, FriendshipFactionsStruct> factionOwnerFriendsMap;      // 448
-		NiPoint3                                                lastKnownGoodPosition;       // 478
-		NiPoint3                                                bulletAutoAim;               // 484
-		NiPoint3                                                cachedVelocity;              // 490
-		float                                                   unk49C;                      // 49C
-		std::uint64_t                                           unk4A0;                      // 4A0
-		std::uint64_t                                           unk4A8;                      // 4A8
-		BSTArray<PerkRankData*>                                 addedPerks;                  // 4B0
-		BSTArray<BGSPerk*>                                      perks;                       // 4C8
-		BSTArray<BGSPerk*>                                      standingStonePerks;          // 4E0
-		BSTArray<ObjectRefHandle>                               currentMapMarkers;           // 4F8
-		BSTArray<BSTTuple<NiPoint3, AITimeStamp>>               velocityArray;               // 510
-		BSTArray<ProjectileHandle>                              runesCast;                   // 528
-		BSTArray<void*>                                         imageSpaceModifierAnims1;    // 540
-		BSTArray<void*>                                         imageSpaceModifierAnims2;    // 558
-		BSSimpleList<TESQuestStageItem*>                        questLog;                    // 570
-		BSTArray<BGSInstancedQuestObjective>                    objectives;                  // 580
-		BSTHashMap<UnkKey, UnkValue>                            questTargets;                // 598
-		BSTHashMap<UnkKey, UnkValue>                            currentSayOnceInfosMap;      // 5C8
-		BSSimpleList<ObjectRefHandle>                           droppedRefList;              // 5F8
-		NiTMap<std::uint32_t, std::uint8_t>                     randomDoorSpaceMap;          // 608
-		TESWorldSpace*                                          cachedWorldSpace;            // 628
-		NiPoint3                                                exteriorPosition;            // 630
-		std::uint32_t                                           unk63C;                      // 63C
-		PLAYER_TARGET_LOC                                       queuedTargetLoc;             // 640
-		BSSoundHandle                                           unk688;                      // 688
-		BSSoundHandle                                           magicFailureSound;           // 694
-		BSSoundHandle                                           unk6A0;                      // 6A0
-		std::uint32_t                                           pad6AC;                      // 6AC
-		DialoguePackage*                                        closestConversation;         // 6B0
-		std::uint32_t                                           unk6B8;                      // 6B8
-		std::uint32_t                                           unk6BC;                      // 6BC
-		DialoguePackage*                                        aiConversationRunning;       // 6C0
-		std::int32_t                                            numberofStealWarnings;       // 6C8
-		float                                                   stealWarningTimer;           // 6CC
-		std::int32_t                                            numberofPickpocketWarnings;  // 6D0
-		float                                                   pickPocketWarningTimer;      // 6D4
-		AITimeStamp                                             warnToLeaveTimeStamp;        // 6D8
-		std::uint32_t                                           pad6DC;                      // 6DC
-		ImageSpaceModifierInstanceDOF*                          ironsightsDOFInstance;       // 6E0
-		ImageSpaceModifierInstanceDOF*                          vatsDOFInstance;             // 6E8
-		ImageSpaceModifierInstanceDOF*                          dynamicDOFInstance;          // 6F0
-		float                                                   dynamicDOFFocusTime;         // 6F8
-		bool                                                    dynamicDOFFocused;           // 6FC
-		std::uint8_t                                            unk6FD;                      // 6FD
-		std::uint16_t                                           unk6FE;                      // 6FE
-		NiPoint3                                                dynamicDOFLastAngle;         // 700
-		NiPoint3                                                dynamicDOFLastPosition;      // 70C
-		TESFaction*                                             currentPrisonFaction;        // 718
-		std::int32_t                                            jailSentence;                // 720
-		std::uint32_t                                           pad724;                      // 724
-		void*                                                   unk728;                      // 728 - smart ptr
-		std::uint8_t                                            unk730[0xA0];                // 730
-		std::int32_t                                            vampireFeedDetection;        // 7D0
-		std::uint32_t                                           mapMarkerIterator;           // 7D4
-		RefHandle                                               forceActivateRef;            // 7D8
-		PlayerActionObject                                      playerActionObjects[15];     // 7DC
-		PLAYER_ACTION                                           mostRecentAction;            // 890
-		ActorHandle                                             actorDoingPlayerCommand;     // 894
-		BSTSmallArray<hkRefPtr<bhkMouseSpringAction>, 4>        grabSpring;                  // 898
-		ObjectRefHandle                                         grabbedObject;               // 8C8
-		float                                                   grabObjectWeight;            // 8CC
-		RUNTIME_DATA_CONTENT;                                                                // 8D0
-		std::uint8_t                                  unkA20[0xA0];                          // A20
-		std::uint32_t                                 unkAC0;                                // AC0
-		std::uint32_t                                 unkAC4;                                // AC4
-		BGSLocation*                                  currentLocation;                       // AC8
-		AITimeStamp                                   cachedVelocityTimeStamp;               // AD0
-		float                                         telekinesisDistance;                   // AD4
-		float                                         commandTimer;                          // AD8
-		std::uint32_t                                 unkADC;                                // ADC
-		TESImageSpaceModifier*                        unkAE0;                                // AE0
-		std::int32_t                                  unkAE8;                                // AE8
-		std::uint32_t                                 unkAEC;                                // AEC
-		std::uint32_t                                 unkAF0;                                // AF0
-		stl::enumeration<GrabbingType, std::uint32_t> grabType;                              // AF4
-		GAME_STATE_DATA_CONTENT;                                                             // AF8
-		std::uint32_t        unkB04;                                                         // B04
-		Crime*               resistArrestCrime;                                              // B08
-		BSTArray<TintMask*>  tintMasks;                                                      // B10
-		BSTArray<TintMask*>* overlayTintMasks;                                               // B28
-		RACE_DATA_CONTENT;                                                                   // B30
-		std::int32_t                            unkB48;                                      // B48
-		std::uint32_t                           padB4C;                                      // B4C
-		BSTArray<std::uint64_t>                 unkB50;                                      // B50
-		std::uint64_t                           unkB68;                                      // B68
-		std::uint64_t                           unkB70;                                      // B70
-		std::uint64_t                           unkB78;                                      // B78
-		std::uint64_t                           unkB80;                                      // B80
-		std::int32_t                            unkB88;                                      // B88
-		std::uint32_t                           padB8C;                                      // B8C
-		std::uint64_t                           unkB90;                                      // B90
-		std::uint64_t                           unkB98;                                      // B98
-		BSTSmallArray<void*, 4>                 unkBA0;                                      // BA0
-		std::uint64_t                           unkBD0;                                      // BD0
-		std::uint8_t                            unkBD8;                                      // BD8
-		stl::enumeration<FlagBD9, std::uint8_t> unkBD9;                                      // BD9
-		std::uint8_t                            unkBDA;                                      // BDA
-		stl::enumeration<FlagBDB, std::uint8_t> unkBDB;                                      // BDB
-		stl::enumeration<FlagBDC, std::uint8_t> unkBDC;                                      // BDC
-		stl::enumeration<FlagBDD, std::uint8_t> unkBDD;                                      // BDD
-		std::uint16_t                           padBDE;                                      // BDE
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)                               // VR
-		std::uint64_t unk3D8;        // 3D8
-		std::uint64_t unk3E0;        // 3E0
-		std::uint64_t unk3E8;        // 3E8
-		VR_NODE_DATA_CONTENT;        // 3F0
-		std::uint64_t unk680;        // 680
-		std::uint64_t unk688;        // 688
-		std::uint64_t unk690;        // 690
-		std::uint64_t unk698;        // 698
-		std::uint64_t unk6A0;        // 6A0
-		std::uint64_t unk6A8[0x65];  // 6A8
-		CRIME_VALUE_CONTENT;         // 9D0
-		std::uint64_t unkA30[0x11];  // A30
-		void*         perkArray;     // AB8
-		std::uint64_t unk6C0[0x14];  // AC0
-		//BSTArray<PerkRankData*>								addedPerks;									  // B60
-		//BSTArray<BGSPerk*>									perks;										  // B68
-		//BSTArray<BGSPerk*>									standingStonePerks;							  // B70
-		std::uint64_t addedPerks;                // B60 // these 3 here gotta be fixed
-		std::uint64_t perks;                     // B68
-		std::uint64_t standingStonePerks;        // B70
-		std::uint64_t unkB78;                    // B78
-		std::uint64_t unkB80;                    // B80
-		std::uint64_t unkMessageArrayPtr;        // B88
-		std::uint64_t unkB90;                    // B90
-		std::uint64_t unkB98;                    // B98
-		std::uint64_t unkBA0;                    // BA0
-		std::uint64_t unkBA8;                    // BA8
-		std::uint64_t unkBB0[0x25];              // BB0
-		std::uint64_t imageSpaceModifierAnims1;  // CD8 - Wrong Datatype from Below
-		std::uint64_t imageSpaceModifierAnims2;  // CE0 - Wrong Datatype from below
-		std::uint64_t unkCE8[0x34];              // CE8
-		std::uint32_t padE90;                    // E88
-		ActorHandle   actorDoingPlayerCommand;   // E8C
-		std::uint64_t unkE90;                    // E90
-		std::uint64_t unkE98[0x27];              // E98
-												 //		BSTSmallArray<hkRefPtr<bhkMouseSpringAction>, 4>		grabSpring;                                   // F00    // not used in vr as far as i can tell   F08??????
-		RUNTIME_DATA_CONTENT;                    // FD0
-		std::uint64_t unk1120[0x1A];             // 1120
-		std::uint32_t unk11F0;                   // 11F0
-		GAME_STATE_DATA_CONTENT;                 // 11F4
-		std::uint64_t unk1200;                   // 1200
-		std::uint64_t unk1208;                   // 1208
-		std::uint64_t unk1210;                   // 1210
-		std::uint64_t unk1218;                   // 1218
-		std::uint64_t unk1220;                   // 1220
-		RACE_DATA_CONTENT;                       // 1228
-		std::uint64_t unk1240[0x12];             // 1240
-		std::uint8_t  pad12D0;                   // 12D0
-		std::uint8_t  flags;                     // 12D1  -- TODO MAP THESE FLAGS OUT
-		std::uint16_t pad12D2;                   // 12D2
-		std::uint32_t unk12D4;                   // 12D4
-#endif
 
 	private:
 		bool CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell);
 	};
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR) && !defined(ENABLE_SKYRIM_AE)
 	static_assert(sizeof(PlayerCharacter) == 0xBE0);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(PlayerCharacter) == 0x12D8);
-#else
-	static_assert(sizeof(PlayerCharacter) == 0x3D8);
 #endif
 }
+#undef PLAYER_RUNTIME_DATA_CONTENT
 #undef VR_NODE_DATA_CONTENT
-#undef RUNTIME_DATA_CONTENT
+#undef INFO_RUNTIME_DATA_CONTENT
 #undef GAME_STATE_DATA_CONTENT
 #undef RACE_DATA_CONTENT

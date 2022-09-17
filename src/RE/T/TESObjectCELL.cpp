@@ -11,8 +11,9 @@ namespace RE
 {
 	void TESObjectCELL::ForEachReference(std::function<BSContainer::ForEachResult(TESObjectREFR&)> a_callback) const
 	{
-		BSSpinLockGuard locker(spinLock);
-		for (const auto& ref : references) {
+		auto& runtimeData = GetRuntimeData();
+		BSSpinLockGuard locker(runtimeData.spinLock);
+		for (const auto& ref : runtimeData.references) {
 			if (ref && a_callback(*ref) == BSContainer::ForEachResult::kStop) {
 				break;
 			}
@@ -38,7 +39,7 @@ namespace RE
 
 	EXTERIOR_DATA* TESObjectCELL::GetCoordinates()
 	{
-		return IsExteriorCell() ? cellData.exterior : nullptr;
+		return IsExteriorCell() ? GetRuntimeData().cellData.exterior : nullptr;
 	}
 
 	TESFaction* TESObjectCELL::GetFactionOwner()
@@ -49,13 +50,13 @@ namespace RE
 
 	INTERIOR_DATA* TESObjectCELL::GetLighting()
 	{
-		return IsInteriorCell() ? cellData.interior : nullptr;
+		return IsInteriorCell() ? GetRuntimeData().cellData.interior : nullptr;
 	}
 
 	float TESObjectCELL::GetNorthRotation()
 	{
 		if (IsExteriorCell()) {
-			return worldSpace->northRotation;
+			return GetRuntimeData().worldSpace->northRotation;
 		} else {
 			auto xNorth = extraList.GetByType<ExtraNorthRotation>();
 			return xNorth ? xNorth->northRot : static_cast<float>(0.0);
@@ -64,18 +65,19 @@ namespace RE
 
 	TESForm* TESObjectCELL::GetOwner()
 	{
+		auto& runtimeData = GetRuntimeData();
 		auto owner = extraList.GetOwner();
 		if (owner) {
 			return owner;
 		}
 
 		BGSEncounterZone* zone = nullptr;
-		if (loadedData) {
-			zone = loadedData->encounterZone;
+		if (runtimeData.loadedData) {
+			zone = runtimeData.loadedData->encounterZone;
 		} else {
 			zone = extraList.GetEncounterZone();
 			if (!zone && IsExteriorCell()) {
-				zone = worldSpace ? worldSpace->encounterZone : nullptr;
+				zone = runtimeData.worldSpace ? runtimeData.worldSpace->encounterZone : nullptr;
 			}
 		}
 
@@ -84,15 +86,16 @@ namespace RE
 
 	float TESObjectCELL::GetExteriorWaterHeight() const
 	{
+		auto& runtimeData = GetRuntimeData();
 		if (cellFlags.none(Flag::kHasWater) || cellFlags.any(Flag::kIsInteriorCell)) {
 			return -NI_INFINITY;
 		}
 
-		if (waterHeight < 2147483600.0f) {
-			return waterHeight;
+		if (runtimeData.waterHeight < 2147483600.0f) {
+			return runtimeData.waterHeight;
 		}
 
-		return worldSpace ? worldSpace->GetDefaultWaterHeight() : -NI_INFINITY;
+		return runtimeData.worldSpace ? runtimeData.worldSpace->GetDefaultWaterHeight() : -NI_INFINITY;
 	}
 
 	bool TESObjectCELL::GetWaterHeight(const NiPoint3& a_pos, float& a_waterHeight)

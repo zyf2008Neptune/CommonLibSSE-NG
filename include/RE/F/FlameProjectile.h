@@ -37,9 +37,32 @@ namespace RE
 		bool ShouldUseDesiredTarget() override;               // C1
 #endif
 
+		struct FLAME_RUNTIME_DATA
+		{
+#define FLAME_RUNTIME_DATA_CONTENT \
+			float expirationTimer;  /* 1D8 */ \
+			float coneAngle;        /* 1DC */
+
+			FLAME_RUNTIME_DATA_CONTENT
+		};
+
+		[[nodiscard]] inline FLAME_RUNTIME_DATA& GetFlameRuntimeData() noexcept
+		{
+			return REL::RelocateMemberIfNewer<FLAME_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x1D8, 0x1E0);
+		}
+
+		[[nodiscard]] inline const FLAME_RUNTIME_DATA& GetFlameRuntimeData() const noexcept
+		{
+			return REL::RelocateMemberIfNewer<FLAME_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x1D8, 0x1E0);
+		}
+
 		// members
-		float expirationTimer;  // 1D8
-		float coneAngle;        // 1DC
+#ifndef ENABLE_SKYRIM_AE
+		FLAME_RUNTIME_DATA_CONTENT
+#endif
 	};
+#ifndef ENABLE_SKYRIM_AE
 	static_assert(sizeof(FlameProjectile) == 0x1E0);
+#endif
 }
+#undef FLAME_RUNTIME_DATA_CONTENT

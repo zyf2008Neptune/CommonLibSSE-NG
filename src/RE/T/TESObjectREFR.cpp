@@ -113,7 +113,7 @@ namespace RE
 
 	float TESObjectREFR::GetBaseHeight() const
 	{
-		auto height = static_cast<float>(refScale) / 100.0F;
+		auto height = static_cast<float>(GetReferenceRuntimeData().refScale) / 100.0F;
 		auto obj = GetObjectReference();
 		auto npc = obj ? obj->As<TESNPC>() : nullptr;
 		if (npc) {
@@ -503,7 +503,7 @@ namespace RE
 		}
 
 		if (cell && cell->IsExteriorCell()) {
-			return cell->worldSpace;
+			return cell->GetRuntimeData().worldSpace;
 		} else {
 			return nullptr;
 		}

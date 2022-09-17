@@ -87,9 +87,9 @@ namespace RE
 	void Actor::AllowBleedoutDialogue(bool a_canTalk)
 	{
 		if (a_canTalk) {
-			boolFlags.set(BOOL_FLAGS::kCanSpeakToEssentialDown);
+			GetActorRuntimeData().boolFlags.set(BOOL_FLAGS::kCanSpeakToEssentialDown);
 		} else {
-			boolFlags.reset(BOOL_FLAGS::kCanSpeakToEssentialDown);
+			GetActorRuntimeData().boolFlags.reset(BOOL_FLAGS::kCanSpeakToEssentialDown);
 		}
 	}
 
@@ -125,10 +125,10 @@ namespace RE
 
 	bool Actor::CanPickpocket() const
 	{
+		auto* race = GetActorRuntimeData().race;
 		if (!race) {
 			return false;
 		}
-
 		return race->AllowsPickpocket() && !IsPlayerTeammate();
 	}
 
@@ -138,12 +138,14 @@ namespace RE
 		if (xTalk) {
 			return xTalk->talk;
 		} else {
+			auto* race = GetActorRuntimeData().race;
 			return race != nullptr && race->AllowsPCDialogue();
 		}
 	}
 
 	void Actor::ClearArrested()
 	{
+		auto* currentProcess = GetActorRuntimeData().currentProcess;
 		if (currentProcess && currentProcess->IsArrested()) {
 			currentProcess->SetArrested(false);
 			EvaluatePackage(false, false);
@@ -198,9 +200,9 @@ namespace RE
 	void Actor::EnableAI(bool a_enable)
 	{
 		if (a_enable) {
-			boolBits.set(BOOL_BITS::kProcessMe);
+			GetActorRuntimeData().boolBits.set(BOOL_BITS::kProcessMe);
 		} else {
-			boolBits.reset(BOOL_BITS::kProcessMe);
+			GetActorRuntimeData().boolBits.reset(BOOL_BITS::kProcessMe);
 			if (const auto controller = GetCharController()) {
 				controller->SetLinearVelocityImpl(0.0f);
 			}
@@ -247,6 +249,7 @@ namespace RE
 
 	InventoryEntryData* Actor::GetAttackingWeapon()
 	{
+		auto* currentProcess = GetActorRuntimeData().currentProcess;
 		if (!currentProcess || !currentProcess->high || !currentProcess->high->attackData || !currentProcess->middleHigh) {
 			return nullptr;
 		}
@@ -259,6 +262,7 @@ namespace RE
 
 	const InventoryEntryData* Actor::GetAttackingWeapon() const
 	{
+		auto* currentProcess = GetActorRuntimeData().currentProcess;
 		if (!currentProcess || !currentProcess->high || !currentProcess->high->attackData || !currentProcess->middleHigh) {
 			return nullptr;
 		}
@@ -271,6 +275,7 @@ namespace RE
 
 	bhkCharacterController* Actor::GetCharController() const
 	{
+		auto* currentProcess = GetActorRuntimeData().currentProcess;
 		return currentProcess ? currentProcess->GetCharController() : nullptr;
 	}
 
@@ -283,6 +288,7 @@ namespace RE
 
 	NiPointer<Actor> Actor::GetCommandingActor() const
 	{
+		auto* currentProcess = GetActorRuntimeData().currentProcess;
 		return currentProcess ? currentProcess->GetCommandingActor().get() : NiPointer<Actor>{};
 	}
 
@@ -298,6 +304,7 @@ namespace RE
 
 	TESPackage* Actor::GetCurrentPackage()
 	{
+		auto* currentProcess = GetActorRuntimeData().currentProcess;
 		if (currentProcess) {
 			return currentProcess->GetRunningPackage();
 		}
@@ -306,6 +313,7 @@ namespace RE
 
 	const TESPackage* Actor::GetCurrentPackage() const
 	{
+		auto* currentProcess = GetActorRuntimeData().currentProcess;
 		if (currentProcess) {
 			return currentProcess->GetRunningPackage();
 		}
@@ -314,6 +322,7 @@ namespace RE
 
 	InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand) const
 	{
+		auto* currentProcess = GetActorRuntimeData().currentProcess;
 		if (!currentProcess || !currentProcess->middleHigh) {
 			return nullptr;
 		}
@@ -324,6 +333,7 @@ namespace RE
 
 	TESForm* Actor::GetEquippedObject(bool a_leftHand) const
 	{
+		auto* currentProcess = GetActorRuntimeData().currentProcess;
 		if (currentProcess) {
 			if (a_leftHand) {
 				return currentProcess->GetEquippedLeftHand();
@@ -371,6 +381,7 @@ namespace RE
 		const auto diff = max.z - min.z;
 		const auto height = GetBaseHeight() * diff;
 
+		auto* currentProcess = GetActorRuntimeData().currentProcess;
 		if (!currentProcess || !currentProcess->InHighProcess()) {
 			return height;
 		}
@@ -390,7 +401,7 @@ namespace RE
 			return nullptr;
 		}
 
-		return myKiller.get().get();
+		return GetActorRuntimeData().myKiller.get().get();
 	}
 
 	std::uint16_t Actor::GetLevel() const
@@ -416,6 +427,7 @@ namespace RE
 
 	ObjectRefHandle Actor::GetOccupiedFurniture() const
 	{
+		auto* currentProcess = GetActorRuntimeData().currentProcess;
 		if (currentProcess) {
 			return currentProcess->GetOccupiedFurniture();
 		} else {
@@ -463,6 +475,7 @@ namespace RE
 
 	TESFaction* Actor::GetVendorFaction()
 	{
+		auto* vendorFaction = GetActorRuntimeData().vendorFaction;
 		if (!vendorFaction) {
 			CalculateCurrentVendorFaction();
 		}
@@ -471,6 +484,7 @@ namespace RE
 
 	const TESFaction* Actor::GetVendorFaction() const
 	{
+		auto* vendorFaction = GetActorRuntimeData().vendorFaction;
 		if (!vendorFaction) {
 			CalculateCurrentVendorFaction();
 		}
@@ -548,7 +562,7 @@ namespace RE
 
 	bool Actor::IsAIEnabled() const
 	{
-		return boolBits.all(BOOL_BITS::kProcessMe);
+		return GetActorRuntimeData().boolBits.all(BOOL_BITS::kProcessMe);
 	}
 
 	bool Actor::IsAlarmed() const
@@ -559,7 +573,7 @@ namespace RE
 
 	bool Actor::IsAMount() const
 	{
-		return boolFlags.all(BOOL_FLAGS::kIsAMount);
+		return GetActorRuntimeData().boolFlags.all(BOOL_FLAGS::kIsAMount);
 	}
 
 	bool Actor::IsAnimationDriven() const
@@ -589,12 +603,12 @@ namespace RE
 
 	bool Actor::IsCommandedActor() const
 	{
-		return boolFlags.all(BOOL_FLAGS::kIsCommandedActor);
+		return GetActorRuntimeData().boolFlags.all(BOOL_FLAGS::kIsCommandedActor);
 	}
 
 	bool Actor::IsEssential() const
 	{
-		return boolFlags.all(BOOL_FLAGS::kEssential);
+		return GetActorRuntimeData().boolFlags.all(BOOL_FLAGS::kEssential);
 	}
 
 	bool Actor::IsFactionInCrimeGroup(const TESFaction* a_faction) const
@@ -620,7 +634,7 @@ namespace RE
 
 	bool Actor::IsGuard() const
 	{
-		return boolBits.all(BOOL_BITS::kGuard);
+		return GetActorRuntimeData().boolBits.all(BOOL_BITS::kGuard);
 	}
 
 	bool Actor::IsHostileToActor(Actor* a_actor)
@@ -665,7 +679,7 @@ namespace RE
 
 	bool Actor::IsPlayerTeammate() const
 	{
-		return boolBits.all(BOOL_BITS::kPlayerTeammate);
+		return GetActorRuntimeData().boolBits.all(BOOL_BITS::kPlayerTeammate);
 	}
 
 	float Actor::IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell)
@@ -685,7 +699,7 @@ namespace RE
 
 	bool Actor::IsProtected() const
 	{
-		return boolFlags.all(BOOL_FLAGS::kProtected);
+		return GetActorRuntimeData().boolFlags.all(BOOL_FLAGS::kProtected);
 	}
 
 	bool Actor::IsRunning() const
@@ -719,12 +733,13 @@ namespace RE
 
 	bool Actor::IsSummoned() const noexcept
 	{
+		auto* currentProcess = GetActorRuntimeData().currentProcess;
 		return currentProcess && currentProcess->GetIsSummonedCreature();
 	}
 
 	bool Actor::IsTrespassing() const
 	{
-		return boolFlags.all(BOOL_FLAGS::kIsTrespassing);
+		return GetActorRuntimeData().boolFlags.all(BOOL_FLAGS::kIsTrespassing);
 	}
 
 	void Actor::KillImmediate()
@@ -807,6 +822,7 @@ namespace RE
 	{
 		EndInterruptPackage(false);
 
+		auto* currentProcess = GetActorRuntimeData().currentProcess;
 		if (currentProcess) {
 			currentProcess->ClearActionHeadtrackTarget(true);
 		}
@@ -849,6 +865,7 @@ namespace RE
 
 	void Actor::Update3DModel()
 	{
+		auto* currentProcess = GetActorRuntimeData().currentProcess;
 		if (currentProcess) {
 			currentProcess->Update3DModel(this);
 		}

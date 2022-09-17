@@ -42,11 +42,34 @@ namespace RE
 		SKYRIM_REL_VR_VIRTUAL void Unk_C2(void);  // C2 - { return 0; }
 		SKYRIM_REL_VR_VIRTUAL void Unk_C3(void);  // C3 - { return 0; }
 
+		struct MISSILE_RUNTIME_DATA
+		{
+#define MISSILE_RUNTIME_DATA_CONTENT               \
+	ImpactResult  impactResult;          /* 1D8, 1E0 */ \
+	bool          waitingToInitialize3D; /* 1DC */ \
+	std::uint8_t  unk1DD;                /* 1DD */ \
+	std::uint16_t unk1DE;                /* 1DE */
+
+			MISSILE_RUNTIME_DATA_CONTENT
+		};
+
+		[[nodiscard]] inline MISSILE_RUNTIME_DATA& GetMissileRuntimeData() noexcept
+		{
+			return REL::RelocateMemberIfNewer<MISSILE_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x1D8, 0x1E0);
+		}
+
+		[[nodiscard]] inline const MISSILE_RUNTIME_DATA& GetMissileRuntimeData() const noexcept
+		{
+			return REL::RelocateMemberIfNewer<MISSILE_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x1D8, 0x1E0);
+		}
+
 		// members
-		ImpactResult  impactResult;           // 1D8
-		bool          waitingToInitialize3D;  // 1DC
-		std::uint8_t  unk1DD;                 // 1DD
-		std::uint16_t unk1DE;                 // 1DE
+#ifndef ENABLE_SKYRIM_AE
+		MISSILE_RUNTIME_DATA_CONTENT
+#endif
 	};
+#ifndef ENABLE_SKYRIM_AE
 	static_assert(sizeof(MissileProjectile) == 0x1E0);
+#endif
 }
+#undef MISSILE_RUNTIME_DATA_CONTENT

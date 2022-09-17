@@ -113,48 +113,71 @@ namespace RE
 			auto projectile = obj ? obj->As<BGSProjectile>() : nullptr;
 			return projectile ? projectile->data.collisionRadius * 2 : 0.0f;
 		}
+		
+		struct PROJECTILE_RUNTIME_DATA
+		{
+#define PROJECTILE_RUNTIME_DATA_CONTENT                                                   \
+	BSSimpleList<ImpactData*>  impacts;           /* 098, 0A0 */                          \
+	NiTransform                unk0A8;            /* 0A8 */                               \
+	float                      unk0DC;            /* 0DC */                               \
+	bhkSimpleShapePhantom*     unk0E0;            /* 0E0 - smart ptr */                   \
+	mutable BSSpinLock         unk0E8;            /* 0E8 */                               \
+	NiPoint3                   velocity;          /* 0F0 */                               \
+	NiPoint3                   linearVelocity;    /* 0FC */                               \
+	void*                      unk108;            /* 108 - smart ptr */                   \
+	void*                      unk110;            /* 110 - smart ptr */                   \
+	NiPointer<ActorCause>      actorCause;        /* 118 */                               \
+	ObjectRefHandle            shooter;           /* 120 */                               \
+	ObjectRefHandle            desiredTarget;     /* 124 */                               \
+	BSSoundHandle              sndHandle;         /* 128 */                               \
+	BSSoundHandle              sndCountdown;      /* 134 */                               \
+	std::uint32_t*             unk140;            /* 140 */                               \
+	InventoryEntryData*        unk148;            /* 148 */                               \
+	BGSExplosion*              explosion;         /* 150 */                               \
+	MagicItem*                 spell;             /* 158 */                               \
+	MagicSystem::CastingSource castingSource;     /* 160 */                               \
+	std::uint32_t              pad164;            /* 164 */                               \
+	EffectSetting*             avEffect;          /* 168 */                               \
+	NiPointer<QueuedFile>      projectileDBFiles; /* 170 */                               \
+	std::uint64_t              unk178;            /* 178 */                               \
+	std::uint64_t              unk180;            /* 180 */                               \
+	float                      power;             /* 188 - 14074B774 */                   \
+	float                      speedMult;         /* 18C - 1407501B2 */                   \
+	float                      range;             /* 190 */                               \
+	float                      livingTime;        /* 194 */                               \
+	float                      weaponDamage;      /* 198 */                               \
+	float                      transparency;      /* 19C - for beam disappearing */       \
+	std::uint64_t              unk1A0;            /* 1A0 */                               \
+	float                      unk1A8;            /* 1A8 */                               \
+	float                      unk1AC;            /* 1AC */                               \
+	TESObjectWEAP*             weaponSource;      /* 1B0 */                               \
+	TESAmmo*                   ammoSource;        /* 1B8 */                               \
+	float                      distanceMoved;     /* 1C0 */                               \
+	std::uint32_t              unk1C4;            /* 1C4 - pad? */                        \
+	float                      scale;             /* 1C8 - for double cast model scale */ \
+	std::uint32_t              flags;             /* 1CC */                               \
+	std::uint64_t              unk1D0;            /* 1D0 */
+
+			PROJECTILE_RUNTIME_DATA_CONTENT
+		};
+
+		[[nodiscard]] inline PROJECTILE_RUNTIME_DATA& GetHazardRuntimeData() noexcept
+		{
+			return REL::RelocateMemberIfNewer<PROJECTILE_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x98, 0xA0);
+		}
+
+		[[nodiscard]] inline const PROJECTILE_RUNTIME_DATA& GetHazardRuntimeData() const noexcept
+		{
+			return REL::RelocateMemberIfNewer<PROJECTILE_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x98, 0xA0);
+		}
 
 		// members
-		BSSimpleList<ImpactData*>  impacts;            // 098
-		NiTransform                unk0A8;             // 0A8
-		float                      unk0DC;             // 0DC
-		bhkSimpleShapePhantom*     unk0E0;             // 0E0 - smart ptr
-		mutable BSSpinLock         unk0E8;             // 0E8
-		NiPoint3                   velocity;           // 0F0
-		NiPoint3                   linearVelocity;     // 0FC
-		void*                      unk108;             // 108 - smart ptr
-		void*                      unk110;             // 110 - smart ptr
-		NiPointer<ActorCause>      actorCause;         // 118
-		ObjectRefHandle            shooter;            // 120
-		ObjectRefHandle            desiredTarget;      // 124
-		BSSoundHandle              sndHandle;          // 128
-		BSSoundHandle              sndCountdown;       // 134
-		std::uint32_t*             unk140;             // 140
-		InventoryEntryData*        unk148;             // 148
-		BGSExplosion*              explosion;          // 150
-		MagicItem*                 spell;              // 158
-		MagicSystem::CastingSource castingSource;      // 160
-		std::uint32_t              pad164;             // 164
-		EffectSetting*             avEffect;           // 168
-		NiPointer<QueuedFile>      projectileDBFiles;  // 170
-		std::uint64_t              unk178;             // 178
-		std::uint64_t              unk180;             // 180
-		float                      power;              // 188 - 14074B774
-		float                      speedMult;          // 18C - 1407501B2
-		float                      range;              // 190
-		float                      livingTime;         // 194
-		float                      weaponDamage;       // 198
-		float                      transparency;       // 19C - for beam disappearing
-		std::uint64_t              unk1A0;             // 1A0
-		float                      unk1A8;             // 1A8
-		float                      unk1AC;             // 1AC
-		TESObjectWEAP*             weaponSource;       // 1B0
-		TESAmmo*                   ammoSource;         // 1B8
-		float                      distanceMoved;      // 1C0
-		std::uint32_t              unk1C4;             // 1C4 - pad?
-		float                      scale;              // 1C8 - for double cast model scale
-		std::uint32_t              flags;              // 1CC
-		std::uint64_t              unk1D0;             // 1D0
+#ifndef ENABLE_SKYRIM_AE
+		PROJECTILE_RUNTIME_DATA_CONTENT
+#endif
 	};
+#ifndef ENABLE_SKYRIM_AE
 	static_assert(sizeof(Projectile) == 0x1D8);
+#endif
 }
+#undef PROJECTILE_RUNTIME_DATA_CONTENT

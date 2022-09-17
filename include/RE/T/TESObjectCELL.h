@@ -16,6 +16,7 @@
 #include "RE/T/TESForm.h"
 #include "RE/T/TESFullName.h"
 #include "RE/T/TESObjectREFR.h"
+#include "SKSE/Version.h"
 
 namespace RE
 {
@@ -228,6 +229,38 @@ namespace RE
 		void                   SetPublic(bool a_public);
 		[[nodiscard]] bool     UsesSkyLighting() const;
 
+		struct RUNTIME_DATA
+		{
+#define RUNTIME_DATA_CONTENT                                                                                                   \
+	CellData                                             cellData;         /* 060, 068 - XCLL if interior, XCLC if exterior */ \
+	TESObjectLAND*                                       cellLand;         /* 068, 070 */                                      \
+	float                                                waterHeight;      /* 070, 078 - XCLW */                               \
+	NavMeshArray*                                        navMeshes;        /* 078, 080 */                                      \
+	BSTSet<NiPointer<TESObjectREFR>>                     references;       /* 080, 088 */                                      \
+	TESForm*                                             unk0B0;           /* 0B0, 0B8 - REFR owner of cell? */                \
+	BSTArray<TESObjectREFR*>                             objectList;       /* 0B8, 0C0 - persistent */                         \
+	BSTArray<void*>                                      unk0D0;           /* 0D0, 0D8 */                                      \
+	BSTArray<BGSWaterCollisionManager::BGSWaterUpdateI*> waterObjects;     /* 0E8, 0F0 */                                      \
+	BSTArray<void*>                                      unk100;           /* 100, 108 */                                      \
+	mutable BSSpinLock                                   spinLock;         /* 118, 120 */                                      \
+	TESWorldSpace*                                       worldSpace;       /* 120, 128 */                                      \
+	LOADED_CELL_DATA*                                    loadedData;       /* 128, 130 */                                      \
+	BGSLightingTemplate*                                 lightingTemplate; /* 130, 138 - LTMP */                               \
+	std::uint64_t                                        unk138;           /* 138, 140 */
+
+			RUNTIME_DATA_CONTENT
+		};
+
+		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
+		{
+			return REL::RelocateMemberIfNewer<RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x60, 0x68);
+		}
+
+		[[nodiscard]] inline const RUNTIME_DATA& GetRuntimeData() const noexcept
+		{
+			return REL::RelocateMemberIfNewer<RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x60, 0x68);
+		}
+
 		// members
 		mutable BSSpinLock                                   grassCreateLock;   // 030
 		mutable BSSpinLock                                   grassTaskLock;     // 038
@@ -238,21 +271,13 @@ namespace RE
 		bool                                                 cellDetached;      // 046
 		std::uint8_t                                         pad047;            // 047
 		ExtraDataList                                        extraList;         // 048
-		CellData                                             cellData;          // 060 - XCLL if interior, XCLC if exterior
-		TESObjectLAND*                                       cellLand;          // 068
-		float                                                waterHeight;       // 070 - XCLW
-		NavMeshArray*                                        navMeshes;         // 078
-		BSTSet<NiPointer<TESObjectREFR>>                     references;        // 080
-		TESForm*                                             unk0B0;            // 0B0 - REFR owner of cell?
-		BSTArray<TESObjectREFR*>                             objectList;        // 0B8 - persistent
-		BSTArray<void*>                                      unk0D0;            // 0D0
-		BSTArray<BGSWaterCollisionManager::BGSWaterUpdateI*> waterObjects;      // 0E8
-		BSTArray<void*>                                      unk100;            // 100
-		mutable BSSpinLock                                   spinLock;          // 118
-		TESWorldSpace*                                       worldSpace;        // 120
-		LOADED_CELL_DATA*                                    loadedData;        // 128
-		BGSLightingTemplate*                                 lightingTemplate;  // 130 - LTMP
-		std::uint64_t                                        unk138;            // 138
+
+#ifndef ENABLE_SKYRIM_AE
+		RUNTIME_DATA_CONTENT
+#endif
 	};
+#ifndef ENABLE_SKYRIM_AE
 	static_assert(sizeof(TESObjectCELL) == 0x140);
+#endif
 }
+#undef RUNTIME_DATA

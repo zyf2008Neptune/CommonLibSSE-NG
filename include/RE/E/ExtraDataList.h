@@ -14,6 +14,40 @@ namespace RE
 	class InventoryChanges;
 	class TESBoundObject;
 
+	class BaseExtraList
+	{
+	public:
+		struct PresenceBitfield
+		{
+		public:
+			[[nodiscard]] bool HasType(std::uint32_t a_type) const;
+			void               MarkType(std::uint32_t a_type, bool a_cleared);
+
+			// members
+			std::uint8_t bits[0x18];  // 00
+		};
+		static_assert(sizeof(PresenceBitfield) == 0x18);
+
+		[[nodiscard]] BSExtraData*& GetData() noexcept;
+
+		[[nodiscard]] const BSExtraData*& GetData() const noexcept;
+
+		[[nodiscard]] PresenceBitfield*& GetPresence() noexcept;
+
+		[[nodiscard]] const PresenceBitfield*& GetPresence() const noexcept;
+
+#ifndef ENABLE_SKYRIM_AE
+		virtual ~BaseExtraList();  // 00
+
+		// members
+		BSExtraData*      data = nullptr;      // 00, 08
+		PresenceBitfield* presence = nullptr;  // 08, 10
+#endif
+	};
+#ifndef ENABLE_SKYRIM_AE
+	static_assert(sizeof(BaseExtraList) == 0x18);
+#endif
+
 	class ExtraDataList
 	{
 	public:
@@ -159,28 +193,16 @@ namespace RE
 		void                  SetLinkedRef(TESObjectREFR* a_targetRef, BGSKeyword* a_keyword);
 		void                  SetOwner(TESForm* a_owner);
 
-	protected:
-		struct PresenceBitfield
-		{
-		public:
-			[[nodiscard]] bool HasType(std::uint32_t a_type) const;
-			void               MarkType(std::uint32_t a_type, bool a_cleared);
-
-			// members
-			std::uint8_t bits[0x18];  // 00
-		};
-		static_assert(sizeof(PresenceBitfield) == 0x18);
-
-		void MarkType(std::uint32_t a_type, bool a_cleared);
-		void MarkType(ExtraDataType a_type, bool a_cleared);
+	private:
+		[[nodiscard]] BSExtraData* GetByTypeImpl(ExtraDataType a_type) const;
+		void         MarkType(std::uint32_t a_type, bool a_cleared);
+		void         MarkType(ExtraDataType a_type, bool a_cleared);
+		[[nodiscard]] BSReadWriteLock& GetLock() const noexcept;
 
 		// members
-		BSExtraData*            _data;      // 00
-		PresenceBitfield*       _presence;  // 08
-		mutable BSReadWriteLock _lock;      // 10
-
-	private:
-		BSExtraData* GetByTypeImpl(ExtraDataType a_type) const;
+		BaseExtraList           _extraData;  // 00
+#ifndef ENABLE_SKYRIM_AE
+		mutable BSReadWriteLock _lock;       // 10, 18; offset 18 only for AE versions .629 and later.
+#endif
 	};
-	static_assert(sizeof(ExtraDataList) == 0x18);
 }

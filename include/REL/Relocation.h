@@ -2138,6 +2138,22 @@ namespace REL {
     [[nodiscard]] inline T &RelocateMember(This *a_self, std::ptrdiff_t a_seAndAE, std::ptrdiff_t a_vr) {
         return *reinterpret_cast<T *>(reinterpret_cast<uintptr_t>(a_self) + Relocate(a_seAndAE, a_seAndAE, a_vr));
     }
+
+	template<class T, class This>
+	[[nodiscard]] inline T &RelocateMember(This *a_self, std::ptrdiff_t offset) {
+		return *reinterpret_cast<T *>(reinterpret_cast<uintptr_t>(a_self) + offset);
+	}
+
+	template<class T, class This>
+	[[nodiscard]] inline T &RelocateMemberIf(bool condition, This *a_self, std::ptrdiff_t a, std::ptrdiff_t b) {
+		return *reinterpret_cast<T *>(reinterpret_cast<uintptr_t>(a_self) + (condition ? a : b));
+	}
+
+	template<class T, class This>
+	[[nodiscard]] inline T &RelocateMemberIfNewer(Version v, This *a_self, std::ptrdiff_t older, std::ptrdiff_t newer) {
+		return *reinterpret_cast<T *>(reinterpret_cast<uintptr_t>(a_self) +
+									 (REL::Module::get().version().compare(v) == std::strong_ordering::less ? older : newer));
+	}
 }
 
 namespace std {

@@ -42,9 +42,32 @@ namespace RE
 		void Unk_C3(void) override;                        // C3 - { return 1; }
 #endif
 
+		struct ARROW_RUNTIME_DATA
+		{
+#define ARROW_RUNTIME_DATA_CONTENT  \
+	std::uint64_t unk1E0; /* 1E0, 1E8 */ \
+	AlchemyItem*  poison; /* 1E8 */
+
+			ARROW_RUNTIME_DATA_CONTENT
+		};
+
+		[[nodiscard]] inline ARROW_RUNTIME_DATA& GetArrowRuntimeData() noexcept
+		{
+			return REL::RelocateMemberIfNewer<ARROW_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x1E0, 0x1E8);
+		}
+
+		[[nodiscard]] inline const ARROW_RUNTIME_DATA& GetArrowRuntimeData() const noexcept
+		{
+			return REL::RelocateMemberIfNewer<ARROW_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x1E0, 0x1E8);
+		}
+
 		// members
-		std::uint64_t unk1E0;  // 1E0
-		AlchemyItem*  poison;  // 1E8
+#ifndef ENABLE_SKYRIM_AE
+		ARROW_RUNTIME_DATA_CONTENT
+#endif
 	};
+#ifndef ENABLE_SKYRIM_AE
 	static_assert(sizeof(ArrowProjectile) == 0x1F0);
+#endif
 }
+#undef ARROW_RUNTIME_DATA_CONTENT

@@ -16,6 +16,7 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTransform.h"
 #include "RE/T/TESForm.h"
+#include "SKSE/Version.h"
 
 namespace RE
 {
@@ -449,16 +450,37 @@ namespace RE
 		void                                            SetPosition(float a_x, float a_y, float a_z);
 		void                                            SetPosition(NiPoint3 a_pos);
 
+		struct REFERENCE_RUNTIME_DATA
+		{
+#define RUNTIME_DATA_CONTENT                 \
+	std::uint64_t unk88;        /* 88, 90 */ \
+	std::uint16_t refScale;     /* 90, 98 */ \
+	std::int8_t   modelState;   /* 92, 9A */ \
+	bool          preDestroyed; /* 93, 9B */ \
+	std::uint32_t pad94;        /* 94, 9C */
+
+			RUNTIME_DATA_CONTENT
+		};
+
+		[[nodiscard]] inline REFERENCE_RUNTIME_DATA& GetReferenceRuntimeData() noexcept
+		{
+			return REL::RelocateMemberIfNewer<REFERENCE_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x88, 0x90);
+		}
+
+		[[nodiscard]] inline const REFERENCE_RUNTIME_DATA& GetReferenceRuntimeData() const noexcept
+		{
+			return REL::RelocateMemberIfNewer<REFERENCE_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x88, 0x90);
+		}
+
 		// members
 		OBJ_REFR         data;          // 40
 		TESObjectCELL*   parentCell;    // 60
 		LOADED_REF_DATA* loadedData;    // 68
 		ExtraDataList    extraList;     // 70
-		std::uint64_t    unk88;         // 88
-		std::uint16_t    refScale;      // 90
-		std::int8_t      modelState;    // 92
-		bool             preDestroyed;  // 93
-		std::uint32_t    pad94;         // 94
+
+#ifndef ENABLE_SKYRIM_AE
+		RUNTIME_DATA_CONTENT
+#endif
 
 	private:
 		InventoryChanges* ForceInitInventoryChanges();
@@ -466,5 +488,8 @@ namespace RE
 		void              MoveTo_Impl(const ObjectRefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, const NiPoint3& a_position, const NiPoint3& a_rotation);
 		void              PlayAnimation_Impl(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4 = false);
 	};
+#ifndef ENABLE_SKYRIM_AE
 	static_assert(sizeof(TESObjectREFR) == 0x98);
-};
+#endif
+}
+#undef RUNTIME_DATA_CONTENT
