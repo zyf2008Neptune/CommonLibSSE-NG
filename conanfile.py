@@ -38,7 +38,7 @@ class CommonLibSSE(ConanFile):
 
     def requirements(self):
         if self.options.testing:
-            self.requires("catch2/2.13.9")
+            self.requires("catch2/3.1.0")
         self.requires("fmt/8.1.1")
         self.requires("rapidcsv/8.62")
         self.requires("spdlog/1.10.0")
