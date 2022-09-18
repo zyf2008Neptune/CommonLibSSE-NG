@@ -509,8 +509,6 @@ namespace SKSE
 			std::uint32_t _packed{};
 		};
 
-		struct Pre629StructsTag {};
-
 		class RuntimeCompatibility
 		{
 		public:
@@ -525,21 +523,10 @@ namespace SKSE
 			{
 			}
 
-			template <class... Args>
-				requires(sizeof...(Args) <= MaxCompatibleVersions && (std::convertible_to<Args, VersionNumber> && ...))
-			constexpr RuntimeCompatibility(Args... a_compatibleVersions, Pre629StructsTag) noexcept :
-				_addressLibrary(false), _structsPost629(false), _compatibleVersions({ VersionNumber(a_compatibleVersions)... })
-			{
-			}
-
-			constexpr RuntimeCompatibility(VersionIndependence a_versionIndependence) noexcept :
-				_addressLibrary(a_versionIndependence == VersionIndependence::AddressLibrary),
-				_signatureScanning(a_versionIndependence == VersionIndependence::SignatureScanning) {}
-
-			constexpr RuntimeCompatibility(VersionIndependence a_versionIndependence, Pre629StructsTag) noexcept :
+			constexpr RuntimeCompatibility(VersionIndependence a_versionIndependence, bool a_requiresPost629Structs = false) noexcept :
 				_addressLibrary(a_versionIndependence == VersionIndependence::AddressLibrary),
 				_signatureScanning(a_versionIndependence == VersionIndependence::SignatureScanning),
-				_structsPost629(false) {}
+				_structsPost629(a_requiresPost629Structs) {}
 
 			[[nodiscard]] constexpr bool UsesAddressLibrary() const noexcept
 			{
@@ -569,7 +556,7 @@ namespace SKSE
 		private:
 			const bool                           _addressLibrary : 1 = true;
 			const bool                           _signatureScanning: 1 = false;
-			const bool                           _structsPost629 : 1 = true;
+			const bool                           _structsPost629 : 1 = false;
 			[[maybe_unused]] const std::uint8_t  _pad0: 5 = 0;
 			[[maybe_unused]] const std::uint8_t  _pad1{ 0 };
 			[[maybe_unused]] const std::uint16_t _pad2{ 0 };
