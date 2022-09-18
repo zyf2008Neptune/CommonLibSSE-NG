@@ -113,7 +113,7 @@ project root (next to `vcpkg.json`) with the following contents:
             "kind": "git",
             "repository": "https://gitlab.com/colorglass/vcpkg-colorglass",
             // Update this baseline to the latest commit from the above repo.
-            "baseline": "5dfcd8fb8ee046c47c779ac879b02ddc9d29ac4b",
+            "baseline": "bbd09a56b951d86dec3ea484ec183d00b013b486",
             "packages": [
                 "commonlibsse-ng",
                 "commonlibsse-ng-ae",
@@ -141,13 +141,13 @@ CommonLibSSE NG is now available via Conan. Add it as a requirement to your proj
 
 ```ini
 [requires]
-commonlibsse-ng/3.5.1
+commonlibsse-ng/3.5.2
 ```
 
 ```python
 class MyProject:
     # ...
-    requires = 'commonlibsse-ng/3.5.1'
+    requires = 'commonlibsse-ng/3.5.2'
 ```
 
 Update the version number to the version constraints you want. Conan support was added in version 3.5.0, making that the
@@ -163,7 +163,7 @@ Selective runtime support is handled via package options:
 
 ```ini
 [requires]
-commonlibsse-ng/3.5.1
+commonlibsse-ng/3.5.2
 
 [options]
 commonlibsse-ng:ae=True
@@ -174,7 +174,7 @@ commonlibsse-ng:vr=True
 ```python
 class MyProject:
     # ...
-    requires = 'commonlibsse-ng/3.5.1'
+    requires = 'commonlibsse-ng/3.5.2'
     default_options = {
       # ...
       'commonlibsse-ng:with_ae': True,
