@@ -68,9 +68,9 @@ function(target_commonlibsse_properties TARGET)
 
     # Setup compatibility configuration.
     if (NOT ADD_COMMONLIBSSE_PLUGIN_STRUCT_DEPENDENT)
-        set(commonlibsse_plugin_struct_compatibility "SKSE::StructCompatibility::Dependent")
-    else ()
         set(commonlibsse_plugin_struct_compatibility "SKSE::StructCompatibility::Independent")
+    else ()
+        set(commonlibsse_plugin_struct_compatibility "SKSE::StructCompatibility::Dependent")
     endif ()
 
     if (NOT ADD_COMMONLIBSSE_PLUGIN_USE_SIGNATURE_SCANNING AND NOT DEFINED ADD_COMMONLIBSSE_PLUGIN_COMPATIBLE_RUNTIMES)
