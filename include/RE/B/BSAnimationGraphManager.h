@@ -34,9 +34,9 @@ namespace RE
 	{
 	public:
 		// members
-		BSTArray<AnimVariableCacheInfo> variableCache;  // 00
-		void*                           unk18;          // 18
-		void*                           unk20;          // 20 - smart ptr
+		BSTArray<AnimVariableCacheInfo>      variableCache;   // 00
+		mutable BSSpinLock                   updateLock;      // 18
+		BSTSmartPointer<BShkbAnimationGraph> animationGraph;  // 20 - smart ptr
 	};
 	static_assert(sizeof(BSAnimationGraphVariableCache) == 0x28);
 
