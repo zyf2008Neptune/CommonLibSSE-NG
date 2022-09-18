@@ -15,7 +15,8 @@ CommonLibSSE NG is a fork of CommonLibSSE which tracks upstream updates but adds
 CommonLibSSE NG has support for Skyrim SE, AE, and VR, and is able to create builds for any combination of these
 runtimes, including all three. This makes it possible to create SKSE plugins with a single DLL that works in any
 Skyrim runtime, improving developer productivity (only one build and CMake preset necessary) and improving the end-user
-experience (no need to make a choice of multiple download options or select the right DLL from a FOMOD).
+experience (no need to make a choice of multiple download options or select the right DLL from a FOMOD). For Skyrim AE,
+both versions before 1.6.629 and those after are supported in a single DLL (both struct layouts are supported).
 
 Builds that target multiple ABI-incompatible runtimes provide the necessary (but minimal) abstractions needed to work
 transparently regardless of the Skyrim edition in use. All functionality and classes from all runtimes is always
@@ -112,7 +113,7 @@ project root (next to `vcpkg.json`) with the following contents:
             "kind": "git",
             "repository": "https://gitlab.com/colorglass/vcpkg-colorglass",
             // Update this baseline to the latest commit from the above repo.
-            "baseline": "0f58c21b7a7cc96c1ff7bd949c9f4530b514625d",
+            "baseline": "5dfcd8fb8ee046c47c779ac879b02ddc9d29ac4b",
             "packages": [
                 "commonlibsse-ng",
                 "commonlibsse-ng-ae",
@@ -140,13 +141,13 @@ CommonLibSSE NG is now available via Conan. Add it as a requirement to your proj
 
 ```ini
 [requires]
-commonlibsse-ng/3.5.0
+commonlibsse-ng/3.5.1
 ```
 
 ```python
 class MyProject:
     # ...
-    requires = 'commonlibsse-ng/3.5.0'
+    requires = 'commonlibsse-ng/3.5.1'
 ```
 
 Update the version number to the version constraints you want. Conan support was added in version 3.5.0, making that the
@@ -162,7 +163,7 @@ Selective runtime support is handled via package options:
 
 ```ini
 [requires]
-commonlibsse-ng/3.5.0
+commonlibsse-ng/3.5.1
 
 [options]
 commonlibsse-ng:ae=True
@@ -173,7 +174,7 @@ commonlibsse-ng:vr=True
 ```python
 class MyProject:
     # ...
-    requires = 'commonlibsse-ng/3.5.0'
+    requires = 'commonlibsse-ng/3.5.1'
     default_options = {
       # ...
       'commonlibsse-ng:with_ae': True,
@@ -216,15 +217,3 @@ For more information on how to use CommonLibSSE NG, you can look at the
 ## Notes
 * CommonLib is incompatible with SKSE and is intended to replace it as a static dependency. However, you will still need
 * the runtime component.
-
-## List of Projects Using CommonLibSSE NG
-| Name                                                                                          | Developer                    | SE  | AE  | VR  |
-|-----------------------------------------------------------------------------------------------|------------------------------|-----|-----|-----|
-| [Animated Static Reload Fix - NG](https://www.nexusmods.com/skyrimspecialedition/mods/69331)  | Doodlezoid & Maxsu           |  ✔️  |  ✔️  | ✔️   |
-| [Fully Dynamic Game Engine](https://gitlab.com/colorglass/fully-dynamic-game-engine)          | Charmed Baryon               |  ✔️  |  ✔️  | ✔️   |
-| [LibFire](https://github.com/fireundubh/LibFire)                                              | fireundubh                   |  ✔️  |  ✔️  | ❌   |
-| [LibMathf](https://github.com/fireundubh/LibMathf)                                            | fireundubh                   |  ✔️  |  ✔️  | ✔️   |
-| [LibTurtleClub](https://github.com/fireundubh/LibTurtleClub)                                  | fireundubh                   |  ✔️  |  ✔️  | ✔️   |
-| [NPC AI Process Position Fix - NG](https://www.nexusmods.com/skyrimspecialedition/mods/69326) | Doodlezoid & Maxsu           |  ✔️  |  ✔️  | ✔️   |
-| [OnHit Animations Framework - NG](https://www.nexusmods.com/skyrimspecialedition/mods/69298)  | Doodlezoid & Maxsu           |  ✔️  |  ✔️  | ✔️   |
-| [Stagger Direction Fix - NG](https://www.nexusmods.com/skyrimspecialedition/mods/69291)       | Doodlezoid, Maxsu & NickaNak |  ✔️  |  ✔️  | ✔️   |
