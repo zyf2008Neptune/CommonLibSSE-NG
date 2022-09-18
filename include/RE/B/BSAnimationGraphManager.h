@@ -34,9 +34,9 @@ namespace RE
 	{
 	public:
 		// members
-		BSTArray<AnimVariableCacheInfo> variableCache;  // 00
-		void*                           unk18;          // 18
-		void*                           unk20;          // 20 - smart ptr
+		BSTArray<AnimVariableCacheInfo>      variableCache;   // 00
+		mutable BSSpinLock                   updateLock;      // 18
+		BSTSmartPointer<BShkbAnimationGraph> animationGraph;  // 20 - smart ptr
 #if !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_VR)
 		void*                           unk28;          // 28
 #endif
