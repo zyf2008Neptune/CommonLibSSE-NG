@@ -378,19 +378,26 @@ namespace SKSE
 		constexpr void MinimumRequiredXSEVersion(REL::Version a_version) noexcept { xseMinimum = a_version.pack(); }
 		constexpr void PluginName(std::string_view a_plugin) noexcept { SetCharBuffer(a_plugin, std::span{ pluginName }); }
 		constexpr void PluginVersion(REL::Version a_version) noexcept { pluginVersion = a_version.pack(); }
+		constexpr void HasNoStructUse(bool a_value) noexcept { noStructUse = a_value; }
 		constexpr void UsesAddressLibrary(bool a_value) noexcept { addressLibrary = a_value; }
 		constexpr void UsesSigScanning(bool a_value) noexcept { sigScanning = a_value; }
+		constexpr void UsesStructsPost629(bool a_value) noexcept { structsPost629 = a_value; }
 
 		const std::uint32_t dataVersion{ kVersion };
 		std::uint32_t       pluginVersion = 0;
 		char                pluginName[256] = {};
 		char                author[256] = {};
-		char                supportEmail[256] = {};
-		bool                addressLibrary: 1 = false;
-		bool                sigScanning: 1 = false;
-		std::uint8_t        padding1: 6 = 0;
+		char                supportEmail[252] = {};
+		bool                noStructUse : 1 = false;
+		std::uint8_t        padding1 : 7 = 0;
 		std::uint8_t        padding2 = 0;
 		std::uint16_t       padding3 = 0;
+		bool                addressLibrary: 1 = false;
+		bool                sigScanning: 1 = false;
+		bool                structsPost629 : 1 = false;
+		std::uint8_t        padding4: 5 = 0;
+		std::uint8_t        padding5 = 0;
+		std::uint16_t       padding6 = 0;
 		std::uint32_t       compatibleVersions[16] = {};
 		std::uint32_t       xseMinimum = 0;
 
@@ -409,17 +416,26 @@ namespace SKSE
 	static_assert(offsetof(PluginVersionData, pluginName) == 0x008);
 	static_assert(offsetof(PluginVersionData, author) == 0x108);
 	static_assert(offsetof(PluginVersionData, supportEmail) == 0x208);
-	static_assert(offsetof(PluginVersionData, padding2) == 0x309);
-	static_assert(offsetof(PluginVersionData, padding3) == 0x30A);
+	static_assert(offsetof(PluginVersionData, padding2) == 0x305);
+	static_assert(offsetof(PluginVersionData, padding3) == 0x306);
+	static_assert(offsetof(PluginVersionData, padding5) == 0x309);
+	static_assert(offsetof(PluginVersionData, padding6) == 0x30A);
 	static_assert(offsetof(PluginVersionData, compatibleVersions) == 0x30C);
 	static_assert(offsetof(PluginVersionData, xseMinimum) == 0x34C);
 	static_assert(sizeof(PluginVersionData) == 0x350);
 
 	enum class VersionIndependence
 	{
+		AddressLibraryPre1_6_629,
+		AddressLibraryPost1_6_629,
 		AddressLibrary,
-		SignatureScanning,
-		AddressLibraryAndSignatureScanning
+		SignatureScanning
+	};
+
+	enum class StructCompatibility : std::uint32_t
+	{
+		Dependent = 0,
+		Independent = 1
 	};
 
 	struct PluginDeclaration
@@ -493,6 +509,8 @@ namespace SKSE
 			std::uint32_t _packed{};
 		};
 
+		struct Pre629StructsTag {};
+
 		class RuntimeCompatibility
 		{
 		public:
@@ -507,11 +525,21 @@ namespace SKSE
 			{
 			}
 
+			template <class... Args>
+				requires(sizeof...(Args) <= MaxCompatibleVersions && (std::convertible_to<Args, VersionNumber> && ...))
+			constexpr RuntimeCompatibility(Args... a_compatibleVersions, Pre629StructsTag) noexcept :
+				_addressLibrary(false), _structsPost629(false), _compatibleVersions({ VersionNumber(a_compatibleVersions)... })
+			{
+			}
+
 			constexpr RuntimeCompatibility(VersionIndependence a_versionIndependence) noexcept :
-				_addressLibrary(a_versionIndependence == VersionIndependence::AddressLibrary ||
-								a_versionIndependence == VersionIndependence::AddressLibraryAndSignatureScanning),
-				_signatureScanning(a_versionIndependence == VersionIndependence::SignatureScanning ||
-								   a_versionIndependence == VersionIndependence::AddressLibraryAndSignatureScanning) {}
+				_addressLibrary(a_versionIndependence == VersionIndependence::AddressLibrary),
+				_signatureScanning(a_versionIndependence == VersionIndependence::SignatureScanning) {}
+
+			constexpr RuntimeCompatibility(VersionIndependence a_versionIndependence, Pre629StructsTag) noexcept :
+				_addressLibrary(a_versionIndependence == VersionIndependence::AddressLibrary),
+				_signatureScanning(a_versionIndependence == VersionIndependence::SignatureScanning),
+				_structsPost629(false) {}
 
 			[[nodiscard]] constexpr bool UsesAddressLibrary() const noexcept
 			{
@@ -521,6 +549,11 @@ namespace SKSE
 			[[nodiscard]] constexpr bool UsesSignatureScanning() const noexcept
 			{
 				return _signatureScanning;
+			}
+
+			[[nodiscard]] constexpr bool Targets629Structs() const noexcept
+			{
+				return _structsPost629;
 			}
 
 			[[nodiscard]] constexpr bool IsVersionIndependent() const noexcept
@@ -534,9 +567,10 @@ namespace SKSE
 			}
 
 		private:
-			const bool                           _addressLibrary: 1 = true;
+			const bool                           _addressLibrary : 1 = true;
 			const bool                           _signatureScanning: 1 = false;
-			[[maybe_unused]] const std::uint8_t  _pad0: 6 = 0;
+			const bool                           _structsPost629 : 1 = true;
+			[[maybe_unused]] const std::uint8_t  _pad0: 5 = 0;
 			[[maybe_unused]] const std::uint8_t  _pad1{ 0 };
 			[[maybe_unused]] const std::uint16_t _pad2{ 0 };
 			std::array<VersionNumber, 16>        _compatibleVersions{};
@@ -563,7 +597,19 @@ namespace SKSE
 			/**
 		     * A support email address for the plugin (maximum of 256 characters).
 		     */
-			const String<256> SupportEmail{};
+			const String<252> SupportEmail{};
+
+			/**
+			 * Defines the compatibility with structure layout of the plugin.
+			 *
+			 * For most of modern CommonLibSSE-era plugin development structs in Skyrim have remained
+			 * unchanged. In AE 1.6.629, however, the layout of some structs changed. If this is flagged
+			 * as independent, then SKSE will let your plugin work with runtimes before and after this
+			 * change. CommonLibSSE NG defaults to flagging a plugin independent because it supports
+			 * both struct layouts in a single plugin. If your plugin has any RE'd structs that have
+			 * changed you should override this.
+			 */
+			const StructCompatibility StructCompatibility{StructCompatibility::Independent};
 
 			/**
 		     * A definition of the runtime compatibility for the plugin.
@@ -585,6 +631,7 @@ namespace SKSE
 		static_assert(offsetof(PluginDeclarationInfo, Name) == 0x004);
 		static_assert(offsetof(PluginDeclarationInfo, Author) == 0x104);
 		static_assert(offsetof(PluginDeclarationInfo, SupportEmail) == 0x204);
+		static_assert(offsetof(PluginDeclarationInfo, StructCompatibility) == 0x300);
 		static_assert(offsetof(PluginDeclarationInfo, RuntimeCompatibility) == 0x304);
 		static_assert(offsetof(PluginDeclarationInfo, MinimumSKSEVersion) == 0x348);
 
@@ -609,6 +656,11 @@ namespace SKSE
 		[[nodiscard]] constexpr std::string_view GetSupportEmail() const noexcept
 		{
 			return _data.SupportEmail;
+		}
+
+		[[nodiscard]] constexpr StructCompatibility GetStructCompatibility() const noexcept
+		{
+			return _data.StructCompatibility;
 		}
 
 		[[nodiscard]] constexpr const RuntimeCompatibility& GetRuntimeCompatibility() const noexcept

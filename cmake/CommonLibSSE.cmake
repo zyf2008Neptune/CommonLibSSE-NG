@@ -30,7 +30,7 @@ endfunction()
 
 function(target_commonlibsse_properties TARGET)
     # EXCLUDE_FROM_ALL and SOURCES are supported here to simplify passing arguments from add_commonlibsse_plugin.
-    set(options OPTIONAL USE_ADDRESS_LIBRARY USE_SIGNATURE_SCANNING EXCLUDE_FROM_ALL)
+    set(options OPTIONAL USE_ADDRESS_LIBRARY USE_SIGNATURE_SCANNING STRUCT_DEPENDENT EXCLUDE_FROM_ALL)
     set(oneValueArgs NAME AUTHOR EMAIL VERSION MINIMUM_SKSE_VERSION)
     set(multiValueArgs COMPATIBLE_RUNTIMES SOURCES)
     cmake_parse_arguments(PARSE_ARGV 1 ADD_COMMONLIBSSE_PLUGIN "${options}" "${oneValueArgs}"
@@ -67,6 +67,12 @@ function(target_commonlibsse_properties TARGET)
     set(commonlibsse_min_skse_version "REL::Version{ ${COMMONLIBSSE_VERSION_MAJOR}, ${COMMONLIBSSE_VERSION_MINOR}, ${COMMONLIBSSE_VERSION_PATCH}, ${COMMONLIBSSE_VERSION_TWEAK} }")
 
     # Setup compatibility configuration.
+    if (NOT ADD_COMMONLIBSSE_PLUGIN_STRUCT_DEPENDENT)
+        set(commonlibsse_plugin_struct_compatibility "SKSE::StructCompatibility::Dependent")
+    else ()
+        set(commonlibsse_plugin_struct_compatibility "SKSE::StructCompatibility::Independent")
+    endif ()
+
     if (NOT ADD_COMMONLIBSSE_PLUGIN_USE_SIGNATURE_SCANNING AND NOT DEFINED ADD_COMMONLIBSSE_PLUGIN_COMPATIBLE_RUNTIMES)
         set(ADD_COMMONLIBSSE_PLUGIN_USE_ADDRESS_LIBRARY TRUE)
     endif ()
@@ -78,10 +84,8 @@ function(target_commonlibsse_properties TARGET)
 
         if (NOT ADD_COMMONLIBSSE_PLUGIN_USE_ADDRESS_LIBRARY)
             set(commonlibsse_plugin_compatibility "VersionIndependence::SignatureScanning")
-        elseif (NOT ADD_COMMONLIBSSE_PLUGIN_USE_SIGNATURE_SCANNING)
-            set(commonlibsse_plugin_compatibility "SKSE::VersionIndependence::AddressLibrary")
         else ()
-            set(commonlibsse_plugin_compatibility "SKSE::VersionIndependence::AddressLibraryAndSignatureScanning")
+            set(commonlibsse_plugin_compatibility "SKSE::VersionIndependence::AddressLibrary")
         endif ()
     else ()
         list(LENGTH ${ADD_COMMONLIBSSE_PLUGIN_COMPATIBLE_RUNTIMES} commonlibsse_plugin_compatibility_count)
@@ -110,6 +114,7 @@ function(target_commonlibsse_properties TARGET)
             "    .Name = \"${commonlibsse_plugin_name}\"sv,\n"
             "    .Author = \"${ADD_COMMONLIBSSE_PLUGIN_AUTHOR}\"sv,\n"
             "    .SupportEmail = \"${ADD_COMMONLIBSSE_PLUGIN_EMAIL}\"sv,\n"
+            "    .StructCompatibility = ${commonlibsse_plugin_struct_compatibility},\n"
             "    .RuntimeCompatibility = ${commonlibsse_plugin_compatibility},\n"
             "    .MinimumSKSEVersion = ${commonlibsse_min_skse_version}\n"
             ")\n")
@@ -121,7 +126,7 @@ function(target_commonlibsse_properties TARGET)
 endfunction()
 
 function(add_commonlibsse_plugin TARGET)
-    set(options OPTIONAL USE_ADDRESS_LIBRARY USE_SIGNATURE_SCANNING EXCLUDE_FROM_ALL)
+    set(options OPTIONAL USE_ADDRESS_LIBRARY USE_SIGNATURE_SCANNING STRUCT_DEPENDENT EXCLUDE_FROM_ALL)
     set(oneValueArgs NAME AUTHOR EMAIL VERSION MINIMUM_SKSE_VERSION)
     set(multiValueArgs COMPATIBLE_RUNTIMES SOURCES)
     cmake_parse_arguments(PARSE_ARGV 1 ADD_COMMONLIBSSE_PLUGIN "${options}" "${oneValueArgs}"
