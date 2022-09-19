@@ -138,7 +138,7 @@ namespace RE
 			kNone = 0,
 			kUseLandData = 1 << 0,
 			kUseLODData = 1 << 1,
-			kDontUseMapData = 1 << 2,
+			kUseMapData = 1 << 2,
 			kUseWaterData = 1 << 3,
 			kUseClimateData = 1 << 4,
 			kUseImageSpaceData = 1 << 5,  // unused
