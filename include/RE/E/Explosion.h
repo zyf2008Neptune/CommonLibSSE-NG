@@ -78,5 +78,9 @@ namespace RE
 		float                                  unk138;            // 138
 		stl::enumeration<Flags, std::uint32_t> flags;             // 13C
 	};
+#ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(Explosion) == 0x140);
+#else
+	static_assert(sizeof(Explosion) == 0x148);
+#endif
 }
