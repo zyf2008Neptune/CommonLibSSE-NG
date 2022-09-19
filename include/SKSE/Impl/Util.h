@@ -193,7 +193,7 @@ namespace SKSE
 			T lexical_cast(const std::string& a_str, bool a_hex = false)
 			{
 				auto base = a_hex ? 16 : 10;
-				
+
 				if constexpr (std::is_floating_point_v<T>) {
 					return static_cast<T>(std::stof(a_str));
 				} else if constexpr (std::is_signed_v<T>) {
