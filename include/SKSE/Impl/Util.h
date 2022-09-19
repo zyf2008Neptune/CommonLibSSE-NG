@@ -192,16 +192,16 @@ namespace SKSE
 			template <class T>
 			T lexical_cast(const std::string& a_str, bool a_hex = false)
 			{
+				auto base = a_hex ? 16 : 10;
+				
 				if constexpr (std::is_floating_point_v<T>) {
 					return static_cast<T>(std::stof(a_str));
 				} else if constexpr (std::is_signed_v<T>) {
-					return static_cast<T>(std::stoi(a_str));
+					return static_cast<T>(std::stoi(a_str, nullptr, base));
 				} else if constexpr (sizeof(T) == sizeof(std::uint64_t)) {
-					return static_cast<T>(std::stoull(a_str));
-				} else if (a_hex) {
-					return static_cast<T>(std::stoul(a_str, nullptr, 16));
+					return static_cast<T>(std::stoull(a_str, nullptr, base));
 				} else {
-					return static_cast<T>(std::stoul(a_str));
+					return static_cast<T>(std::stoul(a_str, nullptr, base));
 				}
 			}
 
