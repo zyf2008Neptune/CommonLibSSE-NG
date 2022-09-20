@@ -34,10 +34,10 @@ namespace RE
 	{
 	public:
 		// members
-		BSTArray<AnimVariableCacheInfo>      variableCache;   // 00
-		mutable BSSpinLock                   updateLock;      // 18
+		BSTArray<AnimVariableCacheInfo> variableCache;  // 00
+		mutable BSSpinLock              updateLock;     // 18
 #ifdef SKYRIM_SUPPORT_AE
-		mutable BSSpinLock                   graphLock;       // 20
+		mutable BSSpinLock graphLock;  // 20
 #endif
 		BSTSmartPointer<BShkbAnimationGraph> animationGraph;  // 28 - smart ptr
 	};
