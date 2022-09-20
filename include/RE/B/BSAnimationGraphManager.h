@@ -36,9 +36,16 @@ namespace RE
 		// members
 		BSTArray<AnimVariableCacheInfo>      variableCache;   // 00
 		mutable BSSpinLock                   updateLock;      // 18
-		BSTSmartPointer<BShkbAnimationGraph> animationGraph;  // 20 - smart ptr
+#ifdef SKYRIM_SUPPORT_AE
+		mutable BSSpinLock                   graphLock;       // 20
+#endif
+		BSTSmartPointer<BShkbAnimationGraph> animationGraph;  // 28 - smart ptr
 	};
-	static_assert(sizeof(BSAnimationGraphVariableCache) == 0x28);
+#ifndef SKYRIM_SUPPORT_AE
+	static_assert(sizeof(BSAnimationGraphVariableCache) == 0x20);
+#else
+	static_assert(sizeof(BSAnimationGraphVariableCache) == 0x30);
+#endif
 
 	BSSmartPointer(BSAnimationGraphManager);
 
@@ -83,5 +90,9 @@ namespace RE
 		std::uint32_t                                       activeGraph;           // A8
 		std::uint32_t                                       generateDepth;         // A8
 	};
+#ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(BSAnimationGraphManager) == 0xB0);
+#else
+	static_assert(sizeof(BSAnimationGraphManager) == 0xB8);
+#endif
 }
