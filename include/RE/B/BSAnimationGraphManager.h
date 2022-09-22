@@ -42,7 +42,7 @@ namespace RE
 		BSTSmartPointer<BShkbAnimationGraph> animationGraph;  // 28 - smart ptr
 	};
 #ifndef SKYRIM_SUPPORT_AE
-	static_assert(sizeof(BSAnimationGraphVariableCache) == 0x20);
+	static_assert(sizeof(BSAnimationGraphVariableCache) == 0x28);
 #else
 	static_assert(sizeof(BSAnimationGraphVariableCache) == 0x30);
 #endif
