@@ -651,12 +651,12 @@ namespace RE
 
 		[[nodiscard]] inline ACTOR_RUNTIME_DATA& GetActorRuntimeData() noexcept
 		{
-			return REL::RelocateMemberIfNewer<ACTOR_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x88, 0x90);
+			return REL::RelocateMemberIfNewer<ACTOR_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0xE0, 0xE8);
 		}
 
 		[[nodiscard]] inline const ACTOR_RUNTIME_DATA& GetActorRuntimeData() const noexcept
 		{
-			return REL::RelocateMemberIfNewer<ACTOR_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x88, 0x90);
+			return REL::RelocateMemberIfNewer<ACTOR_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0xE0, 0xE8);
 		}
 
 		// members
