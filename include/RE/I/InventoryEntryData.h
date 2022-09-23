@@ -44,7 +44,7 @@ namespace RE
 		[[nodiscard]] std::int32_t GetValue() const
 		{
 			using func_t = decltype(&InventoryEntryData::GetValue);
-			REL::Relocation<func_t> func{ RELOCATION_ID(15757, 15995) };
+			REL::Relocation<func_t> func{ Offset::InventoryEntryData::GetValue };
 			return func(this);
 		}
 
@@ -68,7 +68,7 @@ namespace RE
 		[[nodiscard]] bool IsQuestObject() const
 		{
 			using func_t = decltype(&InventoryEntryData::IsQuestObject);
-			REL::Relocation<func_t> func{ RELOCATION_ID(15767, 16005) };
+			REL::Relocation<func_t> func{ Offset::InventoryEntryData::IsQuestObject };
 			return func(this);
 		}
 
@@ -91,7 +91,7 @@ namespace RE
 		[[nodiscard]] bool IsOwnedBy_Impl(Actor* a_testOwner, TESForm* a_itemOwner, bool a_defaultTo)
 		{
 			using func_t = decltype(&InventoryEntryData::IsOwnedBy_Impl);
-			REL::Relocation<func_t> func{ RELOCATION_ID(15782, 16020) };
+			REL::Relocation<func_t> func{ Offset::InventoryEntryData::IsOwnedBy };
 			return func(this, a_testOwner, a_itemOwner, a_defaultTo);
 		}
 

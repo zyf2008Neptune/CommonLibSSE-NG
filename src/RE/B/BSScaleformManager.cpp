@@ -11,21 +11,14 @@ namespace RE
 {
 	BSScaleformManager* BSScaleformManager::GetSingleton()
 	{
-		REL::Relocation<BSScaleformManager**> singleton{ RELOCATION_ID(516573, 402775) };
+		REL::Relocation<BSScaleformManager**> singleton{ Offset::BSScaleformManager::Singleton };
 		return *singleton;
-	}
-
-	bool BSScaleformManager::FileExists(const char* a_fileName)
-	{
-		using func_t = decltype(&BSScaleformManager::FileExists);
-		REL::Relocation<func_t> func{ RELOCATION_ID(80087, 82411) };
-		return func(a_fileName);
 	}
 
 	bool BSScaleformManager::LoadMovie(IMenu* a_menu, GPtr<GFxMovieView>& a_viewOut, const char* a_fileName, ScaleModeType a_mode, float a_backGroundAlpha)
 	{
 		using func_t = decltype(&BSScaleformManager::LoadMovie);
-		REL::Relocation<func_t> func{ RELOCATION_ID(80302, 82325) };
+		REL::Relocation<func_t> func{ Offset::BSScaleformManager::LoadMovie };
 		return func(this, a_menu, a_viewOut, a_fileName, a_mode, a_backGroundAlpha);
 	}
 
@@ -188,13 +181,13 @@ namespace RE
 				static_cast<double>(state->screenWidth) /
 				static_cast<double>(state->screenHeight);
 			if (aspectRatio > 4.0 / 3.0) {
-				REL::Relocation<const Setting*> fSafeZoneXWide{ RELOCATION_ID(512509, 389569) };
-				REL::Relocation<const Setting*> fSafeZoneYWide{ RELOCATION_ID(512511, 389572) };
+				REL::Relocation<const Setting*> fSafeZoneXWide{ Offset::INISetting::Interface::fSafeZoneXWide };
+				REL::Relocation<const Setting*> fSafeZoneYWide{ Offset::INISetting::Interface::fSafeZoneYWide };
 
 				return std::make_pair(fSafeZoneXWide->GetFloat(), fSafeZoneYWide->GetFloat());
 			} else {
-				REL::Relocation<const Setting*> fSafeZoneX{ RELOCATION_ID(512513, 389575) };
-				REL::Relocation<const Setting*> fSafeZoneY{ RELOCATION_ID(512515, 389578) };
+				REL::Relocation<const Setting*> fSafeZoneX{ Offset::INISetting::Interface::fSafeZoneX };
+				REL::Relocation<const Setting*> fSafeZoneY{ Offset::INISetting::Interface::fSafeZoneY };
 
 				return std::make_pair(fSafeZoneX->GetFloat(), fSafeZoneY->GetFloat());
 			}
@@ -203,5 +196,12 @@ namespace RE
 		const auto [width, height] = state->frameBufferViewport;
 
 		return { safeZoneX, safeZoneY, static_cast<std::int32_t>(width), static_cast<std::int32_t>(height) };
+	}
+
+	bool BSScaleformManager::FileExists(const char* a_fileName)
+	{
+		using func_t = decltype(&BSScaleformManager::FileExists);
+		REL::Relocation<func_t> func{ Offset::BSScaleformManager::FileExists };
+		return func(a_fileName);
 	}
 }
