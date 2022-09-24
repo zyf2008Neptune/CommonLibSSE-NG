@@ -402,7 +402,7 @@ namespace REL {
                 _impl{a_v1, a_v2, a_v3, a_v4} {}
 
         explicit constexpr Version(std::string_view a_version) {
-            std::array<std::size_t, 4> powers{1, 1, 1, 1};
+            std::array<value_type, 4> powers{1, 1, 1, 1};
             std::size_t position = 0;
             for (std::size_t i = 0; i < a_version.size(); ++i) {
                 if (a_version[i] == '.') {
@@ -421,7 +421,7 @@ namespace REL {
                     throw std::invalid_argument("Invalid character in version number.");
                 } else {
                     powers[position] /= 10;
-                    _impl[position] += (a_version[i] - '0') * powers[position];
+                    _impl[position] += static_cast<value_type>((a_version[i] - '0') * powers[position]);
                 }
             }
         }
