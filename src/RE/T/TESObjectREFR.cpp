@@ -327,7 +327,7 @@ namespace RE
 				const auto it = results.find(a_object);
 				const auto entryData =
 					it != results.end() ?
-                        it->second.second.get() :
+						it->second.second.get() :
                         nullptr;
 				return entryData ? entryData->IsLeveled() : false;
 			};
@@ -675,6 +675,26 @@ namespace RE
 	bool TESObjectREFR::IsOffLimits()
 	{
 		return IsCrimeToActivate();
+	}
+
+	float TESObjectREFR::IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell) const
+	{
+		auto waterHeight = !a_cell || a_cell == parentCell ? GetWaterHeight() : a_cell->GetExteriorWaterHeight();
+
+		if (waterHeight == -NI_INFINITY && a_cell) {
+			waterHeight = a_cell->GetExteriorWaterHeight();
+		}
+
+		if (waterHeight <= a_zPos) {
+			return 0.0f;
+		}
+
+		return std::fminf((waterHeight - a_zPos) / GetHeight(), 1.0f);
+	}
+
+	bool TESObjectREFR::IsPointSubmergedMoreThan(const NiPoint3& a_pos, TESObjectCELL* a_cell, const float a_waterLevel) const
+	{
+		return IsPointDeepUnderWater(a_pos.z, a_cell) >= a_waterLevel;
 	}
 
 	void TESObjectREFR::MoveTo(TESObjectREFR* a_target)
