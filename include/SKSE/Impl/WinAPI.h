@@ -19,6 +19,7 @@
 #undef GetModuleHandle
 #undef LoadLibrary
 #undef MessageBox
+#undef OutputDebugString
 
 namespace SKSE::WinAPI
 {
@@ -254,3 +255,4 @@ namespace RE::DirectX
 #define GetModuleHandle ::SKSE::WinAPI::GetModuleHandle
 #define LoadLibrary ::SKSE::WinAPI::LoadLibrary
 #define MessageBox ::SKSE::WinAPI::MessageBox
+#define OutputDebugString ::SKSE::WinAPI::OutputDebugString

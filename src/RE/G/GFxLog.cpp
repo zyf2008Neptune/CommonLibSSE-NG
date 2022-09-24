@@ -1,5 +1,7 @@
 #include "RE/G/GFxLog.h"
 
+#undef OutputDebugString
+
 namespace RE
 {
 	GFxLog::GFxLog() :
