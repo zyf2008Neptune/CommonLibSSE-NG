@@ -1,4 +1,5 @@
 #include "RE/P/Projectile.h"
+#include "RE/F/FormTraits.h"
 
 namespace RE
 {
