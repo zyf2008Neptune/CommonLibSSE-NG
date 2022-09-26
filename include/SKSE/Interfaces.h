@@ -378,10 +378,11 @@ namespace SKSE
 		constexpr void MinimumRequiredXSEVersion(REL::Version a_version) noexcept { xseMinimum = a_version.pack(); }
 		constexpr void PluginName(std::string_view a_plugin) noexcept { SetCharBuffer(a_plugin, std::span{ pluginName }); }
 		constexpr void PluginVersion(REL::Version a_version) noexcept { pluginVersion = a_version.pack(); }
-		constexpr void HasNoStructUse(bool a_value) noexcept { noStructUse = a_value; }
-		constexpr void UsesAddressLibrary(bool a_value) noexcept { addressLibrary = a_value; }
-		constexpr void UsesSigScanning(bool a_value) noexcept { sigScanning = a_value; }
-		constexpr void UsesStructsPost629(bool a_value) noexcept { structsPost629 = a_value; }
+		constexpr void HasNoStructUse(bool a_value = true) noexcept { noStructUse = a_value; }
+		constexpr void UsesNoStructs(bool a_value = true) noexcept { noStructUse = a_value; }
+		constexpr void UsesAddressLibrary(bool a_value = true) noexcept { addressLibrary = a_value; }
+		constexpr void UsesSigScanning(bool a_value = true) noexcept { sigScanning = a_value; }
+		constexpr void UsesStructsPost629(bool a_value = true) noexcept { structsPost629 = a_value; }
 
 		const std::uint32_t dataVersion{ kVersion };
 		std::uint32_t       pluginVersion = 0;
