@@ -673,20 +673,12 @@ namespace RE
 
 		[[nodiscard]] inline PLAYER_RUNTIME_DATA& GetPlayerRuntimeData() noexcept
 		{
-			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
-				return REL::RelocateMemberIfNewer<PLAYER_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x3D8, 0x3E0);
-			} else {
-				return REL::RelocateMember<PLAYER_RUNTIME_DATA>(this, 0x3D8, 0x3E0);
-			}
+			return REL::RelocateMemberIfNewer<PLAYER_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x3D8, 0x3E0);
 		}
 
 		[[nodiscard]] inline const PLAYER_RUNTIME_DATA& GetPlayerRuntimeData() const noexcept
 		{
-			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
-				return REL::RelocateMemberIfNewer<PLAYER_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x3D8, 0x3E0);
-			} else {
-				return REL::RelocateMember<PLAYER_RUNTIME_DATA>(this, 0x3D8, 0x3E0);
-			}
+			return REL::RelocateMemberIfNewer<PLAYER_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x3D8, 0x3E0);
 		}
 
 		[[nodiscard]] inline CrimeValue& GetCrimeValue() noexcept
