@@ -125,14 +125,13 @@ target_include_directories(
 target_compile_definitions(
 	"${PROJECT_NAME}"
 	PUBLIC
-		FMT_HEADER_ONLY
-		SPDLOG_HEADER_ONLY
-		SPDLOG_FMT_EXTERNAL
 )
 
 target_link_libraries(
 	"${PROJECT_NAME}"
 	PUBLIC
+		fmt::fmt
+		spdlog::spdlog
 		Version.lib
 )
 

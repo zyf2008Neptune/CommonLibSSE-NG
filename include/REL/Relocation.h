@@ -702,7 +702,7 @@ namespace REL {
             unsigned long length = bufferSize * sizeof(wchar_t);
             std::uint8_t value[bufferSize];
             if (WinAPI::RegGetValueW(WinAPI::HKEY_LOCAL_MACHINE, subKey, L"Installed Path", 0x20002, nullptr, value, &length) !=
-                ERROR_SUCCESS) {
+                0) {
                 return false;
             }
             std::filesystem::path installPath(reinterpret_cast<wchar_t *>(value));
