@@ -24,6 +24,7 @@ namespace RE
 {
 	namespace BSScript
 	{
+		class IFunctionArguments;
 		class IVirtualMachine;
 		class IVMDebugInterface;
 		class IVMSaveLoadInterface;
@@ -193,11 +194,18 @@ namespace RE
 		};
 		static_assert(sizeof(LOSDataEvent) == 0x20);
 
+		struct ISendEventFilter
+		{
+			virtual bool matchesFilter(VMHandle handle) = 0;
+		};
+
 		~SkyrimVM() override;  // 00
 
 		static SkyrimVM* GetSingleton();
 
 		bool QueuePostRenderCall(const BSTSmartPointer<SkyrimScript::DelayFunctor>& a_functor);
+		void RelayEvent(VMHandle handle, BSFixedString* event, BSScript::IFunctionArguments* args, ISendEventFilter* optionalFilter);
+		void SendAndRelayEvent(VMHandle handle, BSFixedString* event, BSScript::IFunctionArguments* args, ISendEventFilter* optionalFilter);
 
 		// members
 		BSTSmartPointer<BSScript::IVirtualMachine>                            impl;                         // 0200

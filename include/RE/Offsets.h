@@ -402,6 +402,7 @@ namespace RE
 		namespace SkyrimVM
 		{
 			inline constexpr REL::ID QueuePostRenderCall(static_cast<std::uint64_t>(53955));
+			inline constexpr REL::ID RelayEvent(static_cast<std::uint64_t>(54033));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400475));
 		}
 
@@ -895,6 +896,7 @@ namespace RE
 		namespace SkyrimVM
 		{
 			inline constexpr REL::ID QueuePostRenderCall(static_cast<std::uint64_t>(53144));
+			inline constexpr REL::ID RelayEvent(static_cast<std::uint64_t>(53221));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514315));
 		}
 
