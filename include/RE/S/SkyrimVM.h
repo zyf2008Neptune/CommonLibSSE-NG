@@ -194,14 +194,14 @@ namespace RE
 		};
 		static_assert(sizeof(LOSDataEvent) == 0x20);
 
-		struct InventoryEventFilterLists : public BSIntrusiveRefCounted 
+		struct InventoryEventFilterLists : public BSIntrusiveRefCounted
 		{
 			// members
-			BSTSet<FormID> itemsForFiltering;		// 08
-			BSTSet<FormID> itemListsForFiltering;	// 38
+			BSTSet<FormID> itemsForFiltering;      // 08
+			BSTSet<FormID> itemListsForFiltering;  // 38
 		};
 		static_assert(sizeof(InventoryEventFilterLists) == 0x68);
-		
+
 		struct ISendEventFilter
 		{
 			virtual bool matchesFilter(VMHandle handle) = 0;
@@ -250,9 +250,9 @@ namespace RE
 		std::uint32_t                                                         unk0750;                      // 0750
 		mutable BSSpinLock                                                    registeredSleepEventsLock;    // 0754
 		std::uint32_t                                                         pad075C;                      // 075C
-		BSTSet<VMHandle>													  registeredSleepEvents;		// 0760 - RegisterForSleep
-		mutable BSSpinLock                                                    registeredStatsEventsLock;	// 0790
-		BSTSet<VMHandle>			                                          registeredStatsEvents;        // 0798 - RegisterForTrackedStats
+		BSTSet<VMHandle>                                                      registeredSleepEvents;        // 0760 - RegisterForSleep
+		mutable BSSpinLock                                                    registeredStatsEventsLock;    // 0790
+		BSTSet<VMHandle>                                                      registeredStatsEvents;        // 0798 - RegisterForTrackedStats
 		BSTStaticFreeList<BSTSmartPointer<SkyrimScript::DelayFunctor>, 512>   renderSafeFunctorPool1;       // 07C8
 		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>  renderSafeFunctorQueue1;      // 27E0
 		BSTStaticFreeList<BSTSmartPointer<SkyrimScript::DelayFunctor>, 512>   renderSafeFunctorPool2;       // 2808
