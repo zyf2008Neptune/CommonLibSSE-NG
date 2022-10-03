@@ -33,6 +33,7 @@ namespace RE
 		// override (BGSKeywordForm)
 		[[nodiscard]] BGSKeyword* GetDefaultKeyword() const override;  // 05
 
+		[[nodiscard]] bool                 CanHoldNPCSoul() const noexcept { return (GetFormFlags() & RecordFlags::kCanHoldNPCSoul) != 0; }
 		[[nodiscard]] constexpr SOUL_LEVEL GetContainedSoul() const noexcept { return *currentSoul; }
 		[[nodiscard]] constexpr SOUL_LEVEL GetMaximumCapacity() const noexcept { return *soulCapacity; }
 
