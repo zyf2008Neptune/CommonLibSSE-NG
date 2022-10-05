@@ -22,7 +22,7 @@ namespace RE
 	class CombatController
 	{
 	public:
-        [[nodiscard]] bool IsFleeing() const
+		[[nodiscard]] bool IsFleeing() const
 		{
 			return state->isFleeing;
 		}
