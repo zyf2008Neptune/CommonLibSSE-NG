@@ -107,7 +107,7 @@ namespace SKSE
 			if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
 				path /= "Skyrim VR";
 			} else {
-				path /= "Skyrim Special Edition";
+                path /= *REL::Relocation<const char**>(RELOCATION_ID(508778, 380738)).get();
 			}
 			path /= "SKSE"sv;
 			return path;

@@ -11,6 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_GrenadeProjectile;
+		inline static constexpr auto VTABLE = VTABLE_GrenadeProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileGrenade;
 
 		struct RecordFlags

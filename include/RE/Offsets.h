@@ -386,14 +386,15 @@ namespace RE::Offset
 	namespace Sky
 	{
 		constexpr auto GetSingleton = RELOCATION_ID(13789, 13878);
-		constexpr REL::ID SetWeather(static_cast<std::uint64_t>(25694, 26241));
-		constexpr REL::ID ForceWeather(static_cast<std::uint64_t>(25696, 26243));
-		constexpr REL::ID ResetWeather(static_cast<std::uint64_t>(25695, 26242));
+		constexpr auto SetWeather = RELOCATION_ID(25694, 26241);
+		constexpr auto ForceWeather = RELOCATION_ID(25696, 26243);
+		constexpr auto ResetWeather = RELOCATION_ID(25695, 26242);
 	}
 
 	namespace SkyrimVM
 	{
 		constexpr auto QueuePostRenderCall = RELOCATION_ID(53144, 53955);
+        constexpr auto RelayEvent = RELOCATION_ID(53221, 54033);
 		constexpr auto Singleton = RELOCATION_ID(514315, 400475);
 	}
 

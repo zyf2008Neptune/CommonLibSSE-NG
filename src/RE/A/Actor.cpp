@@ -496,6 +496,13 @@ namespace RE
 		return _vendorFaction;
 	}
 
+	float Actor::GetWarmthRating() const
+	{
+		using func_t = decltype(&Actor::GetWarmthRating);
+		REL::Relocation<func_t> func{ RELOCATION_ID(25834, 26394) };
+		return func(this);
+	}
+
 	TESObjectARMO* Actor::GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot)
 	{
 		const auto inv = GetInventory([](TESBoundObject& a_object) {
@@ -563,6 +570,13 @@ namespace RE
 		using func_t = decltype(&Actor::InterruptCast);
 		REL::Relocation<func_t> func{ RELOCATION_ID(37808, 38757) };
 		return func(this, a_restoreMagicka);
+	}
+
+	bool Actor::IsAttacking() const
+	{
+		using func_t = decltype(&Actor::IsAttacking);
+		REL::Relocation<func_t> func{ RELOCATION_ID(37637, 38590) };
+		return func(this);
 	}
 
 	bool Actor::IsAIEnabled() const
@@ -687,21 +701,6 @@ namespace RE
 		return GetActorRuntimeData().boolBits.all(BOOL_BITS::kPlayerTeammate);
 	}
 
-	float Actor::IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell)
-	{
-		auto waterHeight = !a_cell || a_cell == parentCell ? GetWaterHeight() : a_cell->GetExteriorWaterHeight();
-
-		if (waterHeight == -NI_INFINITY && a_cell) {
-			waterHeight = a_cell->GetExteriorWaterHeight();
-		}
-
-		if (waterHeight <= a_zPos) {
-			return 0.0f;
-		}
-
-		return std::fminf((waterHeight - a_zPos) / GetHeight(), 1.0f);
-	}
-
 	bool Actor::IsProtected() const
 	{
 		return GetActorRuntimeData().boolFlags.all(BOOL_FLAGS::kProtected);
@@ -729,11 +728,6 @@ namespace RE
 		}
 
 		return true;
-	}
-
-	bool Actor::IsPointSubmergedMoreThan(const NiPoint3& a_pos, TESObjectCELL* a_cell, const float a_waterLevel)
-	{
-		return IsPointDeepUnderWater(a_pos.z, a_cell) >= a_waterLevel;
 	}
 
 	bool Actor::IsSummoned() const noexcept

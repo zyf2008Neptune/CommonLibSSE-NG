@@ -532,6 +532,7 @@ namespace RE
 		[[nodiscard]] SOUL_LEVEL                GetSoulSize() const;
 		[[nodiscard]] TESFaction*               GetVendorFaction();
 		[[nodiscard]] const TESFaction*         GetVendorFaction() const;
+        [[nodiscard]] float                     GetWarmthRating() const;
 		[[nodiscard]] TESObjectARMO*            GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] TESObjectARMO*            GetWornArmor(FormID a_formID);
 		[[nodiscard]] bool                      HasKeywordString(std::string_view a_formEditorID);
@@ -539,8 +540,9 @@ namespace RE
 		[[nodiscard]] bool                      HasPerk(BGSPerk* a_perk) const;
 		[[nodiscard]] bool                      HasSpell(SpellItem* a_spell) const;
 		void                                    InterruptCast(bool a_restoreMagicka) const;
+        [[nodiscard]] bool                      IsAttacking() const;
 		[[nodiscard]] bool                      IsAIEnabled() const;
-		[[nodiscard]] bool                         IsAlarmed() const;
+		[[nodiscard]] bool                      IsAlarmed() const;
 		[[nodiscard]] bool                      IsAMount() const;
 		[[nodiscard]] bool                      IsAnimationDriven() const;
 		[[nodiscard]] bool                      IsBeingRidden() const;

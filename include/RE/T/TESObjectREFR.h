@@ -437,6 +437,8 @@ namespace RE
 		[[nodiscard]] bool                              IsLocked() const;
 		[[nodiscard]] bool                              IsMarkedForDeletion() const;
 		[[nodiscard]] bool                              IsOffLimits();
+        [[nodiscard]] float                             IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell) const;
+        [[nodiscard]] bool                              IsPointSubmergedMoreThan(const NiPoint3& a_pos, TESObjectCELL* a_cell, float a_waterLevel) const;
 		void                                            MoveTo(TESObjectREFR* a_target);
 		bool                                            MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool                                            MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);

@@ -24,6 +24,7 @@ namespace RE
 {
 	namespace BSScript
 	{
+		class IFunctionArguments;
 		class IVirtualMachine;
 		class IVMDebugInterface;
 		class IVMSaveLoadInterface;
@@ -193,11 +194,26 @@ namespace RE
 		};
 		static_assert(sizeof(LOSDataEvent) == 0x20);
 
+		struct InventoryEventFilterLists : public BSIntrusiveRefCounted
+		{
+			// members
+			BSTSet<FormID> itemsForFiltering;      // 08
+			BSTSet<FormID> itemListsForFiltering;  // 38
+		};
+		static_assert(sizeof(InventoryEventFilterLists) == 0x68);
+
+		struct ISendEventFilter
+		{
+			virtual bool matchesFilter(VMHandle handle) = 0;
+		};
+
 		~SkyrimVM() override;  // 00
 
 		static SkyrimVM* GetSingleton();
 
 		bool QueuePostRenderCall(const BSTSmartPointer<SkyrimScript::DelayFunctor>& a_functor);
+		void RelayEvent(VMHandle handle, BSFixedString* event, BSScript::IFunctionArguments* args, ISendEventFilter* optionalFilter);
+		void SendAndRelayEvent(VMHandle handle, BSFixedString* event, BSScript::IFunctionArguments* args, ISendEventFilter* optionalFilter);
 
 		// members
 		BSTSmartPointer<BSScript::IVirtualMachine>                            impl;                         // 0200
@@ -231,11 +247,12 @@ namespace RE
 		std::uint32_t                                                         pad071C;                      // 071C
 		BSTArray<BSTSmartPointer<UpdateDataEvent>>                            queuedOnUpdateEvents;         // 0720
 		BSTArray<BSTSmartPointer<UpdateDataEvent>>                            queuedOnUpdateGameEvents;     // 0738
-		std::uint64_t                                                         unk0750;                      // 0750
-		std::uint64_t                                                         unk0758;                      // 0758
-		BSTHashMap<UnkKey, UnkValue>                                          unk0760;                      // 0760
-		std::uint64_t                                                         unk0790;                      // 0790
-		BSTHashMap<UnkKey, UnkValue>                                          unk0798;                      // 0798
+		std::uint32_t                                                         unk0750;                      // 0750
+		mutable BSSpinLock                                                    registeredSleepEventsLock;    // 0754
+		std::uint32_t                                                         pad075C;                      // 075C
+		BSTSet<VMHandle>                                                      registeredSleepEvents;        // 0760 - RegisterForSleep
+		mutable BSSpinLock                                                    registeredStatsEventsLock;    // 0790
+		BSTSet<VMHandle>                                                      registeredStatsEvents;        // 0798 - RegisterForTrackedStats
 		BSTStaticFreeList<BSTSmartPointer<SkyrimScript::DelayFunctor>, 512>   renderSafeFunctorPool1;       // 07C8
 		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>  renderSafeFunctorQueue1;      // 27E0
 		BSTStaticFreeList<BSTSmartPointer<SkyrimScript::DelayFunctor>, 512>   renderSafeFunctorPool2;       // 2808
@@ -250,13 +267,13 @@ namespace RE
 		mutable BSSpinLock                                                    postRenderQueueLock;          // 88E0
 		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>* postRenderQueueToReadFrom;    // 88E8
 		BSTCommonLLMessageQueue<BSTSmartPointer<SkyrimScript::DelayFunctor>>* postRenderQueueToWriteTo;     // 88F0
-		mutable BSSpinLock                                                    unk88F8;                      // 88F8
-		BSTHashMap<UnkKey, UnkValue>                                          unk8900;                      // 8900
+		mutable BSSpinLock                                                    userLogMapLock;               // 88F8
+		BSTHashMap<const char*, SkyrimScript::Logger*>                        userLogMap;                   // 8900 - Debug.OpenUserLog()
 		mutable BSSpinLock                                                    currentVMOverstressTimeLock;  // 8930
 		std::uint32_t                                                         currentVMOverstressTime;      // 8938
 		std::uint32_t                                                         lastVMStackDumpTime;          // 893C
-		mutable BSSpinLock                                                    unk8940;                      // 8940
-		BSTHashMap<UnkKey, UnkValue>                                          unk8948;                      // 8948
+		mutable BSSpinLock                                                    InventoryEventFilterMapLock;  // 8940
+		BSTHashMap<VMHandle, InventoryEventFilterLists*>                      InventoryEventFilterMap;      // 8948 - AddInventoryEventFilter()
 	};
 	static_assert(sizeof(SkyrimVM) == 0x8978);
 }
