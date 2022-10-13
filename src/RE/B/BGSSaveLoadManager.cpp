@@ -23,14 +23,14 @@ namespace RE
 		Load_Impl(a_fileName, -1, 0, a_checkForMods);
 	}
 
-    bool BGSSaveLoadManager::LoadMostRecentSaveGame()
-    {
+	bool BGSSaveLoadManager::LoadMostRecentSaveGame()
+	{
 		using func_t = decltype(&BGSSaveLoadManager::LoadMostRecentSaveGame);
 		REL::Relocation<func_t> func{ RELOCATION_ID(34856, 35766) };
 		return func(this);
-    }
+	}
 
-    bool BGSSaveLoadManager::Save_Impl(std::int32_t a_deviceID, std::uint32_t a_outputStats, const char* a_fileName)
+	bool BGSSaveLoadManager::Save_Impl(std::int32_t a_deviceID, std::uint32_t a_outputStats, const char* a_fileName)
 	{
 		using func_t = decltype(&BGSSaveLoadManager::Save_Impl);
 		REL::Relocation<func_t> func{ Offset::BGSSaveLoadManager::Save };
