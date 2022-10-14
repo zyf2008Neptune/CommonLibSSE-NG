@@ -151,14 +151,14 @@ namespace RE
 		return func(this);
 	}
 
-    void PlayerCharacter::UpdateCrosshairs()
+	void PlayerCharacter::UpdateCrosshairs()
 	{
 		using func_t = decltype(&PlayerCharacter::UpdateCrosshairs);
 		REL::Relocation<func_t> func(RELOCATION_ID(39535, 40621));
 		return func(this);
 	}
 
-    bool PlayerCharacter::CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell)
+	bool PlayerCharacter::CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell)
 	{
 		using func_t = decltype(&PlayerCharacter::CenterOnCell_Impl);
 		REL::Relocation<func_t> func{ RELOCATION_ID(39365, 40437) };
