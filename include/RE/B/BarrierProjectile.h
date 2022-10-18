@@ -10,6 +10,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BarrierProjectile;
+		inline static constexpr auto VTABLE = VTABLE_BarrierProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileBarrier;
 
 		struct RecordFlags
@@ -46,5 +47,9 @@ namespace RE
 		std::uint32_t           pad1DC;         // 1DC
 		BSTArray<CollisionData> collisionData;  // 1E0
 	};
+#ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(BarrierProjectile) == 0x1F8);
+#else
+	static_assert(sizeof(BarrierProjectile) == 0x200);
+#endif
 }

@@ -374,10 +374,16 @@ namespace RE
 			kKeywordArmorMaterialHeavyStalhrim = 360,
 			kKeywordWeaponMaterialNordic = 361,
 			kKeywordWeaponMaterialStalhrim = 362,
-			kModsHelpFormList = 363,
-
-			kTotal = 364
+#ifdef SKYRIM_SUPPORT_AE
+			kHelpManualInstalledContent = 363,
+			kHelpManualInstalledContentAE = 364,
+			kModsHelpFormList = 365,
+			kTotal = 366
 #else
+			kModsHelpFormList = 363,
+			kTotal = 364
+#endif
+#else // SKYRIMVR
 			kisJarlChair = 184,
 			kFurnitureAnimatesFast = 185,
 			isCartTravelPlayer = 186,
@@ -643,9 +649,11 @@ namespace RE
 		}
 
 		// members
-		TESForm*      objects[DEFAULT_OBJECTS::kTotal];     // 020 - DNAM
-		bool          objectInit[DEFAULT_OBJECTS::kTotal];  // B80
-		std::uint32_t padCEC;                               // CEC
+		TESForm* objects[DEFAULT_OBJECTS::kTotal];     // 020 - DNAM
+		bool     objectInit[DEFAULT_OBJECTS::kTotal];  // B80
+#ifndef SKYRIM_SUPPORT_AE
+		std::uint32_t padCEC;  // CEC
+#endif
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(BGSDefaultObjectManager) == 0xCF0);

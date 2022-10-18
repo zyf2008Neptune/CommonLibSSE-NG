@@ -1219,6 +1219,7 @@
 #include "RE/S/StealthMeter.h"
 #include "RE/S/Stream.h"
 #include "RE/S/StreamBase.h"
+#include "RE/S/SubtitleManager.h"
 #include "RE/S/SummonCreatureEffect.h"
 #include "RE/S/SummonPlacementEffect.h"
 #include "RE/S/Sun.h"

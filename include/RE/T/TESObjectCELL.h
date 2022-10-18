@@ -254,5 +254,9 @@ namespace RE
 		BGSLightingTemplate*                                 lightingTemplate;  // 130 - LTMP
 		std::uint64_t                                        unk138;            // 138
 	};
+#ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(TESObjectCELL) == 0x140);
+#else
+	static_assert(sizeof(TESObjectCELL) == 0x148);
+#endif
 }

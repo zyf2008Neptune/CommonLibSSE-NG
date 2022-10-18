@@ -27,12 +27,15 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Projectile;
+		inline static constexpr auto VTABLE = VTABLE_Projectile;
 
 		struct WobbleControl
 		{
 		public:
 			// members
-			uint8_t unk00[0x2C];
+			NiMatrix3        unk00;   // 00
+			ProjectileHandle handle;  // 24
+			float            wobble;  // 28
 		};
 		static_assert(sizeof(WobbleControl) == 0x2C);
 
@@ -45,42 +48,47 @@ namespace RE
 			BSTArray<ProjectileHandle> unlimited;       // 08
 			BSTArray<ProjectileHandle> limited;         // 20
 			BSTArray<ProjectileHandle> pending;         // 38
-			BSSpinLock                 projectileLock;  // 50
+			mutable BSSpinLock         projectileLock;  // 50
 			BSTArray<WobbleControl>    wobble;          // 58
 		};
 
 		struct LaunchData
 		{
+			inline static constexpr auto RTTI = RTTI_Projectile__LaunchData;
+			inline static constexpr auto VTABLE = VTABLE_Projectile__LaunchData;
+
 			virtual ~LaunchData();
 
 			// members
-			NiPoint3                   origin;                  // 08
-			NiPoint3                   contactNormal;           // 14
-			BGSProjectile*             projectileBase;          // 20
-			TESObjectREFR*             shooter;                 // 28
-			CombatController*          combatController;        // 30
-			TESObjectWEAP*             fromWeapon;              // 38
-			TESAmmo*                   fromAmmo;                // 40
-			float                      zAngle;                  // 48
-			float                      xAngle;                  // 4C
-			float                      yAngle;                  // 50
-			std::uint8_t               unk54[0x14];             // 5C
-			TESObjectCELL*             parentCell;              // 70
-			MagicItem*                 spell;                   // 78
-			MagicSystem::CastingSource castingSource;           // 80
-			bool                       unkBool1;                // 84
-			std::uint8_t               unk7D[0xB];              // 85
-			AlchemyItem*               poison;                  // 90
-			std::int32_t               area;                    // 98
-			float                      power;                   // 9C
-			float                      scale;                   // A0
-			bool                       bAlwaysHit;              // A4
-			bool                       bNoDamageOutsideCombat;  // A5
-			bool                       bAutoAim;                // A6
-			bool                       bUnkBool2;               // A7
-			bool                       bUseOrigin;              // A8
-			bool                       bDeferInitialization;    // A9
-			bool                       bForceConeOfFire;        // AA
+			NiPoint3                   origin;                 // 08
+			NiPoint3                   contactNormal;          // 14
+			BGSProjectile*             projectileBase;         // 20
+			TESObjectREFR*             shooter;                // 28
+			CombatController*          combatController;       // 30
+			TESObjectWEAP*             weaponSource;           // 38
+			TESAmmo*                   ammoSource;             // 40
+			float                      angleZ;                 // 48
+			float                      angleX;                 // 4C
+			void*                      unk50;                  // 50 - maps to Projectile unk110
+			TESObjectREFR*             desiredTarget;          // 58
+			float                      unk60;                  // 60 - maps to Projectile unk1A8
+			float                      unk64;                  // 64 - maps to Projectile unk1AC
+			TESObjectCELL*             parentCell;             // 68
+			MagicItem*                 spell;                  // 70
+			MagicSystem::CastingSource castingSource;          // 78
+			std::uint32_t              unk7C;                  // 7C
+			EnchantmentItem*           enchantItem;            // 80
+			AlchemyItem*               poison;                 // 88
+			std::int32_t               area;                   // 90
+			float                      power;                  // 94
+			float                      scale;                  // 98
+			bool                       alwaysHit;              // 9C
+			bool                       noDamageOutsideCombat;  // 9D
+			bool                       autoAim;                // 9E
+			bool                       unk9F;                  // 9F
+			bool                       useOrigin;              // A0
+			bool                       deferInitialization;    // A1
+			bool                       forceConeOfFire;        // A2
 		};
 		static_assert(sizeof(LaunchData) == 0xA8);
 
@@ -167,23 +175,9 @@ namespace RE
 		virtual void          Handle3DLoaded();                                                                                                                                                  // C0 - { return; }
 		virtual bool          ShouldUseDesiredTarget();                                                                                                                                          // C1 - { return 0; }
 
-		inline float GetHeight() const
-		{
-			auto obj = GetObjectReference();
-			auto projectile = obj ? obj->As<BGSProjectile>() : nullptr;
-			return projectile ? projectile->data.collisionRadius * 2 : 0.0f;
-		}
-		inline float GetSpeed() const
-		{
-			auto obj = GetObjectReference();
-			auto projectile = obj ? obj->As<BGSProjectile>() : nullptr;
-			if (!projectile)
-				return 0.0f;
+		float GetHeight() const;
+		float GetSpeed() const;
 
-			return projectile->data.speed * GetPowerSpeedMult() * GetWeaponSpeedMult() * speedMult;
-		}
-
-		// Has been extensively tested in Skyrim Together, can leave the unknown fields null.
 		static BSPointerHandle<Projectile>* Launch(BSPointerHandle<Projectile>* a_result, LaunchData& a_data) noexcept;
 
 		// members
@@ -228,5 +222,9 @@ namespace RE
 		std::uint32_t              flags;              // 1CC
 		std::uint64_t              unk1D0;             // 1D0
 	};
+#ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(Projectile) == 0x1D8);
+#else
+	static_assert(sizeof(Projectile) == 0x1E0);
+#endif
 }

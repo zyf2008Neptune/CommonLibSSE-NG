@@ -16,6 +16,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BeamProjectile;
+		inline static constexpr auto VTABLE = VTABLE_BeamProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileBeam;
 
 		struct RecordFlags
@@ -47,5 +48,9 @@ namespace RE
 		// members
 		std::uint64_t unk238;  // 238
 	};
+#ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(BeamProjectile) == 0x240);
+#else
+	static_assert(sizeof(BeamProjectile) == 0x248);
+#endif
 }

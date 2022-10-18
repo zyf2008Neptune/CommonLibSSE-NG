@@ -681,6 +681,9 @@ namespace RE
 		[[nodiscard]] SOUL_LEVEL     GetSoulSize() const;
 		TESFaction*                  GetVendorFaction();
 		const TESFaction*            GetVendorFaction() const;
+#ifndef SKYRIMVR
+		float                        GetWarmthRating() const;
+#endif
 		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID);
 		bool                         HasKeyword(const BGSKeyword* a_keyword) const;
@@ -689,6 +692,7 @@ namespace RE
 		bool                         HasPerk(BGSPerk* a_perk) const;
 		bool                         HasSpell(SpellItem* a_spell) const;
 		void                         InterruptCast(bool a_restoreMagicka) const;
+		bool                         IsAttacking() const;
 		bool                         IsAIEnabled() const;
 		bool                         IsAlarmed() const;
 		bool                         IsAMount() const;
@@ -709,11 +713,9 @@ namespace RE
 		bool                         IsOnMount() const;
 		bool                         IsOverEncumbered() const;
 		bool                         IsPlayerTeammate() const;
-		float                        IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell);
 		bool                         IsProtected() const;
 		bool                         IsRunning() const;
 		bool                         IsSneaking() const;
-		bool                         IsPointSubmergedMoreThan(const NiPoint3& a_pos, TESObjectCELL* a_cell, float a_waterLevel);
 		[[nodiscard]] bool           IsSummoned() const noexcept;
 		bool                         IsTrespassing() const;
 		void                         KillImmediate();
@@ -804,5 +806,9 @@ namespace RE
 		void        CalculateCurrentVendorFaction() const;
 		TESFaction* GetCrimeFactionImpl() const;
 	};
+#ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(Actor) == 0x2B0);
+#else
+	static_assert(sizeof(Actor) == 0x2B8);
+#endif
 }

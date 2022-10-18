@@ -302,6 +302,7 @@ namespace RE
 		void SetAIDriven(bool a_enable);
 		void SetEscaping(bool a_flag, bool a_escaped);
 		void StartGrabObject();
+		void UpdateCrosshairs();
 
 		template <class T>
 		inline BSTEventSource<T>* GetEventSource()
@@ -681,9 +682,14 @@ namespace RE
 	private:
 		bool CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell);
 	};
-#ifndef SKYRIMVR
+
+#ifndef SKYRIM_SUPPORT_AE
+#	ifndef SKYRIMVR
 	static_assert(sizeof(PlayerCharacter) == 0xBE0);
-#else
+#	else
 	static_assert(sizeof(PlayerCharacter) == 0x12D8);
+#	endif
+#else
+	static_assert(sizeof(PlayerCharacter) == 0xBE8);
 #endif
 }

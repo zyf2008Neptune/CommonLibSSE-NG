@@ -28,8 +28,8 @@ namespace SKSE
 	inline constexpr REL::Version RUNTIME_1_6_323(1, 6, 323, 0);
 	inline constexpr REL::Version RUNTIME_1_6_342(1, 6, 342, 0);
 	inline constexpr REL::Version RUNTIME_1_6_353(1, 6, 353, 0);
-
-	inline constexpr auto RUNTIME_LATEST = RUNTIME_1_6_353;
+	inline constexpr REL::Version RUNTIME_1_6_629(1, 6, 629, 0);
+	inline constexpr REL::Version RUNTIME_1_6_640(1, 6, 640, 0);
 #endif
 
 #ifdef SKYRIM_SUPPORT_AE

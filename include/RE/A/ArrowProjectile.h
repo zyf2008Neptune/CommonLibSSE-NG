@@ -6,6 +6,7 @@
 namespace RE
 {
 	class AlchemyItem;
+	class EnchantmentItem;
 
 	class ArrowProjectile : public MissileProjectile
 	{
@@ -41,8 +42,12 @@ namespace RE
 		void  Unk_C3(void) override;                                                                                                                                                      // C3 - { return 1; }
 
 		// members
-		std::uint64_t unk1E0;  // 1E0
-		AlchemyItem*  poison;  // 1E8
+		EnchantmentItem* enchantItem;  // 1E0
+		AlchemyItem*     poison;       // 1E8
 	};
+#ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(ArrowProjectile) == 0x1F0);
+#else
+	static_assert(sizeof(ArrowProjectile) == 0x1F8);
+#endif
 }

@@ -511,7 +511,7 @@ namespace RE
 
 	bool TESObjectREFR::HasCollision() const
 	{
-		return (formFlags & RecordFlags::kCollisionsDisabled) == 0;
+		return (GetFormFlags() & RecordFlags::kCollisionsDisabled) == 0;
 	}
 
 	bool TESObjectREFR::HasContainer() const
@@ -620,7 +620,7 @@ namespace RE
 
 	bool TESObjectREFR::IsDisabled() const
 	{
-		return (formFlags & RecordFlags::kInitiallyDisabled) != 0;
+		return (GetFormFlags() & RecordFlags::kInitiallyDisabled) != 0;
 	}
 
 	bool TESObjectREFR::IsEnchanted() const
@@ -654,7 +654,7 @@ namespace RE
 
 	bool TESObjectREFR::IsInitiallyDisabled() const
 	{
-		return (formFlags & RecordFlags::kInitiallyDisabled) != 0;
+		return (GetFormFlags() & RecordFlags::kInitiallyDisabled) != 0;
 	}
 
 	bool TESObjectREFR::IsInWater() const
@@ -669,12 +669,32 @@ namespace RE
 
 	bool TESObjectREFR::IsMarkedForDeletion() const
 	{
-		return (formFlags & RecordFlags::kDeleted) != 0;
+		return (GetFormFlags() & RecordFlags::kDeleted) != 0;
 	}
 
 	bool TESObjectREFR::IsOffLimits()
 	{
 		return IsCrimeToActivate();
+	}
+
+	float TESObjectREFR::IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell) const
+	{
+		auto waterHeight = !a_cell || a_cell == parentCell ? GetWaterHeight() : a_cell->GetExteriorWaterHeight();
+
+		if (waterHeight == -NI_INFINITY && a_cell) {
+			waterHeight = a_cell->GetExteriorWaterHeight();
+		}
+
+		if (waterHeight <= a_zPos) {
+			return 0.0f;
+		}
+
+		return std::fminf((waterHeight - a_zPos) / GetHeight(), 1.0f);
+	}
+
+	bool TESObjectREFR::IsPointSubmergedMoreThan(const NiPoint3& a_pos, TESObjectCELL* a_cell, const float a_waterLevel) const
+	{
+		return IsPointDeepUnderWater(a_pos.z, a_cell) >= a_waterLevel;
 	}
 
 	void TESObjectREFR::MoveTo(TESObjectREFR* a_target)
