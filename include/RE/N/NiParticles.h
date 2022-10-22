@@ -28,5 +28,9 @@ namespace RE
 		NiPointer<NiParticlesData> particleData;  // 158
 		std::uint64_t              unk160;        // 160
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(NiParticles) == 0x168);
+#else
+	static_assert(sizeof(NiParticles) == 0x1B0);
+#endif
 }
