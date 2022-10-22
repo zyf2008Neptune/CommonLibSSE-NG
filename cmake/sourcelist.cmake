@@ -1078,6 +1078,11 @@ set(SOURCES
 	include/RE/N/NiObject.h
 	include/RE/N/NiObjectGroup.h
 	include/RE/N/NiObjectNET.h
+	include/RE/N/NiPSysData.h
+	include/RE/N/NiPSysModifier.h
+	include/RE/N/NiParticleSystem.h
+	include/RE/N/NiParticles.h
+	include/RE/N/NiParticlesData.h
 	include/RE/N/NiPlane.h
 	include/RE/N/NiPoint2.h
 	include/RE/N/NiPoint3.h
@@ -1105,6 +1110,7 @@ set(SOURCES
 	include/RE/N/NiTMap.h
 	include/RE/N/NiTMapBase.h
 	include/RE/N/NiTPointerAllocator.h
+	include/RE/N/NiTPointerList.h
 	include/RE/N/NiTPointerListBase.h
 	include/RE/N/NiTPointerMap.h
 	include/RE/N/NiTSet.h
