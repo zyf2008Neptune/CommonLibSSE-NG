@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RE/N/NiTPointerListBase.h"
 #include "RE/N/NiTPointerAllocator.h"
+#include "RE/N/NiTPointerListBase.h"
 
 namespace RE
 {
