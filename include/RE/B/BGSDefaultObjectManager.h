@@ -374,16 +374,16 @@ namespace RE
 			kKeywordArmorMaterialHeavyStalhrim = 360,
 			kKeywordWeaponMaterialNordic = 361,
 			kKeywordWeaponMaterialStalhrim = 362,
-#ifdef SKYRIM_SUPPORT_AE
+#	ifdef SKYRIM_SUPPORT_AE
 			kHelpManualInstalledContent = 363,
 			kHelpManualInstalledContentAE = 364,
 			kModsHelpFormList = 365,
 			kTotal = 366
-#else
+#	else
 			kModsHelpFormList = 363,
 			kTotal = 364
-#endif
-#else // SKYRIMVR
+#	endif
+#else  // SKYRIMVR
 			kisJarlChair = 184,
 			kFurnitureAnimatesFast = 185,
 			isCartTravelPlayer = 186,
