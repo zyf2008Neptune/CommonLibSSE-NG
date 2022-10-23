@@ -25,7 +25,7 @@ namespace RE
 		{
 		public:
 			// members
-		    float         currentFrame;  // 00
+			float         currentFrame;  // 00
 			std::uint32_t totalFrames;   // 04
 		};
 		static_assert(sizeof(TextureAnimInfo) == 0x08);
@@ -34,7 +34,7 @@ namespace RE
 		{
 		public:
 			// members
-		    float        XPos;           // 00
+			float        XPos;           // 00
 			float        YPos;           // 04
 			float        ZPos;           // 08
 			float        age;            // 0C
