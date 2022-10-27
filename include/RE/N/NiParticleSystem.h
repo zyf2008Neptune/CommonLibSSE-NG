@@ -46,5 +46,9 @@ namespace RE
 		std::uint8_t                              pad193;         // 192
 		std::uint32_t                             pad194;         // 194
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(NiParticleSystem) == 0x198);
+#else
+	static_assert(sizeof(NiParticleSystem) == 0x1e0);
+#endif
 }
