@@ -1507,9 +1507,11 @@ set(SOURCES
 	src/RE/E/ExtraCount.cpp
 	src/RE/E/ExtraDataList.cpp
 	src/RE/E/ExtraEnchantment.cpp
+	src/RE/E/ExtraEncounterZone.cpp
 	src/RE/E/ExtraForcedTarget.cpp
 	src/RE/E/ExtraHealth.cpp
 	src/RE/E/ExtraHotkey.cpp
+	src/RE/E/ExtraLevCreaModifier.cpp
 	src/RE/E/ExtraLightData.cpp
 	src/RE/E/ExtraLock.cpp
 	src/RE/E/ExtraMissingLinkedRefIDs.cpp

@@ -327,8 +327,8 @@ namespace RE
 				const auto it = results.find(a_object);
 				const auto entryData =
 					it != results.end() ?
-                        it->second.second.get() :
-                        nullptr;
+						it->second.second.get() :
+						nullptr;
 				return entryData ? entryData->IsLeveled() : false;
 			};
 
@@ -805,6 +805,12 @@ namespace RE
 		}
 
 		return renamed;
+	}
+
+	void TESObjectREFR::SetEncounterZone(BGSEncounterZone* a_zone)
+	{
+		extraList.SetEncounterZone(a_zone);
+		AddChange(ChangeFlags::kEncZoneExtra);
 	}
 
 	bool TESObjectREFR::SetMotionType(MotionType a_motionType, bool a_allowActivate)
