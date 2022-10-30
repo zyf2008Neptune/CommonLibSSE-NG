@@ -285,6 +285,19 @@ namespace RE
 	bool ExtraDataList::GetWorn() const
 	{
 		return HasType<ExtraWorn>() || HasType<ExtraWornLeft>();
+
+	void ExtraDataList::SetEncounterZone(BGSEncounterZone* a_zone)
+	{
+		if (auto xZone = GetByType<ExtraEncounterZone>()) {
+			if (a_zone) {
+				xZone->zone = a_zone;
+			} else {
+				Remove(xZone);
+			}
+		} else if (a_zone) {
+			xZone = new ExtraEncounterZone(a_zone);
+			Add(xZone);
+		}
 	}
 
 	void ExtraDataList::SetExtraFlags(ExtraFlags::Flag a_flags, bool a_enable)
@@ -306,6 +319,20 @@ namespace RE
 		using func_t = decltype(&ExtraDataList::SetInventoryChanges);
 		REL::Relocation<func_t> func{ Offset::ExtraDataList::SetInventoryChanges };
 		return func(this, a_changes);
+	}
+
+	void ExtraDataList::SetLevCreaModifier(LEV_CREA_MODIFIER a_modifier)
+	{
+		if (a_modifier == LEV_CREA_MODIFIER::kNone) {
+			RemoveByType(ExtraDataType::kLevCreaModifier);
+		} else {
+			if (auto xLevCreaModifier = GetByType<ExtraLevCreaModifier>()) {
+				xLevCreaModifier->modifier = a_modifier;
+			} else {
+				xLevCreaModifier = new ExtraLevCreaModifier(a_modifier);
+				Add(xLevCreaModifier);
+			}
+		}
 	}
 
 	void ExtraDataList::SetLinkedRef(TESObjectREFR* a_targetRef, BGSKeyword* a_keyword)
