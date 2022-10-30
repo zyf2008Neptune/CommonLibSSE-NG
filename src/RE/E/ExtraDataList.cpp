@@ -285,6 +285,7 @@ namespace RE
 	bool ExtraDataList::GetWorn() const
 	{
 		return HasType<ExtraWorn>() || HasType<ExtraWornLeft>();
+	}
 
 	void ExtraDataList::SetEncounterZone(BGSEncounterZone* a_zone)
 	{
