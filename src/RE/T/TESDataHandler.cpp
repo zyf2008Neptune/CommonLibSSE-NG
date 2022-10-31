@@ -68,13 +68,13 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedModByName(std::string_view a_modName)
 	{
-		for (auto& file : 
+		for (auto& file :
 #ifndef SKYRIMVR
 			compiledFileCollection.files
 #else
 			files
 #endif
-			) {
+		) {
 			if (a_modName.size() == strlen(file->fileName) &&
 				_strnicmp(file->fileName, a_modName.data(), a_modName.size()) == 0) {
 				return file;
@@ -105,9 +105,9 @@ namespace RE
 		return mod ? std::make_optional(mod->compileIndex) : std::nullopt;
 	}
 
-	const TESFile* TESDataHandler::LookupLoadedLightModByName(std::string_view 
+	const TESFile* TESDataHandler::LookupLoadedLightModByName(std::string_view
 #ifndef SKYRIMVR
-		a_modName
+			a_modName
 #endif
 	)
 	{
@@ -122,9 +122,9 @@ namespace RE
 		return nullptr;
 	}
 
-	const TESFile* TESDataHandler::LookupLoadedLightModByIndex(std::uint16_t 
+	const TESFile* TESDataHandler::LookupLoadedLightModByIndex(std::uint16_t
 #ifndef SKYRIMVR
-		a_index
+			a_index
 #endif
 	)
 	{
