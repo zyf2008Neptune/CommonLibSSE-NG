@@ -4,7 +4,8 @@
 
 namespace RE
 {
-	bool Script::GetProcessScripts() {
+	bool Script::GetProcessScripts()
+	{
 		using func_t = decltype(&Script::GetProcessScripts);
 		REL::Relocation<func_t> func{ Offset::Script::GetProcessScripts };
 		return func();
