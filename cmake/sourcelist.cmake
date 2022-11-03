@@ -1410,7 +1410,6 @@ set(SOURCES
 	include/SKSE/Impl/PCH.h
 	include/SKSE/Impl/RegistrationTraits.h
 	include/SKSE/Impl/Stubs.h
-	include/SKSE/Impl/Util.h
 	include/SKSE/Impl/WinAPI.h
 	include/SKSE/Interfaces.h
 	include/SKSE/Logger.h

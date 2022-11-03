@@ -161,6 +161,19 @@ namespace RE
 			[[nodiscard]] inline friend bool operator==(const_pointer a_lhs, const BSFixedString& a_rhs) { return a_rhs == a_lhs; }
 			[[nodiscard]] inline friend bool operator!=(const_pointer a_lhs, const BSFixedString& a_rhs) { return !(a_lhs == a_rhs); }
 
+			[[nodiscard]] inline bool contains(std::basic_string_view<value_type> a_rhs) const
+			{
+				if (a_rhs.length() > length()) {
+					return false;
+				}
+				for (size_type i = 0; i < length(); ++i) {
+					if (strncmp(&c_str()[i], a_rhs.data(), a_rhs.length()) == 0) {
+						return true;
+					}
+				}
+				return false;
+			}
+
 		private:
 			[[nodiscard]] static inline int strncmp(const char* a_lhs, const char* a_rhs, std::size_t a_length)
 			{
@@ -192,15 +205,15 @@ namespace RE
 			[[nodiscard]] inline BSStringPool::Entry* get_proxy() noexcept
 			{
 				return _data ?
-                           reinterpret_cast<BSStringPool::Entry*>(const_cast<pointer>(_data)) - 1 :
-                           nullptr;
+				           reinterpret_cast<BSStringPool::Entry*>(const_cast<pointer>(_data)) - 1 :
+				           nullptr;
 			}
 
 			[[nodiscard]] inline const BSStringPool::Entry* get_proxy() const noexcept
 			{
 				return _data ?
-                           reinterpret_cast<const BSStringPool::Entry*>(_data) - 1 :
-                           nullptr;
+				           reinterpret_cast<const BSStringPool::Entry*>(_data) - 1 :
+				           nullptr;
 			}
 
 			inline void try_acquire()
