@@ -60,7 +60,7 @@ namespace RE
 			};
 			static_assert(sizeof(PotionCreationData) == 0x20);
 
-			virtual ~AlchemyMenu();  // 00
+            ~AlchemyMenu() override;  // 00
 
 			// override (CraftingSubMenu)
             void Accept(CallbackProcessor* a_cbReg) override; // 01
