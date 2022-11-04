@@ -63,8 +63,8 @@ namespace RE
 			virtual ~AlchemyMenu();  // 00
 
 			// override (CraftingSubMenu)
-			virtual void Accept(CallbackProcessor* a_cbReg) override;  // 01
-			virtual void Unk_05(void) override;                        // 05
+            void Accept(CallbackProcessor* a_cbReg) override; // 01
+            void Unk_05(void) override;                       // 05
 
 			// members
 			BSTArray<MenuIngredientEntry> ingredientEntries;      // 100
