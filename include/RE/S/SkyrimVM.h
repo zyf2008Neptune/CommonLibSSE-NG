@@ -138,9 +138,9 @@ namespace RE
 		public BSTEventSink<PositionPlayerEvent>,    // 0190
 		public BSTEventSink<BSScript::StatsEvent>,   // 0198
 #else
-		public BSTEventSink<PositionPlayerEvent>,    // 0188
-		public BSTEventSink<BSScript::StatsEvent>,   // 0190
-		public BSTEventSink<MenuOpenCloseEvent>,     // 0198
+		public BSTEventSink<PositionPlayerEvent>,      // 0188
+		public BSTEventSink<BSScript::StatsEvent>,     // 0190
+		public BSTEventSink<MenuOpenCloseEvent>,       // 0198
 #endif
 		public BSTEventSource<BSScript::StatsEvent>  // 01A8
 	{
@@ -233,46 +233,46 @@ namespace RE
 		void SendAndRelayEvent(VMHandle handle, BSFixedString* event, BSScript::IFunctionArguments* args, ISendEventFilter* optionalFilter);
 
 		// members
-		BSTSmartPointer<BSScript::IVirtualMachine>                            impl;                         // 0200
-		BSScript::IVMSaveLoadInterface*                                       saveLoadInterface;            // 0208
-		BSScript::IVMDebugInterface*                                          debugInterface;               // 0210
-		BSScript::SimpleAllocMemoryPagePolicy                                 memoryPagePolicy;             // 0218
-		BSScript::CompiledScriptLoader                                        scriptLoader;                 // 0240
-		SkyrimScript::Logger                                                  logger;                       // 0278
-		SkyrimScript::HandlePolicy                                            handlePolicy;                 // 0328
-		SkyrimScript::ObjectBindPolicy                                        objectBindPolicy;             // 0398
-		BSTSmartPointer<SkyrimScript::Store>                                  scriptStore;                  // 0470
-		SkyrimScript::FragmentSystem                                          fragmentSystem;               // 0478
-		SkyrimScript::Profiler                                                profiler;                     // 0590
-		SkyrimScript::SavePatcher                                             savePatcher;                  // 0670
-		mutable BSSpinLock                                                    frozenLock;                   // 0678
-		std::uint32_t                                                         isFrozen;                     // 0680
-		mutable BSSpinLock                                                    currentVMTimeLock;            // 0684
-		std::uint32_t                                                         currentVMTime;                // 068C
-		std::uint32_t                                                         currentVMMenuModeTime;        // 0690
-		std::uint32_t                                                         currentVMGameTime;            // 0694
-		std::uint32_t                                                         currentVMDaysPassed;          // 0698 - Calender.GetDaysPassed() * 1000
-		mutable BSSpinLock                                                    queuedWaitEventLock;          // 069C
-		std::uint32_t                                                         pad06A4;                      // 06A4
-		BSTArray<WaitCall>                                                    queuedWaitCalls;              // 06A8 - Utility.Wait() calls
-		BSTArray<WaitCall>                                                    queuedWaitMenuModeCalls;      // 06C0 - Utility.WaitMenuMode() calls
-		BSTArray<WaitCall>                                                    queuedWaitGameCalls;          // 06D8 - Utility.WaitGameTime() calls
-		mutable BSSpinLock                                                    queuedLOSEventCheckLock;      // 06F0
-		BSTArray<BSTSmartPointer<LOSDataEvent>>                               queuedLOSEventChecks;         // 06F8 - OnGainLOS/OnLostLOS
-		std::uint32_t                                                         currentLOSEventCheckIndex;    // 0710
-		mutable BSSpinLock                                                    queuedOnUpdateEventLock;      // 0714
-		std::uint32_t                                                         pad071C;                      // 071C
-		BSTArray<BSTSmartPointer<UpdateDataEvent>>                            queuedOnUpdateEvents;         // 0720
-		BSTArray<BSTSmartPointer<UpdateDataEvent>>                            queuedOnUpdateGameEvents;     // 0738
-		std::uint32_t                                                         unk0750;                      // 0750
+		BSTSmartPointer<BSScript::IVirtualMachine> impl;                       // 0200
+		BSScript::IVMSaveLoadInterface*            saveLoadInterface;          // 0208
+		BSScript::IVMDebugInterface*               debugInterface;             // 0210
+		BSScript::SimpleAllocMemoryPagePolicy      memoryPagePolicy;           // 0218
+		BSScript::CompiledScriptLoader             scriptLoader;               // 0240
+		SkyrimScript::Logger                       logger;                     // 0278
+		SkyrimScript::HandlePolicy                 handlePolicy;               // 0328
+		SkyrimScript::ObjectBindPolicy             objectBindPolicy;           // 0398
+		BSTSmartPointer<SkyrimScript::Store>       scriptStore;                // 0470
+		SkyrimScript::FragmentSystem               fragmentSystem;             // 0478
+		SkyrimScript::Profiler                     profiler;                   // 0590
+		SkyrimScript::SavePatcher                  savePatcher;                // 0670
+		mutable BSSpinLock                         frozenLock;                 // 0678
+		std::uint32_t                              isFrozen;                   // 0680
+		mutable BSSpinLock                         currentVMTimeLock;          // 0684
+		std::uint32_t                              currentVMTime;              // 068C
+		std::uint32_t                              currentVMMenuModeTime;      // 0690
+		std::uint32_t                              currentVMGameTime;          // 0694
+		std::uint32_t                              currentVMDaysPassed;        // 0698 - Calender.GetDaysPassed() * 1000
+		mutable BSSpinLock                         queuedWaitEventLock;        // 069C
+		std::uint32_t                              pad06A4;                    // 06A4
+		BSTArray<WaitCall>                         queuedWaitCalls;            // 06A8 - Utility.Wait() calls
+		BSTArray<WaitCall>                         queuedWaitMenuModeCalls;    // 06C0 - Utility.WaitMenuMode() calls
+		BSTArray<WaitCall>                         queuedWaitGameCalls;        // 06D8 - Utility.WaitGameTime() calls
+		mutable BSSpinLock                         queuedLOSEventCheckLock;    // 06F0
+		BSTArray<BSTSmartPointer<LOSDataEvent>>    queuedLOSEventChecks;       // 06F8 - OnGainLOS/OnLostLOS
+		std::uint32_t                              currentLOSEventCheckIndex;  // 0710
+		mutable BSSpinLock                         queuedOnUpdateEventLock;    // 0714
+		std::uint32_t                              pad071C;                    // 071C
+		BSTArray<BSTSmartPointer<UpdateDataEvent>> queuedOnUpdateEvents;       // 0720
+		BSTArray<BSTSmartPointer<UpdateDataEvent>> queuedOnUpdateGameEvents;   // 0738
+		std::uint32_t                              unk0750;                    // 0750
 #ifdef SKYRIMVR
-		mutable BSSpinLock                                                    registeredMenuEventsLock;     // 0754
-		std::uint32_t                                                         pad075C;                      // 075C
-		BSTArray<BSTSmartPointer<MenuOpenClose>>                              registeredMenuEvents;         // 0760 - RegisterForMenuOpenClose
-		mutable BSSpinLock                                                    registeredSleepEventsLock;    // 0778
+		mutable BSSpinLock                       registeredMenuEventsLock;   // 0754
+		std::uint32_t                            pad075C;                    // 075C
+		BSTArray<BSTSmartPointer<MenuOpenClose>> registeredMenuEvents;       // 0760 - RegisterForMenuOpenClose
+		mutable BSSpinLock                       registeredSleepEventsLock;  // 0778
 #else
-		mutable BSSpinLock													  registeredSleepEventsLock;    // 0754
-		std::uint32_t														  pad075C;                      // 075C
+		mutable BSSpinLock registeredSleepEventsLock;  // 0754
+		std::uint32_t      pad075C;                    // 075C
 #endif
 		BSTSet<VMHandle>                                                      registeredSleepEvents;        // 0780 - RegisterForSleep
 		mutable BSSpinLock                                                    registeredStatsEventsLock;    // 0810
