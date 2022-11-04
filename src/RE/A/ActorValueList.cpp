@@ -13,7 +13,7 @@ namespace RE
 
 	ActorValue ActorValueList::LookupActorValueByName(std::string_view a_enumName) const
     {
-		for (std::uint32_t i = 0; i < 164; ++i) {
+		for (std::uint32_t i = 0; i < stl::to_underlying(ActorValue::kTotal); ++i) {
 			if (a_enumName.size() == strlen(actorValues[i]->enumName) &&
 				_strnicmp(actorValues[i]->enumName, a_enumName.data(), a_enumName.size()) == 0) {
 				return static_cast<ActorValue>(i);
