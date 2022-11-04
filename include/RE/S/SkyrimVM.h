@@ -14,7 +14,9 @@
 #include "RE/I/IFreezeQuery.h"
 #include "RE/I/IStackCallbackSaveInterface.h"
 #include "RE/L/Logger.h"
+#ifdef SKYRIMVR
 #include "RE/M/MenuOpenCloseEvent.h"
+#endif
 #include "RE/P/Profiler.h"
 #include "RE/S/SavePatcher.h"
 #include "RE/S/SimpleAllocMemoryPagePolicy.h"
