@@ -19,9 +19,9 @@
 
 namespace RE
 {
-    class TESRegionList;
+	class TESRegionList;
 
-    namespace BGSWaterCollisionManager
+	namespace BGSWaterCollisionManager
 	{
 		class BGSWaterUpdateI;
 	}
