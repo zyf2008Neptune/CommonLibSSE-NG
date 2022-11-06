@@ -60,11 +60,11 @@ namespace RE
 			};
 			static_assert(sizeof(PotionCreationData) == 0x20);
 
-            ~AlchemyMenu() override;  // 00
+			~AlchemyMenu() override;  // 00
 
 			// override (CraftingSubMenu)
-            void Accept(CallbackProcessor* a_cbReg) override; // 01
-            void Unk_05(void) override;                       // 05
+			void Accept(CallbackProcessor* a_cbReg) override;  // 01
+			void Unk_05(void) override;                        // 05
 
 			// members
 			BSTArray<MenuIngredientEntry> ingredientEntries;      // 100

@@ -32,7 +32,7 @@ namespace RE
 			kInWater = 1 << 5
 		};
 
-        ~Explosion() override;  // 00
+		~Explosion() override;  // 00
 
 		// override (TESObjectREFR)
 		void         SaveGame(BGSSaveFormBuffer* a_buf) override;                           // 0E

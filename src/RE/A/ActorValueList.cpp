@@ -5,14 +5,14 @@
 namespace RE
 {
 	ActorValueInfo* ActorValueList::GetActorValue(ActorValue a_actorValue) const
-    {
+	{
 		return a_actorValue < ActorValue::kTotal ?
-		           actorValues[stl::to_underlying(a_actorValue)] :
-		           nullptr;
+                   actorValues[stl::to_underlying(a_actorValue)] :
+                   nullptr;
 	}
 
 	ActorValue ActorValueList::LookupActorValueByName(std::string_view a_enumName) const
-    {
+	{
 		for (std::uint32_t i = 0; i < stl::to_underlying(ActorValue::kTotal); ++i) {
 			if (a_enumName.size() == strlen(actorValues[i]->enumName) &&
 				_strnicmp(actorValues[i]->enumName, a_enumName.data(), a_enumName.size()) == 0) {
