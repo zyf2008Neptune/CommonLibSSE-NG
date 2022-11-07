@@ -7,14 +7,14 @@ namespace RE
 	bool Script::GetProcessScripts()
 	{
 		using func_t = decltype(&Script::GetProcessScripts);
-		REL::Relocation<func_t> func{ Offset::Script::GetProcessScripts };
+		REL::Relocation<func_t> func{ RELOCATION_ID(21436, 21921) };
 		return func();
 	}
 
 	void Script::SetProcessScripts(bool a_ProcessScripts)
 	{
 		using func_t = decltype(&Script::SetProcessScripts);
-		REL::Relocation<func_t> func{ Offset::Script::SetProcessScripts };
+		REL::Relocation<func_t> func{ RELOCATION_ID(21435, 21920) };
 		return func(a_ProcessScripts);
 	}
 
