@@ -348,6 +348,7 @@ set(SOURCES
 	include/RE/B/BSWin32MouseDevice.h
 	include/RE/B/BSWin32SaveDataSystemUtility.h
 	include/RE/B/BSWin32VirtualKeyboardDevice.h
+	include/RE/B/BSWindModifier.h
 	include/RE/B/BSXAudio2GameSound.h
 	include/RE/B/BSXFlags.h
 	include/RE/B/BShkbAnimationGraph.h
@@ -1419,7 +1420,6 @@ set(SOURCES
 	include/SKSE/Impl/PCH.h
 	include/SKSE/Impl/RegistrationTraits.h
 	include/SKSE/Impl/Stubs.h
-	include/SKSE/Impl/Util.h
 	include/SKSE/Impl/WinAPI.h
 	include/SKSE/Interfaces.h
 	include/SKSE/Logger.h
