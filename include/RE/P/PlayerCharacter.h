@@ -665,10 +665,8 @@ namespace RE
 		stl::enumeration<ByCharGenFlag, std::uint8_t> byCharGenFlag;                                // 11FE
 		std::uint8_t                                  padB03;                                       // 11FF
 		std::uint64_t                                 unk1200;                                      // 1200
-		std::uint64_t                                 unk1208;                                      // 1208
-		std::uint64_t                                 unk1210;                                      // 1210
-		std::uint64_t                                 unk1218;                                      // 1218
-		std::uint64_t                                 unk1220;                                      // 1220
+		BSTArray<TintMask*>                           tintMasks;                                    // 1208
+		BSTArray<TintMask*>*                          overlayTintMasks;                             // 1220
 		BGSTextureSet*                                complexion;                                   // 1228
 		TESRace*                                      charGenRace;                                  // 1230
 		TESRace*                                      race2;                                        // 1238
