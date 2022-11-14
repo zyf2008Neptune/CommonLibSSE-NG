@@ -5,7 +5,12 @@
 
 namespace RE
 {
-	class bhkRigidBody : public bhkEntity
+    class hkAabb;
+    class hkTransform;
+    class hkQuaternion;
+    class hkVector4;
+
+    class bhkRigidBody : public bhkEntity
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_bhkRigidBody;

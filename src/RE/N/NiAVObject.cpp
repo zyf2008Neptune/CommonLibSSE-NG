@@ -12,8 +12,6 @@
 #include "RE/B/BSXFlags.h"
 #include "RE/B/bhkNiCollisionObject.h"
 #include "RE/B/bhkRigidBody.h"
-#include "RE/B/bhkWorldObject.h"
-#include "RE/N/NiCollisionObject.h"
 #include "RE/N/NiColor.h"
 #include "RE/N/NiNode.h"
 #include "RE/N/NiProperty.h"
