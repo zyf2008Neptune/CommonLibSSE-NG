@@ -1026,6 +1026,7 @@ set(SOURCES
 	include/RE/M/MagicCaster.h
 	include/RE/M/MagicFavorites.h
 	include/RE/M/MagicItem.h
+	include/RE/M/MagicItemTraversalFunctor.h
 	include/RE/M/MagicMenu.h
 	include/RE/M/MagicSystem.h
 	include/RE/M/MagicTarget.h
