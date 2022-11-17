@@ -72,7 +72,7 @@ namespace RE
 #ifndef SKYRIMVR
 			compiledFileCollection.files
 #else
-			files
+			loadedMods
 #endif
 		) {
 			if (a_modName.size() == strlen(file->fileName) &&
@@ -89,7 +89,7 @@ namespace RE
 #ifndef SKYRIMVR
 			compiledFileCollection.files
 #else
-			files
+			loadedMods
 #endif
 		) {
 			if (file->compileIndex == a_index) {
@@ -106,10 +106,7 @@ namespace RE
 	}
 
 	const TESFile* TESDataHandler::LookupLoadedLightModByName(std::string_view
-#ifndef SKYRIMVR
-			a_modName
-#endif
-	)
+			a_modName)
 	{
 #ifndef SKYRIMVR
 		for (auto& smallFile : compiledFileCollection.smallFiles) {
@@ -118,15 +115,14 @@ namespace RE
 				return smallFile;
 			}
 		}
-#endif
 		return nullptr;
+#else
+		return LookupLoadedModByName(a_modName);
+#endif
 	}
 
 	const TESFile* TESDataHandler::LookupLoadedLightModByIndex(std::uint16_t
-#ifndef SKYRIMVR
-			a_index
-#endif
-	)
+			a_index)
 	{
 #ifndef SKYRIMVR
 		for (auto& smallFile : compiledFileCollection.smallFiles) {
@@ -134,8 +130,10 @@ namespace RE
 				return smallFile;
 			}
 		}
-#endif
 		return nullptr;
+#else
+		return LookupLoadedModByIndex(a_index);
+#endif
 	}
 
 	std::optional<std::uint16_t> TESDataHandler::GetLoadedLightModIndex(std::string_view a_modName)

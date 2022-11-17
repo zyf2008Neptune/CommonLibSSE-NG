@@ -4,6 +4,7 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSingleton.h"
+#include "RE/I/InventoryChanges.h"
 #include "RE/F/FormTypes.h"
 #include "RE/N/NiTArray.h"
 #include "RE/N/NiTList.h"
@@ -80,7 +81,7 @@ namespace RE
 		TESFile*                          activeFile;                                     // D58
 		BSSimpleList<TESFile*>            files;                                          // D60
 #ifndef SKYRIMVR
-		TESFileCollection     compiledFileCollection;  // D70 //may be broken in SKYRIMVR, iterate over files instead
+		TESFileCollection     compiledFileCollection;  // D70 broken in SKYRIMVR, iterate over files/loadedMods instead
 		bool                  masterSave;              // DA0
 		bool                  blockSave;               // DA1
 		bool                  saveLoadGame;            // DA2
