@@ -5,6 +5,7 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/E/ExtraDataTypes.h"
 #include "RE/E/ExtraFlags.h"
+#include "RE/E/ExtraLevCreaModifier.h"
 #include "RE/F/FormTypes.h"
 #include "RE/M/MemoryManager.h"
 #include "RE/S/SoulLevels.h"

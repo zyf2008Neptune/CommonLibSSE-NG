@@ -45,9 +45,9 @@ namespace RE
 #endif
 
 		// add
-		SKYRIM_REL_VR_VIRTUAL void Initialize();                // A2
-		SKYRIM_REL_VR_VIRTUAL void Unk_A3(void);                // A3 - { return; }
-		SKYRIM_REL_VR_VIRTUAL bool IsNotGeneratedForm() const;  // A4 - { return TESDataHandler::GetSingleton()->IsGeneratedFormID(formID) == 0; }
+		SKYRIM_REL_VR_VIRTUAL void Initialize();         // A2
+		SKYRIM_REL_VR_VIRTUAL void Unk_A3(void);         // A3 - { return; }
+		SKYRIM_REL_VR_VIRTUAL bool IsPermanent() const;  // A4 - { return TESDataHandler::GetSingleton()->IsGeneratedFormID(formID) == 0; }
 
 		struct HAZARD_RUNTIME_DATA
 		{

@@ -76,7 +76,8 @@ namespace RE
 		bool hasKeyword = false;
 
 		a_keywordList->ForEachForm([&](const TESForm& a_form) {
-			hasKeyword = keywordForm->HasKeywordID(a_form.GetFormID());
+			const auto keyword = a_form.As<BGSKeyword>();
+			hasKeyword = keyword && keywordForm->HasKeyword(keyword);
 			if ((a_matchAll && !hasKeyword) || hasKeyword) {
 				return BSContainer::ForEachResult::kStop;
 			}

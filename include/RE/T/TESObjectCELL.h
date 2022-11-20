@@ -20,6 +20,8 @@
 
 namespace RE
 {
+	class TESRegionList;
+
 	namespace BGSWaterCollisionManager
 	{
 		class BGSWaterUpdateI;
@@ -212,22 +214,23 @@ namespace RE
 			return func(this);
 		}
 
-		[[nodiscard]] float    GetNorthRotation();
-		[[nodiscard]] TESForm* GetOwner();
-		[[nodiscard]] float    GetExteriorWaterHeight() const;
-		bool                   GetWaterHeight(const NiPoint3& a_pos, float& a_waterHeight);
-		[[nodiscard]] bool     IsAttached() const;
-		[[nodiscard]] bool     IsExteriorCell() const;
-		[[nodiscard]] bool     IsInteriorCell() const;
-		void                   SetActorOwner(TESNPC* a_owner);
-		void                   SetFactionOwner(TESFaction* a_owner);
-		void                   SetFogColor(Color a_near, Color a_far);
-		void                   SetFogPlanes(float a_near, float a_far);
-		void                   SetFogPower(float a_power);
-		void                   SetHandChanged(bool a_changed);
-		void                   SetOwner(TESForm* a_owner);
-		void                   SetPublic(bool a_public);
-		[[nodiscard]] bool     UsesSkyLighting() const;
+		[[nodiscard]] float          GetNorthRotation();
+		[[nodiscard]] TESForm*       GetOwner();
+		[[nodiscard]] float          GetExteriorWaterHeight() const;
+		[[nodiscard]] TESRegionList* GetRegionList(bool a_createIfMissing);
+		bool                         GetWaterHeight(const NiPoint3& a_pos, float& a_waterHeight);
+		[[nodiscard]] bool           IsAttached() const;
+		[[nodiscard]] bool           IsExteriorCell() const;
+		[[nodiscard]] bool           IsInteriorCell() const;
+		void                         SetActorOwner(TESNPC* a_owner);
+		void                         SetFactionOwner(TESFaction* a_owner);
+		void                         SetFogColor(Color a_near, Color a_far);
+		void                         SetFogPlanes(float a_near, float a_far);
+		void                         SetFogPower(float a_power);
+		void                         SetHandChanged(bool a_changed);
+		void                         SetOwner(TESForm* a_owner);
+		void                         SetPublic(bool a_public);
+		[[nodiscard]] bool           UsesSkyLighting() const;
 
 		struct RUNTIME_DATA
 		{

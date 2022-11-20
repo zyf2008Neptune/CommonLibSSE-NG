@@ -5,6 +5,7 @@
 #include "RE/N/NiMath.h"
 #include "RE/T/TESFaction.h"
 #include "RE/T/TESNPC.h"
+#include "RE/T/TESRegionList.h"
 #include "RE/T/TESWorldSpace.h"
 
 namespace RE
@@ -96,6 +97,13 @@ namespace RE
 		}
 
 		return runtimeData.worldSpace ? runtimeData.worldSpace->GetDefaultWaterHeight() : -NI_INFINITY;
+	}
+
+	TESRegionList* TESObjectCELL::GetRegionList(bool a_createIfMissing)
+	{
+		using func_t = decltype(&TESObjectCELL::GetRegionList);
+		REL::Relocation<func_t> func{ RELOCATION_ID(18540, 18999) };
+		return func(this, a_createIfMissing);
 	}
 
 	bool TESObjectCELL::GetWaterHeight(const NiPoint3& a_pos, float& a_waterHeight)

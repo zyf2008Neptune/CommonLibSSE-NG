@@ -18,8 +18,11 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraLevCreaModifier;
-		inline static auto           EXTRADATATYPE = ExtraDataType::kLevCreaModifier;
+		inline static constexpr auto VTABLE = VTABLE_ExtraLevCreaModifier;
+		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kLevCreaModifier;
 
+		ExtraLevCreaModifier();
+		explicit ExtraLevCreaModifier(LEV_CREA_MODIFIER a_modifier);
 		~ExtraLevCreaModifier() override;  // 00
 
 		// override (BSExtraData)

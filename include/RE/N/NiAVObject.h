@@ -118,6 +118,7 @@ namespace RE
 		void                              CullNode(bool a_cull);
 		[[nodiscard]] bool                GetAppCulled() const;
 		[[nodiscard]] bhkCollisionObject* GetCollisionObject() const;
+		[[nodiscard]] COL_LAYER           GetCollisionLayer() const;
 		[[nodiscard]] BSGeometry*         GetFirstGeometryOfShaderType(BSShaderMaterial::Feature a_type);
 		[[nodiscard]] TESObjectREFR*      GetUserData() const;
 		void                              SetUserData(TESObjectREFR* a_ref) noexcept;
