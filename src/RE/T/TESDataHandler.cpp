@@ -100,10 +100,12 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedModByName(std::string_view a_modName)
 	{
-		for (auto& file : compiledFileCollection.files) {
-			if (a_modName.size() == strlen(file->fileName) &&
-				_strnicmp(file->fileName, a_modName.data(), a_modName.size()) == 0) {
-				return file;
+		auto size = GetLoadedModCount();
+		auto* file = GetLoadedMods();
+		for (auto i = 0; i < size; ++i, ++file) {
+			if (a_modName.size() == strlen((*file)->fileName) &&
+				_strnicmp((*file)->fileName, a_modName.data(), a_modName.size()) == 0) {
+				return *file;
 			}
 		}
 		return nullptr;
@@ -111,9 +113,11 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedModByIndex(std::uint8_t a_index)
 	{
-		for (auto& file : compiledFileCollection.files) {
-			if (file->compileIndex == a_index) {
-				return file;
+		auto size = GetLoadedModCount();
+		auto* file = GetLoadedMods();
+		for (auto i = 0; i < size; ++i, ++file) {
+			if ((*file)->compileIndex == a_index) {
+				return *file;
 			}
 		}
 		return nullptr;
@@ -127,10 +131,12 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedLightModByName(std::string_view a_modName)
 	{
-		for (auto& smallFile : compiledFileCollection.smallFiles) {
-			if (a_modName.size() == strlen(smallFile->fileName) &&
-				_strnicmp(smallFile->fileName, a_modName.data(), a_modName.size()) == 0) {
-				return smallFile;
+		auto size = GetLoadedLightModCount();
+		auto* file = GetLoadedLightMods();
+		for (auto i = 0; i < size; ++i, ++file) {
+			if (a_modName.size() == strlen((*file)->fileName) &&
+				_strnicmp((*file)->fileName, a_modName.data(), a_modName.size()) == 0) {
+				return *file;
 			}
 		}
 		return nullptr;
@@ -138,9 +144,11 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedLightModByIndex(std::uint16_t a_index)
 	{
-		for (auto& smallFile : compiledFileCollection.smallFiles) {
-			if (smallFile->smallFileCompileIndex == a_index) {
-				return smallFile;
+		auto size = GetLoadedLightModCount();
+		auto* file = GetLoadedLightMods();
+		for (auto i = 0; i < size; ++i, ++file) {
+			if ((*file)->smallFileCompileIndex == a_index) {
+				return *file;
 			}
 		}
 		return nullptr;

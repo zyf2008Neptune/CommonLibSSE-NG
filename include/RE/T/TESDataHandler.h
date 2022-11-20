@@ -69,6 +69,97 @@ namespace RE
 
 		ObjectRefHandle CreateReferenceAtLocation(TESBoundObject* a_base, const NiPoint3& a_location, const NiPoint3& a_rotation, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, TESObjectREFR* a_alreadyCreatedRef, BGSPrimitive* a_primitive, const ObjectRefHandle& a_linkedRoomRefHandle, bool a_forcePersist, bool a_arg11);
 
+		struct RUNTIME_DATA
+		{
+#define RUNTIME_DATA_CONTENT \
+	bool masterSave;         \
+	bool blockSave;          \
+	bool saveLoadGame;       \
+	bool autoSaving;         \
+	bool exportingPlugin;    \
+	bool clearingData;       \
+	bool hasDesiredFiles;    \
+	bool checkingModels;     \
+	bool loadingFiles;       \
+	bool dontRemoveIDs;
+
+			RUNTIME_DATA_CONTENT
+		};
+
+		[[nodiscard]] inline RUNTIME_DATA& GetGeometryRuntimeData() noexcept
+		{
+			return REL::RelocateMember<RUNTIME_DATA>(this, 0xDA0, 0x1570);
+		}
+
+		[[nodiscard]] inline const RUNTIME_DATA& GetGeometryRuntimeData() const noexcept
+		{
+			return REL::RelocateMember<RUNTIME_DATA>(this, 0xDA0, 0x1570);
+		}
+
+		[[nodiscard]] inline TESFile** GetLoadedMods() noexcept {
+			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
+				return &REL::RelocateMember<TESFile*>(this, 0x0, 0xD78);
+			} else {
+				return REL::RelocateMember<TESFileCollection>(this, 0xD70, 0).files.data();
+			}
+		}
+
+		[[nodiscard]] inline const TESFile* const * GetLoadedMods() const noexcept {
+			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
+				return &REL::RelocateMember<const TESFile*>(this, 0x0, 0xD78);
+			} else {
+				return REL::RelocateMember<const TESFileCollection>(this, 0xD70, 0).files.data();
+			}
+		}
+
+		[[nodiscard]] inline std::uint8_t GetLoadedModCount() const noexcept {
+			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
+				return static_cast<std::uint8_t>(REL::RelocateMember<std::uint32_t>(this, 0x0, 0xD70));
+			} else {
+				return static_cast<std::uint8_t>(REL::RelocateMember<const TESFileCollection>(this, 0xD70, 0).files.size());
+			}
+		}
+
+		[[nodiscard]] inline TESFile** GetLoadedLightMods() noexcept {
+			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
+				return nullptr;
+			} else {
+				return REL::RelocateMember<TESFileCollection>(this, 0xD70, 0).smallFiles.data();
+			}
+		}
+
+		[[nodiscard]] inline const TESFile* const * GetLoadedLightMods() const noexcept {
+			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
+				return nullptr;
+			} else {
+				return REL::RelocateMember<const TESFileCollection>(this, 0xD70, 0).smallFiles.data();
+			}
+		}
+
+		[[nodiscard]] inline std::uint8_t GetLoadedLightModCount() const noexcept {
+			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
+				return 0;
+			} else {
+				return static_cast<std::uint8_t>(REL::RelocateMember<const TESFileCollection>(this, 0xD70, 0).smallFiles.size());
+			}
+		}
+
+		[[nodiscard]] inline TESRegionDataManager* GetRegionDataManager() noexcept {
+			return REL::RelocateMember<TESRegionDataManager*>(this, 0xDB0, 0x1580);
+		}
+
+		[[nodiscard]] inline const TESRegionDataManager* GetRegionDataManager() const noexcept {
+			return REL::RelocateMember<TESRegionDataManager*>(this, 0xDB0, 0x1580);
+		}
+
+		[[nodiscard]] inline InventoryChanges* GetMerchantInventory() noexcept {
+			return REL::RelocateMember<InventoryChanges*>(this, 0xDB8, 0x1588);
+		}
+
+		[[nodiscard]] inline const InventoryChanges* GetMerchantInventory() const noexcept {
+			return REL::RelocateMember<InventoryChanges*>(this, 0xDB8, 0x1588);
+		}
+
 		// members
 		std::uint8_t                      pad001;                                         // 001
 		std::uint16_t                     pad002;                                         // 002
@@ -83,24 +174,24 @@ namespace RE
 		std::uint32_t                     padD54;                                         // D54
 		TESFile*                          activeFile;                                     // D58
 		BSSimpleList<TESFile*>            files;                                          // D60
+#ifndef ENABLE_SKYRIM_VR
 		TESFileCollection                 compiledFileCollection;                         // D70
-		bool                              masterSave;                                     // DA0
-		bool                              blockSave;                                      // DA1
-		bool                              saveLoadGame;                                   // DA2
-		bool                              autoSaving;                                     // DA3
-		bool                              exportingPlugin;                                // DA4
-		bool                              clearingData;                                   // DA5
-		bool                              hasDesiredFiles;                                // DA6
-		bool                              checkingModels;                                 // DA7
-		bool                              loadingFiles;                                   // DA8
-		bool                              dontRemoveIDs;                                  // DA9
+		RUNTIME_DATA_CONTENT
 		std::uint8_t                      unkDAA;                                         // DAA
 		std::uint8_t                      padDAB;                                         // DAB
 		std::uint32_t                     padDAC;                                         // DAC
 		TESRegionDataManager*             regionDataManager;                              // DB0
 		InventoryChanges*                 merchantInventory;                              // DB8
+#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+		std::uint32_t         loadedModCount;     // D70
+		std::uint32_t         pad14;              // D74
+		TESFile*              loadedMods[0xFF];   // D78
+		RUNTIME_DATA_CONTENT
+		std::uint8_t          pad157B[5];         // 157B
+		TESRegionDataManager* regionDataManager;  // 1580
+		InventoryChanges*     merchantInventory;  // 1588
+#endif
 	};
-	static_assert(sizeof(TESDataHandler) == 0xDC0);
 
 	template <class T>
 	T* TESDataHandler::LookupForm(FormID a_localFormID, std::string_view a_modName)
