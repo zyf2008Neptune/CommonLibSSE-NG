@@ -9,10 +9,6 @@
 #include "SKSE/Impl/Stubs.h"
 #include "SKSE/Version.h"
 
-#include <Windows.h>
-
-EXTERN_C IMAGE_DOS_HEADER __ImageBase;
-
 namespace SKSE
 {
 	struct PluginInfo;
@@ -661,10 +657,7 @@ namespace SKSE
 			return _data.MinimumSKSEVersion;
 		}
 
-		[[nodiscard]] static inline const PluginDeclaration* GetSingleton() noexcept
-		{
-			return reinterpret_cast<const PluginDeclaration*>(GetProcAddress(reinterpret_cast<HMODULE>(&__ImageBase), "SKSEPlugin_Version"));
-		}
+		[[nodiscard]] static const PluginDeclaration* GetSingleton() noexcept;
 
 	private:
 		enum
