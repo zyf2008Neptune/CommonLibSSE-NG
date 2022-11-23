@@ -21,7 +21,7 @@ namespace RE
 		return func(this);
 	}
 
-    void ProcessLists::ForAllActors(std::function<BSContainer::ForEachResult(Actor&)> a_callback)
+	void ProcessLists::ForAllActors(std::function<BSContainer::ForEachResult(Actor&)> a_callback)
 	{
 		for (auto& list : allProcesses) {
 			if (list) {
@@ -35,7 +35,7 @@ namespace RE
 		}
 	}
 
-    void ProcessLists::ForEachHighActor(std::function<BSContainer::ForEachResult(Actor&)> a_callback)
+	void ProcessLists::ForEachHighActor(std::function<BSContainer::ForEachResult(Actor&)> a_callback)
 	{
 		for (auto& highActorHandle : highActorHandles) {
 			const auto& highActor = highActorHandle.get();
@@ -88,7 +88,7 @@ namespace RE
 
 	void ProcessLists::StopAllMagicEffects(TESObjectREFR& a_ref)
 	{
-        const auto handle = a_ref.CreateRefHandle();
+		const auto handle = a_ref.CreateRefHandle();
 		ForEachMagicTempEffect([&](BSTempEffect& a_tempEffect) {
 			const auto referenceEffect = a_tempEffect.As<ReferenceEffect>();
 			if (referenceEffect && referenceEffect->target == handle) {
