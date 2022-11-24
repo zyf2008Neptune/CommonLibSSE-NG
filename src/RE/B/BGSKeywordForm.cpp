@@ -18,7 +18,7 @@ namespace RE
 		free(oldData);
 	}
 
-    bool BGSKeywordForm::AddKeyword(BGSKeyword* a_keyword)
+	bool BGSKeywordForm::AddKeyword(BGSKeyword* a_keyword)
 	{
 		if (!GetKeywordIndex(a_keyword)) {
 			std::vector<BGSKeyword*> copiedData{ keywords, keywords + numKeywords };
@@ -115,17 +115,17 @@ namespace RE
 
 	bool BGSKeywordForm::RemoveKeyword(BGSKeyword* a_keyword)
 	{
-        const auto index = GetKeywordIndex(a_keyword);
+		const auto index = GetKeywordIndex(a_keyword);
 		return index ? RemoveKeyword(*index) : false;
 	}
 
-    bool BGSKeywordForm::RemoveKeywords(const std::vector<RE::BGSKeyword*>& a_keywords)
-    {
+	bool BGSKeywordForm::RemoveKeywords(const std::vector<RE::BGSKeyword*>& a_keywords)
+	{
 		std::vector<BGSKeyword*> copiedData{ keywords, keywords + numKeywords };
 		if (std::erase_if(copiedData, [&](auto& keyword) { return std::ranges::find(a_keywords, keyword) != a_keywords.end(); }) > 0) {
 			CopyKeywords(copiedData);
 			return true;
 		}
 		return false;
-    }
+	}
 }
