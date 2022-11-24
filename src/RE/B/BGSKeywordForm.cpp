@@ -29,6 +29,16 @@ namespace RE
 		return false;
 	}
 
+	bool BGSKeywordForm::AddKeywords(const std::vector<BGSKeyword*>& a_keywords)
+	{
+		std::vector<BGSKeyword*> copiedData{ keywords, keywords + numKeywords };
+		std::ranges::remove_copy_if(a_keywords, std::back_inserter(copiedData), [&](auto& keyword) {
+			return std::ranges::find(copiedData, keyword) != copiedData.end();
+		});
+		CopyKeywords(copiedData);
+		return true;
+	}
+
 	bool BGSKeywordForm::ContainsKeywordString(std::string_view a_editorID) const
 	{
 		bool result = false;

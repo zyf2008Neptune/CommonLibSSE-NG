@@ -25,7 +25,8 @@ namespace RE
 		[[nodiscard]] virtual BGSKeyword* GetDefaultKeyword() const;                      // 05 - { return 0; }
 
 		bool                                       AddKeyword(BGSKeyword* a_keyword);
-		[[nodiscard]] bool                         ContainsKeywordString(std::string_view a_editorID) const;
+        bool                                       AddKeywords(const std::vector<BGSKeyword*>& a_keywords);
+        [[nodiscard]] bool                         ContainsKeywordString(std::string_view a_editorID) const;
 		void                                       ForEachKeyword(std::function<BSContainer::ForEachResult(BGSKeyword&)> a_callback) const;
 		[[nodiscard]] std::optional<BGSKeyword*>   GetKeywordAt(std::uint32_t a_idx) const;
 		[[nodiscard]] std::optional<std::uint32_t> GetKeywordIndex(BGSKeyword* a_keyword) const;
