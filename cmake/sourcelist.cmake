@@ -1695,6 +1695,7 @@ set(SOURCES
 	src/RE/P/ProcessLists.cpp
 	src/RE/P/Projectile.cpp
 	src/RE/Q/QuestStatus.cpp
+	src/RE/R/ReferenceEffectController.cpp
 	src/RE/R/RemoveCallbackVisitor.cpp
 	src/RE/S/ScrapHeap.cpp
 	src/RE/S/Script.cpp

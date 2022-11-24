@@ -7,6 +7,12 @@ namespace RE
 	namespace Offset
 	{
 #ifdef SKYRIM_SUPPORT_AE
+
+		namespace ActiveEffect
+		{
+			inline constexpr REL::ID Dispel(static_cast<std::uint64_t>(34061));
+		}
+
 		namespace Actor
 		{
 			inline constexpr REL::ID AddSpell(static_cast<std::uint64_t>(38716));
@@ -57,6 +63,11 @@ namespace RE
 		{
 			inline constexpr REL::ID HaveNotVisitedArmor(static_cast<std::uint64_t>(40297));
 			inline constexpr REL::ID VisitArmor(static_cast<std::uint64_t>(40293));
+		}
+
+		namespace ArmorRatingVisitorBase
+		{
+			inline constexpr REL::ID Visit(static_cast<std::uint64_t>(40299));
 		}
 
 		namespace BarterMenu
@@ -584,6 +595,11 @@ namespace RE
 			inline constexpr REL::ID CreateDeepCopy(static_cast<std::uint64_t>(70191));
 		}
 
+		namespace NiPoint3
+		{
+			inline constexpr REL::ID Zero(static_cast<std::uint64_t>(410468));
+		}
+
 		namespace NiRefObject
 		{
 			inline constexpr REL::ID TotalObjectCount(static_cast<std::uint64_t>(410493));
@@ -648,6 +664,11 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400315));
 			inline constexpr REL::ID ClearCachedFactionFightReactions(static_cast<std::uint64_t>(41410));
 			inline constexpr REL::ID StopCombatAndAlarmOnActor(static_cast<std::uint64_t>(41340));
+		}
+
+		namespace ReferenceEffectController
+		{
+			inline constexpr REL::ID Start(static_cast<std::uint64_t>(34761));
 		}
 
 		namespace ResponseDictionary
