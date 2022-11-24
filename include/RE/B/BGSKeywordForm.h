@@ -34,11 +34,15 @@ namespace RE
 		[[nodiscard]] bool                         HasKeywordString(std::string_view a_editorID) const;
 		bool                                       RemoveKeyword(std::uint32_t a_index);
 		bool                                       RemoveKeyword(BGSKeyword* a_keyword);
+		bool                                       RemoveKeywords(const std::vector<RE::BGSKeyword*>& a_keywords);
 
 		// members
 		BGSKeyword**  keywords;     // 08 - KWDA
 		std::uint32_t numKeywords;  // 10 - KSIZ
 		std::uint32_t pad14;        // 14
+
+	private:
+		void CopyKeywords(const std::vector<RE::BGSKeyword*>& a_copiedData);
 	};
 	static_assert(sizeof(BGSKeywordForm) == 0x18);
 }
