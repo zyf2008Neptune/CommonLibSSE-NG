@@ -70,7 +70,7 @@ namespace RE
 				// override (IVirtualMachine)
 				void                       SetLinkedCallback(ITypeLinkedCallback* a_callback) override;                                                                                                                                     // 01
 				void                       TraceStack(const char* a_str, VMStackID a_stackID, Severity a_severity = Severity::kInfo) override;                                                                                              // 02
-				void                       Unk_03(void) override;                                                                                                                                                                           // 03
+				void                       FormatAndPostMessage(const char* a_message, Severity a_severity) override;                                                                                                                       // 03
 				void                       Update(float a_budget) override;                                                                                                                                                                 // 04
 				void                       UpdateTasklets(float a_budget) override;                                                                                                                                                         // 05
 				void                       SetOverstressed(bool a_set) override;                                                                                                                                                            // 06 - { overstressed = a_set; }
