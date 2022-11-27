@@ -775,26 +775,27 @@ namespace RE
 	bool Actor::SetOutfit(BGSOutfit* a_outfit, bool a_sleepOutfit)
 	{
 		auto npc = GetActorBase();
-		if (npc) {
-			if (a_sleepOutfit) {
-				if (npc->sleepOutfit == a_outfit) {
-					return false;
-				}
-				RemoveOutfitItems(npc->sleepOutfit);
-				npc->sleepOutfit = a_outfit;
-				npc->AddChange(TESNPC::ChangeFlags::kSleepOutfit);
-			} else {
-				if (npc->defaultOutfit == a_outfit) {
-					return false;
-				}
-				RemoveOutfitItems(npc->defaultOutfit);
-				npc->defaultOutfit = a_outfit;
-				npc->AddChange(TESNPC::ChangeFlags::kDefaultOutfit);
+		if (!npc) {
+			return false;
+		}
+		if (a_sleepOutfit) {
+			if (npc->sleepOutfit == a_outfit) {
+				return false;
 			}
-			InitInventoryIfRequired();
-			if (!IsDisabled()) {
-				AddWornOutfit(a_outfit, true);
+			RemoveOutfitItems(npc->sleepOutfit);
+			npc->sleepOutfit = a_outfit;
+			npc->AddChange(TESNPC::ChangeFlags::kSleepOutfit);
+		} else {
+			if (npc->defaultOutfit == a_outfit) {
+				return false;
 			}
+			RemoveOutfitItems(npc->defaultOutfit);
+			npc->defaultOutfit = a_outfit;
+			npc->AddChange(TESNPC::ChangeFlags::kDefaultOutfit);
+		}
+		InitInventoryIfRequired();
+		if (!IsDisabled()) {
+			AddWornOutfit(a_outfit, true);
 		}
 	}
 
