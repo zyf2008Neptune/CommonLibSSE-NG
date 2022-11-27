@@ -797,6 +797,7 @@ namespace RE
 		if (!IsDisabled()) {
 			AddWornOutfit(a_outfit, true);
 		}
+		return true;
 	}
 
 	void Actor::SetRotationX(float a_angle)
