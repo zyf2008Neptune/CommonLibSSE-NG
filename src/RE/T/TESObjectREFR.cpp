@@ -56,6 +56,20 @@ namespace RE
 		return func(this, a_activator, a_arg2, a_object, a_count, a_defaultProcessingOnly);
 	}
 
+	ModelReferenceEffect* TESObjectREFR::ApplyArtObject(BGSArtObject* a_artObject, float a_duration, TESObjectREFR* a_facingRef, bool a_faceTarget, bool a_attachToCamera, NiAVObject* a_attachNode, bool a_interfaceEffect)
+	{
+		using func_t = decltype(&TESObjectREFR::ApplyArtObject);
+		REL::Relocation<func_t> func{ Offset::TESObjectREFR::ApplyArtObject };
+		return func(this, a_artObject, a_duration, a_facingRef, a_faceTarget, a_attachToCamera, a_attachNode, a_interfaceEffect);
+	}
+
+	ShaderReferenceEffect* TESObjectREFR::ApplyEffectShader(TESEffectShader* a_effectShader, float a_duration, TESObjectREFR* a_facingRef, bool a_faceTarget, bool a_attachToCamera, NiAVObject* a_attachNode, bool a_interfaceEffect)
+	{
+		using func_t = decltype(&TESObjectREFR::ApplyEffectShader);
+		REL::Relocation<func_t> func{ Offset::TESObjectREFR::ApplyEffectShader };
+		return func(this, a_effectShader, a_duration, a_facingRef, a_faceTarget, a_attachToCamera, a_attachNode, a_interfaceEffect);
+	}
+	
 	bool TESObjectREFR::CanBeMoved()
 	{
 		using func_t = decltype(&TESObjectREFR::CanBeMoved);
