@@ -2,6 +2,8 @@
 
 #include "RE/G/GNewOverrideBase.h"
 #include "RE/G/GStats.h"
+#include "RE/G/GFxKey.h"
+#include "RE/G/GFxSpecialKeysState.h"
 
 namespace RE
 {
@@ -80,4 +82,35 @@ namespace RE
 		std::uint32_t mouseIndex;   // 14
 	};
 	static_assert(sizeof(GFxMouseEvent) == 0x18);
+
+	class GFxKeyEvent : public GFxEvent
+	{
+	public:
+		inline GFxKeyEvent() :
+			GFxEvent(),
+			keyCode(GFxKey::kVoidSymbol),
+			asciiCode(0),
+			wCharCode(0),
+			specialKeyState(),
+			keyboardIndex(0)
+		{}
+
+		inline GFxKeyEvent(EventType a_eventType, GFxKey::Code a_keyCode, std::uint32_t a_ascii, std::uint32_t a_wchar, GFxSpecialKeysState a_specialKeyState, std::uint8_t a_keyboardIndex = 0) :
+			GFxEvent(a_eventType),
+			keyCode(a_keyCode),
+			asciiCode(a_ascii),
+			wCharCode(a_wchar),
+			specialKeyState(a_specialKeyState),
+			keyboardIndex(a_keyboardIndex)
+		{}
+
+		// members
+		GFxKey::Code        keyCode;          // 04
+		std::uint32_t       asciiCode;        // 08
+		std::uint32_t       wCharCode;        // 0C
+		GFxSpecialKeysState specialKeyState;  // 10
+		std::uint8_t        keyboardIndex;    // 11
+		std::uint8_t        pad_0c[2];        // 12
+	};
+	static_assert(sizeof(GFxKeyEvent) == 0x14);
 }
