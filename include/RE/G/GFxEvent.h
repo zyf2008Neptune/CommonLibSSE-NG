@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RE/G/GNewOverrideBase.h"
-#include "RE/G/GStats.h"
 #include "RE/G/GFxKey.h"
 #include "RE/G/GFxSpecialKeysState.h"
+#include "RE/G/GNewOverrideBase.h"
+#include "RE/G/GStats.h"
 
 namespace RE
 {
