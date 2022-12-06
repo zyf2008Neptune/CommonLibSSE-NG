@@ -383,6 +383,8 @@ namespace RE
 		namespace Script
 		{
 			inline constexpr REL::ID CompileAndRun(static_cast<std::uint64_t>(21890));
+			inline constexpr REL::ID GetProcessScripts(static_cast<std::uint64_t>(21921));
+			inline constexpr REL::ID SetProcessScripts(static_cast<std::uint64_t>(21920));
 		}
 
 		namespace SCRIPT_FUNCTION
@@ -394,11 +396,15 @@ namespace RE
 		namespace Sky
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(13878));
+			inline constexpr REL::ID SetWeather(static_cast<std::uint64_t>(26241));
+			inline constexpr REL::ID ForceWeather(static_cast<std::uint64_t>(26243));
+			inline constexpr REL::ID ResetWeather(static_cast<std::uint64_t>(26242));
 		}
 
 		namespace SkyrimVM
 		{
 			inline constexpr REL::ID QueuePostRenderCall(static_cast<std::uint64_t>(53955));
+			inline constexpr REL::ID RelayEvent(static_cast<std::uint64_t>(54033));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400475));
 		}
 
@@ -873,6 +879,8 @@ namespace RE
 		namespace Script
 		{
 			inline constexpr REL::ID CompileAndRun(static_cast<std::uint64_t>(21416));
+			inline constexpr REL::ID GetProcessScripts(static_cast<std::uint64_t>(21436));
+			inline constexpr REL::ID SetProcessScripts(static_cast<std::uint64_t>(21435));
 		}
 
 		namespace SCRIPT_FUNCTION
@@ -884,11 +892,15 @@ namespace RE
 		namespace Sky
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(13789));
+			inline constexpr REL::ID SetWeather(static_cast<std::uint64_t>(25694));
+			inline constexpr REL::ID ForceWeather(static_cast<std::uint64_t>(25696));
+			inline constexpr REL::ID ResetWeather(static_cast<std::uint64_t>(25695));
 		}
 
 		namespace SkyrimVM
 		{
 			inline constexpr REL::ID QueuePostRenderCall(static_cast<std::uint64_t>(53144));
+			inline constexpr REL::ID RelayEvent(static_cast<std::uint64_t>(53221));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514315));
 		}
 

@@ -41,14 +41,14 @@ namespace RE
 			class MenuIngredientEntry
 			{
 			public:
-				RE::InventoryEntryData* ingredient;       // 00
-				std::uint8_t            effect1FilterID;  // 09
-				std::uint8_t            effect2FilterID;  // 0A
-				std::uint8_t            effect3FilterID;  // 0B
-				std::uint8_t            effect4FilterID;  // 0C
-				std::uint8_t            isSelected;       // 0D
-				std::uint8_t            isNotGreyed;      // 0E
-				std::uint16_t           padE;             // 0F
+				InventoryEntryData* ingredient;       // 00
+				std::uint8_t        effect1FilterID;  // 09
+				std::uint8_t        effect2FilterID;  // 0A
+				std::uint8_t        effect3FilterID;  // 0B
+				std::uint8_t        effect4FilterID;  // 0C
+				std::uint8_t        isSelected;       // 0D
+				std::uint8_t        isNotGreyed;      // 0E
+				std::uint16_t       padE;             // 0F
 			};
 			static_assert(sizeof(MenuIngredientEntry) == 0x10);
 
@@ -60,11 +60,11 @@ namespace RE
 			};
 			static_assert(sizeof(PotionCreationData) == 0x20);
 
-			virtual ~AlchemyMenu();  // 00
+			~AlchemyMenu() override;  // 00
 
 			// override (CraftingSubMenu)
-			virtual void Accept(CallbackProcessor* a_cbReg) override;  // 01
-			virtual void Unk_05(void) override;                        // 05
+			void Accept(CallbackProcessor* a_cbReg) override;  // 01
+			void Unk_05(void) override;                        // 05
 
 			// members
 			BSTArray<MenuIngredientEntry> ingredientEntries;      // 100

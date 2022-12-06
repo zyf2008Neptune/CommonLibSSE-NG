@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BSTEvent.h"
 #include "RE/B/BaseFormComponent.h"
 #include "RE/C/ContainerItemExtra.h"
 
@@ -14,6 +15,7 @@ namespace RE
 	public:
 		ContainerObject();
 		ContainerObject(TESBoundObject* a_obj, std::int32_t a_count);
+		ContainerObject(TESBoundObject* a_obj, std::int32_t a_count, TESForm* a_owner);
 
 		~ContainerObject() = default;
 
@@ -39,12 +41,12 @@ namespace RE
 		void ClearDataComponent() override;                     // 02
 		void CopyComponent(BaseFormComponent* a_rhs) override;  // 03
 
-		inline void ForEachContainerObject(std::function<bool(ContainerObject&)> a_fn) const
+		inline void ForEachContainerObject(std::function<BSContainer::ForEachResult(ContainerObject&)> a_fn) const
 		{
 			for (std::uint32_t i = 0; i < numContainerObjects; ++i) {
 				auto entry = containerObjects[i];
 				if (entry) {
-					if (!a_fn(*entry)) {
+					if (a_fn(*entry) == BSContainer::ForEachResult::kStop) {
 						break;
 					}
 				}
@@ -54,6 +56,7 @@ namespace RE
 		std::optional<ContainerObject*> GetContainerObjectAt(std::uint32_t a_idx) const;
 		std::optional<std::uint32_t>    GetContainerObjectIndex(TESBoundObject* a_object, std::int32_t a_count) const;
 		bool                            AddObjectToContainer(TESBoundObject* a_object, std::int32_t a_count, TESForm* a_owner);
+		bool                            AddObjectsToContainer(std::map<TESBoundObject*, std::int32_t>& a_objects, TESForm* a_owner);
 		std::int32_t                    CountObjectsInContainer(TESBoundObject* a_object) const;
 		bool                            RemoveObjectFromContainer(TESBoundObject* a_object, std::int32_t a_count);
 
@@ -61,6 +64,9 @@ namespace RE
 		ContainerObject** containerObjects;     // 08
 		std::uint32_t     numContainerObjects;  // 10
 		std::uint32_t     pad14;                // 14
+
+	private:
+		void CopyObjectList(const std::vector<ContainerObject*>& a_copiedData);
 	};
 	static_assert(sizeof(TESContainer) == 0x18);
 }

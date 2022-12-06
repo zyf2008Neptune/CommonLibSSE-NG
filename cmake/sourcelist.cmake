@@ -28,6 +28,7 @@ set(SOURCES
 	include/RE/A/AddCallbackVisitor.h
 	include/RE/A/AlchemyItem.h
 	include/RE/A/AlchemyMenu.h
+	include/RE/A/AnimationObjects.h
 	include/RE/A/Archive.h
 	include/RE/A/ArmorRatingVisitor.h
 	include/RE/A/ArmorRatingVisitorBase.h
@@ -269,6 +270,7 @@ set(SOURCES
 	include/RE/B/BSOrderedNode.h
 	include/RE/B/BSPCGamepadDeviceDelegate.h
 	include/RE/B/BSPCGamepadDeviceHandler.h
+	include/RE/B/BSParticleShaderCubeEmitter.h
 	include/RE/B/BSParticleShaderEmitter.h
 	include/RE/B/BSParticleShaderObjectEmitter.h
 	include/RE/B/BSParticleShaderProperty.h
@@ -280,6 +282,7 @@ set(SOURCES
 	include/RE/B/BSPrecomputedNavmeshInfoPathMap.h
 	include/RE/B/BSReloadShaderI.h
 	include/RE/B/BSRenderManager.h
+	include/RE/B/BSRenderPass.h
 	include/RE/B/BSResourceNiBinaryStream.h
 	include/RE/B/BSResponse.h
 	include/RE/B/BSSaveDataSystemUtility.h
@@ -330,17 +333,21 @@ set(SOURCES
 	include/RE/B/BSThread.h
 	include/RE/B/BSThreadEvent.h
 	include/RE/B/BSTimer.h
+	include/RE/B/BSTreeManager.h
 	include/RE/B/BSTriShape.h
 	include/RE/B/BSUIMessageData.h
 	include/RE/B/BSUIScaleformData.h
 	include/RE/B/BSVirtualKeyboardDevice.h
 	include/RE/B/BSVisit.h
 	include/RE/B/BSVolumetricLightingRenderData.h
+	include/RE/B/BSWaterShaderMaterial.h
+	include/RE/B/BSWaterShaderProperty.h
 	include/RE/B/BSWin32GamepadDevice.h
 	include/RE/B/BSWin32KeyboardDevice.h
 	include/RE/B/BSWin32MouseDevice.h
 	include/RE/B/BSWin32SaveDataSystemUtility.h
 	include/RE/B/BSWin32VirtualKeyboardDevice.h
+	include/RE/B/BSWindModifier.h
 	include/RE/B/BSXAudio2GameSound.h
 	include/RE/B/BSXFlags.h
 	include/RE/B/BShkbAnimationGraph.h
@@ -635,8 +642,10 @@ set(SOURCES
 	include/RE/E/ExtraWorn.h
 	include/RE/E/ExtraWornLeft.h
 	include/RE/F/FORM.h
+	include/RE/F/FORM_ENUM_STRING.h
 	include/RE/F/FactionRank.h
 	include/RE/F/FaderMenu.h
+	include/RE/F/FastTravelConfirmCallback.h
 	include/RE/F/FavoritesHandler.h
 	include/RE/F/FavoritesMenu.h
 	include/RE/F/FightReactions.h
@@ -1072,6 +1081,11 @@ set(SOURCES
 	include/RE/N/NiObject.h
 	include/RE/N/NiObjectGroup.h
 	include/RE/N/NiObjectNET.h
+	include/RE/N/NiPSysData.h
+	include/RE/N/NiPSysModifier.h
+	include/RE/N/NiParticleSystem.h
+	include/RE/N/NiParticles.h
+	include/RE/N/NiParticlesData.h
 	include/RE/N/NiPlane.h
 	include/RE/N/NiPoint2.h
 	include/RE/N/NiPoint3.h
@@ -1099,6 +1113,7 @@ set(SOURCES
 	include/RE/N/NiTMap.h
 	include/RE/N/NiTMapBase.h
 	include/RE/N/NiTPointerAllocator.h
+	include/RE/N/NiTPointerList.h
 	include/RE/N/NiTPointerListBase.h
 	include/RE/N/NiTPointerMap.h
 	include/RE/N/NiTSet.h
@@ -1214,6 +1229,7 @@ set(SOURCES
 	include/RE/S/StealthMeter.h
 	include/RE/S/Stream.h
 	include/RE/S/StreamBase.h
+	include/RE/S/SubtitleManager.h
 	include/RE/S/SummonCreatureEffect.h
 	include/RE/S/SummonPlacementEffect.h
 	include/RE/S/Sun.h
@@ -1396,7 +1412,6 @@ set(SOURCES
 	include/SKSE/Impl/PCH.h
 	include/SKSE/Impl/RegistrationTraits.h
 	include/SKSE/Impl/Stubs.h
-	include/SKSE/Impl/Util.h
 	include/SKSE/Impl/WinAPI.h
 	include/SKSE/Interfaces.h
 	include/SKSE/Logger.h
@@ -1493,9 +1508,11 @@ set(SOURCES
 	src/RE/E/ExtraCount.cpp
 	src/RE/E/ExtraDataList.cpp
 	src/RE/E/ExtraEnchantment.cpp
+	src/RE/E/ExtraEncounterZone.cpp
 	src/RE/E/ExtraForcedTarget.cpp
 	src/RE/E/ExtraHealth.cpp
 	src/RE/E/ExtraHotkey.cpp
+	src/RE/E/ExtraLevCreaModifier.cpp
 	src/RE/E/ExtraLightData.cpp
 	src/RE/E/ExtraLock.cpp
 	src/RE/E/ExtraMissingLinkedRefIDs.cpp
@@ -1627,6 +1644,7 @@ set(SOURCES
 	src/RE/P/PlayerControls.cpp
 	src/RE/P/PlayerInputHandler.cpp
 	src/RE/P/ProcessLists.cpp
+	src/RE/P/Projectile.cpp
 	src/RE/R/RemoveCallbackVisitor.cpp
 	src/RE/S/ScrapHeap.cpp
 	src/RE/S/Script.cpp

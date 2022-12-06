@@ -134,7 +134,7 @@ namespace RE
 		hkbBehaviorGraph*              behaviorGraph;                // 208
 		Actor*                         holder;                       // 210
 		BSFadeNode*                    rootNode;                     // 218
-		struct hkbGeneratorOutput*     generatorOutputs[2];          // 220
+		hkbGeneratorOutput*            generatorOutputs[2];          // 220
 		float                          interpolationAmounts[2];      // 230
 		bhkWorld*                      physicsWorld;                 // 238
 		std::uint16_t                  numAnimBones;                 // 240

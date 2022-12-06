@@ -11,6 +11,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_GrenadeProjectile;
+		inline static constexpr auto VTABLE = VTABLE_GrenadeProjectile;
 		inline static constexpr auto FORMTYPE = FormType::ProjectileGrenade;
 
 		struct RecordFlags
@@ -50,5 +51,9 @@ namespace RE
 		std::uint16_t  pad1E2;               // 1E2
 		std::uint32_t  pad1E4;               // 1E4
 	};
+#ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(GrenadeProjectile) == 0x1E8);
+#else
+	static_assert(sizeof(GrenadeProjectile) == 0x1F0);
+#endif
 }

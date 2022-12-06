@@ -36,4 +36,22 @@ namespace RE
 	{
 		return flags.all(FLAGS::kQuestObject);
 	}
+
+	void BGSBaseAlias::SetEssential(bool a_set)
+	{
+		if (a_set) {
+			flags.set(FLAGS::kEssential);
+		} else {
+			flags.reset(FLAGS::kEssential);
+		}
+	}
+
+	void BGSBaseAlias::SetProtected(bool a_set)
+	{
+		if (a_set) {
+			flags.set(FLAGS::kProtected);
+		} else {
+			flags.reset(FLAGS::kProtected);
+		}
+	}
 }

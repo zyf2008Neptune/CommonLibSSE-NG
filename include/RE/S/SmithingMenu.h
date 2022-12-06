@@ -1,10 +1,14 @@
 #pragma once
 
+#include "RE/B/BSTArray.h"
+#include "RE/B/BSTHashMap.h"
 #include "RE/C/CraftingSubMenu.h"
 #include "RE/I/IMessageBoxCallback.h"
 
 namespace RE
 {
+	class InventoryEntryData;
+
 	namespace CraftingSubMenus
 	{
 		class SmithingMenu : public CraftingSubMenu
@@ -35,19 +39,14 @@ namespace RE
 			void Unk_05(void) override;                        // 05
 
 			// members
-			void*         unk100;  // 100
-			std::uint64_t unk108;  // 108
-			std::uint64_t unk110;  // 110
-			std::uint64_t unk118;  // 118
-			std::uint64_t unk120;  // 120
-			std::uint64_t unk128;  // 128
-			std::uint64_t unk130;  // 130
-			std::uint64_t unk138;  // 138
-			void*         unk140;  // 140
-			void*         unk148;  // 148
-			std::uint64_t unk150;  // 150
-			std::uint64_t unk158;  // 158
-			void*         unk160;  // 160
+			BSTArray<void*>              unk100;        // 100
+			BSTHashMap<UnkKey, UnkValue> unk118;        // 118 - constructibleObject map?
+			NiPointer<TESObjectREFR>     furnitureRef;  // 148
+			std::uint32_t                unk150;        // 150
+			std::int32_t                 unk154;        // 154
+			FormType                     smithingType;  // 158
+			std::uint32_t                unk15C;        // 15C
+			InventoryEntryData*          unk160;        // 160
 		};
 		static_assert(sizeof(SmithingMenu) == 0x168);
 	}

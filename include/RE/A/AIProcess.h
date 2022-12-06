@@ -144,6 +144,7 @@ namespace RE
 		};
 		static_assert(sizeof(Data0B8) == 0x38);
 
+		void                    ClearActionHeadtrackTarget(bool a_defaultHold);
 		void                    ClearMuzzleFlashes();
 		float                   GetCachedHeight() const;
 		bhkCharacterController* GetCharController();
@@ -162,6 +163,8 @@ namespace RE
 		bool                    InLowProcess() const;
 		bool                    IsArrested() const;
 		bool                    IsGhost() const;
+		void                    KnockExplosion(Actor* a_actor, const NiPoint3& a_location, float a_magnitude);
+		void                    SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_ref);
 		void                    SetArrested(bool a_arrested);
 		void                    SetCachedHeight(float a_height);
 		void                    SetHeadtrackTarget(Actor* a_owner, NiPoint3& a_targetPosition);

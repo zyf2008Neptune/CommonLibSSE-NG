@@ -91,7 +91,8 @@ namespace RE
 		bool hasKeyword = false;
 
 		a_keywordList->ForEachForm([&](const TESForm& a_form) {
-			hasKeyword = keywordForm->HasKeywordID(a_form.GetFormID());
+			const auto keyword = a_form.As<BGSKeyword>();
+			hasKeyword = keyword && keywordForm->HasKeyword(keyword);
 			if (a_matchAll && !hasKeyword || hasKeyword) {
 				return BSContainer::ForEachResult::kStop;
 			}
@@ -120,5 +121,29 @@ namespace RE
 	bool TESForm::HasWorldModel() const noexcept
 	{
 		return As<TESModel>() != nullptr;
+	}
+
+	bool TESForm::IsInventoryObject() const
+	{
+		switch (GetFormType()) {
+		case FormType::Scroll:
+		case FormType::Armor:
+		case FormType::Book:
+		case FormType::Ingredient:
+		case FormType::Light:
+		case FormType::Misc:
+		case FormType::Apparatus:
+		case FormType::Weapon:
+		case FormType::Ammo:
+		case FormType::KeyMaster:
+		case FormType::AlchemyItem:
+		case FormType::Note:
+		case FormType::ConstructibleObject:
+		case FormType::SoulGem:
+		case FormType::LeveledItem:
+			return true;
+		default:
+			return false;
+		}
 	}
 }

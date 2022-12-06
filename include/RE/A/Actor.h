@@ -490,6 +490,7 @@ namespace RE
 		void                         DispelWornItemEnchantments();
 		void                         DoReset3D(bool a_updateWeight);
 		void                         EnableAI(bool a_enable);
+		void                         EndInterruptPackage(bool a_skipDialogue);
 		void                         EvaluatePackage(bool a_immediate = false, bool a_resetAI = false);
 		TESNPC*                      GetActorBase();
 		const TESNPC*                GetActorBase() const;
@@ -501,6 +502,8 @@ namespace RE
 		NiPointer<Actor>             GetCommandingActor() const;
 		TESFaction*                  GetCrimeFaction();
 		const TESFaction*            GetCrimeFaction() const;
+		TESPackage*                  GetCurrentPackage();
+		const TESPackage*            GetCurrentPackage() const;
 		InventoryEntryData*          GetEquippedEntryData(bool a_leftHand) const;
 		TESForm*                     GetEquippedObject(bool a_leftHand) const;
 		std::int32_t                 GetGoldAmount();
@@ -519,6 +522,7 @@ namespace RE
 		[[nodiscard]] SOUL_LEVEL     GetSoulSize() const;
 		TESFaction*                  GetVendorFaction();
 		const TESFaction*            GetVendorFaction() const;
+		float                        GetWarmthRating() const;
 		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot);
 		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID);
 		bool                         HasKeywordString(std::string_view a_formEditorID);
@@ -526,7 +530,9 @@ namespace RE
 		bool                         HasPerk(BGSPerk* a_perk) const;
 		bool                         HasSpell(SpellItem* a_spell) const;
 		void                         InterruptCast(bool a_restoreMagicka) const;
+		bool                         IsAttacking() const;
 		bool                         IsAIEnabled() const;
+		bool                         IsAlarmed() const;
 		bool                         IsAMount() const;
 		bool                         IsAnimationDriven() const;
 		bool                         IsBeingRidden() const;
@@ -545,10 +551,9 @@ namespace RE
 		bool                         IsOnMount() const;
 		bool                         IsOverEncumbered() const;
 		bool                         IsPlayerTeammate() const;
-		float                        IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell);
+		bool                         IsProtected() const;
 		bool                         IsRunning() const;
 		bool                         IsSneaking() const;
-		bool                         IsPointSubmergedMoreThan(const NiPoint3& a_pos, TESObjectCELL* a_cell, float a_waterLevel);
 		[[nodiscard]] bool           IsSummoned() const noexcept;
 		bool                         IsTrespassing() const;
 		void                         KillImmediate();
@@ -556,13 +561,16 @@ namespace RE
 		void                         RemoveExtraArrows3D();
 		bool                         RemoveSpell(SpellItem* a_spell);
 		std::int32_t                 RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);
+		void                         SetLifeState(ACTOR_LIFE_STATE a_lifeState);
+		bool                         SetOutfit(BGSOutfit* a_outfit, bool a_sleepOutfit);
 		void                         SetRotationX(float a_angle);
 		void                         SetRotationZ(float a_angle);
-		void                         SetLifeState(ACTOR_LIFE_STATE a_lifeState);
 		void                         StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning);
+		void                         StopAlarmOnActor();
 		void                         StopInteractingQuick(bool a_unk02);
 		void                         StopMoving(float a_delta);
 		void                         SwitchRace(TESRace* a_race, bool a_player);
+		void                         TrespassAlarm(TESObjectREFR* a_ref, TESForm* a_ownership, std::int32_t a_crime);
 		void                         UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData);
 		void                         Update3DModel();
 		void                         UpdateHairColor();
@@ -594,7 +602,7 @@ namespace RE
 		BGSLocation*                                          editorLocation;                     // 138
 		ActorMover*                                           actorMover;                         // 140
 		BSTSmartPointer<MovementControllerNPC>                movementController;                 // 148
-		void*                                                 unk150;                             // 150
+		TESPackage*                                           unk150;                             // 150
 		CombatController*                                     combatController;                   // 158
 		TESFaction*                                           vendorFaction;                      // 160
 		AITimeStamp                                           calculateVendorFactionTimer;        // 168
@@ -634,8 +642,14 @@ namespace RE
 		WinAPI::CRITICAL_SECTION                              unk288;                             // 288 - havok related
 
 	private:
+		void        AddWornOutfit(BGSOutfit* a_outfit, bool a_forceUpdate);
 		void        CalculateCurrentVendorFaction() const;
 		TESFaction* GetCrimeFactionImpl() const;
+		void        RemoveOutfitItems(BGSOutfit* a_outfit);
 	};
+#ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(Actor) == 0x2B0);
+#else
+	static_assert(sizeof(Actor) == 0x2B8);
+#endif
 }

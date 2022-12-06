@@ -287,6 +287,7 @@ namespace RE
 		float                    GetArmorValue(InventoryEntryData* a_form);
 		float                    GetDamage(InventoryEntryData* a_form);
 		NiPointer<TESObjectREFR> GetGrabbedRef();
+		std::int32_t             GetItemCount(TESBoundObject* a_object);
 		std::uint32_t            GetNumTints(std::uint32_t a_tintType);
 		TintMask*                GetOverlayTintMask(TintMask* a_original);
 		BSTArray<TintMask*>&     GetTintList();
@@ -295,7 +296,9 @@ namespace RE
 		bool                     IsGrabbing() const;
 		void                     PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void                     SetAIDriven(bool a_enable);
+		void                     SetEscaping(bool a_flag, bool a_escaped);
 		void                     StartGrabObject();
+		void                     UpdateCrosshairs();
 
 		template <class T>
 		inline BSTEventSource<T>* GetEventSource()
@@ -480,5 +483,9 @@ namespace RE
 	private:
 		bool CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell);
 	};
+#ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(PlayerCharacter) == 0xBE0);
+#else
+	static_assert(sizeof(PlayerCharacter) == 0xBE8);
+#endif
 }

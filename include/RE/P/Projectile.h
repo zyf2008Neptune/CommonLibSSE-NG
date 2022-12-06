@@ -5,6 +5,7 @@
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSSoundHandle.h"
 #include "RE/B/BSTList.h"
+#include "RE/B/BSTSingleton.h"
 #include "RE/C/CollisionLayers.h"
 #include "RE/F/FormTypes.h"
 #include "RE/I/ImpactResults.h"
@@ -19,29 +20,95 @@ namespace RE
 	class bhkSimpleShapePhantom;
 	class BGSMaterialType;
 	class QueuedFile;
+	class CombatController;
+	class MagicItem;
 
 	class Projectile : public TESObjectREFR
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_Projectile;
+		inline static constexpr auto VTABLE = VTABLE_Projectile;
+
+		struct WobbleControl
+		{
+		public:
+			// members
+			NiMatrix3        unk00;   // 00
+			ProjectileHandle handle;  // 24
+			float            wobble;  // 28
+		};
+		static_assert(sizeof(WobbleControl) == 0x2C);
+
+		class Manager : public BSTSingletonSDM<Manager>
+		{
+		public:
+			static Manager* GetSingleton();
+
+			// members
+			BSTArray<ProjectileHandle> unlimited;       // 08
+			BSTArray<ProjectileHandle> limited;         // 20
+			BSTArray<ProjectileHandle> pending;         // 38
+			mutable BSSpinLock         projectileLock;  // 50
+			BSTArray<WobbleControl>    wobble;          // 58
+		};
+
+		struct LaunchData
+		{
+			inline static constexpr auto RTTI = RTTI_Projectile__LaunchData;
+			inline static constexpr auto VTABLE = VTABLE_Projectile__LaunchData;
+
+			virtual ~LaunchData();
+
+			// members
+			NiPoint3                   origin;                 // 08
+			NiPoint3                   contactNormal;          // 14
+			BGSProjectile*             projectileBase;         // 20
+			TESObjectREFR*             shooter;                // 28
+			CombatController*          combatController;       // 30
+			TESObjectWEAP*             weaponSource;           // 38
+			TESAmmo*                   ammoSource;             // 40
+			float                      angleZ;                 // 48
+			float                      angleX;                 // 4C
+			void*                      unk50;                  // 50 - maps to Projectile unk110
+			TESObjectREFR*             desiredTarget;          // 58
+			float                      unk60;                  // 60 - maps to Projectile unk1A8
+			float                      unk64;                  // 64 - maps to Projectile unk1AC
+			TESObjectCELL*             parentCell;             // 68
+			MagicItem*                 spell;                  // 70
+			MagicSystem::CastingSource castingSource;          // 78
+			std::uint32_t              unk7C;                  // 7C
+			EnchantmentItem*           enchantItem;            // 80
+			AlchemyItem*               poison;                 // 88
+			std::int32_t               area;                   // 90
+			float                      power;                  // 94
+			float                      scale;                  // 98
+			bool                       alwaysHit;              // 9C
+			bool                       noDamageOutsideCombat;  // 9D
+			bool                       autoAim;                // 9E
+			bool                       unk9F;                  // 9F
+			bool                       useOrigin;              // A0
+			bool                       deferInitialization;    // A1
+			bool                       forceConeOfFire;        // A2
+		};
+		static_assert(sizeof(LaunchData) == 0xA8);
 
 		struct ImpactData
 		{
 		public:
 			// members
-			NiPoint3                      desiredTargetLoc;    // 00
-			NiPoint3                      negativeVelocity;    // 0C
-			ObjectRefHandle               collidee;            // 18
-			NiPointer<bhkCollisionObject> colObj;              // 20
-			BGSMaterialType*              material;            // 28
-			std::int32_t                  damageRootNodeType;  // 30
-			COL_LAYER                     collidedLayer;       // 34
-			NiNode*                       damageRootNode;      // 38
-			ImpactResult                  impactResult;        // 40
-			std::uint16_t                 unk44;               // 44
-			std::uint16_t                 unk46;               // 46
-			std::uint8_t                  unk48;               // 48
-			std::uint8_t                  unk49;               // 49
+			NiPoint3                                  desiredTargetLoc;    // 00
+			NiPoint3                                  negativeVelocity;    // 0C
+			ObjectRefHandle                           collidee;            // 18
+			NiPointer<bhkCollisionObject>             colObj;              // 20
+			BGSMaterialType*                          material;            // 28
+			std::int32_t                              damageRootNodeType;  // 30
+			stl::enumeration<COL_LAYER, std::int32_t> collidedLayer;       // 34
+			NiNode*                                   damageRootNode;      // 38
+			ImpactResult                              impactResult;        // 40
+			std::uint16_t                             unk44;               // 44
+			std::uint16_t                             unk46;               // 46
+			std::uint8_t                              unk48;               // 48
+			std::uint8_t                              unk49;               // 49
 		};
 		static_assert(sizeof(ImpactData) == 0x50);
 
@@ -83,8 +150,8 @@ namespace RE
 		virtual bool          ProcessImpacts();                                                                                                                                                  // AC
 		virtual void          Update3D();                                                                                                                                                        // AD
 		virtual void          Unk_AE(void);                                                                                                                                                      // AE - { return 0; }
-		virtual float         GetPowerSpeedMult();                                                                                                                                               // AF - { if (unk158) return 1.0; else return unk188; } - "float GetSpeed()"?
-		virtual float         GetWeaponSpeedMult();                                                                                                                                              // B0 - { return 1.0; }
+		virtual float         GetPowerSpeedMult() const;                                                                                                                                         // AF - { if (unk158) return 1.0; else return unk188; } - "float GetSpeed()"?
+		virtual float         GetWeaponSpeedMult() const;                                                                                                                                        // B0 - { return 1.0; }
 		virtual bool          GetStopMainSoundAfterImpact();                                                                                                                                     // B1 - { return 0; }
 		virtual void          ReportHavokDeactivation();                                                                                                                                         // B2 - { return; }
 		virtual bool          TurnOff(Actor* a_owner, bool a_noDeactivateSound);                                                                                                                 // B3
@@ -103,12 +170,10 @@ namespace RE
 		virtual void          Handle3DLoaded();                                                                                                                                                  // C0 - { return; }
 		virtual bool          ShouldUseDesiredTarget();                                                                                                                                          // C1 - { return 0; }
 
-		inline float GetHeight() const
-		{
-			auto obj = GetObjectReference();
-			auto projectile = obj ? obj->As<BGSProjectile>() : nullptr;
-			return projectile ? projectile->data.collisionRadius * 2 : 0.0f;
-		}
+		float GetHeight() const;
+		float GetSpeed() const;
+
+		static BSPointerHandle<Projectile>* Launch(BSPointerHandle<Projectile>* a_result, LaunchData& a_data) noexcept;
 
 		// members
 		BSSimpleList<ImpactData*>  impacts;            // 098
@@ -135,21 +200,26 @@ namespace RE
 		NiPointer<QueuedFile>      projectileDBFiles;  // 170
 		std::uint64_t              unk178;             // 178
 		std::uint64_t              unk180;             // 180
-		float                      unk188;             // 188
-		float                      unk18C;             // 18C
+		float                      power;              // 188 - 14074B774
+		float                      speedMult;          // 18C - 1407501B2
 		float                      range;              // 190
-		float                      lifeRemaining;      // 194
+		float                      livingTime;         // 194
 		float                      weaponDamage;       // 198
-		float                      unk19C;             // 19C
+		float                      transparency;       // 19C - for beam disappearing
 		std::uint64_t              unk1A0;             // 1A0
-		std::uint64_t              unk1A8;             // 1A8
+		float                      unk1A8;             // 1A8
+		float                      unk1AC;             // 1AC
 		TESObjectWEAP*             weaponSource;       // 1B0
 		TESAmmo*                   ammoSource;         // 1B8
 		float                      distanceMoved;      // 1C0
-		std::uint32_t              unk1C4;             // 1C4
-		std::uint32_t              unk1C8;             // 1C8
+		std::uint32_t              unk1C4;             // 1C4 - pad?
+		float                      scale;              // 1C8 - for double cast model scale
 		std::uint32_t              flags;              // 1CC
 		std::uint64_t              unk1D0;             // 1D0
 	};
+#ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(Projectile) == 0x1D8);
+#else
+	static_assert(sizeof(Projectile) == 0x1E0);
+#endif
 }

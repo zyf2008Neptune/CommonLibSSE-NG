@@ -2,6 +2,13 @@
 
 namespace RE
 {
+	bool TESFile::CloseTES(bool a_force)
+	{
+		using func_t = decltype(&TESFile::CloseTES);
+		REL::Relocation<func_t> func{ RELOCATION_ID(13857, 13933) };
+		return func(this, a_force);
+	}
+
 	TESFile* TESFile::Duplicate(std::uint32_t a_cacheSize)
 	{
 		using func_t = decltype(&TESFile::Duplicate);
@@ -23,16 +30,25 @@ namespace RE
 		return func(this);
 	}
 
-	bool TESFile::IsFormInMod(FormID formID) const
+	bool TESFile::IsFormInMod(FormID a_formID) const
 	{
-		if (!IsLight() && (formID >> 24) == compileIndex)
+		if (!IsLight() && (a_formID >> 24) == compileIndex) {
 			return true;
-		if (IsLight() && (formID >> 24) == 0xFE && ((formID & 0x00FFF000) >> 12) == smallFileCompileIndex)
+		}
+		if (IsLight() && (a_formID >> 24) == 0xFE && ((a_formID & 0x00FFF000) >> 12) == smallFileCompileIndex) {
 			return true;
+		}
 		return false;
 	}
 
-	void TESFile::ReadData(void* a_buf, std::uint32_t a_size)
+	bool TESFile::OpenTES(NiFile::OpenMode a_accessMode, bool a_lock)
+	{
+		using func_t = decltype(&TESFile::OpenTES);
+		REL::Relocation<func_t> func{ RELOCATION_ID(13855, 13931) };
+		return func(this, a_accessMode, a_lock);
+	}
+
+	bool TESFile::ReadData(void* a_buf, std::uint32_t a_size)
 	{
 		using func_t = decltype(&TESFile::ReadData);
 		REL::Relocation<func_t> func{ Offset::TESFile::ReadData };
@@ -44,6 +60,13 @@ namespace RE
 		using func_t = decltype(&TESFile::Seek);
 		REL::Relocation<func_t> func{ Offset::TESFile::Seek };
 		return func(this, a_offset);
+	}
+
+	bool TESFile::SeekNextForm(bool a_skipIgnored)
+	{
+		using func_t = decltype(&TESFile::SeekNextForm);
+		REL::Relocation<func_t> func{ RELOCATION_ID(13894, 13979) };
+		return func(this, a_skipIgnored);
 	}
 
 	bool TESFile::SeekNextSubrecord()

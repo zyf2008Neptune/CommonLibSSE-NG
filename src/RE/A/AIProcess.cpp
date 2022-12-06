@@ -8,6 +8,13 @@
 
 namespace RE
 {
+	void AIProcess::ClearActionHeadtrackTarget(bool a_defaultHold)
+	{
+		if (high) {
+			high->ClearHeadtrackTarget(HighProcessData::HEAD_TRACK_TYPE::kAction, a_defaultHold);
+		}
+	}
+
 	void AIProcess::ClearMuzzleFlashes()
 	{
 		using func_t = decltype(&AIProcess::ClearMuzzleFlashes);
@@ -140,6 +147,20 @@ namespace RE
 	bool AIProcess::IsGhost() const
 	{
 		return cachedValues && cachedValues->flags.all(CachedValues::Flags::kActorIsGhost);
+	}
+
+	void AIProcess::KnockExplosion(Actor* a_actor, const NiPoint3& a_location, float a_magnitude)
+	{
+		using func_t = decltype(&AIProcess::KnockExplosion);
+		REL::Relocation<func_t> func{ RELOCATION_ID(38858, 39895) };
+		return func(this, a_actor, a_location, a_magnitude);
+	}
+
+	void AIProcess::SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_ref)
+	{
+		using func_t = decltype(&AIProcess::SetActorsDetectionEvent);
+		REL::Relocation<func_t> func{ RELOCATION_ID(38311, 39286) };
+		return func(this, a_actor, a_location, a_soundLevel, a_ref);
 	}
 
 	void AIProcess::SetArrested(bool a_arrested)

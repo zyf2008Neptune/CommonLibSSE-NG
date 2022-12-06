@@ -1,286 +1,299 @@
 #include "RE/F/FormTypes.h"
 
+#include "RE/F/FORM_ENUM_STRING.h"
+
 namespace RE
 {
-	std::string_view FormTypeToString(RE::FormType a_formType) noexcept
+	std::string_view FormTypeToString(FormType a_formType) noexcept
 	{
 		switch (a_formType) {
-		case RE::FormType::PluginInfo:
+		case FormType::PluginInfo:
 			return "TES4";
-		case RE::FormType::FormGroup:
+		case FormType::FormGroup:
 			return "GRUP";
-		case RE::FormType::GameSetting:
+		case FormType::GameSetting:
 			return "GMST";
-		case RE::FormType::Keyword:
+		case FormType::Keyword:
 			return "KYWD";
-		case RE::FormType::LocationRefType:
+		case FormType::LocationRefType:
 			return "LCRT";
-		case RE::FormType::Action:
+		case FormType::Action:
 			return "AACT";
-		case RE::FormType::TextureSet:
+		case FormType::TextureSet:
 			return "TXST";
-		case RE::FormType::MenuIcon:
+		case FormType::MenuIcon:
 			return "MICN";
-		case RE::FormType::Global:
+		case FormType::Global:
 			return "GLOB";
-		case RE::FormType::Class:
+		case FormType::Class:
 			return "CLAS";
-		case RE::FormType::Faction:
+		case FormType::Faction:
 			return "FACT";
-		case RE::FormType::HeadPart:
+		case FormType::HeadPart:
 			return "HDPT";
-		case RE::FormType::Eyes:
+		case FormType::Eyes:
 			return "EYES";
-		case RE::FormType::Race:
+		case FormType::Race:
 			return "RACE";
-		case RE::FormType::Sound:
+		case FormType::Sound:
 			return "SOUN";
-		case RE::FormType::AcousticSpace:
+		case FormType::AcousticSpace:
 			return "ASPC";
-		case RE::FormType::Skill:
+		case FormType::Skill:
 			return "SKIL";
-		case RE::FormType::MagicEffect:
+		case FormType::MagicEffect:
 			return "MGEF";
-		case RE::FormType::Script:
+		case FormType::Script:
 			return "SCPT";
-		case RE::FormType::LandTexture:
+		case FormType::LandTexture:
 			return "LTEX";
-		case RE::FormType::Enchantment:
+		case FormType::Enchantment:
 			return "ENCH";
-		case RE::FormType::Spell:
+		case FormType::Spell:
 			return "SPEL";
-		case RE::FormType::Scroll:
+		case FormType::Scroll:
 			return "SCRL";
-		case RE::FormType::Activator:
+		case FormType::Activator:
 			return "ACTI";
-		case RE::FormType::TalkingActivator:
+		case FormType::TalkingActivator:
 			return "TACT";
-		case RE::FormType::Armor:
+		case FormType::Armor:
 			return "ARMO";
-		case RE::FormType::Book:
+		case FormType::Book:
 			return "BOOK";
-		case RE::FormType::Container:
+		case FormType::Container:
 			return "CONT";
-		case RE::FormType::Door:
+		case FormType::Door:
 			return "DOOR";
-		case RE::FormType::Ingredient:
+		case FormType::Ingredient:
 			return "INGR";
-		case RE::FormType::Light:
+		case FormType::Light:
 			return "LIGH";
-		case RE::FormType::Misc:
+		case FormType::Misc:
 			return "MISC";
-		case RE::FormType::Apparatus:
+		case FormType::Apparatus:
 			return "APPA";
-		case RE::FormType::Static:
+		case FormType::Static:
 			return "STAT";
-		case RE::FormType::StaticCollection:
+		case FormType::StaticCollection:
 			return "SCOL";
-		case RE::FormType::MovableStatic:
+		case FormType::MovableStatic:
 			return "MSTT";
-		case RE::FormType::Grass:
+		case FormType::Grass:
 			return "GRAS";
-		case RE::FormType::Tree:
+		case FormType::Tree:
 			return "TREE";
-		case RE::FormType::Flora:
+		case FormType::Flora:
 			return "FLOR";
-		case RE::FormType::Furniture:
+		case FormType::Furniture:
 			return "FURN";
-		case RE::FormType::Weapon:
+		case FormType::Weapon:
 			return "WEAP";
-		case RE::FormType::Ammo:
+		case FormType::Ammo:
 			return "AMMO";
-		case RE::FormType::NPC:
+		case FormType::NPC:
 			return "NPC_";
-		case RE::FormType::LeveledNPC:
+		case FormType::LeveledNPC:
 			return "LVLN";
-		case RE::FormType::KeyMaster:
+		case FormType::KeyMaster:
 			return "KEYM";
-		case RE::FormType::AlchemyItem:
+		case FormType::AlchemyItem:
 			return "ALCH";
-		case RE::FormType::IdleMarker:
+		case FormType::IdleMarker:
 			return "IDLM";
-		case RE::FormType::Note:
+		case FormType::Note:
 			return "NOTE";
-		case RE::FormType::ConstructibleObject:
+		case FormType::ConstructibleObject:
 			return "COBJ";
-		case RE::FormType::Projectile:
+		case FormType::Projectile:
 			return "PROJ";
-		case RE::FormType::Hazard:
+		case FormType::Hazard:
 			return "HAZD";
-		case RE::FormType::SoulGem:
+		case FormType::SoulGem:
 			return "SLGM";
-		case RE::FormType::LeveledItem:
+		case FormType::LeveledItem:
 			return "LVLI";
-		case RE::FormType::Weather:
+		case FormType::Weather:
 			return "WTHR";
-		case RE::FormType::Climate:
+		case FormType::Climate:
 			return "CLMT";
-		case RE::FormType::ShaderParticleGeometryData:
+		case FormType::ShaderParticleGeometryData:
 			return "SPGD";
-		case RE::FormType::ReferenceEffect:
+		case FormType::ReferenceEffect:
 			return "RFCT";
-		case RE::FormType::Region:
+		case FormType::Region:
 			return "REGN";
-		case RE::FormType::Navigation:
+		case FormType::Navigation:
 			return "NAVI";
-		case RE::FormType::Cell:
+		case FormType::Cell:
 			return "CELL";
-		case RE::FormType::Reference:
+		case FormType::Reference:
 			return "REFR";
-		case RE::FormType::ActorCharacter:
+		case FormType::ActorCharacter:
 			return "ACHR";
-		case RE::FormType::ProjectileMissile:
+		case FormType::ProjectileMissile:
 			return "PMIS";
-		case RE::FormType::ProjectileArrow:
+		case FormType::ProjectileArrow:
 			return "PARW";
-		case RE::FormType::ProjectileGrenade:
+		case FormType::ProjectileGrenade:
 			return "PGRE";
-		case RE::FormType::ProjectileBeam:
+		case FormType::ProjectileBeam:
 			return "PBEA";
-		case RE::FormType::ProjectileFlame:
+		case FormType::ProjectileFlame:
 			return "PFLA";
-		case RE::FormType::ProjectileCone:
+		case FormType::ProjectileCone:
 			return "PCON";
-		case RE::FormType::ProjectileBarrier:
+		case FormType::ProjectileBarrier:
 			return "PBAR";
-		case RE::FormType::PlacedHazard:
+		case FormType::PlacedHazard:
 			return "PHZD";
-		case RE::FormType::WorldSpace:
+		case FormType::WorldSpace:
 			return "WRLD";
-		case RE::FormType::Land:
+		case FormType::Land:
 			return "LAND";
-		case RE::FormType::NavMesh:
+		case FormType::NavMesh:
 			return "NAVM";
-		case RE::FormType::TLOD:
+		case FormType::TLOD:
 			return "TLOD";
-		case RE::FormType::Dialogue:
+		case FormType::Dialogue:
 			return "DIAL";
-		case RE::FormType::Info:
+		case FormType::Info:
 			return "INFO";
-		case RE::FormType::Quest:
+		case FormType::Quest:
 			return "QUST";
-		case RE::FormType::Idle:
+		case FormType::Idle:
 			return "IDLE";
-		case RE::FormType::Package:
+		case FormType::Package:
 			return "PACK";
-		case RE::FormType::CombatStyle:
+		case FormType::CombatStyle:
 			return "CSTY";
-		case RE::FormType::LoadScreen:
+		case FormType::LoadScreen:
 			return "LSCR";
-		case RE::FormType::LeveledSpell:
+		case FormType::LeveledSpell:
 			return "LVSP";
-		case RE::FormType::AnimatedObject:
+		case FormType::AnimatedObject:
 			return "ANIO";
-		case RE::FormType::Water:
+		case FormType::Water:
 			return "WATR";
-		case RE::FormType::EffectShader:
+		case FormType::EffectShader:
 			return "EFSH";
-		case RE::FormType::TOFT:
+		case FormType::TOFT:
 			return "TOFT";
-		case RE::FormType::Explosion:
+		case FormType::Explosion:
 			return "EXPL";
-		case RE::FormType::Debris:
+		case FormType::Debris:
 			return "DEBR";
-		case RE::FormType::ImageSpace:
+		case FormType::ImageSpace:
 			return "IMGS";
-		case RE::FormType::ImageAdapter:
+		case FormType::ImageAdapter:
 			return "IMAD";
-		case RE::FormType::FormList:
+		case FormType::FormList:
 			return "FLST";
-		case RE::FormType::Perk:
+		case FormType::Perk:
 			return "PERK";
-		case RE::FormType::BodyPartData:
+		case FormType::BodyPartData:
 			return "BPTD";
-		case RE::FormType::AddonNode:
+		case FormType::AddonNode:
 			return "ADDN";
-		case RE::FormType::ActorValueInfo:
+		case FormType::ActorValueInfo:
 			return "AVIF";
-		case RE::FormType::CameraShot:
+		case FormType::CameraShot:
 			return "CAMS";
-		case RE::FormType::CameraPath:
+		case FormType::CameraPath:
 			return "CPTH";
-		case RE::FormType::VoiceType:
+		case FormType::VoiceType:
 			return "VTYP";
-		case RE::FormType::MaterialType:
+		case FormType::MaterialType:
 			return "MATT";
-		case RE::FormType::Impact:
+		case FormType::Impact:
 			return "IPCT";
-		case RE::FormType::ImpactDataSet:
+		case FormType::ImpactDataSet:
 			return "IPDS";
-		case RE::FormType::Armature:
+		case FormType::Armature:
 			return "ARMA";
-		case RE::FormType::EncounterZone:
+		case FormType::EncounterZone:
 			return "ECZN";
-		case RE::FormType::Location:
+		case FormType::Location:
 			return "LCTN";
-		case RE::FormType::Message:
+		case FormType::Message:
 			return "MESG";
-		case RE::FormType::Ragdoll:
+		case FormType::Ragdoll:
 			return "RGDL";
-		case RE::FormType::DefaultObject:
+		case FormType::DefaultObject:
 			return "DOBJ";
-		case RE::FormType::LightingMaster:
+		case FormType::LightingMaster:
 			return "LGTM";
-		case RE::FormType::MusicType:
+		case FormType::MusicType:
 			return "MUSC";
-		case RE::FormType::Footstep:
+		case FormType::Footstep:
 			return "FSTP";
-		case RE::FormType::FootstepSet:
+		case FormType::FootstepSet:
 			return "FSTS";
-		case RE::FormType::StoryManagerBranchNode:
+		case FormType::StoryManagerBranchNode:
 			return "SMBN";
-		case RE::FormType::StoryManagerQuestNode:
+		case FormType::StoryManagerQuestNode:
 			return "SMQN";
-		case RE::FormType::StoryManagerEventNode:
+		case FormType::StoryManagerEventNode:
 			return "SMEN";
-		case RE::FormType::DialogueBranch:
+		case FormType::DialogueBranch:
 			return "DLBR";
-		case RE::FormType::MusicTrack:
+		case FormType::MusicTrack:
 			return "MUST";
-		case RE::FormType::DialogueView:
+		case FormType::DialogueView:
 			return "DLVW";
-		case RE::FormType::WordOfPower:
+		case FormType::WordOfPower:
 			return "WOOP";
-		case RE::FormType::Shout:
+		case FormType::Shout:
 			return "SHOU";
-		case RE::FormType::EquipSlot:
+		case FormType::EquipSlot:
 			return "EQUP";
-		case RE::FormType::Relationship:
+		case FormType::Relationship:
 			return "RELA";
-		case RE::FormType::Scene:
+		case FormType::Scene:
 			return "SCEN";
-		case RE::FormType::AssociationType:
+		case FormType::AssociationType:
 			return "ASTP";
-		case RE::FormType::Outfit:
+		case FormType::Outfit:
 			return "OTFT";
-		case RE::FormType::ArtObject:
+		case FormType::ArtObject:
 			return "ARTO";
-		case RE::FormType::MaterialObject:
+		case FormType::MaterialObject:
 			return "MATO";
-		case RE::FormType::MovementType:
+		case FormType::MovementType:
 			return "MOVT";
-		case RE::FormType::SoundRecord:
+		case FormType::SoundRecord:
 			return "SNDR";
-		case RE::FormType::DualCastData:
+		case FormType::DualCastData:
 			return "DUAL";
-		case RE::FormType::SoundCategory:
+		case FormType::SoundCategory:
 			return "SNCT";
-		case RE::FormType::SoundOutputModel:
+		case FormType::SoundOutputModel:
 			return "SOPM";
-		case RE::FormType::CollisionLayer:
+		case FormType::CollisionLayer:
 			return "COLL";
-		case RE::FormType::ColorForm:
+		case FormType::ColorForm:
 			return "CLFM";
-		case RE::FormType::ReverbParam:
+		case FormType::ReverbParam:
 			return "REVB";
-		case RE::FormType::LensFlare:
+		case FormType::LensFlare:
 			return "LENS";
-		case RE::FormType::LensSprite:
+		case FormType::LensSprite:
 			return "LSPR";
-		case RE::FormType::VolumetricLighting:
+		case FormType::VolumetricLighting:
 			return "VOLI";
 		default:
 			return "NONE";
 		}
+	}
+
+	FormType StringToFormType(std::string_view a_formType)
+	{
+		for (auto& iter : FORM_ENUM_STRING::GetFormEnumString()) {
+			if (_stricmp(iter.formString, a_formType.data()) == 0) {
+				return iter.formType;
+			}
+		}
+
+		return FormType::None;
 	}
 }

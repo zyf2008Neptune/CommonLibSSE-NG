@@ -204,6 +204,13 @@ namespace RE
 		}
 	}
 
+	void Actor::EndInterruptPackage(bool a_skipDialogue)
+	{
+		using func_t = decltype(&Actor::EndInterruptPackage);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36475, 37474) };
+		return func(this, a_skipDialogue);
+	}
+
 	void Actor::EvaluatePackage(bool a_immediate, bool a_resetAI)
 	{
 		using func_t = decltype(&Actor::EvaluatePackage);
@@ -279,6 +286,22 @@ namespace RE
 	const TESFaction* Actor::GetCrimeFaction() const
 	{
 		return GetCrimeFactionImpl();
+	}
+
+	TESPackage* Actor::GetCurrentPackage()
+	{
+		if (currentProcess) {
+			return currentProcess->GetRunningPackage();
+		}
+		return nullptr;
+	}
+
+	const TESPackage* Actor::GetCurrentPackage() const
+	{
+		if (currentProcess) {
+			return currentProcess->GetRunningPackage();
+		}
+		return nullptr;
 	}
 
 	InventoryEntryData* Actor::GetEquippedEntryData(bool a_leftHand) const
@@ -394,6 +417,10 @@ namespace RE
 
 	TESRace* Actor::GetRace() const
 	{
+		if (race) {
+			return race;
+		}
+
 		auto base = GetActorBase();
 		return base ? base->race : nullptr;
 	}
@@ -444,6 +471,13 @@ namespace RE
 			CalculateCurrentVendorFaction();
 		}
 		return vendorFaction;
+	}
+
+	float Actor::GetWarmthRating() const
+	{
+		using func_t = decltype(&Actor::GetWarmthRating);
+		REL::Relocation<func_t> func{ RELOCATION_ID(25834, 26394) };
+		return func(this);
 	}
 
 	TESObjectARMO* Actor::GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot)
@@ -515,9 +549,22 @@ namespace RE
 		return func(this, a_restoreMagicka);
 	}
 
+	bool Actor::IsAttacking() const
+	{
+		using func_t = decltype(&Actor::IsAttacking);
+		REL::Relocation<func_t> func{ RELOCATION_ID(37637, 38590) };
+		return func(this);
+	}
+
 	bool Actor::IsAIEnabled() const
 	{
 		return boolBits.all(BOOL_BITS::kProcessMe);
+	}
+
+	bool Actor::IsAlarmed() const
+	{
+		auto currentPackage = GetCurrentPackage();
+		return currentPackage && currentPackage->packData.packType.get() == PACKAGE_PROCEDURE_TYPE::kAlarm;
 	}
 
 	bool Actor::IsAMount() const
@@ -631,19 +678,9 @@ namespace RE
 		return boolBits.all(BOOL_BITS::kPlayerTeammate);
 	}
 
-	float Actor::IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell)
+	bool Actor::IsProtected() const
 	{
-		auto waterHeight = !a_cell || a_cell == parentCell ? GetWaterHeight() : a_cell->GetExteriorWaterHeight();
-
-		if (waterHeight == -NI_INFINITY && a_cell) {
-			waterHeight = a_cell->GetExteriorWaterHeight();
-		}
-
-		if (waterHeight <= a_zPos) {
-			return 0.0f;
-		}
-
-		return std::fminf((waterHeight - a_zPos) / GetHeight(), 1.0f);
+		return boolFlags.all(BOOL_FLAGS::kProtected);
 	}
 
 	bool Actor::IsRunning() const
@@ -668,11 +705,6 @@ namespace RE
 		}
 
 		return true;
-	}
-
-	bool Actor::IsPointSubmergedMoreThan(const NiPoint3& a_pos, TESObjectCELL* a_cell, const float a_waterLevel)
-	{
-		return IsPointDeepUnderWater(a_pos.z, a_cell) >= a_waterLevel;
 	}
 
 	bool Actor::IsSummoned() const noexcept
@@ -733,6 +765,41 @@ namespace RE
 		return func(this, a_target, a_priority);
 	}
 
+	void Actor::SetLifeState(ACTOR_LIFE_STATE a_lifeState)
+	{
+		using func_t = decltype(&Actor::SetLifeState);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36604, 37612) };
+		return func(this, a_lifeState);
+	}
+
+	bool Actor::SetOutfit(BGSOutfit* a_outfit, bool a_sleepOutfit)
+	{
+		auto npc = GetActorBase();
+		if (!npc) {
+			return false;
+		}
+		if (a_sleepOutfit) {
+			if (npc->sleepOutfit == a_outfit) {
+				return false;
+			}
+			RemoveOutfitItems(npc->sleepOutfit);
+			npc->sleepOutfit = a_outfit;
+			npc->AddChange(TESNPC::ChangeFlags::kSleepOutfit);
+		} else {
+			if (npc->defaultOutfit == a_outfit) {
+				return false;
+			}
+			RemoveOutfitItems(npc->defaultOutfit);
+			npc->defaultOutfit = a_outfit;
+			npc->AddChange(TESNPC::ChangeFlags::kDefaultOutfit);
+		}
+		InitInventoryIfRequired();
+		if (!IsDisabled()) {
+			AddWornOutfit(a_outfit, true);
+		}
+		return true;
+	}
+
 	void Actor::SetRotationX(float a_angle)
 	{
 		using func_t = decltype(&Actor::SetRotationX);
@@ -747,18 +814,20 @@ namespace RE
 		return func(this, a_angle);
 	}
 
-	void Actor::SetLifeState(ACTOR_LIFE_STATE a_lifeState)
-	{
-		using func_t = decltype(&Actor::SetLifeState);
-		REL::Relocation<func_t> func{ RELOCATION_ID(36604, 37612) };
-		return func(this, a_lifeState);
-	}
-
 	void Actor::StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning)
 	{
 		using func_t = decltype(&Actor::StealAlarm);
 		REL::Relocation<func_t> func{ RELOCATION_ID(36427, 37422) };
 		return func(this, a_ref, a_object, a_num, a_total, a_owner, a_allowWarning);
+	}
+
+	void Actor::StopAlarmOnActor()
+	{
+		EndInterruptPackage(false);
+
+		if (currentProcess) {
+			currentProcess->ClearActionHeadtrackTarget(true);
+		}
 	}
 
 	void Actor::StopInteractingQuick(bool a_unk02)
@@ -780,6 +849,13 @@ namespace RE
 		using func_t = decltype(&Actor::SwitchRace);
 		REL::Relocation<func_t> func{ Offset::Actor::SwitchRace };
 		return func(this, a_race, a_player);
+	}
+
+	void Actor::TrespassAlarm(TESObjectREFR* a_ref, TESForm* a_ownership, std::int32_t a_crime)
+	{
+		using func_t = decltype(&Actor::TrespassAlarm);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36432, 37427) };
+		return func(this, a_ref, a_ownership, a_crime);
 	}
 
 	void Actor::UpdateArmorAbility(TESForm* a_armor, ExtraDataList* a_extraData)
@@ -916,5 +992,19 @@ namespace RE
 
 		auto base = GetActorBase();
 		return base ? base->crimeFaction : nullptr;
+	}
+
+	void Actor::AddWornOutfit(BGSOutfit* a_outfit, bool a_forceUpdate)
+	{
+		using func_t = decltype(&Actor::AddWornOutfit);
+		REL::Relocation<func_t> func{ RELOCATION_ID(19266, 19692) };
+		return func(this, a_outfit, a_forceUpdate);
+	}
+
+	void Actor::RemoveOutfitItems(BGSOutfit* a_outfit)
+	{
+		using func_t = decltype(&Actor::RemoveOutfitItems);
+		REL::Relocation<func_t> func{ RELOCATION_ID(19264, 19690) };
+		return func(this, a_outfit);
 	}
 }

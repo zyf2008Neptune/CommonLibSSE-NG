@@ -371,6 +371,7 @@ namespace RE
 		const TESBoundObject*                   GetBaseObject() const;
 		const BSTSmartPointer<BipedAnim>&       GetBiped() const;
 		const BSTSmartPointer<BipedAnim>&       GetBiped(bool a_firstPerson) const;
+		std::uint16_t                           GetCalcLevel(bool a_adjustLevel) const;
 		TESContainer*                           GetContainer() const;
 		BGSLocation*                            GetCurrentLocation() const;
 		const char*                             GetDisplayFullName();
@@ -431,6 +432,8 @@ namespace RE
 		bool                                    IsLocked() const;
 		bool                                    IsMarkedForDeletion() const;
 		bool                                    IsOffLimits();
+		float                                   IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell) const;
+		bool                                    IsPointSubmergedMoreThan(const NiPoint3& a_pos, TESObjectCELL* a_cell, float a_waterLevel) const;
 		void                                    MoveTo(TESObjectREFR* a_target);
 		bool                                    MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool                                    MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
@@ -440,6 +443,7 @@ namespace RE
 		void                                    SetActivationBlocked(bool a_blocked);
 		void                                    SetCollision(bool a_enable);
 		bool                                    SetDisplayName(const BSFixedString& a_name, bool a_force);
+		void                                    SetEncounterZone(BGSEncounterZone* a_zone);
 		bool                                    SetMotionType(MotionType a_motionType, bool a_allowActivate = true);
 		void                                    SetPosition(float a_x, float a_y, float a_z);
 		void                                    SetPosition(NiPoint3 a_pos);
@@ -461,5 +465,9 @@ namespace RE
 		void              MoveTo_Impl(const ObjectRefHandle& a_targetHandle, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, const NiPoint3& a_position, const NiPoint3& a_rotation);
 		void              PlayAnimation_Impl(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq, bool a_arg4 = false);
 	};
+#ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(TESObjectREFR) == 0x98);
+#else
+	static_assert(sizeof(TESObjectREFR) == 0xA0);
+#endif
 };

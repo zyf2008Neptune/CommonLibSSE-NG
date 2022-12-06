@@ -6,6 +6,7 @@
 namespace RE
 {
 	class AlchemyItem;
+	class EnchantmentItem;
 
 	class ArrowProjectile : public MissileProjectile
 	{
@@ -30,8 +31,8 @@ namespace RE
 		void  UpdateImpl(float a_delta) override;                                                                                                                                         // AB
 		bool  ProcessImpacts() override;                                                                                                                                                  // AC
 		void  Update3D() override;                                                                                                                                                        // AD
-		float GetPowerSpeedMult() override;                                                                                                                                               // AF
-		float GetWeaponSpeedMult() override;                                                                                                                                              // B0
+		float GetPowerSpeedMult() const override;                                                                                                                                         // AF
+		float GetWeaponSpeedMult() const override;                                                                                                                                        // B0
 		bool  GetStopMainSoundAfterImpact() override;                                                                                                                                     // B1 - { return 1; }
 		float GetGravity() override;                                                                                                                                                      // B5
 		bool  ShouldBeLimited() override;                                                                                                                                                 // B9 - { return (unk1CC >> 22) & 1; }
@@ -41,8 +42,12 @@ namespace RE
 		void  Unk_C3(void) override;                                                                                                                                                      // C3 - { return 1; }
 
 		// members
-		std::uint64_t unk1E0;  // 1E0
-		AlchemyItem*  poison;  // 1E8
+		EnchantmentItem* enchantItem;  // 1E0
+		AlchemyItem*     poison;       // 1E8
 	};
+#ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(ArrowProjectile) == 0x1F0);
+#else
+	static_assert(sizeof(ArrowProjectile) == 0x1F8);
+#endif
 }
