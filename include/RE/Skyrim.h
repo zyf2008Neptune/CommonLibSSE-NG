@@ -1126,6 +1126,7 @@
 #include "RE/N/NonActorMagicCaster.h"
 #include "RE/N/NonActorMagicTarget.h"
 #include "RE/O/Object.h"
+#include "RE/O/ObjectiveState.h"
 #include "RE/O/ObjectTypeInfo.h"
 #include "RE/O/OldMessageBoxCallback.h"
 #include "RE/Offsets_VTABLE.h"
