@@ -985,6 +985,7 @@
 #include "RE/L/LocalMapCamera.h"
 #include "RE/L/LocalMapMenu.h"
 #include "RE/L/Location.h"
+#include "RE/L/LocationCleared.h"
 #include "RE/L/LocationDiscovery.h"
 #include "RE/L/LocationTraverser.h"
 #include "RE/L/LocationTree.h"
