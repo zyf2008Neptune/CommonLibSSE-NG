@@ -107,7 +107,7 @@ namespace RE
 		// members
 		GFxKey::Code        keyCode;          // 04
 		std::uint8_t        asciiCode;        // 08
-		std::uint8_t        pad09[3];         // 09		
+		std::uint8_t        pad09[3];         // 09
 		std::uint32_t       wCharCode;        // 0C
 		GFxSpecialKeysState specialKeyState;  // 10
 		std::uint8_t        keyboardIndex;    // 11
