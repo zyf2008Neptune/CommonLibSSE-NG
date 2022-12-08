@@ -4,7 +4,7 @@
 
 namespace RE
 {
-    class BSWindModifier : public NiPSysModifier
+	class BSWindModifier : public NiPSysModifier
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSWindModifier;
