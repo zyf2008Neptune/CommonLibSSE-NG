@@ -34,6 +34,13 @@ namespace RE
 		virtual void UpdateSystem(float a_time);     // 38 - { return NiParticleSystem::Do_UpdateSystem(a_time); }
 		virtual void Do_UpdateSystem(float a_time);  // 39
 
+		void AddModifier(NiPSysModifier* a_modifier)
+		{
+			using func_t = decltype(&NiParticleSystem::AddModifier);
+			REL::Relocation<func_t> func{ RELOCATION_ID(72799, 74499) };
+			return func(this, a_modifier);
+		}
+
 		// members
 		NiTPointerList<NiPointer<NiPSysModifier>> modifierList;   // 168
 		float                                     unk180;         // 180

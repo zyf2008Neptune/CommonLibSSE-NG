@@ -1082,6 +1082,7 @@ set(SOURCES
 	include/RE/N/NiObjectGroup.h
 	include/RE/N/NiObjectNET.h
 	include/RE/N/NiPSysData.h
+	include/RE/N/NiPSysGravityModifier.h
 	include/RE/N/NiPSysModifier.h
 	include/RE/N/NiParticleSystem.h
 	include/RE/N/NiParticles.h
@@ -1479,6 +1480,7 @@ set(SOURCES
 	src/RE/B/BSVisit.cpp
 	src/RE/B/BSWin32KeyboardDevice.cpp
 	src/RE/B/BSWin32SaveDataSystemUtility.cpp
+	src/RE/B/BSWindModifier.cpp
 	src/RE/B/BSXFlags.cpp
 	src/RE/B/BarterMenu.cpp
 	src/RE/B/BipedAnim.cpp

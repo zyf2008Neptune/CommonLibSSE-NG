@@ -1084,6 +1084,7 @@
 #include "RE/N/NiObjectGroup.h"
 #include "RE/N/NiObjectNET.h"
 #include "RE/N/NiPSysData.h"
+#include "RE/N/NiPSysGravityModifier.h"
 #include "RE/N/NiPSysModifier.h"
 #include "RE/N/NiParticleSystem.h"
 #include "RE/N/NiParticles.h"
