@@ -983,6 +983,7 @@ set(SOURCES
 	include/RE/L/LocalMapCamera.h
 	include/RE/L/LocalMapMenu.h
 	include/RE/L/Location.h
+	include/RE/L/LocationCleared.h
 	include/RE/L/LocationDiscovery.h
 	include/RE/L/LocationTraverser.h
 	include/RE/L/LocationTree.h
@@ -1082,6 +1083,7 @@ set(SOURCES
 	include/RE/N/NiObjectGroup.h
 	include/RE/N/NiObjectNET.h
 	include/RE/N/NiPSysData.h
+	include/RE/N/NiPSysGravityModifier.h
 	include/RE/N/NiPSysModifier.h
 	include/RE/N/NiParticleSystem.h
 	include/RE/N/NiParticles.h
@@ -1125,6 +1127,7 @@ set(SOURCES
 	include/RE/N/NonActorMagicTarget.h
 	include/RE/O/Object.h
 	include/RE/O/ObjectTypeInfo.h
+	include/RE/O/ObjectiveState.h
 	include/RE/O/OldMessageBoxCallback.h
 	include/RE/Offsets.h
 	include/RE/Offsets_NiRTTI.h
@@ -1155,6 +1158,7 @@ set(SOURCES
 	include/RE/P/PropertyTypeInfo.h
 	include/RE/Q/QuestEvents.h
 	include/RE/Q/QuestObjectiveStates.h
+	include/RE/Q/QuestStatus.h
 	include/RE/R/RaceSexCamera.h
 	include/RE/R/RaceSexMenu.h
 	include/RE/R/RaceSexMenuEvent.h
@@ -1479,6 +1483,7 @@ set(SOURCES
 	src/RE/B/BSVisit.cpp
 	src/RE/B/BSWin32KeyboardDevice.cpp
 	src/RE/B/BSWin32SaveDataSystemUtility.cpp
+	src/RE/B/BSWindModifier.cpp
 	src/RE/B/BSXFlags.cpp
 	src/RE/B/BarterMenu.cpp
 	src/RE/B/BipedAnim.cpp
@@ -1589,6 +1594,7 @@ set(SOURCES
 	src/RE/L/LevelIncrease.cpp
 	src/RE/L/LocalMapCamera.cpp
 	src/RE/L/Location.cpp
+	src/RE/L/LocationCleared.cpp
 	src/RE/L/LocationDiscovery.cpp
 	src/RE/L/LockpickingMenu.cpp
 	src/RE/L/LooseFileStream.cpp
@@ -1637,6 +1643,7 @@ set(SOURCES
 	src/RE/N/NiTransform.cpp
 	src/RE/O/Object.cpp
 	src/RE/O/ObjectTypeInfo.cpp
+	src/RE/O/ObjectiveState.cpp
 	src/RE/P/PackUnpack.cpp
 	src/RE/P/PackedInstructionStream.cpp
 	src/RE/P/PlayerCamera.cpp
@@ -1645,6 +1652,7 @@ set(SOURCES
 	src/RE/P/PlayerInputHandler.cpp
 	src/RE/P/ProcessLists.cpp
 	src/RE/P/Projectile.cpp
+	src/RE/Q/QuestStatus.cpp
 	src/RE/R/RemoveCallbackVisitor.cpp
 	src/RE/S/ScrapHeap.cpp
 	src/RE/S/Script.cpp
