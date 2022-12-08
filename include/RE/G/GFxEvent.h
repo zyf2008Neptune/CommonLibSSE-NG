@@ -106,11 +106,12 @@ namespace RE
 
 		// members
 		GFxKey::Code        keyCode;          // 04
-		std::uint32_t       asciiCode;        // 08
+		std::uint8_t        asciiCode;        // 08
+		std::uint8_t        pad09[3];         // 09		
 		std::uint32_t       wCharCode;        // 0C
 		GFxSpecialKeysState specialKeyState;  // 10
 		std::uint8_t        keyboardIndex;    // 11
-		std::uint8_t        pad_0c[2];        // 12
+		std::uint8_t        pad12[2];         // 12
 	};
 	static_assert(sizeof(GFxKeyEvent) == 0x14);
 }
