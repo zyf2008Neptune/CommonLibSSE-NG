@@ -24,6 +24,5 @@ namespace RE
 	bool          LookupReferenceByHandle(const RefHandle& a_handle, NiPointer<Actor>& a_refrOut);
 	bool          LookupReferenceByHandle(const RefHandle& a_handle, NiPointer<TESObjectREFR>& a_refrOut);
 	void          PlaySound(const char* a_editorID);
-	void          ApplyPerkEntries(std::uint8_t a_perkEntryCode, RE::Actor* a_perkOwner, RE::TESForm* a_form, float* a_value);
 	void          ShakeCamera(float a_strength, const NiPoint3& a_position, float a_duration);
 }

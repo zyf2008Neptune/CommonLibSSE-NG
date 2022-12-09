@@ -102,13 +102,6 @@ namespace RE
 		return func(a_editorID);
 	}
 
-	void ApplyPerkEntries(std::uint8_t a_perkEntryCode, RE::Actor* a_perkOwner, RE::TESForm* a_form, float* a_value)
-	{
-		using func_t = decltype(&ApplyPerkEntries);
-		REL::Relocation<func_t> func{ RELOCATION_ID(23073, 23526) };
-		return func(a_perkEntryCode, a_perkOwner, a_form, a_value);
-	}
-
 	void ShakeCamera(float a_strength, const NiPoint3& a_position, float a_duration)
 	{
 		using func_t = decltype(&ShakeCamera);
