@@ -90,28 +90,35 @@ namespace RE
 			GFxEvent(),
 			keyCode(GFxKey::kVoidSymbol),
 			asciiCode(0),
+			pad09(0),
+			pad0B(0),
 			wCharCode(0),
 			specialKeyState(),
-			keyboardIndex(0)
+			keyboardIndex(0),
+			pad12(0)
 		{}
 
 		inline GFxKeyEvent(EventType a_eventType, GFxKey::Code a_keyCode, std::uint8_t a_ascii, std::uint32_t a_wchar, GFxSpecialKeysState a_specialKeyState, std::uint8_t a_keyboardIndex = 0) :
 			GFxEvent(a_eventType),
 			keyCode(a_keyCode),
 			asciiCode(a_ascii),
+			pad09(0),
+			pad0B(0),
 			wCharCode(a_wchar),
 			specialKeyState(a_specialKeyState),
-			keyboardIndex(a_keyboardIndex)
+			keyboardIndex(a_keyboardIndex),
+			pad12(0)
 		{}
 
 		// members
 		GFxKey::Code        keyCode;          // 04
 		std::uint8_t        asciiCode;        // 08
-		std::uint8_t        pad09[3];         // 09
+		std::uint8_t        pad09;	          // 09
+		std::uint16_t       pad0B;            // 0B
 		std::uint32_t       wCharCode;        // 0C
 		GFxSpecialKeysState specialKeyState;  // 10
 		std::uint8_t        keyboardIndex;    // 11
-		std::uint8_t        pad12[2];         // 12
+		std::uint16_t       pad12;	          // 12
 	};
 	static_assert(sizeof(GFxKeyEvent) == 0x14);
 }
