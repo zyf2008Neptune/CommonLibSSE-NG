@@ -49,7 +49,7 @@ namespace RE
 		float                                     lastUpdate;     // 18C
 		bool                                      resetSystem;    // 190
 		bool                                      dynamicBounds;  // 191
-		bool                                      worldspace;     // 192
+		bool                                      isWorldspace;   // 192
 		std::uint8_t                              pad193;         // 192
 		std::uint32_t                             pad194;         // 194
 	};
