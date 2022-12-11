@@ -1079,6 +1079,7 @@ set(SOURCES
 	include/RE/N/NiMath.h
 	include/RE/N/NiMatrix3.h
 	include/RE/N/NiMemManager.h
+	include/RE/N/NiMeshParticleSystem.h
 	include/RE/N/NiMultiTargetTransformController.h
 	include/RE/N/NiNode.h
 	include/RE/N/NiObject.h
