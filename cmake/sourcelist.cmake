@@ -1016,6 +1016,7 @@ set(SOURCES
 	include/RE/M/MemoryPage.h
 	include/RE/M/MenuControls.h
 	include/RE/M/MenuEventHandler.h
+	include/RE/M/MenuModeChangeEvent.h
 	include/RE/M/MenuOpenCloseEvent.h
 	include/RE/M/MenuOpenHandler.h
 	include/RE/M/MenuTopicManager.h
