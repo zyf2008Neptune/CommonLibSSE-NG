@@ -32,5 +32,9 @@ namespace RE
 		std::uint32_t                     value;             // 12C
 		NiPointer<BSMasterParticleSystem> associatedObject;  // 130
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BSValueNode) == 0x138);
+#else
+	static_assert(sizeof(BSValueNode) == 0x160);
+#endif
 }

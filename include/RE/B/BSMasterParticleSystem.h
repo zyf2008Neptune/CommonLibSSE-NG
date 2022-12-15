@@ -37,5 +37,9 @@ namespace RE
 		bool                            destroyWhenNotInUse;   // 166
 		std::uint8_t                    pad167;                // 167
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BSMasterParticleSystem) == 0x168);
+#else
+	static_assert(sizeof(BSMasterParticleSystem) == 0x190);
+#endif
 }

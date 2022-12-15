@@ -35,5 +35,9 @@ namespace RE
 		std::uint8_t  pad19D;             // 19D
 		std::uint16_t pad19E;             // 19E
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(NiMeshParticleSystem) == 0x1A0);
+#else
+	static_assert(sizeof(NiMeshParticleSystem) == 0x1E8);
+#endif
 }
