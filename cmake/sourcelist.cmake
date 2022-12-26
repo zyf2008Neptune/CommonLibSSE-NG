@@ -251,6 +251,7 @@ set(SOURCES
 	include/RE/B/BSLightingShaderMaterialParallaxOcc.h
 	include/RE/B/BSLightingShaderMaterialSnow.h
 	include/RE/B/BSLightingShaderProperty.h
+	include/RE/B/BSMasterParticleSystem.h
 	include/RE/B/BSMaterialObject.h
 	include/RE/B/BSMemStorage.h
 	include/RE/B/BSMouseDevice.h
@@ -337,6 +338,7 @@ set(SOURCES
 	include/RE/B/BSTriShape.h
 	include/RE/B/BSUIMessageData.h
 	include/RE/B/BSUIScaleformData.h
+	include/RE/B/BSValueNode.h
 	include/RE/B/BSVirtualKeyboardDevice.h
 	include/RE/B/BSVisit.h
 	include/RE/B/BSVolumetricLightingRenderData.h
@@ -1078,6 +1080,7 @@ set(SOURCES
 	include/RE/N/NiMath.h
 	include/RE/N/NiMatrix3.h
 	include/RE/N/NiMemManager.h
+	include/RE/N/NiMeshParticleSystem.h
 	include/RE/N/NiMultiTargetTransformController.h
 	include/RE/N/NiNode.h
 	include/RE/N/NiObject.h
