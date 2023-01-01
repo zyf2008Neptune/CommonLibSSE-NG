@@ -66,7 +66,7 @@ namespace RE
 		kDLC02StandingStone = 55,
 		kDLC02TelvanniTower = 56,
 		kDLC02ToSkyrim = 57,
-		kDLC02ToSolstheim = 58, 
+		kDLC02ToSolstheim = 58,
 		kDLC02CastleKarstaag = 59,
 		kTotalLocationTypes,
 
