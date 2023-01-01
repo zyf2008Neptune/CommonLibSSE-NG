@@ -250,6 +250,18 @@ namespace RE
 			};
 		};
 
+		struct ForEachSpellVisitor
+		{
+			enum class Result : uint32_t
+			{
+				kStop = 0,
+				kContinue = 1
+			};
+
+			virtual ~ForEachSpellVisitor(){};
+			virtual Result visit(RE::SpellItem* a) = 0;
+		};
+
 		~Actor() override;  // 000
 
 		// override (TESObjectREFR)
@@ -578,6 +590,7 @@ namespace RE
 		void                         UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand);
 		void                         VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, NiAVObject& a_obj)> a_visitor);
 		bool                         VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor);
+		void                         VisitSpells(ForEachSpellVisitor& a_visitor);
 		bool                         WouldBeStealing(const TESObjectREFR* a_target) const;
 
 		// members
