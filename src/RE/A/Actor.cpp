@@ -970,7 +970,7 @@ namespace RE
 	void Actor::VisitSpells(ForEachSpellVisitor& a_visitor)
 	{
 		using func_t = decltype(&Actor::VisitSpells);
-		REL::Relocation<func_t> func{ RELOCATION_ID(37827, 37827) };  // I do not know for AE
+		REL::Relocation<func_t> func{ RELOCATION_ID(37827, 38781) };
 		return func(this, a_visitor);
 	}
 
