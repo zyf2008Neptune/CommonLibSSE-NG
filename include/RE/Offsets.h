@@ -214,6 +214,12 @@ namespace RE
 			inline constexpr REL::ID FileExists(static_cast<std::uint64_t>(82411));
 		}
 
+		namespace BSScaleformTranslator
+		{
+			inline constexpr REL::ID GetCachedString(static_cast<std::uint64_t>(69188));
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(242017));
+		}
+
 		namespace BSScript
 		{
 			namespace Object

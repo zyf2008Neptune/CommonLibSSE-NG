@@ -12,4 +12,5 @@
 #include "SKSE/RegistrationSet.h"
 #include "SKSE/RegistrationSetUnique.h"
 #include "SKSE/Trampoline.h"
+#include "SKSE/Translation.h"
 #include "SKSE/Version.h"
