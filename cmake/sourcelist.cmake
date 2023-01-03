@@ -1457,6 +1457,7 @@ set(SOURCES
 	include/SKSE/Impl/RegistrationTraits.h
 	include/SKSE/Impl/Stubs.h
 	include/SKSE/Impl/WinAPI.h
+	include/SKSE/InputMap.h
 	include/SKSE/Interfaces.h
 	include/SKSE/Logger.h
 	include/SKSE/RegistrationMap.h
@@ -1761,6 +1762,7 @@ set(SOURCES
 	src/SKSE/IAT.cpp
 	src/SKSE/Impl/PCH.cpp
 	src/SKSE/Impl/WinAPI.cpp
+	src/SKSE/InputMap.cpp
 	src/SKSE/Interfaces.cpp
 	src/SKSE/Logger.cpp
 	src/SKSE/RegistrationSet.cpp
