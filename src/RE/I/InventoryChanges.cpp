@@ -64,15 +64,15 @@ namespace RE
 
 	void InventoryChanges::VisitInventory(IItemChangeVisitor& visitor)
 	{
-		using func_t = decltype(&InventoryChanges::VisitWornItems);
-		REL::Relocation<func_t> func{ RELOCATION_ID(15855, 15855) };  // I do not know for AE
+		using func_t = decltype(&InventoryChanges::VisitInventory);
+		REL::Relocation<func_t> func{ RELOCATION_ID(15855, 16095) };
 		return func(this, visitor);
 	}
 
 	void InventoryChanges::VisitWornItems(IItemChangeVisitor& visitor)
 	{
 		using func_t = decltype(&InventoryChanges::VisitWornItems);
-		REL::Relocation<func_t> func{ RELOCATION_ID(15856, 15856) };  // I do not know for AE
+		REL::Relocation<func_t> func{ RELOCATION_ID(15856, 16096) };
 		return func(this, visitor);
 	}
 

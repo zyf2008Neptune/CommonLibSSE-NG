@@ -29,7 +29,7 @@ namespace RE
 			{
 				*a_arg3 = true;
 				return Visit(a_entryData);
-			};
+			}
 		};
 		static_assert(sizeof(IItemChangeVisitor) == 0x8);
 
