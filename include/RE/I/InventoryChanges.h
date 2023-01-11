@@ -23,9 +23,9 @@ namespace RE
 			virtual ~IItemChangeVisitor() = default;  // 00
 
 			// add
-			virtual BSContainer::ForEachResult Visit(InventoryEntryData* a_entryData) = 0;                                               // 01
+			virtual BSContainer::ForEachResult Visit(InventoryEntryData* a_entryData) = 0;                         // 01
 			virtual bool                       ShouldVisit(InventoryEntryData*, TESBoundObject*) { return true; }  // 02
-			virtual BSContainer::ForEachResult Unk_03(InventoryEntryData* a_entryData, void*, bool* a_arg3)								 // 03
+			virtual BSContainer::ForEachResult Unk_03(InventoryEntryData* a_entryData, void*, bool* a_arg3)        // 03
 			{
 				*a_arg3 = true;
 				return Visit(a_entryData);
