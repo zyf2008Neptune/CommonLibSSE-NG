@@ -199,6 +199,7 @@ set(SOURCES
 	include/RE/B/BSBitField.h
 	include/RE/B/BSBloodSplatterShaderProperty.h
 	include/RE/B/BSBound.h
+	include/RE/B/BSContainer.h
 	include/RE/B/BSCoreTypes.h
 	include/RE/B/BSCullingProcess.h
 	include/RE/B/BSDismemberSkinInstance.h
@@ -296,6 +297,7 @@ set(SOURCES
 	include/RE/B/BSShaderMaterial.h
 	include/RE/B/BSShaderProperty.h
 	include/RE/B/BSShaderPropertyLightData.h
+	include/RE/B/BSShaderRenderTargets.h
 	include/RE/B/BSShaderTextureSet.h
 	include/RE/B/BSShadowLight.h
 	include/RE/B/BSSimpleScaleController.h
@@ -421,9 +423,20 @@ set(SOURCES
 	include/RE/C/CombatInventoryItemShout.h
 	include/RE/C/CombatInventoryItemStaff.h
 	include/RE/C/CombatMagicCaster.h
+	include/RE/C/CombatMagicCasterBoundItem.h
+	include/RE/C/CombatMagicCasterCloak.h
+	include/RE/C/CombatMagicCasterDisarm.h
+	include/RE/C/CombatMagicCasterInvisibility.h
+	include/RE/C/CombatMagicCasterLight.h
 	include/RE/C/CombatMagicCasterOffensive.h
+	include/RE/C/CombatMagicCasterParalyze.h
+	include/RE/C/CombatMagicCasterReanimate.h
 	include/RE/C/CombatMagicCasterRestore.h
+	include/RE/C/CombatMagicCasterScript.h
+	include/RE/C/CombatMagicCasterStagger.h
+	include/RE/C/CombatMagicCasterSummon.h
 	include/RE/C/CombatMagicCasterTargetEffect.h
+	include/RE/C/CombatMagicCasterWard.h
 	include/RE/C/CombatManager.h
 	include/RE/C/CombatObject.h
 	include/RE/C/CombatSearchLocation.h
@@ -1021,6 +1034,7 @@ set(SOURCES
 	include/RE/M/MemoryPage.h
 	include/RE/M/MenuControls.h
 	include/RE/M/MenuEventHandler.h
+	include/RE/M/MenuModeChangeEvent.h
 	include/RE/M/MenuOpenCloseEvent.h
 	include/RE/M/MenuOpenHandler.h
 	include/RE/M/MenuTopicManager.h
@@ -1185,6 +1199,8 @@ set(SOURCES
 	include/RE/R/RegisterPrefix.h
 	include/RE/R/RemoveCallbackVisitor.h
 	include/RE/R/RemoveItemFunctor.h
+	include/RE/R/RenderTargetManager.h
+	include/RE/R/RenderTargetProperties.h
 	include/RE/R/Request.h
 	include/RE/R/RunHandler.h
 	include/RE/RTTI.h
@@ -1416,6 +1432,7 @@ set(SOURCES
 	include/RE/V/Variable.h
 	include/RE/V/VertexDesc.h
 	include/RE/V/VirtualMachine.h
+	include/RE/V/VoiceSpellFireHandler.h
 	include/RE/W/WeaponAnimationGraphManagerHolder.h
 	include/RE/W/WeatherType.h
 	include/RE/W/WorldSpaceMenu.h
