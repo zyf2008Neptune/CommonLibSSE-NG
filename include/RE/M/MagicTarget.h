@@ -7,6 +7,9 @@
 #include "RE/E/EffectArchetypes.h"
 #include "RE/M/MagicSystem.h"
 #include "RE/N/NiPoint3.h"
+#ifdef SKYRIMVR
+#include "RE/B/BSContainer.h"
+#endif
 
 namespace RE
 {

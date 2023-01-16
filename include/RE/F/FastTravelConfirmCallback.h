@@ -31,8 +31,7 @@ namespace RE
 #ifndef SKYRIMVR
 				  0x20
 #else
-				  0x30
+				  0x38
 #endif
 	);
-
 }
