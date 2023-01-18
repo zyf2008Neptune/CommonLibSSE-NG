@@ -19,11 +19,11 @@ namespace RE
 
 		//members
 #ifndef SKYRIMVR
-		std::uint64_t refCount;    // 08
+		std::uint64_t refCount;  // 08
 #endif
-		MapMenu*      mapMenu;     // 10
-		std::int32_t  cursorPosX;  // 18
-		std::int32_t  cursorPosY;  // 1C
+		MapMenu*     mapMenu;     // 10
+		std::int32_t cursorPosX;  // 18
+		std::int32_t cursorPosY;  // 1C
 #ifdef SKYRIMVR
 		RE::NiPoint3  coords;  // 20
 		std::uint16_t unk2c;   // 2c
