@@ -18,9 +18,6 @@ namespace RE
 		void Run(Message a_msg) override;  //01
 
 		//members
-#ifndef SKYRIMVR
-		std::uint64_t refCount;    // 08
-#endif
 		MapMenu*      mapMenu;     // 10
 		std::int32_t  cursorPosX;  // 18
 		std::int32_t  cursorPosY;  // 1C
