@@ -1416,6 +1416,7 @@ set(SOURCES
 	include/RE/U/UIMessage.h
 	include/RE/U/UIMessageQueue.h
 	include/RE/U/UISaveLoadManager.h
+	include/RE/U/UnlinkedTypes.h
 	include/RE/U/UserEventEnabled.h
 	include/RE/U/UserEvents.h
 	include/RE/V/VATS.h
@@ -1725,6 +1726,7 @@ set(SOURCES
 	src/RE/U/UI.cpp
 	src/RE/U/UIBlurManager.cpp
 	src/RE/U/UIMessageQueue.cpp
+	src/RE/U/UnlinkedTypes.cpp
 	src/RE/U/UserEvents.cpp
 	src/RE/V/Variable.cpp
 	src/RE/V/VirtualMachine.cpp
