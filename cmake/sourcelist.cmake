@@ -1525,6 +1525,7 @@ set(SOURCES
 	src/RE/D/DisarmedEvent.cpp
 	src/RE/D/DragonSoulsGained.cpp
 	src/RE/E/Effect.cpp
+	src/RE/E/EffectArchetypes.cpp
 	src/RE/E/ExtraAliasInstanceArray.cpp
 	src/RE/E/ExtraAshPileRef.cpp
 	src/RE/E/ExtraCanTalkToPlayer.cpp
@@ -1624,6 +1625,7 @@ set(SOURCES
 	src/RE/M/MagicItem.cpp
 	src/RE/M/MagicTarget.cpp
 	src/RE/M/Main.cpp
+	src/RE/M/MaterialIDs.cpp
 	src/RE/M/MemoryPage.cpp
 	src/RE/M/MenuControls.cpp
 	src/RE/M/MenuEventHandler.cpp
