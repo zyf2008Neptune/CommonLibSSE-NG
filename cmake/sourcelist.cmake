@@ -369,6 +369,7 @@ set(SOURCES
 	include/RE/B/BooksRead.h
 	include/RE/B/BottomBar.h
 	include/RE/B/ButtonEvent.h
+	include/RE/B/bhkBackfaceContactListener.h
 	include/RE/B/bhkCachingShapePhantom.h
 	include/RE/B/bhkCharProxyController.h
 	include/RE/B/bhkCharacterController.h
@@ -385,6 +386,7 @@ set(SOURCES
 	include/RE/B/bhkCollisionObject.h
 	include/RE/B/bhkCompressedMeshShape.h
 	include/RE/B/bhkCompressedMeshShapeData.h
+	include/RE/B/bhkContactListener.h
 	include/RE/B/bhkEntity.h
 	include/RE/B/bhkListShape.h
 	include/RE/B/bhkMeshMaterial.h
@@ -658,6 +660,7 @@ set(SOURCES
 	include/RE/E/ExtraWeaponIdleSound.h
 	include/RE/E/ExtraWorn.h
 	include/RE/E/ExtraWornLeft.h
+	include/RE/F/FOCollisionListener.h
 	include/RE/F/FORM.h
 	include/RE/F/FORM_ENUM_STRING.h
 	include/RE/F/FactionRank.h
