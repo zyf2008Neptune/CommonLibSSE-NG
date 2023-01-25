@@ -1413,6 +1413,7 @@
 #include "RE/U/UIMessage.h"
 #include "RE/U/UIMessageQueue.h"
 #include "RE/U/UISaveLoadManager.h"
+#include "RE/U/UnlinkedTypes.h"
 #include "RE/U/UserEventEnabled.h"
 #include "RE/U/UserEvents.h"
 #include "RE/V/VATS.h"
