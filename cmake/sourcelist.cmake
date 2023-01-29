@@ -219,8 +219,6 @@ set(SOURCES
 	include/RE/B/BSGameSound.h
 	include/RE/B/BSGamepadDevice.h
 	include/RE/B/BSGeometry.h
-	include/RE/B/BSGraphicsRenderTargetManager.h
-	include/RE/B/BSGraphicsRenderTargetProperties.h
 	include/RE/B/BSHandleRefObject.h
 	include/RE/B/BSIInputDevice.h
 	include/RE/B/BSIMusicTrack.h
@@ -294,6 +292,7 @@ set(SOURCES
 	include/RE/B/BSScaleformTranslator.h
 	include/RE/B/BSScriptObjectBindPolicy.h
 	include/RE/B/BSShader.h
+	include/RE/B/BSShaderManager.h
 	include/RE/B/BSShaderMaterial.h
 	include/RE/B/BSShaderProperty.h
 	include/RE/B/BSShaderPropertyLightData.h
@@ -1197,6 +1196,8 @@ set(SOURCES
 	include/RE/R/RegisterPrefix.h
 	include/RE/R/RemoveCallbackVisitor.h
 	include/RE/R/RemoveItemFunctor.h
+	include/RE/R/RenderTargetManager.h
+	include/RE/R/RenderTargetProperties.h
 	include/RE/R/Request.h
 	include/RE/R/RunHandler.h
 	include/RE/RTTI.h
