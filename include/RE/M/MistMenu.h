@@ -85,8 +85,9 @@ namespace RE
 		std::uint8_t                    unk136;                         // 136
 		std::uint8_t                    unk137;                         // 137
 		std::uint8_t                    unk138;                         // 138 - initCameraPath?
-		std::uint8_t                    unk139;                         // 138 - cameraPath related
-		std::uint8_t                    pad13A;                         // 138
+		std::uint8_t                    unk139;                         // 139 - cameraPath related
+		bool                            buttonHeldDown;                 // 13A
+		bool                            unk13B;                         // 13B
 		std::uint32_t                   pad13C;                         // 13C
 	};
 	static_assert(sizeof(MistMenu) == 0x140);
