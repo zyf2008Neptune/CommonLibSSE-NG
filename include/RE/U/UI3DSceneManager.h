@@ -56,6 +56,13 @@ namespace RE
 			return *singleton;
 		}
 
+		void SetCameraFOV(float a_fov)
+		{
+			using func_t = decltype(&UI3DSceneManager::SetCameraFOV);
+			REL::Relocation<func_t> func{ RELOCATION_ID(51870, 52742) };
+			return func(this, a_fov);
+		}
+
 		// members
 		std::uint8_t                               pad01;               // 01
 		std::uint16_t                              pad02;               // 02
