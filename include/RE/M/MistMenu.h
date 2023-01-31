@@ -79,7 +79,7 @@ namespace RE
 		float                           angleZ;                         // 104
 		float                           unk108;                         // 108
 		float                           unk10C;                         // 10C
-		NiMatrix3                       unk110;                         // 110
+		NiMatrix3                       cameraRotate;                   // 110
 		bool                            showMist;                       // 134
 		bool                            showLoadScreen;                 // 135
 		std::uint8_t                    unk136;                         // 136
