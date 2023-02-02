@@ -327,7 +327,15 @@ namespace RE
 		}
 	}
 
-	std::int32_t Actor::GetGoldAmount()
+    float Actor::GetEquippedWeight()
+    {
+		if (equippedWeight < 0.0f) {
+			return CalcEquippedWeight();
+		}
+		return equippedWeight;
+    }
+
+    std::int32_t Actor::GetGoldAmount()
 	{
 		const auto inv = GetInventory([](TESBoundObject& a_object) -> bool {
 			return a_object.IsGold();
@@ -986,7 +994,14 @@ namespace RE
 		return func(this);
 	}
 
-	TESFaction* Actor::GetCrimeFactionImpl() const
+    float Actor::CalcEquippedWeight()
+    {
+		using func_t = decltype(&Actor::CalcEquippedWeight);
+		REL::Relocation<func_t> func{ RELOCATION_ID(37016, 38044) };
+		return func(this);
+    }
+
+    TESFaction* Actor::GetCrimeFactionImpl() const
 	{
 		if (IsCommandedActor()) {
 			return nullptr;
