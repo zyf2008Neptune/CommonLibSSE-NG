@@ -14,7 +14,7 @@ namespace RE
 
 		TES_HEAP_REDEFINE_NEW();
 
-	    ObjectRefHandle linkedDoor;  // 00
+		ObjectRefHandle linkedDoor;  // 00
 		NiPoint3        position;    // 04
 		NiPoint3        rotation;    // 10
 		std::int8_t     flags;       // 1C
