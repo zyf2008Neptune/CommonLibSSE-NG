@@ -9,7 +9,12 @@ namespace RE
 {
 	struct DoorTeleportData
 	{
-		ObjectRefHandle linkedDoor;  // 00
+		DoorTeleportData();
+		~DoorTeleportData() = default;
+
+		TES_HEAP_REDEFINE_NEW();
+
+	    ObjectRefHandle linkedDoor;  // 00
 		NiPoint3        position;    // 04
 		NiPoint3        rotation;    // 10
 		std::int8_t     flags;       // 1C
@@ -22,9 +27,11 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ExtraTeleport;
+		inline static constexpr auto VTABLE = VTABLE_ExtraTeleport;
 		inline static constexpr auto EXTRADATATYPE = ExtraDataType::kTeleport;
 
-		~ExtraTeleport() override;  // 00
+		ExtraTeleport();
+		~ExtraTeleport() override = default;  // 00
 
 		// override (BSExtraData)
 		ExtraDataType GetType() const override;                             // 01 - { return kTeleport; }

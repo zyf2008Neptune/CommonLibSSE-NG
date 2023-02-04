@@ -1553,6 +1553,7 @@ set(SOURCES
 	src/RE/E/ExtraRank.cpp
 	src/RE/E/ExtraReferenceHandle.cpp
 	src/RE/E/ExtraSoul.cpp
+	src/RE/E/ExtraTeleport.cpp
 	src/RE/E/ExtraTextDisplayData.cpp
 	src/RE/E/ExtraUniqueID.cpp
 	src/RE/F/FormTypes.cpp
