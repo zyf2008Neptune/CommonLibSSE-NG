@@ -27,7 +27,7 @@ namespace RE
 
 	bool ExtraTeleport::IsNotEqual(const BSExtraData* a_rhs) const
 	{
-        const auto rhsData = static_cast<const ExtraTeleport*>(a_rhs)->teleportData;
+		const auto rhsData = static_cast<const ExtraTeleport*>(a_rhs)->teleportData;
 		if (teleportData->linkedDoor == rhsData->linkedDoor && teleportData->position == rhsData->position && teleportData->rotation == rhsData->rotation) {
 			return teleportData->flags != rhsData->flags;
 		} else {
