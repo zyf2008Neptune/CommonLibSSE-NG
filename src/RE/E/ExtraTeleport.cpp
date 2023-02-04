@@ -1,11 +1,13 @@
 #include "RE/E/ExtraTeleport.h"
 
+#include "RE/N/NiMath.h"
+
 namespace RE
 {
 	DoorTeleportData::DoorTeleportData() :
 		linkedDoor(),
-		position(),
-		rotation(),
+		position(NI_INFINITY, NI_INFINITY, NI_INFINITY),
+		rotation(NI_INFINITY, NI_INFINITY, NI_INFINITY),
 		flags(0),
 		pad1D(0),
 		pad1E(0)
