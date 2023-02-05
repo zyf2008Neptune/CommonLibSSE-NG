@@ -213,6 +213,7 @@
 #include "RE/B/BSFaceGenKeyframe.h"
 #include "RE/B/BSFaceGenKeyframeMultiple.h"
 #include "RE/B/BSFaceGenManager.h"
+#include "RE/B/BSFaceGenModel.h"
 #include "RE/B/BSFaceGenNiNode.h"
 #include "RE/B/BSFadeNode.h"
 #include "RE/B/BSFile.h"
