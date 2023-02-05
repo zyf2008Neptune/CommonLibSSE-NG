@@ -12,6 +12,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_NiParticleSystem;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiParticleSystem;
+		inline static constexpr auto VTABLE = VTABLE_NiParticleSystem;
 
 		~NiParticleSystem() override;  // 00
 
@@ -34,6 +35,13 @@ namespace RE
 		virtual void UpdateSystem(float a_time);     // 38 - { return NiParticleSystem::Do_UpdateSystem(a_time); }
 		virtual void Do_UpdateSystem(float a_time);  // 39
 
+		void AddModifier(NiPSysModifier* a_modifier)
+		{
+			using func_t = decltype(&NiParticleSystem::AddModifier);
+			REL::Relocation<func_t> func{ RELOCATION_ID(72799, 74499) };
+			return func(this, a_modifier);
+		}
+
 		// members
 		NiTPointerList<NiPointer<NiPSysModifier>> modifierList;   // 168
 		float                                     unk180;         // 180
@@ -42,7 +50,7 @@ namespace RE
 		float                                     lastUpdate;     // 18C
 		bool                                      resetSystem;    // 190
 		bool                                      dynamicBounds;  // 191
-		bool                                      worldspace;     // 192
+		bool                                      isWorldspace;   // 192
 		std::uint8_t                              pad193;         // 192
 		std::uint32_t                             pad194;         // 194
 	};

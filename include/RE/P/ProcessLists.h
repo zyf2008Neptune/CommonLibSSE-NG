@@ -1,9 +1,9 @@
 #pragma once
 
 #include "RE/B/BSAtomic.h"
+#include "RE/B/BSContainer.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTArray.h"
-#include "RE/B/BSTEvent.h"
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/B/BSTSmartPointer.h"
@@ -36,10 +36,12 @@ namespace RE
 		static ProcessLists* GetSingleton();
 
 		void         ClearCachedFactionFightReactions() const;
+		void         ForAllActors(std::function<BSContainer::ForEachResult(Actor&)> a_callback);
 		void         ForEachHighActor(std::function<BSContainer::ForEachResult(Actor&)> a_callback);
 		void         ForEachMagicTempEffect(std::function<BSContainer::ForEachResult(BSTempEffect&)> a_callback);
 		void         ForEachModelEffect(std::function<BSContainer::ForEachResult(ModelReferenceEffect&)> a_callback);
 		void         ForEachShaderEffect(std::function<BSContainer::ForEachResult(ShaderReferenceEffect&)> a_callback);
+		float        GetSystemTimeClock();
 		std::int16_t RequestHighestDetectionLevelAgainstActor(Actor* a_actor, std::uint32_t& a_LOSCount);
 		void         StopAllMagicEffects(TESObjectREFR& a_ref);
 		void         StopCombatAndAlarmOnActor(Actor* a_actor, bool a_notAlarm);

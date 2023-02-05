@@ -24,9 +24,14 @@ namespace RE
 		void          ProcessClone(NiCloningProcess& a_cloning) override;                                                                        // 1D
 		bool          Update(float a_time, NiPSysData* a_particleData, NiPoint3* a_position, NiPoint3* a_radii, NiColorA* a_rotation) override;  // 25
 
+		static BSWindModifier* Create(const BSFixedString& a_name, float a_strength);
+
 		// members
 		float         strength;  // 30
 		std::uint32_t pad34;     // 34
+
+	private:
+		BSWindModifier* Ctor();
 	};
 	static_assert(sizeof(BSWindModifier) == 0x38);
 }

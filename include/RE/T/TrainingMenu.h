@@ -28,16 +28,16 @@ namespace RE
 		struct RUNTIME_DATA
 		{
 #define RUNTIME_DATA_CONTENT                                   \
-	void*         unk38;           /* 00 - smart ptr */        \
-	ActorValue    skill;           /* 08 */                    \
-	std::uint32_t unk44;           /* 0C */                    \
-	GFxValue      trainingMenuObj; /* 10 - MovieClip */        \
-	GFxValue      skillName;       /* 28 - TextField */        \
-	GFxValue      skillMeter;      /* 40 - Components.Meter */ \
-	GFxValue      trainerSkill;    /* 58 - TextField */        \
-	GFxValue      timesTrained;    /* 70 - TextField */        \
-	GFxValue      trainCost;       /* 88 - TextField */        \
-	GFxValue      currentGold;     /* A0 - TextField */
+	Actor*        trainer;          /* 38 - smart ptr */ \
+			ActorValue    skill;            /* 40 */ \
+			std::uint32_t unk44;            /* 44 */ \
+			GFxValue      trainingMenuObj;  /* 48 - MovieClip */ \
+			GFxValue      skillName;        /* 60 - TextField */ \
+			GFxValue      skillMeter;       /* 78 - Components.Meter */ \
+			GFxValue      trainerSkill;     /* 90 - TextField */ \
+			GFxValue      timesTrained;     /* A8 - TextField */ \
+			GFxValue      trainCost;        /* C0 - TextField */ \
+			GFxValue      currentGold;      /* D8 - TextField */
 
 			RUNTIME_DATA_CONTENT
 		};

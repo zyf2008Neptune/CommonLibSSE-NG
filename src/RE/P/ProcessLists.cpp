@@ -21,6 +21,20 @@ namespace RE
 		return func(this);
 	}
 
+	void ProcessLists::ForAllActors(std::function<BSContainer::ForEachResult(Actor&)> a_callback)
+	{
+		for (auto& list : allProcesses) {
+			if (list) {
+				for (auto& actorHandle : *list) {
+					const auto& actor = actorHandle.get();
+					if (actor && a_callback(*actor) == BSContainer::ForEachResult::kStop) {
+						return;
+					}
+				}
+			}
+		}
+	}
+
 	void ProcessLists::ForEachHighActor(std::function<BSContainer::ForEachResult(Actor&)> a_callback)
 	{
 		for (auto& highActorHandle : highActorHandles) {
@@ -65,6 +79,13 @@ namespace RE
 		});
 	}
 
+	float ProcessLists::GetSystemTimeClock()
+	{
+		using func_t = decltype(&ProcessLists::GetSystemTimeClock);
+		REL::Relocation<func_t> func{ RELOCATION_ID(40327, 41337) };
+		return func(this);
+	}
+
 	std::int16_t ProcessLists::RequestHighestDetectionLevelAgainstActor(Actor* a_actor, std::uint32_t& a_LOSCount)
 	{
 		using func_t = decltype(&ProcessLists::RequestHighestDetectionLevelAgainstActor);
@@ -74,7 +95,7 @@ namespace RE
 
 	void ProcessLists::StopAllMagicEffects(TESObjectREFR& a_ref)
 	{
-		auto handle = a_ref.CreateRefHandle();
+		const auto handle = a_ref.CreateRefHandle();
 		ForEachMagicTempEffect([&](BSTempEffect& a_tempEffect) {
 			const auto referenceEffect = a_tempEffect.As<ReferenceEffect>();
 			if (referenceEffect && referenceEffect->target == handle) {

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BSContainer.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTList.h"

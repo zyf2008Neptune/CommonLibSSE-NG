@@ -3,10 +3,16 @@
 #include "RE/I/IMenu.h"
 #include "RE/M/MenuEventHandler.h"
 #include "RE/N/NiColor.h"
+#include "RE/N/NiMatrix3.h"
 #include "RE/S/SimpleAnimationGraphManagerHolder.h"
 
 namespace RE
 {
+	class BSLightingShaderProperty;
+	class NiAVObject;
+	class NiControllerManager;
+	class NiControllerSequence;
+
 	// menuDepth = 8
 	// flags = kDisablePauseMenu | kAllowSaving | kDontHideCursorWhenTopmost
 	// context = kNone
@@ -21,6 +27,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto      RTTI = RTTI_MistMenu;
+		inline static constexpr auto      VTABLE = VTABLE_MistMenu;
 		constexpr static std::string_view MENU_NAME = "Mist Menu";
 
 		struct Colors
@@ -41,36 +48,34 @@ namespace RE
 		struct RUNTIME_DATA
 		{
 #define RUNTIME_DATA_CONTENT                                           \
-	NiColor       ambientColors[Colors::kTotal]; /* 000 */             \
-	std::uint32_t unk0A0;                        /* 048 */             \
-	std::uint32_t unk0A4;                        /* 04C */             \
-	std::uint64_t unk0A8;                        /* 050 */             \
-	void*         unk0B0;                        /* 058 - smart ptr */ \
-	void*         unk0B8;                        /* 060 */             \
-	void*         unk0C0;                        /* 068 */             \
-	void*         unk0C8;                        /* 070 - smart ptr */ \
-	void*         unk0D0;                        /* 078 - smart ptr */ \
-	void*         unk0D8;                        /* 080 - smart ptr */ \
-	void*         unk0E0;                        /* 088 - smart ptr */ \
-	std::uint64_t unk0E8;                        /* 090 */             \
-	std::uint64_t unk0F0;                        /* 098 */             \
-	std::uint64_t unk0F8;                        /* 0A0 */             \
-	std::uint32_t unk100;                        /* 0A8 */             \
-	std::uint32_t unk104;                        /* 0AC */             \
-	std::uint32_t unk108;                        /* 0B0 */             \
-	std::uint32_t unk10C;                        /* 0B4 */             \
-	float         unk110;                        /* 0B8 */             \
-	std::uint32_t unk114;                        /* 0BC */             \
-	std::uint64_t unk118;                        /* 0C0 */             \
-	float         unk120;                        /* 0C8 */             \
-	std::uint32_t unk124;                        /* 0CC */             \
-	std::uint64_t unk128;                        /* 0D0 */             \
-	float         unk130;                        /* 0D8 */             \
-	std::uint8_t  unk134;                        /* 0DC */             \
-	std::uint8_t  unk135;                        /* 0DD */             \
-	std::uint16_t unk136;                        /* 0DE */             \
-	std::uint32_t unk138;                        /* 0E0 */             \
-	std::uint32_t pad13C;                        /* 0E4 */
+	NiColor                         ambientColors[Colors::kTotal];  /* 058 */ \
+			std::uint32_t                   unk0A0;                         /* 0A0 */ \
+			std::uint32_t                   unk0A4;                         /* 0A4 */ \
+			std::uint64_t                   unk0A8;                         /* 0A8 */ \
+			NiPointer<NiNode>               mistModel;                      /* 0B0 - smart ptr */ \
+			void*                           mistModelDBHandle;              /* 0B8 */ \
+			void*                           loadScreenDBHandle;             /* 0C0 */ \
+			NiPointer<BSFadeNode>           cameraPath;                     /* 0C8 - parent of cameraPathNode */ \
+			NiPointer<NiNode>               cameraPathNode;                 /* 0D0 - smart ptr */ \
+			NiPointer<NiControllerSequence> cameraPathSequence;             /* 0D8 - smart ptr */ \
+			NiPointer<NiControllerManager>  cameraPathController;           /* 0E0 - smart ptr */ \
+			BSLightingShaderProperty*       logoShaderProperty;             /* 0E8 - default logo only */ \
+			NiPointer<BSFadeNode>           loadScreenModel;                /* 0F0 */ \
+			std::uint64_t                   unk0F8;                         /* 0F8 - imagespacedata? */ \
+			float                           cameraFOV;                      /* 100 */ \
+			float                           angleZ;                         /* 104 */ \
+			float                           unk108;                         /* 108 */ \
+			float                           unk10C;                         /* 10C */ \
+			NiMatrix3                       cameraRotate;                   /* 110 */ \
+			bool                            showMist;                       /* 134 */ \
+			bool                            showLoadScreen;                 /* 135 */ \
+			std::uint8_t                    unk136;                         /* 136 */ \
+			std::uint8_t                    unk137;                         /* 137 */ \
+			std::uint8_t                    unk138;                         /* 138 - initCameraPath? */ \
+			std::uint8_t                    unk139;                         /* 139 - cameraPath related */ \
+			bool                            leftButtonHeldDown;             /* 13A */ \
+			bool                            rightButtonHeldDown;            /* 13B */ \
+			std::uint32_t                   pad13C;                         /* 13C */
 
 			RUNTIME_DATA_CONTENT
 		};
@@ -119,6 +124,12 @@ namespace RE
 		[[nodiscard]] inline const RUNTIME_DATA& GetRuntimeData() const noexcept
 		{
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0x58, 0x68);
+		}
+
+		[[nodiscard]] static MistMenu* GetSingleton()
+		{
+			REL::Relocation<MistMenu**> singleton{ RELOCATION_ID(519827, 406370) };
+			return *singleton;
 		}
 
 		// members

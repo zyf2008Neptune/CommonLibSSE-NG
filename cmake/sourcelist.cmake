@@ -198,6 +198,7 @@ set(SOURCES
 	include/RE/B/BSBitField.h
 	include/RE/B/BSBloodSplatterShaderProperty.h
 	include/RE/B/BSBound.h
+	include/RE/B/BSContainer.h
 	include/RE/B/BSCoreTypes.h
 	include/RE/B/BSCullingProcess.h
 	include/RE/B/BSDismemberSkinInstance.h
@@ -210,6 +211,7 @@ set(SOURCES
 	include/RE/B/BSFaceGenKeyframe.h
 	include/RE/B/BSFaceGenKeyframeMultiple.h
 	include/RE/B/BSFaceGenManager.h
+    include/RE/B/BSFaceGenModel.h
 	include/RE/B/BSFaceGenModelExtraData.h
 	include/RE/B/BSFaceGenNiNode.h
 	include/RE/B/BSFadeNode.h
@@ -252,6 +254,7 @@ set(SOURCES
 	include/RE/B/BSLightingShaderMaterialParallaxOcc.h
 	include/RE/B/BSLightingShaderMaterialSnow.h
 	include/RE/B/BSLightingShaderProperty.h
+	include/RE/B/BSMasterParticleSystem.h
 	include/RE/B/BSMaterialObject.h
 	include/RE/B/BSMemStorage.h
 	include/RE/B/BSMouseDevice.h
@@ -293,9 +296,11 @@ set(SOURCES
 	include/RE/B/BSScaleformTranslator.h
 	include/RE/B/BSScriptObjectBindPolicy.h
 	include/RE/B/BSShader.h
+	include/RE/B/BSShaderManager.h
 	include/RE/B/BSShaderMaterial.h
 	include/RE/B/BSShaderProperty.h
 	include/RE/B/BSShaderPropertyLightData.h
+	include/RE/B/BSShaderRenderTargets.h
 	include/RE/B/BSShaderTextureSet.h
 	include/RE/B/BSShadowLight.h
 	include/RE/B/BSSimpleScaleController.h
@@ -337,9 +342,11 @@ set(SOURCES
 	include/RE/B/BSThreadEvent.h
 	include/RE/B/BSTimer.h
 	include/RE/B/BSTrackedControllerDevice.h
+	include/RE/B/BSTreeManager.h
 	include/RE/B/BSTriShape.h
 	include/RE/B/BSUIMessageData.h
 	include/RE/B/BSUIScaleformData.h
+	include/RE/B/BSValueNode.h
 	include/RE/B/BSVRInterface.h
 	include/RE/B/BSVirtualKeyboardDevice.h
 	include/RE/B/BSVisit.h
@@ -367,6 +374,7 @@ set(SOURCES
 	include/RE/B/BooksRead.h
 	include/RE/B/BottomBar.h
 	include/RE/B/ButtonEvent.h
+	include/RE/B/bhkBackfaceContactListener.h
 	include/RE/B/bhkCachingShapePhantom.h
 	include/RE/B/bhkCharProxyController.h
 	include/RE/B/bhkCharacterController.h
@@ -383,6 +391,7 @@ set(SOURCES
 	include/RE/B/bhkCollisionObject.h
 	include/RE/B/bhkCompressedMeshShape.h
 	include/RE/B/bhkCompressedMeshShapeData.h
+	include/RE/B/bhkContactListener.h
 	include/RE/B/bhkEntity.h
 	include/RE/B/bhkListShape.h
 	include/RE/B/bhkMeshMaterial.h
@@ -421,9 +430,20 @@ set(SOURCES
 	include/RE/C/CombatInventoryItemShout.h
 	include/RE/C/CombatInventoryItemStaff.h
 	include/RE/C/CombatMagicCaster.h
+	include/RE/C/CombatMagicCasterBoundItem.h
+	include/RE/C/CombatMagicCasterCloak.h
+	include/RE/C/CombatMagicCasterDisarm.h
+	include/RE/C/CombatMagicCasterInvisibility.h
+	include/RE/C/CombatMagicCasterLight.h
 	include/RE/C/CombatMagicCasterOffensive.h
+	include/RE/C/CombatMagicCasterParalyze.h
+	include/RE/C/CombatMagicCasterReanimate.h
 	include/RE/C/CombatMagicCasterRestore.h
+	include/RE/C/CombatMagicCasterScript.h
+	include/RE/C/CombatMagicCasterStagger.h
+	include/RE/C/CombatMagicCasterSummon.h
 	include/RE/C/CombatMagicCasterTargetEffect.h
+	include/RE/C/CombatMagicCasterWard.h
 	include/RE/C/CombatManager.h
 	include/RE/C/CombatObject.h
 	include/RE/C/CombatSearchLocation.h
@@ -645,6 +665,7 @@ set(SOURCES
 	include/RE/E/ExtraWeaponIdleSound.h
 	include/RE/E/ExtraWorn.h
 	include/RE/E/ExtraWornLeft.h
+	include/RE/F/FOCollisionListener.h
 	include/RE/F/FORM.h
 	include/RE/F/FORM_ENUM_STRING.h
 	include/RE/F/FactionRank.h
@@ -987,6 +1008,7 @@ set(SOURCES
 	include/RE/L/LocalMapCamera.h
 	include/RE/L/LocalMapMenu.h
 	include/RE/L/Location.h
+	include/RE/L/LocationCleared.h
 	include/RE/L/LocationDiscovery.h
 	include/RE/L/LocationTraverser.h
 	include/RE/L/LocationTree.h
@@ -1019,6 +1041,7 @@ set(SOURCES
 	include/RE/M/MemoryPage.h
 	include/RE/M/MenuControls.h
 	include/RE/M/MenuEventHandler.h
+	include/RE/M/MenuModeChangeEvent.h
 	include/RE/M/MenuOpenCloseEvent.h
 	include/RE/M/MenuOpenHandler.h
 	include/RE/M/MenuTopicManager.h
@@ -1081,12 +1104,14 @@ set(SOURCES
 	include/RE/N/NiMath.h
 	include/RE/N/NiMatrix3.h
 	include/RE/N/NiMemManager.h
+	include/RE/N/NiMeshParticleSystem.h
 	include/RE/N/NiMultiTargetTransformController.h
 	include/RE/N/NiNode.h
 	include/RE/N/NiObject.h
 	include/RE/N/NiObjectGroup.h
 	include/RE/N/NiObjectNET.h
 	include/RE/N/NiPSysData.h
+	include/RE/N/NiPSysGravityModifier.h
 	include/RE/N/NiPSysModifier.h
 	include/RE/N/NiParticleSystem.h
 	include/RE/N/NiParticles.h
@@ -1130,6 +1155,7 @@ set(SOURCES
 	include/RE/N/NonActorMagicTarget.h
 	include/RE/O/Object.h
 	include/RE/O/ObjectTypeInfo.h
+	include/RE/O/ObjectiveState.h
 	include/RE/O/OldMessageBoxCallback.h
 	include/RE/Offsets.h
 	include/RE/Offsets_NiRTTI.h
@@ -1160,6 +1186,7 @@ set(SOURCES
 	include/RE/P/PropertyTypeInfo.h
 	include/RE/Q/QuestEvents.h
 	include/RE/Q/QuestObjectiveStates.h
+	include/RE/Q/QuestStatus.h
 	include/RE/R/RaceSexCamera.h
 	include/RE/R/RaceSexMenu.h
 	include/RE/R/RaceSexMenuEvent.h
@@ -1176,6 +1203,8 @@ set(SOURCES
 	include/RE/R/RegisterPrefix.h
 	include/RE/R/RemoveCallbackVisitor.h
 	include/RE/R/RemoveItemFunctor.h
+	include/RE/R/RenderTargetManager.h
+	include/RE/R/RenderTargetProperties.h
 	include/RE/R/Request.h
 	include/RE/R/RunHandler.h
 	include/RE/RTTI.h
@@ -1400,6 +1429,7 @@ set(SOURCES
 	include/RE/U/UIMessageQueue.h
 	include/RE/U/UIRenderManager.h
 	include/RE/U/UISaveLoadManager.h
+	include/RE/U/UnlinkedTypes.h
 	include/RE/U/UserEventEnabled.h
 	include/RE/U/UserEvents.h
 	include/RE/V/VATS.h
@@ -1408,6 +1438,7 @@ set(SOURCES
 	include/RE/V/Variable.h
 	include/RE/V/VertexDesc.h
 	include/RE/V/VirtualMachine.h
+	include/RE/V/VoiceSpellFireHandler.h
 	include/RE/W/WeaponAnimationGraphManagerHolder.h
 	include/RE/W/WeatherType.h
 	include/RE/W/WorldSpaceMenu.h
@@ -1494,6 +1525,7 @@ set(SOURCES
 	src/RE/B/BSVisit.cpp
 	src/RE/B/BSWin32KeyboardDevice.cpp
 	src/RE/B/BSWin32SaveDataSystemUtility.cpp
+	src/RE/B/BSWindModifier.cpp
 	src/RE/B/BSXFlags.cpp
 	src/RE/B/BarterMenu.cpp
 	src/RE/B/BipedAnim.cpp
@@ -1515,6 +1547,7 @@ set(SOURCES
 	src/RE/D/DisarmedEvent.cpp
 	src/RE/D/DragonSoulsGained.cpp
 	src/RE/E/Effect.cpp
+	src/RE/E/EffectArchetypes.cpp
 	src/RE/E/Explosion.cpp
 	src/RE/E/ExtraAliasInstanceArray.cpp
 	src/RE/E/ExtraAshPileRef.cpp
@@ -1594,6 +1627,7 @@ set(SOURCES
 	src/RE/I/IObjectHandlePolicy.cpp
 	src/RE/I/IStackCallbackFunctor.cpp
 	src/RE/I/IVirtualMachine.cpp
+	src/RE/I/IngredientItem.cpp
 	src/RE/I/InputEvent.cpp
 	src/RE/I/InterfaceStrings.cpp
 	src/RE/I/Inventory.cpp
@@ -1607,6 +1641,7 @@ set(SOURCES
 	src/RE/L/LevelIncrease.cpp
 	src/RE/L/LocalMapCamera.cpp
 	src/RE/L/Location.cpp
+	src/RE/L/LocationCleared.cpp
 	src/RE/L/LocationDiscovery.cpp
 	src/RE/L/LockpickingMenu.cpp
 	src/RE/L/LooseFileStream.cpp
@@ -1614,6 +1649,7 @@ set(SOURCES
 	src/RE/M/MagicItem.cpp
 	src/RE/M/MagicTarget.cpp
 	src/RE/M/Main.cpp
+	src/RE/M/MaterialIDs.cpp
 	src/RE/M/MemoryPage.cpp
 	src/RE/M/MenuControls.cpp
 	src/RE/M/MenuEventHandler.cpp
@@ -1657,6 +1693,7 @@ set(SOURCES
 	src/RE/N/NiTransform.cpp
 	src/RE/O/Object.cpp
 	src/RE/O/ObjectTypeInfo.cpp
+	src/RE/O/ObjectiveState.cpp
 	src/RE/P/PackUnpack.cpp
 	src/RE/P/PackedInstructionStream.cpp
 	src/RE/P/PlayerCamera.cpp
@@ -1665,6 +1702,7 @@ set(SOURCES
 	src/RE/P/PlayerInputHandler.cpp
 	src/RE/P/ProcessLists.cpp
 	src/RE/P/Projectile.cpp
+	src/RE/Q/QuestStatus.cpp
 	src/RE/R/RemoveCallbackVisitor.cpp
 	src/RE/S/ScrapHeap.cpp
 	src/RE/S/Script.cpp
@@ -1717,6 +1755,7 @@ set(SOURCES
 	src/RE/U/UI.cpp
 	src/RE/U/UIBlurManager.cpp
 	src/RE/U/UIMessageQueue.cpp
+	src/RE/U/UnlinkedTypes.cpp
 	src/RE/U/UserEvents.cpp
 	src/RE/V/Variable.cpp
 	src/RE/V/VirtualMachine.cpp

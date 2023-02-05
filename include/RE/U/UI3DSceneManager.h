@@ -33,27 +33,46 @@ namespace RE
 		kTotal = 8
 	};
 
+	class MenuLight
+	{
+	public:
+		// members
+		NiColor            color;         // 00
+		NiPoint3           translate;     // 0C
+		float              radius;        // 18
+		float              fade;          // 1C
+		bool               castsShadows;  // 20
+		NiPointer<BSLight> light;         // 28
+		MenuLight*         last;          // 30
+	};
+	static_assert(sizeof(MenuLight) == 0x38);
+
 	class UI3DSceneManager : public BSTSingletonSDM<UI3DSceneManager>
 	{
 	public:
-		struct MenuLight
-		{
-		public:
-			// members
-			NiColor            color;         // 00
-			NiPoint3           translate;     // 0C
-			float              radius;        // 18
-			float              fade;          // 1C
-			bool               castsShadows;  // 20
-			NiPointer<BSLight> light;         // 28
-			MenuLight*         last;          // 30
-		};
-		static_assert(sizeof(MenuLight) == 0x38);
-
 		static UI3DSceneManager* GetSingleton()
 		{
 			REL::Relocation<UI3DSceneManager**> singleton{ RELOCATION_ID(517052, 403560) };
 			return *singleton;
+		}
+
+		void SetCameraFOV(float a_fov)
+		{
+			using func_t = decltype(&UI3DSceneManager::SetCameraFOV);
+			REL::Relocation<func_t> func{ RELOCATION_ID(51870, 52742) };
+			return func(this, a_fov);
+		}
+		void SetCameraRotate(const RE::NiMatrix3& a_rotate)
+		{
+			using func_t = decltype(&UI3DSceneManager::SetCameraRotate);
+			REL::Relocation<func_t> func{ RELOCATION_ID(51869, 52741) };
+			return func(this, a_rotate);
+		}
+		void SetCameraPosition(const RE::NiPoint3& a_pos)
+		{
+			using func_t = decltype(&UI3DSceneManager::SetCameraRotate);
+			REL::Relocation<func_t> func{ RELOCATION_ID(51867, 52739) };
+			return func(this, a_pos);
 		}
 
 		// members

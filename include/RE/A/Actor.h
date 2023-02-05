@@ -254,6 +254,17 @@ namespace RE
 			};
 		};
 
+		class ForEachSpellVisitor
+		{
+		public:
+			inline static constexpr auto RTTI = RTTI_Actor__ForEachSpellVisitor;
+
+			virtual ~ForEachSpellVisitor() = default;  // 00
+
+			// add
+			virtual BSContainer::ForEachResult Visit(SpellItem* a_spell) = 0;  // 01
+		};
+
 		~Actor() override;  // 000
 
 		// override (TESObjectREFR)
@@ -363,7 +374,7 @@ namespace RE
 		SKYRIM_REL_VR_VIRTUAL void                Unk_B4(void);                                                                                                                                                                          // 0B4
 		SKYRIM_REL_VR_VIRTUAL void                SetCrimeGoldValue(TESFaction* a_faction, bool a_violent, std::uint32_t a_amount);                                                                                                      // 0B5
 		SKYRIM_REL_VR_VIRTUAL void                ModCrimeGoldValue(TESFaction* a_faction, bool a_violent, std::int32_t a_amount);                                                                                                       // 0B6
-		SKYRIM_REL_VR_VIRTUAL void                RemoveCrimeGoldValue(TESFaction* a_faction, std::int32_t a_amount, bool a_violent);                                                                                                    // 0B7
+		SKYRIM_REL_VR_VIRTUAL void                RemoveCrimeGoldValue(TESFaction* a_faction, bool a_violent, std::int32_t a_amount);                                                                                                    // 0B7
 		[[nodiscard]] SKYRIM_REL_VR_VIRTUAL std::uint32_t GetCrimeGoldValue(const TESFaction* a_faction) const;                                                                                                                          // 0B8
 		SKYRIM_REL_VR_VIRTUAL void                        GoToPrison(TESFaction* a_faction, bool a_removeInventory, bool a_realJail);                                                                                                    // 0B9 - { return; }
 		SKYRIM_REL_VR_VIRTUAL void                        ServePrisonTime();                                                                                                                                                             // 0BA - { return; }
@@ -516,6 +527,7 @@ namespace RE
 		[[nodiscard]] const TESPackage*            GetCurrentPackage() const;
 		[[nodiscard]] InventoryEntryData*       GetEquippedEntryData(bool a_leftHand) const;
 		[[nodiscard]] TESForm*                  GetEquippedObject(bool a_leftHand) const;
+		[[nodiscard]] float                     GetEquippedWeight();
 		[[nodiscard]] std::int32_t              GetGoldAmount();
 		[[nodiscard]] ActorHandle               GetHandle();
 		[[nodiscard]] NiAVObject*               GetHeadPartObject(BGSHeadPart::HeadPartType a_type);
@@ -573,9 +585,10 @@ namespace RE
 		void                                    RemoveExtraArrows3D();
 		bool                                    RemoveSpell(SpellItem* a_spell);
 		[[nodiscard]] std::int32_t              RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);
+		void                                    SetLifeState(ACTOR_LIFE_STATE a_lifeState);
+		bool                                    SetOutfit(BGSOutfit* a_outfit, bool a_sleepOutfit);
 		void                                    SetRotationX(float a_angle);
 		void                                    SetRotationZ(float a_angle);
-		void                                    SetLifeState(ACTOR_LIFE_STATE a_lifeState);
 		void                                    StealAlarm(TESObjectREFR* a_ref, TESForm* a_object, std::int32_t a_num, std::int32_t a_total, TESForm* a_owner, bool a_allowWarning);
 		void                         StopAlarmOnActor();
 		void                                    StopInteractingQuick(bool a_unk02);
@@ -589,6 +602,7 @@ namespace RE
 		void                                    UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand);
 		void                                    VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, NiAVObject& a_obj)> a_visitor);
 		bool                                    VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor);
+		void                                    VisitSpells(ForEachSpellVisitor& a_visitor);
 		bool                                    WouldBeStealing(const TESObjectREFR* a_target) const;
 
 		struct ACTOR_RUNTIME_DATA
@@ -721,8 +735,11 @@ namespace RE
 #endif
 
 	private:
+		void        AddWornOutfit(BGSOutfit* a_outfit, bool a_forceUpdate);
 		void        CalculateCurrentVendorFaction() const;
+		float       CalcEquippedWeight();
 		TESFaction* GetCrimeFactionImpl() const;
+		void        RemoveOutfitItems(BGSOutfit* a_outfit);
 	};
 #ifndef ENABLE_SKYRIM_AE
 	static_assert(sizeof(Actor) == 0x2B0);
