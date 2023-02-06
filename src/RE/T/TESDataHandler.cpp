@@ -75,7 +75,7 @@ namespace RE
 			loadedMods
 #endif
 		) {
-			if (a_modName.size() == strlen(file->fileName) &&
+			if (file && a_modName.size() == strlen(file->fileName) &&
 				_strnicmp(file->fileName, a_modName.data(), a_modName.size()) == 0) {
 				return file;
 			}
@@ -92,7 +92,7 @@ namespace RE
 			loadedMods
 #endif
 		) {
-			if (file->compileIndex == a_index) {
+			if (file && file->compileIndex == a_index) {
 				return file;
 			}
 		}
