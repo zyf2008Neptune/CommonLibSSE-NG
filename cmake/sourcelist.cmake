@@ -212,6 +212,7 @@ set(SOURCES
 	include/RE/B/BSFaceGenKeyframe.h
 	include/RE/B/BSFaceGenKeyframeMultiple.h
 	include/RE/B/BSFaceGenManager.h
+	include/RE/B/BSFaceGenModel.h
 	include/RE/B/BSFaceGenModelExtraData.h
 	include/RE/B/BSFaceGenNiNode.h
 	include/RE/B/BSFadeNode.h
@@ -1061,6 +1062,7 @@ set(SOURCES
 	include/RE/M/MultiBoundMarkerData.h
 	include/RE/N/NativeFunction.h
 	include/RE/N/NativeFunctionBase.h
+	include/RE/N/NativeLatentFunction.h
 	include/RE/N/NavMesh.h
 	include/RE/N/NavMeshInfoMap.h
 	include/RE/N/NiAVObject.h

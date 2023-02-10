@@ -62,6 +62,18 @@ namespace RE
 			REL::Relocation<func_t> func{ RELOCATION_ID(51870, 52742) };
 			return func(this, a_fov);
 		}
+		void SetCameraRotate(const RE::NiMatrix3& a_rotate)
+		{
+			using func_t = decltype(&UI3DSceneManager::SetCameraRotate);
+			REL::Relocation<func_t> func{ RELOCATION_ID(51869, 52741) };
+			return func(this, a_rotate);
+		}
+		void SetCameraPosition(const RE::NiPoint3& a_pos)
+		{
+			using func_t = decltype(&UI3DSceneManager::SetCameraRotate);
+			REL::Relocation<func_t> func{ RELOCATION_ID(51867, 52739) };
+			return func(this, a_pos);
+		}
 
 		// members
 		std::uint8_t                               pad01;               // 01
