@@ -11,9 +11,7 @@ namespace RE
 
 	bool ConsoleLog::IsConsoleMode()
 	{
-		REL::Relocation<std::uint32_t*> tlsIndex{ Offset::TlsIndex };
-		auto                            tlsData = reinterpret_cast<TLSData**>(__readgsqword(0x58));
-		return tlsData[*tlsIndex]->consoleMode;
+		return GetStaticTLSData()->consoleMode;
 	}
 
 	void ConsoleLog::Print(const char* a_fmt, ...)

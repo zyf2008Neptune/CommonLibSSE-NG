@@ -18,4 +18,9 @@ namespace RE {
     // ... many others ...
   };
   static_assert(offsetof(TLSData, consoleMode) == 0x600);
+  inline static TLSData* GetStaticTLSData() {
+	REL::Relocation<std::uint32_t*> tlsIndex{ Offset::TlsIndex };
+	auto tlsDataArray = reinterpret_cast<TLSData**>(__readgsqword(0x58));
+	return tlsDataArray[*tlsIndex];
+  }
 }
