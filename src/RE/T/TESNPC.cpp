@@ -227,7 +227,8 @@ namespace RE
 		return false;
 	}
 
-	bool TESNPC::SetDefaultOutfit(BGSOutfit * a_outfit) {
+	bool TESNPC::SetDefaultOutfit(BGSOutfit* a_outfit)
+	{
 		defaultOutfit = a_outfit;
 		return AddChange(ChangeFlags::kDefaultOutfit);
 	}
@@ -261,7 +262,8 @@ namespace RE
 		return func(this, a_result, a_tintMask, a_fromTint);
 	}
 
-	bool TESNPC::SetSleepOutfit(BGSOutfit * a_outfit) {
+	bool TESNPC::SetSleepOutfit(BGSOutfit* a_outfit)
+	{
 		sleepOutfit = a_outfit;
 		return AddChange(ChangeFlags::kSleepOutfit);
 	}
