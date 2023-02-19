@@ -38,7 +38,7 @@ namespace RE
 			kSimpleActor = 1 << 20,
 			kLoopedScript = 1 << 21,  // ?
 			kNoActivation = 1 << 23,
-			kLoopedAudio = 1 << 28,   // ?
+			kLoopedAudio = 1 << 28,  // ?
 			kIsGhost = 1 << 29,
 			kInvulnerable = 1 << 31
 		};
@@ -111,7 +111,7 @@ namespace RE
 		[[nodiscard]] constexpr bool HasBleedoutOverride() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kBleedoutOverride); }
 		[[nodiscard]] constexpr bool HasPCLevelMult() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kPCLevelMult); }
 		[[nodiscard]] constexpr bool Respawns() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kRespawn); }
-		[[nodiscard]] constexpr bool UsesOppositeGenderAnims() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kOppositeGenderanims); }
+		[[nodiscard]] constexpr bool UsesOppositeGenderAnims() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kOppositeGenderAnims); }
 		[[nodiscard]] constexpr bool UsesTemplate() const noexcept { return actorData.actorBaseFlags.all(ACTOR_BASE_DATA::Flag::kUsesTemplate); }
 
 		[[nodiscard]] std::uint16_t GetLevel() const
