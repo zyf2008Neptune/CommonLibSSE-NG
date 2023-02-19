@@ -38,7 +38,7 @@ namespace RE
 			kSimpleActor = 1 << 20,
 			kLoopedScript = 1 << 21,  // ?
 			kNoActivation = 1 << 23,
-			kLoopedAudio = 1 << 28,   // ?
+			kLoopedAudio = 1 << 28,  // ?
 			kIsGhost = 1 << 29,
 			kInvulnerable = 1 << 31
 		};
