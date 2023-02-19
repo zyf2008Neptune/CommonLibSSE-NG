@@ -773,6 +773,21 @@ namespace RE
 		return func(this, a_target, a_priority);
 	}
 
+	bool Actor::SetDefaultOutfit(BGSOutfit* a_outfit, bool a_update3D)
+	{
+		const auto npc = GetActorBase();
+		if (!npc || !a_outfit || npc->defaultOutfit == a_outfit) {
+			return false;
+		}
+		RemoveOutfitItems(npc->defaultOutfit);
+		npc->SetDefaultOutfit(a_outfit);
+		InitInventoryIfRequired();
+		if (!IsDisabled()) {
+			AddWornOutfit(a_outfit, a_update3D);
+		}
+		return true;
+	}
+
 	void Actor::SetLifeState(ACTOR_LIFE_STATE a_lifeState)
 	{
 		using func_t = decltype(&Actor::SetLifeState);
@@ -780,30 +795,17 @@ namespace RE
 		return func(this, a_lifeState);
 	}
 
-	bool Actor::SetOutfit(BGSOutfit* a_outfit, bool a_sleepOutfit)
+	bool Actor::SetSleepOutfit(BGSOutfit* a_outfit, bool a_update3D)
 	{
-		auto npc = GetActorBase();
-		if (!npc) {
+		const auto npc = GetActorBase();
+		if (!npc || !a_outfit || npc->sleepOutfit == a_outfit) {
 			return false;
 		}
-		if (a_sleepOutfit) {
-			if (npc->sleepOutfit == a_outfit) {
-				return false;
-			}
-			RemoveOutfitItems(npc->sleepOutfit);
-			npc->sleepOutfit = a_outfit;
-			npc->AddChange(TESNPC::ChangeFlags::kSleepOutfit);
-		} else {
-			if (npc->defaultOutfit == a_outfit) {
-				return false;
-			}
-			RemoveOutfitItems(npc->defaultOutfit);
-			npc->defaultOutfit = a_outfit;
-			npc->AddChange(TESNPC::ChangeFlags::kDefaultOutfit);
-		}
+		RemoveOutfitItems(npc->sleepOutfit);
+		npc->SetSleepOutfit(a_outfit);
 		InitInventoryIfRequired();
 		if (!IsDisabled()) {
-			AddWornOutfit(a_outfit, true);
+			AddWornOutfit(a_outfit, a_update3D);
 		}
 		return true;
 	}
