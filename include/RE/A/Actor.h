@@ -488,6 +488,7 @@ namespace RE
 		void                         AddWornOutfit(BGSOutfit* a_outfit, bool a_forceUpdate);
 		void                         AllowBleedoutDialogue(bool a_canTalk);
 		void                         AllowPCDialogue(bool a_talk);
+		void                         CastPermanentMagic(bool a_wornItemEnchantments, bool a_baseSpells, bool a_raceSpells, bool a_everyActorAbility);
 		bool                         CanAttackActor(Actor* a_actor);
 		bool                         CanFlyHere() const;
 		bool                         CanOfferServices() const;

@@ -101,6 +101,13 @@ namespace RE
 		xTalk->talk = a_talk;
 	}
 
+	void Actor::CastPermanentMagic(bool a_wornItemEnchantments, bool a_baseSpells, bool a_raceSpells, bool a_everyActorAbility)
+	{
+		using func_t = decltype(&Actor::CastPermanentMagic);
+		REL::Relocation<func_t> func{ RELOCATION_ID(37804, 38753) };
+		return func(this, a_wornItemEnchantments, a_baseSpells, a_raceSpells, a_everyActorAbility);
+	}
+
 	bool Actor::CanAttackActor(Actor* a_actor)
 	{
 		using func_t = decltype(&Actor::CanAttackActor);
