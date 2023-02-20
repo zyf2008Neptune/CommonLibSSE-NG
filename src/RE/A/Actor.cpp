@@ -536,7 +536,14 @@ namespace RE
 		return func(this, a_ref, a_arg2);
 	}
 
-	bool Actor::HasPerk(BGSPerk* a_perk) const
+    bool Actor::HasOutfitItems(BGSOutfit* a_outfit)
+    {
+		using func_t = decltype(&Actor::HasOutfitItems);
+		REL::Relocation<func_t> func{ RELOCATION_ID(19265, 19691) };
+		return func(this, a_outfit);
+    }
+
+    bool Actor::HasPerk(BGSPerk* a_perk) const
 	{
 		using func_t = decltype(&Actor::HasPerk);
 		REL::Relocation<func_t> func{ Offset::Actor::HasPerk };

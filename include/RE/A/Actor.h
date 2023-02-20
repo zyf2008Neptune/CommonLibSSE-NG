@@ -540,6 +540,7 @@ namespace RE
 		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID);
 		bool                         HasKeywordString(std::string_view a_formEditorID);
 		bool                         HasLineOfSight(TESObjectREFR* a_ref, bool& a_arg2);
+		bool                         HasOutfitItems(BGSOutfit* a_outfit);
 		bool                         HasPerk(BGSPerk* a_perk) const;
 		bool                         HasSpell(SpellItem* a_spell) const;
 		void                         InterruptCast(bool a_restoreMagicka) const;
