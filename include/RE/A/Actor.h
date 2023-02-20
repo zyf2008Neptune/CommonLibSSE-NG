@@ -485,6 +485,7 @@ namespace RE
 		bool                         AddAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
 		bool                         AddSpell(SpellItem* a_spell);
 		void                         AddToFaction(TESFaction* a_faction, std::int8_t a_rank);
+		void                         AddWornOutfit(BGSOutfit* a_outfit, bool a_forceUpdate);
 		void                         AllowBleedoutDialogue(bool a_canTalk);
 		void                         AllowPCDialogue(bool a_talk);
 		bool                         CanAttackActor(Actor* a_actor);
@@ -657,7 +658,6 @@ namespace RE
 		WinAPI::CRITICAL_SECTION                              unk288;                             // 288 - havok related
 
 	private:
-		void        AddWornOutfit(BGSOutfit* a_outfit, bool a_forceUpdate);
 		void        CalculateCurrentVendorFaction() const;
 		float       CalcEquippedWeight();
 		TESFaction* GetCrimeFactionImpl() const;
