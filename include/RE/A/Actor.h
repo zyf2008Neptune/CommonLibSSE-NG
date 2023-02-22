@@ -574,6 +574,7 @@ namespace RE
 		void                         KillImmediate();
 		void                         RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
 		void                         RemoveExtraArrows3D();
+		void                         RemoveOutfitItems(BGSOutfit* a_outfit);
 		bool                         RemoveSpell(SpellItem* a_spell);
 		std::int32_t                 RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);
 		bool                         SetDefaultOutfit(BGSOutfit* a_outfit, bool a_update3D);
@@ -663,7 +664,6 @@ namespace RE
 		void        CalculateCurrentVendorFaction() const;
 		float       CalcEquippedWeight();
 		TESFaction* GetCrimeFactionImpl() const;
-		void        RemoveOutfitItems(BGSOutfit* a_outfit);
 	};
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(Actor) == 0x2B0);
