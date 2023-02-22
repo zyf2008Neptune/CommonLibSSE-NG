@@ -56,7 +56,14 @@ namespace RE
 		return func(this, a_activator, a_arg2, a_object, a_count, a_defaultProcessingOnly);
 	}
 
-	ObjectRefHandle TESObjectREFR::CreateRefHandle()
+    bool TESObjectREFR::CanBeMoved()
+    {
+		using func_t = decltype(&TESObjectREFR::CanBeMoved);
+		REL::Relocation<func_t> func{ RELOCATION_ID(19244, 19670) };
+		return func(this);
+    }
+
+    ObjectRefHandle TESObjectREFR::CreateRefHandle()
 	{
 		return GetHandle();
 	}
@@ -677,7 +684,12 @@ namespace RE
 		return IsCrimeToActivate();
 	}
 
-	float TESObjectREFR::IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell) const
+    bool TESObjectREFR::IsPersistent() const
+    {
+		return (GetFormFlags() & RecordFlags::kPersistent) != 0;
+    }
+
+    float TESObjectREFR::IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell) const
 	{
 		auto waterHeight = !a_cell || a_cell == parentCell ? GetWaterHeight() : a_cell->GetExteriorWaterHeight();
 
