@@ -582,7 +582,10 @@ namespace RE
 		std::uint64_t                                        unk6A8[0x65];                          // 6A8
 		BSTHashMap<const TESFaction*, CrimeGoldStruct>       crimeGoldMap;                          // 9D0
 		BSTHashMap<const TESFaction*, StolenItemValueStruct> stolenItemValueMap;                    // A00
-		std::uint64_t                                        unkA30[0xe];                           // A30
+		std::uint64_t                                        unkA30[0x7];                           // A30
+		NiPoint3                                             lastKnownGoodPosition;                 // A68
+		NiPoint3                                             bulletAutoAim;                         // A74 - Guessed from 12D3, confirmed is NiPoint3
+		std::uint64_t                                        unkA80[0x4];                           // A80
 		BSTArray<PerkRankData*>                              addedPerks;                            // AA0 these 3 here gotta be fixed - guessed based on ae8
 		BSTArray<BGSPerk*>                                   perks;                                 // AB8 guess
 		BSTArray<BGSPerk*>                                   standingStonePerks;                    // AD0 guess
@@ -594,10 +597,18 @@ namespace RE
 		std::uint64_t                                        unkB98;                                // B98
 		std::uint64_t                                        unkBA0;                                // BA0
 		std::uint64_t                                        unkBA8;                                // BA8
-		std::uint64_t                                        unkBB0[0x25];                          // BB0
+		std::uint64_t                                        unkBB0[0xD];                           // BB0
+		TESWorldSpace*                                       cachedWorldSpace;                      // C18
+		NiPoint3                                             exteriorPosition;                      // C20
+		std::uint32_t                                        unkC2C;                                // C2C
+		std::uint64_t                                        unkC20[0x15];                          // C30
 		std::uint64_t                                        imageSpaceModifierAnims1;              // CD8 - Wrong Datatype from Below
 		std::uint64_t                                        imageSpaceModifierAnims2;              // CE0 - Wrong Datatype from below
-		std::uint64_t                                        unkCE8[0x34];                          // CE8
+		std::uint64_t                                        unkCE8[0x5];                           // CE8
+		TESFaction*                                          currentPrisonFaction;                  // D10
+		std::int32_t                                         jailSentence;                          // D18
+		std::int32_t                                         unkD1C;                                // D18
+		std::uint64_t                                        unkD20[0x2D];                          // D20
 		std::uint32_t                                        padE90;                                // E88
 		ActorHandle                                          actorDoingPlayerCommand;               // E8C
 		std::uint64_t                                        unkE90;                                // E90
@@ -656,7 +667,9 @@ namespace RE
 		float                                         chaseTimer;                                   // 1114
 		float                                         drawSheatheSafetyTimer;                       // 1118
 		std::uint32_t                                 unk111C;                                      // 111C
-		std::uint64_t                                 unk1120[0x1A];                                // 1120
+		std::uint64_t                                 unk1120[0x15];                                // 1120
+		BGSLocation*                                  currentLocation;                              // 11C8
+		std::uint64_t                                 unk11D0[0x4];                                 // 11D0
 		std::uint32_t                                 unk11F0;                                      // 11F0
 		std::int32_t                                  difficulty;                                   // 11F4
 		std::uint32_t                                 unkAFC;                                       // 11F8
@@ -673,7 +686,8 @@ namespace RE
 		std::uint64_t                                 unk1240[0x12];                                // 1240
 		std::uint8_t                                  pad12D0;                                      // 12D0
 		std::uint8_t                                  flags;                                        // 12D1  -- TODO MAP THESE FLAGS OUT
-		std::uint16_t                                 pad12D2;                                      // 12D2
+		std::uint8_t                                  pad12D2;                                      // 12D2
+		stl::enumeration<FlagBDB, std::uint8_t>       unk12D3;                                      // 12D3 - Guessed from address SkyrimVR.exe+6F68E0+A03 vs SkyrimSE.exe+6CFEF0+8F8
 		std::uint32_t                                 unk12D4;                                      // 12D4
 #endif
 
