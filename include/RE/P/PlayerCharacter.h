@@ -614,8 +614,11 @@ namespace RE
 		BSTArray<BGSPerk*>                                   perks;                                 // AB8 guess
 		BSTArray<BGSPerk*>                                   standingStonePerks;                    // AD0 guess
 		BSTArray<ObjectRefHandle>                            currentMapMarkers;                     // AE8 confirmed
-		std::uint64_t                                        unkB00[0x10];                          // B00
-		std::uint64_t                                        unkB80;                                // B80
+		BSTArray<BSTTuple<NiPoint3, AITimeStamp>>            velocityArray;                         // B00
+		BSTArray<ProjectileHandle>                           runesCast;                             // B18
+		std::uint64_t                                        unkB20[0x6];                           // B20
+		BSSimpleList<TESQuestStageItem*>                     questLog;                              // B60
+		BSTArray<BGSInstancedQuestObjective>                 objectives;                            // B70
 		std::uint64_t                                        unkMessageArrayPtr;                    // B88
 		std::uint64_t                                        unkB90;                                // B90
 		std::uint64_t                                        unkB98;                                // B98
@@ -632,8 +635,10 @@ namespace RE
 		TESFaction*                                          currentPrisonFaction;                  // D10
 		std::int32_t                                         jailSentence;                          // D18
 		std::int32_t                                         unkD1C;                                // D18
-		std::uint64_t                                        unkD20[0x2D];                          // D20
-		std::uint32_t                                        padE90;                                // E88
+		std::uint64_t                                        unkD20[0x16];                          // D20
+		std::uint32_t                                        unkDD0;                                // DD0
+		PlayerActionObject                                   playerActionObjects[0xF];              // DD4
+		PLAYER_ACTION                                        mostRecentAction;                      // E88
 		ActorHandle                                          actorDoingPlayerCommand;               // E8C
 		std::uint64_t                                        unkE90;                                // E90
 		VRGrabData                                           grabbedObjectData[0x2];                // E98 - Minimal 0x2, may be 0x3? 0x68 size confirmed
