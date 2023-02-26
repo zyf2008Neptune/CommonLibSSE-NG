@@ -13,7 +13,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_BGSLoadFormBuffer;
 		inline static constexpr auto VTABLE = VTABLE_BGSLoadFormBuffer;
 
-		virtual ~BGSLoadGameBuffer() override;
+        ~BGSLoadFormBuffer() override;
 
 		// override (BGSLoadGameBuffer)
 		std::uint8_t GetVersion(void) override;  // 01 - { return version; }
