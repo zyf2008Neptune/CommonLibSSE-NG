@@ -304,7 +304,7 @@ namespace RE
 	auto TESObjectREFR::GetInventory()
 		-> InventoryItemMap
 	{
-		return GetInventory([](TESBoundObject&) { return true; }, false);
+		return GetInventory(DEFAULT_INVENTORY_FILTER, false);
 	}
 
 	auto TESObjectREFR::GetInventory(std::function<bool(TESBoundObject&)> a_filter, bool no_init)
@@ -363,7 +363,7 @@ namespace RE
 
 	std::int32_t TESObjectREFR::GetInventoryCount(bool no_init)
 	{
-		auto         counts = GetInventoryCounts([](TESBoundObject&) { return true; }, no_init);
+		auto         counts = GetInventoryCounts(DEFAULT_INVENTORY_FILTER, no_init);
 		std::int32_t total = 0;
 		for (auto& elem : counts) {
 			total += elem.second;
@@ -374,7 +374,7 @@ namespace RE
 	auto TESObjectREFR::GetInventoryCounts()
 		-> InventoryCountMap
 	{
-		return GetInventoryCounts([](TESBoundObject&) { return true; }, false);
+		return GetInventoryCounts(DEFAULT_INVENTORY_FILTER, false);
 	}
 
 	auto TESObjectREFR::GetInventoryCounts(std::function<bool(TESBoundObject&)> a_filter, bool no_init)

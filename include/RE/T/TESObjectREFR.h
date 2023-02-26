@@ -450,6 +450,8 @@ namespace RE
 		void                                    SetPosition(float a_x, float a_y, float a_z);
 		void                                    SetPosition(NiPoint3 a_pos);
 
+		static inline constexpr auto DEFAULT_INVENTORY_FILTER = [](TESBoundObject&) { return true; };
+
 		// members
 		OBJ_REFR         data;          // 40
 		TESObjectCELL*   parentCell;    // 60
