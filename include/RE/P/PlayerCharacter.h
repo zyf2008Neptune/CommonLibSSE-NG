@@ -197,6 +197,23 @@ namespace RE
 			kEverModded = 1 << 3,
 			kServingJailTime = 1 << 4
 		};
+		struct VRGrabData
+		{
+		public:
+			// members
+			BSTSmallArray<hkRefPtr<bhkMouseSpringAction>, 4> grabSpring;        // 00
+			ObjectRefHandle                                  grabbedObject;     // 30 - Used for LookupReferenceByHandle
+			float                                            grabObjectWeight;  // 34
+			std::uint32_t                                    unk38;             // 38 - Is 2 during telekinesis
+			float                                            grabDistance;      // 3C
+			std::uint64_t                                    unk40;             // 40
+			std::uint64_t                                    unk48;             // 48
+			std::uint64_t                                    unk50;             // 50
+			std::uint64_t                                    unk58;             // 58
+			std::uint32_t                                    unk60;             // 60
+			std::uint32_t                                    unk64;             // 64
+		};
+		static_assert(sizeof(VRGrabData) == 0x68);
 
 		struct Data928
 		{
@@ -579,13 +596,20 @@ namespace RE
 		std::uint64_t                                        unk690;                                // 690
 		std::uint64_t                                        unk698;                                // 698
 		std::uint64_t                                        unk6A0;                                // 6A0
-		std::uint64_t                                        unk6A8[0x65];                          // 6A8
+		std::uint64_t                                        unk6A8[0x5];                           // 6A8
+		std::uint32_t                                        unk6D0;                                // 6D0
+		std::uint32_t                                        isRightHandMainHand;                   // 6D4 - Determined from Settings->VR->MainHand setting
+		std::uint32_t                                        isLeftHandMainHand;                    // 6D8 - Determined from Settings->VR->MainHand setting
+		std::uint32_t                                        unk6DC;                                // 6DC
+		std::uint64_t                                        unk6F0[0x5E];                          // 6F0
 		BSTHashMap<const TESFaction*, CrimeGoldStruct>       crimeGoldMap;                          // 9D0
 		BSTHashMap<const TESFaction*, StolenItemValueStruct> stolenItemValueMap;                    // A00
 		std::uint64_t                                        unkA30[0x7];                           // A30
 		NiPoint3                                             lastKnownGoodPosition;                 // A68
 		NiPoint3                                             bulletAutoAim;                         // A74 - Guessed from 12D3, confirmed is NiPoint3
-		std::uint64_t                                        unkA80[0x4];                           // A80
+		NiPoint3                                             cachedVelocity;                        // A80
+		std::uint32_t                                        unkA8C;                                // A8C
+		std::uint64_t                                        unkA80[0x2];                           // A90
 		BSTArray<PerkRankData*>                              addedPerks;                            // AA0 these 3 here gotta be fixed - guessed based on ae8
 		BSTArray<BGSPerk*>                                   perks;                                 // AB8 guess
 		BSTArray<BGSPerk*>                                   standingStonePerks;                    // AD0 guess
@@ -612,9 +636,10 @@ namespace RE
 		std::uint32_t                                        padE90;                                // E88
 		ActorHandle                                          actorDoingPlayerCommand;               // E8C
 		std::uint64_t                                        unkE90;                                // E90
-		std::uint64_t                                        unkE98[0x27];                          // E98
+		VRGrabData                                           grabbedObjectData[0x2];                // E98 - Minimal 0x2, may be 0x3? 0x68 size confirmed
+		std::uint64_t                                        unkF00[0xD];                           // F00 - Maybe part of VRGrabData array?
 																									//		BSTSmallArray<hkRefPtr<bhkMouseSpringAction>, 4>		grabSpring;                                   // F00    // not used in vr as far as i can tell   F08??????
-		float                                         grabDistance;                                 // FD0
+		float                                         unkFD0;                                       // FD0 - Not grabDistance as expected in SE
 		float                                         unkFloatFD4;                                  // FD4
 		std::uint64_t                                 unkFD8;                                       // FD8
 		std::uint32_t                                 sleepSeconds;                                 // FE0
@@ -669,7 +694,9 @@ namespace RE
 		std::uint32_t                                 unk111C;                                      // 111C
 		std::uint64_t                                 unk1120[0x15];                                // 1120
 		BGSLocation*                                  currentLocation;                              // 11C8
-		std::uint64_t                                 unk11D0[0x4];                                 // 11D0
+		AITimeStamp                                   cachedVelocityTimeStamp;                      // 11D0
+		float                                         telekinesisDistance;                          // 11D4
+		std::uint64_t                                 unk11D8[0x3];                                 // 11D8
 		std::uint32_t                                 unk11F0;                                      // 11F0
 		std::int32_t                                  difficulty;                                   // 11F4
 		std::uint32_t                                 unkAFC;                                       // 11F8
@@ -677,7 +704,7 @@ namespace RE
 		std::int8_t                                   perkCount;                                    // 11FD
 		stl::enumeration<ByCharGenFlag, std::uint8_t> byCharGenFlag;                                // 11FE
 		std::uint8_t                                  padB03;                                       // 11FF
-		std::uint64_t                                 unk1200;                                      // 1200
+		Crime*                                        resistArrestCrime;                            // 1200
 		BSTArray<TintMask*>                           tintMasks;                                    // 1208
 		BSTArray<TintMask*>*                          overlayTintMasks;                             // 1220
 		BGSTextureSet*                                complexion;                                   // 1228
