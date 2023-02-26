@@ -520,7 +520,7 @@ namespace RE
 		InventoryEntryData*          GetEquippedEntryData(bool a_leftHand) const;
 		TESForm*                     GetEquippedObject(bool a_leftHand) const;
 		float                        GetEquippedWeight();
-		std::int32_t                 GetGoldAmount(bool no_init = false);
+		std::int32_t                 GetGoldAmount(bool a_noInit = false);
 		ActorHandle                  GetHandle();
 		[[nodiscard]] NiAVObject*    GetHeadPartObject(BGSHeadPart::HeadPartType a_type);
 		float                        GetHeight();
@@ -532,13 +532,13 @@ namespace RE
 		TESRace*                     GetRace() const;
 		bool                         GetRider(NiPointer<Actor>& a_outRider);
 		[[nodiscard]] TESObjectARMO* GetSkin() const;
-		[[nodiscard]] TESObjectARMO* GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot, bool no_init = false);
+		[[nodiscard]] TESObjectARMO* GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot, bool a_noInit = false);
 		[[nodiscard]] SOUL_LEVEL     GetSoulSize() const;
 		TESFaction*                  GetVendorFaction();
 		const TESFaction*            GetVendorFaction() const;
 		float                        GetWarmthRating() const;
-		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot, bool no_init = false);
-		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID, bool no_init = false);
+		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot, bool a_noInit = false);
+		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID, bool a_noInit = false);
 		bool                         HasKeywordString(std::string_view a_formEditorID);
 		bool                         HasLineOfSight(TESObjectREFR* a_ref, bool& a_arg2);
 		bool                         HasOutfitItems(BGSOutfit* a_outfit);
