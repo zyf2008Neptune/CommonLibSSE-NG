@@ -386,11 +386,11 @@ namespace RE
 		float                                   GetHeadingAngle(const RE::NiPoint3& a_pos, bool a_abs);
 		float                                   GetHeight() const;
 		InventoryItemMap                        GetInventory();
-		InventoryItemMap                        GetInventory(std::function<bool(TESBoundObject&)> a_filter);
-		std::int32_t                            GetInventoryCount();
+		InventoryItemMap                        GetInventory(std::function<bool(TESBoundObject&)> a_filter, bool no_init = false);
+		std::int32_t                            GetInventoryCount(bool no_init = false);
 		InventoryCountMap                       GetInventoryCounts();
-		InventoryCountMap                       GetInventoryCounts(std::function<bool(TESBoundObject&)> a_filter);
-		InventoryChanges*                       GetInventoryChanges();
+		InventoryCountMap                       GetInventoryCounts(std::function<bool(TESBoundObject&)> a_filter, bool no_init = false);
+		InventoryChanges*                       GetInventoryChanges(bool no_init = false);
 		TESObjectREFR*                          GetLinkedRef(BGSKeyword* a_keyword);
 		REFR_LOCK*                              GetLock() const;
 		LOCK_LEVEL                              GetLockLevel() const;
@@ -449,6 +449,8 @@ namespace RE
 		bool                                    SetMotionType(MotionType a_motionType, bool a_allowActivate = true);
 		void                                    SetPosition(float a_x, float a_y, float a_z);
 		void                                    SetPosition(NiPoint3 a_pos);
+
+		static inline constexpr auto DEFAULT_INVENTORY_FILTER = [](TESBoundObject&) { return true; };
 
 		// members
 		OBJ_REFR         data;          // 40
