@@ -500,7 +500,8 @@ namespace RE
 	{
 		const auto inv = GetInventory([](TESBoundObject& a_object) {
 			return a_object.IsArmor();
-		}, no_init);
+		},
+			no_init);
 
 		for (const auto& [item, invData] : inv) {
 			const auto& [count, entry] = invData;
@@ -519,7 +520,8 @@ namespace RE
 	{
 		const auto inv = GetInventory([=](TESBoundObject& a_object) {
 			return a_object.IsArmor() && a_object.GetFormID() == a_formID;
-		}, no_init);
+		},
+			no_init);
 
 		for (const auto& [item, invData] : inv) {
 			const auto& [count, entry] = invData;
