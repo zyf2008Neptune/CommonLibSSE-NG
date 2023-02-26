@@ -9,10 +9,10 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSLoadFormData;
 
-	    enum class Flags
+		enum class Flags
 		{
 			kSkipForm = 1 << 0,
-		    kFormPending = 1 << 1,
+			kFormPending = 1 << 1,
 			kRevertOnly = 1 << 2,
 			kConstructedForm = 1 << 3,
 			kCellChanged = 1 << 4,

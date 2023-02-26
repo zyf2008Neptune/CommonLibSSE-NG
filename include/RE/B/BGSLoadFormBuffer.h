@@ -6,8 +6,8 @@
 namespace RE
 {
 	class BGSLoadFormBuffer :
-		public BGSLoadGameBuffer, // 00
-		public BGSLoadFormData // 28
+		public BGSLoadGameBuffer,  // 00
+		public BGSLoadFormData     // 28
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSLoadFormBuffer;

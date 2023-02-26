@@ -112,6 +112,7 @@ set(SOURCES
 	include/RE/B/BGSLensFlare.h
 	include/RE/B/BGSLightingTemplate.h
 	include/RE/B/BGSListForm.h
+	include/RE/B/BGSLoadFormBuffer.h
 	include/RE/B/BGSLoadFormData.h
 	include/RE/B/BGSLoadGameBuffer.h
 	include/RE/B/BGSLoadGameSubBuffer.h
