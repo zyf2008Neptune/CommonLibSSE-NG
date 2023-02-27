@@ -255,7 +255,7 @@ namespace RE
 
 		float aimPitchCurrent;
 		GetGraphVariableFloat(FixedStrings::GetSingleton()->aimPitchCurrent, aimPitchCurrent);
-	    return -aimPitchCurrent;
+		return -aimPitchCurrent;
 	}
 
 	float Actor::GetAimHeading() const
@@ -265,7 +265,7 @@ namespace RE
 		float aimHeadingCurrent{ 0.0f };
 		GetGraphVariableFloat(FixedStrings::GetSingleton()->aimHeadingCurrent, aimHeadingCurrent);
 
-	    return heading - aimHeadingCurrent;
+		return heading - aimHeadingCurrent;
 	}
 
 	InventoryEntryData* Actor::GetAttackingWeapon()

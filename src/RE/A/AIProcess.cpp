@@ -62,7 +62,7 @@ namespace RE
 	}
 
 	NiAVObject* AIProcess::GetMagicNode(const BSTSmartPointer<BipedAnim>& a_biped) const
-    {
+	{
 		if (middleHigh && a_biped) {
 			return a_biped->root->GetObjectByName(FixedStrings::GetSingleton()->npcRMagicNode);
 		}
@@ -70,7 +70,7 @@ namespace RE
 	}
 
 	NiAVObject* AIProcess::GetWeaponNode(const BSTSmartPointer<BipedAnim>& a_biped) const
-    {
+	{
 		if (middleHigh) {
 			if (a_biped) {
 				return a_biped->root->GetObjectByName(FixedStrings::GetSingleton()->weapon);

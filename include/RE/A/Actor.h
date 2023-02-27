@@ -509,7 +509,7 @@ namespace RE
 		const TESNPC*                GetActorBase() const;
 		float                        GetActorValueModifier(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_value) const;
 		float                        GetAimAngle() const;
-	    float                        GetAimHeading() const;
+		float                        GetAimHeading() const;
 		InventoryEntryData*          GetAttackingWeapon();
 		const InventoryEntryData*    GetAttackingWeapon() const;
 		bhkCharacterController*      GetCharController() const;
