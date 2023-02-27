@@ -55,23 +55,27 @@ namespace RE
 
 		struct ProjectileRot
 		{
-			float x, z;
+		public:
+			// members
+			float x;
+			float z;
 		};
+		static_assert(sizeof(ProjectileRot) == 0x08);
 
 		struct LaunchData
 		{
+		public:
 			inline static constexpr auto RTTI = RTTI_Projectile__LaunchData;
 			inline static constexpr auto VTABLE = VTABLE_Projectile__LaunchData;
 
-			LaunchData(RE::BGSProjectile* a_bproj, RE::Actor* a_shooter, const NiPoint3& a_origin, const ProjectileRot& a_angles);
-			LaunchData(Actor*   a_shooter,
-				const NiPoint3& a_origin, const ProjectileRot& a_angles, MagicItem* a_spell);
-			LaunchData(RE::Actor*   a_shooter,
-				const RE::NiPoint3& a_origin, const ProjectileRot& a_angles, RE::TESAmmo* a_ammo,
-				RE::TESObjectWEAP* a_weap);
+			virtual ~LaunchData() = default;
+
+			LaunchData() = default;
+			LaunchData(BGSProjectile* a_bproj, Actor* a_shooter, const NiPoint3& a_origin, const ProjectileRot& a_angles);
+			LaunchData(Actor* a_shooter, const NiPoint3& a_origin, const ProjectileRot& a_angles, MagicItem* a_spell);
+			LaunchData(Actor* a_shooter, const NiPoint3& a_origin, const ProjectileRot& a_angles, TESAmmo* a_ammo, TESObjectWEAP* a_weap);
 
 			// members
-			void*                      vftable;                // 00 -- removed dtor since the class is trivially destructible
 			NiPoint3                   origin;                 // 08
 			NiPoint3                   contactNormal;          // 14
 			BGSProjectile*             projectileBase;         // 20
@@ -219,14 +223,15 @@ namespace RE
 		virtual void          Handle3DLoaded();                                                                                                                                                  // C0 - { return; }
 		virtual bool          ShouldUseDesiredTarget();                                                                                                                                          // C1 - { return 0; }
 
-		float GetHeight() const;
-		float GetSpeed() const;
+		BGSProjectile* GetProjectileBase() const;
+		float          GetHeight() const;
+		float          GetSpeed() const;
 
-		static RE::ProjectileHandle* Launch(RE::ProjectileHandle* a_result, LaunchData& a_data) noexcept;
-		static RE::ProjectileHandle* LaunchSpell(RE::ProjectileHandle* a_result, Actor* a_shooter, SpellItem* a_spell, const NiPoint3& a_origin, const ProjectileRot& a_angles) noexcept;
-		static RE::ProjectileHandle* LaunchSpell(RE::ProjectileHandle* a_result, Actor* a_shooter, SpellItem* a_spell, MagicSystem::CastingSource a_source) noexcept;
-		static RE::ProjectileHandle* LaunchArrow(RE::ProjectileHandle* a_result, Actor* a_shooter, TESAmmo* a_ammo, TESObjectWEAP* a_weap, const NiPoint3& a_origin, const ProjectileRot& a_angles) noexcept;
-		static RE::ProjectileHandle* LaunchArrow(RE::ProjectileHandle* a_result, Actor* a_shooter, TESAmmo* a_ammo, TESObjectWEAP* a_weap) noexcept;
+		static ProjectileHandle* Launch(ProjectileHandle* a_result, LaunchData& a_data) noexcept;
+		static ProjectileHandle* LaunchSpell(ProjectileHandle* a_result, Actor* a_shooter, SpellItem* a_spell, const NiPoint3& a_origin, const ProjectileRot& a_angles) noexcept;
+		static ProjectileHandle* LaunchSpell(ProjectileHandle* a_result, Actor* a_shooter, SpellItem* a_spell, MagicSystem::CastingSource a_source) noexcept;
+		static ProjectileHandle* LaunchArrow(ProjectileHandle* a_result, Actor* a_shooter, TESAmmo* a_ammo, TESObjectWEAP* a_weap, const NiPoint3& a_origin, const ProjectileRot& a_angles) noexcept;
+		static ProjectileHandle* LaunchArrow(ProjectileHandle* a_result, Actor* a_shooter, TESAmmo* a_ammo, TESObjectWEAP* a_weap) noexcept;
 
 		// members
 		BSSimpleList<ImpactData*>              impacts;            // 098

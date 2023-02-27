@@ -350,7 +350,7 @@ namespace RE
 		virtual bool                              ApplyCurrent(float a_velocityTime, const hkVector4& a_velocity);                                                                                                                                             // 9D - { return 0; }
 		virtual TESAmmo*                          GetCurrentAmmo() const;                                                                                                                                                                                      // 9E - { return 0; }
 		virtual BGSDecalGroup*                    GetDecalGroup() const;                                                                                                                                                                                       // 9F
-		virtual bool                              Unk_A0(NiAVObject* a_node, float* a_angleX, float* a_angleZ, NiPoint3* a_pos) const;                                                                                                                         // A0
+		virtual bool                              Unk_A0(NiAVObject* a_node, float& a_angleX, float& a_angleZ, NiPoint3& a_pos) const;                                                                                                                         // A0
 		virtual void                              UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object);                                                                                                                                                 // A1 - { return; }
 
 		static NiPointer<TESObjectREFR> LookupByHandle(RefHandle a_refHandle);
