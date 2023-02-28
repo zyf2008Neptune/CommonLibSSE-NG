@@ -82,7 +82,7 @@ namespace RE
 
 	MagicItem::MagicItemDataCollector::MagicItemDataCollector(const MagicItem* a_mitem)
 	{
-		using func_t = void (MagicItemDataCollector* a, const MagicItem* a_mitem);
+		using func_t = void(MagicItemDataCollector * a, const MagicItem* a_mitem);
 		REL::Relocation<func_t> func{ RELOCATION_ID(33407, 0) };  // I do not know for AE
 		func(this, a_mitem);
 	}
