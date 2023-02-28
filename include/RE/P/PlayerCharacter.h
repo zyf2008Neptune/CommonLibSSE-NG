@@ -278,6 +278,9 @@ namespace RE
 
 		~PlayerCharacter() override;  // 000
 
+		// override
+		void RemoveWeapon(BIPED_OBJECT equipIndex) override;  // 082
+
 		// add
 		virtual void          Unk_12A(void);                                                   // 12A
 		virtual std::uint32_t GetViolentCrimeGoldValue(const TESFaction* a_faction) const;     // 12B
