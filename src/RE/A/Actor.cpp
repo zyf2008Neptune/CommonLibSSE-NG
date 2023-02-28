@@ -11,6 +11,7 @@
 #include "RE/B/bhkCharacterController.h"
 #include "RE/E/ExtraCanTalkToPlayer.h"
 #include "RE/E/ExtraFactionChanges.h"
+#include "RE/F/FixedStrings.h"
 #include "RE/F/FormTraits.h"
 #include "RE/H/HighProcessData.h"
 #include "RE/I/InventoryEntryData.h"
@@ -242,6 +243,29 @@ namespace RE
 		using func_t = decltype(&Actor::GetActorValueModifier);
 		REL::Relocation<func_t> func{ RELOCATION_ID(37524, 38469) };
 		return func(this, a_modifier, a_value);
+	}
+
+	float Actor::GetAimAngle() const
+	{
+		bool aimActive{ false };
+		GetGraphVariableBool(FixedStrings::GetSingleton()->bAimActive, aimActive);
+		if (!aimActive) {
+			return GetAngleX();
+		}
+
+		float aimPitchCurrent;
+		GetGraphVariableFloat(FixedStrings::GetSingleton()->aimPitchCurrent, aimPitchCurrent);
+		return -aimPitchCurrent;
+	}
+
+	float Actor::GetAimHeading() const
+	{
+		const float heading = GetHeading(false);
+
+		float aimHeadingCurrent{ 0.0f };
+		GetGraphVariableFloat(FixedStrings::GetSingleton()->aimHeadingCurrent, aimHeadingCurrent);
+
+		return heading - aimHeadingCurrent;
 	}
 
 	InventoryEntryData* Actor::GetAttackingWeapon()

@@ -236,6 +236,7 @@ namespace RE
 		[[nodiscard]] float         GetMinRange() const;
 		[[nodiscard]] float         GetMaxRange() const;
 		[[nodiscard]] std::uint16_t GetCritDamage() const;
+		NiAVObject*                 GetFireNode(NiAVObject* a_root) const;
 		void                        GetNodeName(char* a_dstBuff) const;
 		[[nodiscard]] WEAPON_TYPE   GetWeaponType() const;
 		[[nodiscard]] bool          IsBound() const;
