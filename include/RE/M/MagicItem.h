@@ -28,6 +28,55 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_MagicItem;
 
+		class MagicItemTraversalFunctor
+		{
+		public:
+			inline static constexpr auto RTTI = RTTI_MagicItemTraversalFunctor;
+
+			virtual ~MagicItemTraversalFunctor(){};  // 00
+
+			// add
+			virtual BSContainer::ForEachResult Accept(Effect* a_effect) = 0;
+		};
+
+		class MagicItemDataCollector : public MagicItemTraversalFunctor
+		{
+		public:
+			inline static constexpr auto RTTI = RTTI_MagicItemDataCollector;
+
+			enum class Flags : uint32_t
+			{
+				kNone = 0,
+				kSkipCostiest = 1 << 0,
+				kSkipProjectiles = 1 << 1,
+				kSkipArea = 1 << 2,
+				kOnlyFirstEffect = 1 << 3
+			};
+
+			// override (MagicItemTraversalFunctor)
+			BSContainer::ForEachResult Accept([[maybe_unused]] Effect* a_effect) override
+			{
+				return BSContainer::ForEachResult::kContinue;
+			};  // actual function set in ctor
+
+			MagicItemDataCollector() = delete;
+			MagicItemDataCollector(const MagicItem* a_mitem);
+			~MagicItemDataCollector(){};
+
+			// members
+			uint64_t                          unk08;                // 08
+			BSTArray<Effect*>                 effectsProjectile;    // 10
+			Effect*                           costiestEffect;       // 28
+			uint32_t                          maxCost;              // 30
+			uint32_t                          pad34;                // 34
+			Effect*                           largestAreaEffect;    // 38
+			float                             maxArea;              // 40
+			stl::enumeration<Flags, uint32_t> flags;                // 44
+			bool                              hasExtraLargeSummon;  // 48
+			char                              pad49[7];             // 49
+		};
+		static_assert(sizeof(MagicItemDataCollector) == 0x50);
+
 		class PreloadableVisitor
 		{
 		public:
@@ -107,11 +156,15 @@ namespace RE
 
 		float                     CalculateMagickaCost(Actor* a_caster) const;
 		float                     CalculateTotalGoldValue(Actor* a_caster = nullptr) const;
+		MagicItemDataCollector    CollectData() const;
 		EffectSetting*            GetAVEffectSetting() const;
-		Effect*                   GetCostliestEffectItem(std::uint32_t a_arg1 = 5, bool a_arg2 = false);
+		Effect*                   GetCostliestEffectItem(MagicSystem::Delivery a_delivery = MagicSystem::Delivery::kTotal, bool a_positiveArea = false) const;
 		Data*                     GetData();
 		[[nodiscard]] const Data* GetData() const;
+		uint32_t                  GetLargestArea() const;
+		uint32_t                  GetLongestDuration() const;
 		bool                      IsPermanent() const;
+		void                      VisitEffects(MagicItemTraversalFunctor& visitor) const;
 
 		// members
 		BSTArray<Effect*>           effects;          // 58
