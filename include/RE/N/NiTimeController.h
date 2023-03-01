@@ -66,8 +66,10 @@ namespace RE
 		[[nodiscard]] virtual bool IsStreamable() const { return true; }            // 2D
 		[[nodiscard]] virtual bool TargetIsRequiredType() const = 0;                // 2E
 
-		[[nodiscard]] constexpr NiTimeController* GetNext() const noexcept { return next.get(); }
+		static void StartAnimations(NiObjectNET* a_target);
 
+	    [[nodiscard]] constexpr NiTimeController* GetNext() const noexcept { return next.get(); }
+		
 		// members
 		stl::enumeration<Flag, std::uint16_t> flags;             // 10
 		std::uint16_t                         pad12;             // 12
