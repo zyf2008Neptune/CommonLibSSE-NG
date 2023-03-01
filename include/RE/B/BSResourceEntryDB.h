@@ -5,7 +5,7 @@ namespace RE
 	namespace BSResource
 	{
 		// TBD
-	    class IEntryDB
+		class IEntryDB
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_BSResource__IEntryDB;

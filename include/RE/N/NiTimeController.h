@@ -68,8 +68,8 @@ namespace RE
 
 		static void StartAnimations(NiObjectNET* a_target);
 
-	    [[nodiscard]] constexpr NiTimeController* GetNext() const noexcept { return next.get(); }
-		
+		[[nodiscard]] constexpr NiTimeController* GetNext() const noexcept { return next.get(); }
+
 		// members
 		stl::enumeration<Flag, std::uint16_t> flags;             // 10
 		std::uint16_t                         pad12;             // 12
