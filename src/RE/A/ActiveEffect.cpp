@@ -45,10 +45,10 @@ namespace RE
 		}
 	}
 
-	float ActiveEffect::GetMagnitude(ActiveEffect* a_effect) const
+	float ActiveEffect::GetMagnitude() const
 	{
 		using func_t = decltype(&ActiveEffect::GetMagnitude);
-		REL::Relocation<func_t> func{ RELOCATION_ID(33282, 0) };  // I do not know for AE
-		return func(this, a_effect);
+		REL::Relocation<func_t> func{ RELOCATION_ID(33282, 34057) };
+		return func(this);
 	}
 }

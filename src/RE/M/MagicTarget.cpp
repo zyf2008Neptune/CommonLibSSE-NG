@@ -60,7 +60,7 @@ namespace RE
 	void MagicTarget::VisitEffects(ForEachActiveEffectVisitor& visitor)
 	{
 		using func_t = decltype(&MagicTarget::VisitEffects);
-		REL::Relocation<func_t> func{ Offset::MagicTarget::VisitEffects };
+		REL::Relocation<func_t> func{ RELOCATION_ID(33756, 34540) };
 		return func(this, visitor);
 	}
 }

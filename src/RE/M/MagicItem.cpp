@@ -1,5 +1,7 @@
 #include "RE/M/MagicItem.h"
 
+#include "RE/M/MagicItemDataCollector.h"
+
 namespace RE
 {
 	float MagicItem::CalculateMagickaCost(Actor* a_caster) const
@@ -12,17 +14,17 @@ namespace RE
 		return CalculateCost(a_caster);
 	}
 
-	MagicItem::MagicItemDataCollector MagicItem::CollectData() const
+	MagicItemDataCollector MagicItem::CollectData() const
 	{
 		MagicItemDataCollector ans(this);
-		this->VisitEffects(ans);
+		Traverse(ans);
 		return ans;
 	}
 
-	EffectSetting* MagicItem::GetAVEffectSetting() const
+	EffectSetting* MagicItem::GetAVEffect() const
 	{
-		using func_t = decltype(&MagicItem::GetAVEffectSetting);
-		REL::Relocation<func_t> func{ Offset::MagicItem::GetAVEffectSetting };
+		using func_t = decltype(&MagicItem::GetAVEffect);
+		REL::Relocation<func_t> func{ RELOCATION_ID(11194, 11302) };
 		return func(this);
 	}
 
@@ -52,17 +54,17 @@ namespace RE
 		return GetData1();
 	}
 
-	uint32_t MagicItem::GetLargestArea() const
+	std::int32_t MagicItem::GetLargestArea() const
 	{
 		using func_t = decltype(&MagicItem::GetLargestArea);
-		REL::Relocation<func_t> func{ RELOCATION_ID(11219, 0) };  // I do not know for AE
+		REL::Relocation<func_t> func{ RELOCATION_ID(11219, 11338) };
 		return func(this);
 	}
 
-	uint32_t MagicItem::GetLongestDuration() const
+	std::uint32_t MagicItem::GetLongestDuration() const
 	{
 		using func_t = decltype(&MagicItem::GetLongestDuration);
-		REL::Relocation<func_t> func{ RELOCATION_ID(11218, 0) };  // I do not know for AE
+		REL::Relocation<func_t> func{ RELOCATION_ID(11218, 11337) };
 		return func(this);
 	}
 
@@ -73,17 +75,10 @@ namespace RE
 		return func(this);
 	}
 
-	void MagicItem::VisitEffects(MagicItemTraversalFunctor& visitor) const
+	void MagicItem::Traverse(MagicItemTraversalFunctor& a_visitor) const
 	{
-		using func_t = decltype(&MagicItem::VisitEffects);
-		REL::Relocation<func_t> func{ RELOCATION_ID(11222, 0) };  // I do not know for AE
-		return func(this, visitor);
-	}
-
-	MagicItem::MagicItemDataCollector::MagicItemDataCollector(const MagicItem* a_mitem)
-	{
-		using func_t = void(MagicItemDataCollector * a, const MagicItem* a_mitem);
-		REL::Relocation<func_t> func{ RELOCATION_ID(33407, 0) };  // I do not know for AE
-		func(this, a_mitem);
+		using func_t = decltype(&MagicItem::Traverse);
+		REL::Relocation<func_t> func{ RELOCATION_ID(11222, 11341) };
+		return func(this, a_visitor);
 	}
 }

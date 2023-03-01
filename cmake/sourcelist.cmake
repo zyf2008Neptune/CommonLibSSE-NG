@@ -1026,6 +1026,8 @@ set(SOURCES
 	include/RE/M/MagicCaster.h
 	include/RE/M/MagicFavorites.h
 	include/RE/M/MagicItem.h
+	include/RE/M/MagicItemDataCollector.h
+	include/RE/M/MagicItemTraversalFunctor.h
 	include/RE/M/MagicMenu.h
 	include/RE/M/MagicSystem.h
 	include/RE/M/MagicTarget.h
@@ -1641,6 +1643,7 @@ set(SOURCES
 	src/RE/L/LooseFileStream.cpp
 	src/RE/M/MagicFavorites.cpp
 	src/RE/M/MagicItem.cpp
+	src/RE/M/MagicItemDataCollector.cpp
 	src/RE/M/MagicTarget.cpp
 	src/RE/M/Main.cpp
 	src/RE/M/MaterialIDs.cpp

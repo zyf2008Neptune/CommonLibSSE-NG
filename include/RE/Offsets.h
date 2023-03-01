@@ -298,7 +298,6 @@ namespace RE
 		{
 			inline constexpr REL::ID CalculateCost(static_cast<std::uint64_t>(11321));
 			inline constexpr REL::ID GetCostliestEffectItem(static_cast<std::uint64_t>(11335));
-			inline constexpr REL::ID GetAVEffectSetting(static_cast<std::uint64_t>(11302));
 		}
 
 		namespace MagicTarget
@@ -796,13 +795,11 @@ namespace RE
 		{
 			inline constexpr REL::ID CalculateCost(static_cast<std::uint64_t>(11213));
 			inline constexpr REL::ID GetCostliestEffectItem(static_cast<std::uint64_t>(11216));
-			inline constexpr REL::ID GetAVEffectSetting(static_cast<std::uint64_t>(11194));
 		}
 
 		namespace MagicTarget
 		{
 			inline constexpr REL::ID HasMagicEffect(static_cast<std::uint64_t>(33733));
-			inline constexpr REL::ID VisitEffects(static_cast<std::uint64_t>(33756));
 		}
 
 		namespace Main
