@@ -676,7 +676,7 @@ namespace RE
 		{
 			inline constexpr REL::Offset CalculateCost(static_cast<std::uint64_t>(0x111FE0));
 			inline constexpr REL::Offset GetCostliestEffectItem(static_cast<std::uint64_t>(0x112270));
-			inline constexpr REL::ID GetAVEffectSetting(static_cast<std::uint64_t>(11194));
+			inline constexpr REL::ID     GetAVEffectSetting(static_cast<std::uint64_t>(11194));
 		}
 
 		namespace MagicTarget
@@ -1069,6 +1069,6 @@ namespace RE
 		inline constexpr REL::Offset PlaySound(static_cast<std::uint64_t>(0x90B1D0));
 		inline constexpr REL::Offset RTDynamicCast(static_cast<std::uint64_t>(0x138BABA));
 		inline constexpr REL::Offset TlsIndex(static_cast<std::uint64_t>(0x36F2F58));
-		inline constexpr REL::ID GlobalStateCounter(static_cast<std::uint64_t>(514157));
+		inline constexpr REL::ID     GlobalStateCounter(static_cast<std::uint64_t>(514157));
 	}
 }

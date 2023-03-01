@@ -698,7 +698,7 @@ namespace RE
 		TESFaction*                  GetVendorFaction();
 		const TESFaction*            GetVendorFaction() const;
 #ifndef SKYRIMVR
-		float                        GetWarmthRating() const;
+		float GetWarmthRating() const;
 #endif
 		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot, bool a_noInit = false);
 		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID, bool a_noInit = false);
