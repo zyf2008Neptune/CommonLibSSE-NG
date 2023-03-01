@@ -56,4 +56,11 @@ namespace RE
 		REL::Relocation<func_t> func{ Offset::MagicTarget::HasMagicEffect };
 		return func(this, a_effect);
 	}
+
+	void MagicTarget::VisitEffects(ForEachActiveEffectVisitor& visitor)
+	{
+		using func_t = decltype(&MagicTarget::VisitEffects);
+		REL::Relocation<func_t> func{ Offset::MagicTarget::VisitEffects };
+		return func(this, visitor);
+	}
 }

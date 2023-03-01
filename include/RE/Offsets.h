@@ -802,6 +802,7 @@ namespace RE
 		namespace MagicTarget
 		{
 			inline constexpr REL::ID HasMagicEffect(static_cast<std::uint64_t>(33733));
+			inline constexpr REL::ID VisitEffects(static_cast<std::uint64_t>(33756));
 		}
 
 		namespace Main
