@@ -3,8 +3,8 @@
 
 namespace RE
 {
-    MagicItemDataCollector::MagicItemDataCollector(const MagicItem* a_magicItem) :
-	    MagicItemTraversalFunctor(),
+	MagicItemDataCollector::MagicItemDataCollector(const MagicItem* a_magicItem) :
+		MagicItemTraversalFunctor(),
 		projectileEffectList(),
 		costliestEffect(nullptr),
 		maxCost(-1),
@@ -16,14 +16,14 @@ namespace RE
 		pad49(0),
 		pad4A(0),
 		pad4C(0)
-    {
-        stl::emplace_vtable(this);
-    }
+	{
+		stl::emplace_vtable(this);
+	}
 
-    BSContainer::ForEachResult MagicItemDataCollector::operator()(Effect* a_effect)
-    {
+	BSContainer::ForEachResult MagicItemDataCollector::operator()(Effect* a_effect)
+	{
 		using func_t = decltype(&MagicItemDataCollector::operator());
 		REL::Relocation<func_t> func{ RELOCATION_ID(33834, 34626) };
 		return func(this, a_effect);
-    }
+	}
 }
