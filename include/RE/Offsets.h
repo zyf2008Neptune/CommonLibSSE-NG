@@ -298,6 +298,7 @@ namespace RE
 		{
 			inline constexpr REL::ID CalculateCost(static_cast<std::uint64_t>(11321));
 			inline constexpr REL::ID GetCostliestEffectItem(static_cast<std::uint64_t>(11335));
+			inline constexpr REL::ID GetAVEffectSetting(static_cast<std::uint64_t>(11302));
 		}
 
 		namespace MagicTarget
@@ -502,6 +503,7 @@ namespace RE
 		inline constexpr REL::ID LookupReferenceByHandle(static_cast<std::uint64_t>(12332));
 		inline constexpr REL::ID PlaySound(static_cast<std::uint64_t>(52939));
 		inline constexpr REL::ID TlsIndex(static_cast<std::uint64_t>(415542));
+		inline constexpr REL::ID GlobalStateCounter(static_cast<std::uint64_t>(400305));
 #else
 		namespace _CRT
 		{
@@ -1000,6 +1002,7 @@ namespace RE
 		{
 			inline constexpr REL::ID CalculateCost(static_cast<std::uint64_t>(11213));
 			inline constexpr REL::ID GetCostliestEffectItem(static_cast<std::uint64_t>(11216));
+			inline constexpr REL::ID GetAVEffectSetting(static_cast<std::uint64_t>(11194));
 		}
 
 		namespace MagicTarget
@@ -1235,6 +1238,7 @@ namespace RE
 		inline constexpr REL::ID LookupReferenceByHandle(static_cast<std::uint64_t>(12204));
 		inline constexpr REL::ID PlaySound(static_cast<std::uint64_t>(52054));
 		inline constexpr REL::ID TlsIndex(static_cast<std::uint64_t>(528600));
+		inline constexpr REL::ID GlobalStateCounter(static_cast<std::uint64_t>(514157));
 #endif
 	}
 }

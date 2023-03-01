@@ -3358,4 +3358,5 @@ namespace RE
 	inline constexpr REL::Offset RTTI_BSSocketServer(0x01F81880);
 	inline constexpr REL::ID     RTTI___FastTravelConfirmCallback(static_cast<std::uint64_t>(688993));
 	inline constexpr REL::ID     RTTI_BSScript____VMTypeResolveFunctor(static_cast<std::uint64_t>(691839));
+	inline constexpr REL::ID RTTI_BGSLoadFormData(static_cast<std::uint64_t>(684848));
 }

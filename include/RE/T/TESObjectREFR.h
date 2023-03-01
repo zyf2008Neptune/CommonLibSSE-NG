@@ -7,6 +7,7 @@
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSmartPointer.h"
+#include "RE/B/BipedObjects.h"
 #include "RE/E/ExtraDataList.h"
 #include "RE/F/FormTypes.h"
 #include "RE/H/hkVector4.h"
@@ -117,6 +118,8 @@ namespace RE
 		using InventoryCountMap = std::map<TESBoundObject*, Count>;
 		using InventoryItemMap = std::map<TESBoundObject*, std::pair<Count, std::unique_ptr<InventoryEntryData>>>;
 		using InventoryDropMap = std::map<TESBoundObject*, std::pair<Count, std::vector<ObjectRefHandle>>>;
+
+		static inline constexpr auto DEFAULT_INVENTORY_FILTER = [](TESBoundObject&) { return true; };
 
 		enum class MotionType  // hkpMotion::MotionType
 		{
@@ -318,39 +321,39 @@ namespace RE
 		virtual const BSTSmartPointer<BipedAnim>& GetBiped2() const;                                                                                                                                                                                           // 7F
 		virtual const BSTSmartPointer<BipedAnim>& GetCurrentBiped() const;                                                                                                                                                                                     // 80 - { return GetBiped2(); }
 		virtual void                              SetBiped(const BSTSmartPointer<BipedAnim>& a_biped);                                                                                                                                                         // 81 - { return; }
-		virtual void                              Unk_82(void);                                                                                                                                                                                                // 82 - { return; }
+		virtual void                              RemoveWeapon(BIPED_OBJECT equipIndex);                                                                                                                                                                       // 82 - { return; }
 		virtual void                              Unk_83(void);                                                                                                                                                                                                // 83 - { return; }
 #ifndef SKYRIMVR
-		virtual void                SetObjectReference(TESBoundObject* a_object);                                         // 84 - sets flag 24 if the object has destructibles
-		virtual void                MoveHavok(bool a_forceRec);                                                           // 85
-		virtual void                GetLinearVelocity(NiPoint3& a_velocity) const;                                        // 86
-		virtual void                SetActionComplete(bool a_set);                                                        // 87 - { return; }
-		virtual void                SetMovementComplete(bool a_set);                                                      // 88 - { return; }
-		virtual void                Disable();                                                                            // 89
-		virtual void                ResetInventory(bool a_leveledOnly);                                                   // 8A
-		virtual NiNode*             GetFireNode();                                                                        // 8B - { return 0; }
-		virtual void                SetFireNode(NiNode* a_fireNode);                                                      // 8C - { return; }
-		virtual NiAVObject*         GetCurrent3D() const;                                                                 // 8D - { return Get3D2(); }
-		virtual Explosion*          AsExplosion();                                                                        // 8E - { return 0; }
-		virtual Projectile*         AsProjectile();                                                                       // 8F - { return 0; }
-		virtual bool                OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const;                          // 90 - { return true; }
-		virtual void                DoMoveToHigh();                                                                       // 91 - { return; }
-		virtual void                TryMoveToMiddleLow();                                                                 // 92 - { return; }
-		virtual bool                TryChangeSkyCellActorsProcessLevel();                                                 // 93 - { return false; }
-		virtual void                Unk_94(void);                                                                         // 94 - { return; }
-		virtual void                TryUpdateActorLastSeenTime();                                                         // 95 - { return; }
-		virtual void                Unk_96(void);                                                                         // 96 - related to lockpicking
-		virtual TESObjectCELL*      GetSaveParentCell() const;                                                            // 97
-		virtual void                SetParentCell(TESObjectCELL* a_cell);                                                 // 98
-		virtual bool                IsDead(bool a_notEssential = true) const;                                             // 99
-		virtual BSAnimNoteReceiver* CreateAnimNoteReceiver();                                                             // 9A
-		virtual BSAnimNoteReceiver* GetAnimNoteReceiver();                                                                // 9B
-		virtual bool                ProcessInWater(hkpCollidable* a_collidable, float a_waterHeight, float a_deltaTime);  // 9C
-		virtual bool                ApplyCurrent(float a_velocityTime, const hkVector4& a_velocity);                      // 9D - { return 0; }
-		virtual TESAmmo*            GetCurrentAmmo() const;                                                               // 9E - { return 0; }
-		virtual BGSDecalGroup*      GetDecalGroup() const;                                                                // 9F
-		virtual void                Unk_A0(void);                                                                         // A0
-		virtual void                UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object);                          // A1 - { return; }
+		virtual void                              SetObjectReference(TESBoundObject* a_object);                                                                                                                                                                // 84 - sets flag 24 if the object has destructibles
+		virtual void                              MoveHavok(bool a_forceRec);                                                                                                                                                                                  // 85
+		virtual void                              GetLinearVelocity(NiPoint3& a_velocity) const;                                                                                                                                                               // 86
+		virtual void                              SetActionComplete(bool a_set);                                                                                                                                                                               // 87 - { return; }
+		virtual void                              SetMovementComplete(bool a_set);                                                                                                                                                                             // 88 - { return; }
+		virtual void                              Disable();                                                                                                                                                                                                   // 89
+		virtual void                              ResetInventory(bool a_leveledOnly);                                                                                                                                                                          // 8A
+		virtual NiNode*                           GetFireNode();                                                                                                                                                                                               // 8B - { return 0; }
+		virtual void                              SetFireNode(NiNode* a_fireNode);                                                                                                                                                                             // 8C - { return; }
+		virtual NiAVObject*                       GetCurrent3D() const;                                                                                                                                                                                        // 8D - { return Get3D2(); }
+		virtual Explosion*                        AsExplosion();                                                                                                                                                                                               // 8E - { return 0; }
+		virtual Projectile*                       AsProjectile();                                                                                                                                                                                              // 8F - { return 0; }
+		virtual bool                              OnAddCellPerformQueueReference(TESObjectCELL& a_cell) const;                                                                                                                                                 // 90 - { return true; }
+		virtual void                              DoMoveToHigh();                                                                                                                                                                                              // 91 - { return; }
+		virtual void                              TryMoveToMiddleLow();                                                                                                                                                                                        // 92 - { return; }
+		virtual bool                              TryChangeSkyCellActorsProcessLevel();                                                                                                                                                                        // 93 - { return false; }
+		virtual void                              Unk_94(void);                                                                                                                                                                                                // 94 - { return; }
+		virtual void                              TryUpdateActorLastSeenTime();                                                                                                                                                                                // 95 - { return; }
+		virtual void                              Unk_96(void);                                                                                                                                                                                                // 96 - related to lockpicking
+		virtual TESObjectCELL*                    GetSaveParentCell() const;                                                                                                                                                                                   // 97
+		virtual void                              SetParentCell(TESObjectCELL* a_cell);                                                                                                                                                                        // 98
+		virtual bool                              IsDead(bool a_notEssential = true) const;                                                                                                                                                                    // 99
+		virtual BSAnimNoteReceiver*               CreateAnimNoteReceiver();                                                                                                                                                                                    // 9A
+		virtual BSAnimNoteReceiver*               GetAnimNoteReceiver();                                                                                                                                                                                       // 9B
+		virtual bool                              ProcessInWater(hkpCollidable* a_collidable, float a_waterHeight, float a_deltaTime);                                                                                                                         // 9C
+		virtual bool                              ApplyCurrent(float a_velocityTime, const hkVector4& a_velocity);                                                                                                                                             // 9D - { return 0; }
+		virtual TESAmmo*                          GetCurrentAmmo() const;                                                                                                                                                                                      // 9E - { return 0; }
+		virtual BGSDecalGroup*                    GetDecalGroup() const;                                                                                                                                                                                       // 9F
+		virtual bool                              Unk_A0(NiAVObject* a_node, float& a_angleX, float& a_angleZ, NiPoint3& a_pos) const;                                                                                                                         // A0
+		virtual void                              UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object);                                                                                                                                                 // A1 - { return; }
 #else
 		virtual void                Unk_84(void);                                                                         // 84 - sets flag 24 if the object has destructibles
 		virtual void                SetObjectReference(TESBoundObject* a_object);                                         // 85
@@ -381,7 +384,7 @@ namespace RE
 		virtual bool                ApplyCurrent(float a_velocityTime, const hkVector4& a_velocity);                      // 9E - { return 0; }
 		virtual TESAmmo*            GetCurrentAmmo() const;                                                               // 9F - { return 0; }
 		virtual BGSDecalGroup*      GetDecalGroup() const;                                                                // A0
-		virtual void                Unk_A1(void);                                                                         // A1
+		virtual bool                Unk_A1(NiAVObject* a_node, float& a_angleX, float& a_angleZ, NiPoint3& a_pos) const;  // A1
 		virtual void                UnequipItem(std::uint64_t a_arg1, TESBoundObject* a_object);                          // A2 - { return; }
 #endif
 		static NiPointer<TESObjectREFR> LookupByHandle(RefHandle a_refHandle);
@@ -389,6 +392,7 @@ namespace RE
 		static TESObjectREFR*           FindReferenceFor3D(NiAVObject* a_object3D);
 
 		bool                                    ActivateRef(TESObjectREFR* a_activator, uint8_t a_arg2, TESBoundObject* a_object, int32_t a_count, bool a_defaultProcessingOnly);
+		bool                                    CanBeMoved();
 		ObjectRefHandle                         CreateRefHandle();
 		void                                    DoTrap(TrapData& a_data);
 		void                                    DoTrap(TrapEntry* a_trap, TargetEntry* a_target);
@@ -418,11 +422,11 @@ namespace RE
 		float                                   GetHeadingAngle(const RE::NiPoint3& a_pos, bool a_abs);
 		float                                   GetHeight() const;
 		InventoryItemMap                        GetInventory();
-		InventoryItemMap                        GetInventory(std::function<bool(TESBoundObject&)> a_filter);
-		std::int32_t                            GetInventoryCount();
+		InventoryItemMap                        GetInventory(std::function<bool(TESBoundObject&)> a_filter, bool a_noInit = false);
+		std::int32_t                            GetInventoryCount(bool no_init = false);
 		InventoryCountMap                       GetInventoryCounts();
-		InventoryCountMap                       GetInventoryCounts(std::function<bool(TESBoundObject&)> a_filter);
-		InventoryChanges*                       GetInventoryChanges();
+		InventoryCountMap                       GetInventoryCounts(std::function<bool(TESBoundObject&)> a_filter, bool a_noInit = false);
+		InventoryChanges*                       GetInventoryChanges(bool a_noInit = false);
 		TESObjectREFR*                          GetLinkedRef(BGSKeyword* a_keyword);
 		REFR_LOCK*                              GetLock() const;
 		LOCK_LEVEL                              GetLockLevel() const;
@@ -465,6 +469,7 @@ namespace RE
 		bool                                    IsLocked() const;
 		bool                                    IsMarkedForDeletion() const;
 		bool                                    IsOffLimits();
+		bool                                    IsPersistent() const;
 		float                                   IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell) const;
 		bool                                    IsPointSubmergedMoreThan(const NiPoint3& a_pos, TESObjectCELL* a_cell, float a_waterLevel) const;
 		void                                    MoveTo(TESObjectREFR* a_target);

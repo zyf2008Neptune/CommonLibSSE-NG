@@ -13,6 +13,13 @@ namespace RE
 		return CalculateCost(a_caster);
 	}
 
+	EffectSetting* MagicItem::GetAVEffectSetting() const
+	{
+		using func_t = decltype(&MagicItem::GetAVEffectSetting);
+		REL::Relocation<func_t> func{ Offset::MagicItem::GetAVEffectSetting };
+		return func(this);
+	}
+
 	Effect* MagicItem::GetCostliestEffectItem(std::uint32_t a_arg1, bool a_arg2)
 	{
 		using func_t = decltype(&MagicItem::GetCostliestEffectItem);
@@ -39,9 +46,9 @@ namespace RE
 		return GetData1();
 	}
 
-	bool MagicItem::IsValid() const
+	bool MagicItem::IsPermanent() const
 	{
-		using func_t = decltype(&MagicItem::IsValid);
+		using func_t = decltype(&MagicItem::IsPermanent);
 		REL::Relocation<func_t> func{ RELOCATION_ID(11183, 11290) };
 		return func(this);
 	}

@@ -11,6 +11,7 @@
 #include "RE/B/bhkCharacterController.h"
 #include "RE/E/ExtraCanTalkToPlayer.h"
 #include "RE/E/ExtraFactionChanges.h"
+#include "RE/F/FixedStrings.h"
 #include "RE/F/FormTraits.h"
 #include "RE/H/HighProcessData.h"
 #include "RE/I/InventoryEntryData.h"
@@ -99,6 +100,13 @@ namespace RE
 		}
 
 		xTalk->talk = a_talk;
+	}
+
+	void Actor::CastPermanentMagic(bool a_wornItemEnchantments, bool a_baseSpells, bool a_raceSpells, bool a_everyActorAbility)
+	{
+		using func_t = decltype(&Actor::CastPermanentMagic);
+		REL::Relocation<func_t> func{ RELOCATION_ID(37804, 38753) };
+		return func(this, a_wornItemEnchantments, a_baseSpells, a_raceSpells, a_everyActorAbility);
 	}
 
 	bool Actor::CanAttackActor(Actor* a_actor)
@@ -237,6 +245,29 @@ namespace RE
 		return func(this, a_modifier, a_value);
 	}
 
+	float Actor::GetAimAngle() const
+	{
+		bool aimActive{ false };
+		GetGraphVariableBool(FixedStrings::GetSingleton()->bAimActive, aimActive);
+		if (!aimActive) {
+			return GetAngleX();
+		}
+
+		float aimPitchCurrent;
+		GetGraphVariableFloat(FixedStrings::GetSingleton()->aimPitchCurrent, aimPitchCurrent);
+		return -aimPitchCurrent;
+	}
+
+	float Actor::GetAimHeading() const
+	{
+		const float heading = GetHeading(false);
+
+		float aimHeadingCurrent{ 0.0f };
+		GetGraphVariableFloat(FixedStrings::GetSingleton()->aimHeadingCurrent, aimHeadingCurrent);
+
+		return heading - aimHeadingCurrent;
+	}
+
 	InventoryEntryData* Actor::GetAttackingWeapon()
 	{
 		if (!currentProcess || !currentProcess->high || !currentProcess->high->attackData || !currentProcess->middleHigh) {
@@ -335,11 +366,12 @@ namespace RE
 		return equippedWeight;
 	}
 
-	std::int32_t Actor::GetGoldAmount()
+	std::int32_t Actor::GetGoldAmount(bool a_noInit)
 	{
 		const auto inv = GetInventory([](TESBoundObject& a_object) -> bool {
 			return a_object.IsGold();
-		});
+		},
+			a_noInit);
 
 		const auto dobj = BGSDefaultObjectManager::GetSingleton();
 		if (!dobj) {
@@ -450,9 +482,9 @@ namespace RE
 		return nullptr;
 	}
 
-	TESObjectARMO* Actor::GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot)
+	TESObjectARMO* Actor::GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot, bool a_noInit)
 	{
-		if (const auto worn = GetWornArmor(a_slot); worn) {
+		if (const auto worn = GetWornArmor(a_slot, a_noInit); worn) {
 			return worn;
 		}
 		return GetSkin();
@@ -490,11 +522,12 @@ namespace RE
 	}
 #endif
 
-	TESObjectARMO* Actor::GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot)
+	TESObjectARMO* Actor::GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot, bool a_noInit)
 	{
 		const auto inv = GetInventory([](TESBoundObject& a_object) {
 			return a_object.IsArmor();
-		});
+		},
+			a_noInit);
 
 		for (const auto& [item, invData] : inv) {
 			const auto& [count, entry] = invData;
@@ -509,11 +542,12 @@ namespace RE
 		return nullptr;
 	}
 
-	TESObjectARMO* Actor::GetWornArmor(FormID a_formID)
+	TESObjectARMO* Actor::GetWornArmor(FormID a_formID, bool a_noInit)
 	{
 		const auto inv = GetInventory([=](TESBoundObject& a_object) {
 			return a_object.IsArmor() && a_object.GetFormID() == a_formID;
-		});
+		},
+			a_noInit);
 
 		for (const auto& [item, invData] : inv) {
 			const auto& [count, entry] = invData;
@@ -541,6 +575,13 @@ namespace RE
 		using func_t = decltype(&Actor::HasLineOfSight);
 		REL::Relocation<func_t> func{ RELOCATION_ID(53029, 53829) };
 		return func(this, a_ref, a_arg2);
+	}
+
+	bool Actor::HasOutfitItems(BGSOutfit* a_outfit)
+	{
+		using func_t = decltype(&Actor::HasOutfitItems);
+		REL::Relocation<func_t> func{ RELOCATION_ID(19265, 19691) };
+		return func(this, a_outfit);
 	}
 
 	bool Actor::HasPerk(BGSPerk* a_perk) const
@@ -780,6 +821,21 @@ namespace RE
 		return func(this, a_target, a_priority);
 	}
 
+	bool Actor::SetDefaultOutfit(BGSOutfit* a_outfit, bool a_update3D)
+	{
+		const auto npc = GetActorBase();
+		if (!npc || !a_outfit || npc->defaultOutfit == a_outfit) {
+			return false;
+		}
+		RemoveOutfitItems(npc->defaultOutfit);
+		npc->SetDefaultOutfit(a_outfit);
+		InitInventoryIfRequired();
+		if (!IsDisabled()) {
+			AddWornOutfit(a_outfit, a_update3D);
+		}
+		return true;
+	}
+
 	void Actor::SetLifeState(ACTOR_LIFE_STATE a_lifeState)
 	{
 		using func_t = decltype(&Actor::SetLifeState);
@@ -787,30 +843,17 @@ namespace RE
 		return func(this, a_lifeState);
 	}
 
-	bool Actor::SetOutfit(BGSOutfit* a_outfit, bool a_sleepOutfit)
+	bool Actor::SetSleepOutfit(BGSOutfit* a_outfit, bool a_update3D)
 	{
-		auto npc = GetActorBase();
-		if (!npc) {
+		const auto npc = GetActorBase();
+		if (!npc || !a_outfit || npc->sleepOutfit == a_outfit) {
 			return false;
 		}
-		if (a_sleepOutfit) {
-			if (npc->sleepOutfit == a_outfit) {
-				return false;
-			}
-			RemoveOutfitItems(npc->sleepOutfit);
-			npc->sleepOutfit = a_outfit;
-			npc->AddChange(TESNPC::ChangeFlags::kSleepOutfit);
-		} else {
-			if (npc->defaultOutfit == a_outfit) {
-				return false;
-			}
-			RemoveOutfitItems(npc->defaultOutfit);
-			npc->defaultOutfit = a_outfit;
-			npc->AddChange(TESNPC::ChangeFlags::kDefaultOutfit);
-		}
+		RemoveOutfitItems(npc->sleepOutfit);
+		npc->SetSleepOutfit(a_outfit);
 		InitInventoryIfRequired();
 		if (!IsDisabled()) {
-			AddWornOutfit(a_outfit, true);
+			AddWornOutfit(a_outfit, a_update3D);
 		}
 		return true;
 	}
