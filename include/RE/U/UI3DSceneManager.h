@@ -55,6 +55,7 @@ namespace RE
 
 		void AttachChild(NiAVObject* a_obj);
 		void AttachChild(NiAVObject* a_obj, INTERFACE_LIGHT_SCHEME a_scheme);
+		void DetachChild(NiAVObject* a_obj);
 		void SetCameraFOV(float a_fov);
 		void SetCameraRotate(const NiMatrix3& a_rotate);
 		void SetCameraPosition(const NiPoint3& a_pos);

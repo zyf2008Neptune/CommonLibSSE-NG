@@ -58,22 +58,23 @@ namespace RE
 		NiControllerSequence* currentPickSequence;  // 0C0
 		float                 pickKeyTime;          // 0C8
 		std::uint32_t         unk0CC;               // 0CC
-		NiControllerSequence* currentShivSequence;  // 0D0
-		float                 shivKeyTime;          // 0D8
-		std::uint32_t         unk0DC;               // 0DC
-		float                 currentAngle;         // 0E0
-		float                 lockAngle;            // 0E4
-		std::uint32_t         unk0E8;               // 0E8
-		BSSoundHandle         unk0EC;               // 0EC
-		std::uint32_t         unk0F8;               // 0F8
-		std::uint32_t         unk0FC;               // 0FC
-		std::uint32_t         unk100;               // 100
+		NiControllerSequence* currentLockSequence;  // 0D0
+		float                 lockKeyTime;          // 0D8
+		float                 pickAngle;            // 0DC
+		float                 lockAngle;            // 0E0
+		float                 damagePickAngle;      // 0E4
+		float                 pickBreakSeconds;     // 0E8
+		BSSoundHandle         pickTensionSound;     // 0EC
+		float                 unk0F8;               // 0F8
+		float                 sweetSpotAngle;       // 0FC
+		float                 partialPickAngle;     // 100
 		std::uint32_t         numBrokenPicks;       // 104
-		std::uint16_t         unk108;               // 108
-		std::uint8_t          unk10A;               // 10A
-		std::uint8_t          unk10B;               // 10B
-		std::uint8_t          unk10C;               // 10C
-		std::uint8_t          unk10D;               // 10D
+		bool                  init3DElements;       // 108
+		bool                  animating;            // 109
+		bool                  unk10A;               // 10A
+		bool                  menuCleared;          // 10B
+		bool                  animationFinished;    // 10C
+		bool                  isLockpickingCrime;   // 10D
 		std::uint8_t          unk10E;               // 10E
 		std::uint8_t          pad10F;               // 10F
 	};
