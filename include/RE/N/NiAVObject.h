@@ -117,6 +117,7 @@ namespace RE
 		virtual void        PostAttachUpdate();                                                                                 // 33
 		virtual void        OnVisible(NiCullingProcess& a_process);                                                             // 34 - { return; }
 
+		[[nodiscard]] NiAVObject*         Clone();
 		void                              CullNode(bool a_cull);
 		[[nodiscard]] bool                GetAppCulled() const;
 		[[nodiscard]] bhkCollisionObject* GetCollisionObject() const;

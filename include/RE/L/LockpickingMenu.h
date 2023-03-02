@@ -15,17 +15,6 @@ namespace RE
 	class NiControllerSequence;
 	class TESObjectREFR;
 
-	class ModelData
-	{
-	public:
-		std::uint64_t unk00;   // 00
-		std::uint64_t unk08;   // 08
-		std::uint64_t unk10;   // 10
-		std::uint64_t unk18;   // 00
-		std::uint64_t unk20;   // 00
-		NiAVObject*   object;  // 28
-	};
-
 	// menuDepth = 3
 	// flags = kPausesGame | kDisablePauseMenu | kRequiresUpdate
 	// context = kLockpicking
@@ -55,13 +44,13 @@ namespace RE
 		[[nodiscard]] static TESObjectREFR* GetTargetReference();
 
 		// members
-		ModelData*            lockpickShiv;         // 048
-		ModelData*            lockpick;             // 050
-		NiMatrix3             unk058;               // 058
+		void*                 lockDBHandle;         // 048
+		void*                 pickDBHandle;         // 050
+		NiMatrix3             pickRotation;         // 058
 		NiPoint3              lockRotCenter;        // 07C
-		NiControllerManager*  shivController;       // 088
-		NiControllerSequence* shivIntro;            // 090
-		NiControllerSequence* shivRotate;           // 098
+		NiControllerManager*  lockController;       // 088
+		NiControllerSequence* lockIntro;            // 090
+		NiControllerSequence* lockRotate;           // 098
 		NiControllerManager*  pickController;       // 0A0
 		NiControllerSequence* pickIntro;            // 0A8
 		NiControllerSequence* pickDamage;           // 0B0
@@ -79,7 +68,7 @@ namespace RE
 		std::uint32_t         unk0F8;               // 0F8
 		std::uint32_t         unk0FC;               // 0FC
 		std::uint32_t         unk100;               // 100
-		std::uint32_t         unk104;               // 104
+		std::uint32_t         numBrokenPicks;       // 104
 		std::uint16_t         unk108;               // 108
 		std::uint8_t          unk10A;               // 10A
 		std::uint8_t          unk10B;               // 10B
