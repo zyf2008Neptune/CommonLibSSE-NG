@@ -28,6 +28,15 @@ namespace RE
 		return func(this);
 	}
 
+	void NiAVObject::CullGeometry(bool a_cull)
+	{
+		BSVisit::TraverseScenegraphGeometries(this, [&](BSGeometry* a_geo) -> BSVisit::BSVisitControl {
+			a_geo->SetAppCulled(a_cull);
+
+			return BSVisit::BSVisitControl::kContinue;
+		});
+	}
+
 	void NiAVObject::CullNode(bool a_cull)
 	{
 		BSVisit::TraverseScenegraphObjects(this, [&](NiAVObject* a_object) -> BSVisit::BSVisitControl {

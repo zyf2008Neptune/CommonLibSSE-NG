@@ -20,7 +20,15 @@ namespace RE
 		REL::Relocation<func_t> func{ RELOCATION_ID(51859, 52731) };
 		return func(this, a_obj, a_scheme);
 	}
+
+	void UI3DSceneManager::DetachChild(NiAVObject* a_obj)
+	{
+		using func_t = decltype(&UI3DSceneManager::DetachChild);
+		REL::Relocation<func_t> func{ RELOCATION_ID(51861, 52733) };
+		return func(this, a_obj);
+	}
 #endif
+
 	void UI3DSceneManager::SetCameraFOV(float a_fov)
 	{
 		using func_t = decltype(&UI3DSceneManager::SetCameraFOV);
