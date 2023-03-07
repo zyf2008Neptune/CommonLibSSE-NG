@@ -117,8 +117,8 @@ namespace RE
 		[[nodiscard]] std::int32_t           GetLargestArea() const;
 		[[nodiscard]] std::uint32_t          GetLongestDuration() const;
 		[[nodiscard]] bool                   IsPermanent() const;
+		[[nodiscard]] Effect*                GetEffectIsMatch(EffectSetting* a_base, float a_mag, ::uint32_t a_area, ::uint32_t a_dur, float a_cost);
 		void                                 Traverse(MagicItemTraversalFunctor& a_visitor) const;
-		Effect*                              GetEffectIsMatch(EffectSetting* a_base, float a_mag, ::uint32_t a_area, ::uint32_t a_dur, float a_cost);
 
 		// members
 		BSTArray<Effect*>           effects;          // 58
