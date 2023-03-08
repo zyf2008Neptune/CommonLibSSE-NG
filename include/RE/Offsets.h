@@ -7,17 +7,27 @@ namespace RE
 	namespace Offset
 	{
 #ifdef SKYRIM_SUPPORT_AE
+
+		namespace ActiveEffect
+		{
+			inline constexpr REL::ID Dispel(static_cast<std::uint64_t>(34061));
+		}
+
 		namespace Actor
 		{
 			inline constexpr REL::ID AddSpell(static_cast<std::uint64_t>(38716));
 			inline constexpr REL::ID DispelWornItemEnchantments(static_cast<std::uint64_t>(34620));
 			inline constexpr REL::ID DoReset3D(static_cast<std::uint64_t>(40255));
+			inline constexpr REL::ID EvaluatePackage(static_cast<std::uint64_t>(37401));
 			inline constexpr REL::ID GetGhost(static_cast<std::uint64_t>(37275));
 			inline constexpr REL::ID GetHostileToActor(static_cast<std::uint64_t>(37537));
 			inline constexpr REL::ID GetLevel(static_cast<std::uint64_t>(37334));
 			inline constexpr REL::ID HasPerk(static_cast<std::uint64_t>(37698));
+			inline constexpr REL::ID InterruptCast(static_cast<std::uint64_t>(38757));
 			inline constexpr REL::ID IsRunning(static_cast<std::uint64_t>(37234));
+			inline constexpr REL::ID RemoveSpell(static_cast<std::uint64_t>(38717));
 			inline constexpr REL::ID RequestDetectionLevel(static_cast<std::uint64_t>(37764));
+			inline constexpr REL::ID StealAlarm(static_cast<std::uint64_t>(37422));
 			inline constexpr REL::ID SwitchRace(static_cast<std::uint64_t>(37925));
 			inline constexpr REL::ID UpdateArmorAbility(static_cast<std::uint64_t>(38751));
 			inline constexpr REL::ID UpdateWeaponAbility(static_cast<std::uint64_t>(38752));
@@ -26,19 +36,60 @@ namespace RE
 		namespace ActorEquipManager
 		{
 			inline constexpr REL::ID EquipObject(static_cast<std::uint64_t>(38894));
+			inline constexpr REL::ID EquipShout(static_cast<std::uint64_t>(38897));
+			inline constexpr REL::ID EquipSpell(static_cast<std::uint64_t>(38895));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400636));
 			inline constexpr REL::ID UnequipObject(static_cast<std::uint64_t>(38901));
 		}
 
 		namespace ActorValueOwner
 		{
+			inline constexpr REL::ID GetArmorRatingSkillMultiplier(static_cast<std::uint64_t>(26424));
 			inline constexpr REL::ID GetClampedActorValue(static_cast<std::uint64_t>(27284));
+		}
+
+		namespace AIFormulas
+		{
+			inline constexpr REL::ID ComputePickpocketSuccess(static_cast<std::uint64_t>(26379));
 		}
 
 		namespace AIProcess
 		{
 			inline constexpr REL::ID SetBaseScale(static_cast<std::uint64_t>(39588));
 			inline constexpr REL::ID Update3DModel(static_cast<std::uint64_t>(39395));
+		}
+
+		namespace ArmorRatingVisitor
+		{
+			inline constexpr REL::ID HaveNotVisitedArmor(static_cast<std::uint64_t>(40297));
+			inline constexpr REL::ID VisitArmor(static_cast<std::uint64_t>(40293));
+		}
+
+		namespace ArmorRatingVisitorBase
+		{
+			inline constexpr REL::ID Visit(static_cast<std::uint64_t>(40299));
+		}
+
+		namespace BarterMenu
+		{
+			inline constexpr REL::ID TargetRefHandle(static_cast<std::uint64_t>(403520));
+		}
+
+		namespace BGSAddToPlayerInventoryEvent
+		{
+			inline constexpr REL::ID GetIndex(static_cast<std::uint64_t>(380074));
+		}
+
+		namespace BGSCreatedObjectManager
+		{
+			inline constexpr REL::ID CreateArmorEnchantment(static_cast<std::uint64_t>(36166));
+			inline constexpr REL::ID CreateWeaponEnchantment(static_cast<std::uint64_t>(36165));
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400320));
+		}
+
+		namespace BGSDefaultObjectManager
+		{
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(13894));
 		}
 
 		namespace BGSFootstepManager
@@ -51,11 +102,23 @@ namespace RE
 			inline constexpr REL::ID AddForm(static_cast<std::uint64_t>(20913));
 		}
 
+		namespace BGSOpenCloseForm
+		{
+			inline constexpr REL::ID GetOpenState(static_cast<std::uint64_t>(14288));
+			inline constexpr REL::ID SetOpenState(static_cast<std::uint64_t>(14287));
+		}
+
 		namespace BGSSaveLoadManager
 		{
 			inline constexpr REL::ID Save(static_cast<std::uint64_t>(35727));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(403340));
 			inline constexpr REL::ID Load(static_cast<std::uint64_t>(35728));
+		}
+
+		namespace BGSStoryEventManager
+		{
+			inline constexpr REL::ID AddEvent(static_cast<std::uint64_t>(32359));
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(22790));
 		}
 
 		namespace BGSStoryTeller
@@ -71,10 +134,35 @@ namespace RE
 			inline constexpr REL::ID RemoveAllParts(static_cast<std::uint64_t>(15659));
 		}
 
+		namespace BookMenu
+		{
+			inline constexpr REL::ID TargetReference(static_cast<std::uint64_t>(405840));
+		}
+
 		namespace BSAudioManager
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(67652));
 			inline constexpr REL::ID BuildSoundDataFromDescriptor(static_cast<std::uint64_t>(67666));
+		}
+
+		namespace BSFaceGenAnimationData
+		{
+			inline constexpr REL::ID Reset(26586);
+			inline constexpr REL::ID SetExpressionOverride(26594);
+		}
+
+		namespace BSFixedString
+		{
+			inline constexpr REL::ID Ctor8(69161);
+			inline constexpr REL::ID Ctor16(69176);
+		}
+
+		namespace BSGraphics
+		{
+			namespace State
+			{
+				inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(411479));
+			}
 		}
 
 		namespace BSInputDeviceManager
@@ -85,6 +173,22 @@ namespace RE
 		namespace BSLightingShaderMaterialBase
 		{
 			inline constexpr REL::ID CreateMaterial(static_cast<std::uint64_t>(106723));
+		}
+
+		namespace BSMusicManager
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400896));
+		}
+
+		namespace BSPointerHandleManager
+		{
+			inline constexpr REL::ID HandleEntries(static_cast<std::uint64_t>(400622));
+		}
+
+		namespace BSPointerHandleManagerInterface
+		{
+			inline constexpr REL::ID GetHandle(static_cast<std::uint64_t>(16212));
+			inline constexpr REL::ID GetSmartPointer(static_cast<std::uint64_t>(12332));
 		}
 
 		namespace BSReadWriteLock
@@ -103,8 +207,30 @@ namespace RE
 			inline constexpr REL::ID SetEndianSwap(static_cast<std::uint64_t>(71021));
 		}
 
+		namespace BSScaleformManager
+		{
+			inline constexpr REL::ID FileExists(static_cast<std::uint64_t>(82411));
+			inline constexpr REL::ID IsValidName(static_cast<std::uint64_t>(82331));
+			inline constexpr REL::ID LoadMovie(static_cast<std::uint64_t>(82325));
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(402775));
+		}
+
+		namespace BSScaleformTranslator
+		{
+			inline constexpr REL::ID GetCachedString(static_cast<std::uint64_t>(69188));
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(242017));
+		}
+
 		namespace BSScript
 		{
+			namespace Object
+			{
+				inline constexpr REL::ID GetHandle(static_cast<std::uint64_t>(104247));
+				inline constexpr REL::ID IncRef(static_cast<std::uint64_t>(104252));
+				inline constexpr REL::ID DecRef(static_cast<std::uint64_t>(104253));
+				inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(104246));
+			}
+
 			namespace ObjectBindPolicy
 			{
 				inline constexpr REL::ID BindObject(static_cast<std::uint64_t>(104184));
@@ -120,6 +246,7 @@ namespace RE
 
 			namespace Stack
 			{
+				inline constexpr REL::ID GetStackFrameVariable(static_cast<std::uint64_t>(104484));
 				inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(104480));
 			}
 		}
@@ -138,6 +265,17 @@ namespace RE
 			inline constexpr REL::ID Set_CStr(static_cast<std::uint64_t>(11044));
 		}
 
+		namespace BSStringPool
+		{
+			inline constexpr REL::ID Release8(static_cast<std::uint64_t>(69192));
+			inline constexpr REL::ID Release16(static_cast<std::uint64_t>(69193));
+		}
+
+		namespace BSThreadEvent
+		{
+			inline constexpr REL::ID InitSDM(static_cast<std::uint64_t>(68449));
+		}
+
 		namespace BucketTable
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(69200));
@@ -151,6 +289,12 @@ namespace RE
 		namespace Calendar
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400447));
+			inline constexpr REL::ID GetTimeDateString(static_cast<std::uint64_t>(36311));
+		}
+
+		namespace ChestsLooted
+		{
+			inline constexpr REL::ID GetEventSource(static_cast<std::uint64_t>(51182));
 		}
 
 		namespace Console
@@ -165,9 +309,24 @@ namespace RE
 			inline constexpr REL::ID VPrint(static_cast<std::uint64_t>(51110));
 		}
 
+		namespace ContainerMenu
+		{
+			inline constexpr REL::ID ContainerMode(static_cast<std::uint64_t>(405937));
+			inline constexpr REL::ID TargetRefHandle(static_cast<std::uint64_t>(405962));
+		}
+
 		namespace ControlMap
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400863));
+		}
+
+		namespace CraftingSubMenus
+		{
+			namespace EnchantConstructMenu
+			{
+				inline constexpr REL::ID RenameItem(static_cast<std::uint64_t>(51415));
+				inline constexpr REL::ID UpdateInterface(static_cast<std::uint64_t>(51459));
+			}
 		}
 
 		namespace CRC32Calculator
@@ -177,16 +336,52 @@ namespace RE
 			inline constexpr REL::ID SizeOfSize(static_cast<std::uint64_t>(68219));
 		}
 
+		namespace DialogueItem
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(35220));
+		}
+
 		namespace ExtraDataList
 		{
 			inline constexpr REL::ID Add(static_cast<std::uint64_t>(12315));
+			inline constexpr REL::ID SetCount(static_cast<std::uint64_t>(11617));
 			inline constexpr REL::ID SetExtraFlags(static_cast<std::uint64_t>(12042));
 			inline constexpr REL::ID SetInventoryChanges(static_cast<std::uint64_t>(11600));
+		}
+
+		namespace ExtraLock
+		{
+			inline constexpr REL::ID GetLockLevel(static_cast<std::uint64_t>(12399));
+		}
+
+		namespace ExtraTextDisplayData
+		{
+			inline constexpr REL::ID GetDisplayName(static_cast<std::uint64_t>(12768));
 		}
 
 		namespace GameSettingCollection
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400782));
+		}
+
+		namespace GASActionBufferData
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(242366));
+		}
+
+		namespace GASDoAction
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(242413));
+		}
+
+		namespace GASDoInitAction
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(242414));
+		}
+
+		namespace GFxInitImportActions
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(244866));
 		}
 
 		namespace GFxLoader
@@ -199,6 +394,31 @@ namespace RE
 			inline constexpr REL::ID InvokeNoReturn(static_cast<std::uint64_t>(82665));
 		}
 
+		namespace GFxPlaceObject2
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(242592));
+		}
+
+		namespace GFxPlaceObject3
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(242593));
+		}
+
+		namespace GFxRemoveObject
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(244863));
+		}
+
+		namespace GFxRemoveObject2
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(244864));
+		}
+
+		namespace GFxSetBackgroundColor
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(244865));
+		}
+
 		namespace GFxValue
 		{
 			namespace ObjectInterface
@@ -206,7 +426,9 @@ namespace RE
 				inline constexpr REL::ID AttachMovie(static_cast<std::uint64_t>(82219));
 				inline constexpr REL::ID DeleteMember(static_cast<std::uint64_t>(82230));
 				inline constexpr REL::ID GetArraySize(static_cast<std::uint64_t>(82237));
+				inline constexpr REL::ID GetCxform(static_cast<std::uint64_t>(82238));
 				inline constexpr REL::ID GetDisplayInfo(static_cast<std::uint64_t>(82239));
+				inline constexpr REL::ID GetDisplayMatrix(static_cast<std::uint64_t>(82240));
 				inline constexpr REL::ID GetElement(static_cast<std::uint64_t>(82241));
 				inline constexpr REL::ID GetMember(static_cast<std::uint64_t>(82245));
 				inline constexpr REL::ID GotoAndPlay(static_cast<std::uint64_t>(82253));
@@ -218,15 +440,54 @@ namespace RE
 				inline constexpr REL::ID RemoveElements(static_cast<std::uint64_t>(82280));
 				inline constexpr REL::ID SetArraySize(static_cast<std::uint64_t>(82285));
 				inline constexpr REL::ID SetDisplayInfo(static_cast<std::uint64_t>(82287));
+				inline constexpr REL::ID SetDisplayMatrix(static_cast<std::uint64_t>(82288));
+				inline constexpr REL::ID SetCxform(static_cast<std::uint64_t>(82286));
 				inline constexpr REL::ID SetElement(static_cast<std::uint64_t>(82289));
 				inline constexpr REL::ID SetMember(static_cast<std::uint64_t>(82292));
 				inline constexpr REL::ID SetText(static_cast<std::uint64_t>(82293));
+				inline constexpr REL::ID VisitMembers(static_cast<std::uint64_t>(82302));
 			}
+		}
+
+		namespace GiftMenu
+		{
+			inline constexpr REL::ID TargetRefHandle(static_cast<std::uint64_t>(406111));
 		}
 
 		namespace GMemory
 		{
 			inline constexpr REL::ID GlobalHeap(static_cast<std::uint64_t>(412058));
+		}
+
+		namespace GString
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(82562));
+		}
+
+		namespace GSysAllocPaged
+		{
+			inline constexpr REL::ID InitHeapEngine(static_cast<std::uint64_t>(84557));
+			inline constexpr REL::ID ShutdownHeapEngine(static_cast<std::uint64_t>(84559));
+		}
+
+		namespace HandlerDictionary
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(404607));
+		}
+
+		namespace HitData
+		{
+			inline constexpr REL::ID Populate(static_cast<std::uint64_t>(44001));
+		}
+
+		namespace hkContainerHeapAllocator
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(383828));
+		}
+
+		namespace hkpWorld
+		{
+			inline constexpr REL::ID CastRay(static_cast<std::uintptr_t>(61399));
 		}
 
 		namespace hkReferencedObject
@@ -235,9 +496,26 @@ namespace RE
 			inline constexpr REL::ID RemoveReference(static_cast<std::uint64_t>(57011));
 		}
 
+		namespace IFormFactory
+		{
+			inline constexpr REL::ID FormFactories(static_cast<std::uint64_t>(400508));
+			inline constexpr REL::ID FormFactoriesInitialized(static_cast<std::uint64_t>(400503));
+		}
+
 		namespace INIPrefSettingCollection
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(410219));
+		}
+
+		namespace INISetting
+		{
+			namespace Interface
+			{
+				inline constexpr REL::ID fSafeZoneX(static_cast<std::uint64_t>(389575));
+				inline constexpr REL::ID fSafeZoneY(static_cast<std::uint64_t>(389578));
+				inline constexpr REL::ID fSafeZoneXWide(static_cast<std::uint64_t>(389569));
+				inline constexpr REL::ID fSafeZoneYWide(static_cast<std::uint64_t>(389572));
+			}
 		}
 
 		namespace INISettingCollection
@@ -255,12 +533,34 @@ namespace RE
 			inline constexpr REL::ID GetEventSource(static_cast<std::uint64_t>(16225));
 		}
 
+		namespace Inventory3DManager
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(403559));
+			inline constexpr REL::ID UpdateItem3D(static_cast<std::uint64_t>(51757));
+			inline constexpr REL::ID UpdateMagic3D(static_cast<std::uint64_t>(51758));
+			inline constexpr REL::ID Clear3D(static_cast<std::uint64_t>(51759));
+			inline constexpr REL::ID Render(static_cast<std::uint64_t>(51755));
+		}
+
 		namespace InventoryChanges
 		{
+			inline constexpr REL::ID GetArmorInSlot(static_cast<std::uint64_t>(16113));
 			inline constexpr REL::ID GetNextUniqueID(static_cast<std::uint64_t>(16148));
 			inline constexpr REL::ID SendContainerChangedEvent(static_cast<std::uint64_t>(16149));
 			inline constexpr REL::ID SetUniqueID(static_cast<std::uint64_t>(16149));
 			inline constexpr REL::ID TransferItemUID(static_cast<std::uint64_t>(16149));
+			inline constexpr REL::ID InitFromContainerExtra(static_cast<std::uint64_t>(16130));
+			inline constexpr REL::ID InitLeveledItems(static_cast<std::uint64_t>(16129));
+			inline constexpr REL::ID InitScripts(static_cast<std::uint64_t>(16068));
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(16050));
+			inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(16051));
+		}
+
+		namespace InventoryEntryData
+		{
+			inline constexpr REL::ID GetValue(static_cast<std::uint64_t>(15995));
+			inline constexpr REL::ID IsQuestObject(static_cast<std::uint64_t>(16005));
+			inline constexpr REL::ID IsOwnedBy(static_cast<std::uint64_t>(16020));
 		}
 
 		namespace ItemCrafted
@@ -282,6 +582,11 @@ namespace RE
 		{
 			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(16325));
 			inline constexpr REL::ID SetNorthRotation(static_cast<std::uint64_t>(16330));
+		}
+
+		namespace LockpickingMenu
+		{
+			inline constexpr REL::ID TargetReference(static_cast<std::uint64_t>(406271));
 		}
 
 		namespace LooseFileStream
@@ -308,11 +613,27 @@ namespace RE
 		namespace Main
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(403449));
+			inline constexpr REL::ID QFrameAnimTime(static_cast<std::uint64_t>(403447));
+		}
+
+		namespace MemoryManager
+		{
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(11141));
+			inline constexpr REL::ID Allocate(static_cast<std::uint64_t>(68115));
+			inline constexpr REL::ID Deallocate(static_cast<std::uint64_t>(68117));
+			inline constexpr REL::ID GetThreadScrapHeap(static_cast<std::uint64_t>(68088));
+			inline constexpr REL::ID Reallocate(static_cast<std::uint64_t>(68116));
+			inline constexpr REL::ID RegisterMemoryManager(static_cast<std::uint64_t>(36091));
 		}
 
 		namespace MenuControls
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(401263));
+		}
+
+		namespace MenuTopicManager
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(401099));
 		}
 
 		namespace MessageDataFactoryManager
@@ -341,6 +662,17 @@ namespace RE
 			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(70287));
 		}
 
+		namespace NiObject
+		{
+			inline constexpr REL::ID ProcessClone(static_cast<std::uint64_t>(70190));
+			inline constexpr REL::ID CreateDeepCopy(static_cast<std::uint64_t>(70191));
+		}
+
+		namespace NiPoint3
+		{
+			inline constexpr REL::ID Zero(static_cast<std::uint64_t>(410468));
+		}
+
 		namespace NiRefObject
 		{
 			inline constexpr REL::ID TotalObjectCount(static_cast<std::uint64_t>(410493));
@@ -349,6 +681,22 @@ namespace RE
 		namespace NiSkinInstance
 		{
 			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(71227));
+		}
+
+		namespace NiTimeController
+		{
+			inline constexpr REL::ID LoadBinary(static_cast<std::uint64_t>(70810));
+			inline constexpr REL::ID LinkObject(static_cast<std::uint64_t>(70811));
+			inline constexpr REL::ID RegisterStreamables(static_cast<std::uint64_t>(70812));
+			inline constexpr REL::ID SaveBinary(static_cast<std::uint64_t>(70813));
+			inline constexpr REL::ID IsEqual(static_cast<std::uint64_t>(70814));
+			inline constexpr REL::ID ProcessClone(static_cast<std::uint64_t>(70826));
+			inline constexpr REL::ID Start(static_cast<std::uint64_t>(70817));
+			inline constexpr REL::ID Stop(static_cast<std::uint64_t>(70818));
+			inline constexpr REL::ID SetTarget(static_cast<std::uint64_t>(70819));
+			inline constexpr REL::ID ComputeScaledTime(static_cast<std::uint64_t>(70824));
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(70815));
+			inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(70816));
 		}
 
 		namespace PlayerCamera
@@ -365,6 +713,8 @@ namespace RE
 			}
 
 			inline constexpr REL::ID ActivatePickRef(static_cast<std::uint64_t>(40548));
+			inline constexpr REL::ID AddPlayerAddItemEvent(static_cast<std::uint64_t>(40456));
+			inline constexpr REL::ID AttemptPickpocket(static_cast<std::uint64_t>(40654));
 			inline constexpr REL::ID GetArmorValue(static_cast<std::uint64_t>(40249));
 			inline constexpr REL::ID GetDamage(static_cast<std::uint64_t>(40253));
 			inline constexpr REL::ID GetNumTints(static_cast<std::uint64_t>(40700));
@@ -372,6 +722,8 @@ namespace RE
 			inline constexpr REL::ID PlayPickupEvent(static_cast<std::uint64_t>(40456));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(403521));
 			inline constexpr REL::ID StartGrabObject(static_cast<std::uint64_t>(40552));
+			inline constexpr REL::ID CenterOnCell(static_cast<std::uintptr_t>(40437));
+			inline constexpr REL::ID AddSkillExperience(static_cast<std::uintptr_t>(40488));
 		}
 
 		namespace PlayerControls
@@ -380,11 +732,45 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400864));
 		}
 
+		namespace ProcessLists
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400315));
+			inline constexpr REL::ID ClearCachedFactionFightReactions(static_cast<std::uint64_t>(41410));
+			inline constexpr REL::ID StopCombatAndAlarmOnActor(static_cast<std::uint64_t>(41340));
+		}
+
+		namespace RaceSexMenu
+		{
+			inline constexpr REL::ID ChangeName(static_cast<std::uint64_t>(52415));
+		}
+
+		namespace ReferenceEffectController
+		{
+			inline constexpr REL::ID Start(static_cast<std::uint64_t>(34761));
+		}
+
+		namespace ResponseDictionary
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(403902));
+		}
+
+		namespace ScrapHeap
+		{
+			inline constexpr REL::ID Allocate(static_cast<std::uint64_t>(68144));
+			inline constexpr REL::ID Deallocate(static_cast<std::uint64_t>(68146));
+		}
+
 		namespace Script
 		{
 			inline constexpr REL::ID CompileAndRun(static_cast<std::uint64_t>(21890));
 			inline constexpr REL::ID GetProcessScripts(static_cast<std::uint64_t>(21921));
 			inline constexpr REL::ID SetProcessScripts(static_cast<std::uint64_t>(21920));
+		}
+
+		namespace ScriptEventSourceHolder
+		{
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(14298));
+			inline constexpr REL::ID SendOpenCloseEvent(static_cast<std::uint64_t>(14299));
 		}
 
 		namespace SCRIPT_FUNCTION
@@ -408,6 +794,12 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(400475));
 		}
 
+		namespace TaskQueueInterface
+		{
+			inline constexpr REL::ID Attach3D(static_cast<std::uint64_t>(36897));
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(403759));
+		}
+
 		namespace TES
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(403450));
@@ -416,6 +808,16 @@ namespace RE
 		namespace TESCamera
 		{
 			inline constexpr REL::ID SetState(static_cast<std::uint64_t>(33026));
+		}
+
+		namespace TESCondition
+		{
+			inline constexpr REL::ID IsTrue(static_cast<std::uint64_t>(29888));
+		}
+
+		namespace TESConditionItem
+		{
+			inline constexpr REL::ID IsTrue(static_cast<std::uint64_t>(29924));
 		}
 
 		namespace TESDataHandler
@@ -429,6 +831,11 @@ namespace RE
 			inline constexpr REL::ID GetDescription(static_cast<std::uint64_t>(14552));
 		}
 
+		namespace TESFaction
+		{
+			inline constexpr REL::ID SetFactionFightReaction(static_cast<std::uint64_t>(24516));
+		}
+
 		namespace TESFile
 		{
 			inline constexpr REL::ID Duplicate(static_cast<std::uint64_t>(14018));
@@ -437,6 +844,15 @@ namespace RE
 			inline constexpr REL::ID ReadData(static_cast<std::uint64_t>(13991));
 			inline constexpr REL::ID Seek(static_cast<std::uint64_t>(13984));
 			inline constexpr REL::ID SeekNextSubrecord(static_cast<std::uint64_t>(13990));
+		}
+
+		namespace TESForm
+		{
+			inline constexpr REL::ID AddCompileIndex(static_cast<std::uint64_t>(14667));
+			inline constexpr REL::ID AllForms(static_cast<std::uint64_t>(400507));
+			inline constexpr REL::ID AllFormsMapLock(static_cast<std::uint64_t>(400517));
+			inline constexpr REL::ID AllFormsByEditorID(static_cast<std::uint64_t>(400509));
+			inline constexpr REL::ID AllFormsEditorIDMapLock(static_cast<std::uint64_t>(400518));
 		}
 
 		namespace TESHavokUtilities
@@ -452,16 +868,30 @@ namespace RE
 			inline constexpr REL::ID HasOverlays(static_cast<std::uint64_t>(24790));
 			inline constexpr REL::ID SetSkinFromTint(static_cast<std::uint64_t>(24710));
 			inline constexpr REL::ID UpdateNeck(static_cast<std::uint64_t>(24711));
+		namespace TESObjectCELL
+		{
+			inline constexpr REL::ID GetbhkWorld(static_cast<std::uint64_t>(18995));
+		}
+
 		}
 
 		namespace TESObjectREFR
 		{
+			inline constexpr REL::ID ApplyArtObject(static_cast<std::uint64_t>(22769));
+			inline constexpr REL::ID ApplyEffectShader(static_cast<std::uint64_t>(19872));
+			inline constexpr REL::ID FindReferenceFor3D(static_cast<std::uint64_t>(19750));
+			inline constexpr REL::ID GetCurrentLocation(static_cast<std::uint64_t>(19812));
 			inline constexpr REL::ID GetDisplayFullName(static_cast<std::uint64_t>(19781));
 			inline constexpr REL::ID GetLock(static_cast<std::uint64_t>(20223));
 			inline constexpr REL::ID GetOwner(static_cast<std::uint64_t>(20194));
 			inline constexpr REL::ID GetStealValue(static_cast<std::uint64_t>(16045));
-			inline constexpr REL::ID FindReferenceFor3D(static_cast<std::uint64_t>(19750));
+			inline constexpr REL::ID GetWeightInContainer(static_cast<std::uint64_t>(19703));
+			inline constexpr REL::ID HasQuestObject(static_cast<std::uint64_t>(19627));
+			inline constexpr REL::ID InitChildActivates(static_cast<std::uint64_t>(20264));
 			inline constexpr REL::ID InitInventoryIfRequired(static_cast<std::uint64_t>(16038));
+			inline constexpr REL::ID IsAnOwner(static_cast<std::uint64_t>(20210));
+			inline constexpr REL::ID IsCrimeToActivate(static_cast<std::uint64_t>(19827));
+			inline constexpr REL::ID MakeInventoryChanges(static_cast<std::uint64_t>(16040));
 			inline constexpr REL::ID MoveTo(static_cast<std::uint64_t>(56626));
 			inline constexpr REL::ID PlayAnimation(static_cast<std::uint64_t>(14297));
 		}
@@ -470,6 +900,14 @@ namespace RE
 		{
 			inline constexpr REL::ID EnsureQuestStarted(static_cast<std::uint64_t>(25003));
 			inline constexpr REL::ID ResetQuest(static_cast<std::uint64_t>(25014));
+		}
+
+		namespace TESTopicInfo
+		{
+			namespace ResponseData
+			{
+				inline constexpr REL::ID PopulateResponseText(static_cast<std::uint64_t>(25491));
+			}
 		}
 
 		namespace UI
@@ -497,23 +935,33 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(402638));
 		}
 
+		inline constexpr REL::ID ApplyPerkEntries(static_cast<std::uint64_t>(23526));
 		inline constexpr REL::ID CreateRefHandle(static_cast<std::uint64_t>(12326));
 		inline constexpr REL::ID DebugNotification(static_cast<std::uint64_t>(52933));
+		inline constexpr REL::ID GetArmorFinalRating(static_cast<std::uint64_t>(16017));
 		inline constexpr REL::ID LookupReferenceByHandle(static_cast<std::uint64_t>(12332));
 		inline constexpr REL::ID PlaySound(static_cast<std::uint64_t>(52939));
+		inline constexpr REL::ID RTDynamicCast(static_cast<std::uint64_t>(109689));
 		inline constexpr REL::ID TlsIndex(static_cast<std::uint64_t>(415542));
 		inline constexpr REL::ID GlobalStateCounter(static_cast<std::uint64_t>(400305));
 #else
+		namespace ActiveEffect
+		{
+			inline constexpr REL::ID Dispel(static_cast<std::uint64_t>(33286));
+		}
+
 		namespace Actor
 		{
 			inline constexpr REL::ID AddSpell(static_cast<std::uint64_t>(37771));
 			inline constexpr REL::ID DispelWornItemEnchantments(static_cast<std::uint64_t>(33828));
 			inline constexpr REL::ID DoReset3D(static_cast<std::uint64_t>(39181));
+			inline constexpr REL::ID EvaluatePackage(static_cast<std::uint64_t>(36407));
 			inline constexpr REL::ID GetGhost(static_cast<std::uint64_t>(36286));
 			inline constexpr REL::ID GetHostileToActor(static_cast<std::uint64_t>(36537));
 			inline constexpr REL::ID GetLevel(static_cast<std::uint64_t>(36344));
 			inline constexpr REL::ID HasPerk(static_cast<std::uint64_t>(36690));
 			inline constexpr REL::ID IsRunning(static_cast<std::uint64_t>(36252));
+			inline constexpr REL::ID RemoveSpell(static_cast<std::uint64_t>(37772));
 			inline constexpr REL::ID RequestDetectionLevel(static_cast<std::uint64_t>(36748));
 			inline constexpr REL::ID SwitchRace(static_cast<std::uint64_t>(36901));
 			inline constexpr REL::ID UpdateArmorAbility(static_cast<std::uint64_t>(37802));
@@ -523,6 +971,8 @@ namespace RE
 		namespace ActorEquipManager
 		{
 			inline constexpr REL::ID EquipObject(static_cast<std::uint64_t>(37938));
+			inline constexpr REL::ID EquipShout(static_cast<std::uint64_t>(239744));
+			inline constexpr REL::ID EquipSpell(static_cast<std::uint64_t>(239730));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514494));
 			inline constexpr REL::ID UnequipObject(static_cast<std::uint64_t>(37945));
 		}
@@ -532,10 +982,48 @@ namespace RE
 			inline constexpr REL::ID GetClampedActorValue(static_cast<std::uint64_t>(26616));
 		}
 
+		namespace AIFormulas
+		{
+			inline constexpr REL::ID ComputePickpocketSuccess(static_cast<std::uint64_t>(25822));
+		}
+
 		namespace AIProcess
 		{
 			inline constexpr REL::ID SetBaseScale(static_cast<std::uint64_t>(38568));
 			inline constexpr REL::ID Update3DModel(static_cast<std::uint64_t>(38404));
+		}
+		
+		namespace ArmorRatingVisitor
+		{
+			inline constexpr REL::ID HaveNotVisitedArmor(static_cast<std::uint64_t>(39221));
+			inline constexpr REL::ID VisitArmor(static_cast<std::uint64_t>(39217));
+		}
+
+		namespace ArmorRatingVisitorBase
+		{
+			inline constexpr REL::ID Visit(static_cast<std::uint64_t>(39223));
+		}
+
+		namespace BarterMenu
+		{
+			inline constexpr REL::ID TargetRefHandle(static_cast<std::uint64_t>(519283));
+		}
+
+		namespace BGSAddToPlayerInventoryEvent
+		{
+			inline constexpr REL::ID GetIndex(static_cast<std::uint64_t>(31494));
+		}
+
+		namespace BGSCreatedObjectManager
+		{
+			inline constexpr REL::ID CreateArmorEnchantment(static_cast<std::uint64_t>(35264));
+			inline constexpr REL::ID CreateWeaponEnchantment(static_cast<std::uint64_t>(35263));
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514172));
+		}
+
+		namespace BGSDefaultObjectManager
+		{
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(10878));
 		}
 
 		namespace BGSFootstepManager
@@ -546,6 +1034,18 @@ namespace RE
 		namespace BGSListForm
 		{
 			inline constexpr REL::ID AddForm(static_cast<std::uint64_t>(20470));
+		}
+		
+		namespace BGSOpenCloseForm
+		{
+			inline constexpr REL::ID GetOpenState(static_cast<std::uint64_t>(836151));
+			inline constexpr REL::ID SetOpenState(static_cast<std::uint64_t>(310111));
+		}
+
+		namespace BGSStoryEventManager
+		{
+			inline constexpr REL::ID AddEvent(static_cast<std::uint64_t>(31576));
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(22317));
 		}
 
 		namespace BGSSaveLoadManager
@@ -568,10 +1068,35 @@ namespace RE
 			inline constexpr REL::ID RemoveAllParts(static_cast<std::uint64_t>(15494));
 		}
 
+		namespace BookMenu
+		{
+			inline constexpr REL::ID TargetReference(static_cast<std::uint64_t>(519300));
+		}
+
 		namespace BSAudioManager
 		{
 			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(66391));
 			inline constexpr REL::ID BuildSoundDataFromDescriptor(static_cast<std::uint64_t>(66404));
+		}
+
+		namespace BSFaceGenAnimationData
+		{
+			inline constexpr REL::ID Reset(static_cast<std::uint64_t>(25977));
+			inline constexpr REL::ID SetExpressionOverride(static_cast<std::uint64_t>(25980));
+		}
+
+		namespace BSFixedString
+		{
+			inline constexpr REL::ID Ctor8(67819);
+			inline constexpr REL::ID Ctor16(67834);
+		}
+
+		namespace BSGraphics
+		{
+			namespace State
+			{
+				inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(524998));
+			}
 		}
 
 		namespace BSInputDeviceManager
@@ -582,6 +1107,22 @@ namespace RE
 		namespace BSLightingShaderMaterialBase
 		{
 			inline constexpr REL::ID CreateMaterial(static_cast<std::uint64_t>(100016));
+		}
+		
+		namespace BSMusicManager
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514738));
+		}
+
+		namespace BSPointerHandleManager
+		{
+			inline constexpr REL::ID HandleEntries(static_cast<std::uint64_t>(514478));
+		}
+
+		namespace BSPointerHandleManagerInterface
+		{
+			inline constexpr REL::ID GetHandle(static_cast<std::uint64_t>(15967));
+			inline constexpr REL::ID GetSmartPointer(static_cast<std::uint64_t>(12204));
 		}
 
 		namespace BSReadWriteLock
@@ -600,8 +1141,30 @@ namespace RE
 			inline constexpr REL::ID SetEndianSwap(static_cast<std::uint64_t>(69643));
 		}
 
+		namespace BSScaleformManager
+		{
+			inline constexpr REL::ID FileExists(static_cast<std::uint64_t>(80087));
+			inline constexpr REL::ID IsValidName(static_cast<std::uint64_t>(80307));
+			inline constexpr REL::ID LoadMovie(static_cast<std::uint64_t>(80302));
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(516573));
+		}
+
+		namespace BSScaleformTranslator
+		{
+			inline constexpr REL::ID GetCachedString(static_cast<std::uint64_t>(67844));
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(291278));
+		}
+
 		namespace BSScript
 		{
+			namespace Object
+			{
+				inline constexpr REL::ID GetHandle(static_cast<std::uint64_t>(97463));
+				inline constexpr REL::ID IncRef(static_cast<std::uint64_t>(97468));
+				inline constexpr REL::ID DecRef(static_cast<std::uint64_t>(97469));
+				inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(97462));
+			}
+
 			namespace ObjectBindPolicy
 			{
 				inline constexpr REL::ID BindObject(static_cast<std::uint64_t>(97379));
@@ -617,6 +1180,7 @@ namespace RE
 
 			namespace Stack
 			{
+				inline constexpr REL::ID GetStackFrameVariable(static_cast<std::uint64_t>(97746));
 				inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(97742));
 			}
 		}
@@ -634,6 +1198,17 @@ namespace RE
 		{
 			inline constexpr REL::ID Set_CStr(static_cast<std::uint64_t>(10979));
 		}
+		
+		namespace BSStringPool
+		{
+			inline constexpr REL::ID Release8(static_cast<std::uint64_t>(67847));
+			inline constexpr REL::ID Release16(static_cast<std::uint64_t>(67848));
+		}
+
+		namespace BSThreadEvent
+		{
+			inline constexpr REL::ID InitSDM(static_cast<std::uint64_t>(67151));
+		}
 
 		namespace BucketTable
 		{
@@ -648,6 +1223,12 @@ namespace RE
 		namespace Calendar
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514287));
+			inline constexpr REL::ID GetTimeDateString(static_cast<std::uint64_t>(230666));
+		}
+
+		namespace ChestsLooted
+		{
+			inline constexpr REL::ID GetEventSource(static_cast<std::uint64_t>(50257));
 		}
 
 		namespace Console
@@ -661,10 +1242,25 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(515064));
 			inline constexpr REL::ID VPrint(static_cast<std::uint64_t>(50180));
 		}
+		
+		namespace ContainerMenu
+		{
+			inline constexpr REL::ID ContainerMode(static_cast<std::uint64_t>(519396));
+			inline constexpr REL::ID TargetRefHandle(static_cast<std::uint64_t>(519421));
+		}
 
 		namespace ControlMap
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514705));
+		}
+
+		namespace CraftingSubMenus
+		{
+			namespace EnchantConstructMenu
+			{
+				inline constexpr REL::ID RenameItem(static_cast<std::uint64_t>(50530));
+				inline constexpr REL::ID UpdateInterface(static_cast<std::uint64_t>(50567));
+			}
 		}
 
 		namespace CRC32Calculator
@@ -674,16 +1270,52 @@ namespace RE
 			inline constexpr REL::ID SizeOfSize(static_cast<std::uint64_t>(66962));
 		}
 
+		namespace DialogueItem
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(34413));
+		}
+
 		namespace ExtraDataList
 		{
 			inline constexpr REL::ID Add(static_cast<std::uint64_t>(12176));
+			inline constexpr REL::ID SetCount(static_cast<std::uint64_t>(11471));
 			inline constexpr REL::ID SetExtraFlags(static_cast<std::uint64_t>(11903));
 			inline constexpr REL::ID SetInventoryChanges(static_cast<std::uint64_t>(11483));
+		}
+
+		namespace ExtraLock
+		{
+			inline constexpr REL::ID GetLockLevel(static_cast<std::uint64_t>(12272));
+		}
+
+		namespace ExtraTextDisplayData
+		{
+			inline constexpr REL::ID GetDisplayName(static_cast<std::uint64_t>(12626));
 		}
 
 		namespace GameSettingCollection
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514622));
+		}
+		
+		namespace GASActionBufferData
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(0x17BC3F0));
+		}
+
+		namespace GASDoAction
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(291613));
+		}
+
+		namespace GASDoInitAction
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(0x17BCA00));
+		}
+
+		namespace GFxInitImportActions
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(0x17DC4C8));
 		}
 
 		namespace GFxLoader
@@ -696,6 +1328,31 @@ namespace RE
 			inline constexpr REL::ID InvokeNoReturn(static_cast<std::uint64_t>(80547));
 		}
 
+		namespace GFxPlaceObject2
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(0x17BE0E0));
+		}
+
+		namespace GFxPlaceObject3
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(0x17BE138));
+		}
+
+		namespace GFxRemoveObject
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(0x17DC408));
+		}
+
+		namespace GFxRemoveObject2
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(0x17DC448));
+		}
+
+		namespace GFxSetBackgroundColor
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(0x17DC488));
+		}
+
 		namespace GFxValue
 		{
 			namespace ObjectInterface
@@ -703,7 +1360,9 @@ namespace RE
 				inline constexpr REL::ID AttachMovie(static_cast<std::uint64_t>(80197));
 				inline constexpr REL::ID DeleteMember(static_cast<std::uint64_t>(80207));
 				inline constexpr REL::ID GetArraySize(static_cast<std::uint64_t>(80214));
+				inline constexpr REL::ID GetCxform(static_cast<std::uint64_t>(80215));
 				inline constexpr REL::ID GetDisplayInfo(static_cast<std::uint64_t>(80216));
+				inline constexpr REL::ID GetDisplayMatrix(static_cast<std::uint64_t>(80217));
 				inline constexpr REL::ID GetElement(static_cast<std::uint64_t>(80218));
 				inline constexpr REL::ID GetMember(static_cast<std::uint64_t>(80222));
 				inline constexpr REL::ID GotoAndPlay(static_cast<std::uint64_t>(80230));
@@ -714,27 +1373,84 @@ namespace RE
 				inline constexpr REL::ID PushBack(static_cast<std::uint64_t>(80248));
 				inline constexpr REL::ID RemoveElements(static_cast<std::uint64_t>(80252));
 				inline constexpr REL::ID SetArraySize(static_cast<std::uint64_t>(80261));
+				inline constexpr REL::ID SetCxform(static_cast<std::uint64_t>(80262));
 				inline constexpr REL::ID SetDisplayInfo(static_cast<std::uint64_t>(80263));
+				inline constexpr REL::ID SetDisplayMatrix(static_cast<std::uint64_t>(80264));
 				inline constexpr REL::ID SetElement(static_cast<std::uint64_t>(80265));
 				inline constexpr REL::ID SetMember(static_cast<std::uint64_t>(80268));
 				inline constexpr REL::ID SetText(static_cast<std::uint64_t>(80270));
+				inline constexpr REL::ID VisitMembers(static_cast<std::uint64_t>(80279));
 			}
+		}
+
+		namespace GiftMenu
+		{
+			inline constexpr REL::ID TargetRefHandle(static_cast<std::uint64_t>(519570));
 		}
 
 		namespace GMemory
 		{
 			inline constexpr REL::ID GlobalHeap(static_cast<std::uint64_t>(525584));
 		}
+		
+		namespace GString
+		{
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(80446));
+		}
+
+		namespace GSysAllocPaged
+		{
+			inline constexpr REL::ID InitHeapEngine(static_cast<std::uint64_t>(82462));
+			inline constexpr REL::ID ShutdownHeapEngine(static_cast<std::uint64_t>(82464));
+		}
+
+		namespace HandlerDictionary
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(518086));
+		}
+
+		namespace HitData
+		{
+			inline constexpr REL::ID Populate(static_cast<std::uint64_t>(42832));
+		}
+
+		namespace hkContainerHeapAllocator
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(510713));
+		}
+
+		namespace hkpWorld
+		{
+			inline constexpr REL::ID CastRay(static_cast<std::uint64_t>(60551));
+		}
+
 
 		namespace hkReferencedObject
 		{
 			inline constexpr REL::ID AddReference(static_cast<std::uint64_t>(56606));
 			inline constexpr REL::ID RemoveReference(static_cast<std::uint64_t>(56607));
 		}
+		
+		namespace IFormFactory
+		{
+			inline constexpr REL::ID FormFactories(static_cast<std::uint64_t>(514355));
+			inline constexpr REL::ID FormFactoriesInitialized(static_cast<std::uint64_t>(514349));
+		}
 
 		namespace INIPrefSettingCollection
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(523673));
+		}
+
+		namespace INISetting
+		{
+			namespace Interface
+			{
+				inline constexpr REL::ID fSafeZoneX(static_cast<std::uint64_t>(512513));
+				inline constexpr REL::ID fSafeZoneY(static_cast<std::uint64_t>(512515));
+				inline constexpr REL::ID fSafeZoneXWide(static_cast<std::uint64_t>(512509));
+				inline constexpr REL::ID fSafeZoneYWide(static_cast<std::uint64_t>(512511));
+			}
 		}
 
 		namespace INISettingCollection
@@ -746,6 +1462,15 @@ namespace RE
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514286));
 		}
+		
+		namespace Inventory3DManager
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(517051));
+			inline constexpr REL::ID UpdateItem3D(static_cast<std::uint64_t>(50884));
+			inline constexpr REL::ID UpdateMagic3D(static_cast<std::uint64_t>(50885));
+//			inline constexpr REL::ID Clear3D(static_cast<std::uint64_t>(8B5240));
+//			inline constexpr REL::ID Render(static_cast<std::uint64_t>(8B4C90))
+		}
 
 		namespace Inventory
 		{
@@ -754,10 +1479,23 @@ namespace RE
 
 		namespace InventoryChanges
 		{
+//			inline constexpr REL::ID GetArmorInSlot(static_cast<std::uint64_t>(16113));
 			inline constexpr REL::ID GetNextUniqueID(static_cast<std::uint64_t>(15908));
 			inline constexpr REL::ID SendContainerChangedEvent(static_cast<std::uint64_t>(15909));
 			inline constexpr REL::ID SetUniqueID(static_cast<std::uint64_t>(15907));
 			inline constexpr REL::ID TransferItemUID(static_cast<std::uint64_t>(15909));
+			inline constexpr REL::ID InitFromContainerExtra(static_cast<std::uint64_t>(15890));
+			inline constexpr REL::ID InitLeveledItems(static_cast<std::uint64_t>(15889));
+			inline constexpr REL::ID InitScripts(static_cast<std::uint64_t>(15829));
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(15812));
+			inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(15813));
+		}
+
+		namespace InventoryEntryData
+		{
+			inline constexpr REL::ID GetValue(static_cast<std::uint64_t>(15757));
+			inline constexpr REL::ID IsQuestObject(static_cast<std::uint64_t>(15767));
+			inline constexpr REL::ID IsOwnedBy(static_cast<std::uint64_t>(15782));
 		}
 
 		namespace ItemCrafted
@@ -775,10 +1513,30 @@ namespace RE
 			inline constexpr REL::ID GetEventSource(static_cast<std::uint64_t>(50258));
 		}
 
+		namespace JournalMenu
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(271141));
+		}
+
+		namespace JumpHandler
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263065));
+		}
+
 		namespace LocalMapCamera
 		{
 			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(16084));
 			inline constexpr REL::ID SetNorthRotation(static_cast<std::uint64_t>(16089));
+		}
+
+		namespace LockpickingMenu
+		{
+			inline constexpr REL::ID TargetReference(static_cast<std::uint64_t>(519716));
+		}
+
+		namespace LookHandler
+		{
+			inline constexpr REL::ID Vtbl(static_cast<std::uint64_t>(263052));
 		}
 
 		namespace LooseFileStream
@@ -805,11 +1563,27 @@ namespace RE
 		namespace Main
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(516943));
+			inline constexpr REL::ID QFrameAnimTime(static_cast<std::uint64_t>(516940));
+		}
+		
+		namespace MemoryManager
+		{
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(11045));
+			inline constexpr REL::ID Allocate(static_cast<std::uint64_t>(66859));
+			inline constexpr REL::ID Deallocate(static_cast<std::uint64_t>(66861));
+			inline constexpr REL::ID GetThreadScrapHeap(static_cast<std::uint64_t>(66841));
+			inline constexpr REL::ID Reallocate(static_cast<std::uint64_t>(66860));
+			inline constexpr REL::ID RegisterMemoryManager(static_cast<std::uint64_t>(35199));
 		}
 
 		namespace MenuControls
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(515124));
+		}
+		
+		namespace MenuTopicManager
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514959));
 		}
 
 		namespace MessageDataFactoryManager
@@ -838,6 +1612,17 @@ namespace RE
 			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(68936));
 		}
 
+		namespace NiObject
+		{
+			inline constexpr REL::ID ProcessClone(static_cast<std::uint64_t>(324602));
+			inline constexpr REL::ID CreateDeepCopy(static_cast<std::uint64_t>(68839));
+		}
+
+		namespace NiPoint3
+		{
+			inline constexpr REL::ID Zero(static_cast<std::uint64_t>(523887));
+		}
+
 		namespace NiRefObject
 		{
 			inline constexpr REL::ID TotalObjectCount(static_cast<std::uint64_t>(523912));
@@ -848,6 +1633,21 @@ namespace RE
 			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(69804));
 		}
 
+		namespace NiTimeController
+		{
+			inline constexpr REL::ID LoadBinary(static_cast<std::uint64_t>(69433));
+			inline constexpr REL::ID LinkObject(static_cast<std::uint64_t>(69434));
+			inline constexpr REL::ID RegisterStreamables(static_cast<std::uint64_t>(69435));
+			inline constexpr REL::ID SaveBinary(static_cast<std::uint64_t>(69436));
+			inline constexpr REL::ID IsEqual(static_cast<std::uint64_t>(69437));
+			inline constexpr REL::ID ProcessClone(static_cast<std::uint64_t>(69449));
+			inline constexpr REL::ID Start(static_cast<std::uint64_t>(69440));
+			inline constexpr REL::ID Stop(static_cast<std::uint64_t>(69441));
+			inline constexpr REL::ID SetTarget(static_cast<std::uint64_t>(69442));
+			inline constexpr REL::ID ComputeScaledTime(static_cast<std::uint64_t>(69447));
+			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(69438));
+			inline constexpr REL::ID Dtor(static_cast<std::uint64_t>(69439));
+		}
 		namespace PlayerCamera
 		{
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514642));
@@ -862,6 +1662,8 @@ namespace RE
 			}
 
 			inline constexpr REL::ID ActivatePickRef(static_cast<std::uint64_t>(39471));
+			inline constexpr REL::ID AddPlayerAddItemEvent(static_cast<std::uint64_t>(39384));
+			inline constexpr REL::ID AttemptPickpocket(static_cast<std::uint64_t>(39568));
 			inline constexpr REL::ID GetArmorValue(static_cast<std::uint64_t>(39175));
 			inline constexpr REL::ID GetDamage(static_cast<std::uint64_t>(39179));
 			inline constexpr REL::ID GetNumTints(static_cast<std::uint64_t>(39614));
@@ -869,12 +1671,42 @@ namespace RE
 			inline constexpr REL::ID PlayPickupEvent(static_cast<std::uint64_t>(39384));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(517014));
 			inline constexpr REL::ID StartGrabObject(static_cast<std::uint64_t>(39475));
+			inline constexpr REL::ID CenterOnCell(static_cast<std::uint64_t>(39365));
+			inline constexpr REL::ID AddSkillExperience(static_cast<std::uint64_t>(39413));
 		}
 
 		namespace PlayerControls
 		{
 			inline constexpr REL::ID Ctor(static_cast<std::uint64_t>(41257));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514706));
+		}
+
+		namespace ProcessLists
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514167));
+			inline constexpr REL::ID ClearCachedFactionFightReactions(static_cast<std::uint64_t>(40396));
+			inline constexpr REL::ID StopCombatAndAlarmOnActor(static_cast<std::uint64_t>(40330));
+		}
+
+		namespace RaceSexMenu
+		{
+			inline constexpr REL::ID ChangeName(static_cast<std::uint64_t>(51540));
+		}
+
+		namespace ReferenceEffectController
+		{
+			inline constexpr REL::ID Start(static_cast<std::uint64_t>(33961));
+		}
+
+		namespace ResponseDictionary
+		{
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(517372));
+		}
+
+		namespace ScrapHeap
+		{
+			inline constexpr REL::ID Allocate(static_cast<std::uint64_t>(401456));
+			inline constexpr REL::ID Deallocate(static_cast<std::uint64_t>(66885));
 		}
 
 		namespace Script
@@ -888,6 +1720,12 @@ namespace RE
 		{
 			inline constexpr REL::ID FirstConsoleCommand(static_cast<std::uint64_t>(501797));
 			inline constexpr REL::ID FirstScriptCommand(static_cast<std::uint64_t>(501789));
+		}
+
+		namespace ScriptEventSourceHolder
+		{
+			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(14108));
+			inline constexpr REL::ID SendOpenCloseEvent(static_cast<std::uint64_t>(14190));
 		}
 
 		namespace Sky
@@ -904,6 +1742,12 @@ namespace RE
 			inline constexpr REL::ID RelayEvent(static_cast<std::uint64_t>(53221));
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(514315));
 		}
+		
+		namespace TaskQueueInterface
+		{
+			inline constexpr REL::ID Attach3D(static_cast<std::uint64_t>(35922));
+			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(358917));
+		}
 
 		namespace TES
 		{
@@ -913,6 +1757,16 @@ namespace RE
 		namespace TESCamera
 		{
 			inline constexpr REL::ID SetState(static_cast<std::uint64_t>(32290));
+		}
+
+		namespace TESCondition
+		{
+			inline constexpr REL::ID IsTrue(static_cast<std::uint64_t>(832842));
+		}
+
+		namespace TESConditionItem
+		{
+			inline constexpr REL::ID IsTrue(static_cast<std::uint64_t>(29074));
 		}
 
 		namespace TESDataHandler
@@ -926,6 +1780,11 @@ namespace RE
 			inline constexpr REL::ID GetDescription(static_cast<std::uint64_t>(14399));
 		}
 
+		namespace TESFaction
+		{
+			inline constexpr REL::ID SetFactionFightReaction(static_cast<std::uint64_t>(24012));
+		}
+
 		namespace TESFile
 		{
 			inline constexpr REL::ID Duplicate(static_cast<std::uint64_t>(13923));
@@ -934,6 +1793,15 @@ namespace RE
 			inline constexpr REL::ID ReadData(static_cast<std::uint64_t>(13904));
 			inline constexpr REL::ID Seek(static_cast<std::uint64_t>(13898));
 			inline constexpr REL::ID SeekNextSubrecord(static_cast<std::uint64_t>(13903));
+		}
+
+		namespace TESForm
+		{
+			inline constexpr REL::ID AddCompileIndex(static_cast<std::uint64_t>(14509));
+			inline constexpr REL::ID AllForms(static_cast<std::uint64_t>(514351));
+			inline constexpr REL::ID AllFormsMapLock(static_cast<std::uint64_t>(514360));
+			inline constexpr REL::ID AllFormsByEditorID(static_cast<std::uint64_t>(514352));
+			inline constexpr REL::ID AllFormsEditorIDMapLock(static_cast<std::uint64_t>(514361));
 		}
 
 		namespace TESHavokUtilities
@@ -951,14 +1819,28 @@ namespace RE
 			inline constexpr REL::ID UpdateNeck(static_cast<std::uint64_t>(24207));
 		}
 
+		namespace TESObjectCELL
+		{
+			inline constexpr REL::ID GetbhkWorld(static_cast<std::uint64_t>(18536));
+		}
+
 		namespace TESObjectREFR
 		{
+			inline constexpr REL::ID ApplyArtObject(static_cast<std::uint64_t>(22289));
+			inline constexpr REL::ID ApplyEffectShader(static_cast<std::uint64_t>(19446));
+			inline constexpr REL::ID FindReferenceFor3D(static_cast<std::uint64_t>(19323));
+			inline constexpr REL::ID GetCurrentLocation(static_cast<std::uint64_t>(19385));
 			inline constexpr REL::ID GetDisplayFullName(static_cast<std::uint64_t>(19354));
 			inline constexpr REL::ID GetLock(static_cast<std::uint64_t>(19818));
 			inline constexpr REL::ID GetOwner(static_cast<std::uint64_t>(19789));
 			inline constexpr REL::ID GetStealValue(static_cast<std::uint64_t>(15807));
-			inline constexpr REL::ID FindReferenceFor3D(static_cast<std::uint64_t>(19323));
+			inline constexpr REL::ID GetWeightInContainer(static_cast<std::uint64_t>(19277));
+			inline constexpr REL::ID HasQuestObject(static_cast<std::uint64_t>(19201));
+			inline constexpr REL::ID InitChildActivates(static_cast<std::uint64_t>(19857));
 			inline constexpr REL::ID InitInventoryIfRequired(static_cast<std::uint64_t>(15800));
+			inline constexpr REL::ID IsAnOwner(static_cast<std::uint64_t>(19805));
+			inline constexpr REL::ID IsCrimeToActivate(static_cast<std::uint64_t>(19400));
+			inline constexpr REL::ID MakeInventoryChanges(static_cast<std::uint64_t>(15802));
 			inline constexpr REL::ID MoveTo(static_cast<std::uint64_t>(56227));
 			inline constexpr REL::ID PlayAnimation(static_cast<std::uint64_t>(14189));
 		}
@@ -967,6 +1849,14 @@ namespace RE
 		{
 			inline constexpr REL::ID EnsureQuestStarted(static_cast<std::uint64_t>(24481));
 			inline constexpr REL::ID ResetQuest(static_cast<std::uint64_t>(24486));
+		}
+		
+		namespace TESTopicInfo
+		{
+			namespace ResponseData
+			{
+				inline constexpr REL::ID PopulateResponseText(static_cast<std::uint64_t>(24985));
+			}
 		}
 
 		namespace UI
@@ -994,12 +1884,16 @@ namespace RE
 			inline constexpr REL::ID Singleton(static_cast<std::uint64_t>(516458));
 		}
 
+		inline constexpr REL::ID ApplyPerkEntries(static_cast<std::uint64_t>(23073));
 		inline constexpr REL::ID CreateRefHandle(static_cast<std::uint64_t>(12193));
 		inline constexpr REL::ID DebugNotification(static_cast<std::uint64_t>(52050));
+		inline constexpr REL::ID GetArmorFinalRating(static_cast<std::uint64_t>(15779));
+		inline constexpr REL::ID GlobalStateCounter(static_cast<std::uint64_t>(514157));
+		inline constexpr REL::ID LogDirectory(static_cast<std::uint64_t>(508778));
 		inline constexpr REL::ID LookupReferenceByHandle(static_cast<std::uint64_t>(12204));
 		inline constexpr REL::ID PlaySound(static_cast<std::uint64_t>(52054));
+		inline constexpr REL::ID RTDynamicCast(static_cast<std::uint64_t>(102238));
 		inline constexpr REL::ID TlsIndex(static_cast<std::uint64_t>(528600));
-		inline constexpr REL::ID GlobalStateCounter(static_cast<std::uint64_t>(514157));
 #endif
 	}
 }

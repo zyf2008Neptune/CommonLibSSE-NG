@@ -12,7 +12,7 @@ namespace RE
 
 	float Main::QFrameAnimTime()
 	{
-		REL::Relocation<float*> data{ RELOCATION_ID(516940, 403447) };
+		REL::Relocation<float*> data{ Offset::Main::QFrameAnimTime };
 		return *data;
 	}
 

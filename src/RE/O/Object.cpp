@@ -17,7 +17,7 @@ namespace RE
 		VMHandle Object::GetHandle() const
 		{
 			using func_t = decltype(&Object::GetHandle);
-			REL::Relocation<func_t> func{ RELOCATION_ID(97463, 104247) };
+			REL::Relocation<func_t> func{ Offset::BSScript::Object::GetHandle };
 			return func(this);
 		}
 
@@ -46,14 +46,14 @@ namespace RE
 		void Object::IncRef()
 		{
 			using func_t = decltype(&Object::IncRef);
-			REL::Relocation<func_t> func{ RELOCATION_ID(97468, 104252) };
+			REL::Relocation<func_t> func{ Offset::BSScript::Object::IncRef };
 			return func(this);
 		}
 
 		std::uint32_t Object::DecRef()
 		{
 			using func_t = decltype(&Object::DecRef);
-			REL::Relocation<func_t> func{ RELOCATION_ID(97469, 104253) };
+			REL::Relocation<func_t> func{ Offset::BSScript::Object::DecRef };
 			return func(this);
 		}
 
@@ -75,10 +75,46 @@ namespace RE
 			return idx != INVALID ? std::addressof(variables[idx]) : nullptr;
 		}
 
+		Variable* Object::GetVariable(const BSFixedString& a_name)
+		{
+			return const_cast<Variable*>(
+				const_cast<const Object*>(this)->GetVariable(a_name));
+		}
+
+		const Variable* Object::GetVariable(const BSFixedString& a_name) const
+		{
+			constexpr auto INVALID = static_cast<std::uint32_t>(-1);
+
+			auto          idx = INVALID;
+			std::uint32_t offset = 0;
+			for (auto cls = type.get(); cls; cls = cls->GetParent()) {
+				const auto vars = cls->GetVariableIter();
+				if (idx == INVALID) {
+					if (vars) {
+						for (std::uint32_t i = 0; i < cls->GetNumVariables(); i++) {
+							const auto& var = vars[i];
+							if (var.name == a_name) {
+								idx = i;
+								break;
+							}
+						}
+					}
+				} else {
+					offset += cls->GetNumVariables();
+				}
+			}
+
+			if (idx == INVALID) {
+				return nullptr;
+			}
+
+			return std::addressof(variables[offset + idx]);
+		}
+
 		void Object::Dtor()
 		{
 			using func_t = decltype(&Object::Dtor);
-			REL::Relocation<func_t> func{ RELOCATION_ID(97462, 104246) };
+			REL::Relocation<func_t> func{ Offset::BSScript::Object::Dtor };
 			return func(this);
 		}
 	}

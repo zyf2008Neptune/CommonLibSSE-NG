@@ -159,7 +159,7 @@ namespace RE
 			return ptr;
 		}
 
-		[[nodiscard]] native_handle_type native_handle() noexcept { return _handle.value(); }
+		[[nodiscard]] native_handle_type native_handle() const noexcept { return _handle.value(); }
 
 		[[nodiscard]] explicit operator bool() const noexcept { return _handle.has_value(); }
 
@@ -210,14 +210,14 @@ namespace RE
 		static BSPointerHandle<T> GetHandle(T* a_ptr)
 		{
 			using func_t = decltype(&BSPointerHandleManagerInterface<T, Manager>::GetHandle);
-			REL::Relocation<func_t> func{ RELOCATION_ID(15967, 16212) };
+			REL::Relocation<func_t> func{ Offset::BSPointerHandleManagerInterface::GetHandle };
 			return func(a_ptr);
 		}
 
 		static bool GetSmartPointer(const BSPointerHandle<T>& a_handle, NiPointer<T>& a_smartPointerOut)
 		{
 			using func_t = decltype(&BSPointerHandleManagerInterface<T, Manager>::GetSmartPointer);
-			REL::Relocation<func_t> func{ RELOCATION_ID(12204, 12332) };
+			REL::Relocation<func_t> func{ Offset::BSPointerHandleManagerInterface::GetSmartPointer };
 			return func(a_handle, a_smartPointerOut);
 		}
 	};
