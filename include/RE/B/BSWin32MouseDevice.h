@@ -5,11 +5,12 @@
 
 namespace RE
 {
-	struct __DIMOUSESTATE2 {
+	struct __DIMOUSESTATE2
+	{
 		std::int32_t lX;
 		std::int32_t lY;
 		std::int32_t lZ;
-		std::byte rgbButtons[8];
+		std::byte    rgbButtons[8];
 	};
 
 	class BSWin32MouseDevice : public BSMouseDevice
@@ -45,7 +46,7 @@ namespace RE
 		void Reinitialize(void) override;     // 09
 
 		// members
-		void *             dInputDevice;      // 78 - IDirectInputDevice8A*
+		void*              dInputDevice;      // 78 - IDirectInputDevice8A*
 		__DIMOUSESTATE2    dInputPrevState;   // 80
 		__DIMOUSESTATE2    dInputNextState;   // 94
 		bool               notInitialized;    // A8

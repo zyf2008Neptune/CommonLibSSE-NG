@@ -15,7 +15,7 @@ namespace RE
 		virtual void Reinitialize(void);  // 09 - { return; }
 
 		// members
-		bool          backgroundMouse;  // 70
+		bool backgroundMouse;  // 70
 	};
 	static_assert(sizeof(BSMouseDevice) == 0x78);
 }
