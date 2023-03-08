@@ -85,7 +85,7 @@ namespace RE
 		inline void CastRay(const hkpWorldRayCastInput& a_input, hkpWorldRayCastOutput& a_output) const
 		{
 			using func_t = decltype(&hkpWorld::CastRay);
-			REL::Relocation<func_t> func{ Offset::hkpWorld::CastRay };
+			REL::Relocation<func_t> func{ RELOCATION_ID(60551, 61399) };
 			return func(this, a_input, a_output);
 		}
 
