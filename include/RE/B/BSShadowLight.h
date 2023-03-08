@@ -59,7 +59,7 @@ namespace RE
 		std::uint32_t   unk548;           // 548
 		std::uint32_t   unk54C;           // 54C
 		std::uint32_t   unk550;           // 550
-		std::uint32_t   unk554;           // 550
+		std::uint32_t   unk554;           // 554
 		std::uint8_t    unk558;           // 558
 		std::uint8_t    pad559;           // 559
 		std::uint8_t    pad55A;           // 55A
