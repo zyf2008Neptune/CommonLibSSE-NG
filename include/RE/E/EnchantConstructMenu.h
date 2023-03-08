@@ -22,6 +22,7 @@ namespace RE
 		{
 		public:
 			inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu;
+			inline static constexpr auto VTABLE = VTABLE_CraftingSubMenus__EnchantConstructMenu;
 
 			enum class FilterFlag
 			{
@@ -46,6 +47,7 @@ namespace RE
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__CategoryListEntry;
+				inline static constexpr auto VTABLE = VTABLE_CraftingSubMenus__EnchantConstructMenu__CategoryListEntry;
 
 				virtual ~CategoryListEntry();  // 00
 
@@ -68,6 +70,7 @@ namespace RE
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantmentEntry;
+				inline static constexpr auto VTABLE = VTABLE_CraftingSubMenus__EnchantConstructMenu__EnchantmentEntry;
 
 				// members
 				EnchantmentItem* data;          // 18
@@ -80,6 +83,7 @@ namespace RE
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__ItemChangeEntry;
+				inline static constexpr auto VTABLE = VTABLE_CraftingSubMenus__EnchantConstructMenu__ItemChangeEntry;
 
 				// members
 				InventoryEntryData* data;  // 18
@@ -90,8 +94,9 @@ namespace RE
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__CreateEffectFunctor;
+				inline static constexpr auto VTABLE = VTABLE_CraftingSubMenus__EnchantConstructMenu__CreateEffectFunctor;
 
-				virtual ~CreateEffectFunctor();  // 00
+				~CreateEffectFunctor() override;  // 00
 
 				// override (MagicItemTraversalFunctor)
 				BSContainer::ForEachResult operator()(Effect* a_effect) override;  // 01
@@ -112,8 +117,9 @@ namespace RE
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuCallback;
+				inline static constexpr auto VTABLE = VTABLE_CraftingSubMenus__EnchantConstructMenu__EnchantMenuCallback;
 
-				virtual ~EnchantMenuCallback();  // 00
+				~EnchantMenuCallback() override;  // 00
 
 				// members
 				EnchantConstructMenu* subMenu;  // 10
@@ -124,8 +130,9 @@ namespace RE
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuDisenchantCallback;
+				inline static constexpr auto VTABLE = VTABLE_CraftingSubMenus__EnchantConstructMenu__EnchantMenuDisenchantCallback;
 
-				virtual ~EnchantMenuDisenchantCallback();  // 00
+				~EnchantMenuDisenchantCallback() override;  // 00
 
 				// override (EnchantMenuCallback)
 				virtual void Run(Message a_msg) override;  // 01
@@ -136,8 +143,9 @@ namespace RE
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuCraftCallback;
+				inline static constexpr auto VTABLE = VTABLE_CraftingSubMenus__EnchantConstructMenu__EnchantMenuCraftCallback;
 
-				virtual ~EnchantMenuCraftCallback();  // 00
+				~EnchantMenuCraftCallback() override;  // 00
 
 				// override (EnchantMenuCallback)
 				virtual void Run(Message a_msg) override;  // 01
@@ -148,8 +156,9 @@ namespace RE
 			{
 			public:
 				inline static constexpr auto RTTI = RTTI_CraftingSubMenus__EnchantConstructMenu__EnchantMenuExitCallback;
+				inline static constexpr auto VTABLE = VTABLE_CraftingSubMenus__EnchantConstructMenu__EnchantMenuExitCallback;
 
-				virtual ~EnchantMenuExitCallback();  // 00
+				~EnchantMenuExitCallback() override;  // 00
 
 				// override (EnchantMenuCallback)
 				virtual void Run(Message a_msg) override;  // 01
@@ -159,6 +168,7 @@ namespace RE
 			struct Selections
 			{
 			public:
+				// members
 				BSTSmartPointer<ItemChangeEntry>            item;                    // 00
 				BSTSmartPointer<ItemChangeEntry>            soulGem;                 // 08
 				BSTArray<BSTSmartPointer<EnchantmentEntry>> effects;                 // 10
