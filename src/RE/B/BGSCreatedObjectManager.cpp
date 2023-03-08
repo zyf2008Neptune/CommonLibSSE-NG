@@ -4,21 +4,21 @@ namespace RE
 {
 	BGSCreatedObjectManager* BGSCreatedObjectManager::GetSingleton()
 	{
-		REL::Relocation<BGSCreatedObjectManager**> singleton{ Offset::BGSCreatedObjectManager::Singleton };
+		REL::Relocation<BGSCreatedObjectManager**> singleton{ RELOCATION_ID(514172, 400320) };
 		return *singleton;
 	}
 
-	EnchantmentItem* BGSCreatedObjectManager::CreateArmorEnchantment(BSTArray<Effect>& a_effects)
+	EnchantmentItem* BGSCreatedObjectManager::AddArmorEnchantment(BSTArray<Effect>& a_effects)
 	{
-		using func_t = decltype(&BGSCreatedObjectManager::CreateArmorEnchantment);
-		REL::Relocation<func_t> func{ Offset::BGSCreatedObjectManager::CreateArmorEnchantment };
+		using func_t = decltype(&BGSCreatedObjectManager::AddArmorEnchantment);
+		REL::Relocation<func_t> func{ RELOCATION_ID(35264, 36166) };
 		return func(this, a_effects);
 	}
 
-	EnchantmentItem* BGSCreatedObjectManager::CreateWeaponEnchantment(BSTArray<Effect>& a_effects)
+	EnchantmentItem* BGSCreatedObjectManager::AddWeaponEnchantment(BSTArray<Effect>& a_effects)
 	{
-		using func_t = decltype(&BGSCreatedObjectManager::CreateWeaponEnchantment);
-		REL::Relocation<func_t> func{ Offset::BGSCreatedObjectManager::CreateWeaponEnchantment };
+		using func_t = decltype(&BGSCreatedObjectManager::AddWeaponEnchantment);
+		REL::Relocation<func_t> func{ RELOCATION_ID(35263, 36165) };
 		return func(this, a_effects);
 	}
 }

@@ -94,7 +94,7 @@ namespace RE
 				virtual ~CreateEffectFunctor();  // 00
 
 				// override (MagicItemTraversalFunctor)
-				Result operator()(Effect* a_effect) override;  // 01
+				BSContainer::ForEachResult operator()(Effect* a_effect) override;  // 01
 
 				// members
 				BSTArray<Effect>  createdEffects;      // 10

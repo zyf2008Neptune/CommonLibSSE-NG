@@ -424,8 +424,6 @@ namespace RE
 		bool                                    HasQuestObject() const;
 		void                                    InitChildActivates(TESObjectREFR* a_actionRef);
 		bool                                    InitInventoryIfRequired(bool a_ignoreContainerExtraData = false);
-		ModelReferenceEffect*                   InstantiateHitArt(BGSArtObject* a_art, float a_dur, TESObjectREFR* a_facingRef, bool a_faceTarget, bool a_attachToCamera, NiAVObject* a_attachNode = nullptr, bool a_interfaceEffect = false);
-		ShaderReferenceEffect*                  InstantiateHitShader(TESEffectShader* a_shader, float a_dur, TESObjectREFR* a_facingRef = nullptr, bool a_faceTarget = false, bool a_attachToCamera = false, NiAVObject* a_attachNode = nullptr, bool a_interfaceEffect = false);
 		bool                                    Is3DLoaded() const;
 		bool                                    IsActivationBlocked() const;
 		bool                                    IsAnOwner(const Actor* a_testOwner, bool a_useFaction, bool a_requiresOwner) const;
