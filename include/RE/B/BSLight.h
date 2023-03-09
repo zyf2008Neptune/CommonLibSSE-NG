@@ -42,7 +42,7 @@ namespace RE
 		virtual bool Unk_03();                  // 03
 
 		// members
-		std::uint32_t          unk010;          // 010
+		float                  luminance;       // 010
 		float                  lodDimmer;       // 014
 		Data                   unk018;          // 018
 		std::uint64_t          unk038;          // 038

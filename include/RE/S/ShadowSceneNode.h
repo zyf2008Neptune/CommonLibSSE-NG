@@ -42,11 +42,11 @@ namespace RE
 		{
 #define RUNTIME_DATA_CONTENT                                         \
 	std::uint64_t                      unk128;             /* 128 */ \
-	BSTArray<NiPointer<BSLight>>       unk130;             /* 130 */ \
-	BSTArray<NiPointer<BSLight>>       unk148;             /* 148 */ \
+	BSTArray<NiPointer<BSLight>>	   activePointLights;  /* 130 */ \
+	BSTArray<NiPointer<BSShadowLight>> activeShadowLights; /* 148 */ \
 	BSTArray<NiPointer<BSLight>>       unk160;             /* 160 */ \
 	BSTArray<void*>                    unk178;             /* 178 */ \
-	BSTArray<void*>                    unk190;             /* 190 */ \
+	BSTArray<NiPointer<BSLight>>	   unk190;             /* 190 */ \
 	mutable BSSpinLock                 unk1A8;             /* 1A8 */ \
 	BSTArray<NiPointer<NiAVObject>>    geometries;         /* 1B0 */ \
 	BSTArray<NiPointer<NiAVObject>>    particleNodes;      /* 1C8 */ \
@@ -62,7 +62,7 @@ namespace RE
 	std::uint32_t                      pad21C;             /* 21C */ \
 	NiPointer<BSFogProperty>           fogProperty;        /* 220 */ \
 	BSPortalGraph*                     portalGraph;        /* 228 */ \
-	BSTArray<BSShadowLight*> shadowCasterLights; /* 230 */ \
+	BSTArray<BSShadowLight*>           shadowCasterLights; /* 230 */ \
 	std::uint64_t                      unk248;             /* 248 */ \
 	std::uint64_t                      unk250;             /* 250 */ \
 	std::uint64_t                      unk258;             /* 258 */ \
