@@ -222,6 +222,11 @@ namespace SKSE::WinAPI
 			static_cast<::LPCWSTR>(a_outputString));
 	}
 
+	int ShowCursor(bool bShow) noexcept
+	{
+		return ::ShowCursor(static_cast<::BOOL>(bShow));
+	}
+
 	void TerminateProcess(
 		void*        a_process,
 		unsigned int a_exitCode) noexcept

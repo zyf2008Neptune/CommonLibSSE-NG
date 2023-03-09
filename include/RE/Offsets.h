@@ -1161,6 +1161,10 @@ namespace RE
 		inline constexpr REL::ID TlsIndex(static_cast<std::uint64_t>(528600));
 		inline constexpr REL::ID GlobalStateCounter(static_cast<std::uint64_t>(514157));
 #endif
+		namespace MenuCursor
+		{
+			inline constexpr REL::ID Singleton = RELOCATION_ID(517043, 403551);
+		}
 		inline constexpr REL::ID pGamepadEnable(RELOCATION_ID(511901,388465));
 		inline constexpr REL::ID pKeyboardDefinitionFilePrefix(RELOCATION_ID(511916, 388487));
 		inline constexpr REL::ID pDefaultLocale(RELOCATION_ID(500908,358892));

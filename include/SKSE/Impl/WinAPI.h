@@ -141,6 +141,8 @@ namespace SKSE::WinAPI
 	void OutputDebugString(
 		const wchar_t* a_outputString) noexcept;
 
+	[[nodiscard]] int ShowCursor(bool bShow) noexcept;
+
 	[[noreturn]] void TerminateProcess(
 		void*        a_process,
 		unsigned int a_exitCode) noexcept;
