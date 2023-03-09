@@ -8,6 +8,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSMouseDevice;
+		inline static constexpr auto VTABLE = VTABLE_BSMouseDevice;
 
 		~BSMouseDevice() override;  // 00
 
@@ -16,6 +17,12 @@ namespace RE
 
 		// members
 		bool backgroundMouse;  // 70
+
+	protected:
+		TES_HEAP_REDEFINE_NEW();
+		friend class BSInputDeviceFactory;
+		BSMouseDevice();
 	};
+
 	static_assert(sizeof(BSMouseDevice) == 0x78);
 }

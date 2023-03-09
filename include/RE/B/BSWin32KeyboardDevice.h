@@ -18,6 +18,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSWin32KeyboardDevice;
+		inline static constexpr auto VTABLE = VTABLE_BSWin32KeyboardDevice;
 
 		~BSWin32KeyboardDevice() override;  // 00
 
@@ -37,6 +38,12 @@ namespace RE
 		std::uint8_t         prevState[0x100];  // 168
 		std::uint8_t         curState[0x100];   // 268
 		bool                 capsLockOn;        // 368
+
+	protected:
+		TES_HEAP_REDEFINE_NEW();
+		friend class BSInputDeviceFactory;
+		BSWin32KeyboardDevice() :
+			BSKeyboardDevice(), dInputDevice(nullptr), diObjData(), prevState(), curState(), capsLockOn(false){};
 	};
 	static_assert(offsetof(BSWin32KeyboardDevice, prevState) == 0x168);
 	static_assert(offsetof(BSWin32KeyboardDevice, curState) == 0x268);

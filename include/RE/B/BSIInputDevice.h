@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
+#include "RE/M/MemoryManager.h"
 
 namespace RE
 {
@@ -8,6 +9,7 @@ namespace RE
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BSIInputDevice;
+		inline static constexpr auto VTABLE = VTABLE_BSIInputDevice;
 
 		virtual ~BSIInputDevice();  // 00
 
@@ -20,6 +22,10 @@ namespace RE
 		virtual bool               GetMappedKeycode(std::uint32_t a_key, std::uint32_t& outKeyCode) = 0;  // 06
 		[[nodiscard]] virtual bool IsEnabled() const = 0;                                                 // 07
 		virtual void               Reset() = 0;                                                           // 08
+	protected:
+		friend class BSInputDeviceFactory;
+		TES_HEAP_REDEFINE_NEW();
+		BSIInputDevice() = default;
 	};
 	static_assert(sizeof(BSIInputDevice) == 0x8);
 }

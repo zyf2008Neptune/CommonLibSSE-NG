@@ -1161,5 +1161,10 @@ namespace RE
 		inline constexpr REL::ID TlsIndex(static_cast<std::uint64_t>(528600));
 		inline constexpr REL::ID GlobalStateCounter(static_cast<std::uint64_t>(514157));
 #endif
+		inline constexpr REL::ID pGamepadEnable(RELOCATION_ID(511901,388465));
+		inline constexpr REL::ID pKeyboardDefinitionFilePrefix(RELOCATION_ID(511916, 388487));
+		inline constexpr REL::ID pDefaultLocale(RELOCATION_ID(500908,358892));
+		inline constexpr REL::ID pMouseDefinitionFile(RELOCATION_ID(511918, 388490));
+		inline constexpr REL::ID pGamepadDefinitionFile(RELOCATION_ID(511903, 388468));
 	}
 }
