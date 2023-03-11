@@ -391,8 +391,8 @@ namespace RE
 		NiPoint3                                                bulletAutoAim;                                // 484
 		NiPoint3                                                cachedVelocity;                               // 490
 		std::uint32_t                                           pad49C;                                       // 49C
-		BGSNote                                                 unusedNote;                                   // 4A0 - Used for unimplemented formtype BGSNote
-		std::uint64_t                                           unusedNote2;                                  // 4A8 - Used for unimplemented formtype BGSNote
+		BGSNote*                                                unusedNote;                                   // 4A0 - Used for unimplemented formtype BGSNote
+		BGSNote*                                                unusedNote2;                                  // 4A8 - Used for unimplemented formtype BGSNote
 		BSTArray<PerkRankData*>                                 addedPerks;                                   // 4B0
 		BSTArray<BGSPerk*>                                      perks;                                        // 4C8
 		BSTArray<BGSPerk*>                                      standingStonePerks;                           // 4E0
