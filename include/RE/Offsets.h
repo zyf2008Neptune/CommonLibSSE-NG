@@ -1170,6 +1170,12 @@ namespace RE
 		{
 			inline constexpr REL::ID Singleton = RELOCATION_ID(517043, 403551);
 		}
+
+		namespace Rumble
+		{
+			inline constexpr REL::ID DisableRumble = RELOCATION_ID(67224, 68533);
+		}
+
 		inline constexpr REL::ID pGamepadEnable(RELOCATION_ID(511901,388465));
 		inline constexpr REL::ID pKeyboardDefinitionFilePrefix(RELOCATION_ID(511916, 388487));
 		inline constexpr REL::ID pDefaultLocale(RELOCATION_ID(500908,358892));
