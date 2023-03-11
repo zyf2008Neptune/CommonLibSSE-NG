@@ -1161,6 +1161,11 @@ namespace RE
 		inline constexpr REL::ID TlsIndex(static_cast<std::uint64_t>(528600));
 		inline constexpr REL::ID GlobalStateCounter(static_cast<std::uint64_t>(514157));
 #endif
+		namespace Main
+		{
+			inline constexpr REL::ID SetActive = RELOCATION_ID(35598, 36606);
+		}
+
 		namespace MenuCursor
 		{
 			inline constexpr REL::ID Singleton = RELOCATION_ID(517043, 403551);
