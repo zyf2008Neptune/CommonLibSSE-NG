@@ -565,7 +565,7 @@ namespace RE
 		NiPointer<NiAVObject>                                   targeted3D;                                   // 9C8
 		CombatGroup*                                            combatGroup;                                  // 9D0
 		BSTArray<ActorHandle>                                   actorsToDisplayOnTheHUDArray;                 // 9D8
-		std::uint64_t                                           unk9F0;                                       // 9F0
+		TESForm*                                                advanceObject;                                // 9F0 - Part of AE8 and AEC, the object advancing the skill (eg telekinesis spell for alteration skill)
 		TESBoundObject*                                         lastOneHandItems[2];                          // 9F8
 		std::uint32_t                                           teammateCount;                                // A08
 		float                                                   combatTimer;                                  // A0C
