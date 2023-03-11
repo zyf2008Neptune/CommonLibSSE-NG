@@ -1181,5 +1181,7 @@ namespace RE
 		inline constexpr REL::ID pDefaultLocale(RELOCATION_ID(500908,358892));
 		inline constexpr REL::ID pMouseDefinitionFile(RELOCATION_ID(511918, 388490));
 		inline constexpr REL::ID pGamepadDefinitionFile(RELOCATION_ID(511903, 388468));
+		inline constexpr REL::ID WinProc = RELOCATION_ID(35635, 36649); // function called by the Windows message loop, set on the window when BSGraphics::InitWindows() calls `CreateWindowEXA`
+		inline constexpr REL::ID pControlsBackgroundMouse = RELOCATION_ID(511920, 388493); // global variable that stores the [Controls] bBackgroundMouse ini setting; overwritten on ini load
 	}
 }
