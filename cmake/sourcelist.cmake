@@ -239,6 +239,7 @@ set(SOURCES
 	include/RE/B/BSInputDevice.h
 	include/RE/B/BSInputDeviceFactory.h
 	include/RE/B/BSInputDeviceManager.h
+	include/RE/B/BSInputEventQueue.h
 	include/RE/B/BSInstanceTriShape.h
 	include/RE/B/BSIntrusiveRefCounted.h
 	include/RE/B/BSKeyboardDevice.h
@@ -417,6 +418,7 @@ set(SOURCES
 	include/RE/C/CRC.h
 	include/RE/C/Calendar.h
 	include/RE/C/CalmEffect.h
+	include/RE/C/CharEvent.h
 	include/RE/C/Character.h
 	include/RE/C/ChestsLooted.h
 	include/RE/C/Clouds.h
@@ -1580,6 +1582,7 @@ set(SOURCES
 	src/RE/B/BSInputDevice.cpp
 	src/RE/B/BSInputDeviceFactory.cpp
 	src/RE/B/BSInputDeviceManager.cpp
+	src/RE/B/BSInputEventQueue.cpp
 	src/RE/B/BSKeyboardDevice.cpp
 	src/RE/B/BSLightingShaderMaterialBase.cpp
 	src/RE/B/BSLightingShaderProperty.cpp

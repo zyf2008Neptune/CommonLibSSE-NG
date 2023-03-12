@@ -1173,6 +1173,20 @@ namespace RE
 			inline constexpr REL::ID dtor = RELOCATION_ID(67371, 68673);
 		}
 
+		namespace BSInputEventQueue
+		{
+			inline constexpr REL::ID Singleton = RELOCATION_ID(520856, 407374);
+			inline constexpr REL::ID EnqueueButtonEvent = RELOCATION_ID(67382, 68685);
+			inline constexpr REL::ID EnqueueCharEvent = RELOCATION_ID(67383, 68686);
+			inline constexpr REL::ID EnqueueMouseMoveEvent = RELOCATION_ID(67384, 68687);
+			inline constexpr REL::ID EnqueueThumbstickEvent = RELOCATION_ID(67385, 68688);
+			inline constexpr REL::ID EnqueueDeviceConnectEvent = RELOCATION_ID(67386, 68689);
+			inline constexpr REL::ID EnqueueKinectEvent = RELOCATION_ID(67387, 68690);
+			inline constexpr REL::ID Reset = RELOCATION_ID(67388, 68691);
+			// inline constexpr REL::ID ctor = RELOCATION_ID(67332); - inlined in AE
+			// inline constexpr REL::ID dtor = RELOCATION_ID(67341); - inlined in AE
+		}
+
 		namespace Main
 		{
 			inline constexpr REL::ID SetActive = RELOCATION_ID(35598, 36606);
