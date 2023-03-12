@@ -1169,8 +1169,6 @@ namespace RE
 			inline constexpr REL::ID GetDeviceData = RELOCATION_ID(67376, 68678);
 			inline constexpr REL::ID ReleaseDevice = RELOCATION_ID(67374, 68676);
 			inline constexpr REL::ID CreateDeviceWithGUID = RELOCATION_ID(67373, 68675);
-			inline constexpr REL::ID ctor = RELOCATION_ID(67372, 68674);
-			inline constexpr REL::ID dtor = RELOCATION_ID(67371, 68673);
 		}
 
 		namespace BSInputEventQueue
@@ -1183,8 +1181,6 @@ namespace RE
 			inline constexpr REL::ID EnqueueDeviceConnectEvent = RELOCATION_ID(67386, 68689);
 			inline constexpr REL::ID EnqueueKinectEvent = RELOCATION_ID(67387, 68690);
 			inline constexpr REL::ID Reset = RELOCATION_ID(67388, 68691);
-			// inline constexpr REL::ID ctor = RELOCATION_ID(67332); - inlined in AE
-			// inline constexpr REL::ID dtor = RELOCATION_ID(67341); - inlined in AE
 		}
 
 		namespace Main
