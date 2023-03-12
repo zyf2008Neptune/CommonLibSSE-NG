@@ -352,6 +352,16 @@ namespace SKSE::WinAPI
 		const wchar_t* a_filename,
 		std::uint32_t* a_handle) noexcept;
 
+	[[nodiscard]] int GetKeyNameText(
+		std::int32_t a_lParam,
+		char*        a_buffer,
+		int          a_size) noexcept;
+
+	[[nodiscard]] int GetKeyNameText(
+		std::int32_t a_lParam,
+		wchar_t*     a_buffer,
+		int          a_size) noexcept;
+
 	[[nodiscard]] std::int16_t GetKeyState(int nVirtKey) noexcept;
 
 	[[nodiscard]] std::size_t GetMaxPath() noexcept;

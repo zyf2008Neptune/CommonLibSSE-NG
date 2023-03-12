@@ -31,8 +31,12 @@ namespace RE
 				kY = XInput::XInputButton::XINPUT_GAMEPAD_Y,                           // 0x8000
 
 				// arbitrary values
+				// IDs meant to be used with ButtonEvent
 				kLeftTrigger = 0x0009,
-				kRightTrigger = 0x000A
+				kRightTrigger = 0x000A,
+				// IDs meant to be used with ThumbstickEvent
+				kLeftStick = 0x000B,
+				kRightStick = 0x000C
 			};
 		};
 		using Key = Keys::Key;

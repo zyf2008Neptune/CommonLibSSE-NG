@@ -31,8 +31,10 @@ namespace RE
 				kPS3_X = 0x8000,
 				kPS3_Y = 0x1000,
 				// arbitrary values
+				// IDs meant to be used with ButtonEvent
 				kPS3_LT = 0x0009,
 				kPS3_RT = 0x000a,
+				// IDs meant to be used with ThumbstickEvent
 				kPS3_LS = 0x000b,
 				kPS3_RS = 0x000c,
 			};
