@@ -105,6 +105,11 @@ namespace SKSE::WinAPI
 				reinterpret_cast<::LPDWORD>(a_handle)));
 	}
 
+	std::int16_t GetKeyState(int nVirtKey) noexcept
+	{
+		return ::GetKeyState(nVirtKey);
+	}
+
 	std::size_t GetMaxPath() noexcept
 	{
 		return static_cast<std::size_t>(MAX_PATH);

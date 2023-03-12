@@ -65,6 +65,8 @@ static_assert(
 #pragma warning(pop)
 
 #include "SKSE/Impl/WinAPI.h"
+#include "SKSE/Impl/DInputAPI.h"
+#include "SKSE/Impl/XInputAPI.h"
 
 namespace SKSE
 {
