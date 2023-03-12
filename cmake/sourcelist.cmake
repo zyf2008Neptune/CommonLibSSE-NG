@@ -205,6 +205,7 @@ set(SOURCES
 	include/RE/B/BSContainer.h
 	include/RE/B/BSCoreTypes.h
 	include/RE/B/BSCullingProcess.h
+	include/RE/B/BSDirectInputManager.h
 	include/RE/B/BSDismemberSkinInstance.h
 	include/RE/B/BSDynamicTriShape.h
 	include/RE/B/BSEffectShaderData.h
@@ -1570,6 +1571,7 @@ set(SOURCES
 	src/RE/B/BGSStoryTeller.cpp
 	src/RE/B/BSAtomic.cpp
 	src/RE/B/BSAudioManager.cpp
+	src/RE/B/BSDirectInputManager.cpp
 	src/RE/B/BSEffectShaderData.cpp
 	src/RE/B/BSExtraData.cpp
 	src/RE/B/BSFixedString.cpp
