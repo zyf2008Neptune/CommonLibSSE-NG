@@ -22,14 +22,14 @@ namespace RE
 		return func(this, a_obj, a_root, a_arg3, a_arg4);
 	}
 
-    void TaskQueueInterface::QueueUpdateDestructibleObject(TESObjectREFR* a_refr, float a_damage, bool a_arg3, TESObjectREFR* a_cause)
+	void TaskQueueInterface::QueueUpdateDestructibleObject(TESObjectREFR* a_refr, float a_damage, bool a_arg3, TESObjectREFR* a_cause)
 	{
 		using func_t = decltype(&TaskQueueInterface::QueueUpdateDestructibleObject);
 		REL::Relocation<func_t> func{ RELOCATION_ID(35934, 36909) };
 		return func(this, a_refr, a_damage, a_arg3, a_cause);
 	}
 
-    void TaskQueueInterface::QueueAddRipple(float a_scale, const NiPoint3& a_pos)
+	void TaskQueueInterface::QueueAddRipple(float a_scale, const NiPoint3& a_pos)
 	{
 		using func_t = decltype(&TaskQueueInterface::QueueAddRipple);
 		REL::Relocation<func_t> func{ RELOCATION_ID(35978, 36953) };
@@ -43,14 +43,14 @@ namespace RE
 		return func(this, a_weather, a_forceOverride);
 	}
 
-    void TaskQueueInterface::QueueActorDisarm(ActorHandle& a_target, ActorHandle& a_caster)
+	void TaskQueueInterface::QueueActorDisarm(ActorHandle& a_target, ActorHandle& a_caster)
 	{
 		using func_t = decltype(&TaskQueueInterface::QueueActorDisarm);
 		REL::Relocation<func_t> func{ RELOCATION_ID(36010, 36985) };
 		return func(this, a_target, a_caster);
 	}
 
-    void TaskQueueInterface::QueueRemoveSpell(ActorHandle& a_actor, SpellItem* a_spellItem)
+	void TaskQueueInterface::QueueRemoveSpell(ActorHandle& a_actor, SpellItem* a_spellItem)
 	{
 		using func_t = decltype(&TaskQueueInterface::QueueRemoveSpell);
 		REL::Relocation<func_t> func{ RELOCATION_ID(35987, 36962) };
