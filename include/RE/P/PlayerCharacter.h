@@ -350,7 +350,9 @@ namespace RE
 		void                     AddSkillExperience(ActorValue a_skill, float a_experience);
 		bool                     AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer = true);
 		bool                     CenterOnCell(const char* a_cellName);
-		bool                     CenterOnCell(RE::TESObjectCELL* a_cell);
+		bool                     CenterOnCell(TESObjectCELL* a_cell);
+		void                     DestroyMouseSprings();
+		void                     EndGrabObject();
 		NiPointer<Actor>         GetActorDoingPlayerCommand() const;
 		float                    GetArmorValue(InventoryEntryData* a_form);
 		float                    GetDamage(InventoryEntryData* a_form);
