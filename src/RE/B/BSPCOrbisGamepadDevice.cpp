@@ -4,7 +4,7 @@ namespace RE
 {
 
 	BSPCOrbisGamepadDevice::BSPCOrbisGamepadDevice() :
-		BSPCGamepadDeviceDelegate(), previousHIDState(), previousLT(), previousRT(), previousLX(), previousLY(), previousRX(), previousRY(), currentHIDState(), currentLT(), currentRT(), currentLX(), currentLY(), currentRX(), currentRY()
+		BSPCGamepadDeviceDelegate(), previousPadState(), previousLT(), previousRT(), previousLX(), previousLY(), previousRX(), previousRY(), currentPadState(), currentLT(), currentRT(), currentLX(), currentLY(), currentRX(), currentRY()
 	{
 	}
 }
