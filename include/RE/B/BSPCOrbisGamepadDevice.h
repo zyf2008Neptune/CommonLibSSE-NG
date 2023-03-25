@@ -161,9 +161,9 @@ namespace RE
 		void Process(float a_arg1) override;                                                          // 02
 		void Release() override;                                                                      // 03
 		void Reset() override;                                                                        // 08 - { memset(this+0xD8, 0, 0x120); }
-		void Unk_09(void) override;                                                                   // 09 - takes two floats, and then does some HID polling
-		void Unk_0A(void) override;                                                                   // 0A - takes in a structure, and then does some HID polling
-		void Unk_0B(void) override;                                                                   // 0B - no params, does HID polling
+		void SetRumble(float lValue, float rValue) override;                                          // 09
+		void SetLEDColor(ColorParam* colorParam) override;                                            // 0A
+		void ResetLEDColor() override;                                                                // 0B
 		void ProcessRawInput(int32_t a_rawX, int32_t a_rawY, float& a_outX, float& a_outY) override;  // 0D
 		void Unk_0E(void) override;                                                                   // 0E - { return; }
 

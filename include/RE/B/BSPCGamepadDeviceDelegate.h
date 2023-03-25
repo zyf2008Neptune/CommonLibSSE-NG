@@ -15,11 +15,11 @@ namespace RE
 		~BSPCGamepadDeviceDelegate() override;  // 00
 
 		// override (BSGamepadDevice)
-		void Initialize() override;           // 01 - { return; }
-		void Process(float a_arg1) override;  // 02 - { return; }
-		void Release() override;              // 03 - { return; }
-		void Reset() override;                // 08 - { return; }
-		void Unk_09(void) override;           // 09 - { return; }
+		void Initialize() override;                           // 01 - { return; }
+		void Process(float a_arg1) override;                  // 02 - { return; }
+		void Release() override;                              // 03 - { return; }
+		void Reset() override;                                // 08 - { return; }
+		void SetRumble(float lValue, float rValue) override;  // 09 - { return; }
 
 		// members
 		BSPCGamepadDeviceHandler* gamepadDeviceHandler;  // D0
