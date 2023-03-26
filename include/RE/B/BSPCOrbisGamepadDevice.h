@@ -169,12 +169,12 @@ namespace RE
 		void Unk_0E(void) override;                                                                   // 0E - { return; }
 
 		ButtonState GetPreviousButtonState() const
-        {
+		{
 			return stl::unrestricted_cast<ButtonState>(previousPadState.buttonState);
 		}
 
 		ButtonState GetCurrentButtonState() const
-        {
+		{
 			return stl::unrestricted_cast<ButtonState>(currentPadState.buttonState);
 		}
 

@@ -4,5 +4,5 @@ namespace RE
 {
 	BSWin32VirtualKeyboardDevice::BSWin32VirtualKeyboardDevice() :
 		BSVirtualKeyboardDevice()
-    {}
+	{}
 }

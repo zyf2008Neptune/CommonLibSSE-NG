@@ -9,7 +9,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_CharEvent;
 
-	    ~CharEvent() override;  // 00
+		~CharEvent() override;  // 00
 
 		// members
 		std::uint32_t keycode;  // 18

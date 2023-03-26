@@ -4,5 +4,5 @@ namespace RE
 {
 	BSVirtualKeyboardDevice::BSVirtualKeyboardDevice() :
 		BSKeyboardDevice()
-    {}
+	{}
 }
