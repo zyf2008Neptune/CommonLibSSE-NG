@@ -433,18 +433,20 @@ namespace RE
 		void             AddSkillExperience(ActorValue a_skill, float a_experience);
 		bool             AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer = true);
 		bool             CenterOnCell(const char* a_cellName);
-		bool             CenterOnCell(RE::TESObjectCELL* a_cell);
+		bool             CenterOnCell(TESObjectCELL* a_cell);
 		NiPointer<Actor> GetActorDoingPlayerCommand() const;
 		float            GetArmorValue(InventoryEntryData* a_form);
 		float            GetDamage(InventoryEntryData* a_form);
 		std::int32_t     GetItemCount(TESBoundObject* a_object);
 		std::uint32_t    GetNumTints(std::uint32_t a_tintType);
 #ifndef SKYRIMVR
+		void                     DestroyMouseSprings();
+		void                     EndGrabObject();
+		NiPointer<TESObjectREFR> GetGrabbedRef();
 		TintMask*                GetOverlayTintMask(TintMask* a_original);
 		BSTArray<TintMask*>&     GetTintList();
 		TintMask*                GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
 		void                     StartGrabObject();
-		NiPointer<TESObjectREFR> GetGrabbedRef();
 #else
 		void StartGrabObject(VR_DEVICE a_device);
 		NiPointer<TESObjectREFR> GetGrabbedRef(VR_DEVICE a_device);

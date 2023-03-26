@@ -36,7 +36,7 @@ namespace RE
 		std::uint32_t                    pad00;           // 00
 		ObjectRefHandle                  target;          // 04
 		ObjectRefHandle                  targetActor;     // 08
-		ObjectRefHandle                  unk0C;           // 0C
+		ObjectRefHandle                  grabPickRef;     // 0C
 		NiPoint3                         collisionPoint;  // 10
 		std::uint32_t                    pad1C;           // 1C
 		bhkRigidBody*                    targetCollider;  // 20
@@ -49,7 +49,7 @@ namespace RE
 		std::uint32_t                    pad00;                              // 00
 		ObjectRefHandle                  target[VR_DEVICE::kTotal];          // 04
 		ObjectRefHandle                  targetActor[VR_DEVICE::kTotal];     // 10
-		ObjectRefHandle                  unk1C[VR_DEVICE::kTotal];           // 1C
+		ObjectRefHandle                  grabPickRef[VR_DEVICE::kTotal];     // 1C
 		NiPoint3                         collisionPoint[VR_DEVICE::kTotal];  // 28
 		std::uint32_t                    pad4C;                              // 4C
 		std::uint64_t                    unk50[VR_DEVICE::kTotal];           // 50
