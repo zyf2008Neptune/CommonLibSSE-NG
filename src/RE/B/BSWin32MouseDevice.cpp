@@ -3,5 +3,11 @@
 namespace RE
 {
 	BSWin32MouseDevice::BSWin32MouseDevice() :
-		BSMouseDevice(), dInputDevice(nullptr), notInitialized(false), reinitializeLock(), dInputPrevState(), dInputNextState() {}
+		BSMouseDevice(),
+		dInputDevice(nullptr),
+		dInputPrevState(),
+		dInputNextState(),
+		notInitialized(false),
+		reinitializeLock()
+	{}
 }

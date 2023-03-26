@@ -74,7 +74,7 @@ namespace RE
 	void BSInputDeviceManager::ProcessGamepadEnabledChange()
 	{
 		if (valueQueued) {
-			bool* pGamepadEnable = (bool*)Offset::pGamepadEnable.address();
+			bool* pGamepadEnable = reinterpret_cast<bool*>(RELOCATION_ID(511901, 388465).address());
 			*pGamepadEnable = true;
 			valueQueued = false;
 		}
@@ -90,7 +90,7 @@ namespace RE
 
 	void BSInputDeviceManager::CreateInputDevices()
 	{
-		for (int i = 0; i < INPUT_DEVICE::kTotal; i++) {
+		for (std::uint32_t i = 0; i < INPUT_DEVICE::kTotal; i++) {
 			devices[i] = BSInputDeviceFactory::CreateInputDevice(static_cast<INPUT_DEVICE>(i));
 			devices[i]->Initialize();
 		}
@@ -98,7 +98,7 @@ namespace RE
 
 	void BSInputDeviceManager::ResetInputDevices()
 	{
-		for (int i = 0; i < INPUT_DEVICE::kTotal; i++) {
+		for (std::uint32_t i = 0; i < INPUT_DEVICE::kTotal; i++) {
 			if (devices[i]) {
 				devices[i]->Reset();
 			}
@@ -107,7 +107,7 @@ namespace RE
 
 	void BSInputDeviceManager::DestroyInputDevices()
 	{
-		for (int i = 0; i < INPUT_DEVICE::kTotal; i++) {
+		for (std::uint32_t i = 0; i < INPUT_DEVICE::kTotal; i++) {
 			if (devices[i]) {
 				devices[i]->Release();
 				BSInputDeviceFactory::DestroyInputDevice(devices[i]);
@@ -116,7 +116,7 @@ namespace RE
 	}
 
 	// Called by Main::Update()
-	void BSInputDeviceManager::PollInputDevices(float secsSinceLastFrame)
+	void BSInputDeviceManager::PollInputDevices(float a_secsSinceLastFrame)
 	{
 		// Calls Process() on each device
 		// Calls ControlMap::sub_140C11600(InputEvent*)
@@ -125,6 +125,6 @@ namespace RE
 		// resets the global BSInputEventQueue
 		using func_t = decltype(&BSInputDeviceManager::PollInputDevices);
 		REL::Relocation<func_t> func{ RELOCATION_ID(67315, 68617) };
-		return func(this, secsSinceLastFrame);
+		return func(this, a_secsSinceLastFrame);
 	}
 }

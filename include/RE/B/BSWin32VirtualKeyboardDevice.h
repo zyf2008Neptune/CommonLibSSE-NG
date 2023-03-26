@@ -20,8 +20,8 @@ namespace RE
 		void Unk_0B(void) override;           // 0B - { return; }
 		void Unk_0C(void) override;           // 0C - { return; }
 		void Unk_0D(void) override;           // 0D - { return; }
+
 	protected:
-		friend class BSInputDeviceFactory;
 		BSWin32VirtualKeyboardDevice();
 	};
 	static_assert(sizeof(BSWin32VirtualKeyboardDevice) == 0x70);

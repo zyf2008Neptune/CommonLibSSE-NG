@@ -3,5 +3,20 @@
 namespace RE
 {
 	BSWin32GamepadDevice::BSWin32GamepadDevice() :
-		BSPCGamepadDeviceDelegate(), PreviousState(), PreviousLT(0.0f), PreviousRT(0.0f), PreviousLX(0.0f), PreviousLY(0.0f), PreviousRX(0.0f), PreviousRY(0.0f), CurrentState(), CurrentLT(0.0f), CurrentRT(0.0f), CurrentLX(0.0f), CurrentLY(0.0f), CurrentRX(0.0f), CurrentRY(0.0f) {}
+		BSPCGamepadDeviceDelegate(),
+		previousState(),
+		previousLT(0.0f),
+		previousRT(0.0f),
+		previousLX(0.0f),
+		previousLY(0.0f),
+		previousRX(0.0f),
+		previousRY(0.0f),
+		currentState(),
+		currentLT(0.0f),
+		currentRT(0.0f),
+		currentLX(0.0f),
+		currentLY(0.0f),
+		currentRX(0.0f),
+		currentRY(0.0f)
+	{}
 }

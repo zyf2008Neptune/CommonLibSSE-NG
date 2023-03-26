@@ -1,4 +1,5 @@
 #pragma once
+
 #include "RE/B/BSTSingleton.h"
 
 namespace RE
@@ -6,11 +7,7 @@ namespace RE
 	class MenuCursor : public BSTSingletonSDM<MenuCursor>
 	{
 	public:
-		[[nodiscard]] static MenuCursor* GetSingleton()
-		{
-			REL::Relocation<MenuCursor**> singleton{ Offset::MenuCursor::Singleton };
-			return *singleton;
-		}
+		static MenuCursor* GetSingleton();
 
 		void SetCursorVisibility(bool a_visible);
 
@@ -29,14 +26,5 @@ namespace RE
 		float         defaultMouseSpeed;  // 28
 		std::int32_t  showCursorCount;    // 2C
 	};
-
 	static_assert(sizeof(MenuCursor) == 0x30);
-	// TODO: These functions:
-	// (1.5.97 addresses)
-	//	MenuCursor::sub_140ED32A0	                    140ED32A0
-	//	MenuCursor::sub_140ED2F40	                    140ED2F40
-	//	MenuCursor::sub_140ED2E50	                    140ED2E50
-	//  MenuCursor::Init_140EC1D80	                    140EC1D80
-	//  MenuCursor::ProcessMouseMoveEvent_140ED2F90	    140ED2F90
-	//  MenuCursor::ProcessThumbstickEvent_140ED3120    140ED3120
 }

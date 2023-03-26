@@ -1,5 +1,7 @@
 #pragma once
 
+#include "WinAPI.h"
+
 // TODO: This should probably be behind some sort of pragma that allows linking with dinput and dinput8
 namespace RE::DirectInput8
 {

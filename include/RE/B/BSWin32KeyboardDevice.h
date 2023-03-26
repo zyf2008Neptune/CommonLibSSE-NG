@@ -21,7 +21,7 @@ namespace RE
 		void Unk_0A(void) override;           // 0A - { return; }
 
 		[[nodiscard]] bool IsPressed(std::uint32_t a_keyCode) const;
-		[[nodiscard]] Key  RemapNumpadKey(DirectInput8::DIKey key);
+		[[nodiscard]] Key  RemapNumpadKey(DirectInput8::DIKey a_key);
 
 		// members
 		DirectInput8::IDirectInput8A*    dInputDevice;      // 070
@@ -31,7 +31,6 @@ namespace RE
 		bool                             capsLockOn;        // 368
 
 	protected:
-		friend class BSInputDeviceFactory;
 		BSWin32KeyboardDevice();
 	};
 	static_assert(offsetof(BSWin32KeyboardDevice, prevState) == 0x168);

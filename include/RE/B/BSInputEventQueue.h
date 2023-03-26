@@ -1,6 +1,7 @@
 #pragma once
-#include "ButtonEvent.h"
+
 #include "RE/B/BSTSingleton.h"
+#include "RE/B/ButtonEvent.h"
 #include "RE/C/CharEvent.h"
 #include "RE/D/DeviceConnectEvent.h"
 #include "RE/K/KinectEvent.h"
@@ -22,9 +23,6 @@ namespace RE
 		void EnqueueKinectEvent(BSFixedString* userEvent, BSFixedString* heard);
 		void Reset();
 
-		// REL::ID ctor = RELOCATION_ID(67332, none); - called by BSInputDeviceManager constructor, inlined in AE
-		// REL::ID dtor = RELOCATION_ID(67341, none); - called by BSInputDeviceManager destructor, inlined in AE
-
 		//members
 		std::uint8_t       pad000;                   // 000
 		std::uint32_t      buttonEventCount;         // 004
@@ -44,5 +42,4 @@ namespace RE
 		InputEvent*        currentEvent;             // 388
 	};
 	static_assert(sizeof(BSInputEventQueue) == 0x390);
-
-}  // RE
+}

@@ -20,11 +20,14 @@ namespace RE
 	bool BSInputDevice::IsPressed(std::uint32_t a_keyCode) const
 	{
 		auto it = deviceButtons.find(a_keyCode);
-		return (it != deviceButtons.end()) && (it->second->heldDownSecs > 0.0);
+		return (it != deviceButtons.end()) && (it->second->heldDownSecs > 0.0f);
 	}
 
 	BSInputDevice::BSInputDevice() :
-		BSIInputDevice(), deviceButtons(), buttonNameIDMap()
+		BSIInputDevice(),
+		pad0C(0),
+		deviceButtons(),
+		buttonNameIDMap()
 	{
 		device = INPUT_DEVICE::kNone;
 	}
@@ -41,10 +44,11 @@ namespace RE
 		buttonNameIDMap.clear();
 		deviceButtons.clear();
 	}
-	void BSInputDevice::SetButtonState(std::uint32_t a_buttonId, float timeSinceLastPoll, bool buttonWasPressed, bool buttonIsPressed)
+
+	void BSInputDevice::SetButtonState(std::uint32_t a_buttonId, float a_timeSinceLastPoll, bool a_buttonWasPressed, bool a_buttonIsPressed)
 	{
 		using func_t = decltype(&BSInputDevice::SetButtonState);
 		REL::Relocation<func_t> func{ RELOCATION_ID(67441, 68748) };
-		return func(this, a_buttonId, timeSinceLastPoll, buttonWasPressed, buttonIsPressed);
+		return func(this, a_buttonId, a_timeSinceLastPoll, a_buttonWasPressed, a_buttonIsPressed);
 	}
 }

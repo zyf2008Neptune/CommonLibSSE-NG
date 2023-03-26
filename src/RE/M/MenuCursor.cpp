@@ -2,6 +2,12 @@
 
 namespace RE
 {
+    MenuCursor* MenuCursor::GetSingleton()
+    {
+		REL::Relocation<MenuCursor**> singleton{ RELOCATION_ID(517043, 403551) };
+        return *singleton;
+    }
+
 	void MenuCursor::SetCursorVisibility(bool a_visible)
 	{
 		if (a_visible && showCursorCount < 0) {

@@ -46,9 +46,7 @@ namespace RE
 		mutable BSSpinLock                  reinitializeLock;   // AC
 
 	protected:
-		friend class BSInputDeviceFactory;
 		BSWin32MouseDevice();
 	};
-
 	static_assert(sizeof(BSWin32MouseDevice) == 0xB8);
 }

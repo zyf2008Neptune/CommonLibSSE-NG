@@ -22,6 +22,7 @@ namespace RE
 		virtual bool               GetMappedKeycode(std::uint32_t a_key, std::uint32_t& outKeyCode) = 0;  // 06
 		[[nodiscard]] virtual bool IsEnabled() const = 0;                                                 // 07
 		virtual void               Reset() = 0;                                                           // 08
+
 	protected:
 		friend class BSInputDeviceFactory;
 		TES_HEAP_REDEFINE_NEW();

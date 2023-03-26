@@ -7,12 +7,12 @@ namespace RE
 		return (a_keyCode < sizeof(curState)) && ((curState[a_keyCode] & 0x80) != 0);
 	}
 
-	BSKeyboardDevice::Key BSWin32KeyboardDevice::RemapNumpadKey(DirectInput8::DIKey key)
+	BSKeyboardDevice::Key BSWin32KeyboardDevice::RemapNumpadKey(DirectInput8::DIKey a_key)
 	{
 		if (WinAPI::GetKeyState(WinAPI::VKEnum::VK_NUMLOCK) != 1) {
 			return Key::kNone;
 		}
-		switch (key) {
+		switch (a_key) {
 		case DirectInput8::DIKey::DIK_NUMPAD7:
 			return Key::kKP_Multiply;
 		case DirectInput8::DIKey::DIK_NUMPAD8:
@@ -42,7 +42,13 @@ namespace RE
 		}
 		return Key::kNone;
 	}
-	BSWin32KeyboardDevice::BSWin32KeyboardDevice() :
-		BSKeyboardDevice(), dInputDevice(nullptr), diObjData(), prevState(), curState(), capsLockOn(false) {}
 
+	BSWin32KeyboardDevice::BSWin32KeyboardDevice() :
+		BSKeyboardDevice(),
+		dInputDevice(nullptr),
+		diObjData(),
+		prevState(),
+		curState(),
+		capsLockOn(false)
+	{}
 }

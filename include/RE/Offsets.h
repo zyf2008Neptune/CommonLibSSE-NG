@@ -1161,49 +1161,5 @@ namespace RE
 		inline constexpr REL::ID TlsIndex(static_cast<std::uint64_t>(528600));
 		inline constexpr REL::ID GlobalStateCounter(static_cast<std::uint64_t>(514157));
 #endif
-
-		namespace BSDirectInputManager
-		{
-			inline constexpr REL::ID Singleton = RELOCATION_ID(517046, 403554);
-			inline constexpr REL::ID GetDeviceState = RELOCATION_ID(67375, 68677);
-			inline constexpr REL::ID GetDeviceData = RELOCATION_ID(67376, 68678);
-			inline constexpr REL::ID ReleaseDevice = RELOCATION_ID(67374, 68676);
-			inline constexpr REL::ID CreateDeviceWithGUID = RELOCATION_ID(67373, 68675);
-		}
-
-		namespace BSInputEventQueue
-		{
-			inline constexpr REL::ID Singleton = RELOCATION_ID(520856, 407374);
-			inline constexpr REL::ID EnqueueButtonEvent = RELOCATION_ID(67382, 68685);
-			inline constexpr REL::ID EnqueueCharEvent = RELOCATION_ID(67383, 68686);
-			inline constexpr REL::ID EnqueueMouseMoveEvent = RELOCATION_ID(67384, 68687);
-			inline constexpr REL::ID EnqueueThumbstickEvent = RELOCATION_ID(67385, 68688);
-			inline constexpr REL::ID EnqueueDeviceConnectEvent = RELOCATION_ID(67386, 68689);
-			inline constexpr REL::ID EnqueueKinectEvent = RELOCATION_ID(67387, 68690);
-			inline constexpr REL::ID Reset = RELOCATION_ID(67388, 68691);
-		}
-
-		namespace Main
-		{
-			inline constexpr REL::ID SetActive = RELOCATION_ID(35598, 36606);
-		}
-
-		namespace MenuCursor
-		{
-			inline constexpr REL::ID Singleton = RELOCATION_ID(517043, 403551);
-		}
-
-		namespace Rumble
-		{
-			inline constexpr REL::ID DisableRumble = RELOCATION_ID(67224, 68533);
-		}
-
-		inline constexpr REL::ID pGamepadEnable(RELOCATION_ID(511901, 388465));
-		inline constexpr REL::ID pKeyboardDefinitionFilePrefix(RELOCATION_ID(511916, 388487));
-		inline constexpr REL::ID pDefaultLocale(RELOCATION_ID(500908, 358892));
-		inline constexpr REL::ID pMouseDefinitionFile(RELOCATION_ID(511918, 388490));
-		inline constexpr REL::ID pGamepadDefinitionFile(RELOCATION_ID(511903, 388468));
-		inline constexpr REL::ID WinProc = RELOCATION_ID(35635, 36649);                     // function called by the Windows message loop, set on the window when BSGraphics::InitWindows() calls `CreateWindowEXA`
-		inline constexpr REL::ID pControlsBackgroundMouse = RELOCATION_ID(511920, 388493);  // global variable that stores the [Controls] bBackgroundMouse ini setting; overwritten on ini load
 	}
 }

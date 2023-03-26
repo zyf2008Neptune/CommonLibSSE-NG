@@ -33,7 +33,7 @@ namespace RE
 	void Main::SetActive(bool a_active)
 	{
 		using func_t = decltype(&Main::SetActive);
-		REL::Relocation<func_t> func{ Offset::Main::SetActive };
+		REL::Relocation<func_t> func{ RELOCATION_ID(35598, 36606) };
 		return func(this, a_active);
 	}
 }

@@ -39,7 +39,7 @@ namespace RE
 		void                          CreateInputDevices();
 		void                          ResetInputDevices();
 		void                          DestroyInputDevices();
-		void                          PollInputDevices(float secsSinceLastFrame);
+		void                          PollInputDevices(float a_secsSinceLastFrame);
 
 		// members
 		std::uint8_t                         pad59;                           // 59

@@ -1,4 +1,5 @@
 #pragma once
+
 // TODO: This should probably be behind some sort of pragma that allows linking with xinput
 namespace RE::XInput
 {
@@ -66,18 +67,18 @@ namespace RE::XInput
 	static constexpr std::uint16_t XINPUT_GAMEPAD_RIGHT_THUMB_DEADZONE = 8689;
 	static constexpr std::uint8_t  XINPUT_GAMEPAD_TRIGGER_THRESHOLD = 30;
 
-	static constexpr uint16_t XINPUT_BUTTON_MASK = XINPUT_GAMEPAD_DPAD_UP |
-	                                               XINPUT_GAMEPAD_DPAD_DOWN |
-	                                               XINPUT_GAMEPAD_DPAD_LEFT |
-	                                               XINPUT_GAMEPAD_DPAD_RIGHT |
-	                                               XINPUT_GAMEPAD_START |
-	                                               XINPUT_GAMEPAD_BACK |
-	                                               XINPUT_GAMEPAD_LEFT_THUMB |
-	                                               XINPUT_GAMEPAD_RIGHT_THUMB |
-	                                               XINPUT_GAMEPAD_LEFT_SHOULDER |
-	                                               XINPUT_GAMEPAD_RIGHT_SHOULDER |
-	                                               XINPUT_GAMEPAD_A |
-	                                               XINPUT_GAMEPAD_B |
-	                                               XINPUT_GAMEPAD_X |
-	                                               XINPUT_GAMEPAD_Y;
+	static constexpr std::uint16_t XINPUT_BUTTON_MASK = XINPUT_GAMEPAD_DPAD_UP |
+	                                                    XINPUT_GAMEPAD_DPAD_DOWN |
+	                                                    XINPUT_GAMEPAD_DPAD_LEFT |
+	                                                    XINPUT_GAMEPAD_DPAD_RIGHT |
+	                                                    XINPUT_GAMEPAD_START |
+	                                                    XINPUT_GAMEPAD_BACK |
+	                                                    XINPUT_GAMEPAD_LEFT_THUMB |
+	                                                    XINPUT_GAMEPAD_RIGHT_THUMB |
+	                                                    XINPUT_GAMEPAD_LEFT_SHOULDER |
+	                                                    XINPUT_GAMEPAD_RIGHT_SHOULDER |
+	                                                    XINPUT_GAMEPAD_A |
+	                                                    XINPUT_GAMEPAD_B |
+	                                                    XINPUT_GAMEPAD_X |
+	                                                    XINPUT_GAMEPAD_Y;
 }

@@ -68,43 +68,33 @@ namespace RE
 		void Reset() override;                                // 08 - { std::memset(&unk0D8, 0, 0x50); }
 		void SetRumble(float lValue, float rValue) override;  // 09 - { return; }
 
-		// helper functions
-
-		/**
-		 * Returns the previous ButtonState of the gamepad
-		 *
-		 * @return ButtonState
-		 */
-		ButtonState GetPreviousButtonState()
+		// Returns the previous ButtonState of the gamepad
+		ButtonState GetPreviousButtonState() const
 		{
-			return stl::unrestricted_cast<ButtonState>(PreviousState.Gamepad.wButtons & XInput::XINPUT_BUTTON_MASK);
-		};
+			return stl::unrestricted_cast<ButtonState>(previousState.Gamepad.wButtons & XInput::XINPUT_BUTTON_MASK);
+		}
 
-		/**
-		 * Returns the current ButtonState of the gamepad
-		 *
-		 * @return ButtonState
-		 */
-		ButtonState GetCurrentButtonState()
+		// Returns the current ButtonState of the gamepad
+		ButtonState GetCurrentButtonState() const
 		{
-			return stl::unrestricted_cast<ButtonState>(CurrentState.Gamepad.wButtons & XInput::XINPUT_BUTTON_MASK);
-		};
+			return stl::unrestricted_cast<ButtonState>(currentState.Gamepad.wButtons & XInput::XINPUT_BUTTON_MASK);
+		}
 
 		// members
-		XInput::XINPUT_STATE PreviousState;  // 0D8
-		float                PreviousLT;     // 0E8
-		float                PreviousRT;     // 0EC
-		float                PreviousLX;     // 0F0
-		float                PreviousLY;     // 0F4
-		float                PreviousRX;     // 0F8
-		float                PreviousRY;     // 0FC
-		XInput::XINPUT_STATE CurrentState;   // 100
-		float                CurrentLT;      // 110
-		float                CurrentRT;      // 114
-		float                CurrentLX;      // 118
-		float                CurrentLY;      // 11C
-		float                CurrentRX;      // 120
-		float                CurrentRY;      // 124
+		XInput::XINPUT_STATE previousState;  // 0D8
+		float                previousLT;     // 0E8
+		float                previousRT;     // 0EC
+		float                previousLX;     // 0F0
+		float                previousLY;     // 0F4
+		float                previousRX;     // 0F8
+		float                previousRY;     // 0FC
+		XInput::XINPUT_STATE currentState;   // 100
+		float                currentLT;      // 110
+		float                currentRT;      // 114
+		float                currentLX;      // 118
+		float                currentLY;      // 11C
+		float                currentRX;      // 120
+		float                currentRY;      // 124
 
 	protected:
 		friend class BSGamepadDeviceHandler;

@@ -7,7 +7,7 @@ namespace RE
 	{
 		backgroundMouse = false;
 		device = INPUT_DEVICE::kMouse;
-		const char* file = *(const char**)Offset::pMouseDefinitionFile.address();
-		LoadControlsDefinitionFile(file);
+		const char* mouseFile = *reinterpret_cast<const char**>(RELOCATION_ID(511918, 388490).address());
+		LoadControlsDefinitionFile(mouseFile);
 	}
 }

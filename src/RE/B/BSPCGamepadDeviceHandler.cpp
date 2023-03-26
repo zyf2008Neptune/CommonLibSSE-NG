@@ -10,7 +10,7 @@ namespace RE
 	}
 
 	BSPCGamepadDeviceHandler::BSPCGamepadDeviceHandler() :
-		BSIInputDevice(), currentPCGamePadDelegate(nullptr)
-	{
-	}
+		BSIInputDevice(),
+		currentPCGamePadDelegate(nullptr)
+	{}
 }

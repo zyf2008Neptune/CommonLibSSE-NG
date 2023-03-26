@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSPCGamepadDeviceDelegate.h"
+
 namespace RE
 {
 	// PS4 controller used via HID polling
@@ -104,28 +105,28 @@ namespace RE
 
 		struct PadTouch
 		{
-			uint16_t x;          // 00
-			uint16_t y;          // 02
-			uint8_t  touch_id;   // 04
-			uint8_t  pad_05[3];  // 05
+			std::uint16_t x;          // 00
+			std::uint16_t y;          // 02
+			std::uint8_t  touch_id;   // 04
+			std::uint8_t  pad_05[3];  // 05
 		};
 		static_assert(sizeof(PadTouch) == 0x08);
 
 		struct TouchPadData
 		{
-			uint8_t  touchNum;   // 00 - Number of touch reports
-			uint8_t  pad_01[3];  // 01
-			uint32_t pad_04;     // 04
-			PadTouch touch[2];   // 08 - Touch Data for max number of touch points = 2
+			std::uint8_t  touchNum;   // 00 - Number of touch reports
+			std::uint8_t  pad_01[3];  // 01
+			std::uint32_t pad_04;     // 04
+			PadTouch      touch[2];   // 08 - Touch Data for max number of touch points = 2
 		};
 		static_assert(sizeof(TouchPadData) == 0x18);
 
 		struct UnusedExtensionData
 		{
-			uint32_t extUnitId;   // 00
-			uint8_t  pad04;       // 04
-			uint8_t  dataLength;  // 05
-			uint8_t  data[10];    // 06
+			std::uint32_t extUnitId;   // 00
+			std::uint8_t  pad04;       // 04
+			std::uint8_t  dataLength;  // 05
+			std::uint8_t  data[10];    // 06
 		};
 		static_assert(sizeof(UnusedExtensionData) == 0x10);
 
@@ -167,15 +168,15 @@ namespace RE
 		void ProcessRawInput(int32_t a_rawX, int32_t a_rawY, float& a_outX, float& a_outY) override;  // 0D
 		void Unk_0E(void) override;                                                                   // 0E - { return; }
 
-		ButtonState GetPreviousButtonState()
-		{
+		ButtonState GetPreviousButtonState() const
+        {
 			return stl::unrestricted_cast<ButtonState>(previousPadState.buttonState);
-		};
+		}
 
-		ButtonState GetCurrentButtonState()
-		{
+		ButtonState GetCurrentButtonState() const
+        {
 			return stl::unrestricted_cast<ButtonState>(currentPadState.buttonState);
-		};
+		}
 
 		// members
 		GamepadData previousPadState;  // D8
@@ -192,10 +193,10 @@ namespace RE
 		float       currentLY;         // 1EC
 		float       currentRX;         // 1F0
 		float       currentRY;         // 1F4
+
 	protected:
 		friend class BSGamepadDeviceHandler;
 		BSPCOrbisGamepadDevice();
 	};
 	static_assert(sizeof(BSPCOrbisGamepadDevice) == 0x1F8);
-
 }
