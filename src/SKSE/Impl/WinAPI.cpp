@@ -5,6 +5,7 @@
 #undef GetEnvironmentVariable
 #undef GetFileVersionInfo
 #undef GetFileVersionInfoSize
+#undef GetKeyNameText
 #undef GetModuleFileName
 #undef GetModuleHandle
 #undef MessageBox
@@ -103,6 +104,21 @@ namespace SKSE::WinAPI
 			::GetFileVersionInfoSizeW(
 				static_cast<::LPCWSTR>(a_filename),
 				reinterpret_cast<::LPDWORD>(a_handle)));
+	}
+
+	int GetKeyNameText(std::int32_t a_lParam, wchar_t* a_buffer, int a_size) noexcept
+	{
+		return ::GetKeyNameTextW(static_cast<::LONG>(a_lParam), static_cast<::LPWSTR>(a_buffer), a_size);
+	}
+
+	int GetKeyNameText(std::int32_t a_lParam, char* a_buffer, int a_size) noexcept
+	{
+		return ::GetKeyNameTextA(static_cast<::LONG>(a_lParam), static_cast<::LPSTR>(a_buffer), a_size);
+	}
+
+	std::int16_t GetKeyState(int nVirtKey) noexcept
+	{
+		return ::GetKeyState(nVirtKey);
 	}
 
 	std::size_t GetMaxPath() noexcept
@@ -222,6 +238,11 @@ namespace SKSE::WinAPI
 			static_cast<::LPCWSTR>(a_outputString));
 	}
 
+	int ShowCursor(bool bShow) noexcept
+	{
+		return ::ShowCursor(static_cast<::BOOL>(bShow));
+	}
+
 	void TerminateProcess(
 		void*        a_process,
 		unsigned int a_exitCode) noexcept
@@ -322,4 +343,5 @@ namespace SKSE::WinAPI
 			static_cast<::LPCCH>(a_defaultChar),
 			static_cast<::LPBOOL>(a_usedDefaultChar));
 	}
+
 }
