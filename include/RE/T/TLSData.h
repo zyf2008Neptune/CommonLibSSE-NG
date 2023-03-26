@@ -18,7 +18,7 @@ namespace RE
 		bool                             consoleMode;                              // 600
 		std::uint8_t                     unk601[0x167];                            // 601
 		std::uint32_t                    taskFlag;                                 // 768 -- unknown enum
-		// ... many others ...
+																				   // ... many others ...
 	};
 	static_assert(offsetof(TLSData, consoleMode) == 0x600);
 	static_assert(offsetof(TLSData, taskFlag) == 0x768);

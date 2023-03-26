@@ -4,7 +4,6 @@
 
 namespace RE
 {
-
 	class BSWin32KeyboardDevice : public BSKeyboardDevice
 	{
 	public:
@@ -30,7 +29,6 @@ namespace RE
 		std::uint8_t                     prevState[0x100];  // 168
 		std::uint8_t                     curState[0x100];   // 268
 		bool                             capsLockOn;        // 368
-
 
 	protected:
 		friend class BSInputDeviceFactory;

@@ -3,7 +3,6 @@
 
 namespace RE
 {
-
 	class MenuCursor : public BSTSingletonSDM<MenuCursor>
 	{
 	public:

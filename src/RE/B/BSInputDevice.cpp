@@ -23,7 +23,8 @@ namespace RE
 		return (it != deviceButtons.end()) && (it->second->heldDownSecs > 0.0);
 	}
 
-	BSInputDevice::BSInputDevice(): BSIInputDevice(), deviceButtons(), buttonNameIDMap()
+	BSInputDevice::BSInputDevice() :
+		BSIInputDevice(), deviceButtons(), buttonNameIDMap()
 	{
 		device = INPUT_DEVICE::kNone;
 	}

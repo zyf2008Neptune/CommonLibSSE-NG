@@ -2,7 +2,6 @@
 
 namespace RE
 {
-
 	BSPCGamepadDeviceDelegate::BSPCGamepadDeviceDelegate() :
 		BSGamepadDevice(), gamepadDeviceHandler(nullptr) {}
 }

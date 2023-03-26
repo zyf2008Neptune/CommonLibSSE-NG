@@ -2,7 +2,6 @@
 
 namespace RE
 {
-
 	void BSPCGamepadDeviceHandler::InitializeDelegate()
 	{
 		using func_t = decltype(&BSPCGamepadDeviceHandler::InitializeDelegate);

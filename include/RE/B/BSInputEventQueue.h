@@ -9,7 +9,6 @@
 
 namespace RE
 {
-
 	class BSInputEventQueue : public BSTSingletonSDM<BSInputEventQueue>
 	{
 	public:

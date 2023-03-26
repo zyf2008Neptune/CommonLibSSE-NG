@@ -3,7 +3,8 @@
 #include "RE/B/BSIInputDevice.h"
 #include "RE/I/InputDevices.h"
 
-namespace RE{
+namespace RE
+{
 	class BSInputDeviceFactory
 	{
 	public:
