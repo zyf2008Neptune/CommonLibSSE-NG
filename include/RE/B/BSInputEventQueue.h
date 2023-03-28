@@ -13,33 +13,42 @@ namespace RE
 	class BSInputEventQueue : public BSTSingletonSDM<BSInputEventQueue>
 	{
 	public:
+		inline static constexpr std::uint8_t MAX_BUTTON_EVENTS = 10;
+		inline static constexpr std::uint8_t MAX_CHAR_EVENTS = 5;
+		inline static constexpr std::uint8_t MAX_MOUSE_EVENTS = 1;
+		inline static constexpr std::uint8_t MAX_THUMBSTICK_EVENTS = 2;
+		inline static constexpr std::uint8_t MAX_CONNECT_EVENTS = 1;
+		inline static constexpr std::uint8_t MAX_KINECT_EVENTS = 1;
+
 		static BSInputEventQueue* GetSingleton();
 
-		void EnqueueButtonEvent(INPUT_DEVICE device, std::uint32_t buttonId, float value, float heldDownSecs);
-		void EnqueueCharEvent(std::uint32_t keycode);
-		void EnqueueMouseMoveEvent(std::int32_t deltaX, std::int32_t deltaY);
-		void EnqueueThumbstickEvent(std::uint32_t thumbstickId, float x, float y);
-		void EnqueueDeviceConnectEvent(INPUT_DEVICE device, bool connected);
-		void EnqueueKinectEvent(BSFixedString* userEvent, BSFixedString* heard);
-		void Reset();
+		void AddButtonEvent(INPUT_DEVICE a_device, std::int32_t a_id, float a_value, float a_duration);
+		void AddCharEvent(std::uint32_t a_keyCode);
+		void AddMouseMoveEvent(std::int32_t a_mouseInputX, std::int32_t a_mouseInputY);
+		void AddThumbstickEvent(ThumbstickEvent::InputType a_id, float a_xValue, float a_yValue);
+		void AddConnectEvent(INPUT_DEVICE a_device, bool a_connected);
+		void AddKinectEvent(const BSFixedString& a_userEvent, const BSFixedString& a_heard);
+		void PushOntoInputQueue(InputEvent* a_event);
+		void ClearInputQueue();
 
-		//members
-		std::uint8_t       pad000;                   // 000
-		std::uint32_t      buttonEventCount;         // 004
-		std::uint32_t      charEventCount;           // 008
-		std::uint32_t      mouseEventsCount;         // 00C
-		std::uint32_t      gamepadEventCount;        // 010
-		std::uint32_t      deviceConnectEventCount;  // 014
-		std::uint32_t      kinectEventsCount;        // 018
-		std::uint32_t      pad01C;                   // 01C
-		ButtonEvent        buttonEvents[10];         // 020
-		CharEvent          charEvents[5];            // 200
-		MouseMoveEvent     mouseMoveEvents[1];       // 2A0
-		ThumbstickEvent    thumbstickEvents[2];      // 2D0
-		DeviceConnectEvent deviceConnectEvents[1];   // 330
-		KinectEvent        kinectEvents[1];          // 350
-		InputEvent*        lastEvent;                // 380
-		InputEvent*        currentEvent;             // 388
+		// members
+		std::uint8_t       pad001;                                   // 001
+		std::uint16_t      pad002;                                   // 002
+		std::uint32_t      buttonEventCount;                         // 004
+		std::uint32_t      charEventCount;                           // 008
+		std::uint32_t      mouseEventCount;                          // 00C
+		std::uint32_t      thumbstickEventCount;                     // 010
+		std::uint32_t      connectEventCount;                        // 014
+		std::uint32_t      kinectEventCount;                         // 018
+		std::uint32_t      pad01C;                                   // 01C
+		ButtonEvent        buttonEvents[MAX_BUTTON_EVENTS];          // 020
+		CharEvent          charEvents[MAX_CHAR_EVENTS];              // 200
+		MouseMoveEvent     mouseEvents[MAX_MOUSE_EVENTS];            // 2A0
+		ThumbstickEvent    thumbstickEvents[MAX_THUMBSTICK_EVENTS];  // 2D0
+		DeviceConnectEvent connectEvents[MAX_CONNECT_EVENTS];        // 330
+		KinectEvent        kinectEvents[MAX_KINECT_EVENTS];          // 350
+		InputEvent*        queueHead;                                // 380
+		InputEvent*        queueTail;                                // 388
 	};
 	static_assert(sizeof(BSInputEventQueue) == 0x390);
 }
