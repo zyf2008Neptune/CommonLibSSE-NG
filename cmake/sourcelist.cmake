@@ -28,6 +28,7 @@ set(SOURCES
 	include/RE/A/AddCallbackVisitor.h
 	include/RE/A/AlchemyItem.h
 	include/RE/A/AlchemyMenu.h
+	include/RE/A/AnimationFileManagerSingleton.h
 	include/RE/A/AnimationObjects.h
 	include/RE/A/Archive.h
 	include/RE/A/ArmorRatingVisitor.h
@@ -875,6 +876,7 @@ set(SOURCES
 	include/RE/H/hkBaseTypes.h
 	include/RE/H/hkContactPoint.h
 	include/RE/H/hkContainerAllocators.h
+	include/RE/H/hkFinishLoadedObjectFlag.h
 	include/RE/H/hkMatrix3.h
 	include/RE/H/hkMemoryAllocator.h
 	include/RE/H/hkMoppBvTreeShapeBase.h
@@ -900,18 +902,28 @@ set(SOURCES
 	include/RE/H/hkaAnnotationTrack.h
 	include/RE/H/hkaDefaultAnimationControl.h
 	include/RE/H/hkaRagdollInstance.h
+	include/RE/H/hkbAnimationBindingSet.h
+	include/RE/H/hkbAssetBundleStringData.h
 	include/RE/H/hkbBehaviorGraph.h
 	include/RE/H/hkbBehaviorGraphData.h
 	include/RE/H/hkbBehaviorGraphStringData.h
 	include/RE/H/hkbBindable.h
 	include/RE/H/hkbCharacter.h
+	include/RE/H/hkbCharacterControllerSetup.h
+	include/RE/H/hkbCharacterData.h
+	include/RE/H/hkbCharacterSetup.h
+	include/RE/H/hkbCharacterStringData.h
 	include/RE/H/hkbClipGenerator.h
 	include/RE/H/hkbContext.h
 	include/RE/H/hkbEvent.h
 	include/RE/H/hkbEventBase.h
 	include/RE/H/hkbGenerator.h
 	include/RE/H/hkbNode.h
+	include/RE/H/hkbProjectData.h
+	include/RE/H/hkbProjectStringData.h
 	include/RE/H/hkbRagdollDriver.h
+	include/RE/H/hkbRigidBodySetup.h
+	include/RE/H/hkbShapeSetup.h
 	include/RE/H/hkbStateMachine.h
 	include/RE/H/hkp3AxisSweep.h
 	include/RE/H/hkpAction.h
@@ -1001,6 +1013,7 @@ set(SOURCES
 	include/RE/H/hkpWorldRayCastInput.h
 	include/RE/H/hkpWorldRayCastOutput.h
 	include/RE/I/IAIWorldLocationHandle.h
+	include/RE/I/IAnimationClipLoaderSingleton.h
 	include/RE/I/IAnimationGraphManagerHolder.h
 	include/RE/I/IAnimationSetCallbackFunctor.h
 	include/RE/I/IBSTCreator.h
@@ -1567,6 +1580,7 @@ set(SOURCES
 	src/RE/A/ActorValueList.cpp
 	src/RE/A/ActorValueOwner.cpp
 	src/RE/A/AddCallbackVisitor.cpp
+	src/RE/A/AnimationFileManagerSingleton.cpp
 	src/RE/A/ArmorRatingVisitor.cpp
 	src/RE/A/ArmorRatingVisitorBase.cpp
 	src/RE/A/Array.cpp

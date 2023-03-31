@@ -10,7 +10,7 @@ namespace SKSE::WinAPI
 	inline constexpr auto FILE_ATTRIBUTE_ARCHIVE{ 0x00000020u };
 	inline constexpr auto IMAGE_SCN_MEM_EXECUTE{ 0x20000000u };
 	inline constexpr auto IMAGE_SCN_MEM_WRITE{ 0x80000000u };
-	inline const     auto INVALID_HANDLE_VALUE{ reinterpret_cast<void*>(static_cast<std::intptr_t>(-1)) };
+	inline const auto     INVALID_HANDLE_VALUE{ reinterpret_cast<void*>(static_cast<std::intptr_t>(-1)) };
 	inline constexpr auto MAX_PATH{ 260u };
 	inline constexpr auto MEM_RELEASE{ 0x00008000u };
 	inline constexpr auto PAGE_EXECUTE_READWRITE{ 0x40u };

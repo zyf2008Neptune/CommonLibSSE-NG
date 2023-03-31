@@ -86,11 +86,11 @@ namespace RE
 		return GetDaysPassed() * 24.0F;
 	}
 
-    float Calendar::GetHoursPerDay() const
-    {
-        REL::Relocation<float*> hours{ RELOCATION_ID(241610, 195681) };
-        return *hours;
-    }
+	float Calendar::GetHoursPerDay() const
+	{
+		REL::Relocation<float*> hours{ RELOCATION_ID(241610, 195681) };
+		return *hours;
+	}
 
 	std::uint32_t Calendar::GetMonth() const
 	{
