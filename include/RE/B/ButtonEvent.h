@@ -4,10 +4,15 @@
 #include "RE/I/IDEvent.h"
 #include "RE/I/InputEvent.h"
 #include "RE/M/MemoryManager.h"
+#include "RE/V/VRWandEvent.h"
 
 namespace RE
 {
+#ifndef ENABLE_SKYRIM_VR
 	class ButtonEvent : public IDEvent
+#else
+	class ButtonEvent : public VRWandEvent
+#endif
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ButtonEvent;
@@ -44,5 +49,9 @@ namespace RE
 			return buttonEvent;
 		}
 	};
+#ifndef ENABLE_SKYRIM_VR
 	static_assert(sizeof(ButtonEvent) == 0x30);
+#else
+	static_assert(sizeof(ButtonEvent) == 0x38);
+#endif
 }
