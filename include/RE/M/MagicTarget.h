@@ -12,6 +12,7 @@ namespace RE
 {
 	class Actor;
 	class ActiveEffect;
+	class BGSKeyword;
 	class EffectItem;
 	class EffectSetting;
 	class MagicItem;

@@ -4,8 +4,7 @@ namespace RE
 {
 	BSInputEventQueue* BSInputEventQueue::GetSingleton()
 	{
-		REL::Relocation<BSInputEventQueue**> singleton{ Offset::BSInputEventQueue::Singleton };
-		//	REL::Relocation<BSInputEventQueue**> singleton{ RELOCATION_ID(520856, 407374) };
+		REL::Relocation<BSInputEventQueue**> singleton{ RELOCATION_ID(520856, 407374) };
 		return *singleton;
 	}
 
@@ -28,7 +27,7 @@ namespace RE
 	{
 		if (charEventCount < MAX_CHAR_EVENTS) {
 			auto& cachedEvent = charEvents[charEventCount];
-			cachedEvent.keyCode = a_keyCode;
+			cachedEvent.keycode = a_keyCode;
 
 			PushOntoInputQueue(&cachedEvent);
 			++charEventCount;

@@ -6,7 +6,7 @@
 
 namespace RE
 {
-	class hkbAssetBundleStringData;
+    struct hkbAssetBundleStringData;
 
 	class hkbCharacterStringData : public hkReferencedObject
 	{
