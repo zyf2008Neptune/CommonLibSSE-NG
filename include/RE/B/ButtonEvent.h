@@ -4,10 +4,16 @@
 #include "RE/I/IDEvent.h"
 #include "RE/I/InputEvent.h"
 #include "RE/M/MemoryManager.h"
+#include "RE/V/VRWandEvent.h"
 
 namespace RE
 {
-	class ButtonEvent : public IDEvent
+	class ButtonEvent :
+#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+		public VRWandEvent
+#else
+		public IDEvent
+#endif
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ButtonEvent;
@@ -45,6 +51,19 @@ namespace RE
 		[[nodiscard]] inline const RUNTIME_DATA& GetRuntimeData() const noexcept
 		{
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0x28, 0x30);
+		}
+
+		[[nodiscard]] VRWandEvent* AsVRWandEvent() noexcept
+		{
+			if (!REL::Module::IsVR()) {
+				return nullptr;
+			}
+			return &REL::RelocateMember<VRWandEvent>(this, 0, 0);
+		}
+
+		[[nodiscard]] const VRWandEvent* AsVRWandEvent() const noexcept
+		{
+			return const_cast<ButtonEvent*>(this)->AsVRWandEvent();
 		}
 
 		static ButtonEvent* Create(INPUT_DEVICE a_inputDevice, const BSFixedString& a_userEvent, uint32_t a_idCode, float a_value, float a_heldDownSecs)
