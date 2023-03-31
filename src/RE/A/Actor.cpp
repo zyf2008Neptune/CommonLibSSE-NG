@@ -366,6 +366,13 @@ namespace RE
 		return equippedWeight;
 	}
 
+    std::int32_t Actor::GetFactionRank(TESFaction* a_faction, bool a_isPlayer)
+    {
+        using func_t = decltype(&Actor::GetFactionRank);
+        REL::Relocation<func_t> func{ RELOCATION_ID(36668, 37676) };
+        return func(this, a_faction, a_isPlayer);
+    }
+
 	std::int32_t Actor::GetGoldAmount(bool a_noInit)
 	{
 		const auto inv = GetInventory([](TESBoundObject& a_object) -> bool {
@@ -438,6 +445,13 @@ namespace RE
 		REL::Relocation<func_t> func{ RELOCATION_ID(37757, 38702) };
 		return func(this, a_outMount);
 	}
+
+    double Actor::GetMoveDirectionRelativeToFacing()
+    {
+        using func_t = decltype(&Actor::GetMoveDirectionRelativeToFacing);
+        REL::Relocation<func_t> func{ RELOCATION_ID(36935, 37960) };
+        return func(this);
+    }
 
 	bool Actor::GetMountedBy(NiPointer<Actor>& a_outRider)
 	{
@@ -584,6 +598,13 @@ namespace RE
 		return func(this, a_perk);
 	}
 
+    bool Actor::HasShout(TESShout* a_shout) const
+    {
+        using func_t = decltype(&Actor::HasShout);
+        REL::Relocation<func_t> func{ RELOCATION_ID(37829, 38783) };
+        return func(this, a_shout);
+    }
+
 	bool Actor::HasSpell(SpellItem* a_spell) const
 	{
 		using func_t = decltype(&Actor::HasSpell);
@@ -689,13 +710,6 @@ namespace RE
 		return func(this, a_actor);
 	}
 
-	bool Actor::IsLimbGone(std::uint32_t a_limb)
-	{
-		using func_t = decltype(&Actor::IsLimbGone);
-		REL::Relocation<func_t> func{ RELOCATION_ID(19338, 19765) };
-		return func(this, a_limb);
-	}
-
 	bool Actor::IsInMidair() const
 	{
 		using func_t = decltype(&Actor::IsInMidair);
@@ -709,6 +723,20 @@ namespace RE
 		REL::Relocation<func_t> func{ RELOCATION_ID(36492, 37491) };
 		return func(this);
 	}
+
+	bool Actor::IsLimbGone(std::uint32_t a_limb)
+	{
+		using func_t = decltype(&Actor::IsLimbGone);
+		REL::Relocation<func_t> func{ RELOCATION_ID(19338, 19765) };
+		return func(this, a_limb);
+	}
+
+    bool Actor::IsMoving() const
+    {
+        using func_t = decltype(&Actor::IsMoving);
+        REL::Relocation<func_t> func{ RELOCATION_ID(36928, 37953) };
+        return func(this);
+    }
 
 	bool Actor::IsOnMount() const
 	{

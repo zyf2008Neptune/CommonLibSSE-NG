@@ -130,6 +130,7 @@ namespace RE
 
 	public:
 		inline static constexpr auto RTTI = RTTI_Actor;
+		inline static constexpr auto VTABLE = VTABLE_Actor;
 		inline static constexpr auto FORMTYPE = FormType::ActorCharacter;
 
 		struct SlotTypes
@@ -522,6 +523,7 @@ namespace RE
 		InventoryEntryData*          GetEquippedEntryData(bool a_leftHand) const;
 		TESForm*                     GetEquippedObject(bool a_leftHand) const;
 		float                        GetEquippedWeight();
+		std::int32_t                 GetFactionRank(TESFaction* a_faction, bool a_isPlayer);
 		std::int32_t                 GetGoldAmount(bool a_noInit = false);
 		ActorHandle                  GetHandle();
 		[[nodiscard]] NiAVObject*    GetHeadPartObject(BGSHeadPart::HeadPartType a_type);
@@ -530,6 +532,7 @@ namespace RE
 		std::uint16_t                GetLevel() const;
 		bool                         GetMount(NiPointer<Actor>& a_outMount);
 		bool                         GetMountedBy(NiPointer<Actor>& a_outRider);
+		double                       GetMoveDirectionRelativeToFacing();
 		ObjectRefHandle              GetOccupiedFurniture() const;
 		TESRace*                     GetRace() const;
 		bool                         GetRider(NiPointer<Actor>& a_outRider);
@@ -545,6 +548,7 @@ namespace RE
 		bool                         HasLineOfSight(TESObjectREFR* a_ref, bool& a_arg2);
 		bool                         HasOutfitItems(BGSOutfit* a_outfit);
 		bool                         HasPerk(BGSPerk* a_perk) const;
+		bool                         HasShout(TESShout* a_shout) const;
 		bool                         HasSpell(SpellItem* a_spell) const;
 		void                         InterruptCast(bool a_restoreMagicka) const;
 		bool                         IsAttacking() const;
@@ -561,10 +565,11 @@ namespace RE
 		bool                         IsGhost() const;
 		bool                         IsGuard() const;
 		bool                         IsHostileToActor(Actor* a_actor);
-		bool                         IsLimbGone(std::uint32_t a_limb);
 		[[nodiscard]] constexpr bool IsInKillMove() const noexcept { return boolFlags.all(BOOL_FLAGS::kIsInKillMove); }
 		bool                         IsInMidair() const;
 		bool                         IsInRagdollState() const;
+		bool                         IsLimbGone(std::uint32_t a_limb);
+		bool                         IsMoving() const;
 		bool                         IsOnMount() const;
 		bool                         IsOverEncumbered() const;
 		bool                         IsPlayerTeammate() const;
