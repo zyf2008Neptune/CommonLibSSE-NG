@@ -2,13 +2,18 @@
 
 namespace SKSE::WinAPI
 {
-	inline constexpr auto CP_UTF8{ static_cast<unsigned int>(65001) };
-	inline constexpr auto IMAGE_SCN_MEM_EXECUTE{ static_cast<std::uint32_t>(0x20000000) };
-	inline constexpr auto IMAGE_SCN_MEM_WRITE{ static_cast<std::uint32_t>(0x80000000) };
-	inline const auto     INVALID_HANDLE_VALUE{ reinterpret_cast<void*>(static_cast<std::intptr_t>(-1)) };
-	inline constexpr auto MAX_PATH{ static_cast<std::uint32_t>(260) };
-	inline constexpr auto MEM_RELEASE{ static_cast<std::uint32_t>(0x00008000) };
-	inline constexpr auto PAGE_EXECUTE_READWRITE{ static_cast<std::uint32_t>(0x40) };
+	inline constexpr auto CP_UTF8{ 65001u };
+	inline constexpr auto FILE_ATTRIBUTE_READONLY{ 0x00000001u };
+	inline constexpr auto FILE_ATTRIBUTE_HIDDEN{ 0x00000002u };
+	inline constexpr auto FILE_ATTRIBUTE_SYSTEM{ 0x00000004u };
+	inline constexpr auto FILE_ATTRIBUTE_DIRECTORY{ 0x00000010u };
+	inline constexpr auto FILE_ATTRIBUTE_ARCHIVE{ 0x00000020u };
+	inline constexpr auto IMAGE_SCN_MEM_EXECUTE{ 0x20000000u };
+	inline constexpr auto IMAGE_SCN_MEM_WRITE{ 0x80000000u };
+	inline const     auto INVALID_HANDLE_VALUE{ reinterpret_cast<void*>(static_cast<std::intptr_t>(-1)) };
+	inline constexpr auto MAX_PATH{ 260u };
+	inline constexpr auto MEM_RELEASE{ 0x00008000u };
+	inline constexpr auto PAGE_EXECUTE_READWRITE{ 0x40u };
 
 	struct CRITICAL_SECTION
 	{
@@ -66,6 +71,24 @@ namespace SKSE::WinAPI
 	};
 	static_assert(sizeof(_WIN32_FIND_DATAA) == 0x140);
 	using WIN32_FIND_DATAA = _WIN32_FIND_DATAA;
+
+	struct _WIN32_FIND_DATAW
+	{
+	public:
+		// members
+		std::uint32_t dwFileAttributes;
+		FILETIME      ftCreationTime;
+		FILETIME      ftLastAccessTime;
+		FILETIME      ftLastWriteTime;
+		std::uint32_t nFileSizeHigh;
+		std::uint32_t nFileSizeLow;
+		std::uint32_t dwReserved0;
+		std::uint32_t dwReserved1;
+		wchar_t       cFileName[MAX_PATH];
+		wchar_t       cAlternateFileName[14];
+	};
+	static_assert(sizeof(_WIN32_FIND_DATAW) == 0x250);
+	using WIN32_FIND_DATAW = _WIN32_FIND_DATAW;
 
 	struct tagRECT
 	{
@@ -316,6 +339,24 @@ namespace SKSE::WinAPI
 		VK_RESERVED_FF = 0xFF
 	};
 
+	[[nodiscard]] bool FindClose(void* a_findFile) noexcept;
+
+	[[nodiscard]] void* FindFirstFile(
+		const char*       a_fileName,
+		WIN32_FIND_DATAA* a_findFileData) noexcept;
+
+	[[nodiscard]] void* FindFirstFile(
+		const wchar_t*    a_fileName,
+		WIN32_FIND_DATAW* a_findFileData) noexcept;
+
+	[[nodiscard]] bool FindNextFile(
+		void*             a_findFile,
+		WIN32_FIND_DATAA* a_findFileData) noexcept;
+
+	[[nodiscard]] bool FindNextFile(
+		void*             a_findFile,
+		WIN32_FIND_DATAW* a_findFileData) noexcept;
+
 	[[nodiscard]] void* GetCurrentModule() noexcept;
 
 	[[nodiscard]] void* GetCurrentProcess() noexcept;
@@ -379,6 +420,22 @@ namespace SKSE::WinAPI
 	[[nodiscard]] void* GetModuleHandle(const char* a_moduleName) noexcept;
 
 	[[nodiscard]] void* GetModuleHandle(const wchar_t* a_moduleName) noexcept;
+
+	[[nodiscard]] std::uint32_t GetPrivateProfileString(
+		const char*   a_appName,
+		const char*   a_keyName,
+		const char*   a_default,
+		char*         a_outString,
+		std::uint32_t a_size,
+		const char*   a_fileName) noexcept;
+
+	[[nodiscard]] std::uint32_t GetPrivateProfileString(
+		const wchar_t* a_appName,
+		const wchar_t* a_keyName,
+		const wchar_t* a_default,
+		wchar_t*       a_outString,
+		std::uint32_t  a_size,
+		const wchar_t* a_fileName) noexcept;
 
 	[[nodiscard]] void* GetProcAddress(
 		void*       a_module,
