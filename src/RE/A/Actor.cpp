@@ -1,7 +1,7 @@
 #include "RE/A/Actor.h"
 
-#include "RE/A/ActorMagicCaster.h"
 #include "RE/A/AIProcess.h"
+#include "RE/A/ActorMagicCaster.h"
 #include "RE/B/BGSAttackData.h"
 #include "RE/B/BGSColorForm.h"
 #include "RE/B/BGSDefaultObjectManager.h"

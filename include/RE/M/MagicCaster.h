@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RE/B/bhkPickData.h"
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSSoundHandle.h"
+#include "RE/B/bhkPickData.h"
 #include "RE/M/MagicSystem.h"
 
 namespace RE
