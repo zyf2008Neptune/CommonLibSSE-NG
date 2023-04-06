@@ -2,17 +2,24 @@
 
 #include "RE/B/BSPointerHandle.h"
 #include "RE/B/BSSoundHandle.h"
+#include "RE/B/BSTArray.h"
 #include "RE/B/bhkPickData.h"
 #include "RE/M/MagicSystem.h"
 
 namespace RE
 {
 	class Actor;
+	class ActiveEffect;
 	class BGSSaveGameBuffer;
 	class BGSLoadGameBuffer;
 	class MagicItem;
+	class MagicTarget;
 	class NiNode;
+	class TESBoundObject;
+	class TESObjectCELL;
 	class TESObjectREFR;
+
+	struct Effect;
 
 	class MagicCaster
 	{
