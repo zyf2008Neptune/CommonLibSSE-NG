@@ -1359,6 +1359,7 @@
 #include "RE/S/SoulLevels.h"
 #include "RE/S/SoulsTrapped.h"
 #include "RE/S/SoundLevels.h"
+#include "RE/S/SourceActionMap.h"
 #include "RE/S/SpellItem.h"
 #include "RE/S/SpellsLearned.h"
 #include "RE/S/SprintHandler.h"
