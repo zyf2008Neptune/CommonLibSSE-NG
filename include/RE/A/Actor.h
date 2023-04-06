@@ -483,6 +483,7 @@ namespace RE
 		static bool             LookupByHandle(RefHandle a_refHandle, NiPointer<Actor>& a_refrOut);
 
 		bool                         AddAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
+		void                         AddCastPower(SpellItem* a_power);
 		bool                         AddSpell(SpellItem* a_spell);
 		void                         AddToFaction(TESFaction* a_faction, std::int8_t a_rank);
 		void                         AddWornOutfit(BGSOutfit* a_outfit, bool a_forceUpdate);
@@ -500,6 +501,7 @@ namespace RE
 		ActorHandle                  CreateRefHandle();
 		bool                         Decapitate();
 		void                         DeselectSpell(SpellItem* a_spell);
+		void                         DispelAlteredStates(RE::EffectArchetype a_exception);
 		void                         DispelWornItemEnchantments();
 		void                         DoReset3D(bool a_updateWeight);
 		void                         EnableAI(bool a_enable);
@@ -519,6 +521,8 @@ namespace RE
 		const TESFaction*            GetCrimeFaction() const;
 		TESPackage*                  GetCurrentPackage();
 		const TESPackage*            GetCurrentPackage() const;
+		TESShout*                    GetCurrentShout();
+		const TESShout*              GetCurrentShout() const;
 		InventoryEntryData*          GetEquippedEntryData(bool a_leftHand) const;
 		TESForm*                     GetEquippedObject(bool a_leftHand) const;
 		float                        GetEquippedWeight();
@@ -584,6 +588,7 @@ namespace RE
 		void                         PlayASound(BSSoundHandle& a_result, FormID a_formID, bool a_unk03, std::uint32_t a_flags);
 		void                         ProcessVATSAttack(MagicCaster* a_caster, bool a_hasTargetAnim, TESObjectREFR* a_target, bool a_leftHand);
 		void                         RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
+		void                         RemoveCastScroll(SpellItem* a_spell, MagicSystem::CastingSource a_source);
 		void                         RemoveExtraArrows3D();
 		void                         RemoveOutfitItems(BGSOutfit* a_outfit);
 		bool                         RemoveSpell(SpellItem* a_spell);

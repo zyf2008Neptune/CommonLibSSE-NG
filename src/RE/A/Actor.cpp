@@ -69,6 +69,13 @@ namespace RE
 		return false;
 	}
 
+	void Actor::AddCastPower(SpellItem* a_power)
+	{
+		using func_t = decltype(&Actor::AddCastPower);
+		REL::Relocation<func_t> func{ RELOCATION_ID(37787, 38736) };
+		return func(this, a_power);
+	}
+
 	bool Actor::AddSpell(SpellItem* a_spell)
 	{
 		using func_t = decltype(&Actor::AddSpell);
@@ -185,6 +192,13 @@ namespace RE
 		using func_t = decltype(&Actor::DeselectSpell);
 		REL::Relocation<func_t> func{ RELOCATION_ID(37820, 38769) };
 		return func(this, a_spell);
+	}
+
+	void Actor::DispelAlteredStates(EffectArchetype a_exception)
+	{
+		using func_t = decltype(&Actor::DispelAlteredStates);
+		REL::Relocation<func_t> func{ RELOCATION_ID(37864, 38819) };
+		return func(this, a_exception);
 	}
 
 	void Actor::DispelWornItemEnchantments()
@@ -332,6 +346,22 @@ namespace RE
 	{
 		if (currentProcess) {
 			return currentProcess->GetRunningPackage();
+		}
+		return nullptr;
+	}
+
+	TESShout* Actor::GetCurrentShout()
+	{
+		if (currentProcess) {
+			return currentProcess->GetCurrentShout();
+		}
+		return nullptr;
+	}
+
+	const TESShout* Actor::GetCurrentShout() const
+	{
+		if (currentProcess) {
+			return currentProcess->GetCurrentShout();
 		}
 		return nullptr;
 	}
@@ -857,6 +887,13 @@ namespace RE
 				}
 			}
 		}
+	}
+
+	void Actor::RemoveCastScroll(SpellItem* a_spell, MagicSystem::CastingSource a_source)
+	{
+		using func_t = decltype(&Actor::RemoveCastScroll);
+		REL::Relocation<func_t> func{ RELOCATION_ID(37798, 38747) };
+		return func(this, a_spell, a_source);
 	}
 
 	void Actor::RemoveExtraArrows3D()
