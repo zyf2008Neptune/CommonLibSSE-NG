@@ -1,5 +1,6 @@
 #include "RE/A/Actor.h"
 
+#include "RE/A/ActorMagicCaster.h"
 #include "RE/A/AIProcess.h"
 #include "RE/B/BGSAttackData.h"
 #include "RE/B/BGSColorForm.h"
@@ -527,6 +528,13 @@ namespace RE
 		return vendorFaction;
 	}
 
+	float Actor::GetVoiceRecoveryTime()
+	{
+		using func_t = decltype(&Actor::GetVoiceRecoveryTime);
+		REL::Relocation<func_t> func{ RELOCATION_ID(37854, 38808) };
+		return func(this);
+	}
+
 	float Actor::GetWarmthRating() const
 	{
 		using func_t = decltype(&Actor::GetWarmthRating);
@@ -672,6 +680,13 @@ namespace RE
 		return boolFlags.all(BOOL_FLAGS::kIsCommandedActor);
 	}
 
+	bool Actor::IsCurrentShout(SpellItem* a_spell)
+	{
+		using func_t = decltype(&Actor::IsCurrentShout);
+		REL::Relocation<func_t> func{ RELOCATION_ID(37858, 38812) };
+		return func(this, a_spell);
+	}
+
 	bool Actor::IsEssential() const
 	{
 		return boolFlags.all(BOOL_FLAGS::kEssential);
@@ -708,6 +723,13 @@ namespace RE
 		using func_t = decltype(&Actor::IsHostileToActor);
 		REL::Relocation<func_t> func{ Offset::Actor::GetHostileToActor };
 		return func(this, a_actor);
+	}
+
+	bool Actor::IsInCastPowerList(SpellItem* a_power)
+	{
+		using func_t = decltype(&Actor::IsInCastPowerList);
+		REL::Relocation<func_t> func{ RELOCATION_ID(37793, 38742) };
+		return func(this, a_power);
 	}
 
 	bool Actor::IsInMidair() const
@@ -799,6 +821,20 @@ namespace RE
 		using func_t = decltype(&Actor::KillImmediate);
 		REL::Relocation<func_t> func{ RELOCATION_ID(36723, 37735) };
 		return func(this);
+	}
+
+	void Actor::PlayASound(BSSoundHandle& a_result, FormID a_formID, bool a_arg3, std::uint32_t a_flags)
+	{
+		using func_t = decltype(&Actor::PlayASound);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36730, 37743) };
+		return func(this, a_result, a_formID, a_arg3, a_flags);
+	}
+
+	void Actor::ProcessVATSAttack(MagicCaster* a_caster, bool a_hasTargetAnim, TESObjectREFR* a_target, bool a_leftHand)
+	{
+		using func_t = decltype(&Actor::ProcessVATSAttack);
+		REL::Relocation<func_t> func{ RELOCATION_ID(40230, 41233) };
+		return func(this, a_caster, a_hasTargetAnim, a_target, a_leftHand);
 	}
 
 	void Actor::RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const
@@ -1058,6 +1094,21 @@ namespace RE
 		using func_t = decltype(&Actor::VisitSpells);
 		REL::Relocation<func_t> func{ RELOCATION_ID(37827, 38781) };
 		return func(this, a_visitor);
+	}
+
+	std::uint8_t Actor::WhoIsCasting()
+	{
+		std::uint8_t result{ 0 };
+		for (auto i = 0; i < 4; i++) {
+			if (auto magicCaster = magicCasters[i]) {
+				auto castingSource = magicCaster->GetCastingSource();
+				if (magicCaster->currentSpell) {
+					result |= 1 << stl::to_underlying(castingSource);
+				}
+			}
+		}
+
+		return result;
 	}
 
 	bool Actor::WouldBeStealing(const TESObjectREFR* a_target) const
