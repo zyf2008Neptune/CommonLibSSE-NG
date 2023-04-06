@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BGSLoadGameSubBuffer.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/M/MagicCaster.h"
 #include "RE/R/RefAttachTechniqueInput.h"
@@ -7,10 +8,12 @@
 
 namespace RE
 {
-	struct BSAnimationGraphEvent;
 	class BGSArtObject;
-	class ReferenceEffectController;
+	class BGSArtObjectCloneTask;
 	class BSLight;
+	class ReferenceEffectController;
+
+	struct BSAnimationGraphEvent;
 
 	class ActorMagicCaster :
 		public MagicCaster,                         // 00
@@ -20,12 +23,17 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_ActorMagicCaster;
 
+		using InterruptHandler_t = void(Actor*);
+
 		enum class Flags
 		{
 			kNone = 0,
 			kDualCasting = 1 << 0,
 			kSkipCheckCast = 1 << 1,
-			kUsesHands = 1 << 4
+			kStartCloneTask = 1 << 2,
+			kCastingArtAttached = 1 << 3,
+			kCheckDeferredInterrupt = 1 << 4,
+			kDeferInterrupt = 1 << 5
 		};
 
 		~ActorMagicCaster() override;  // 00
@@ -68,13 +76,13 @@ namespace RE
 		}
 
 		// members
-		RefAttachTechniqueInput                unk64;                        // 64
-		std::uint64_t                          unkB0;                        // B0
+		RefAttachTechniqueInput                castingArtData;               // 64
+		NiPointer<BGSArtObjectCloneTask>       cloneTask;                    // B0
 		Actor*                                 actor;                        // B8
 		NiNode*                                magicNode;                    // C0
 		NiPointer<BSLight>                     light;                        // C8
-		std::uint64_t                          unkD0;                        // D0
-		std::uint64_t                          unkD8;                        // D8
+		InterruptHandler_t*                    interruptHandler;             // D0
+		BGSLoadGameSubBuffer                   loadGameSubBuffer;            // D8
 		BGSArtObject*                          castingArt;                   // E0
 		ReferenceEffectController*             weaponEnchantmentController;  // E8
 		float                                  costCharged;                  // F0
