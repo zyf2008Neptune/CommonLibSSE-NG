@@ -8,15 +8,15 @@ namespace RE
 	struct ReticuleController
 	{
 	public:
-		static ReticuleController GetSingleton()
+		static ReticuleController& GetSingleton()
 		{
 			REL::Relocation<ReticuleController*> singleton{ RELOCATION_ID(508607, 380335) };
 			return *singleton;
 		}
 
 		// members
-		BSTSmallArray<MagicSystem::CastingSource, 1> data;        // 00
-		std::uint64_t                                nextUpdate;  // 18
+		BSTSmallArray<MagicSystem::CastingSource> data;        // 00
+		std::uint64_t                             nextUpdate;  // 18
 	};
 	static_assert(sizeof(ReticuleController) == 0x20);
 }
