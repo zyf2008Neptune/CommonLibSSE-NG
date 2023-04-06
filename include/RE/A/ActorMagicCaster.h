@@ -60,6 +60,13 @@ namespace RE
 		// add
 		virtual void Update(float a_delta);  // 1D
 
+		void CheckAttachCastingArt()
+		{
+			using func_t = decltype(&ActorMagicCaster::CheckAttachCastingArt);
+			REL::Relocation<func_t> func{ RELOCATION_ID(33403, 34185) };
+			return func(this);
+		}
+
 		// members
 		RefAttachTechniqueInput                unk64;                        // 64
 		std::uint64_t                          unkB0;                        // B0
@@ -70,7 +77,7 @@ namespace RE
 		std::uint64_t                          unkD8;                        // D8
 		BGSArtObject*                          castingArt;                   // E0
 		ReferenceEffectController*             weaponEnchantmentController;  // E8
-		std::uint32_t                          unkF0;                        // F0
+		float                                  costCharged;                  // F0
 		MagicSystem::CastingSource             castingSource;                // F4
 		stl::enumeration<Flags, std::uint32_t> flags;                        // F8
 	};
