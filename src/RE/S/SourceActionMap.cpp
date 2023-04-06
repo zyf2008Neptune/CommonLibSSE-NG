@@ -6,20 +6,22 @@ namespace RE
 	{
 		std::span<DEFAULT_OBJECT, 12> GetSingleton()
 		{
-			return {
-				RE::DEFAULT_OBJECT::kActionLeftAttack,
-				RE::DEFAULT_OBJECT::kActionLeftReady,
-				RE::DEFAULT_OBJECT::kActionLeftRelease,
-				RE::DEFAULT_OBJECT::kActionLeftInterrupt,
-				RE::DEFAULT_OBJECT::kActionRightAttack,
-				RE::DEFAULT_OBJECT::kActionRightReady,
-				RE::DEFAULT_OBJECT::kActionRightRelease,
-				RE::DEFAULT_OBJECT::kActionRightInterrupt,
-				RE::DEFAULT_OBJECT::kActionVoice,
-				RE::DEFAULT_OBJECT::kActionVoiceReady,
-				RE::DEFAULT_OBJECT::kActionVoiceRelease,
-				RE::DEFAULT_OBJECT::kActionVoiceInterrupt,
+			static DEFAULT_OBJECT singleton[12] = {
+				DEFAULT_OBJECT::kActionLeftAttack,
+				DEFAULT_OBJECT::kActionLeftReady,
+				DEFAULT_OBJECT::kActionLeftRelease,
+				DEFAULT_OBJECT::kActionLeftInterrupt,
+				DEFAULT_OBJECT::kActionRightAttack,
+				DEFAULT_OBJECT::kActionRightReady,
+				DEFAULT_OBJECT::kActionRightRelease,
+				DEFAULT_OBJECT::kActionRightInterrupt,
+				DEFAULT_OBJECT::kActionVoice,
+				DEFAULT_OBJECT::kActionVoiceReady,
+				DEFAULT_OBJECT::kActionVoiceRelease,
+				DEFAULT_OBJECT::kActionVoiceInterrupt,
 			};
+
+			return singleton;
 		}
 
 		bool DoAction(Actor* a_actor, DEFAULT_OBJECT a_action)
