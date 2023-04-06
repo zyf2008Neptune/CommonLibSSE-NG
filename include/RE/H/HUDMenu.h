@@ -40,6 +40,13 @@ namespace RE
 		// override (BSTEventSink<BSRemoteGamepadEvent>)
 		BSEventNotifyControl ProcessEvent(const BSRemoteGamepadEvent* a_event, BSTEventSource<BSRemoteGamepadEvent>* a_eventSource) override;  // 01
 
+		static void UpdateCrosshairMagicTarget(bool a_valid)
+		{
+			using func_t = decltype(&HUDMenu::UpdateCrosshairMagicTarget);
+			REL::Relocation<func_t> func{ RELOCATION_ID(50738, 51633) };
+			return func(a_valid);
+		}
+
 		// members
 		BSTArray<HUDObject*> objects;  // 40
 		ActorValueMeter*     health;   // 58

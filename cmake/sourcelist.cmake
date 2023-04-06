@@ -6,8 +6,10 @@ set(SOURCES
 	include/RE/A/AbsorbEffect.h
 	include/RE/A/AbstractHeap.h
 	include/RE/A/ActionInput.h
+	include/RE/A/ActionOutput.h
 	include/RE/A/ActivateHandler.h
 	include/RE/A/ActiveEffect.h
+	include/RE/A/ActiveEffectFactory.h
 	include/RE/A/ActiveEffectReferenceEffectController.h
 	include/RE/A/Actor.h
 	include/RE/A/ActorCause.h
@@ -194,6 +196,7 @@ set(SOURCES
 	include/RE/B/BSAnimationGraphChannel.h
 	include/RE/B/BSAnimationGraphEvent.h
 	include/RE/B/BSAnimationGraphManager.h
+	include/RE/B/BSAnimationUpdateData.h
 	include/RE/B/BSArchive.h
 	include/RE/B/BSArchiveHeader.h
 	include/RE/B/BSAtomic.h
@@ -1121,12 +1124,14 @@ set(SOURCES
 	include/RE/L/LooseFileStreamBase.h
 	include/RE/M/MagicCaster.h
 	include/RE/M/MagicFavorites.h
+	include/RE/M/MagicFormulas.h
 	include/RE/M/MagicItem.h
 	include/RE/M/MagicItemDataCollector.h
 	include/RE/M/MagicItemTraversalFunctor.h
 	include/RE/M/MagicMenu.h
 	include/RE/M/MagicSystem.h
 	include/RE/M/MagicTarget.h
+	include/RE/M/MagicUtilities.h
 	include/RE/M/Main.h
 	include/RE/M/MainMenu.h
 	include/RE/M/MapCamera.h
@@ -1310,6 +1315,7 @@ set(SOURCES
 	include/RE/R/RenderTargetManager.h
 	include/RE/R/RenderTargetProperties.h
 	include/RE/R/Request.h
+	include/RE/R/ReticuleController.h
 	include/RE/R/Rumble.h
 	include/RE/R/RunHandler.h
 	include/RE/RTTI.h
@@ -1355,6 +1361,7 @@ set(SOURCES
 	include/RE/S/SoulLevels.h
 	include/RE/S/SoulsTrapped.h
 	include/RE/S/SoundLevels.h
+	include/RE/S/SourceActionMap.h
 	include/RE/S/SpellItem.h
 	include/RE/S/SpellsLearned.h
 	include/RE/S/SprintHandler.h
@@ -1574,6 +1581,7 @@ set(SOURCES
 	src/RE/A/AIFormulas.cpp
 	src/RE/A/AIProcess.cpp
 	src/RE/A/ActiveEffect.cpp
+	src/RE/A/ActiveEffectFactory.cpp
 	src/RE/A/Actor.cpp
 	src/RE/A/ActorEquipManager.cpp
 	src/RE/A/ActorKill.cpp
@@ -1766,10 +1774,14 @@ set(SOURCES
 	src/RE/L/LocationDiscovery.cpp
 	src/RE/L/LockpickingMenu.cpp
 	src/RE/L/LooseFileStream.cpp
+	src/RE/M/MagicCaster.cpp
 	src/RE/M/MagicFavorites.cpp
+	src/RE/M/MagicFormulas.cpp
 	src/RE/M/MagicItem.cpp
 	src/RE/M/MagicItemDataCollector.cpp
+	src/RE/M/MagicSystem.cpp
 	src/RE/M/MagicTarget.cpp
+	src/RE/M/MagicUtilities.cpp
 	src/RE/M/Main.cpp
 	src/RE/M/MaterialIDs.cpp
 	src/RE/M/MemoryPage.cpp
@@ -1838,6 +1850,7 @@ set(SOURCES
 	src/RE/S/Sky.cpp
 	src/RE/S/SkyrimVM.cpp
 	src/RE/S/SoulsTrapped.cpp
+	src/RE/S/SourceActionMap.cpp
 	src/RE/S/SpellsLearned.cpp
 	src/RE/S/Stack.cpp
 	src/RE/S/StackFrame.cpp

@@ -483,6 +483,7 @@ namespace RE
 		static bool             LookupByHandle(RefHandle a_refHandle, NiPointer<Actor>& a_refrOut);
 
 		bool                         AddAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
+		void                         AddCastPower(SpellItem* a_power);
 		bool                         AddSpell(SpellItem* a_spell);
 		void                         AddToFaction(TESFaction* a_faction, std::int8_t a_rank);
 		void                         AddWornOutfit(BGSOutfit* a_outfit, bool a_forceUpdate);
@@ -500,6 +501,7 @@ namespace RE
 		ActorHandle                  CreateRefHandle();
 		bool                         Decapitate();
 		void                         DeselectSpell(SpellItem* a_spell);
+		void                         DispelAlteredStates(RE::EffectArchetype a_exception);
 		void                         DispelWornItemEnchantments();
 		void                         DoReset3D(bool a_updateWeight);
 		void                         EnableAI(bool a_enable);
@@ -519,6 +521,8 @@ namespace RE
 		const TESFaction*            GetCrimeFaction() const;
 		TESPackage*                  GetCurrentPackage();
 		const TESPackage*            GetCurrentPackage() const;
+		TESShout*                    GetCurrentShout();
+		const TESShout*              GetCurrentShout() const;
 		InventoryEntryData*          GetEquippedEntryData(bool a_leftHand) const;
 		TESForm*                     GetEquippedObject(bool a_leftHand) const;
 		float                        GetEquippedWeight();
@@ -540,6 +544,7 @@ namespace RE
 		[[nodiscard]] SOUL_LEVEL     GetSoulSize() const;
 		TESFaction*                  GetVendorFaction();
 		const TESFaction*            GetVendorFaction() const;
+		float                        GetVoiceRecoveryTime();
 		float                        GetWarmthRating() const;
 		[[nodiscard]] TESObjectARMO* GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot, bool a_noInit = false);
 		[[nodiscard]] TESObjectARMO* GetWornArmor(FormID a_formID, bool a_noInit = false);
@@ -559,11 +564,13 @@ namespace RE
 		bool                         IsBlocking() const;
 		bool                         IsCasting(MagicItem* a_spell) const;
 		bool                         IsCommandedActor() const;
+		bool                         IsCurrentShout(SpellItem* a_power);
 		bool                         IsEssential() const;
 		bool                         IsFactionInCrimeGroup(const TESFaction* a_faction) const;
 		bool                         IsGhost() const;
 		bool                         IsGuard() const;
 		bool                         IsHostileToActor(Actor* a_actor);
+		bool                         IsInCastPowerList(SpellItem* a_power);
 		[[nodiscard]] constexpr bool IsInKillMove() const noexcept { return boolFlags.all(BOOL_FLAGS::kIsInKillMove); }
 		bool                         IsInMidair() const;
 		bool                         IsInRagdollState() const;
@@ -578,7 +585,10 @@ namespace RE
 		[[nodiscard]] bool           IsSummoned() const noexcept;
 		bool                         IsTrespassing() const;
 		void                         KillImmediate();
+		void                         PlayASound(BSSoundHandle& a_result, FormID a_formID, bool a_unk03, std::uint32_t a_flags);
+		void                         ProcessVATSAttack(MagicCaster* a_caster, bool a_hasTargetAnim, TESObjectREFR* a_target, bool a_leftHand);
 		void                         RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
+		void                         RemoveCastScroll(SpellItem* a_spell, MagicSystem::CastingSource a_source);
 		void                         RemoveExtraArrows3D();
 		void                         RemoveOutfitItems(BGSOutfit* a_outfit);
 		bool                         RemoveSpell(SpellItem* a_spell);
@@ -603,6 +613,7 @@ namespace RE
 		void                         VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, NiAVObject& a_obj)> a_visitor);
 		bool                         VisitFactions(std::function<bool(TESFaction* a_faction, std::int8_t a_rank)> a_visitor);
 		void                         VisitSpells(ForEachSpellVisitor& a_visitor);
+		std::uint8_t                 WhoIsCasting();
 		bool                         WouldBeStealing(const TESObjectREFR* a_target) const;
 
 		// members
