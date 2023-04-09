@@ -6,7 +6,7 @@
 namespace RE
 {
 	class ActorCause;
-	template<class>
+	template <class>
 	class NiPointer;
 
 	class SpawnHazardEffect :
