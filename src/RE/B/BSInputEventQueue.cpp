@@ -8,52 +8,106 @@ namespace RE
 		return *singleton;
 	}
 
-	void BSInputEventQueue::EnqueueButtonEvent(INPUT_DEVICE device, std::uint32_t buttonId, float value, float heldDownSecs)
+	void BSInputEventQueue::AddButtonEvent(INPUT_DEVICE a_device, std::int32_t a_id, float a_value, float a_duration)
 	{
-		using func_t = decltype(&BSInputEventQueue::EnqueueButtonEvent);
-		REL::Relocation<func_t> func{ RELOCATION_ID(67382, 68685) };
-		return func(this, device, buttonId, value, heldDownSecs);
+		if (buttonEventCount < MAX_BUTTON_EVENTS) {
+			auto& cachedEvent = buttonEvents[buttonEventCount];
+			cachedEvent.value = a_value;
+			cachedEvent.heldDownSecs = a_duration;
+			cachedEvent.device = a_device;
+			cachedEvent.idCode = a_id;
+			cachedEvent.userEvent = {};
+
+			PushOntoInputQueue(&cachedEvent);
+			++buttonEventCount;
+		}
 	}
 
-	void BSInputEventQueue::EnqueueCharEvent(std::uint32_t keycode)
+	void BSInputEventQueue::AddCharEvent(std::uint32_t a_keyCode)
 	{
-		using func_t = decltype(&BSInputEventQueue::EnqueueCharEvent);
-		REL::Relocation<func_t> func{ RELOCATION_ID(67383, 68686) };
-		return func(this, keycode);
+		if (charEventCount < MAX_CHAR_EVENTS) {
+			auto& cachedEvent = charEvents[charEventCount];
+			cachedEvent.keycode = a_keyCode;
+
+			PushOntoInputQueue(&cachedEvent);
+			++charEventCount;
+		}
 	}
 
-	void BSInputEventQueue::EnqueueMouseMoveEvent(std::int32_t deltaX, std::int32_t deltaY)
+	void BSInputEventQueue::AddMouseMoveEvent(std::int32_t a_mouseInputX, std::int32_t a_mouseInputY)
 	{
-		using func_t = decltype(&BSInputEventQueue::EnqueueMouseMoveEvent);
-		REL::Relocation<func_t> func{ RELOCATION_ID(67384, 68687) };
-		return func(this, deltaX, deltaY);
+		if (mouseEventCount < MAX_MOUSE_EVENTS) {
+			auto& cachedEvent = mouseEvents[mouseEventCount];
+			cachedEvent.mouseInputX = a_mouseInputX;
+			cachedEvent.mouseInputY = a_mouseInputY;
+			cachedEvent.userEvent = {};
+
+			PushOntoInputQueue(&cachedEvent);
+			++mouseEventCount;
+		}
 	}
 
-	void BSInputEventQueue::EnqueueThumbstickEvent(std::uint32_t thumbstickId, float x, float y)
+	void BSInputEventQueue::AddThumbstickEvent(ThumbstickEvent::InputType a_id, float a_xValue, float a_yValue)
 	{
-		using func_t = decltype(&BSInputEventQueue::EnqueueThumbstickEvent);
-		REL::Relocation<func_t> func{ RELOCATION_ID(67385, 68688) };
-		return func(this, thumbstickId, x, y);
+		if (thumbstickEventCount < MAX_THUMBSTICK_EVENTS) {
+			auto& cachedEvent = thumbstickEvents[thumbstickEventCount];
+			cachedEvent.idCode = a_id;
+			cachedEvent.xValue = a_xValue;
+			cachedEvent.yValue = a_yValue;
+			cachedEvent.userEvent = {};
+
+			PushOntoInputQueue(&cachedEvent);
+			++thumbstickEventCount;
+		}
 	}
 
-	void BSInputEventQueue::EnqueueDeviceConnectEvent(INPUT_DEVICE device, bool connected)
+	void BSInputEventQueue::AddConnectEvent(INPUT_DEVICE a_device, bool a_connected)
 	{
-		using func_t = decltype(&BSInputEventQueue::EnqueueDeviceConnectEvent);
-		REL::Relocation<func_t> func{ RELOCATION_ID(67386, 68689) };
-		return func(this, device, connected);
+		if (connectEventCount < MAX_CONNECT_EVENTS) {
+			auto& cachedEvent = connectEvents[connectEventCount];
+			cachedEvent.device = a_device;
+			cachedEvent.connected = a_connected;
+
+			PushOntoInputQueue(&cachedEvent);
+			++connectEventCount;
+		}
 	}
 
-	void BSInputEventQueue::EnqueueKinectEvent(BSFixedString* userEvent, BSFixedString* heard)
+	void BSInputEventQueue::AddKinectEvent(const BSFixedString& a_userEvent, const BSFixedString& a_heard)
 	{
-		using func_t = decltype(&BSInputEventQueue::EnqueueKinectEvent);
-		REL::Relocation<func_t> func{ RELOCATION_ID(67387, 68690) };
-		return func(this, userEvent, heard);
+		if (kinectEventCount < MAX_KINECT_EVENTS) {
+			auto& cachedEvent = kinectEvents[kinectEventCount];
+			cachedEvent.userEvent = a_userEvent;
+			cachedEvent.heard = a_heard;
+
+			PushOntoInputQueue(&cachedEvent);
+			++kinectEventCount;
+		}
 	}
 
-	void BSInputEventQueue::Reset()
+	void BSInputEventQueue::PushOntoInputQueue(InputEvent* a_event)
 	{
-		using func_t = decltype(&BSInputEventQueue::Reset);
-		REL::Relocation<func_t> func{ RELOCATION_ID(67388, 68691) };
-		return func(this);
+		if (!queueHead) {
+			queueHead = a_event;
+		}
+
+		if (queueTail) {
+			queueTail->next = a_event;
+		}
+
+		queueTail = a_event;
+		queueTail->next = nullptr;
+	}
+
+	void BSInputEventQueue::ClearInputQueue()
+	{
+		kinectEventCount = 0;
+		connectEventCount = 0;
+		thumbstickEventCount = 0;
+		mouseEventCount = 0;
+		charEventCount = 0;
+		buttonEventCount = 0;
+		queueTail = nullptr;
+		queueHead = nullptr;
 	}
 }

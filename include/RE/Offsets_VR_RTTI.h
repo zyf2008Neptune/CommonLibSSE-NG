@@ -29,6 +29,7 @@ namespace RE
 	inline constexpr REL::ID RTTI__void___cdecl_BSResource__RegisterPrefix_char_const_____ptr64_char_const_____ptr64_BSResource__Location_____ptr64_____2___Traverser(static_cast<std::uint64_t>(690376));
 	inline constexpr REL::ID RTTI_BSResource____LooseFileStream(static_cast<std::uint64_t>(690383));
 	inline constexpr REL::ID RTTI___LoggingDisabler(static_cast<std::uint64_t>(691067));
+	inline constexpr REL::ID RTTI___LegendarySkillResetConfirmCallback(static_cast<std::uint64_t>(688914));
 
 	inline constexpr REL::Offset RTTI___AttachLightHitEffectVisitor(0x1eff0b0);
 	inline constexpr REL::Offset RTTI_BaseFormComponent(0x01ED6CD0);
@@ -299,6 +300,7 @@ namespace RE
 	inline constexpr REL::Offset RTTI_TESValueForm(0x01ED77E0);
 	inline constexpr REL::Offset RTTI_TESWeightForm(0x01ED6F00);
 	inline constexpr REL::Offset RTTI_ActionInput(0x01EDBA88);
+	inline constexpr REL::ID     RTTI_ActionOutput(static_cast<std::uint64_t>(684947));
 	inline constexpr REL::Offset RTTI_BGSAnimSoundStateManager(0x01EDBAB0);
 	inline constexpr REL::Offset RTTI_BSAttachTechniques__BSAttachTechnique(0x01EDBD08);
 	inline constexpr REL::Offset RTTI_BGSAttachTechniquesUtil__ProcessTechniquesFunctor(0x01EDBD50);

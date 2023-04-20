@@ -128,6 +128,7 @@ namespace RE
 		void SendActivateEvent(const NiPointer<TESObjectREFR>& a_objectActivated, const NiPointer<TESObjectREFR>& a_actionRef);
 #endif
 		void SendOpenCloseEvent(const NiPointer<TESObjectREFR>& a_ref, const NiPointer<TESObjectREFR>& a_activeRef, bool a_isOpened);
+		void SendSpellCastEvent(const NiPointer<TESObjectREFR>& a_object, FormID a_formID);
 
 		template <class T>
 		inline BSTEventSource<T>* GetEventSource()
