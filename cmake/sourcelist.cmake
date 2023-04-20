@@ -299,7 +299,6 @@ set(SOURCES
 	include/RE/B/BSPortalGraph.h
 	include/RE/B/BSPrecomputedNavmeshInfoPathMap.h
 	include/RE/B/BSReloadShaderI.h
-	include/RE/B/BSRenderManager.h
 	include/RE/B/BSRenderPass.h
 	include/RE/B/BSResourceEntryDB.h
 	include/RE/B/BSResourceNiBinaryStream.h
@@ -1336,8 +1335,10 @@ set(SOURCES
 	include/RE/R/RegisterPrefix.h
 	include/RE/R/RemoveCallbackVisitor.h
 	include/RE/R/RemoveItemFunctor.h
+	include/RE/R/RenderTargetData.h
 	include/RE/R/RenderTargetManager.h
 	include/RE/R/RenderTargetProperties.h
+	include/RE/R/Renderer.h
 	include/RE/R/Request.h
 	include/RE/R/ReticuleController.h
 	include/RE/R/Rumble.h
@@ -1557,6 +1558,8 @@ set(SOURCES
 	include/RE/T/TelekinesisEffect.h
 	include/RE/T/TempEffectTraits.h
 	include/RE/T/TextureAddressModes.h
+	include/RE/T/TextureFileFormat.h
+	include/RE/T/TextureFormat.h
 	include/RE/T/ThirdPersonState.h
 	include/RE/T/ThumbstickEvent.h
 	include/RE/T/TitleSequenceMenu.h
@@ -1875,6 +1878,7 @@ set(SOURCES
 	src/RE/R/RaceSexMenu.cpp
 	src/RE/R/ReferenceEffectController.cpp
 	src/RE/R/RemoveCallbackVisitor.cpp
+	src/RE/R/Renderer.cpp
 	src/RE/R/Rumble.cpp
 	src/RE/S/ScrapHeap.cpp
 	src/RE/S/Script.cpp
