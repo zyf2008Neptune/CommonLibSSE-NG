@@ -869,6 +869,7 @@ namespace RE
 
 	void Actor::ProcessVATSAttack(MagicCaster* a_caster, bool a_hasTargetAnim, TESObjectREFR* a_target, bool a_leftHand)
 	{
+		// in VR the function exists but is void.
 		using func_t = decltype(&Actor::ProcessVATSAttack);
 		REL::Relocation<func_t> func{ RELOCATION_ID(40230, 41233) };
 		return func(this, a_caster, a_hasTargetAnim, a_target, a_leftHand);
