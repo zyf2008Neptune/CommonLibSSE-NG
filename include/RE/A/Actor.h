@@ -367,7 +367,7 @@ namespace RE
 		bool                         MagicTargetIsActor() const override;  // 003 - { return true; }
 		BSSimpleList<ActiveEffect*>* GetActiveEffectList() override;       // 007
 
-																		   // add
+		// add
 #ifndef SKYRIMVR
 		virtual void                    Unk_A2(void);                                                                                                                                                                    // 0A2
 		virtual void                    PlayPickUpSound(TESBoundObject* a_object, bool a_pickup, bool a_use);                                                                                                            // 0A3
