@@ -184,12 +184,12 @@ namespace RE
 		return func(this, a_actor, a_location, a_magnitude);
 	}
 
-    bool AIProcess::PlayIdle(Actor* a_actor, TESIdleForm* a_idle, TESObjectREFR* a_target)
+	bool AIProcess::PlayIdle(Actor* a_actor, TESIdleForm* a_idle, TESObjectREFR* a_target)
 	{
 		return SetupSpecialIdle(a_actor, DEFAULT_OBJECT::kActionIdle, a_idle, true, false, nullptr);
 	}
 
-    void AIProcess::SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_ref)
+	void AIProcess::SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_ref)
 	{
 		using func_t = decltype(&AIProcess::SetActorsDetectionEvent);
 		REL::Relocation<func_t> func{ RELOCATION_ID(38311, 39286) };
@@ -231,14 +231,14 @@ namespace RE
 		return func(this, a_actor, a_action, a_idle, a_arg5, a_arg6, a_target);
 	}
 
-    void AIProcess::StopCurrentIdle(Actor* a_actor, bool a_forceIdleStop)
+	void AIProcess::StopCurrentIdle(Actor* a_actor, bool a_forceIdleStop)
 	{
 		using func_t = decltype(&AIProcess::StopCurrentIdle);
 		REL::Relocation<func_t> func{ RELOCATION_ID(38291, 39257) };
 		return func(this, a_actor, a_forceIdleStop);
 	}
 
-    void AIProcess::Update3DModel(Actor* a_actor)
+	void AIProcess::Update3DModel(Actor* a_actor)
 	{
 		Update3DModel_Impl(a_actor);
 		const SKSE::NiNodeUpdateEvent event{ a_actor };
