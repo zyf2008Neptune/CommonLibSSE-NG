@@ -710,6 +710,7 @@ set(SOURCES
 	include/RE/F/FormTraits.h
 	include/RE/F/FormTypes.h
 	include/RE/F/FragmentSystem.h
+	include/RE/F/FreeCameraState.h
 	include/RE/F/FrenzyEffect.h
 	include/RE/F/FunctionArguments.h
 	include/RE/F/FunctionMessage.h
@@ -1352,6 +1353,7 @@ set(SOURCES
 	include/RE/S/SceneGraph.h
 	include/RE/S/ScrapHeap.h
 	include/RE/S/ScreenSplatter.h
+	include/RE/S/ScreenshotHandler.h
 	include/RE/S/Script.h
 	include/RE/S/ScriptEffect.h
 	include/RE/S/ScriptEventSourceHolder.h

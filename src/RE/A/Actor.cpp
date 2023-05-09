@@ -145,7 +145,7 @@ namespace RE
 		return race->AllowsPickpocket() && !IsPlayerTeammate();
 	}
 
-	bool Actor::CanTalkToPlayer() const
+    bool Actor::CanTalkToPlayer() const
 	{
 		auto xTalk = extraList.GetByType<ExtraCanTalkToPlayer>();
 		if (xTalk) {
@@ -153,6 +153,13 @@ namespace RE
 		} else {
 			return race != nullptr && race->AllowsPCDialogue();
 		}
+	}
+
+    bool Actor::CanUseIdle(TESIdleForm* a_idle) const
+	{
+		using func_t = decltype(&Actor::CanUseIdle);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36224, 37205) };
+		return func(this, a_idle);
 	}
 
 	void Actor::ClearArrested()
