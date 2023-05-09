@@ -102,7 +102,7 @@ namespace RE
 			bool                       alwaysHit;              // 9C
 			bool                       noDamageOutsideCombat;  // 9D
 			bool                       autoAim;                // 9E
-			bool                       ChainShatter;           // 9F
+			bool                       chainShatter;           // 9F
 			bool                       useOrigin;              // A0
 			bool                       deferInitialization;    // A1
 			bool                       forceConeOfFire;        // A2

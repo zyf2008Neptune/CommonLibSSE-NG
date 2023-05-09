@@ -186,7 +186,7 @@ namespace RE
 
 	bool AIProcess::PlayIdle(Actor* a_actor, TESIdleForm* a_idle, TESObjectREFR* a_target)
 	{
-		return SetupSpecialIdle(a_actor, DEFAULT_OBJECT::kActionIdle, a_idle, true, false, nullptr);
+		return SetupSpecialIdle(a_actor, DEFAULT_OBJECT::kActionIdle, a_idle, true, false, a_target);
 	}
 
 	void AIProcess::SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_ref)
