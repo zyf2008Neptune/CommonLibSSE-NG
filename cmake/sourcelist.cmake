@@ -715,6 +715,7 @@ set(SOURCES
 	include/RE/F/FormTraits.h
 	include/RE/F/FormTypes.h
 	include/RE/F/FragmentSystem.h
+	include/RE/F/FreeCameraState.h
 	include/RE/F/FrenzyEffect.h
 	include/RE/F/FunctionArguments.h
 	include/RE/F/FunctionMessage.h
@@ -1087,13 +1088,18 @@ set(SOURCES
 	include/RE/I/IVirtualMachine.h
 	include/RE/I/IXAudio2VoiceCallback.h
 	include/RE/I/ImageData.h
+	include/RE/I/ImageSpaceData.h
 	include/RE/I/ImageSpaceEffect.h
+	include/RE/I/ImageSpaceEffectDepthOfField.h
+	include/RE/I/ImageSpaceEffectOption.h
 	include/RE/I/ImageSpaceEffectParam.h
+	include/RE/I/ImageSpaceManager.h
 	include/RE/I/ImageSpaceModifierInstance.h
 	include/RE/I/ImageSpaceModifierInstanceDOF.h
 	include/RE/I/ImageSpaceModifierInstanceForm.h
 	include/RE/I/ImageSpaceModifierInstanceTemp.h
 	include/RE/I/ImageSpaceShaderParam.h
+	include/RE/I/ImageSpaceTexture.h
 	include/RE/I/ImpactResults.h
 	include/RE/I/Info.h
 	include/RE/I/IngredientItem.h
@@ -1361,6 +1367,7 @@ set(SOURCES
 	include/RE/S/SceneGraph.h
 	include/RE/S/ScrapHeap.h
 	include/RE/S/ScreenSplatter.h
+	include/RE/S/ScreenshotHandler.h
 	include/RE/S/Script.h
 	include/RE/S/ScriptEffect.h
 	include/RE/S/ScriptEventSourceHolder.h
@@ -1568,6 +1575,7 @@ set(SOURCES
 	include/RE/T/TempEffectTraits.h
 	include/RE/T/TextureAddressModes.h
 	include/RE/T/TextureFileFormat.h
+	include/RE/T/TextureFilterModes.h
 	include/RE/T/TextureFormat.h
 	include/RE/T/ThirdPersonState.h
 	include/RE/T/ThumbstickEvent.h
