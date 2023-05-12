@@ -19,8 +19,8 @@ namespace RE::CraftingSubMenus
 
 			~QuitMenuCallback() override;  // 00
 
-			// override (IMessageBoxCallback)
-			void Run(Message a_msg) override;  // 01
+				// override (IMessageBoxCallback)
+				void Run(Message a_msg) override;  // 01
 
 			// members
 			AlchemyMenu* subMenu;  // 10
@@ -60,9 +60,9 @@ namespace RE::CraftingSubMenus
 
 		~AlchemyMenu() override;  // 00
 
-		// override (CraftingSubMenu)
-		void Accept(CallbackProcessor* a_cbReg) override;  // 01
-		void Unk_05(void) override;                        // 05
+			// override (CraftingSubMenu)
+			void Accept(CallbackProcessor* a_cbReg) override;          // 01
+			bool ProcessUserEvent(BSFixedString* a_control) override;  // 05
 
 		// members
 		RE::BSTArray<MenuIngredientEntry> ingredientsEntries;       // 100
