@@ -40,7 +40,7 @@ namespace RE::Offset
 
 	namespace BGSFootstepManager
 	{
-		constexpr auto Singleton = RELOCATION_ID(517045, 401262);
+		constexpr auto Singleton = RELOCATION_ID(517045, 403553);
 	}
 
 	namespace BGSListForm
