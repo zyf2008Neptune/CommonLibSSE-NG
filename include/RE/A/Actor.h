@@ -590,7 +590,6 @@ namespace RE
 		[[nodiscard]] bool                      IsOnMount() const;
 		[[nodiscard]] bool                      IsOverEncumbered() const;
 		[[nodiscard]] bool                      IsPlayerTeammate() const;
-		[[nodiscard]] float                     IsPointDeepUnderWater(float a_zPos, TESObjectCELL* a_cell);
 		[[nodiscard]] bool                      IsProtected() const;
 		[[nodiscard]] bool                      IsRunning() const;
 		[[nodiscard]] bool                      IsSneaking() const;
