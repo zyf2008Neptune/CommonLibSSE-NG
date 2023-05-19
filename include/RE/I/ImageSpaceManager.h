@@ -174,10 +174,10 @@ namespace RE
 			ISUnderwaterMask = 156,                        // BSImagespaceShaderISUnderwaterMask
 			ISWaterFlow = 157,                             // BSImagespaceShaderWaterFlow
 
-		    Total = 159
+			Total = 159
 		};
 
-	    static ImageSpaceManager* GetSingleton()
+		static ImageSpaceManager* GetSingleton()
 		{
 			REL::Relocation<ImageSpaceManager**> singleton{ RELOCATION_ID(527731, 414660) };
 			return *singleton;
