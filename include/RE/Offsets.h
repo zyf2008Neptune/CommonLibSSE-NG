@@ -484,14 +484,6 @@ namespace RE
 			inline constexpr REL::ID FirstScriptCommand(static_cast<std::uint64_t>(361120));
 		}
 
-		namespace Sky
-		{
-			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(13878));
-			inline constexpr REL::ID SetWeather(static_cast<std::uint64_t>(26241));
-			inline constexpr REL::ID ForceWeather(static_cast<std::uint64_t>(26243));
-			inline constexpr REL::ID ResetWeather(static_cast<std::uint64_t>(26242));
-		}
-
 		namespace SkyrimVM
 		{
 			inline constexpr REL::ID QueuePostRenderCall(static_cast<std::uint64_t>(53955));
@@ -1070,14 +1062,6 @@ namespace RE
 		{
 			inline constexpr REL::ID FirstConsoleCommand(static_cast<std::uint64_t>(501797));
 			inline constexpr REL::ID FirstScriptCommand(static_cast<std::uint64_t>(501789));
-		}
-
-		namespace Sky
-		{
-			inline constexpr REL::ID GetSingleton(static_cast<std::uint64_t>(13789));
-			inline constexpr REL::ID SetWeather(static_cast<std::uint64_t>(25694));
-			inline constexpr REL::ID ForceWeather(static_cast<std::uint64_t>(25696));
-			inline constexpr REL::ID ResetWeather(static_cast<std::uint64_t>(25695));
 		}
 
 		namespace SkyrimVM
