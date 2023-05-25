@@ -18,25 +18,26 @@ namespace RE
 		inline static auto RTTI = RTTI_AnimationFileManagerSingleton;
 		inline static auto VTABLE = VTABLE_AnimationFileManagerSingleton;
 
-		struct UnkData
+		struct AnimationFileInfo
 		{
-			uint32_t crc32Path;      // 00
-			char     extension[4];   // 04
-			uint32_t crc32Filename;  // 08
+			uint32_t crc32Filename;  // 00 - BSCRC32 of lowercase filename without extension
+			char     extension[4];   // 04 - plaintext extension without dot (e.g. "hkx")
+			uint32_t crc32Path;      // 08 - BSCRC32 of lowercase path to the containing directory, starting with "meshes"
 		};
+		static_assert(sizeof(AnimationFileInfo) == 0xC);
 
 		struct QueuedAnimation
 		{
-			uint32_t unk00;  // 00
-			UnkData  data;   // 04
+			uint32_t          unk00;     // 00
+			AnimationFileInfo fileInfo;  // 04
 		};
 		static_assert(sizeof(QueuedAnimation) == 0x10);
 
 		struct LoadedAnimation
 		{
-			void*    unk00;    // 00
-			UnkData  data;     // 08
-			uint16_t counter;  // 14
+			void*             unk00;     // 00
+			AnimationFileInfo fileInfo;  // 08
+			uint16_t          counter;   // 14
 		};
 		static_assert(sizeof(LoadedAnimation) == 0x18);
 
