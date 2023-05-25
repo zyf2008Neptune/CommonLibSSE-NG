@@ -20,9 +20,9 @@ namespace RE
 
 		struct UnkData
 		{
-			uint32_t crc32Filename;   // 00
-			uint32_t crc32Extension;  // 04
-			uint32_t crc32Path;       // 08
+			uint32_t crc32Path;      // 00
+			char     extension[4];   // 04
+			uint32_t crc32Filename;  // 08
 		};
 
 		struct QueuedAnimation
@@ -43,9 +43,9 @@ namespace RE
 		virtual ~AnimationFileManagerSingleton() override;  // 00
 
 		// override (IAnimationClipLoaderSingleton)
-		virtual std::int32_t Unk_01(const hkbContext& a_hkbContext, hkbClipGenerator* a_clipGenerator, BSSynchronizedClipGenerator* a_synchronizedClipGenerator);  // 01 - called in hkbClipGenerator::Activate, possibly loads animation (queues it?)
-		virtual bool         Unk_02(const hkbContext& a_hkbContext, hkbClipGenerator* a_clipGenerator, BSSynchronizedClipGenerator* a_synchronizedClipGenerator);  // 02 - called in hkbClipGenerator::Update, possibly loads animation
-		virtual std::int32_t Unk_03(const hkbContext& a_hkbContext, hkbClipGenerator* a_clipGenerator, BSSynchronizedClipGenerator* a_synchronizedClipGenerator);  // 03 - called in hkbClipGenerator::Deactivate, possibly unloads animation
+		virtual std::int32_t Queue(const hkbContext& a_hkbContext, hkbClipGenerator* a_clipGenerator, BSSynchronizedClipGenerator* a_synchronizedClipGenerator);   // 01 - called in hkbClipGenerator::Activate, possibly loads animation (queues it?)
+		virtual bool         Load(const hkbContext& a_hkbContext, hkbClipGenerator* a_clipGenerator, BSSynchronizedClipGenerator* a_synchronizedClipGenerator);    // 02 - called in hkbClipGenerator::Update, possibly loads animation
+		virtual std::int32_t Unload(const hkbContext& a_hkbContext, hkbClipGenerator* a_clipGenerator, BSSynchronizedClipGenerator* a_synchronizedClipGenerator);  // 03 - called in hkbClipGenerator::Deactivate, possibly unloads animation
 		virtual void         Unk_04(const hkbContext& a_context, std::int16_t a_animationBindingIndex);                                                            // 04
 		virtual void         Unk_05(const hkbContext& a_context, std::int16_t a_animationBindingIndex);                                                            // 05
 
