@@ -78,12 +78,12 @@ namespace RE
 			void SetItemCardInfo(ItemCard* a_itemCard) override;  // 07
 
 			// members
-			BSTArray<ItemEntry>                    crafts;               // 100
-			BSTHashMap<std::uint32_t, FilterFlags> materialFilterFlags;  // 118 -- kwd's formid -> FilterFlags
-			std::uint32_t                          currentCobjIdx;       // 148
-			std::uint32_t                          pad14C;               // 14C
-			std::uint64_t                          unk150;               // 150
-			std::uint64_t                          unk158;               // 158
+			BSTArray<ItemEntry>             crafts;               // 100
+			BSTHashMap<FormID, FilterFlags> materialFilterFlags;  // 118 - kwd's formid -> FilterFlags
+			std::uint32_t                   currentCobjIdx;       // 148
+			std::uint32_t                   pad14C;               // 14C
+			std::uint64_t                   unk150;               // 150
+			std::uint64_t                   unk158;               // 158
 		};
 		static_assert(sizeof(ConstructibleObjectMenu) == 0x160);
 	}

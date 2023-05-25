@@ -72,15 +72,15 @@ namespace RE
 			PotionCreationData              potionCreationData;     // 138
 			GFxValue                        categories;             // 158
 			InventoryEntryData*             resultPotionEntry;      // 170
-			AlchemyItem*                    unknownPotion;          // 178 -- Thing that is displayed when player does not know effects
+			AlchemyItem*                    unknownPotion;          // 178 - displayed when player does not know effects
 			AlchemyItem*                    resultPotion;           // 180
 			std::uint32_t                   currentIngredientIdx;   // 188
-			std::uint32_t                   __pad_18C;              // 18C
+			std::uint32_t                   pad18C;                 // 18C
 			BSFixedString                   newRecipeFormatString;  // 190
 			bool                            playerHasPurityPerk;    // 198
-			std::uint8_t                    __pad_199;              // 199
-			std::uint16_t                   __pad_19A;              // 19A
-			std::uint32_t                   __pad_19C;              // 19C
+			std::uint8_t                    pad199;                 // 199
+			std::uint16_t                   pad19A;                 // 19A
+			std::uint32_t                   pad19C;                 // 19C
 		};
 		static_assert(sizeof(AlchemyMenu) == 0x1A0);
 	}
