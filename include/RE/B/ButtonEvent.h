@@ -4,10 +4,15 @@
 #include "RE/I/IDEvent.h"
 #include "RE/I/InputEvent.h"
 #include "RE/M/MemoryManager.h"
+#include "RE/V/VRWandEvent.h"
 
 namespace RE
 {
+#ifndef SKYRIMVR
 	class ButtonEvent : public IDEvent
+#else
+	class ButtonEvent : public VRWandEvent
+#endif
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_ButtonEvent;
@@ -15,7 +20,44 @@ namespace RE
 
 		~ButtonEvent() override;  // 00
 
-		[[nodiscard]] constexpr float Value() const noexcept { return value; }
+		void Init(INPUT_DEVICE a_device, std::int32_t a_id, float a_value, float a_duration)
+		{
+			Init(a_device, a_id, a_value, a_duration, ""sv);
+		}
+
+		void Init(INPUT_DEVICE a_device, std::int32_t a_id, float a_value, float a_duration, const BSFixedString& a_userEvent)
+		{
+			value = a_value;
+			heldDownSecs = a_duration;
+			device = a_device;
+			idCode = a_id;
+			userEvent = a_userEvent;
+#ifdef SKYRIMVR
+			unkVR28 = -1;
+#endif
+		}
+
+#ifdef SKYRIMVR
+		void Init(INPUT_DEVICE a_device, std::int32_t a_arg2, std::int32_t a_id, float a_value, float a_duration)
+		{
+			Init(a_device, a_arg2, a_id, a_value, a_duration, ""sv);
+		}
+
+		void Init(INPUT_DEVICE a_device, std::int32_t a_arg2, std::int32_t a_id, float a_value, float a_duration, const BSFixedString& a_userEvent)
+		{
+			value = a_value;
+			heldDownSecs = a_duration;
+			device = a_device;
+			idCode = a_id;
+			userEvent = a_userEvent;
+			unkVR28 = a_arg2;
+		}
+#endif
+
+		[[nodiscard]] constexpr float Value() const noexcept
+		{
+			return value;
+		}
 		[[nodiscard]] constexpr float HeldDuration() const noexcept { return heldDownSecs; }
 		[[nodiscard]] constexpr bool  IsPressed() const noexcept { return Value() > 0.0F; }
 		[[nodiscard]] constexpr bool  IsRepeating() const noexcept { return HeldDuration() > 0.0F; }
@@ -44,5 +86,9 @@ namespace RE
 			return buttonEvent;
 		}
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(ButtonEvent) == 0x30);
+#else
+	static_assert(sizeof(ButtonEvent) == 0x38);
+#endif
 }

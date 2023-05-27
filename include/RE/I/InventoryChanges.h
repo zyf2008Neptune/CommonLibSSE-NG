@@ -15,6 +15,12 @@ namespace RE
 	class InventoryChanges
 	{
 	public:
+		enum class VisitResult : std::uint32_t
+		{
+			kStop = 0,
+			kContinue = 1,
+		};
+
 		class IItemChangeVisitor
 		{
 		public:

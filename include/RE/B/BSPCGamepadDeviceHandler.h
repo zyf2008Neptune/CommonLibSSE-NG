@@ -24,7 +24,7 @@ namespace RE
 		bool          IsEnabled() const override;                                                 // 07 - { return currentPCGamePadDelegate != 0; }
 		void          Reset() override;                                                           // 08
 
-		void InitializeDelegate();  // called by Initialize() and Process() to initialize the delegate
+		void InitializeDelegate();                                                                // called by Initialize() and Process() to initialize the delegate
 
 		// members
 		BSPCGamepadDeviceDelegate* currentPCGamePadDelegate;  // 08

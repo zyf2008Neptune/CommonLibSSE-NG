@@ -31,7 +31,7 @@ namespace RE
 			};
 		};
 
-		struct Skill  // AVSK
+		struct Skill              // AVSK
 		{
 			float useMult;        // 00
 			float offsetMult;     // 04

@@ -44,5 +44,6 @@ namespace RE
 	static_assert(sizeof(BSMultiIndexTriShape) == 0x1D8);
 #else
 	static_assert(sizeof(BSMultiIndexTriShape) == 0x220);
+	//static_assert(sizeof(BSMultiIndexTriShape) == 0x258); SKYRIM_SUPPORT_AE
 #endif
 }

@@ -69,5 +69,4 @@ namespace RE
 #else
 	static_assert(sizeof(NiNode) == 0x150);
 #endif
-
 }

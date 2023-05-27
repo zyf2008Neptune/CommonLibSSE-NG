@@ -652,7 +652,7 @@ namespace RE
 		TESForm* objects[DEFAULT_OBJECTS::kTotal];     // 020 - DNAM
 		bool     objectInit[DEFAULT_OBJECTS::kTotal];  // B80
 #ifndef SKYRIM_SUPPORT_AE
-		std::uint32_t padCEC;  // CEC
+		std::uint32_t padCEC;                          // CEC
 #endif
 	};
 #ifndef SKYRIMVR

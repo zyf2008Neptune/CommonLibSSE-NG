@@ -92,6 +92,7 @@ set(SOURCES
 	include/RE/B/BGSDualCastData.h
 	include/RE/B/BGSEncounterZone.h
 	include/RE/B/BGSEntryPoint.h
+	include/RE/B/BGSEntryPointFunction.h
 	include/RE/B/BGSEntryPointFunctionData.h
 	include/RE/B/BGSEntryPointFunctionDataActivateChoice.h
 	include/RE/B/BGSEntryPointFunctionDataOneValue.h
@@ -303,10 +304,13 @@ set(SOURCES
 	include/RE/B/BSPrecomputedNavmeshInfoPathMap.h
 	include/RE/B/BSReloadShaderI.h
 	include/RE/B/BSRenderPass.h
+	include/RE/B/BSResource.h
 	include/RE/B/BSResourceEntryDB.h
 	include/RE/B/BSResourceNiBinaryStream.h
 	include/RE/B/BSResponse.h
 	include/RE/B/BSSaveDataSystemUtility.h
+	include/RE/B/BSScaleformExternalTexture.h
+	include/RE/B/BSScaleformImageLoader.h
 	include/RE/B/BSScaleformManager.h
 	include/RE/B/BSScaleformTranslator.h
 	include/RE/B/BSSceneGraph.h
@@ -517,6 +521,7 @@ set(SOURCES
 	include/RE/D/DisarmedEvent.h
 	include/RE/D/DisguiseEffect.h
 	include/RE/D/DispelEffect.h
+	include/RE/D/DirectionHandler.h
 	include/RE/D/DoNothingUnhandledPolicy.h
 	include/RE/D/DragonSoulsGained.h
 	include/RE/D/DropObjectFunctor.h
@@ -766,6 +771,7 @@ set(SOURCES
 	include/RE/G/GFxExternalInterface.h
 	include/RE/G/GFxFileConstants.h
 	include/RE/G/GFxFunctionHandler.h
+	include/RE/G/GFxImageLoader.h
 	include/RE/G/GFxInitImportActions.h
 	include/RE/G/GFxKey.h
 	include/RE/G/GFxKeyboardState.h
@@ -837,6 +843,9 @@ set(SOURCES
 	include/RE/G/GHashsetNodeEntry.h
 	include/RE/G/GImage.h
 	include/RE/G/GImageBase.h
+	include/RE/G/GImageInfo.h
+	include/RE/G/GImageInfoBase.h
+	include/RE/G/GImageInfoBaseImpl.h
 	include/RE/G/GList.h
 	include/RE/G/GMath.h
 	include/RE/G/GMatrix2D.h
@@ -1300,6 +1309,7 @@ set(SOURCES
 	include/RE/O/OpenEffect.h
 	include/RE/Offsets.h
 	include/RE/Offsets_NiRTTI.h
+	include/RE/Offsets_NiRTTI_VR.h
 	include/RE/Offsets_RTTI.h
 	include/RE/Offsets_VR.h
 	include/RE/Offsets_VR_NiRTTI.h
@@ -1602,6 +1612,7 @@ set(SOURCES
 	include/RE/V/VRDeviceConnectionChange.h
 	include/RE/V/VROverlayChange.h
 	include/RE/V/VRResetHMDHeight.h
+	include/RE/V/VRWandEvent.h
 	include/RE/V/ValueAndConditionsEffect.h
 	include/RE/V/ValueModifierEffect.h
 	include/RE/V/VampireLordEffect.h
@@ -1609,6 +1620,8 @@ set(SOURCES
 	include/RE/V/VertexDesc.h
 	include/RE/V/VirtualMachine.h
 	include/RE/V/VoiceSpellFireHandler.h
+	include/RE/V/VrWandTouchpadPositionEvent.h
+	include/RE/V/VrWandTouchpadSwipeEvent.h
 	include/RE/W/WeaponAnimationGraphManagerHolder.h
 	include/RE/W/WeatherType.h
 	include/RE/W/WerewolfEffect.h

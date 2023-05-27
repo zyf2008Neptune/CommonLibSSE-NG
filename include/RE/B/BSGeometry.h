@@ -102,18 +102,18 @@ namespace RE
 	};
 	static_assert(sizeof(BSGeometry) == 0x158);
 #else
-		NiBound                   modelBound;                  // 138
-		NiPoint3                  unk148;                      // 148
-		NiPoint3                  unk154;                      // 154
-		NiPointer<NiProperty>     properties[States::kTotal];  // 160
-		NiPointer<NiSkinInstance> skinInstance;                // 170
-		BSGraphics::TriShape*     rendererData;                // 178
-		void*                     unk180;                      // 180
-		BSGraphics::VertexDesc    vertexDesc;                  // 188
-		Type                      type;                        // 190
-		std::uint8_t              pad191;                      // 191
-		std::uint16_t             pad192;                      // 192
-		std::uint32_t             pad194;                      // 194
+		NiBound                              modelBound;                  // 138
+		NiPoint3                             unk148;                      // 148
+		NiPoint3                             unk154;                      // 154
+		NiPointer<NiProperty>                properties[States::kTotal];  // 160
+		NiPointer<NiSkinInstance>            skinInstance;                // 170
+		BSGraphics::TriShape*                rendererData;                // 178
+		void*                                unk180;                      // 180
+		BSGraphics::VertexDesc               vertexDesc;                  // 188
+		stl::enumeration<Type, std::uint8_t> type;                        // 190
+		std::uint8_t                         pad191;                      // 191
+		std::uint16_t                        pad192;                      // 192
+		std::uint32_t                        pad194;                      // 194
 	};
 	static_assert(sizeof(BSGeometry) == 0x1A0);
 #endif

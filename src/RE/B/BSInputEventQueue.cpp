@@ -8,82 +8,127 @@ namespace RE
 		return *singleton;
 	}
 
-	void BSInputEventQueue::AddButtonEvent(INPUT_DEVICE a_device, std::int32_t a_id, float a_value, float a_duration)
+	template <>
+	ButtonEvent* BSInputEventQueue::GetCachedEvent<ButtonEvent>()
 	{
 		if (buttonEventCount < MAX_BUTTON_EVENTS) {
-			auto& cachedEvent = buttonEvents[buttonEventCount];
-			cachedEvent.value = a_value;
-			cachedEvent.heldDownSecs = a_duration;
-			cachedEvent.device = a_device;
-			cachedEvent.idCode = a_id;
-			cachedEvent.userEvent = {};
-
-			PushOntoInputQueue(&cachedEvent);
-			++buttonEventCount;
+			return &buttonEvents[buttonEventCount];
 		}
+
+		return nullptr;
 	}
 
-	void BSInputEventQueue::AddCharEvent(std::uint32_t a_keyCode)
+	template <>
+	CharEvent* BSInputEventQueue::GetCachedEvent<CharEvent>()
 	{
 		if (charEventCount < MAX_CHAR_EVENTS) {
-			auto& cachedEvent = charEvents[charEventCount];
-			cachedEvent.keycode = a_keyCode;
-
-			PushOntoInputQueue(&cachedEvent);
-			++charEventCount;
+			return &charEvents[charEventCount];
 		}
+
+		return nullptr;
 	}
 
-	void BSInputEventQueue::AddMouseMoveEvent(std::int32_t a_mouseInputX, std::int32_t a_mouseInputY)
+	template <>
+	MouseMoveEvent* BSInputEventQueue::GetCachedEvent<MouseMoveEvent>()
 	{
 		if (mouseEventCount < MAX_MOUSE_EVENTS) {
-			auto& cachedEvent = mouseEvents[mouseEventCount];
-			cachedEvent.mouseInputX = a_mouseInputX;
-			cachedEvent.mouseInputY = a_mouseInputY;
-			cachedEvent.userEvent = {};
-
-			PushOntoInputQueue(&cachedEvent);
-			++mouseEventCount;
+			return &mouseEvents[mouseEventCount];
 		}
+
+		return nullptr;
 	}
 
-	void BSInputEventQueue::AddThumbstickEvent(ThumbstickEvent::InputType a_id, float a_xValue, float a_yValue)
+	template <>
+	ThumbstickEvent* BSInputEventQueue::GetCachedEvent<ThumbstickEvent>()
 	{
 		if (thumbstickEventCount < MAX_THUMBSTICK_EVENTS) {
-			auto& cachedEvent = thumbstickEvents[thumbstickEventCount];
-			cachedEvent.idCode = a_id;
-			cachedEvent.xValue = a_xValue;
-			cachedEvent.yValue = a_yValue;
-			cachedEvent.userEvent = {};
-
-			PushOntoInputQueue(&cachedEvent);
-			++thumbstickEventCount;
+			return &thumbstickEvents[thumbstickEventCount];
 		}
+
+		return nullptr;
 	}
 
-	void BSInputEventQueue::AddConnectEvent(INPUT_DEVICE a_device, bool a_connected)
+	template <>
+	DeviceConnectEvent* BSInputEventQueue::GetCachedEvent<DeviceConnectEvent>()
 	{
 		if (connectEventCount < MAX_CONNECT_EVENTS) {
-			auto& cachedEvent = connectEvents[connectEventCount];
-			cachedEvent.device = a_device;
-			cachedEvent.connected = a_connected;
-
-			PushOntoInputQueue(&cachedEvent);
-			++connectEventCount;
+			return &connectEvents[connectEventCount];
 		}
+
+		return nullptr;
 	}
 
-	void BSInputEventQueue::AddKinectEvent(const BSFixedString& a_userEvent, const BSFixedString& a_heard)
+#ifdef SKYRIMVR
+	template <>
+	VrWandTouchpadPositionEvent* BSInputEventQueue::GetCachedEvent<VrWandTouchpadPositionEvent>()
 	{
-		if (kinectEventCount < MAX_KINECT_EVENTS) {
-			auto& cachedEvent = kinectEvents[kinectEventCount];
-			cachedEvent.userEvent = a_userEvent;
-			cachedEvent.heard = a_heard;
-
-			PushOntoInputQueue(&cachedEvent);
-			++kinectEventCount;
+		if (vrTouchpadPositionEvent < MAX_VR_TOUCHPAD_POSITION_EVENTS) {
+			return &vrTouchpadPositionEvents[vrTouchpadPositionEventCount];
 		}
+
+		return nullptr;
 	}
+
+	template <>
+	VrWandTouchpadSwipeEvent* BSInputEventQueue::GetCachedEvent<VrWandTouchpadSwipeEvent>()
+	{
+		if (vrTouchpadSwipeEvent < MAX_VR_TOUCHPAD_SWIPE_EVENTS) {
+			return &vrTouchpadSwipeEvents[vrTouchpadSwipeEventCount];
+		}
+
+		return nullptr;
+	}
+#endif
+
+	template <>
+	void BSInputEventQueue::AdvanceCount<ButtonEvent>()
+	{
+		++buttonEventCount;
+	}
+
+	template <>
+	void BSInputEventQueue::AdvanceCount<CharEvent>()
+	{
+		++charEventCount;
+	}
+
+	template <>
+	void BSInputEventQueue::AdvanceCount<MouseMoveEvent>()
+	{
+		++mouseEventCount;
+	}
+
+	template <>
+	void BSInputEventQueue::AdvanceCount<ThumbstickEvent>()
+	{
+		++thumbstickEventCount;
+	}
+
+	template <>
+	void BSInputEventQueue::AdvanceCount<DeviceConnectEvent>()
+	{
+		++connectEventCount;
+	}
+
+	template <>
+	void BSInputEventQueue::AdvanceCount<KinectEvent>()
+	{
+		++kinectEventCount;
+	}
+
+#ifdef SKYRIMVR
+	template <>
+	void BSInputEventQueue::AdvanceCount<VrWandTouchpadPositionEvent>()
+	{
+		++vrTouchpadPositionEventCount;
+	}
+
+	template <>
+	void BSInputEventQueue::AdvanceCount<VrWandTouchpadSwipeEvent>()
+	{
+		++vrTouchpadSwipeEventCount;
+	}
+#endif
 
 	void BSInputEventQueue::PushOntoInputQueue(InputEvent* a_event)
 	{
@@ -107,6 +152,11 @@ namespace RE
 		mouseEventCount = 0;
 		charEventCount = 0;
 		buttonEventCount = 0;
+#ifdef SKYRIMVR
+		vrTouchpadSwipeEventCount = 0;
+		vrTouchpadPositionEventCount = 0;
+		unkVR01C = 0;
+#endif
 		queueTail = nullptr;
 		queueHead = nullptr;
 	}

@@ -485,7 +485,7 @@ namespace REL
 
 		void load()
 		{
-			auto handle = WinAPI::GetModuleHandle(_filename.c_str());
+			auto handle = WinAPI::GetModuleHandle(static_cast<wchar_t*>(nullptr));
 			if (handle == nullptr) {
 				stl::report_and_fail(
 					fmt::format(
@@ -495,6 +495,17 @@ namespace REL
 						stl::utf16_to_utf8(_filename).value_or("<unicode conversion error>"s)));
 			}
 			_base = reinterpret_cast<std::uintptr_t>(handle);
+
+			std::wstring path;
+			path.resize(4096);
+
+			path.resize(
+				WinAPI::GetModuleFileName(
+					handle,
+					path.data(),
+					static_cast<std::uint32_t>(path.size())));
+
+			_filename = std::filesystem::path(path).filename().c_str();
 
 			load_version();
 			load_segments();
@@ -1036,7 +1047,7 @@ namespace REL
 			return write_vfunc(a_idx, stl::unrestricted_cast<std::uintptr_t>(a_newFunc));
 		}
 
-	private :
+	private:
 		// clang-format off
 		[[nodiscard]] static std::uintptr_t base() { return Module::get().base(); }
 		// clang-format on

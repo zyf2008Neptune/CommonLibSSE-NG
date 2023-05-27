@@ -92,9 +92,33 @@ namespace RE
 			inline constexpr REL::Offset TargetReference(static_cast<std::uint64_t>(0x3011228));
 		}
 
+		namespace BGSAddToPlayerInventoryEvent
+		{
+			inline constexpr REL::Offset GetIndex(static_cast<std::uint64_t>(0x1DED188));
+		}
+
+		namespace BGSCreatedObjectManager
+		{
+			inline constexpr REL::Offset CreateArmorEnchantment(static_cast<std::uint64_t>(0x5A6850));
+			inline constexpr REL::Offset CreateWeaponEnchantment(static_cast<std::uint64_t>(0x5A67B0));
+			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x1F831C8));
+		}
+
 		namespace BGSDefaultObjectManager
 		{
 			inline constexpr REL::Offset GetSingleton(static_cast<std::uint64_t>(0x1077C0));
+		}
+
+		namespace BGSEntryPoint
+		{
+			inline constexpr REL::Offset EntryPoints(static_cast<std::uint64_t>(0x1E90190));
+			inline constexpr REL::Offset HandleEntryPoint(static_cast<std::uint64_t>(0x33E5A0));
+		}
+
+		namespace BGSEntryPointFunction
+		{
+			inline constexpr REL::Offset EntryPointFunctions(static_cast<std::uint64_t>(0x1E90D10));
+			inline constexpr REL::Offset EntryPointFunctionTypeArgumentCount(static_cast<std::uint64_t>(0x1E90E90));
 		}
 
 		namespace BGSFootstepManager
@@ -113,11 +137,33 @@ namespace RE
 			inline constexpr REL::Offset SetOpenState(static_cast<std::uint64_t>(0x199220));
 		}
 
+		namespace BSResource
+		{
+			namespace LooseFileLocation
+			{
+				inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x15B8FB8));
+			}
+
+			inline constexpr REL::Offset RegisterGlobalPath(static_cast<std::uint64_t>(0xC89AB0));
+			inline constexpr REL::Offset RegisterLocation(static_cast<std::uint64_t>(0xC89960));
+		}
+
 		namespace BGSSaveLoadManager
 		{
 			inline constexpr REL::Offset Save(static_cast<std::uint64_t>(0x58E310));
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FEB248));
 			inline constexpr REL::Offset Load(static_cast<std::uint64_t>(0x58E920));
+		}
+
+		namespace BGSSkillPerkTreeNode
+		{
+			inline constexpr REL::Offset Ctor(static_cast<std::uint64_t>(0x3F4420));
+		}
+
+		namespace BGSStoryEventManager
+		{
+			inline constexpr REL::Offset AddEvent(static_cast<std::uint64_t>(0x4E0860));
+			inline constexpr REL::Offset GetSingleton(static_cast<std::uint64_t>(0x321C30));
 		}
 
 		namespace BGSStoryTeller
@@ -162,6 +208,11 @@ namespace RE
 			{
 				inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x3186C10));
 			}
+		}
+
+		namespace BSInputEventQueue
+		{
+			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x30A8BB8));
 		}
 
 		namespace BSMusicManager
@@ -211,11 +262,25 @@ namespace RE
 			inline constexpr REL::Offset SetEndianSwap(static_cast<std::uint64_t>(0xCBC9B0));
 		}
 
+		namespace BSScaleformExternalTexture
+		{
+			inline constexpr REL::Offset LoadPNG(static_cast<std::uint64_t>(0xF2AD00));
+			inline constexpr REL::Offset ReleaseTexture(static_cast<std::uint64_t>(0xF2ABD0));
+			inline constexpr REL::Offset SetTexture(static_cast<std::uint64_t>(0xF2AC40));
+		}
+
+		namespace BSScaleformImageLoader
+		{
+			inline constexpr REL::Offset AddTexture(static_cast<std::uint64_t>(0xFA2050));
+			inline constexpr REL::Offset RemoveTexture(static_cast<std::uint64_t>(0xFA2520));
+		}
+
 		namespace BSScaleformManager
 		{
-			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FEA518));
-			inline constexpr REL::Offset LoadMovie(static_cast<std::uint64_t>(0xF2B480));
 			inline constexpr REL::Offset FileExists(static_cast<std::uint64_t>(0xF20EF0));
+			inline constexpr REL::Offset IsValidName(static_cast<std::uint64_t>(0xF2BB20));
+			inline constexpr REL::Offset LoadMovie(static_cast<std::uint64_t>(0xF2B480));
+			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FEA518));
 		}
 
 		namespace BSScaleformTranslator
@@ -513,6 +578,31 @@ namespace RE
 			inline constexpr REL::Offset InvokeNoReturn(static_cast<std::uint64_t>(0xF30F20));
 		}
 
+		namespace GFxPlaceObject2
+		{
+			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x186E680));
+		}
+
+		namespace GFxPlaceObject3
+		{
+			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x186E6D8));
+		}
+
+		namespace GFxRemoveObject
+		{
+			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x188C9A8));
+		}
+
+		namespace GFxRemoveObject2
+		{
+			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x188C9E8));
+		}
+
+		namespace GFxSetBackgroundColor
+		{
+			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x188CA28));
+		}
+
 		namespace GFxValue
 		{
 			namespace ObjectInterface
@@ -746,6 +836,11 @@ namespace RE
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FC52E8));
 		}
 
+		namespace MenuCursor
+		{
+			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FEBC40));
+		}
+
 		namespace MenuOpenHandler
 		{
 			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x173C970));
@@ -838,6 +933,7 @@ namespace RE
 			}
 
 			inline constexpr REL::Offset ActivatePickRef(static_cast<std::uint64_t>(0x6B2C60));
+			inline constexpr REL::Offset AddPlayerAddItemEvent(static_cast<std::uint64_t>(0x6C0640));
 			inline constexpr REL::Offset AttemptPickpocket(static_cast<std::uint64_t>(0x6D58A0));
 			inline constexpr REL::Offset GetArmorValue(static_cast<std::uint64_t>(0x69C2D0));
 			inline constexpr REL::Offset GetDamage(static_cast<std::uint64_t>(0x69C650));
@@ -870,14 +966,14 @@ namespace RE
 			inline constexpr REL::ID ChangeName(static_cast<std::uint64_t>(51540));
 		}
 
-		namespace ReferenceEffectController
-		{
-			inline constexpr REL::ID Start(static_cast<std::uint64_t>(33961));
-		}
-
 		namespace ReadyWeaponHandler
 		{
 			inline constexpr REL::Offset Vtbl(static_cast<std::uint64_t>(0x16F22A8));
+		}
+
+		namespace ReferenceEffectController
+		{
+			inline constexpr REL::ID Start(static_cast<std::uint64_t>(33961));
 		}
 
 		namespace REFR_LOCK
@@ -950,6 +1046,7 @@ namespace RE
 
 		namespace TaskQueueInterface
 		{
+			inline constexpr REL::Offset Attach3D(static_cast<std::uint64_t>(0x5CAB50));
 			inline constexpr REL::Offset Singleton(static_cast<std::uint64_t>(0x2FFD778));
 		}
 
@@ -1047,6 +1144,9 @@ namespace RE
 
 		namespace TESObjectREFR
 		{
+			inline constexpr REL::Offset ApplyArtObject(static_cast<std::uint64_t>(0x320EB0));
+			inline constexpr REL::Offset ApplyEffectShader(static_cast<std::uint64_t>(0x2AE290));
+			inline constexpr REL::Offset GetCurrentLocation(static_cast<std::uint64_t>(0x2AABF0));
 			inline constexpr REL::Offset GetDisplayFullName(static_cast<std::uint64_t>(0x2A78F0));
 			inline constexpr REL::Offset GetLock(static_cast<std::uint64_t>(0x2B8C30));
 			inline constexpr REL::Offset GetOwner(static_cast<std::uint64_t>(0x2B7DE0));
@@ -1121,6 +1221,7 @@ namespace RE
 		inline constexpr REL::Offset CreateRefHandle(static_cast<std::uint64_t>(0x1428A0));
 		inline constexpr REL::Offset DebugNotification(static_cast<std::uint64_t>(0x908170));
 		inline constexpr REL::Offset GetArmorFinalRating(static_cast<std::uint64_t>(0x1E7ED0));
+		inline constexpr REL::Offset LogDirectory(static_cast<std::uint64_t>(0x1EABD50));
 		inline constexpr REL::Offset LookupReferenceByHandle(static_cast<std::uint64_t>(0x143180));
 		inline constexpr REL::Offset PlaySound(static_cast<std::uint64_t>(0x90B1D0));
 		inline constexpr REL::Offset RTDynamicCast(static_cast<std::uint64_t>(0x138BABA));

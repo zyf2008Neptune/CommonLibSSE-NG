@@ -79,9 +79,9 @@ namespace SKSE
 		case kGamepadButtonOffset_Y:
 			return XInputButton::XINPUT_GAMEPAD_Y;
 		case kGamepadButtonOffset_LT:
-			return 0x9;  // Left Trigger game-defined ID
+			return 0x9;   // Left Trigger game-defined ID
 		case kGamepadButtonOffset_RT:
-			return 0xA;  // Right Trigger game-defined ID
+			return 0xA;   // Right Trigger game-defined ID
 		default:
 			return 0xFF;  // Invalid
 		}

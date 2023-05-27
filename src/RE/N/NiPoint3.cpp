@@ -160,7 +160,7 @@ namespace RE
 
 	const NiPoint3& NiPoint3::Zero()
 	{
-		static REL::Relocation<NiPoint3*> zero{ Offset::NiPoint3::Zero };
+		static REL::Relocation<NiPoint3*> zero{ RELOCATION_ID(523887, 410468) };
 		return *zero.get();
 	}
 }

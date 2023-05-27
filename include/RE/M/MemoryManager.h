@@ -99,8 +99,8 @@ namespace RE
 	{
 		auto heap = MemoryManager::GetSingleton();
 		return heap ?
-                   heap->Allocate(a_size, 0, false) :
-                   nullptr;
+		           heap->Allocate(a_size, 0, false) :
+		           nullptr;
 	}
 
 	template <class T>
@@ -119,8 +119,8 @@ namespace RE
 	{
 		auto heap = MemoryManager::GetSingleton();
 		return heap ?
-                   heap->Allocate(a_size, static_cast<std::int32_t>(a_alignment), true) :
-                   nullptr;
+		           heap->Allocate(a_size, static_cast<std::int32_t>(a_alignment), true) :
+		           nullptr;
 	}
 
 	template <class T>
@@ -160,8 +160,8 @@ namespace RE
 	{
 		auto heap = MemoryManager::GetSingleton();
 		return heap ?
-                   heap->Reallocate(a_ptr, a_newSize, 0, false) :
-                   nullptr;
+		           heap->Reallocate(a_ptr, a_newSize, 0, false) :
+		           nullptr;
 	}
 
 	template <class T>
@@ -174,8 +174,8 @@ namespace RE
 	{
 		auto heap = MemoryManager::GetSingleton();
 		return heap ?
-                   heap->Reallocate(a_ptr, a_newSize, static_cast<std::int32_t>(a_alignment), true) :
-                   nullptr;
+		           heap->Reallocate(a_ptr, a_newSize, static_cast<std::int32_t>(a_alignment), true) :
+		           nullptr;
 	}
 
 	template <class T>
@@ -334,7 +334,7 @@ namespace RE
 
 			if (a_count < oldSize) {  // shrink
 				std::uninitialized_move_n(data(), a_count, newData);
-			} else {  // grow
+			} else {                  // grow
 				std::uninitialized_move_n(data(), oldSize, newData);
 				std::uninitialized_default_construct_n(newData + oldSize, a_count - oldSize);
 			}

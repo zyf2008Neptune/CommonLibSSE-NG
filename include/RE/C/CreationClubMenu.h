@@ -2,10 +2,10 @@
 
 #ifndef SKYRIMVR
 
+#	include "RE/B/BSScaleformExternalTexture.h"
 #	include "RE/B/BSTEvent.h"
 #	include "RE/G/GFxFunctionHandler.h"
 #	include "RE/I/IMenu.h"
-#	include "RE/I/ImageData.h"
 #	include "RE/M/MenuEventHandler.h"
 
 namespace RE
@@ -41,8 +41,8 @@ namespace RE
 		BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
 
 		// members
-		ImageData background;  // 58
-		ImageData details;     // 70
+		BSScaleformExternalTexture background;  // 58
+		BSScaleformExternalTexture details;     // 70
 	};
 	static_assert(sizeof(CreationClubMenu) == 0x88);
 }
