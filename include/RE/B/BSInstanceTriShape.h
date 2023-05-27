@@ -27,7 +27,7 @@ namespace RE
 #ifndef SKYRIMVR
 	static_assert(sizeof(BSInstanceTriShape) == 0x160);
 #else
-	static_assert(sizeof(BSInstanceTriShape) == 0x1A8);
+	static_assert(sizeof(BSInstanceTriShape) == 0x1A0);
 #endif
 
 }

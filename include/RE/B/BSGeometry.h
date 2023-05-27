@@ -115,6 +115,6 @@ namespace RE
 		std::uint16_t                        pad192;                      // 192
 		std::uint32_t                        pad194;                      // 194
 	};
-	static_assert(sizeof(BSGeometry) == 0x1A0);
+	static_assert(sizeof(BSGeometry) == 0x198);
 #endif
 }

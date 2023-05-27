@@ -17,9 +17,9 @@ namespace RE
 		virtual void               Initialize() = 0;                                                      // 01
 		virtual void               Process(float a_arg1) = 0;                                             // 02
 		virtual void               Release() = 0;                                                         // 03
-		virtual bool               GetKeyMapping(std::uint32_t a_key, BSFixedString& a_mapping) = 0;      // 04
+		virtual bool               GetButtonNameFromID(std::int32_t a_id, BSFixedString& a_buttonName) = 0;  // 04		
 		virtual std::uint32_t      GetMappingKey(BSFixedString a_mapping) = 0;                            // 05
-		virtual bool               GetMappedKeycode(std::uint32_t a_key, std::uint32_t& outKeyCode) = 0;  // 06
+		virtual bool               GetKeyCodeFromID(std::int32_t a_id, std::uint32_t& a_keyCode) = 0;        // 06
 		[[nodiscard]] virtual bool IsEnabled() const = 0;                                                 // 07
 		virtual void               Reset() = 0;                                                           // 08
 

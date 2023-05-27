@@ -57,6 +57,6 @@ namespace RE
 #ifndef SKYRIMVR
 	static_assert(sizeof(NiParticleSystem) == 0x198);
 #else
-	static_assert(sizeof(NiParticleSystem) == 0x1e0);
+	static_assert(sizeof(NiParticleSystem) == 0x1D8);
 #endif
 }

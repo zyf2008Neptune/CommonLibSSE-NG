@@ -165,8 +165,8 @@ namespace RE
 		void SetRumble(float lValue, float rValue) override;                                          // 09
 		void SetLEDColor(ColorParam* colorParam) override;                                            // 0A
 		void ResetLEDColor() override;                                                                // 0B
-		void ProcessRawInput(int32_t a_rawX, int32_t a_rawY, float& a_outX, float& a_outY) override;  // 0D
-		void Unk_0E(void) override;                                                                   // 0E - { return; }
+		void NormalizeThumbstickValue(int32_t a_rawX, int32_t a_rawY, float& a_outX, float& a_outY) override;  // 0D
+		void DoEnableListeningMode(void) override;                                                             // 0E - { return; }
 
 		ButtonState GetPreviousButtonState() const
 		{
