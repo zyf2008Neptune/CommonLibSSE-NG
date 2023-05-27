@@ -1642,7 +1642,6 @@ set(SOURCES
 	src/RE/A/ActorValueList.cpp
 	src/RE/A/ActorValueOwner.cpp
 	src/RE/A/AddCallbackVisitor.cpp
-	src/RE/A/AnimationFileManagerSingleton.cpp
 	src/RE/A/ArmorRatingVisitor.cpp
 	src/RE/A/ArmorRatingVisitorBase.cpp
 	src/RE/A/Array.cpp
