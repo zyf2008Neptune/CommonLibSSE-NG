@@ -55,10 +55,10 @@ namespace RE
 			std::uint32_t        unk114;                       // 114
 			std::uint32_t        unk118;                       // 118
 #ifndef SKYRIMVR
-			std::uint8_t unk11C;                               // 11C
-			std::uint8_t unk11D;                               // 11D
-			std::uint8_t unk11E;                               // 11E
-			std::uint8_t pad11F;                               // 11F
+			std::uint8_t unk11C;  // 11C
+			std::uint8_t unk11D;  // 11D
+			std::uint8_t unk11E;  // 11E
+			std::uint8_t pad11F;  // 11F
 #else
 			std::uint8_t  unkVR11C;  // 11C
 			std::uint8_t  unkVR11D;  // 11D

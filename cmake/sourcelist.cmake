@@ -517,11 +517,11 @@ set(SOURCES
 	include/RE/D/DialogueMenu.h
 	include/RE/D/DialoguePackage.h
 	include/RE/D/DialogueTypes.h
+	include/RE/D/DirectionHandler.h
 	include/RE/D/DisarmEffect.h
 	include/RE/D/DisarmedEvent.h
 	include/RE/D/DisguiseEffect.h
 	include/RE/D/DispelEffect.h
-	include/RE/D/DirectionHandler.h
 	include/RE/D/DoNothingUnhandledPolicy.h
 	include/RE/D/DragonSoulsGained.h
 	include/RE/D/DropObjectFunctor.h
@@ -1096,7 +1096,6 @@ set(SOURCES
 	include/RE/I/IVMSaveLoadInterface.h
 	include/RE/I/IVirtualMachine.h
 	include/RE/I/IXAudio2VoiceCallback.h
-	include/RE/I/ImageData.h
 	include/RE/I/ImageSpaceData.h
 	include/RE/I/ImageSpaceEffect.h
 	include/RE/I/ImageSpaceEffectDepthOfField.h
@@ -1309,7 +1308,6 @@ set(SOURCES
 	include/RE/O/OpenEffect.h
 	include/RE/Offsets.h
 	include/RE/Offsets_NiRTTI.h
-	include/RE/Offsets_NiRTTI_VR.h
 	include/RE/Offsets_RTTI.h
 	include/RE/Offsets_VR.h
 	include/RE/Offsets_VR_NiRTTI.h
@@ -1861,6 +1859,7 @@ set(SOURCES
 	src/RE/M/MenuControls.cpp
 	src/RE/M/MenuCursor.cpp
 	src/RE/M/MenuEventHandler.cpp
+	src/RE/M/MiddleHighProcessData.cpp
 	src/RE/M/Misc.cpp
 	src/RE/N/NativeFunctionBase.cpp
 	src/RE/N/NiAVObject.cpp

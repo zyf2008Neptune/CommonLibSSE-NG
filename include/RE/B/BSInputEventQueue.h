@@ -93,7 +93,7 @@ namespace RE
 		std::uint32_t connectEventCount;     // 014
 		std::uint32_t kinectEventCount;      // 018
 #ifndef SKYRIMVR
-		std::uint32_t pad01C;                // 01C
+		std::uint32_t pad01C;  // 01C
 #else
 		std::uint32_t unkVR01C;
 		std::uint32_t vrTouchpadPositionEventCount;

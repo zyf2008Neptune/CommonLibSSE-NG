@@ -11,7 +11,7 @@ namespace RE
 			inline static constexpr auto RTTI = RTTI_hkContainerHeapAllocator__Allocator;
 			inline static constexpr auto VTABLE = VTABLE_hkContainerHeapAllocator__Allocator;
 
-			~Allocator() override;                                                               // 00
+			~Allocator() override;  // 00
 
 			void*        BlockAlloc(std::int32_t a_numBytes) override;                           // 01
 			void         BlockFree(void* a_ptr, std::int32_t a_numBytes) override;               // 02
