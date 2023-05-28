@@ -51,7 +51,7 @@ namespace RE
 		std::uint32_t connectEventCount;     // 014
 		std::uint32_t kinectEventCount;      // 018
 #ifndef ENABLE_SKYRIM_VR
-		std::uint32_t pad01C;  // 01C
+		std::uint32_t pad01C;                // 01C
 #else
 		std::uint32_t unkVR01C;
 		std::uint32_t vrTouchpadPositionEventCount;
@@ -72,7 +72,7 @@ namespace RE
 	};
 #ifndef ENABLE_SKYRIM_VR
 	static_assert(sizeof(BSInputEventQueue) == 0x390);
-#else
-	static_assert(sizeof(BSInputEventQueue) == 0x580);
+#elif defined(ENABLE_SKYRIM_VR)
+	static_assert(sizeof(BSInputEventQueue) == 0x530);
 #endif
 }
