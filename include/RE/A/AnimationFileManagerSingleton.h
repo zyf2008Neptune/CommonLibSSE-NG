@@ -56,7 +56,7 @@ namespace RE
 			return *singleton;
 		}
 
-	    // members
+		// members
 		BSSpinLock                lockA;             // 0C
 		BSSpinLock                lockB;             // 14
 		LoadedAnimation           currentAnimation;  // 20
