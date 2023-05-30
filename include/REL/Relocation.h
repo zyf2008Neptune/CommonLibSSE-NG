@@ -763,11 +763,12 @@ namespace REL {
             return true;
         }
 
+#endif
         static void reset() {
             _initialized = false;
             _instance.clear();
         }
-#endif
+
 
         [[nodiscard]] std::uintptr_t base() const noexcept { return _base; }
 
