@@ -50,5 +50,12 @@ namespace RE
 		InputEvent*        queueHead;                                // 380
 		InputEvent*        queueTail;                                // 388
 	};
+#ifndef ENABLE_SKYRIM_VR
 	static_assert(sizeof(BSInputEventQueue) == 0x390);
+#elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_AE)
+	static_assert(sizeof(BSInputEventQueue) == 0x390);
+#else
+	static_assert(sizeof(BSInputEventQueue) == 0x340);
+#endif
+	
 }

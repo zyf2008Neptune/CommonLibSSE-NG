@@ -12,8 +12,8 @@ namespace RE
 	{
 		if (buttonEventCount < MAX_BUTTON_EVENTS) {
 			auto& cachedEvent = buttonEvents[buttonEventCount];
-			cachedEvent.value = a_value;
-			cachedEvent.heldDownSecs = a_duration;
+			cachedEvent.GetRuntimeData().value = a_value;
+			cachedEvent.GetRuntimeData().heldDownSecs = a_duration;
 			cachedEvent.device = a_device;
 			cachedEvent.idCode = a_id;
 			cachedEvent.userEvent = {};
