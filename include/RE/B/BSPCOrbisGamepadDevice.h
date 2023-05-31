@@ -17,7 +17,7 @@ namespace RE
 			{
 				// Masks for buttonState
 				// Key hardware value.  Matches SCE_PAD_BUTTON_* enum values on ORBIS
-				KUp = 0x0010,
+				kUp = 0x0010,
 				kDown = 0x0040,
 				kLeft = 0x0080,
 				kRight = 0x0020,
@@ -105,19 +105,19 @@ namespace RE
 
 		struct PadTouch
 		{
-			std::uint16_t x;          // 00
-			std::uint16_t y;          // 02
-			std::uint8_t  touch_id;   // 04
-			std::uint8_t  pad_05[3];  // 05
+			std::uint16_t x;         // 00
+			std::uint16_t y;         // 02
+			std::uint8_t  touch_id;  // 04
+			std::uint8_t  pad05[3];  // 05
 		};
 		static_assert(sizeof(PadTouch) == 0x08);
 
 		struct TouchPadData
 		{
-			std::uint8_t  touchNum;   // 00 - Number of touch reports
-			std::uint8_t  pad_01[3];  // 01
-			std::uint32_t pad_04;     // 04
-			PadTouch      touch[2];   // 08 - Touch Data for max number of touch points = 2
+			std::uint8_t  touchNum;  // 00 - Number of touch reports
+			std::uint8_t  pad01[3];  // 01
+			std::uint32_t pad04;     // 04
+			PadTouch      touch[2];  // 08 - Touch Data for max number of touch points = 2
 		};
 		static_assert(sizeof(TouchPadData) == 0x18);
 
@@ -139,19 +139,19 @@ namespace RE
 			std::byte           rawRightStickY;   // 07
 			std::byte           rawLeftTrigger;   // 08
 			std::byte           rawRightTrigger;  // 09
-			std::byte           pad_0A[2];        // 0A
+			std::byte           pad0A[2];         // 0A
 			Vector4             orientation;      // 0C
 			Vector3             acceleration;     // 1C
 			Vector3             angularVelocity;  // 28
 			TouchPadData        touchPadData;     // 34
 			bool                padConnected;     // 4C
-			std::byte           pad_4D[3];        // 4D
+			std::byte           pad4D[3];         // 4D
 			std::uint64_t       timestamp;        // 50
 			UnusedExtensionData unusedExtData;    // 58 -- unused
-			uint8_t             connectedCount;   // 68 -- Controller handle connected count
-			uint8_t             pad_69[2];        // 69 -- nice.
-			uint8_t             specialDataLen;   // 6B
-			uint8_t             specialData[12];  // 6C -- Device data for special controllers
+			std::uint8_t        connectedCount;   // 68 -- Controller handle connected count
+			std::uint8_t        pad69[2];         // 69
+			std::uint8_t        specialDataLen;   // 6B
+			std::uint8_t        specialData[12];  // 6C -- Device data for special controllers
 		};
 		static_assert(sizeof(GamepadData) == 0x78);
 
