@@ -145,9 +145,9 @@ namespace RE
 #endif
 		};
 #ifndef ENABLE_SKYRIM_VR
-		static_assert(sizeof(Renderer) == 0x27B8);
+		static_assert(sizeof(Renderer) == 0x27C8);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-		static_assert(sizeof(Renderer) == 0x2F28);
+		static_assert(sizeof(Renderer) == 0x27D0);
 #endif
 	}
 }
