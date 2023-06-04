@@ -8,10 +8,11 @@
 
 namespace RE
 {
-#ifndef ENABLE_SKYRIM_VR
-	class ButtonEvent : public IDEvent
+	class ButtonEvent :
+#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+		public VRWandEvent
 #else
-	class ButtonEvent : public VRWandEvent
+		public IDEvent
 #endif
 	{
 	public:
@@ -56,8 +57,8 @@ namespace RE
 		};
 		static_assert(sizeof(RUNTIME_DATA) == 0x8);
 		//members
-#ifndef ENABLE_SKYRIM_VR
-		RUNTIME_DATA_CONTENT;  // 28
+#ifndef SKYRIM_CROSS_VR
+		RUNTIME_DATA_CONTENT;  // 28, 30
 #endif
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
@@ -68,11 +69,26 @@ namespace RE
 		{
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0x28, 0x30);
 		}
+
+		[[nodiscard]] VRWandEvent* AsVRWandEvent() noexcept
+		{
+			if (!REL::Module::IsVR()) {
+				return nullptr;
+			}
+			return &REL::RelocateMember<VRWandEvent>(this, 0, 0);
+		}
+
+		[[nodiscard]] const VRWandEvent* AsVRWandEvent() const noexcept
+		{
+			return const_cast<ButtonEvent*>(this)->AsVRWandEvent();
+		}
 	};
 #ifndef ENABLE_SKYRIM_VR
 	static_assert(sizeof(ButtonEvent) == 0x30);
-#elif defined(ENABLE_SKYRIM_VR)
-	static_assert(sizeof(ButtonEvent) == 0x30);
+#elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_AE)
+	static_assert(sizeof(ButtonEvent) == 0x38);
+#else
+	static_assert(sizeof(ButtonEvent) == 0x28);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT
