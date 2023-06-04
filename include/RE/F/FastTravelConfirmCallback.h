@@ -52,3 +52,4 @@ namespace RE
 	static_assert(sizeof(FastTravelConfirmCallback) == 0x20);
 #endif
 }
+#undef RUNTIME_DATA_CONTENT
