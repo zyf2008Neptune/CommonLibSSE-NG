@@ -122,7 +122,8 @@ namespace RE
 			kSNOW_SPECALPHA,
 			kSNOW_SWAP,
 
-			kTOTAL,
+			kTOTAL,  // SE 114, 125 in VR
+			kVRTOTAL = 125,
 			kFRAMEBUFFER_TOTAL = kMAIN,
 		};
 	};
@@ -169,7 +170,8 @@ namespace RE
 			kPRECIPITATION_OCCLUSION_MAP,
 			kFOCUS_NEO,
 
-			kTOTAL,
+			kTOTAL, // 12 in SSE, 21 in VR
+			kVRTOTAL = 21,
 		};
 	};
 

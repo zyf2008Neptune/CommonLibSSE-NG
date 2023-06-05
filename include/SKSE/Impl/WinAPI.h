@@ -565,6 +565,15 @@ namespace RE::DirectX
 		float m[4][4];
 	};
 	static_assert(sizeof(XMFLOAT4X4) == 0x40);
+
+	typedef __m128 XMVECTOR;
+
+	struct XMMATRIX
+	{
+		// 0-2 rotation
+		// 3 position
+		XMVECTOR r[4];
+	};
 }
 
 #define CP_UTF8 ::SKSE::WinAPI::CP_UTF8
