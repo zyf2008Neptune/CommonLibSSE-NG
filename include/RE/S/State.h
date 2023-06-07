@@ -13,20 +13,20 @@ namespace RE
 	{
 		struct alignas(16) ViewData
 		{
-			DirectX::XMVECTOR m_ViewUp;                            // 00
-			DirectX::XMVECTOR m_ViewRight;                         // 10
-			DirectX::XMVECTOR m_ViewForward;                       // 20
-			DirectX::XMMATRIX m_ViewMat;                           // 30
-			DirectX::XMMATRIX m_ProjMat;                           // 70
-			DirectX::XMMATRIX m_ViewProjMat;                       // B0
-			DirectX::XMMATRIX m_UnknownMat1;                       // F0 - all 0?
-			DirectX::XMMATRIX m_ViewProjMatrixUnjittered;          // 130
-			DirectX::XMMATRIX m_PreviousViewProjMatrixUnjittered;  // 170
-			DirectX::XMMATRIX m_ProjMatrixUnjittered;              // 1B0
-			DirectX::XMMATRIX m_UnknownMat2;                       // 1F0 - all 0?
-			float             m_ViewPort[4];                       // 230 - NiRect<float> { left = 0, right = 1, top = 1, bottom = 0 }
-			RE::NiPoint2      m_ViewDepthRange;                    // 240
-			char              _pad0[0x8];                          // 248
+			DirectX::XMVECTOR viewUp;                            // 00
+			DirectX::XMVECTOR viewRight;                         // 10
+			DirectX::XMVECTOR viewForward;                       // 20
+			DirectX::XMMATRIX viewMat;                           // 30
+			DirectX::XMMATRIX projMat;                           // 70
+			DirectX::XMMATRIX viewProjMat;                       // B0
+			DirectX::XMMATRIX unknownMat1;                       // F0 - all 0?
+			DirectX::XMMATRIX viewProjMatrixUnjittered;          // 130
+			DirectX::XMMATRIX previousViewProjMatrixUnjittered;  // 170
+			DirectX::XMMATRIX projMatrixUnjittered;              // 1B0
+			DirectX::XMMATRIX unknownMat2;                       // 1F0 - all 0?
+			float             viewPort[4];                       // 230 - NiRect<float> { left = 0, right = 1, top = 1, bottom = 0 }
+			NiPoint2          viewDepthRange;                    // 240
+			char              _pad0[0x8];                        // 248
 		};
 		static_assert(sizeof(ViewData) == 0x250);
 
