@@ -5,6 +5,7 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTexture.h"
 #include "SKSE/Version.h"
+#include <DirectXMath.h>
 
 namespace RE
 {
@@ -193,7 +194,7 @@ namespace RE
 			bool                 useEarlyZ;                          // 055
 			RUNTIME_DATA_CONTENT;                                    // 058, VR 060
 		};
-#ifndef ENABLE_SKYRIM_VR  // Non-VR
+#ifndef ENABLE_SKYRIM_VR                                             // Non-VR
 		static_assert(offsetof(State, screenWidth) == 0x24);
 		static_assert(offsetof(State, frameBufferViewport) == 0x2C);
 		static_assert(offsetof(State, letterbox) == 0x51);

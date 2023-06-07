@@ -78,10 +78,10 @@ namespace SKSE::WinAPI
 	using HINSTANCE = HINSTANCE__*;
 	using HMODULE = HINSTANCE;
 
-    struct HKEY__;
-    using HKEY = HKEY__*;
+	struct HKEY__;
+	using HKEY = HKEY__*;
 
-    inline auto HKEY_LOCAL_MACHINE = reinterpret_cast<HKEY>(static_cast<uintptr_t>(0x80000002));
+	inline auto HKEY_LOCAL_MACHINE = reinterpret_cast<HKEY>(static_cast<uintptr_t>(0x80000002));
 
 	struct _WIN32_FIND_DATAA
 	{
@@ -504,11 +504,11 @@ namespace SKSE::WinAPI
 	void OutputDebugString(
 		const wchar_t* a_outputString) noexcept;
 
-    long RegGetValueW(HKEY hkey, const char* subKey, const char* value, unsigned long flags, unsigned long* type,
-                         void* data, unsigned long* length);
+	long RegGetValueW(HKEY hkey, const char* subKey, const char* value, unsigned long flags, unsigned long* type,
+		void* data, unsigned long* length);
 
-    long RegGetValueW(HKEY hkey, const wchar_t* subKey, const wchar_t* value, unsigned long flags, unsigned long* type,
-                         void* data, unsigned long* length);
+	long RegGetValueW(HKEY hkey, const wchar_t* subKey, const wchar_t* value, unsigned long flags, unsigned long* type,
+		void* data, unsigned long* length);
 
 	[[nodiscard]] int ShowCursor(bool bShow) noexcept;
 
@@ -554,26 +554,6 @@ namespace SKSE::WinAPI
 		int            a_multiByte,
 		const char*    a_defaultChar,
 		int*           a_usedDefaultChar);
-}
-
-namespace RE::DirectX
-{
-	struct XMFLOAT4X4
-	{
-	public:
-		// members
-		float m[4][4];
-	};
-	static_assert(sizeof(XMFLOAT4X4) == 0x40);
-
-	typedef __m128 XMVECTOR;
-
-	struct XMMATRIX
-	{
-		// 0-2 rotation
-		// 3 position
-		XMVECTOR r[4];
-	};
 }
 
 #define CP_UTF8 ::SKSE::WinAPI::CP_UTF8
