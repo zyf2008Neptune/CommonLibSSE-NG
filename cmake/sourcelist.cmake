@@ -1226,6 +1226,7 @@ set(SOURCES
 	include/RE/N/NiControllerManager.h
 	include/RE/N/NiControllerSequence.h
 	include/RE/N/NiCullingProcess.h
+	include/RE/N/NiDirectionalLight.h
 	include/RE/N/NiExtraData.h
 	include/RE/N/NiFile.h
 	include/RE/N/NiFloatData.h
