@@ -2,7 +2,7 @@
 #include "RE\S\State.h"
 #include <d3d11.h>
 
-// see https://github.com/Nukem9/SkyrimSETest/blob/master/skyrim64_test/src/patches/TES/BSShader/BSShaderAccumulator.h
+// see https://github.com/Nukem9/SkyrimSETest/blob/master/skyrim64_test/src/patches/TES/BSGraphics/BSGraphicsRenderer.h
 namespace RE
 {
 	namespace BSGraphics
@@ -77,165 +77,187 @@ namespace RE
 			}
 
 		private:
-			T eye[size];  // default or left eye is index 0, right eye is index 1
+			T eye[size];  // default or left eye is index 0, right eye is index 1, should use getEye
 		};
 
 		class RendererShadowState
 		{
 		public:
-			struct RUNTIME_DATA2
+			struct FLAT_RUNTIME_DATA
 			{
-#define RUNTIME_DATA2_CONTENT                                                               \
-	EYE_POSITION<RE::NiPoint3> posAdjust;           /* 35c, VR 3A4 */                       \
-	EYE_POSITION<RE::NiPoint3> previousPosAdjust;   /* 368, VR 3BC */                       \
-	EYE_POSITION<ViewData>     cameraData;          /* 374, VR 3E0 - size of each is 250 */ \
-	uint32_t                   alphaBlendModeExtra; /* 5c4, VR 880 */                       \
-	float                      unk5c8;              /* 5c8, VR 884 */                       \
-	float                      unk5cc;              /* 5cc VR 888 */                        \
-	uint32_t                   unk5d0;              /* 5d0 VR 88c */
-                RUNTIME_DATA2_CONTENT;
+#define FLAT_RUNTIME_DATA_CONTENT                                                                                                                 \
+	ShaderFlags                stateUpdateFlags;                                            /* 00 Flags +0x0  0xFFFFFFFF; global state updates */ \
+	uint32_t                   PSResourceModifiedBits;                                      /* 04 Flags +0x4  0xFFFF */                           \
+	uint32_t                   PSSamplerModifiedBits;                                       /* 08 Flags +0x8  0xFFFF */                           \
+	uint32_t                   CSResourceModifiedBits;                                      /* 0c Flags +0xC  0xFFFF */                           \
+	uint32_t                   CSSamplerModifiedBits;                                       /* 10 Flags +0x10 0xFFFF */                           \
+	uint32_t                   CSUAVModifiedBits;                                           /* 14 Flags +0x14 0xFF */                             \
+	uint32_t                   renderTargets[D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT];       /* 18, VR 20 */                                       \
+	uint32_t                   depthStencil;                                                /* 38, VR 40 - Index */                               \
+	uint32_t                   depthStencilSlice;                                           /* 3c, VR 44 Index */                                 \
+	uint32_t                   cubeMapRenderTarget;                                         /* 40, VR 48 = Index */                               \
+	uint32_t                   cubeMapRenderTargetView;                                     /* 44, VR 4c Index */                                 \
+	SetRenderTargetMode        setRenderTargetMode[D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT]; /* 48, VR 50 */                                       \
+	SetRenderTargetMode        setDepthStencilMode;                                         /* 68, VR 70 */                                       \
+	SetRenderTargetMode        setCubeMapRenderTargetMode;                                  /* 6c, VR 74 */                                       \
+	D3D11_VIEWPORT             viewPort;                                                    /* 70, VR 78 */                                       \
+	DepthStencilDepthMode      depthStencilDepthMode;                                       /* 88, VR 90 */                                       \
+	DepthStencilDepthMode      depthStencilDepthModePrevious;                               /* 8c, VR 94 - also some kind of mode */              \
+	uint32_t                   depthStencilStencilMode;                                     /* 90, VR 98 */                                       \
+	uint32_t                   stencilRef;                                                  /* 94, VR 9c */                                       \
+	uint32_t                   rasterStateFillMode;                                         /* 98, VR a0 */                                       \
+	uint32_t                   rasterStateCullMode;                                         /* 9c, VR a4 */                                       \
+	uint32_t                   rasterStateDepthBiasMode;                                    /* a0, VR a8 */                                       \
+	uint32_t                   rasterStateScissorMode;                                      /* a4, VR ac */                                       \
+	uint32_t                   alphaBlendMode;                                              /* a8, VR b0 */                                       \
+	uint32_t                   alphaBlendAlphaToCoverage;                                   /* ac, VR b4 */                                       \
+	uint32_t                   alphaBlendWriteMode;                                         /* b0, VR b8 */                                       \
+	bool                       alphaTestEnabled;                                            /* b4, VR BC */                                       \
+	float                      alphaTestRef;                                                /* b8, VR C0 */                                       \
+	uint32_t                   PSTextureAddressMode[16];                                    /* bc, VR c4 */                                       \
+	uint32_t                   PSTextureFilterMode[16];                                     /* fc, VR 104 */                                      \
+	ID3D11ShaderResourceView*  PSTexture[16];                                               /* 140, VR 148 */                                     \
+	uint32_t                   CSTextureAddressMode[16];                                    /* 1c0, VR 1c8 */                                     \
+	uint32_t                   CSTextureFilterMode[16];                                     /* 200, VR 208 */                                     \
+	ID3D11ShaderResourceView*  CSTexture[16];                                               /* 240, VR 248 */                                     \
+	uint32_t                   CSTextureMinLodMode[16];                                     /* 2c0, VR 2C8 */                                     \
+	ID3D11UnorderedAccessView* CSUAV[8];                                                    /* 300, VR 308 */                                     \
+	uint64_t                   vertexDesc;                                                  /* 340, VR 388 only? */                               \
+	VertexShader*              currentVertexShader;                                         /* 348, VR 390 */                                     \
+	PixelShader*               currentPixelShader;                                          /* 350, VR 398 */                                     \
+	D3D11_PRIMITIVE_TOPOLOGY   topology;                                                    /* 358, VR 3A0 */                                     \
+	EYE_POSITION<NiPoint3>     posAdjust;                                                   /* 35c, VR 3A4 */                                     \
+	EYE_POSITION<NiPoint3>     previousPosAdjust;                                           /* 368, VR 3BC */                                     \
+	EYE_POSITION<ViewData>     cameraData;                                                  /* 380, VR 3E0 - size of each is 250 */               \
+	uint32_t                   alphaBlendModeExtra;                                         /* 5d0, VR 880 */                                     \
+	float                      unk5c8;                                                      /* 5d4, VR 884 */                                     \
+	float                      unk5cc;                                                      /* 5d8 VR 888 */                                      \
+	uint32_t                   unk5d0;                                                      /* 5dc VR 88c */
+                FLAT_RUNTIME_DATA_CONTENT;
 			};
-			static_assert(sizeof(RUNTIME_DATA2) == 0x280);
-			static_assert(offsetof(RUNTIME_DATA2, posAdjust) == 0);
-			static_assert(offsetof(RUNTIME_DATA2, previousPosAdjust) == 0xc);
-			static_assert(offsetof(RUNTIME_DATA2, cameraData) == 0x20);
+			static_assert(sizeof(FLAT_RUNTIME_DATA) == 0x5e0);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, renderTargets) == 0x18);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, depthStencil) == 0x38);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, depthStencilSlice) == 0x3c);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, cubeMapRenderTarget) == 0x40);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, setRenderTargetMode) == 0x48);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, setDepthStencilMode) == 0x68);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, setCubeMapRenderTargetMode) == 0x6c);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, viewPort) == 0x70);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, depthStencilDepthMode) == 0x88);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, depthStencilDepthModePrevious) == 0x8c);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, depthStencilStencilMode) == 0x90);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, alphaTestEnabled) == 0xb4);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, alphaTestRef) == 0xb8);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, PSTextureAddressMode) == 0xbc);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, PSTextureFilterMode) == 0xfc);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, PSTexture) == 0x140);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, CSTextureAddressMode) == 0x1c0);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, CSTextureFilterMode) == 0x200);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, CSTexture) == 0x240);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, CSTextureMinLodMode) == 0x2c0);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, CSUAV) == 0x300);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, vertexDesc) == 0x340);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, currentVertexShader) == 0x348);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, currentPixelShader) == 0x350);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, topology) == 0x358);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, posAdjust) == 0x35c);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, previousPosAdjust) == 0x368);
+			static_assert(offsetof(FLAT_RUNTIME_DATA, cameraData) == 0x380);
 
-			struct VR_RUNTIME_DATA2
+			struct VR_RUNTIME_DATA
 			{
-#define VR_RUNTIME_DATA2_CONTENT                                                                 \
-	EYE_POSITION<RE::NiPoint3, 2> posAdjust;             /* 35c, VR 3A4 */                       \
-	EYE_POSITION<RE::NiPoint3, 2> previousPosAdjust;     /* 368, VR 3BC */                       \
-	uint8_t                       unk3d4[0x3e0 - 0x3d4]; /* 3d4, VR only pad */                  \
-	EYE_POSITION<ViewData, 2>     cameraData;            /* 374, VR 3E0 - size of each is 250 */ \
-	uint32_t                      alphaBlendModeExtra;   /* 5c4, VR 880 */                       \
-	float                         unk5c8;                /* 5c8, VR 884 */                       \
-	float                         unk5cc;                /* 5cc VR 888 */                        \
-	uint32_t                      unk5d0;                /* 5d0 VR 88c */                        \
-	ID3D11Buffer*                 VSConstantBuffers[12]; /* VR 890 only */                       \
-	ID3D11Buffer*                 PSConstantBuffers[12]; /* VR 8F0 only */
-                VR_RUNTIME_DATA2_CONTENT;
+#define VR_RUNTIME_DATA_CONTENT                                                                                                                   \
+	ShaderFlags                stateUpdateFlags;                                            /* 00 Flags +0x0  0xFFFFFFFF; global state updates */ \
+	uint32_t                   PSResourceModifiedBits;                                      /* 04 Flags +0x4  0xFFFF */                           \
+	uint32_t                   PSSamplerModifiedBits;                                       /* 08 Flags +0x8  0xFFFF */                           \
+	uint32_t                   CSResourceModifiedBits;                                      /* 0c Flags +0xC  0xFFFF */                           \
+	uint32_t                   CSSamplerModifiedBits;                                       /* 10 Flags +0x10 0xFFFF */                           \
+	uint32_t                   CSUAVModifiedBits;                                           /* 14 Flags +0x14 0xFF */                             \
+	uint32_t                   OMUAVModifiedBits;                                           /* 18 Flags +0x18 0xFF VR Only  */                    \
+	uint32_t                   SRVModifiedBits;                                             /* 1c Flags +0x1C 0xFF VR Only  */                    \
+	uint32_t                   renderTargets[D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT];       /* 18, VR 20 */                                       \
+	uint32_t                   depthStencil;                                                /* 38, VR 40 - Index */                               \
+	uint32_t                   depthStencilSlice;                                           /* 3c, VR 44 Index */                                 \
+	uint32_t                   cubeMapRenderTarget;                                         /* 40, VR 48 = Index */                               \
+	uint32_t                   cubeMapRenderTargetView;                                     /* 44, VR 4c Index */                                 \
+	SetRenderTargetMode        setRenderTargetMode[D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT]; /* 48, VR 50 */                                       \
+	SetRenderTargetMode        setDepthStencilMode;                                         /* 68, VR 70 */                                       \
+	SetRenderTargetMode        setCubeMapRenderTargetMode;                                  /* 6c, VR 74 */                                       \
+	D3D11_VIEWPORT             viewPort;                                                    /* 70, VR 78 */                                       \
+	DepthStencilDepthMode      depthStencilDepthMode;                                       /* 88, VR 90 */                                       \
+	DepthStencilDepthMode      depthStencilDepthModePrevious;                               /* 8c, VR 94 - also some kind of mode */              \
+	uint32_t                   depthStencilStencilMode;                                     /* 90, VR 98 */                                       \
+	uint32_t                   stencilRef;                                                  /* 94, VR 9c */                                       \
+	uint32_t                   rasterStateFillMode;                                         /* 98, VR a0 */                                       \
+	uint32_t                   rasterStateCullMode;                                         /* 9c, VR a4 */                                       \
+	uint32_t                   rasterStateDepthBiasMode;                                    /* a0, VR a8 */                                       \
+	uint32_t                   rasterStateScissorMode;                                      /* a4, VR ac */                                       \
+	uint32_t                   alphaBlendMode;                                              /* a8, VR b0 */                                       \
+	uint32_t                   alphaBlendAlphaToCoverage;                                   /* ac, VR b4 */                                       \
+	uint32_t                   alphaBlendWriteMode;                                         /* b0, VR b8 */                                       \
+	bool                       alphaTestEnabled;                                            /* b4, VR BC */                                       \
+	float                      alphaTestRef;                                                /* b8, VR C0 */                                       \
+	uint32_t                   PSTextureAddressMode[16];                                    /* bc, VR c4 */                                       \
+	uint32_t                   PSTextureFilterMode[16];                                     /* fc, VR 104 */                                      \
+	ID3D11ShaderResourceView*  PSTexture[16];                                               /* 140, VR 148 */                                     \
+	uint32_t                   CSTextureAddressMode[16];                                    /* 1c0, VR 1c8 */                                     \
+	uint32_t                   CSTextureFilterMode[16];                                     /* 200, VR 208 */                                     \
+	ID3D11ShaderResourceView*  CSTexture[16];                                               /* 240, VR 248 */                                     \
+	uint32_t                   CSTextureMinLodMode[16];                                     /* 2c0, VR 2C8 */                                     \
+	ID3D11UnorderedAccessView* CSUAV[8];                                                    /* 300, VR 308 */                                     \
+	uint8_t                    unk348[0x388 - 0x348];                                       /* VR 348 */                                          \
+	uint64_t                   vertexDesc;                                                  /* 340, VR 388 only? */                               \
+	VertexShader*              currentVertexShader;                                         /* 348, VR 390 */                                     \
+	PixelShader*               currentPixelShader;                                          /* 350, VR 398 */                                     \
+	D3D11_PRIMITIVE_TOPOLOGY   topology;                                                    /* 358, VR 3A0 */                                     \
+	EYE_POSITION<NiPoint3, 2>  posAdjust;                                                   /* 35c, VR 3A4 */                                     \
+	EYE_POSITION<NiPoint3, 2>  previousPosAdjust;                                           /* 368, VR 3BC */                                     \
+	uint8_t                    unk3d4[0x3e0 - 0x3d4];                                       /* 3d4, VR only pad */                                \
+	EYE_POSITION<ViewData, 2>  cameraData;                                                  /* 380, VR 3E0 - size of each is 250 */               \
+	uint32_t                   alphaBlendModeExtra;                                         /* 5d0, VR 880 */                                     \
+	float                      unk5c8;                                                      /* 5d4, VR 884 */                                     \
+	float                      unk5cc;                                                      /* 5d8 VR 888 */                                      \
+	uint32_t                   unk5d0;                                                      /* 5dc VR 88c */                                      \
+	ID3D11Buffer*              VSConstantBuffers[12];                                       /* VR 890 only */                                     \
+	ID3D11Buffer*              PSConstantBuffers[12];                                       /* VR 8F0 only */
+                VR_RUNTIME_DATA_CONTENT;
 			};
-			static_assert(sizeof(VR_RUNTIME_DATA2) == 0x5b0);
-			static_assert(offsetof(VR_RUNTIME_DATA2, posAdjust) == 0);
-			static_assert(offsetof(VR_RUNTIME_DATA2, previousPosAdjust) == 0x18);
-			static_assert(offsetof(VR_RUNTIME_DATA2, cameraData) == 0x40);
-			static_assert(offsetof(VR_RUNTIME_DATA2, VSConstantBuffers) == 0x4f0);
 
 			struct RUNTIME_DATA
 			{
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 #	define RUNTIME_DATA_CONTENT \
-		RUNTIME_DATA2_CONTENT; /* 35c, VR 3A4 */
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-#	define RUNTIME_DATA_CONTENT \
-		VR_RUNTIME_DATA2_CONTENT; /* 35c, VR 3A4 */
+		VR_RUNTIME_DATA_CONTENT;
 #else
-#	define RUNTIME_DATA_CONTENT
+#	define RUNTIME_DATA_CONTENT \
+		FLAT_RUNTIME_DATA_CONTENT;
 #endif
-				uint64_t                 vertexDesc;          /* 340 doesn't fit in SSE, VR 388 only? */
-				VertexShader*            currentVertexShader; /* 348, VR 390 */
-				PixelShader*             currentPixelShader;  /* 350, VR 398 */
-				D3D11_PRIMITIVE_TOPOLOGY topology;            /* 358, VR 3A0 */
 				RUNTIME_DATA_CONTENT;
 			};
-#ifndef ENABLE_SKYRIM_VR
-			static_assert(sizeof(RUNTIME_DATA) == 0x2a0);
-			static_assert(offsetof(RUNTIME_DATA, topology) == 0x18);
-			static_assert(offsetof(RUNTIME_DATA, posAdjust) == 0x1c);
-			static_assert(offsetof(RUNTIME_DATA, previousPosAdjust) == 0x28);
-			static_assert(offsetof(RUNTIME_DATA, cameraData) == 0x40);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-			static_assert(sizeof(RUNTIME_DATA) == 0x5d0);
-			static_assert(offsetof(RUNTIME_DATA, topology) == 0x18);
-			static_assert(offsetof(RUNTIME_DATA, posAdjust) == 0x1c);
-			static_assert(offsetof(RUNTIME_DATA, previousPosAdjust) == 0x34);
-			static_assert(offsetof(RUNTIME_DATA, cameraData) == 0x60);
-			static_assert(offsetof(RUNTIME_DATA, VSConstantBuffers) == 0x510);
-#else
-			static_assert(sizeof(RUNTIME_DATA) == 0x20);
-			static_assert(offsetof(RUNTIME_DATA, topology) == 0x18);
-#endif
 
-			ShaderFlags stateUpdateFlags;                                                     // 00 Flags +0x0  0xFFFFFFFF; global state updates
-			uint32_t    PSResourceModifiedBits;                                               // 04 Flags +0x4  0xFFFF
-			uint32_t    PSSamplerModifiedBits;                                                // 08 Flags +0x8  0xFFFF
-			uint32_t    CSResourceModifiedBits;                                               // 0c Flags +0xC  0xFFFF
-			uint32_t    CSSamplerModifiedBits;                                                // 10 Flags +0x10 0xFFFF
-			uint32_t    CSUAVModifiedBits;                                                    // 14 Flags +0x14 0xFF
-			uint32_t    OMUAVModifiedBits;                                                    // 18 Flags +0x18 0xFF
-			uint32_t    SRVModifiedBits;                                                      // 1c Flags +0x1C 0xFF
+			// members
 
-			uint32_t renderTargets[D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT];                   // 20
-			uint32_t depthStencil;                                                            // 40 - Index
-			uint32_t depthStencilSlice;                                                       // 44 Index
-			uint32_t cubeMapRenderTarget;                                                     // 48 = Index
-			uint32_t cubeMapRenderTargetView;                                                 // 4c Index
-
-			SetRenderTargetMode setRenderTargetMode[D3D11_SIMULTANEOUS_RENDER_TARGET_COUNT];  // 50
-			SetRenderTargetMode setDepthStencilMode;                                          // 70
-			SetRenderTargetMode setCubeMapRenderTargetMode;                                   // 74
-
-			D3D11_VIEWPORT viewPort;                                                          // 78
-
-			DepthStencilDepthMode depthStencilDepthMode;                                      // 90
-			DepthStencilDepthMode depthStencilDepthModePrevious;                              // 94 - also some kind of mode
-			uint32_t              depthStencilStencilMode;                                    // 98
-			uint32_t              stencilRef;                                                 // 9c
-
-			uint32_t rasterStateFillMode;                                                     // a0
-			uint32_t rasterStateCullMode;                                                     // a4
-			uint32_t rasterStateDepthBiasMode;                                                // a8
-			uint32_t rasterStateScissorMode;                                                  // ac
-
-			uint32_t alphaBlendMode;                                                          // b0
-			uint32_t alphaBlendAlphaToCoverage;                                               // b4
-			uint32_t alphaBlendWriteMode;                                                     // b8
-
-			bool  alphaTestEnabled;                                                           // BC
-			float alphaTestRef;                                                               // C0
-
-			uint32_t                  PSTextureAddressMode[16];                               // c4
-			uint32_t                  PSTextureFilterMode[16];                                // 104
-			uint32_t                  unk144;                                                 // 144
-			ID3D11ShaderResourceView* PSTexture[16];                                          // 148
-
-			uint32_t CSTextureAddressMode[16];                                                // 1c8
-			uint32_t CSTextureFilterMode[16];                                                 // 208
-
-			ID3D11ShaderResourceView*  CSTexture[16];                                         // 248
-			uint32_t                   CSTextureMinLodMode[16];                               // 2C8
-			ID3D11UnorderedAccessView* CSUAV[8];                                              // 308
-
-			RUNTIME_DATA_CONTENT;                                                             // 340
+			RUNTIME_DATA_CONTENT;  // 0
 
 			[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 			{
-				return REL::RelocateMember<RUNTIME_DATA>(this, 0x340, 0x388);
+				return REL::RelocateMember<RUNTIME_DATA>(this, 0, 0);
 			}
 
 			[[nodiscard]] inline const RUNTIME_DATA& GetRuntimeData() const noexcept
 			{
-				return REL::RelocateMember<RUNTIME_DATA>(this, 0x340, 0x388);
+				return REL::RelocateMember<RUNTIME_DATA>(this, 0, 0);
 			}
 
-			[[nodiscard]] inline RUNTIME_DATA2& GetRuntimeData2() noexcept
+			[[nodiscard]] inline VR_RUNTIME_DATA& GetVRRuntimeData() noexcept
 			{
-				return REL::RelocateMember<RUNTIME_DATA2>(this, 0x35c, 0x3a4);
+				return REL::RelocateMember<VR_RUNTIME_DATA>(this, 0, 0);
 			}
 
-			[[nodiscard]] inline const RUNTIME_DATA2& GetRuntimeData2() const noexcept
+			[[nodiscard]] inline const VR_RUNTIME_DATA& GetVRRuntimeData() const noexcept
 			{
-				return REL::RelocateMember<RUNTIME_DATA2>(this, 0x35c, 0x3a4);
-			}
-
-			[[nodiscard]] inline VR_RUNTIME_DATA2& GetVRRuntimeData2() noexcept
-			{
-				return REL::RelocateMember<VR_RUNTIME_DATA2>(this, 0x35c, 0x3a4);
-			}
-
-			[[nodiscard]] inline const VR_RUNTIME_DATA2& GetVRRuntimeData2() const noexcept
-			{
-				return REL::RelocateMember<VR_RUNTIME_DATA2>(this, 0x35c, 0x3a4);
+				return REL::RelocateMember<VR_RUNTIME_DATA>(this, 0, 0);
 			}
 
 			static RendererShadowState* GetSingleton()
@@ -244,8 +266,101 @@ namespace RE
 				return g_RendererShadowState;
 			}
 		};
+#ifndef ENABLE_SKYRIM_VR
+		static_assert(sizeof(RendererShadowState) == 0x5e0);
+		static_assert(offsetof(RendererShadowState, renderTargets) == 0x18);
+		static_assert(offsetof(RendererShadowState, depthStencil) == 0x38);
+		static_assert(offsetof(RendererShadowState, depthStencilSlice) == 0x3c);
+		static_assert(offsetof(RendererShadowState, cubeMapRenderTarget) == 0x40);
+		static_assert(offsetof(RendererShadowState, setRenderTargetMode) == 0x48);
+		static_assert(offsetof(RendererShadowState, setDepthStencilMode) == 0x68);
+		static_assert(offsetof(RendererShadowState, setCubeMapRenderTargetMode) == 0x6c);
+		static_assert(offsetof(RendererShadowState, viewPort) == 0x70);
+		static_assert(offsetof(RendererShadowState, depthStencilDepthMode) == 0x88);
+		static_assert(offsetof(RendererShadowState, depthStencilDepthModePrevious) == 0x8c);
+		static_assert(offsetof(RendererShadowState, depthStencilStencilMode) == 0x90);
+		static_assert(offsetof(RendererShadowState, alphaTestEnabled) == 0xb4);
+		static_assert(offsetof(RendererShadowState, alphaTestRef) == 0xb8);
+		static_assert(offsetof(RendererShadowState, PSTextureAddressMode) == 0xbc);
+		static_assert(offsetof(RendererShadowState, PSTextureFilterMode) == 0xfc);
+		static_assert(offsetof(RendererShadowState, PSTexture) == 0x140);
+		static_assert(offsetof(RendererShadowState, CSTextureAddressMode) == 0x1c0);
+		static_assert(offsetof(RendererShadowState, CSTextureFilterMode) == 0x200);
+		static_assert(offsetof(RendererShadowState, CSTexture) == 0x240);
+		static_assert(offsetof(RendererShadowState, CSTextureMinLodMode) == 0x2c0);
+		static_assert(offsetof(RendererShadowState, CSUAV) == 0x300);
+		static_assert(offsetof(RendererShadowState, vertexDesc) == 0x340);
+		static_assert(offsetof(RendererShadowState, currentVertexShader) == 0x348);
+		static_assert(offsetof(RendererShadowState, currentPixelShader) == 0x350);
+		static_assert(offsetof(RendererShadowState, topology) == 0x358);
+		static_assert(offsetof(RendererShadowState, posAdjust) == 0x35c);
+		static_assert(offsetof(RendererShadowState, previousPosAdjust) == 0x368);
+		static_assert(offsetof(RendererShadowState, cameraData) == 0x380);
+#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+		static_assert(sizeof(RendererShadowState) == 0x950);
+		static_assert(offsetof(RendererShadowState, OMUAVModifiedBits) == 0x18);
+		static_assert(offsetof(RendererShadowState, renderTargets) == 0x20);
+		static_assert(offsetof(RendererShadowState, depthStencil) == 0x40);
+		static_assert(offsetof(RendererShadowState, depthStencilSlice) == 0x44);
+		static_assert(offsetof(RendererShadowState, cubeMapRenderTarget) == 0x48);
+		static_assert(offsetof(RendererShadowState, setRenderTargetMode) == 0x50);
+		static_assert(offsetof(RendererShadowState, setDepthStencilMode) == 0x70);
+		static_assert(offsetof(RendererShadowState, setCubeMapRenderTargetMode) == 0x74);
+		static_assert(offsetof(RendererShadowState, viewPort) == 0x78);
+		static_assert(offsetof(RendererShadowState, depthStencilDepthMode) == 0x90);
+		static_assert(offsetof(RendererShadowState, depthStencilDepthModePrevious) == 0x94);
+		static_assert(offsetof(RendererShadowState, depthStencilStencilMode) == 0x98);
+		static_assert(offsetof(RendererShadowState, alphaTestEnabled) == 0xbc);
+		static_assert(offsetof(RendererShadowState, alphaTestRef) == 0xc0);
+		static_assert(offsetof(RendererShadowState, PSTextureAddressMode) == 0xc4);
+		static_assert(offsetof(RendererShadowState, PSTextureFilterMode) == 0x104);
+		static_assert(offsetof(RendererShadowState, PSTexture) == 0x148);
+		static_assert(offsetof(RendererShadowState, CSTextureAddressMode) == 0x1c8);
+		static_assert(offsetof(RendererShadowState, CSTextureFilterMode) == 0x208);
+		static_assert(offsetof(RendererShadowState, CSTexture) == 0x248);
+		static_assert(offsetof(RendererShadowState, CSTextureMinLodMode) == 0x2c8);
+		static_assert(offsetof(RendererShadowState, CSUAV) == 0x308);
+		static_assert(offsetof(RendererShadowState, vertexDesc) == 0x388);
+		static_assert(offsetof(RendererShadowState, currentVertexShader) == 0x390);
+		static_assert(offsetof(RendererShadowState, currentPixelShader) == 0x398);
+		static_assert(offsetof(RendererShadowState, topology) == 0x3a0);
+		static_assert(offsetof(RendererShadowState, posAdjust) == 0x3a4);
+		static_assert(offsetof(RendererShadowState, previousPosAdjust) == 0x3bc);
+		static_assert(offsetof(RendererShadowState, cameraData) == 0x3e0);
+		static_assert(offsetof(RendererShadowState, VSConstantBuffers) == 0x890);
+		static_assert(offsetof(RendererShadowState, PSConstantBuffers) == 0x8f0);
+#else
+		static_assert(sizeof(RendererShadowState) == 0x5e0);
+		static_assert(offsetof(RendererShadowState, renderTargets) == 0x18);
+		static_assert(offsetof(RendererShadowState, depthStencil) == 0x38);
+		static_assert(offsetof(RendererShadowState, depthStencilSlice) == 0x3c);
+		static_assert(offsetof(RendererShadowState, cubeMapRenderTarget) == 0x40);
+		static_assert(offsetof(RendererShadowState, setRenderTargetMode) == 0x48);
+		static_assert(offsetof(RendererShadowState, setDepthStencilMode) == 0x68);
+		static_assert(offsetof(RendererShadowState, setCubeMapRenderTargetMode) == 0x6c);
+		static_assert(offsetof(RendererShadowState, viewPort) == 0x70);
+		static_assert(offsetof(RendererShadowState, depthStencilDepthMode) == 0x88);
+		static_assert(offsetof(RendererShadowState, depthStencilDepthModePrevious) == 0x8c);
+		static_assert(offsetof(RendererShadowState, depthStencilStencilMode) == 0x90);
+		static_assert(offsetof(RendererShadowState, alphaTestEnabled) == 0xb4);
+		static_assert(offsetof(RendererShadowState, alphaTestRef) == 0xb8);
+		static_assert(offsetof(RendererShadowState, PSTextureAddressMode) == 0xbc);
+		static_assert(offsetof(RendererShadowState, PSTextureFilterMode) == 0xfc);
+		static_assert(offsetof(RendererShadowState, PSTexture) == 0x140);
+		static_assert(offsetof(RendererShadowState, CSTextureAddressMode) == 0x1c0);
+		static_assert(offsetof(RendererShadowState, CSTextureFilterMode) == 0x200);
+		static_assert(offsetof(RendererShadowState, CSTexture) == 0x240);
+		static_assert(offsetof(RendererShadowState, CSTextureMinLodMode) == 0x2c0);
+		static_assert(offsetof(RendererShadowState, CSUAV) == 0x300);
+		static_assert(offsetof(RendererShadowState, vertexDesc) == 0x340);
+		static_assert(offsetof(RendererShadowState, currentVertexShader) == 0x348);
+		static_assert(offsetof(RendererShadowState, currentPixelShader) == 0x350);
+		static_assert(offsetof(RendererShadowState, topology) == 0x358);
+		static_assert(offsetof(RendererShadowState, posAdjust) == 0x35c);
+		static_assert(offsetof(RendererShadowState, previousPosAdjust) == 0x368);
+#endif
 	}
 }
 #undef RUNTIME_DATA_CONTENT
-#undef RUNTIME_DATA2_CONTENT
-#undef VR_RUNTIME_DATA2_CONTENT
+#undef FLAT_RUNTIME_DATA_CONTENT
+#undef VR_RUNTIME_DATA_CONTENT

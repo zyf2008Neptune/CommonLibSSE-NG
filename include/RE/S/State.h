@@ -11,6 +11,7 @@ namespace RE
 {
 	namespace BSGraphics
 	{
+		//WARNING: Structs containing ViewData appear to break when returned via RelocateMember due to incorrect offsets.
 		struct alignas(16) ViewData
 		{
 			DirectX::XMVECTOR viewUp;                            // 00
@@ -29,6 +30,19 @@ namespace RE
 			char              _pad0[0x8];                        // 248
 		};
 		static_assert(sizeof(ViewData) == 0x250);
+		static_assert(offsetof(ViewData, viewUp) == 0);
+		static_assert(offsetof(ViewData, viewRight) == 0x10);
+		static_assert(offsetof(ViewData, viewForward) == 0x20);
+		static_assert(offsetof(ViewData, viewMat) == 0x30);
+		static_assert(offsetof(ViewData, projMat) == 0x70);
+		static_assert(offsetof(ViewData, viewProjMat) == 0xb0);
+		static_assert(offsetof(ViewData, unknownMat1) == 0xf0);
+		static_assert(offsetof(ViewData, viewProjMatrixUnjittered) == 0x130);
+		static_assert(offsetof(ViewData, previousViewProjMatrixUnjittered) == 0x170);
+		static_assert(offsetof(ViewData, projMatrixUnjittered) == 0x1b0);
+		static_assert(offsetof(ViewData, unknownMat2) == 0x1f0);
+		static_assert(offsetof(ViewData, viewPort) == 0x230);
+		static_assert(offsetof(ViewData, viewDepthRange) == 0x240);
 
 		struct CAMERASTATE_RUNTIME_DATA
 		{
