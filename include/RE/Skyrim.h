@@ -167,6 +167,8 @@
 #include "RE/B/BGSReferenceEffect.h"
 #include "RE/B/BGSRelationship.h"
 #include "RE/B/BGSReverbParameters.h"
+#include "RE/B/BGSSaveFormBuffer.h"
+#include "RE/B/BGSSaveGameBuffer.h"
 #include "RE/B/BGSSaveLoadManager.h"
 #include "RE/B/BGSScene.h"
 #include "RE/B/BGSSceneAction.h"
