@@ -11,14 +11,14 @@ namespace RE
 		return *singleton;
 	}
 
-    bool TESDataHandler::AddFormToDataHandler(TESForm* a_form)
+	bool TESDataHandler::AddFormToDataHandler(TESForm* a_form)
 	{
 		using func_t = decltype(&TESDataHandler::AddFormToDataHandler);
 		REL::Relocation<func_t> func{ RELOCATION_ID(13597, 13693) };
 		return func(this, a_form);
 	}
 
-    std::uint32_t TESDataHandler::LoadScripts()
+	std::uint32_t TESDataHandler::LoadScripts()
 	{
 		using func_t = decltype(&TESDataHandler::LoadScripts);
 		REL::Relocation<func_t> func{ Offset::TESDataHandler::LoadScripts };
