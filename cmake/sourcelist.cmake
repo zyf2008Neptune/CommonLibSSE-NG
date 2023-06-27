@@ -143,6 +143,7 @@ set(SOURCES
 	include/RE/B/BGSMusicType.h
 	include/RE/B/BGSNamedPackageData.h
 	include/RE/B/BGSNote.h
+	include/RE/B/BGSNumericIDIndex.h
 	include/RE/B/BGSOpenCloseForm.h
 	include/RE/B/BGSOutfit.h
 	include/RE/B/BGSOverridePackCollection.h
@@ -166,6 +167,7 @@ set(SOURCES
 	include/RE/B/BGSReverbParameters.h
 	include/RE/B/BGSSaveFormBuffer.h
 	include/RE/B/BGSSaveGameBuffer.h
+	include/RE/B/BGSSaveLoadGame.h
 	include/RE/B/BGSSaveLoadManager.h
 	include/RE/B/BGSScene.h
 	include/RE/B/BGSSceneAction.h
