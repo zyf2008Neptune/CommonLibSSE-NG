@@ -13,7 +13,13 @@ namespace RE
 
 	    static float QGlobalTimeMultiplier()
 		{
-			REL::Relocation<float*> value{ RELOCATION_ID(511883, 388442) };
+			REL::Relocation<float*> value{ RELOCATION_ID(511882, 388442) };
+			return *value;
+		}
+
+		static float QGlobalTimeMultiplierTarget()
+		{
+			REL::Relocation<float*> value{ RELOCATION_ID(511883, 388443) };
 			return *value;
 		}
 
