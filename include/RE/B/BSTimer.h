@@ -11,7 +11,7 @@ namespace RE
 			return singleton.get();
 		}
 
-	    static float QGlobalTimeMultiplier()
+		static float QGlobalTimeMultiplier()
 		{
 			REL::Relocation<float*> value{ RELOCATION_ID(511882, 388442) };
 			return *value;
