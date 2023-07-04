@@ -39,25 +39,25 @@ namespace RE
 		{
 		public:
 			// members
-			std::uint32_t        uiAdapter;                                      // 0000
-			std::uint32_t        unk04;                                          // 0004 - refreshRate?
-			std::uint32_t        unk08;                                          // 0008
-			std::uint32_t        unk0C;                                          // 000C
-			std::uint32_t        unk10;                                          // 0010
-			std::uint32_t        unk14;                                          // 0014
-			std::uint32_t        unk18;                                          // 0018
-			std::uint32_t        unk1C;                                          // 001C
-			bool                 fullScreen;                                     // 0020
-			bool                 borderlessDisplay;                              // 0021
-			bool                 readOnlyDepth;                                  // 0022
-			std::uint8_t         unk23;                                          // 0023
-			std::uint8_t         unk24;                                          // 0024
-			std::uint32_t        unk28;                                          // 0028
-			std::uint32_t        unk30;                                          // 0030
-			std::uint32_t        presentInterval;                                // 0034
-			ID3D11Device*        forwarder;                                      // 0038
-			ID3D11DeviceContext* context;                                        // 0040
-			RendererWindow       renderWindows[32];                              // 0048
+			std::uint32_t        uiAdapter;          // 0000
+			std::uint32_t        unk04;              // 0004 - refreshRate?
+			std::uint32_t        unk08;              // 0008
+			std::uint32_t        unk0C;              // 000C
+			std::uint32_t        unk10;              // 0010
+			std::uint32_t        unk14;              // 0014
+			std::uint32_t        unk18;              // 0018
+			std::uint32_t        unk1C;              // 001C
+			bool                 fullScreen;         // 0020
+			bool                 borderlessDisplay;  // 0021
+			bool                 readOnlyDepth;      // 0022
+			std::uint8_t         unk23;              // 0023
+			std::uint8_t         unk24;              // 0024
+			std::uint32_t        unk28;              // 0028
+			std::uint32_t        unk30;              // 0030
+			std::uint32_t        presentInterval;    // 0034
+			ID3D11Device*        forwarder;          // 0038
+			ID3D11DeviceContext* context;            // 0040
+			RendererWindow       renderWindows[32];  // 0048
 #ifndef SKYRIMVR
 			RenderTargetData renderTargets[RENDER_TARGET::kTOTAL];               // 0A48
 			DepthStencilData depthStencils[RENDER_TARGET_DEPTHSTENCIL::kTOTAL];  // 1FA8
@@ -93,12 +93,12 @@ namespace RE
 			void                                   SaveRenderTargetToFile(RENDER_TARGET a_renderTarget, const char* a_filePath, TextureFileFormat a_textureFileFormat);
 
 			// members
-			std::uint64_t unk00;   // 00
-			std::uint64_t unk08;   // 08
+			std::uint64_t unk00;  // 00
+			std::uint64_t unk08;  // 08
 #ifdef SKYRIMVR
 			std::uint64_t unk010;  // 0010
 #endif
-			RendererData data;     // 10, VR 18
+			RendererData data;  // 10, VR 18
 		};
 	}
 }

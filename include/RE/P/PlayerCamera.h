@@ -77,28 +77,28 @@ namespace RE
 		BSTSmallArray<TESCameraState*, CameraStates::kTotal> tempReturnStates;                    // 040
 		BSTSmartPointer<TESCameraState>                      cameraStates[CameraStates::kTotal];  // 0B8, VR 0C0
 #ifndef SKYRIMVR
-		Unk120* unk120;                                                                           // 120 - ?
+		Unk120* unk120;  // 120 - ?
 #endif
-		NiPointer<bhkRigidBody> rigidBody;                                                        // 128, VR 130 - ?
-		RefHandle               objectFadeHandle;                                                 // 130, VR 138 - ?
-		mutable BSSpinLock      lock;                                                             // 134, VR 13C
+		NiPointer<bhkRigidBody> rigidBody;         // 128, VR 130 - ?
+		RefHandle               objectFadeHandle;  // 130, VR 138 - ?
+		mutable BSSpinLock      lock;              // 134, VR 13C
 #ifdef SKYRIMVR
-		char VRpad140[20];                                                                        // VR 140
+		char VRpad140[20];  // VR 140
 #endif
-		float         worldFOV;                                                                   // 13C, VR 158
-		float         firstPersonFOV;                                                             // 140, VR 15C
-		NiPoint3      pos;                                                                        // 144, VR 160 - ?
-		float         idleTimer;                                                                  // 150, VR 16C - ?
-		float         yaw;                                                                        // 154, VR 170 - ? - in radians
-		std::uint32_t unk158;                                                                     // 158, VR 174 - ?
-		std::uint32_t unk15C;                                                                     // 15C, VR 178 - ?
-		bool          allowAutoVanityMode;                                                        // 160, VR 17C
-		bool          bowZoomedIn;                                                                // 161, VR 17D
-		bool          isWeapSheathed;                                                             // 162, VR 17E - ?
-		bool          isProcessed;                                                                // 163, VR 17F - ?
-		std::uint8_t  unk164;                                                                     // 164, VR 180
-		std::uint8_t  unk165;                                                                     // 165, VR 181
-		std::uint16_t pad166;                                                                     // 166, VR 182
+		float         worldFOV;             // 13C, VR 158
+		float         firstPersonFOV;       // 140, VR 15C
+		NiPoint3      pos;                  // 144, VR 160 - ?
+		float         idleTimer;            // 150, VR 16C - ?
+		float         yaw;                  // 154, VR 170 - ? - in radians
+		std::uint32_t unk158;               // 158, VR 174 - ?
+		std::uint32_t unk15C;               // 15C, VR 178 - ?
+		bool          allowAutoVanityMode;  // 160, VR 17C
+		bool          bowZoomedIn;          // 161, VR 17D
+		bool          isWeapSheathed;       // 162, VR 17E - ?
+		bool          isProcessed;          // 163, VR 17F - ?
+		std::uint8_t  unk164;               // 164, VR 180
+		std::uint8_t  unk165;               // 165, VR 181
+		std::uint16_t pad166;               // 166, VR 182
 
 	private:
 		bool QCameraEquals(CameraState a_cameraState) const;
