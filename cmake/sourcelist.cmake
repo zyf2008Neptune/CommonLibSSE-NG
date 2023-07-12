@@ -222,7 +222,7 @@ set(SOURCES
 	include/RE/B/BSFaceGenKeyframe.h
 	include/RE/B/BSFaceGenKeyframeMultiple.h
 	include/RE/B/BSFaceGenManager.h
-    include/RE/B/BSFaceGenModel.h
+	include/RE/B/BSFaceGenModel.h
 	include/RE/B/BSFaceGenModelExtraData.h
 	include/RE/B/BSFaceGenNiNode.h
 	include/RE/B/BSFadeNode.h
@@ -1597,6 +1597,7 @@ set(SOURCES
 	include/RE/U/UserEvents.h
 	include/RE/V/VATS.h
 	include/RE/V/VDescTable.h
+	include/RE/V/VRWandEvent.h
 	include/RE/V/ValueAndConditionsEffect.h
 	include/RE/V/ValueModifierEffect.h
 	include/RE/V/VampireLordEffect.h
@@ -1604,6 +1605,8 @@ set(SOURCES
 	include/RE/V/VertexDesc.h
 	include/RE/V/VirtualMachine.h
 	include/RE/V/VoiceSpellFireHandler.h
+	include/RE/V/VrWandTouchpadPositionEvent.h
+	include/RE/V/VrWandTouchpadSwipeEvent.h
 	include/RE/W/WeaponAnimationGraphManagerHolder.h
 	include/RE/W/WeatherType.h
 	include/RE/W/WerewolfEffect.h
@@ -1684,13 +1687,13 @@ set(SOURCES
 	src/RE/B/BSInputDeviceFactory.cpp
 	src/RE/B/BSInputDeviceManager.cpp
 	src/RE/B/BSInputEventQueue.cpp
-    src/RE/B/BSInstanceTriShape.cpp
-    src/RE/B/BSKeyboardDevice.cpp
+	src/RE/B/BSInstanceTriShape.cpp
+	src/RE/B/BSKeyboardDevice.cpp
 	src/RE/B/BSLightingShaderMaterialBase.cpp
 	src/RE/B/BSLightingShaderProperty.cpp
 	src/RE/B/BSModelDB.cpp
 	src/RE/B/BSMouseDevice.cpp
-    src/RE/B/BSMultiBoundNode.cpp
+	src/RE/B/BSMultiBoundNode.cpp
 	src/RE/B/BSPCGamepadDeviceDelegate.cpp
 	src/RE/B/BSPCGamepadDeviceHandler.cpp
 	src/RE/B/BSPCOrbisGamepadDevice.cpp
@@ -1765,7 +1768,7 @@ set(SOURCES
 	src/RE/E/ExtraSoul.cpp
 	src/RE/E/ExtraTextDisplayData.cpp
 	src/RE/E/ExtraUniqueID.cpp
-    src/RE/F/FormTypes.cpp
+	src/RE/F/FormTypes.cpp
 	src/RE/F/FxDelegate.cpp
 	src/RE/F/FxDelegateArgs.cpp
 	src/RE/G/GAtomic.cpp
