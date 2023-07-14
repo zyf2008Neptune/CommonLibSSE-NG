@@ -4,8 +4,8 @@
 
 namespace RE
 {
-    struct hkConstraintInternal;
-    class hkpConstraintData;
+	struct hkConstraintInternal;
+	class hkpConstraintData;
 	class hkpConstraintOwner;
 	struct hkpModifierConstraintAtom;
 
