@@ -461,6 +461,16 @@ namespace RE
 		}
 	}
 
+	HighProcessData* Actor::GetHighProcess() const
+	{
+		return currentProcess ? currentProcess->high : nullptr;
+	}
+
+	MiddleHighProcessData* Actor::GetMiddleHighProcess() const
+	{
+		return currentProcess ? currentProcess->middleHigh : nullptr;
+	}
+
 	Actor* Actor::GetKiller() const
 	{
 		if (IsDead(false)) {
