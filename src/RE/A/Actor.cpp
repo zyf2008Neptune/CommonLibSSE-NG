@@ -466,11 +466,6 @@ namespace RE
 		return currentProcess ? currentProcess->high : nullptr;
 	}
 
-	MiddleHighProcessData* Actor::GetMiddleHighProcess() const
-	{
-		return currentProcess ? currentProcess->middleHigh : nullptr;
-	}
-
 	Actor* Actor::GetKiller() const
 	{
 		if (IsDead(false)) {
@@ -485,6 +480,11 @@ namespace RE
 		using func_t = decltype(&Actor::GetLevel);
 		REL::Relocation<func_t> func{ Offset::Actor::GetLevel };
 		return func(this);
+	}
+
+	MiddleHighProcessData* Actor::GetMiddleHighProcess() const
+	{
+		return currentProcess ? currentProcess->middleHigh : nullptr;
 	}
 
 	bool Actor::GetMount(NiPointer<Actor>& a_outMount)
