@@ -229,12 +229,14 @@ namespace RE
 
 			struct RUNTIME_DATA
 			{
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#ifndef ENABLE_SKYRIM_VR
+#	define RUNTIME_DATA_CONTENT \
+		FLAT_RUNTIME_DATA_CONTENT;
+#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 #	define RUNTIME_DATA_CONTENT \
 		VR_RUNTIME_DATA_CONTENT;
 #else
-#	define RUNTIME_DATA_CONTENT \
-		FLAT_RUNTIME_DATA_CONTENT;
+#	define RUNTIME_DATA_CONTENT ;
 #endif
 				RUNTIME_DATA_CONTENT;
 			};
@@ -243,14 +245,14 @@ namespace RE
 
 			RUNTIME_DATA_CONTENT;  // 0
 
-			[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
+			[[nodiscard]] inline FLAT_RUNTIME_DATA& GetRuntimeData() noexcept
 			{
-				return REL::RelocateMember<RUNTIME_DATA>(this, 0, 0);
+				return REL::RelocateMember<FLAT_RUNTIME_DATA>(this, 0, 0);
 			}
 
-			[[nodiscard]] inline const RUNTIME_DATA& GetRuntimeData() const noexcept
+			[[nodiscard]] inline const FLAT_RUNTIME_DATA& GetRuntimeData() const noexcept
 			{
-				return REL::RelocateMember<RUNTIME_DATA>(this, 0, 0);
+				return REL::RelocateMember<FLAT_RUNTIME_DATA>(this, 0, 0);
 			}
 
 			[[nodiscard]] inline VR_RUNTIME_DATA& GetVRRuntimeData() noexcept
@@ -333,34 +335,7 @@ namespace RE
 		static_assert(offsetof(RendererShadowState, VSConstantBuffers) == 0x890);
 		static_assert(offsetof(RendererShadowState, PSConstantBuffers) == 0x8f0);
 #else
-		static_assert(sizeof(RendererShadowState) == 0x5e0);
-		static_assert(offsetof(RendererShadowState, renderTargets) == 0x18);
-		static_assert(offsetof(RendererShadowState, depthStencil) == 0x38);
-		static_assert(offsetof(RendererShadowState, depthStencilSlice) == 0x3c);
-		static_assert(offsetof(RendererShadowState, cubeMapRenderTarget) == 0x40);
-		static_assert(offsetof(RendererShadowState, setRenderTargetMode) == 0x48);
-		static_assert(offsetof(RendererShadowState, setDepthStencilMode) == 0x68);
-		static_assert(offsetof(RendererShadowState, setCubeMapRenderTargetMode) == 0x6c);
-		static_assert(offsetof(RendererShadowState, viewPort) == 0x70);
-		static_assert(offsetof(RendererShadowState, depthStencilDepthMode) == 0x88);
-		static_assert(offsetof(RendererShadowState, depthStencilDepthModePrevious) == 0x8c);
-		static_assert(offsetof(RendererShadowState, depthStencilStencilMode) == 0x90);
-		static_assert(offsetof(RendererShadowState, alphaTestEnabled) == 0xb4);
-		static_assert(offsetof(RendererShadowState, alphaTestRef) == 0xb8);
-		static_assert(offsetof(RendererShadowState, PSTextureAddressMode) == 0xbc);
-		static_assert(offsetof(RendererShadowState, PSTextureFilterMode) == 0xfc);
-		static_assert(offsetof(RendererShadowState, PSTexture) == 0x140);
-		static_assert(offsetof(RendererShadowState, CSTextureAddressMode) == 0x1c0);
-		static_assert(offsetof(RendererShadowState, CSTextureFilterMode) == 0x200);
-		static_assert(offsetof(RendererShadowState, CSTexture) == 0x240);
-		static_assert(offsetof(RendererShadowState, CSTextureMinLodMode) == 0x2c0);
-		static_assert(offsetof(RendererShadowState, CSUAV) == 0x300);
-		static_assert(offsetof(RendererShadowState, vertexDesc) == 0x340);
-		static_assert(offsetof(RendererShadowState, currentVertexShader) == 0x348);
-		static_assert(offsetof(RendererShadowState, currentPixelShader) == 0x350);
-		static_assert(offsetof(RendererShadowState, topology) == 0x358);
-		static_assert(offsetof(RendererShadowState, posAdjust) == 0x35c);
-		static_assert(offsetof(RendererShadowState, previousPosAdjust) == 0x368);
+		static_assert(sizeof(RendererShadowState) == 1);
 #endif
 	}
 }
