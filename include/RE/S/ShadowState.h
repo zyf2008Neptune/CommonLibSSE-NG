@@ -83,6 +83,8 @@ namespace RE
 		class RendererShadowState
 		{
 		public:
+#pragma warning(push)
+#pragma warning(disable: 4324)  // ignore warning about padded due to alignment from DirectX datatypes (e.g., XMVECTOR, XMMATRIX).
 			struct FLAT_RUNTIME_DATA
 			{
 #define FLAT_RUNTIME_DATA_CONTENT                                                                                                                 \
@@ -164,6 +166,7 @@ namespace RE
 			static_assert(offsetof(FLAT_RUNTIME_DATA, posAdjust) == 0x35c);
 			static_assert(offsetof(FLAT_RUNTIME_DATA, previousPosAdjust) == 0x368);
 			static_assert(offsetof(FLAT_RUNTIME_DATA, cameraData) == 0x380);
+#pragma warning(pop)
 
 			struct VR_RUNTIME_DATA
 			{

@@ -59,6 +59,7 @@ static_assert(
 
 #pragma warning(push)
 #include <fmt/format.h>
+#include <fmt/core.h>
 #include <spdlog/spdlog.h>
 #pragma warning(pop)
 
