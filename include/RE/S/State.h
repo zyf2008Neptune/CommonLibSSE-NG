@@ -5,7 +5,8 @@
 #include "RE/N/NiSmartPointer.h"
 #include "RE/N/NiTexture.h"
 #include "SKSE/Version.h"
-#include <DirectXMath.h>
+#include <SimpleMath.h>
+using namespace DirectX::SimpleMath;
 
 namespace RE
 {
@@ -14,20 +15,20 @@ namespace RE
 		//WARNING: Structs containing ViewData appear to break when returned via RelocateMember due to incorrect offsets.
 		struct alignas(16) ViewData
 		{
-			DirectX::XMVECTOR viewUp;                            // 00
-			DirectX::XMVECTOR viewRight;                         // 10
-			DirectX::XMVECTOR viewForward;                       // 20
-			DirectX::XMMATRIX viewMat;                           // 30
-			DirectX::XMMATRIX projMat;                           // 70
-			DirectX::XMMATRIX viewProjMat;                       // B0
-			DirectX::XMMATRIX unknownMat1;                       // F0 - all 0?
-			DirectX::XMMATRIX viewProjMatrixUnjittered;          // 130
-			DirectX::XMMATRIX previousViewProjMatrixUnjittered;  // 170
-			DirectX::XMMATRIX projMatrixUnjittered;              // 1B0
-			DirectX::XMMATRIX unknownMat2;                       // 1F0 - all 0?
-			float             viewPort[4];                       // 230 - NiRect<float> { left = 0, right = 1, top = 1, bottom = 0 }
-			NiPoint2          viewDepthRange;                    // 240
-			char              _pad0[0x8];                        // 248
+			Vector4  viewUp;                            // 00
+			Vector4  viewRight;                         // 10
+			Vector4  viewForward;                       // 20
+			Matrix   viewMat;                           // 30
+			Matrix   projMat;                           // 70
+			Matrix   viewProjMat;                       // B0
+			Matrix   unknownMat1;                       // F0 - all 0?
+			Matrix   viewProjMatrixUnjittered;          // 130
+			Matrix   previousViewProjMatrixUnjittered;  // 170
+			Matrix   projMatrixUnjittered;              // 1B0
+			Matrix   unknownMat2;                       // 1F0 - all 0?
+			float    viewPort[4];                       // 230 - NiRect<float> { left = 0, right = 1, top = 1, bottom = 0 }
+			NiPoint2 viewDepthRange;                    // 240
+			char     _pad0[0x8];                        // 248
 		};
 		static_assert(sizeof(ViewData) == 0x250);
 		static_assert(offsetof(ViewData, viewUp) == 0);
@@ -235,3 +236,63 @@ namespace RE
 #endif
 	}
 }
+
+template <>
+
+struct fmt::formatter<Vector4>
+{
+	// Presentation format: 'f' - fixed, 'e' - exponential.
+	char presentation = 'f';
+
+	// Parses format specifications of the form ['f' | 'e'].
+	constexpr auto parse(format_parse_context& ctx) -> format_parse_context::iterator
+	{
+		auto it = ctx.begin(), end = ctx.end();
+		if (it != end && (*it == 'f' || *it == 'e'))
+			presentation = *it++;
+
+		// Check if reached the end of the range:
+		if (it != end && *it != '}')
+			ctx.on_error("invalid format");
+
+		// Return an iterator past the end of the parsed range:
+		return it;
+	}
+
+	// Formats the point p using the parsed format specification (presentation)
+	// stored in this formatter.
+	auto format(const Vector4& v, format_context& ctx) const -> format_context::iterator
+	{
+		// ctx.out() is an output iterator to write to.
+		return presentation == 'f' ? fmt::format_to(ctx.out(), "[{:.1f}, {:.1f}, {:.1f}, {:.1f}]", v.x, v.y, v.z, v.w) : fmt::format_to(ctx.out(), "[{:.1e}, {:.1e}, {:.1e}, {:.1e}]", v.x, v.y, v.z, v.w);
+	}
+};
+
+template <>
+struct fmt::formatter<Matrix>
+{
+	char presentation = 'f';
+
+	// Parses format specifications of the form ['f' | 'e'].
+	constexpr auto parse(format_parse_context& ctx) -> format_parse_context::iterator
+	{
+		auto it = ctx.begin(), end = ctx.end();
+		if (it != end && (*it == 'f' || *it == 'e'))
+			presentation = *it++;
+
+		// Check if reached the end of the range:
+		if (it != end && *it != '}')
+			ctx.on_error("invalid format");
+
+		// Return an iterator past the end of the parsed range:
+		return it;
+	}
+
+	// Formats the point p using the parsed format specification (presentation)
+	// stored in this formatter.
+	auto format(const Matrix& m, format_context& ctx) const -> format_context::iterator
+	{
+		// ctx.out() is an output iterator to write to.
+		return fmt::format_to(ctx.out(), "[{}, {}, {}, {}]", (Vector4)m.m[0], (Vector4)m.m[1], (Vector4)m.m[2], (Vector4)m.m[3]);
+	}
+};
