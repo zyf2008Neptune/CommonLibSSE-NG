@@ -583,6 +583,17 @@ namespace RE
 		return hasKeyword;
 	}
 
+	bool TESObjectREFR::HasKeywordWithType(DEFAULT_OBJECT keywordType) const
+	{
+		auto dobj = BGSDefaultObjectManager::GetSingleton();
+		if (!dobj) {
+			return false;
+		}
+
+		auto keyword = dobj->GetObject<BGSKeyword>(keywordType);
+		return keyword ? HasKeyword(keyword) : false;
+	}
+
 	bool TESObjectREFR::HasQuestObject() const
 	{
 		using func_t = decltype(&TESObjectREFR::HasQuestObject);
@@ -615,6 +626,11 @@ namespace RE
 		return xFlags && xFlags->IsActivationBlocked();
 	}
 
+	bool TESObjectREFR::IsAnimal() const
+	{
+		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordAnimal);
+	}
+
 	bool TESObjectREFR::IsAnOwner(const Actor* a_testOwner, bool a_useFaction, bool a_requiresOwner) const
 	{
 		using func_t = decltype(&TESObjectREFR::IsAnOwner);
@@ -632,6 +648,11 @@ namespace RE
 	bool TESObjectREFR::IsDisabled() const
 	{
 		return (GetFormFlags() & RecordFlags::kInitiallyDisabled) != 0;
+	}
+
+	bool TESObjectREFR::IsDragon() const
+	{
+		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordDragon);
 	}
 
 	bool TESObjectREFR::IsEnchanted() const
@@ -657,40 +678,19 @@ namespace RE
 		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordHorse);
 	}
 
-	bool TESObjectREFR::IsAnimal() const
-	{
-		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordAnimal);
-	}
-
 	bool TESObjectREFR::IsHumanoid() const
 	{
 		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordNPC);
 	}
 
-	bool TESObjectREFR::IsDragon() const
+	bool TESObjectREFR::IsInitiallyDisabled() const
 	{
-		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordDragon);
+		return (GetFormFlags() & RecordFlags::kInitiallyDisabled) != 0;
 	}
 
 	bool TESObjectREFR::IsJewelry() const
 	{
 		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordJewelry);
-	}
-
-	bool TESObjectREFR::HasKeywordWithType(DEFAULT_OBJECT keywordType) const
-	{
-		auto dobj = BGSDefaultObjectManager::GetSingleton();
-		if (!dobj) {
-			return false;
-		}
-
-		auto keyword = dobj->GetObject<BGSKeyword>(keywordType);
-		return keyword ? HasKeyword(keyword) : false;
-	}
-
-	bool TESObjectREFR::IsInitiallyDisabled() const
-	{
-		return (GetFormFlags() & RecordFlags::kInitiallyDisabled) != 0;
 	}
 
 	bool TESObjectREFR::IsInWater() const
