@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BGSDefaultObjectManager.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSHandleRefObject.h"
 #include "RE/B/BSPointerHandle.h"
@@ -431,6 +432,11 @@ namespace RE
 		bool                                    IsDisabled() const;
 		bool                                    IsEnchanted() const;
 		bool                                    IsHorse() const;
+		bool                                    IsAnimal() const;
+		bool                                    IsHumanoid() const;
+		bool                                    IsDragon() const;
+		bool                                    IsJewelry() const;
+		bool                                    HasKeywordWithType(DEFAULT_OBJECT keywordType) const;
 		bool                                    IsInitiallyDisabled() const;
 		bool                                    IsInWater() const;
 		bool                                    IsLocked() const;

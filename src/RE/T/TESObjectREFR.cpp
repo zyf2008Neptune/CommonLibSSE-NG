@@ -654,12 +654,37 @@ namespace RE
 
 	bool TESObjectREFR::IsHorse() const
 	{
+		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordHorse);
+	}
+
+	bool TESObjectREFR::IsAnimal() const
+	{
+		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordAnimal);
+	}
+
+	bool TESObjectREFR::IsHumanoid() const
+	{
+		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordNPC);
+	}
+
+	bool TESObjectREFR::IsDragon() const
+	{
+		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordDragon);
+	}
+
+	bool TESObjectREFR::IsJewelry() const
+	{
+		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordJewelry);
+	}
+
+	bool TESObjectREFR::HasKeywordWithType(DEFAULT_OBJECT keywordType) const
+	{
 		auto dobj = BGSDefaultObjectManager::GetSingleton();
 		if (!dobj) {
 			return false;
 		}
 
-		auto keyword = dobj->GetObject<BGSKeyword>(DEFAULT_OBJECT::kKeywordHorse);
+		auto keyword = dobj->GetObject<BGSKeyword>(keywordType);
 		return keyword ? HasKeyword(keyword) : false;
 	}
 
