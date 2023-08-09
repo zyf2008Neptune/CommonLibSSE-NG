@@ -482,7 +482,7 @@ namespace RE
 
 	HighProcessData* Actor::GetHighProcess() const
 	{
-		return currentProcess ? currentProcess->high : nullptr;
+		return GetActorRuntimeData().currentProcess ? GetActorRuntimeData().currentProcess->high : nullptr;
 	}
 
 	Actor* Actor::GetKiller() const
@@ -503,7 +503,7 @@ namespace RE
 
 	MiddleHighProcessData* Actor::GetMiddleHighProcess() const
 	{
-		return currentProcess ? currentProcess->middleHigh : nullptr;
+		return GetActorRuntimeData().currentProcess ? GetActorRuntimeData().currentProcess->middleHigh : nullptr;
 	}
 
 	bool Actor::GetMount(NiPointer<Actor>& a_outMount)
