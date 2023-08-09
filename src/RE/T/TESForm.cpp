@@ -58,34 +58,33 @@ namespace RE
 		}
 	}
 
-    bool TESForm::HasAnyKeywordByEditorID(const std::vector<std::string>& editorIDs) const
+	bool TESForm::HasAnyKeywordByEditorID(const std::vector<std::string>& editorIDs) const
 	{
-        // Try to cast to a keyword form interface
-        const auto keywordForm = As<BGSKeywordForm>();
-        if (!keywordForm) {
-            return false;
-        }
+		// Try to cast to a keyword form interface
+		const auto keywordForm = As<BGSKeywordForm>();
+		if (!keywordForm) {
+			return false;
+		}
 
-        // Iterate through the keywords
-        for (std::uint32_t i = 0; i < keywordForm->GetNumKeywords(); ++i) {
-            auto keywordOpt = keywordForm->GetKeywordAt(i);
-            if (keywordOpt) {
-                auto keyword = *keywordOpt;
-                if (keyword) {
-                    const char* keywordEditorID = keyword->GetFormEditorID();
-                    if (keywordEditorID) {
-                        // Check if the keywordEditorID is in the given editorIDs vector
-                        if (std::find(editorIDs.begin(), editorIDs.end(), keywordEditorID) != editorIDs.end()) {
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
+		// Iterate through the keywords
+		for (std::uint32_t i = 0; i < keywordForm->GetNumKeywords(); ++i) {
+			auto keywordOpt = keywordForm->GetKeywordAt(i);
+			if (keywordOpt) {
+				auto keyword = *keywordOpt;
+				if (keyword) {
+					const char* keywordEditorID = keyword->GetFormEditorID();
+					if (keywordEditorID) {
+						// Check if the keywordEditorID is in the given editorIDs vector
+						if (std::find(editorIDs.begin(), editorIDs.end(), keywordEditorID) != editorIDs.end()) {
+							return true;
+						}
+					}
+				}
+			}
+		}
 
-        return false;
-    }
-
+		return false;
+	}
 
 	bool TESForm::HasKeywordInArray(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const
 	{
