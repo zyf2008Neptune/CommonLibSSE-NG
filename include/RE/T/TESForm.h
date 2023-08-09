@@ -301,6 +301,7 @@ namespace RE
 		[[nodiscard]] const char* GetName() const;
 		[[nodiscard]] float       GetWeight() const;
 		[[nodiscard]] bool        HasKeywordInArray(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const;
+		[[nodiscard]] bool 		  HasAnyKeywordByEditorID(const std::vector<std::string>& editorIDs) const;
 		[[nodiscard]] bool        HasKeywordInList(BGSListForm* a_keywordList, bool a_matchAll) const;
 		[[nodiscard]] bool        HasVMAD() const;
 		[[nodiscard]] bool        HasWorldModel() const noexcept;
