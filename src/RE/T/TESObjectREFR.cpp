@@ -775,6 +775,14 @@ namespace RE
 		return true;
 	}
 
+	bool TESObjectREFR::NameIncludes(std::string a_word)
+	{
+		auto obj = GetObjectReference();
+		std::string name = obj ? obj->GetName() : "";
+
+		return name.find(a_word) != std::string::npos;
+	}
+
 	NiPointer<TESObjectREFR> TESObjectREFR::PlaceObjectAtMe(TESBoundObject* a_baseToPlace, bool a_forcePersist) const
 	{
 		const auto handle = TESDataHandler::GetSingleton()->CreateReferenceAtLocation(a_baseToPlace, GetPosition(), GetAngle(), GetParentCell(), GetWorldspace(), nullptr, nullptr, ObjectRefHandle(), a_forcePersist, true);

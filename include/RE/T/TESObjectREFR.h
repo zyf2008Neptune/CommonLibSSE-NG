@@ -448,6 +448,7 @@ namespace RE
 		void                                    MoveTo(TESObjectREFR* a_target);
 		bool                                    MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool                                    MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
+		bool                                    NameIncludes(std::string a_word);
 		NiPointer<TESObjectREFR>                PlaceObjectAtMe(TESBoundObject* a_baseToPlace, bool a_forcePersist) const;
 		void                                    PlayAnimation(stl::zstring a_from, stl::zstring a_to);
 		void                                    PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq);
