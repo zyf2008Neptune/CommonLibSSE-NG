@@ -777,7 +777,7 @@ namespace RE
 
 	bool TESObjectREFR::NameIncludes(std::string a_word)
 	{
-		auto obj = GetObjectReference();
+		auto        obj = GetObjectReference();
 		std::string name = obj ? obj->GetName() : "";
 
 		return name.find(a_word) != std::string::npos;
