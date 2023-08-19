@@ -56,12 +56,12 @@ namespace RE
 		virtual void                     SetTrackingSpaceAsSeated();                                                                       // 06
 		virtual void                     Unk_07(void);                                                                                     // 07
 		virtual void                     GetProjectionRaw(vr::EVREye eEye, float* pfLeft, float* pfRight, float* pfTop, float* pfBottom);  // 08
-		virtual void                     Unk_09(NiTransform* a_unk, std::uint32_t a_unk1);                                                 // 09
-		virtual void                     Unk_0A(void);                                                                                     // 0A
+		virtual NiTransform*             GetEyeToHeadTransform(NiTransform& a_out, bool getRightEye);                                      // 09
+		virtual NiTransform*             Unk_0A(NiTransform& a_out, bool getRightController, bool a_unk1);                                 // 0A
 		virtual void                     Unk_0B(void);                                                                                     // 0B
 		virtual vr::TrackedDeviceIndex_t GetTrackedDeviceIndexForHMD();                                                                    // 0C
 		virtual vr::TrackedDeviceIndex_t GetTrackedDeviceIndexForHand(bool getRightHand);                                                  // 0D
-		virtual void                     Unk_0E(void);                                                                                     // 0E
+		virtual void                     TriggerHapticPulse(bool doRightController, float duration);                                       // 0E
 		virtual void                     Unk_0F(void);                                                                                     // 0F
 		virtual void                     Unk_10(void);                                                                                     // 10
 		virtual void                     Unk_11(void);                                                                                     // 11

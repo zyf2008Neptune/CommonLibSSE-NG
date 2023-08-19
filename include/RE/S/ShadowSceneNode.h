@@ -89,14 +89,17 @@ namespace RE
 		std::uint64_t                   unk2E0;              // 2E0
 		NiPoint3                        unk2E8;              // 2E8
 		NiPoint3                        cameraPos;           // 2F4
-		std::uint8_t                    unk300;              // 300
-		std::uint8_t                    pad301;              // 301
-		std::uint16_t                   pad302;              // 302
-		float                           unk304;              // 304
+#ifdef SKYRIMVR
+		NiPoint3 unk328;  // 328
+#endif
+		std::uint8_t  unk300;  // 300
+		std::uint8_t  pad301;  // 301
+		std::uint16_t pad302;  // 302
+		float         unk304;  // 304
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(ShadowSceneNode) == 0x308);
 #else
-	static_assert(sizeof(ShadowSceneNode) == 0x330);
+	static_assert(sizeof(ShadowSceneNode) == 0x340);
 #endif
 }
