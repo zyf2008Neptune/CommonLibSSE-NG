@@ -667,7 +667,14 @@ namespace RE
 		return func(this, a_spell);
 	}
 
-	void Actor::InterruptCast(bool a_restoreMagicka) const
+    void Actor::InitiateDoNothingPackage()
+	{
+		using func_t = decltype(&Actor::InitiateDoNothingPackage);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36408, 37402) };
+		return func(this);
+	}
+
+    void Actor::InterruptCast(bool a_restoreMagicka) const
 	{
 		using func_t = decltype(&Actor::InterruptCast);
 		REL::Relocation<func_t> func{ RELOCATION_ID(37808, 38757) };
