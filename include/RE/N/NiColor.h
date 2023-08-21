@@ -426,3 +426,63 @@ namespace RE
 		return *this;
 	}
 }
+
+template <>
+struct fmt::formatter<RE::NiColor>
+{
+	// Presentation format: 'f' - fixed, 'e' - exponential.
+	char presentation = 'f';
+
+	// Parses format specifications of the form ['f' | 'e'].
+	constexpr auto parse(format_parse_context& ctx) -> format_parse_context::iterator
+	{
+		auto it = ctx.begin(), end = ctx.end();
+		if (it != end && (*it == 'f' || *it == 'e'))
+			presentation = *it++;
+
+		// Check if reached the end of the range:
+		if (it != end && *it != '}')
+			ctx.on_error("invalid format");
+
+		// Return an iterator past the end of the parsed range:
+		return it;
+	}
+
+	// Formats the point p using the parsed format specification (presentation)
+	// stored in this formatter.
+	auto format(const RE::NiColor& v, format_context& ctx) const -> format_context::iterator
+	{
+		// ctx.out() is an output iterator to write to.
+		return presentation == 'f' ? fmt::format_to(ctx.out(), "({:.1f}, {:.1f}, {:.1f})", v.red, v.green, v.blue) : fmt::format_to(ctx.out(), "({:.1e}, {:.1e}, {:.1e})", v.red, v.green, v.blue);
+	}
+};
+
+template <>
+struct fmt::formatter<RE::NiColorA>
+{
+	// Presentation format: 'f' - fixed, 'e' - exponential.
+	char presentation = 'f';
+
+	// Parses format specifications of the form ['f' | 'e'].
+	constexpr auto parse(format_parse_context& ctx) -> format_parse_context::iterator
+	{
+		auto it = ctx.begin(), end = ctx.end();
+		if (it != end && (*it == 'f' || *it == 'e'))
+			presentation = *it++;
+
+		// Check if reached the end of the range:
+		if (it != end && *it != '}')
+			ctx.on_error("invalid format");
+
+		// Return an iterator past the end of the parsed range:
+		return it;
+	}
+
+	// Formats the point p using the parsed format specification (presentation)
+	// stored in this formatter.
+	auto format(const RE::NiColorA& v, format_context& ctx) const -> format_context::iterator
+	{
+		// ctx.out() is an output iterator to write to.
+		return presentation == 'f' ? fmt::format_to(ctx.out(), "({:.1f}, {:.1f}, {:.1f}, {:.1f})", v.red, v.green, v.blue, v.alpha) : fmt::format_to(ctx.out(), "({:.1e}, {:.1e}, {:.1e}, {:.1e})", v.red, v.green, v.blue, v.alpha);
+	}
+};
