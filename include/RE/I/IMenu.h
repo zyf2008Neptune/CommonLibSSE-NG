@@ -72,8 +72,15 @@ namespace RE
 		virtual void               PostDisplay();                                                // 06
 		virtual void               PreDisplay();                                                 // 07 - { return; } - only available if kRendersOffscreenTargets is set
 		virtual void               RefreshPlatform();                                            // 08
+#ifdef SKYRIMVR
+		virtual void Unk_09(void);  // 09
+		virtual void Unk_0A(void);  // 0A
+#endif
 
-		[[nodiscard]] constexpr bool AdvancesUnderPauseMenu() const noexcept { return menuFlags.all(Flag::kAdvancesUnderPauseMenu); }
+		[[nodiscard]] constexpr bool AdvancesUnderPauseMenu() const noexcept
+		{
+			return menuFlags.all(Flag::kAdvancesUnderPauseMenu);
+		}
 		[[nodiscard]] constexpr bool AllowSaving() const noexcept { return menuFlags.all(Flag::kAllowSaving); }
 		[[nodiscard]] constexpr bool AlwaysOpen() const noexcept { return menuFlags.all(Flag::kAlwaysOpen); }
 		[[nodiscard]] constexpr bool ApplicationMenu() const noexcept { return menuFlags.all(Flag::kApplicationMenu); }

@@ -437,6 +437,7 @@ set(SOURCES
 	include/RE/C/CFilter.h
 	include/RE/C/CRC.h
 	include/RE/C/Calendar.h
+	include/RE/C/CalibrationOptionMenu.h
 	include/RE/C/CalmEffect.h
 	include/RE/C/CharEvent.h
 	include/RE/C/Character.h
