@@ -237,14 +237,91 @@ namespace RE
 	}
 }
 
-namespace DirectX::SimpleMath
+template <>
+struct fmt::formatter<Vector3>
 {
-	auto format_as(Vector4 v)
+	// Presentation format: 'f' - fixed, 'e' - exponential.
+	char presentation = 'f';
+
+	// Parses format specifications of the form ['f' | 'e'].
+	constexpr auto parse(format_parse_context& ctx) -> format_parse_context::iterator
 	{
-		return fmt::format("[{:.1f}, {:.1f}, {:.1f}, {:.1f}]", v.x, v.y, v.z, v.w);
+		auto it = ctx.begin(), end = ctx.end();
+		if (it != end && (*it == 'f' || *it == 'e'))
+			presentation = *it++;
+
+		// Check if reached the end of the range:
+		if (it != end && *it != '}')
+			ctx.on_error("invalid format");
+
+		// Return an iterator past the end of the parsed range:
+		return it;
 	}
-	auto format_as(Matrix m)
+
+	// Formats the point p using the parsed format specification (presentation)
+	// stored in this formatter.
+	auto format(const Vector3& v, format_context& ctx) const -> format_context::iterator
 	{
-		return fmt::format("[{}, {}, {}, {}]", (Vector4)m.m[0], (Vector4)m.m[1], (Vector4)m.m[2], (Vector4)m.m[3]);
+		// ctx.out() is an output iterator to write to.
+		return presentation == 'f' ? fmt::format_to(ctx.out(), "[{:.1f}, {:.1f}, {:.1f}]", v.x, v.y, v.z) : fmt::format_to(ctx.out(), "[{:.1e}, {:.1e}, {:.1e}]", v.x, v.y, v.z);
 	}
-}
+};
+
+template <>
+struct fmt::formatter<Vector4>
+{
+	// Presentation format: 'f' - fixed, 'e' - exponential.
+	char presentation = 'f';
+
+	// Parses format specifications of the form ['f' | 'e'].
+	constexpr auto parse(format_parse_context& ctx) -> format_parse_context::iterator
+	{
+		auto it = ctx.begin(), end = ctx.end();
+		if (it != end && (*it == 'f' || *it == 'e'))
+			presentation = *it++;
+
+		// Check if reached the end of the range:
+		if (it != end && *it != '}')
+			ctx.on_error("invalid format");
+
+		// Return an iterator past the end of the parsed range:
+		return it;
+	}
+
+	// Formats the point p using the parsed format specification (presentation)
+	// stored in this formatter.
+	auto format(const Vector4& v, format_context& ctx) const -> format_context::iterator
+	{
+		// ctx.out() is an output iterator to write to.
+		return presentation == 'f' ? fmt::format_to(ctx.out(), "[{:.1f}, {:.1f}, {:.1f}, {:.1f}]", v.x, v.y, v.z, v.w) : fmt::format_to(ctx.out(), "[{:.1e}, {:.1e}, {:.1e}, {:.1e}]", v.x, v.y, v.z, v.w);
+	}
+};
+
+template <>
+struct fmt::formatter<Matrix>
+{
+	char presentation = 'f';
+
+	// Parses format specifications of the form ['f' | 'e'].
+	constexpr auto parse(format_parse_context& ctx) -> format_parse_context::iterator
+	{
+		auto it = ctx.begin(), end = ctx.end();
+		if (it != end && (*it == 'f' || *it == 'e'))
+			presentation = *it++;
+
+		// Check if reached the end of the range:
+		if (it != end && *it != '}')
+			ctx.on_error("invalid format");
+
+		// Return an iterator past the end of the parsed range:
+		return it;
+	}
+
+	// Formats the point p using the parsed format specification (presentation)
+	// stored in this formatter.
+	auto format(const Matrix& m, format_context& ctx) const -> format_context::iterator
+	{
+		// ctx.out() is an output iterator to write to.
+		return fmt::format_to(ctx.out(), "[{}, {}, {}, {}]", (Vector4)m.m[0], (Vector4)m.m[1], (Vector4)m.m[2], (Vector4)m.m[3]);
+	}
+};
