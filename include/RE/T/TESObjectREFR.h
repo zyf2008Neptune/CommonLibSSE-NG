@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/B/BGSDefaultObjectManager.h"
 #include "RE/B/BSFixedString.h"
 #include "RE/B/BSHandleRefObject.h"
 #include "RE/B/BSPointerHandle.h"
@@ -426,18 +427,24 @@ namespace RE
 		[[nodiscard]] bool                              HasKeyword(const BGSKeyword* a_keyword) const;
 		[[nodiscard]] bool                              HasKeywordInArray(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const;
 		[[nodiscard]] bool                              HasKeywordInList(BGSListForm* a_keywordList, bool a_matchAll) const;
+		bool                                            HasKeywordWithType(DEFAULT_OBJECT keywordType) const;
+		bool                                            HasKeywordWithType(DefaultObjectID keywordType) const;
 		[[nodiscard]] bool                              HasQuestObject() const;
 		void                                            InitChildActivates(TESObjectREFR* a_actionRef);
 		bool                                            InitInventoryIfRequired(bool a_ignoreContainerExtraData = false);
 		[[nodiscard]] bool                              Is3DLoaded() const;
 		[[nodiscard]] bool                              IsActivationBlocked() const;
+		bool                                            IsAnimal() const;
 		[[nodiscard]] bool                              IsAnOwner(const Actor* a_testOwner, bool a_useFaction, bool a_requiresOwner) const;
 		[[nodiscard]] bool                              IsCrimeToActivate();
 		[[nodiscard]] bool                              IsDisabled() const;
+		bool                                            IsDragon() const;
 		[[nodiscard]] bool                              IsEnchanted() const;
 		[[nodiscard]] bool                              IsHorse() const;
+		bool                                            IsHumanoid() const;
 		[[nodiscard]] bool                              IsInitiallyDisabled() const;
 		[[nodiscard]] bool                              IsInWater() const;
+		bool                                            IsJewelry() const;
 		[[nodiscard]] bool                              IsLocked() const;
 		[[nodiscard]] bool                              IsMarkedForDeletion() const;
 		[[nodiscard]] bool                              IsOffLimits();
@@ -447,6 +454,7 @@ namespace RE
 		void                                            MoveTo(TESObjectREFR* a_target);
 		bool                                            MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool                                            MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
+		bool                                            NameIncludes(std::string a_word);
 		NiPointer<TESObjectREFR>                        PlaceObjectAtMe(TESBoundObject* a_baseToPlace, bool a_forcePersist) const;
 		void                                            PlayAnimation(stl::zstring a_from, stl::zstring a_to);
 		void                                            PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq);

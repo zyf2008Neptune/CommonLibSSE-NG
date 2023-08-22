@@ -528,7 +528,7 @@ namespace RE
 		[[nodiscard]] InventoryEntryData*       GetAttackingWeapon();
 		[[nodiscard]] const InventoryEntryData* GetAttackingWeapon() const;
 		[[nodiscard]] bhkCharacterController*   GetCharController() const;
-		uint32_t                                GetCollisionFilterInfo(uint32_t& a_outCollisionFilterInfo);
+		std::uint32_t                           GetCollisionFilterInfo(std::uint32_t& a_outCollisionFilterInfo);
 		[[nodiscard]] NiPointer<Actor>          GetCommandingActor() const;
 		[[nodiscard]] TESFaction*               GetCrimeFaction();
 		[[nodiscard]] const TESFaction*         GetCrimeFaction() const;
@@ -569,6 +569,7 @@ namespace RE
 		[[nodiscard]] bool                      HasPerk(BGSPerk* a_perk) const;
 		[[nodiscard]] bool                      HasShout(TESShout* a_shout) const;
 		[[nodiscard]] bool                      HasSpell(SpellItem* a_spell) const;
+		void                                    InitiateDoNothingPackage();
 		void                                    InterruptCast(bool a_restoreMagicka) const;
 		[[nodiscard]] bool                      IsAttacking() const;
 		[[nodiscard]] bool                      IsAIEnabled() const;

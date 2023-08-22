@@ -583,6 +583,28 @@ namespace RE
 		return hasKeyword;
 	}
 
+	bool TESObjectREFR::HasKeywordWithType(DEFAULT_OBJECT keywordType) const
+	{
+		auto dobj = BGSDefaultObjectManager::GetSingleton();
+		if (!dobj) {
+			return false;
+		}
+
+		auto keyword = dobj->GetObject<BGSKeyword>(keywordType);
+		return keyword ? HasKeyword(keyword) : false;
+	}
+
+	bool TESObjectREFR::HasKeywordWithType(DefaultObjectID keywordType) const 
+	{
+		auto dobj = BGSDefaultObjectManager::GetSingleton();
+		if (!dobj) {
+			return false;
+		}
+		auto keyword = dobj->GetObject<BGSKeyword>(keywordType);
+		return keyword && *keyword ? HasKeyword(*keyword) : false;
+
+	}
+
 	bool TESObjectREFR::HasQuestObject() const
 	{
 		using func_t = decltype(&TESObjectREFR::HasQuestObject);
@@ -615,6 +637,11 @@ namespace RE
 		return xFlags && xFlags->IsActivationBlocked();
 	}
 
+	bool TESObjectREFR::IsAnimal() const
+	{
+		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordHorse);
+	}
+
 	bool TESObjectREFR::IsAnOwner(const Actor* a_testOwner, bool a_useFaction, bool a_requiresOwner) const
 	{
 		using func_t = decltype(&TESObjectREFR::IsAnOwner);
@@ -632,6 +659,11 @@ namespace RE
 	bool TESObjectREFR::IsDisabled() const
 	{
 		return (GetFormFlags() & RecordFlags::kInitiallyDisabled) != 0;
+	}
+
+	bool TESObjectREFR::IsDragon() const
+	{
+		return HasKeywordWithType(DefaultObjectID::kKeywordDragon);
 	}
 
 	bool TESObjectREFR::IsEnchanted() const
@@ -654,18 +686,22 @@ namespace RE
 
 	bool TESObjectREFR::IsHorse() const
 	{
-		auto dobj = BGSDefaultObjectManager::GetSingleton();
-		if (!dobj) {
-			return false;
-		}
+		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordHorse);
+	}
 
-		auto keyword = dobj->GetObject<BGSKeyword>(DefaultObjectID::kKeywordHorse);
-		return keyword && *keyword ? HasKeyword(*keyword) : false;
+	bool TESObjectREFR::IsHumanoid() const
+	{
+		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordNPC);
 	}
 
 	bool TESObjectREFR::IsInitiallyDisabled() const
 	{
 		return (GetFormFlags() & RecordFlags::kInitiallyDisabled) != 0;
+	}
+
+	bool TESObjectREFR::IsJewelry() const
+	{
+		return HasKeywordWithType(DefaultObjectID::kKeywordJewelry);
 	}
 
 	bool TESObjectREFR::IsInWater() const
@@ -748,6 +784,14 @@ namespace RE
 		auto handle = a_target->GetHandle();
 		MoveTo_Impl(handle, a_target->GetParentCell(), GetWorldspace(), position, rotation);
 		return true;
+	}
+
+	bool TESObjectREFR::NameIncludes(std::string a_word)
+	{
+		auto        obj = GetObjectReference();
+		std::string name = obj ? obj->GetName() : "";
+
+		return name.find(a_word) != std::string::npos;
 	}
 
 	NiPointer<TESObjectREFR> TESObjectREFR::PlaceObjectAtMe(TESBoundObject* a_baseToPlace, bool a_forcePersist) const
