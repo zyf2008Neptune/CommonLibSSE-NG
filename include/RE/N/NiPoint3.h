@@ -63,7 +63,7 @@ struct fmt::formatter<RE::NiPoint3>
 
 		// Check if reached the end of the range:
 		if (it != end && *it != '}')
-			ctx.on_error("invalid format");
+			throw_format_error("invalid format");
 
 		// Return an iterator past the end of the parsed range:
 		return it;
