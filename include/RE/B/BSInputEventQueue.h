@@ -146,9 +146,11 @@ namespace RE
 		}
 	};
 #ifndef ENABLE_SKYRIM_VR
-	static_assert(sizeof(BSInputEventQueue) == 0x390);
+	static_assert(sizeof(BSInputEventQueue) == 0x20);
 #elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_AE)
 	static_assert(sizeof(BSInputEventQueue) == 0x580);
+#else
+	static_assert(sizeof(BSInputEventQueue) == 0x20);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT
