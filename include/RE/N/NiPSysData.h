@@ -24,6 +24,18 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NiPSysData;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiPSysData;
 
+		struct PSYS_RUNTIME_DATA
+		{
+#define RUNTIME_DATA_CONTENT                            \
+	NiParticleInfo* particleInfo;       /* 90, VR A8 */ \
+	float*          rotationSpeeds;     /* 98, VR B0 */ \
+	std::uint16_t   addedParticleCount; /* A0, VR B8 */ \
+	std::uint16_t   addedParticlesBase; /* A0, VR BC */ \
+	std::uint32_t   padA4;              /* A4, VR C0 */
+            RUNTIME_DATA_CONTENT
+		};
+		static_assert(sizeof(PSYS_RUNTIME_DATA) == 0x18);
+
 		~NiPSysData() override;  // 00
 
 		// override (NiParticlesData)
@@ -39,12 +51,27 @@ namespace RE
 		virtual std::uint16_t AddParticle();            // 2A
 		virtual void          ResolveAddedParticles();  // 2B
 
+		[[nodiscard]] inline PSYS_RUNTIME_DATA& GetPSysRuntimeData() noexcept
+		{
+			return REL::RelocateMember<PSYS_RUNTIME_DATA>(this, 0x90, 0xA8);
+		}
+
+		[[nodiscard]] inline const PSYS_RUNTIME_DATA& GetPSysRuntimeData() const noexcept
+		{
+			return REL::RelocateMember<PSYS_RUNTIME_DATA>(this, 0x90, 0xA8);
+		}
+
 		// members
-		NiParticleInfo* particleInfo;        // 90
-		float*          rotationSpeeds;      // 98
-		std::uint16_t   addedParticleCount;  // A0
-		std::uint16_t   addedParticlesBase;  // A0
-		std::uint32_t   padA4;               // A4
+#ifndef SKYRIM_CROSS_VR
+		RUNTIME_DATA_CONTENT
+#endif
 	};
+#ifndef ENABLE_SKYRIM_VR
 	static_assert(sizeof(NiPSysData) == 0xA8);
+#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+	static_assert(sizeof(NiPSysData) == 0xA8);
+#else
+	static_assert(sizeof(NiPSysData) == 0x10);
+#endif
 }
+#undef RUNTIME_DATA_CONTENT

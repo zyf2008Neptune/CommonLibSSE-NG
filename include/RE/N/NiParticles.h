@@ -4,7 +4,7 @@
 
 namespace RE
 {
-	class NiParticlesData;
+	class NiPSysData;
 
 	class NiParticles : public BSGeometry
 	{
@@ -12,15 +12,15 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_NiParticles;
 		inline static constexpr auto Ni_RTTI = NiRTTI_NiParticles;
 
-		struct RUNTIME_DATA
+		struct PARTICLES_RUNTIME_DATA
 		{
-#define RUNTIME_DATA_CONTENT                           \
-	NiPointer<NiParticlesData> particleData; /*  158*/ \
-	std::uint64_t              unk160;       /*  160*/
+#define RUNTIME_DATA_CONTENT                              \
+	NiPointer<NiPSysData> particleData; /*  158, VR 198*/ \
+	std::uint64_t         unk160;       /*  160, VR 1A0*/
 
 			RUNTIME_DATA_CONTENT
 		};
-		static_assert(sizeof(RUNTIME_DATA) == 0x10);
+		static_assert(sizeof(PARTICLES_RUNTIME_DATA) == 0x10);
 		~NiParticles() override;  // 00
 
 		// override (BSGeometry)
@@ -33,14 +33,14 @@ namespace RE
 		void          SaveBinary(NiStream& a_stream) override;            // 1B
 		bool          IsEqual(NiObject* a_object) override;               // 1C - { return BSGeometry::IsEqual(); }
 
-		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
+		[[nodiscard]] inline PARTICLES_RUNTIME_DATA& GetParticleRuntimeData() noexcept
 		{
-			return REL::RelocateMember<RUNTIME_DATA>(this, 0x158, 0x198);
+			return REL::RelocateMember<PARTICLES_RUNTIME_DATA>(this, 0x158, 0x198);
 		}
 
-		[[nodiscard]] inline const RUNTIME_DATA& GetRuntimeData() const noexcept
+		[[nodiscard]] inline const PARTICLES_RUNTIME_DATA& GetParticleRuntimeData() const noexcept
 		{
-			return REL::RelocateMember<RUNTIME_DATA>(this, 0x158, 0x198);
+			return REL::RelocateMember<PARTICLES_RUNTIME_DATA>(this, 0x158, 0x198);
 		}
 
 		// members
