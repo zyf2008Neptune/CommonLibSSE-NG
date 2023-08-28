@@ -31,8 +31,12 @@ namespace RE
 				kFavor,
 
 				kTotal = 17,
-
+#ifndef SKYRIMVR
 				kNone = 18
+#else
+				kNone = 22  // More input contexts might be available, needs REing
+#endif
+
 			};
 		};
 		using INPUT_CONTEXT_ID = INPUT_CONTEXT_IDS::INPUT_CONTEXT_ID;

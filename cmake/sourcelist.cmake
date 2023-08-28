@@ -292,6 +292,7 @@ set(SOURCES
 	include/RE/B/BSNiAllocator.h
 	include/RE/B/BSNiNode.h
 	include/RE/B/BSOpenVR.h
+	include/RE/B/BSOpenVRControllerDevice.h
 	include/RE/B/BSOrderedNode.h
 	include/RE/B/BSPCGamepadDeviceDelegate.h
 	include/RE/B/BSPCGamepadDeviceHandler.h
@@ -365,6 +366,7 @@ set(SOURCES
 	include/RE/B/BSThread.h
 	include/RE/B/BSThreadEvent.h
 	include/RE/B/BSTimer.h
+	include/RE/B/BSTrackedControllerDevice.h
 	include/RE/B/BSTreeManager.h
 	include/RE/B/BSTriShape.h
 	include/RE/B/BSUIMessageData.h
@@ -909,6 +911,7 @@ set(SOURCES
 	include/RE/H/HighProcessData.h
 	include/RE/H/HitData.h
 	include/RE/H/HorseCameraState.h
+	include/RE/H/HudModeChangeEvent.h
 	include/RE/H/hkAabb.h
 	include/RE/H/hkArray.h
 	include/RE/H/hkBaseObject.h
@@ -1625,6 +1628,7 @@ set(SOURCES
 	include/RE/V/VoiceSpellFireHandler.h
 	include/RE/V/VrWandTouchpadPositionEvent.h
 	include/RE/V/VrWandTouchpadSwipeEvent.h
+	include/RE/W/WSActivateRollover.h
 	include/RE/W/WeaponAnimationGraphManagerHolder.h
 	include/RE/W/WeatherType.h
 	include/RE/W/WerewolfEffect.h
@@ -1975,6 +1979,7 @@ set(SOURCES
 	src/RE/U/UserEvents.cpp
 	src/RE/V/Variable.cpp
 	src/RE/V/VirtualMachine.cpp
+	src/RE/W/WorldSpaceMenu.cpp
 	src/RE/Z/ZeroFunctionArguments.cpp
 	src/REL/Relocation.cpp
 	src/SKSE/API.cpp

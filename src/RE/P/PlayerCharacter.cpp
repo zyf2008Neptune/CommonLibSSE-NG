@@ -22,14 +22,21 @@ namespace RE
 		REL::Relocation<bool*> singleton{ RELOCATION_ID(517711, 404238) };
 		return *singleton;
 	}
-
+#ifndef SKYRIMVR
 	void PlayerCharacter::ActivatePickRef()
 	{
 		using func_t = decltype(&PlayerCharacter::ActivatePickRef);
 		REL::Relocation<func_t> func{ Offset::PlayerCharacter::ActivatePickRef };
 		return func(this);
 	}
-
+#else
+	void PlayerCharacter::ActivatePickRef(VR_DEVICE a_device)
+	{
+		using func_t = decltype(&PlayerCharacter::ActivatePickRef);
+		REL::Relocation<func_t> func{ Offset::PlayerCharacter::ActivatePickRef };
+		return func(this, a_device);
+	}
+#endif
 	void PlayerCharacter::AddPlayerAddItemEvent(TESObject* a_object, TESForm* a_owner, TESObjectREFR* a_container, AQUIRE_TYPE a_type)
 	{
 		using func_t = decltype(&PlayerCharacter::AddPlayerAddItemEvent);

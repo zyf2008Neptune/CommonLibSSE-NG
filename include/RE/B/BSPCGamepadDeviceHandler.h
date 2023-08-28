@@ -26,11 +26,18 @@ namespace RE
 		void InitializeDelegate();  // called by Initialize() and Process() to initialize the delegate
 
 		// members
-		BSPCGamepadDeviceDelegate* currentPCGamePadDelegate;  // 08
+#ifdef SKYRIMVR
+		std::uint64_t unk08;  // 08
+#endif
+		BSPCGamepadDeviceDelegate* currentPCGamePadDelegate;  // 08, 10 in VR
 	protected:
 		friend class BSInputDeviceFactory;
 		BSPCGamepadDeviceHandler();
 	};
-
+#ifdef SKYRIMVR
+	static_assert(sizeof(BSPCGamepadDeviceHandler) == 0x18);
+#else
 	static_assert(sizeof(BSPCGamepadDeviceHandler) == 0x10);
+#endif
+
 }
