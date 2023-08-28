@@ -3,6 +3,7 @@
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/I/IMenu.h"
+#include "RE/W/WorldSpaceMenu.h"
 
 namespace RE
 {
@@ -12,7 +13,11 @@ namespace RE
 	// flags = kUpdateUsesCursor | kDontHideCursorWhenTopmost
 	// context = kMenuMode
 	class DialogueMenu :
-		public IMenu,                            // 00
+#ifndef SKYRIMVR
+		public IMenu,  // 00
+#else
+		public WorldSpaceMenu,
+#endif
 		public BSTEventSink<MenuOpenCloseEvent>  // 30
 	{
 	public:
@@ -32,15 +37,27 @@ namespace RE
 		void               Accept(CallbackProcessor* a_processor) override;  // 01
 		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
 
+#ifdef SKYRIMVR
+		virtual void        SetupMenuNode() override;
+		virtual RE::NiNode* GetMenuParentNode() override;  // 0C
+		virtual void        SetTransform() override;       // 0D
+#endif
 		// override (BSTEventSink<MenuOpenCloseEvent>)
 		BSEventNotifyControl ProcessEvent(const MenuOpenCloseEvent* a_event, BSTEventSource<MenuOpenCloseEvent>* a_eventSource) override;  // 01
 
+#ifdef SKYRIMVR
+		// override (BSTEventSink<HudModeChangeEvent>)
+		BSEventNotifyControl ProcessEvent(const HudModeChangeEvent* a_event, BSTEventSource<HudModeChangeEvent>* a_eventSource) override;  // 01
+#endif
 		// members
 		BSTArray<Data> unk38;  // 38
+#ifdef SKYRIMVR
+		RE::NiNode* occlusionCheckNode;  // 78 - name is "Dialogue Menu Occlusion Check Node"
+#endif
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(DialogueMenu) == 0x50);
 #else
-	//static_assert(sizeof(DialogueMenu) == 0x80);
+	static_assert(sizeof(DialogueMenu) == 0x80);
 #endif
 }

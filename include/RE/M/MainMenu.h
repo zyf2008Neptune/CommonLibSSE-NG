@@ -17,7 +17,12 @@ namespace RE
 		public IMenu,                          // 00
 		public BSTEventSink<BSSystemEvent>,    // 30
 		public BSTEventSink<BSSaveDataEvent>,  // 38
-		public GFxFunctionHandler              // 40
+#ifndef SKYRIMVR
+		public GFxFunctionHandler  // 40
+#else
+		public BSTEventSink<BSGamerProfileEvent>,  // 50
+		public MenuEventHandler                    // 58
+#endif
 	{
 	public:
 		inline static constexpr auto      RTTI = RTTI_MainMenu;
@@ -35,9 +40,15 @@ namespace RE
 
 		// override (BSTEventSink<BSSaveDataEvent>)
 		BSEventNotifyControl ProcessEvent(const BSSaveDataEvent* a_event, BSTEventSource<BSSaveDataEvent>* a_eventSource) override;  // 01
+#ifdef SKYRIMVR
+		// override (BSTEventSink<BSSaveDataEvent>)
+		BSEventNotifyControl ProcessEvent(const BSGamerProfileEvent* a_event, BSTEventSource<BSGamerProfileEvent>* a_eventSource) override;  // 01
+#endif
 
+#ifndef SKYRIMVR
 		// override (GFxFunctionHandler)
 		void Call(Params& a_params) override;  // 01
+#endif
 
 		// members
 		BSScaleformExternalTexture unk50;  // 50
@@ -50,6 +61,6 @@ namespace RE
 #ifndef SKYRIMVR
 	static_assert(sizeof(MainMenu) == 0x70);
 #else
-	//static_assert(sizeof(MainMenu) == 0x88);
+	static_assert(sizeof(MainMenu) == 0x88);
 #endif
 }

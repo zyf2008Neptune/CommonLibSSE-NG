@@ -9,6 +9,7 @@ namespace RE
 		public IMenu,            // 00
 		public MenuEventHandler  // 40
 	{
+	public:
 		inline static constexpr auto RTTI = RTTI_CalibrationOptionMenu;
 
 		// override (IMenu)

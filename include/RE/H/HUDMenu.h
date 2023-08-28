@@ -79,6 +79,11 @@ namespace RE
 		void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime) override;  // 05
 		void               RefreshPlatform() override;                                            // 08
 
+		// override (WorldSpaceMenu)
+		void        SetupMenuNode() override;      // 0B
+		RE::NiNode* GetMenuParentNode() override;  // 0C
+		void        SetTransform() override;       // 0D
+
 		// override (BSTEventSink<HudModeChangeEvent>)
 		BSEventNotifyControl ProcessEvent(const HudModeChangeEvent* a_event, BSTEventSource<HudModeChangeEvent>* a_eventSource) override;  // 01
 

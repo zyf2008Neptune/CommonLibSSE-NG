@@ -932,7 +932,7 @@ namespace RE
 				inline constexpr REL::Offset AdvanceLevel(static_cast<std::uint64_t>(0x70D630));
 			}
 
-			inline constexpr REL::Offset ActivatePickRef(static_cast<std::uint64_t>(0x6B2C60));
+			inline constexpr REL::Offset ActivatePickRef(static_cast<std::uint64_t>(0x6CBCE0));
 			inline constexpr REL::Offset AddPlayerAddItemEvent(static_cast<std::uint64_t>(0x6C0640));
 			inline constexpr REL::Offset AttemptPickpocket(static_cast<std::uint64_t>(0x6D58A0));
 			inline constexpr REL::Offset GetArmorValue(static_cast<std::uint64_t>(0x69C2D0));

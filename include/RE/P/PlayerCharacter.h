@@ -430,7 +430,6 @@ namespace RE
 		static PlayerCharacter* GetSingleton();
 		static bool             IsGodMode();
 
-		void             ActivatePickRef();
 		void             AddPlayerAddItemEvent(TESObject* a_object, TESForm* a_owner, TESObjectREFR* a_container, AQUIRE_TYPE a_type);
 		void             AddSkillExperience(ActorValue a_skill, float a_experience);
 		bool             AttemptPickpocket(TESObjectREFR* a_containerRef, InventoryEntryData* a_entry, std::int32_t a_number, bool a_fromContainer = true);
@@ -450,10 +449,12 @@ namespace RE
 		BSTArray<TintMask*>&     GetTintList();
 		TintMask*                GetTintMask(std::uint32_t a_tintType, std::uint32_t a_index);
 		void                     StartGrabObject();
+		void                     ActivatePickRef();
 #else
 		void StartGrabObject(VR_DEVICE a_device);
 		NiPointer<TESObjectREFR> GetGrabbedRef(VR_DEVICE a_device);
 		bool IsGrabbingWithDevice(VR_DEVICE a_device) const;
+		void ActivatePickRef(VR_DEVICE a_device = VR_DEVICE::kHeadset);
 #endif
 		bool HasActorDoingCommand() const;
 		bool IsGrabbing() const;

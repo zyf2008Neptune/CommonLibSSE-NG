@@ -12,7 +12,13 @@ namespace RE
 	// menuDepth = 0
 	// flags = kUsesMenuContext | kDisablePauseMenu | kUpdateUsesCursor | kInventoryItemMenu | kDontHideCursorWhenTopmost
 	// context = kItemMenu
-	class CraftingMenu : public IMenu
+	class CraftingMenu :
+#ifdef SKYRIMVR
+		public IMenu,
+		public MenuEventHandler
+#else
+		public IMenu
+#endif
 	{
 	public:
 		inline static constexpr auto      RTTI = RTTI_CraftingMenu;
@@ -31,6 +37,6 @@ namespace RE
 #ifndef SKYRIMVR
 	static_assert(sizeof(CraftingMenu) == 0x38);
 #else
-	//static_assert(sizeof(CraftingMenu) == 0x58);
+	static_assert(sizeof(CraftingMenu) == 0x58);
 #endif
 }

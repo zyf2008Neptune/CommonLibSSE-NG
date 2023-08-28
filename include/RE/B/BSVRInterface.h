@@ -91,7 +91,7 @@ namespace RE
 		std::uint64_t         unk1E0;      // 1E0
 		std::uint64_t         unk1E8;      // 1E8
 		std::uint64_t         unk1F0;      // 1F0
-		vr::VROverlayHandle_t unk1F8;      // 1F8 - current overlay handle?
+		vr::VROverlayHandle_t unk1F8;      // 1F8 - current overlay handle? Used in 2D overlay menus like JournalMenu
 		std::byte             unk200;      // 200
 	};
 	static_assert(sizeof(BSVRInterface) == 0x208);

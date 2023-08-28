@@ -91,6 +91,7 @@ namespace RE
 		template <class T>
 		void RemoveEventSink(BSTEventSink<T>* a_sink);
 		void ShowMenus(bool a_show);
+		void GetTopMostMenu(RE::IMenu** a_result, std::uint32_t a_depthLimit);
 
 		template <
 			class T,
