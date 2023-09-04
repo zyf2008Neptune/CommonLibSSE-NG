@@ -143,6 +143,7 @@ set(SOURCES
 	include/RE/B/BGSMusicType.h
 	include/RE/B/BGSNamedPackageData.h
 	include/RE/B/BGSNote.h
+	include/RE/B/BGSNumericIDIndex.h
 	include/RE/B/BGSOpenCloseForm.h
 	include/RE/B/BGSOutfit.h
 	include/RE/B/BGSOverridePackCollection.h
@@ -164,6 +165,9 @@ set(SOURCES
 	include/RE/B/BGSReferenceEffect.h
 	include/RE/B/BGSRelationship.h
 	include/RE/B/BGSReverbParameters.h
+	include/RE/B/BGSSaveFormBuffer.h
+	include/RE/B/BGSSaveGameBuffer.h
+	include/RE/B/BGSSaveLoadGame.h
 	include/RE/B/BGSSaveLoadManager.h
 	include/RE/B/BGSScene.h
 	include/RE/B/BGSSceneAction.h
@@ -1206,9 +1210,12 @@ set(SOURCES
 	include/RE/N/NavMesh.h
 	include/RE/N/NavMeshInfoMap.h
 	include/RE/N/NiAVObject.h
+	include/RE/N/NiAccumulator.h
 	include/RE/N/NiAllocator.h
+	include/RE/N/NiAlphaAccumulator.h
 	include/RE/N/NiAlphaProperty.h
 	include/RE/N/NiAnimationKey.h
+	include/RE/N/NiBackToFrontAccumulator.h
 	include/RE/N/NiBinaryStream.h
 	include/RE/N/NiBoneMatrixSetterI.h
 	include/RE/N/NiBooleanExtraData.h
@@ -1223,6 +1230,7 @@ set(SOURCES
 	include/RE/N/NiControllerManager.h
 	include/RE/N/NiControllerSequence.h
 	include/RE/N/NiCullingProcess.h
+	include/RE/N/NiDirectionalLight.h
 	include/RE/N/NiExtraData.h
 	include/RE/N/NiFile.h
 	include/RE/N/NiFloatData.h
@@ -1381,8 +1389,10 @@ set(SOURCES
 	include/RE/S/SettingCollectionMap.h
 	include/RE/S/SettingT.h
 	include/RE/S/Sexes.h
+	include/RE/S/ShaderAccumulator.h
 	include/RE/S/ShaderReferenceEffect.h
 	include/RE/S/ShadowSceneNode.h
+	include/RE/S/ShadowState.h
 	include/RE/S/ShoutAttack.h
 	include/RE/S/ShoutHandler.h
 	include/RE/S/ShoutMeter.h
@@ -1621,6 +1631,7 @@ set(SOURCES
 	include/SKSE/Impl/DInputAPI.h
 	include/SKSE/Impl/PCH.h
 	include/SKSE/Impl/RegistrationTraits.h
+	include/SKSE/Impl/ScePadAPI.h
 	include/SKSE/Impl/Stubs.h
 	include/SKSE/Impl/WinAPI.h
 	include/SKSE/Impl/XInputAPI.h

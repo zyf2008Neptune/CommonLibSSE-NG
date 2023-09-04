@@ -12,6 +12,8 @@
       "name": "vcpkg-cmake-config",
       "host": true
     },
+    "directxmath",
+    "directxtk",
     "fmt",
     "rapidcsv",
     "spdlog"
@@ -26,5 +28,6 @@
   },
   "default-features": [
     "tests"
-  ]
+  ],
+  "builtin-baseline": "d1e11918f5c88c1dd364b93e1452fea69bacd479"
 }

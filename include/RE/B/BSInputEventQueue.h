@@ -21,10 +21,8 @@ namespace RE
 		inline static constexpr std::uint8_t MAX_THUMBSTICK_EVENTS = 2;
 		inline static constexpr std::uint8_t MAX_CONNECT_EVENTS = 1;
 		inline static constexpr std::uint8_t MAX_KINECT_EVENTS = 1;
-#ifdef ENABLE_SKYRIM_VR
 		inline static constexpr std::uint8_t MAX_VR_TOUCHPAD_POSITION_EVENTS = 3;
 		inline static constexpr std::uint8_t MAX_VR_TOUCHPAD_SWIPE_EVENTS = 3;
-#endif
 
 		static BSInputEventQueue* GetSingleton();
 
@@ -43,14 +41,14 @@ namespace RE
 
 		struct VRTOUCHPAD_DATA
 		{
-#define VRTOUCHPAD_DATA_CONTENT                                                            \
-	std::uint32_t               vrTouchpadPositionEventCount;                              \
-	std::uint32_t               vrTouchpadSwipeEventCount;                                 
-            VRTOUCHPAD_DATA_CONTENT
+#define VRTOUCHPAD_DATA_CONTENT                 \
+	std::uint32_t vrTouchpadPositionEventCount; \
+	std::uint32_t vrTouchpadSwipeEventCount;
+			VRTOUCHPAD_DATA_CONTENT
 		};
 		static_assert(sizeof(VRTOUCHPAD_DATA) == 0x8);
 
-				struct VRTOUCHPADEVENT_DATA
+		struct VRTOUCHPADEVENT_DATA
 		{
 #define VRTOUCHPADEVENT_DATA_CONTENT                                                       \
 	VrWandTouchpadPositionEvent vrTouchpadPositionEvents[MAX_VR_TOUCHPAD_POSITION_EVENTS]; \
@@ -61,7 +59,7 @@ namespace RE
 
 		struct RUNTIME_DATA
 		{
-#ifndef ENABLE_SKYRIM_VR  // Non-VR
+#ifndef ENABLE_SKYRIM_VR                                            // Non-VR
 #	define RUNTIME_DATA_CONTENT                                             \
 		ButtonEvent        buttonEvents[MAX_BUTTON_EVENTS];         /* 020*/ \
 		CharEvent          charEvents[MAX_CHAR_EVENTS];             /* 200*/ \
@@ -72,17 +70,17 @@ namespace RE
 		InputEvent*        queueHead;                               /* 380*/ \
 		InputEvent*        queueTail;                               /* 388*/
 #else
-#	define RUNTIME_DATA_CONTENT                                                 \
-		VRTOUCHPAD_DATA_CONTENT;                                        /* 020*/ \
-		ButtonEvent            buttonEvents[MAX_BUTTON_EVENTS];         /* 028*/ \
-		CharEvent              charEvents[MAX_CHAR_EVENTS];             /* 208*/ \
-		MouseMoveEvent         mouseEvents[MAX_MOUSE_EVENTS];           /* 2A8*/ \
-		ThumbstickEvent        thumbstickEvents[MAX_THUMBSTICK_EVENTS]; /* 2D8*/ \
-		DeviceConnectEvent connectEvents[MAX_CONNECT_EVENTS];			/* 338*/ \
-		KinectEvent            kinectEvents[MAX_KINECT_EVENTS];         /* 358*/ \
-		VRTOUCHPADEVENT_DATA_CONTENT;                                   /* 380*/ \
-		InputEvent* queueHead;                                          /* 518*/ \
-		InputEvent* queueTail;                                          /* 520*/ 
+#	define RUNTIME_DATA_CONTENT                                             \
+		VRTOUCHPAD_DATA_CONTENT;                                    /* 020*/ \
+		ButtonEvent        buttonEvents[MAX_BUTTON_EVENTS];         /* 028*/ \
+		CharEvent          charEvents[MAX_CHAR_EVENTS];             /* 208*/ \
+		MouseMoveEvent     mouseEvents[MAX_MOUSE_EVENTS];           /* 2A8*/ \
+		ThumbstickEvent    thumbstickEvents[MAX_THUMBSTICK_EVENTS]; /* 2D8*/ \
+		DeviceConnectEvent connectEvents[MAX_CONNECT_EVENTS];       /* 338*/ \
+		KinectEvent        kinectEvents[MAX_KINECT_EVENTS];         /* 358*/ \
+		VRTOUCHPADEVENT_DATA_CONTENT;                               /* 380*/ \
+		InputEvent* queueHead;                                      /* 518*/ \
+		InputEvent* queueTail;                                      /* 520*/
 #endif
 			RUNTIME_DATA_CONTENT
 		};
@@ -103,12 +101,12 @@ namespace RE
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
-	return REL::RelocateMember<RUNTIME_DATA>(this, 0x20, 0x20);
+			return REL::RelocateMember<RUNTIME_DATA>(this, 0x20, 0x20);
 		}
 
 		[[nodiscard]] inline const RUNTIME_DATA& GetRuntimeData() const noexcept
 		{
-	return REL::RelocateMember<RUNTIME_DATA>(this, 0x20, 0x20);
+			return REL::RelocateMember<RUNTIME_DATA>(this, 0x20, 0x20);
 		}
 
 		[[nodiscard]] VRTOUCHPAD_DATA* GetVRTouchpadData() noexcept
@@ -146,14 +144,15 @@ namespace RE
 				return &REL::RelocateMember<VRTOUCHPADEVENT_DATA>(this, 0, 0x320);
 			}
 		}
-
 	};
 #ifndef ENABLE_SKYRIM_VR
-	static_assert(sizeof(BSInputEventQueue) == 0x390);
+	static_assert(sizeof(BSInputEventQueue) == 0x20);
 #elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_AE)
-	static_assert(sizeof(BSInputEventQueue) == 0x530);
+	static_assert(sizeof(BSInputEventQueue) == 0x580);
+#else
+	static_assert(sizeof(BSInputEventQueue) == 0x20);
 #endif
 }
-#undef PLAYER_RUNTIME_DATA_CONTENT
+#undef RUNTIME_DATA_CONTENT
 #undef VRTOUCHPAD_DATA_CONTENT
 #undef VRTOUCHPADEVENT_DATA_CONTENT

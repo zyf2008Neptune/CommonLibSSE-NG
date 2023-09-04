@@ -56,8 +56,8 @@ namespace RE
 		NiParticleSystem*                      target;  // 20
 		bool                                   active;  // 28
 		std::uint8_t                           pad29;   // 29
-		std::uint16_t                          pad2A;   // 29
-		std::uint32_t                          pad2C;   // 29
+		std::uint16_t                          pad2A;   // 2A
+		std::uint32_t                          pad2C;   // 2C
 	};
 	static_assert(sizeof(NiPSysModifier) == 0x30);
 }

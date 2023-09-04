@@ -19,7 +19,7 @@ namespace RE
 	BSPCGamepadDeviceDelegate* BSInputDeviceManager::GetGamepad()
 	{
 		auto handler = GetGamepadHandler();
-		return handler ? handler->currentPCGamePadDelegate : nullptr;
+		return handler ? handler->GetRuntimeData().currentPCGamePadDelegate : nullptr;
 	}
 
 	BSPCGamepadDeviceHandler* BSInputDeviceManager::GetGamepadHandler()
@@ -69,13 +69,13 @@ namespace RE
 	bool BSInputDeviceManager::IsGamepadConnected()
 	{
 		auto handler = GetGamepadHandler();
-		return handler && handler->currentPCGamePadDelegate;
+		return handler && handler->GetRuntimeData().currentPCGamePadDelegate;
 	}
 
 	bool BSInputDeviceManager::IsGamepadEnabled()
 	{
 		auto handler = GetGamepadHandler();
-		return handler && handler->currentPCGamePadDelegate && handler->currentPCGamePadDelegate->IsEnabled();
+		return handler && handler->GetRuntimeData().currentPCGamePadDelegate && handler->GetRuntimeData().currentPCGamePadDelegate->IsEnabled();
 	}
 
 	bool BSInputDeviceManager::IsMouseBackground()

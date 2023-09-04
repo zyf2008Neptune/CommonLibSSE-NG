@@ -51,7 +51,7 @@ namespace RE
 		std::uint32_t   unk144;           // 144
 		BSTArray<void*> unk148;           // 148
 		Data            unk160[4];        // 161
-		std::uint32_t   unk520;           // 520
+		std::uint32_t   maskSelect;       // 520
 		std::uint32_t   unk524;           // 524
 		BSTArray<void*> unk528;           // 528
 		float           shadowBiasScale;  // 540

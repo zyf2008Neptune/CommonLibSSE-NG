@@ -32,6 +32,7 @@ endif()
 find_package(fmt CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_path(RAPIDCSV_INCLUDE_DIRS "rapidcsv.h")
+find_package(directxtk CONFIG REQUIRED)
 
 include(cmake/sourcelist.cmake)
 include(cmake/testlist.cmake)
@@ -132,9 +133,10 @@ target_compile_definitions(
 target_link_libraries(
 	"${PROJECT_NAME}"
 	PUBLIC
-		fmt::fmt
-		spdlog::spdlog
-		Version.lib
+	fmt::fmt
+	spdlog::spdlog
+	Version.lib
+	Microsoft::DirectXTK
 )
 
 target_precompile_headers(
