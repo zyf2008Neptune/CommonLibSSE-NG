@@ -25,13 +25,17 @@ namespace RE::DirectInput8
 
 	using GUID = SKSE::WinAPI::GUID;
 	using LPGUID = GUID*;
+#if !defined(REFGUID)
 	using REFGUID = const GUID&;
+#endif
 	using FILETIME = SKSE::WinAPI::FILETIME;
 	using RECT = SKSE::WinAPI::RECT;
 	using POINT = SKSE::WinAPI::POINT;
 
 	using IID = GUID;
+#if !defined(REFIID)
 	using REFIID = const IID&;
+#endif
 	using LPIID = IID*;
 	using D3DCOLOR = std::uint32_t;
 
@@ -340,11 +344,11 @@ namespace RE::DirectInput8
 
 	struct DIENVELOPE__
 	{
-		DWORD dwSize; /* sizeof(DIENVELOPE)   */
+		DWORD dwSize;       /* sizeof(DIENVELOPE)   */
 		DWORD dwAttackLevel;
 		DWORD dwAttackTime; /* Microseconds         */
 		DWORD dwFadeLevel;
-		DWORD dwFadeTime; /* Microseconds         */
+		DWORD dwFadeTime;   /* Microseconds         */
 	};
 	using DIENVELOPE = DIENVELOPE__;
 	using LPDIENVELOPE = DIENVELOPE*;
@@ -367,10 +371,10 @@ namespace RE::DirectInput8
 
 	struct DIEFFECT__
 	{
-		DWORD        dwSize;         /* sizeof(DIEFFECT)     */
-		DWORD        dwFlags;        /* DIEFF_*              */
-		DWORD        dwDuration;     /* Microseconds         */
-		DWORD        dwSamplePeriod; /* Microseconds         */
+		DWORD        dwSize;                                   /* sizeof(DIEFFECT)     */
+		DWORD        dwFlags;                                  /* DIEFF_*              */
+		DWORD        dwDuration;                               /* Microseconds         */
+		DWORD        dwSamplePeriod;                           /* Microseconds         */
 		DWORD        dwGain;
 		DWORD        dwTriggerButton;                          /* or DIEB_NOTRIGGER    */
 		DWORD        dwTriggerRepeatInterval;                  /* Microseconds         */
