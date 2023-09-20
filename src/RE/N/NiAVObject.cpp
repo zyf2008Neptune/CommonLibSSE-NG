@@ -1,23 +1,23 @@
 #include "RE/N/NiAVObject.h"
 
 #include "RE/B/BSEffectShaderData.h"
+#include "RE/B/BSEffectShaderMaterial.h"
 #include "RE/B/BSGeometry.h"
 #include "RE/B/BSLightingShaderMaterialFacegenTint.h"
 #include "RE/B/BSLightingShaderMaterialHairTint.h"
 #include "RE/B/BSLightingShaderProperty.h"
-#include "RE/B/BSEffectShaderMaterial.h"
 #include "RE/B/BSShaderProperty.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/B/BSVisit.h"
 #include "RE/B/BSXFlags.h"
 #include "RE/B/bhkNiCollisionObject.h"
 #include "RE/B/bhkRigidBody.h"
+#include "RE/H/hkpRigidBody.h"
 #include "RE/N/NiColor.h"
 #include "RE/N/NiNode.h"
 #include "RE/N/NiProperty.h"
 #include "RE/N/NiRTTI.h"
 #include "RE/S/State.h"
-#include "RE/H/hkpRigidBody.h"
 
 namespace RE
 {
@@ -101,7 +101,7 @@ namespace RE
 
 	TESObjectREFR* NiAVObject::GetUserData() const
 	{
-		auto* thisUserData = REL::RelocateMember<RE::TESObjectREFR*>(this, 0x0F8, 0x100);
+		auto* thisUserData = REL::RelocateMember<RE::TESObjectREFR*>(this, 0x0F8, 0x110);
 		if (thisUserData) {
 			return thisUserData;
 		}
@@ -115,7 +115,7 @@ namespace RE
 
 	void NiAVObject::SetUserData(TESObjectREFR* a_ref) noexcept
 	{
-		REL::RelocateMember<RE::TESObjectREFR*>(this, 0x0F8, 0x100) = a_ref;
+		REL::RelocateMember<RE::TESObjectREFR*>(this, 0x0F8, 0x110) = a_ref;
 	}
 
 	bool NiAVObject::HasAnimation() const
