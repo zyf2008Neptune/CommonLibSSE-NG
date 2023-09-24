@@ -28,12 +28,13 @@ namespace RE
 			kPCTransition,
 			kTween,
 			kAnimated,
-			kThirdPerson,
-			kMount,
-			kBleedout,
-			kDragon,
-
-			kTotal
+			kThirdPerson, // VR VrCameraState : TESCameraState : BSIntrusiveRefCounted
+			kMount, // VR kThirdPerson ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
+			kBleedout, // VR kMount HorseCameraState : ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
+			kDragon, // VR kBleedout BleedoutCameraState : ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
+			
+			kTotal, // VR kDragon DragonCameraState : ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
+			kVRTotal
 		};
 	};
 	using CameraState = CameraStates::CameraState;
@@ -72,23 +73,23 @@ namespace RE
 		std::uint8_t                                         pad039;                              // 039
 		std::uint16_t                                        pad03A;                              // 03A
 		ActorHandle                                          cameraTarget;                        // 03C
-		BSTSmallArray<TESCameraState*, CameraStates::kTotal> tempReturnStates;                    // 040
-		BSTSmartPointer<TESCameraState>                      cameraStates[CameraStates::kTotal];  // 0B8
-		Unk120*                                              unk120;                              // 120 - ?
-		NiPointer<bhkRigidBody>                              rigidBody;                           // 128 - ?
-		RefHandle                                            objectFadeHandle;                    // 130 - ?
-		mutable BSSpinLock                                   lock;                                // 134
-		float                                                worldFOV;                            // 13C
-		float                                                firstPersonFOV;                      // 140
-		NiPoint3                                             pos;                                 // 144 - ?
-		float                                                idleTimer;                           // 150 - ?
-		float                                                yaw;                                 // 154 - ? - in radians
+		BSTSmallArray<TESCameraState*, CameraStates::kTotal> tempReturnStates;                    // 040, VR 050
+		BSTSmartPointer<TESCameraState>                      cameraStates[CameraStates::kTotal];  // 0B8, VR 0C0
+		Unk120*                                              unk120;                              // 120, VR 130 - ?
+		NiPointer<bhkRigidBody>                              rigidBody;                           // 128, VR 138 - ?
+		RefHandle                                            objectFadeHandle;                    // 130, VR 140 - ?
+		mutable BSSpinLock                                   lock;                                // 134, VR 144
+		float                                                worldFOV;                            // 13C, VR 158
+		float                                                firstPersonFOV;                      // 140, VR 15c
+		NiPoint3                                             pos;                                 // 144, VR 160 - ?
+		float                                                idleTimer;                           // 150, VR 16c - ?
+		float                                                yaw;                                 // 154, VR 170 - ? - in radians
 		std::uint32_t                                        unk158;                              // 158 - ?
 		std::uint32_t                                        unk15C;                              // 15C - ?
-		bool                                                 allowAutoVanityMode;                 // 160
-		bool                                                 bowZoomedIn;                         // 161
-		bool                                                 isWeapSheathed;                      // 162 - ?
-		bool                                                 isProcessed;                         // 163 - ?
+		bool                                                 allowAutoVanityMode;                 // 160, VR 17c
+		bool                                                 bowZoomedIn;                         // 161, VR 17d
+		bool                                                 isWeapSheathed;                      // 162, VR 17e - ?
+		bool                                                 isProcessed;                         // 163, VR 17f - ?
 		std::uint8_t                                         unk164;                              // 164
 		std::uint8_t                                         unk165;                              // 165
 		std::uint16_t                                        pad166;                              // 166
