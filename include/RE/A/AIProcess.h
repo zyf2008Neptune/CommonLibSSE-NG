@@ -37,14 +37,15 @@ namespace RE
 	};
 	static_assert(sizeof(MiddleLowProcessData) == 0x4);
 
+
 	struct CachedValueData
 	{
 	public:
 		// members
-		bool          dirty;  // 0
-		std::uint8_t  pad1;   // 1
-		std::uint16_t pad2;   // 2
-		float         value;  // 4
+		float			value;   // 0
+		bool			invalid; // 4
+		std::uint8_t	pad5;   // 5
+		std::uint16_t	pad6;   // 6
 	};
 	static_assert(sizeof(CachedValueData) == 0x8);
 
@@ -93,7 +94,7 @@ namespace RE
 		stl::enumeration<BooleanValue, std::uint32_t> booleanValues;             // 28
 		stl::enumeration<Flags, std::uint32_t>        flags;                     // 2C
 		BSTArray<CachedValueData>                     actorValueCache;           // 30
-		BSTArray<CachedValueData>                     permanentActorValueCache;  // 48
+		BSTArray<CachedValueData>                     maxActorValueCache;		 // 48
 	};
 	static_assert(sizeof(CachedValues) == 0x60);
 
