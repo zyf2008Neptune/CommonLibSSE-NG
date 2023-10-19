@@ -45,14 +45,14 @@ namespace RE
 			DirectX::DXGI_MODE_SCALING        scaleMode;                                         // 0014
 			DirectX::DXGI_MODE_SCANLINE_ORDER scanlineOrdering;                                  // 0018
 			std::uint32_t                     isNotWindowed;                                     // 001C
-			bool                              appFullScreen;                                     // 0020
+			bool                           fullScreen;                                           // 0020
 			bool                           borderlessDisplay;                                    // 0021
 			bool                           readOnlyDepth;                                        // 0022
 			bool                           instantiated;                                         // 0023
 			bool                           requestedWindowSizeChange;                            // 0024
 			std::uint32_t                  newWidth;                                             // 0028
 			std::uint32_t                  newHeight;                                            // 002C
-			std::uint32_t                  presentInterval;                                      // 0034
+			std::uint32_t                  presentInterval;                                      // 0030
 			ID3D11Device*                  forwarder;                                            // 0038
 			ID3D11DeviceContext*           context;                                              // 0040
 			RendererWindow                 renderWindows[32];                                    // 0048
