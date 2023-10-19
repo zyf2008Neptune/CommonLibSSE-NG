@@ -105,10 +105,7 @@ namespace RE
 		public:
 			[[nodiscard]] static Renderer* GetSingleton() noexcept;
 
-			void Init(RendererInitOSData* a_data, ApplicationWindowProperties* windowProps, WinAPI::HWND window);
-			void Begin(std::uint32_t windowID);
 			void CreateSwapChain(WinAPI::HWND* window, bool setCurrent);
-			void End();
 			void KillWindow(std::uint32_t windowID);
 			void Lock();
 			void Unlock();
@@ -119,7 +116,6 @@ namespace RE
 			void WindowSizeChanged(std::uint32_t windowID);
 			void ResetWindow(std::uint32_t windowID);
 			void UpdateViewPort(std::uint32_t a_unk, std::uint32_t b_unk, bool c_unk);
-			void Shutdown();
 
 			[[nodiscard]] NiTexture::RendererData* CreateRenderTexture(std::uint32_t a_width, std::uint32_t a_height);
 			void                                   SaveRenderTargetToFile(RENDER_TARGET a_renderTarget, const char* a_filePath, TextureFileFormat a_textureFileFormat);
@@ -129,6 +125,13 @@ namespace RE
 			[[nodiscard]] static ID3D11Device*   GetDevice();
 			[[nodiscard]] static RendererWindow* GetCurrentRenderWindow();
 
+		private:
+			void Begin(std::uint32_t windowID);
+			void Init(RendererInitOSData* a_data, ApplicationWindowProperties* windowProps, WinAPI::HWND window);
+			void End();
+			void Shutdown();
+
+		public:
 			// members
 			std::uint64_t unk00;  // 00
 			std::uint64_t unk08;  // 08
