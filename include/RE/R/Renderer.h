@@ -39,32 +39,32 @@ namespace RE
 		{
 		public:
 			// members
-			std::uint32_t                     adapter;                                           // 0000
-			DirectX::DXGI_RATIONAL            desiredRefreshRate;                                // 0004
-			DirectX::DXGI_RATIONAL            actualRefreshRate;                                 // 000C
-			DirectX::DXGI_MODE_SCALING        scaleMode;                                         // 0014
-			DirectX::DXGI_MODE_SCANLINE_ORDER scanlineOrdering;                                  // 0018
-			std::uint32_t                     isNotWindowed;                                     // 001C
-			bool                           fullScreen;                                           // 0020
-			bool                           borderlessDisplay;                                    // 0021
-			bool                           readOnlyDepth;                                        // 0022
-			bool                           instantiated;                                         // 0023
-			bool                           requestedWindowSizeChange;                            // 0024
-			std::uint32_t                  newWidth;                                             // 0028
-			std::uint32_t                  newHeight;                                            // 002C
-			std::uint32_t                  presentInterval;                                      // 0030
-			ID3D11Device*                  forwarder;                                            // 0038
-			ID3D11DeviceContext*           context;                                              // 0040
-			RendererWindow                 renderWindows[32];                                    // 0048
-			RenderTargetData               renderTargets[RENDER_TARGET::kTOTAL];                 // 0A48
-			DepthStencilData               depthStencils[RENDER_TARGET_DEPTHSTENCIL::kTOTAL];    // 1FA8
-			CubemapRenderTargetData        cubemapRenderTargets[RENDER_TARGET_CUBEMAP::kTOTAL];  // 26C8
-			Texture3DTargetData            texture3DRenderTargets[RENDER_TARGET_3D::kTOTAL];     // 2708
-			float                          clearColor[4];                                        // 2768
-			std::uint8_t                   clearStencil;                                         // 2778
-			SKSE::WinAPI::CRITICAL_SECTION lock;                                                 // 2780
-			const char*                    className;                                            // 27A8
-			SKSE::WinAPI::HINSTANCE        hInstance;                                            // 27B0
+			std::uint32_t                     adapter;                                              // 0000
+			DirectX::DXGI_RATIONAL            desiredRefreshRate;                                   // 0004
+			DirectX::DXGI_RATIONAL            actualRefreshRate;                                    // 000C
+			DirectX::DXGI_MODE_SCALING        scaleMode;                                            // 0014
+			DirectX::DXGI_MODE_SCANLINE_ORDER scanlineOrdering;                                     // 0018
+			std::uint32_t                     isNotWindowed;                                        // 001C
+			bool                              fullScreen;                                           // 0020
+			bool                              borderlessDisplay;                                    // 0021
+			bool                              readOnlyDepth;                                        // 0022
+			bool                              instantiated;                                         // 0023
+			bool                              requestedWindowSizeChange;                            // 0024
+			std::uint32_t                     newWidth;                                             // 0028
+			std::uint32_t                     newHeight;                                            // 002C
+			std::uint32_t                     presentInterval;                                      // 0030
+			ID3D11Device*                     forwarder;                                            // 0038
+			ID3D11DeviceContext*              context;                                              // 0040
+			RendererWindow                    renderWindows[32];                                    // 0048
+			RenderTargetData                  renderTargets[RENDER_TARGET::kTOTAL];                 // 0A48
+			DepthStencilData                  depthStencils[RENDER_TARGET_DEPTHSTENCIL::kTOTAL];    // 1FA8
+			CubemapRenderTargetData           cubemapRenderTargets[RENDER_TARGET_CUBEMAP::kTOTAL];  // 26C8
+			Texture3DTargetData               texture3DRenderTargets[RENDER_TARGET_3D::kTOTAL];     // 2708
+			float                             clearColor[4];                                        // 2768
+			std::uint8_t                      clearStencil;                                         // 2778
+			SKSE::WinAPI::CRITICAL_SECTION    lock;                                                 // 2780
+			const char*                       className;                                            // 27A8
+			SKSE::WinAPI::HINSTANCE           hInstance;                                            // 27B0
 		};
 		static_assert(offsetof(RendererData, lock) == 0x2780);
 

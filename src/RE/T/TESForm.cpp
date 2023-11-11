@@ -175,10 +175,10 @@ namespace RE
 		}
 	}
 
-	void TESForm::SetPlayerKnows(bool a_known) 
+	void TESForm::SetPlayerKnows(bool a_known)
 	{
 		using func_t = decltype(&TESForm::SetPlayerKnows);
-    	REL::Relocation<func_t> func{ RELOCATION_ID(14482, 14639) };
-    	return func(this, a_known);
+		REL::Relocation<func_t> func{ RELOCATION_ID(14482, 14639) };
+		return func(this, a_known);
 	}
 }
