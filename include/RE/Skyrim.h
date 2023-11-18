@@ -1579,6 +1579,7 @@
 #include "RE/T/TargetValueModifierEffect.h"
 #include "RE/T/TaskQueueInterface.h"
 #include "RE/T/TelekinesisEffect.h"
+#include "RE/T/TeleportHandler.h"
 #include "RE/T/TempEffectTraits.h"
 #include "RE/T/TextureAddressModes.h"
 #include "RE/T/TextureFileFormat.h"

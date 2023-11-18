@@ -37,5 +37,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BleedoutCameraState) == 0x138);
+#else
+	static_assert(sizeof(BleedoutCameraState) == 0x150);
+#endif
 }

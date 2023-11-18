@@ -34,5 +34,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(HorseCameraState) == 0xF8);
+#else
+	static_assert(sizeof(HorseCameraState) == 0x110);
+#endif
 }

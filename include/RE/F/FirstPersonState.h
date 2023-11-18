@@ -53,5 +53,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(FirstPersonState) == 0x90);
+#else
+	static_assert(sizeof(FirstPersonState) == 0xA8);
+#endif
 }
