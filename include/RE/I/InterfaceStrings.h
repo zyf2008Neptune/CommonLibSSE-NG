@@ -100,6 +100,8 @@ namespace RE
 		BSFixedString mapMarkerText3D;        // 280 - "MapMarkerText3D"
 		BSFixedString calibrationOptionMenu;  // 288 - "CalibrationOptionMenu"
 #endif
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(InterfaceStrings) == 0x260);

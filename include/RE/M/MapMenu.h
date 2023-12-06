@@ -77,6 +77,8 @@ namespace RE
 		std::uint64_t                   unk30580;      // 30580
 		std::uint64_t                   unk30588;      // 30588
 		std::uint64_t                   unk30590;      // 30590
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(MapMenu) == 0x30598);
 #else
@@ -138,6 +140,8 @@ namespace RE
 		std::uint64_t                       unk305D8;         // 305D0
 		std::uint64_t                       unk305E0;         // 305E0
 		std::uint64_t                       unk305E8;         // 305E8
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(MapMenu) == 0x305F0);
 #endif

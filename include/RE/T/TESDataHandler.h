@@ -117,6 +117,8 @@ namespace RE
 		TESRegionDataManager* regionDataManager;  // 1580
 		InventoryChanges*     merchantInventory;  // 1588
 #endif
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
 	static_assert(sizeof(TESDataHandler) == 0xDC0);
