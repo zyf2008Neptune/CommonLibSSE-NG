@@ -80,9 +80,14 @@ namespace RE
 			return *singleton;
 		}
 
-		// members
-		BSTArray<TESFile*>                     pluginList;           // 000
-		BSTArray<void*>                        unk18;                // 018
+// members
+#ifndef SKYRIMVR
+		BSTArray<TESFile*> pluginList;  // 000
+		BSTArray<void*>    unk18;       // 018
+#else
+		std::uint8_t pluginList[0xFF];  // 000
+		std::uint8_t unk18[0xFF];       // 0FF
+#endif
 		BGSSaveLoadFormIDMap                   worldspaceFormIDMap;  // 030
 		BSTHashMap<FormID, ActorHandle>        unk98;                // 098
 		BGSSaveLoadReferencesMap               unkC8;                // 0C8
@@ -99,5 +104,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(BGSSaveLoadGame) == 0x348);
+#else
+	static_assert(sizeof(BGSSaveLoadGame) == 0x518);
+#endif
 }
