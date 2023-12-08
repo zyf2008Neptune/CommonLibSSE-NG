@@ -38,13 +38,13 @@ namespace RE
 			userEvent = a_userEvent;
 		}
 
-		#ifndef SKYRIMVR
+#ifndef SKYRIMVR
 		[[nodiscard]] bool IsLeft() const;
 		[[nodiscard]] bool IsRight() const;
-		#else
+#else
 		[[nodiscard]] bool IsOffHand() const;
 		[[nodiscard]] bool IsMainHand() const;
-		#endif
+#endif
 
 		// members
 		float xValue;  // 28

@@ -2,7 +2,7 @@
 
 namespace RE
 {
-	#ifndef SKYRIMVR
+#ifndef SKYRIMVR
 	bool ThumbstickEvent::IsLeft(void) const
 	{
 		return idCode == InputType::kLeftThumbstick;
@@ -12,7 +12,7 @@ namespace RE
 	{
 		return idCode == InputType::kRightThumbstick;
 	}
-	#else
+#else
 	bool ThumbstickEvent::IsOffHand(void) const
 	{
 		return idCode == InputType::kLeftThumbstick;
@@ -22,5 +22,5 @@ namespace RE
 	{
 		return idCode == InputType::kRightThumbstick;
 	}
-	#endif
+#endif
 }
