@@ -43,5 +43,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(AttackBlockHandler) == 0x48);
+#else
+	static_assert(sizeof(AttackBlockHandler) == 0x60);
+#endif
 }

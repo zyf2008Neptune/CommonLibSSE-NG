@@ -40,5 +40,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(FreeCameraState) == 0x50);
+#else
+	static_assert(sizeof(FreeCameraState) == 0x68);
+#endif
 }

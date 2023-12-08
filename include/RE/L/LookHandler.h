@@ -19,5 +19,9 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
+#ifndef SKYRIMVR
 	static_assert(sizeof(LookHandler) == 0x10);
+#else
+	static_assert(sizeof(LookHandler) == 0x28);
+#endif
 }
