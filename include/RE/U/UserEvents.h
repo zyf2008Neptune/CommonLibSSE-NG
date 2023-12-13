@@ -28,11 +28,12 @@ namespace RE
 				kTFCMode,
 				kMapDebug,
 				kLockpicking,
+				kMarketplace,
 				kFavor,
 
-				kTotal = 17,
+				kTotal = 18,
 
-				kNone = 18
+				kNone = 19
 			};
 		};
 		using INPUT_CONTEXT_ID = INPUT_CONTEXT_IDS::INPUT_CONTEXT_ID;

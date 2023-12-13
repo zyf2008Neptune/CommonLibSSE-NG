@@ -114,6 +114,7 @@ namespace RE
 		std::uint8_t                                        unk133;                     // 133
 		std::uint32_t                                       unk134;                     // 134
 		std::uint64_t                                       unk138;                     // 138
+		std::uint64_t                                       unk140;                     // 140 - actual offset change is somewhere near showLandBorder
 		TESWorldSpace*                                      worldSpace;                 // 140
 		BSSimpleList<BSTTuple<TESNPC*, std::uint16_t>*>     deadCount;                  // 148
 		void*                                               unk158;                     // 158 - smart ptr
@@ -160,5 +161,5 @@ namespace RE
 		NavMeshInfoMap*                                     unk2A8;                     // 2A8
 		std::uint64_t                                       unk2B0;                     // 2B0
 	};
-	static_assert(sizeof(TES) == 0x2B8);
+	static_assert(sizeof(TES) == 0x2C0);
 }

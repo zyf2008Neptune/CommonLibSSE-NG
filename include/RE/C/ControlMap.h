@@ -96,5 +96,5 @@ namespace RE
 		std::uint8_t                                     pad123;                              // 123
 		stl::enumeration<PC_GAMEPAD_TYPE, std::uint32_t> gamePadMapType;                      // 124
 	};
-	static_assert(sizeof(ControlMap) == 0x128);
+	static_assert(sizeof(ControlMap) == 0x130);
 }
