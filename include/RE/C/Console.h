@@ -35,10 +35,16 @@ namespace RE
 		std::uint64_t unk38;   // 38
 		std::uint64_t unk40;   // 40
 		std::uint64_t unk48;   // 48
-		std::uint64_t unk50;   // 50
+#ifndef SKYRIM_SUPPORT_AE
+		std::uint64_t unk50;  // 50
+#endif
 
 	protected:
 		void SetSelectedRef_Impl(ObjectRefHandle& a_handle);
 	};
+#ifdef SKYRIM_SUPPORT_AE
+	static_assert(sizeof(Console) == 0x50);
+#else
 	static_assert(sizeof(Console) == 0x58);
+#endif
 }
