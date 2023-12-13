@@ -35,10 +35,11 @@ namespace RE
 		std::uint64_t unk38;   // 38
 		std::uint64_t unk40;   // 40
 #ifdef SKYRIM_SUPPORT_AE
-		std::uint32_t unk48;        // 48
-		std::uint16_t unk4c;        // 4c
-		bool          ctrlKeyHeld;  // 4e
-		std::uint8_t  pad4f;        // 4f
+		std::uint32_t unk48;				  // 48
+		std::uint8_t  unk4c;  				  // 4c
+		bool          showAchievementWarning; // 4d -- only used in ctor
+		bool          ctrlKeyHeld;			  // 4e
+		std::uint8_t  pad4f;				  // 4f
 #else
 		std::uint64_t unk48;  // 48
 		std::uint64_t unk50;  // 50
