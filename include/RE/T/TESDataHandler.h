@@ -35,10 +35,12 @@ namespace RE
 	};
 	static_assert(sizeof(TESFileCollection) == 0x30);
 
+	static const RE::TESFileCollection* VRcompiledFileCollection = nullptr;
+
 	class TESDataHandler : public BSTSingletonSDM<TESDataHandler>
 	{
 	public:
-		static TESDataHandler* GetSingleton();
+		static TESDataHandler* GetSingleton(bool a_VRESL = true);
 
 		bool AddFormToDataHandler(TESForm* a_form);
 
@@ -98,67 +100,77 @@ namespace RE
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0xDA0, 0x1570);
 		}
 
-		[[nodiscard]] inline TESFile** GetLoadedMods() noexcept {
+		[[nodiscard]] inline TESFile** GetLoadedMods() noexcept
+		{
 			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
-				return &REL::RelocateMember<TESFile*>(this, 0x0, 0xD78);
+				return !VRcompiledFileCollection ? &REL::RelocateMember<TESFile*>(this, 0x0, 0xD78) : const_cast<TESFile**>(VRcompiledFileCollection->files.data());
 			} else {
 				return REL::RelocateMember<TESFileCollection>(this, 0xD70, 0).files.data();
 			}
 		}
 
-		[[nodiscard]] inline const TESFile* const * GetLoadedMods() const noexcept {
+		[[nodiscard]] inline const TESFile* const* GetLoadedMods() const noexcept
+		{
 			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
-				return &REL::RelocateMember<const TESFile*>(this, 0x0, 0xD78);
+				return !VRcompiledFileCollection ? &REL::RelocateMember<const TESFile*>(this, 0x0, 0xD78) : VRcompiledFileCollection->files.data();
 			} else {
 				return REL::RelocateMember<const TESFileCollection>(this, 0xD70, 0).files.data();
 			}
 		}
 
-		[[nodiscard]] inline std::uint8_t GetLoadedModCount() const noexcept {
+		[[nodiscard]] inline std::uint8_t GetLoadedModCount() const noexcept
+		{
 			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
-				return static_cast<std::uint8_t>(REL::RelocateMember<std::uint32_t>(this, 0x0, 0xD70));
+				return static_cast<std::uint8_t>(!VRcompiledFileCollection ? REL::RelocateMember<std::uint32_t>(this, 0x0, 0xD70) : VRcompiledFileCollection->files.size());
 			} else {
 				return static_cast<std::uint8_t>(REL::RelocateMember<const TESFileCollection>(this, 0xD70, 0).files.size());
 			}
 		}
 
-		[[nodiscard]] inline TESFile** GetLoadedLightMods() noexcept {
+		[[nodiscard]] inline TESFile** GetLoadedLightMods() noexcept
+		{
 			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
-				return nullptr;
+				return !VRcompiledFileCollection ? nullptr : const_cast<TESFile**>(VRcompiledFileCollection->smallFiles.data());
 			} else {
 				return REL::RelocateMember<TESFileCollection>(this, 0xD70, 0).smallFiles.data();
 			}
 		}
 
-		[[nodiscard]] inline const TESFile* const * GetLoadedLightMods() const noexcept {
+		[[nodiscard]] inline const TESFile* const* GetLoadedLightMods() const noexcept
+		{
 			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
-				return nullptr;
+				return !VRcompiledFileCollection ? nullptr : VRcompiledFileCollection->smallFiles.data();
 			} else {
 				return REL::RelocateMember<const TESFileCollection>(this, 0xD70, 0).smallFiles.data();
 			}
 		}
 
-		[[nodiscard]] inline std::uint8_t GetLoadedLightModCount() const noexcept {
+		[[nodiscard]] inline std::uint8_t GetLoadedLightModCount() const noexcept
+		{
 			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
-				return 0;
+				return (!VRcompiledFileCollection) ? 0 : static_cast<std::uint8_t>(VRcompiledFileCollection->smallFiles.size());
 			} else {
 				return static_cast<std::uint8_t>(REL::RelocateMember<const TESFileCollection>(this, 0xD70, 0).smallFiles.size());
 			}
 		}
 
-		[[nodiscard]] inline TESRegionDataManager* GetRegionDataManager() noexcept {
+		[[nodiscard]] inline TESRegionDataManager* GetRegionDataManager() noexcept
+		{
 			return REL::RelocateMember<TESRegionDataManager*>(this, 0xDB0, 0x1580);
 		}
 
-		[[nodiscard]] inline const TESRegionDataManager* GetRegionDataManager() const noexcept {
+		[[nodiscard]] inline const TESRegionDataManager* GetRegionDataManager() const noexcept
+		{
 			return REL::RelocateMember<TESRegionDataManager*>(this, 0xDB0, 0x1580);
 		}
 
-		[[nodiscard]] inline InventoryChanges* GetMerchantInventory() noexcept {
+		[[nodiscard]] inline InventoryChanges* GetMerchantInventory() noexcept
+		{
 			return REL::RelocateMember<InventoryChanges*>(this, 0xDB8, 0x1588);
 		}
 
-		[[nodiscard]] inline const InventoryChanges* GetMerchantInventory() const noexcept {
+		[[nodiscard]] inline const InventoryChanges* GetMerchantInventory() const noexcept
+		{
 			return REL::RelocateMember<InventoryChanges*>(this, 0xDB8, 0x1588);
 		}
 
@@ -177,17 +189,17 @@ namespace RE
 		TESFile*                          activeFile;                                     // D58
 		BSSimpleList<TESFile*>            files;                                          // D60
 #ifndef ENABLE_SKYRIM_VR
-		TESFileCollection                 compiledFileCollection;                         // D70
+		TESFileCollection compiledFileCollection;  // D70
 		RUNTIME_DATA_CONTENT
-		std::uint8_t                      unkDAA;                                         // DAA
-		std::uint8_t                      padDAB;                                         // DAB
-		std::uint32_t                     padDAC;                                         // DAC
-		TESRegionDataManager*             regionDataManager;                              // DB0
-		InventoryChanges*                 merchantInventory;                              // DB8
+		std::uint8_t          unkDAA;             // DAA
+		std::uint8_t          padDAB;             // DAB
+		std::uint32_t         padDAC;             // DAC
+		TESRegionDataManager* regionDataManager;  // DB0
+		InventoryChanges*     merchantInventory;  // DB8
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-		std::uint32_t         loadedModCount;     // D70
-		std::uint32_t         pad14;              // D74
-		TESFile*              loadedMods[0xFF];   // D78
+		std::uint32_t loadedModCount;    // D70
+		std::uint32_t pad14;             // D74
+		TESFile*      loadedMods[0xFF];  // D78
 		RUNTIME_DATA_CONTENT
 		std::uint8_t          pad157B[5];         // 157B
 		TESRegionDataManager* regionDataManager;  // 1580

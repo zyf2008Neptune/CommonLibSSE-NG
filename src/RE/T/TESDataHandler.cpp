@@ -5,9 +5,19 @@
 
 namespace RE
 {
-	TESDataHandler* TESDataHandler::GetSingleton()
+
+	TESDataHandler* TESDataHandler::GetSingleton(bool a_VRESL)
 	{
 		REL::Relocation<TESDataHandler**> singleton{ Offset::TESDataHandler::Singleton };
+		if (REL::Module::IsVR() && a_VRESL) {
+			const auto VRhandle = GetModuleHandle("skyrimvresl");
+			if (!VRcompiledFileCollection) {
+				const auto GetCompiledFileCollection = reinterpret_cast<const RE::TESFileCollection* (*)()>(WinAPI::GetProcAddress(VRhandle, "GetCompiledFileCollectionExtern"));
+				if (GetCompiledFileCollection != nullptr) {
+					VRcompiledFileCollection = GetCompiledFileCollection();
+				}
+			}
+		}
 		return *singleton;
 	}
 
@@ -44,7 +54,7 @@ namespace RE
 			return 0;
 		}
 
-		if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
+		if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR() && !VRcompiledFileCollection) {
 			// Use SkyrimVR lookup logic, ignore light plugin index which doesn't exist in VR
 			return (a_localFormID & 0xFFFFFF) | (file->compileIndex << 24);
 		} else {
@@ -63,7 +73,7 @@ namespace RE
 		}
 
 		auto rawIndex = (a_rawFormID & 0xFF000000) >> 24;
-		if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
+		if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR() && !VRcompiledFileCollection) {
 			if (rawIndex >= file->masterCount) {
 				return 0;
 			}
@@ -107,7 +117,7 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedModByName(std::string_view a_modName)
 	{
-		auto size = GetLoadedModCount();
+		auto  size = GetLoadedModCount();
 		auto* file = GetLoadedMods();
 		for (auto i = 0; i < size; ++i, ++file) {
 			if (a_modName.size() == strlen((*file)->fileName) &&
@@ -120,7 +130,7 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedModByIndex(std::uint8_t a_index)
 	{
-		auto size = GetLoadedModCount();
+		auto  size = GetLoadedModCount();
 		auto* file = GetLoadedMods();
 		for (auto i = 0; i < size; ++i, ++file) {
 			if ((*file)->compileIndex == a_index) {
@@ -138,7 +148,7 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedLightModByName(std::string_view a_modName)
 	{
-		auto size = GetLoadedLightModCount();
+		auto  size = GetLoadedLightModCount();
 		auto* file = GetLoadedLightMods();
 		for (auto i = 0; i < size; ++i, ++file) {
 			if (a_modName.size() == strlen((*file)->fileName) &&
@@ -151,7 +161,7 @@ namespace RE
 
 	const TESFile* TESDataHandler::LookupLoadedLightModByIndex(std::uint16_t a_index)
 	{
-		auto size = GetLoadedLightModCount();
+		auto  size = GetLoadedLightModCount();
 		auto* file = GetLoadedLightMods();
 		for (auto i = 0; i < size; ++i, ++file) {
 			if ((*file)->smallFileCompileIndex == a_index) {
