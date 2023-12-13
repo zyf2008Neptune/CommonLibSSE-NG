@@ -39,7 +39,7 @@ namespace RE
 	class TESDataHandler : public BSTSingletonSDM<TESDataHandler>
 	{
 	public:
-		static TESDataHandler* GetSingleton();
+		static TESDataHandler* GetSingleton(bool a_VRESL = true);
 
 		bool AddFormToDataHandler(TESForm* a_form);
 
