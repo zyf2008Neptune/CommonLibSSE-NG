@@ -12,7 +12,7 @@ namespace RE
 		REL::Relocation<TESDataHandler**> singleton{ Offset::TESDataHandler::Singleton };
 		if (REL::Module::IsVR() && a_VRESL) {
 			const auto VRhandle = WinAPI::GetModuleHandle("skyrimvresl");
-			if (!VRcompiledFileCollection && VRhandle) {
+			if (!VRcompiledFileCollection && VRhandle != NULL) {
 				const auto GetCompiledFileCollection = reinterpret_cast<const RE::TESFileCollection* (*)()>(WinAPI::GetProcAddress(VRhandle, "GetCompiledFileCollectionExtern"));
 				if (GetCompiledFileCollection != nullptr) {
 					VRcompiledFileCollection = GetCompiledFileCollection();

@@ -35,7 +35,7 @@ namespace RE
 	};
 	static_assert(sizeof(TESFileCollection) == 0x30);
 
-	static const RE::TESFileCollection* VRcompiledFileCollection = nullptr;
+	static RE::TESFileCollection* VRcompiledFileCollection = nullptr;
 
 	class TESDataHandler : public BSTSingletonSDM<TESDataHandler>
 	{
