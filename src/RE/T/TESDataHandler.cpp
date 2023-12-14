@@ -2,6 +2,7 @@
 
 #include "RE/T/TESFile.h"
 #include "RE/T/TESForm.h"
+#undef GetModuleHandle
 
 namespace RE
 {
@@ -10,8 +11,8 @@ namespace RE
 	{
 		REL::Relocation<TESDataHandler**> singleton{ Offset::TESDataHandler::Singleton };
 		if (REL::Module::IsVR() && a_VRESL) {
-			const auto VRhandle = GetModuleHandle("skyrimvresl");
-			if (!VRcompiledFileCollection) {
+			const auto VRhandle = WinAPI::GetModuleHandle("skyrimvresl");
+			if (!VRcompiledFileCollection && VRhandle) {
 				const auto GetCompiledFileCollection = reinterpret_cast<const RE::TESFileCollection* (*)()>(WinAPI::GetProcAddress(VRhandle, "GetCompiledFileCollectionExtern"));
 				if (GetCompiledFileCollection != nullptr) {
 					VRcompiledFileCollection = GetCompiledFileCollection();
