@@ -712,6 +712,7 @@
 #include "RE/F/FavoritesMenu.h"
 #include "RE/F/FightReactions.h"
 #include "RE/F/FileID.h"
+#include "RE/F/FindMaxMagnitudeVisitor.h"
 #include "RE/F/FirstPersonState.h"
 #include "RE/F/FixedStrings.h"
 #include "RE/F/FlameProjectile.h"
