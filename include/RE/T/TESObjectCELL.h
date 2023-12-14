@@ -285,3 +285,4 @@ namespace RE
 #endif
 }
 #undef RUNTIME_DATA
+#undef RUNTIME_DATA_CONTENT

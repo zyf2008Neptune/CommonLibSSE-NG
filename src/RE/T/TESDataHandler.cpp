@@ -15,7 +15,7 @@ namespace RE
 			if (!VRcompiledFileCollection && VRhandle != NULL) {
 				const auto GetCompiledFileCollection = reinterpret_cast<const RE::TESFileCollection* (*)()>(WinAPI::GetProcAddress(VRhandle, "GetCompiledFileCollectionExtern"));
 				if (GetCompiledFileCollection != nullptr) {
-					VRcompiledFileCollection = GetCompiledFileCollection();
+					VRcompiledFileCollection = const_cast <RE::TESFileCollection*>(GetCompiledFileCollection());
 				}
 			}
 		}

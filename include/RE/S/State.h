@@ -325,3 +325,4 @@ struct fmt::formatter<Matrix>
 		return fmt::format_to(ctx.out(), "[{}, {}, {}, {}]", (Vector4)m.m[0], (Vector4)m.m[1], (Vector4)m.m[2], (Vector4)m.m[3]);
 	}
 };
+#undef RUNTIME_DATA_CONTENT
