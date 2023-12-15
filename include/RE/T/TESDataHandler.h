@@ -35,12 +35,11 @@ namespace RE
 	};
 	static_assert(sizeof(TESFileCollection) == 0x30);
 
-	static RE::TESFileCollection* VRcompiledFileCollection = nullptr;
-
 	class TESDataHandler : public BSTSingletonSDM<TESDataHandler>
 	{
 	public:
-		static TESDataHandler* GetSingleton(bool a_VRESL = true);
+		inline static RE::TESFileCollection* VRcompiledFileCollection = nullptr;  // used by SkyrimVRESL to store pointer to VR version
+		static TESDataHandler*               GetSingleton(bool a_VRESL = true);
 
 		bool AddFormToDataHandler(TESForm* a_form);
 
@@ -197,9 +196,9 @@ namespace RE
 		TESRegionDataManager* regionDataManager;  // DB0
 		InventoryChanges*     merchantInventory;  // DB8
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-		std::uint32_t loadedModCount;    // D70
+		std::uint32_t loadedModCount;    // D70 this should be avoided if SkyrimVRESL is available
 		std::uint32_t pad14;             // D74
-		TESFile*      loadedMods[0xFF];  // D78
+		TESFile*      loadedMods[0xFF];  // D78 this should be avoided if SkyrimVRESL is available
 		RUNTIME_DATA_CONTENT
 		std::uint8_t          pad157B[5];         // 157B
 		TESRegionDataManager* regionDataManager;  // 1580

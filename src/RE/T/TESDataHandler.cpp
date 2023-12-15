@@ -10,12 +10,12 @@ namespace RE
 	TESDataHandler* TESDataHandler::GetSingleton(bool a_VRESL)
 	{
 		REL::Relocation<TESDataHandler**> singleton{ Offset::TESDataHandler::Singleton };
-		if (REL::Module::IsVR() && a_VRESL) {
+		if (REL::Module::IsVR() && a_VRESL && !VRcompiledFileCollection) {
 			const auto VRhandle = WinAPI::GetModuleHandle("skyrimvresl");
-			if (!VRcompiledFileCollection && VRhandle != NULL) {
+			if (VRhandle != NULL) {
 				const auto GetCompiledFileCollection = reinterpret_cast<const RE::TESFileCollection* (*)()>(WinAPI::GetProcAddress(VRhandle, "GetCompiledFileCollectionExtern"));
 				if (GetCompiledFileCollection != nullptr) {
-					VRcompiledFileCollection = const_cast <RE::TESFileCollection*>(GetCompiledFileCollection());
+					TESDataHandler::VRcompiledFileCollection = const_cast<RE::TESFileCollection*>(GetCompiledFileCollection());
 				}
 			}
 		}
