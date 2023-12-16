@@ -101,17 +101,23 @@ namespace RE
 		BSSimpleList<NiPointer<ImageSpaceModifierInstance>> activeImageSpaceModifiers;  // 108
 		std::uint64_t                                       unk118;                     // 118
 		std::uint64_t                                       unk120;                     // 120
+#ifdef SKYRIM_SUPPORT_AE
+		std::uint32_t                                       unk128;						// 128
+		std::uint32_t                                       landBorderMode;             // 12C
+		std::uint32_t                                       borderColorAGBR;            // 130
+#else
 		std::uint8_t                                        unk128;                     // 128
 		bool                                                showLANDborders;            // 129
 		std::uint8_t                                        unk12A;                     // 12A
-		std::uint8_t                                        unk12B;                     // 12B
-		std::uint8_t                                        unk12C;                     // 12C
-		std::uint8_t                                        unk12D;                     // 12D
-		std::uint8_t                                        unk12E;                     // 12E
-		std::uint8_t                                        unk12F;                     // 12F
-		std::uint16_t                                       unk130;                     // 130
-		std::uint8_t                                        unk132;                     // 132
-		std::uint8_t                                        unk133;                     // 133
+ 		std::uint8_t                                        unk12B;                     // 12B
+ 		std::uint8_t                                        unk12C;                     // 12C
+        std::uint8_t                                        unk12D;                     // 12D
+        std::uint8_t                                        unk12E;                     // 12E
+        std::uint8_t                                        unk12F;                     // 12F
+        std::uint16_t                                       unk130;                     // 130
+        std::uint8_t                                        unk132;                     // 132
+        std::uint8_t                                        unk133;                     // 133
+#endif
 		std::uint32_t                                       unk134;                     // 134
 		std::uint64_t                                       unk138;                     // 138
 #ifdef SKYRIM_SUPPORT_AE
