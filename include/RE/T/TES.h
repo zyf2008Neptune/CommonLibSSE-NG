@@ -114,7 +114,7 @@ namespace RE
 		std::uint8_t                                        unk133;                     // 133
 		std::uint32_t                                       unk134;                     // 134
 		std::uint64_t                                       unk138;                     // 138
-#ifndef SKYRIM_SUPPORT_AE
+#ifdef SKYRIM_SUPPORT_AE
 		std::uint64_t unk140;  // 140 - actual offset change is somewhere near showLandBorder
 #endif
 		TESWorldSpace*                                  worldSpace;  // 140
@@ -165,9 +165,13 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
+#ifndef SKYRIMVR
 #ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(TES) == 0x2B8);
 #else
 	static_assert(sizeof(TES) == 0x2C0);
+#endif
+#else
+	static_assert(sizeof(TES) == 0x2B8);
 #endif
 }
