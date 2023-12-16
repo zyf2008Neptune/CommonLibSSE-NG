@@ -28,12 +28,21 @@ namespace RE
 				kTFCMode,
 				kMapDebug,
 				kLockpicking,
+#ifdef SKYRIM_SUPPORT_AE
+				kMarketplace,
+#endif
 				kFavor,
 
-				kTotal = 17,
 #ifndef SKYRIMVR
+#	ifndef SKYRIM_SUPPORT_AE
+				kTotal = 17,
 				kNone = 18
+#	else
+				kTotal = 18,
+				kNone = 19
+#	endif
 #else
+				kTotal = 17,
 				kNone = 22  // More input contexts might be available, needs REing
 #endif
 
