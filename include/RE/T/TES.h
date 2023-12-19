@@ -166,11 +166,11 @@ namespace RE
 		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
-#ifndef SKYRIM_SUPPORT_AE
+#	ifndef SKYRIM_SUPPORT_AE
 	static_assert(sizeof(TES) == 0x2B8);
-#else
+#	else
 	static_assert(sizeof(TES) == 0x2C0);
-#endif
+#	endif
 #else
 	static_assert(sizeof(TES) == 0x2B8);
 #endif

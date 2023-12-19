@@ -67,7 +67,7 @@ namespace RE
 #ifndef SKYRIMVR
 		BSFixedString creationClubMenu;  // 198 - "Creation Club Menu"
 #endif
-#ifndef SKYRIM_SUPPORT_AE
+#ifdef SKYRIM_SUPPORT_AE
 		BSFixedString marketplaceMenu;  // 1A0 - "Marketplace Menu"
 #endif
 		BSFixedString titleSequenceMenu;        // 1A8 - "TitleSequence Menu"
@@ -93,7 +93,7 @@ namespace RE
 		BSFixedString refreshMenu;              // 248 - "RefreshMenu"
 		BSFixedString cancelLoading;            // 250 - "CancelLoading"
 		BSFixedString menuTextureDegradeEvent;  // 258 - "Menu Texture Degrade Event"
-#ifndef SKYRIM_SUPPORT_AE
+#ifdef SKYRIM_SUPPORT_AE
 		BSFixedString userSettingsLoaded;  // 260 - "UserSettingsLoaded"
 		BSFixedString activityStarted;     // 268 - "ActivityStarted"
 #endif
@@ -116,7 +116,7 @@ namespace RE
 #	else
 	static_assert(sizeof(InterfaceStrings) == 0x260);
 #	endif
-#	else
+#else
 	static_assert(sizeof(InterfaceStrings) == 0x2A8);
-#	endif
+#endif
 }

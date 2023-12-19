@@ -73,7 +73,7 @@ namespace SKSE
 
 			std::filesystem::path path = knownPath.get();
 			path /= "My Games"sv;
-			path /= *REL::Relocation<const char**>(RELOCATION_ID(508778, 502114)).get();
+			path /= std::filesystem::exists("steam_api64.dll") ? "Skyrim Special Edition" : "Skyrim Special Edition GOG";
 			path /= "SKSE"sv;
 
 			return path;

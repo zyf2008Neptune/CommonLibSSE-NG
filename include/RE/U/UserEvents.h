@@ -34,13 +34,9 @@ namespace RE
 				kFavor,
 
 #ifndef SKYRIMVR
-#	ifndef SKYRIM_SUPPORT_AE
-				kTotal = 17,
-				kNone = 18
-#	else
-				kTotal = 18,
-				kNone = 19
-#	endif
+				kTotal,
+
+				kNone
 #else
 				kTotal = 17,
 				kNone = 22  // More input contexts might be available, needs REing

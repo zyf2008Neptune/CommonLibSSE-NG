@@ -34,8 +34,16 @@ namespace RE
 		void*         opcode;  // 30
 		std::uint64_t unk38;   // 38
 		std::uint64_t unk40;   // 40
-		std::uint64_t unk48;   // 48
-		std::uint64_t unk50;   // 50
+#ifdef SKYRIM_SUPPORT_AE
+		std::uint32_t unk48;                   // 48
+		std::uint8_t  unk4c;                   // 4c
+		bool          showAchievementWarning;  // 4d -- only used in ctor
+		bool          ctrlKeyHeld;             // 4e
+		std::uint8_t  pad4f;                   // 4f
+#else
+		std::uint64_t unk48;  // 48
+		std::uint64_t unk50;  // 50
+#endif
 
 	protected:
 		void SetSelectedRef_Impl(ObjectRefHandle& a_handle);
@@ -44,7 +52,11 @@ namespace RE
 		KEEP_FOR_RE()
 	};
 #ifndef SKYRIMVR
+#	ifdef SKYRIM_SUPPORT_AE
+	static_assert(sizeof(Console) == 0x50);
+#	else
 	static_assert(sizeof(Console) == 0x58);
+#	endif
 #else
 	static_assert(sizeof(Console) == 0x68);
 #endif
