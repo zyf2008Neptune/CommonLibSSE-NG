@@ -9,6 +9,8 @@ namespace RE
 	class BGSEntryPointFunctionDataSpellItem : public BGSEntryPointFunctionData
 	{
 	public:
+		inline static constexpr auto RTTI = RTTI_BGSEntryPointFunctionDataSpellItem;
+		inline static constexpr auto VTABLE = VTABLE_BGSEntryPointFunctionDataSpellItem;
 		// Override
 		virtual ~BGSEntryPointFunctionDataSpellItem() override; // 0
 
