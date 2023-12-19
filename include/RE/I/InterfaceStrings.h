@@ -117,6 +117,6 @@ namespace RE
 	static_assert(sizeof(InterfaceStrings) == 0x260);
 #	endif
 #else
-	static_assert(sizeof(InterfaceStrings) == 0x2A8);
+	static_assert(sizeof(InterfaceStrings) == 0x290);
 #endif
 }
