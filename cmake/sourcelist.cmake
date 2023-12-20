@@ -95,6 +95,7 @@ set(SOURCES
 	include/RE/B/BGSEntryPointFunctionData.h
 	include/RE/B/BGSEntryPointFunctionDataActivateChoice.h
 	include/RE/B/BGSEntryPointFunctionDataOneValue.h
+	include/RE/B/BGSEntryPointFunctionDataSpellItem.h
 	include/RE/B/BGSEntryPointFunctionDataText.h
 	include/RE/B/BGSEntryPointPerkEntry.h
 	include/RE/B/BGSEquipSlot.h
@@ -709,6 +710,7 @@ set(SOURCES
 	include/RE/F/FavoritesMenu.h
 	include/RE/F/FightReactions.h
 	include/RE/F/FileID.h
+	include/RE/F/FindMaxMagnitudeVisitor.h
 	include/RE/F/FirstPersonState.h
 	include/RE/F/FixedStrings.h
 	include/RE/F/FlameProjectile.h
@@ -1754,6 +1756,7 @@ set(SOURCES
 	src/RE/E/ExtraSoul.cpp
 	src/RE/E/ExtraTextDisplayData.cpp
 	src/RE/E/ExtraUniqueID.cpp
+	src/RE/F/FindMaxMagnitudeVisitor.cpp
 	src/RE/F/FormTypes.cpp
 	src/RE/F/FxDelegate.cpp
 	src/RE/F/FxDelegateArgs.cpp
