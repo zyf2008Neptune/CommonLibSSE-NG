@@ -12,7 +12,7 @@ namespace RE
 		inline static constexpr auto RTTI = RTTI_FindMaxMagnitudeVisitor;
 		inline static constexpr auto VTABLE = VTABLE_FindMaxMagnitudeVisitor;
 
-        ~FindMaxMagnitudeVisitor() override = default;  // 00
+		~FindMaxMagnitudeVisitor() override = default;  // 00
 
 		// add
 		virtual BSContainer::ForEachResult Accept(ActiveEffect* a_effect) override;  // 01
