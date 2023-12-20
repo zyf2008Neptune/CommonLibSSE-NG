@@ -193,7 +193,7 @@ namespace RE
 			kKeywordFurnitureForces1stPerson = 180,
 			kKeywordFurnitureForces3rdPerson = 181,
 			kKeywordActivatorFurnitureNoPlayer = 182,
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 			kTelekinesisGrabSound = 183,
 			kTelekinesisThrowSound = 184,
 			kWorldMapWeather = 185,
@@ -374,9 +374,15 @@ namespace RE
 			kKeywordArmorMaterialHeavyStalhrim = 360,
 			kKeywordWeaponMaterialNordic = 361,
 			kKeywordWeaponMaterialStalhrim = 362,
+#if defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+			kHelpManualInstalledContent = 363,
+			kHelpManualInstalledContentAE = 364,
+			kModsHelpFormList = 365,
+			kTotal = 366
+#else  // SSE
 			kModsHelpFormList = 363,
-
 			kTotal = 364
+#endif
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 			kisJarlChair = 184,
 			kFurnitureAnimatesFast = 185,
@@ -1074,6 +1080,8 @@ namespace RE
 #else
 		std::uint8_t unk5D8[0x718];  // 5D8
 #endif
+	private:
+		KEEP_FOR_RE()
 	};
 #if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(BGSDefaultObjectManager) == 0xD20);

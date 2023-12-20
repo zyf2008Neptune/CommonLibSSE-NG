@@ -59,7 +59,7 @@ namespace RE
 
 		struct RUNTIME_DATA
 		{
-#ifndef ENABLE_SKYRIM_VR                                            // Non-VR
+#if !defined(ENABLE_SKYRIM_VR)  // Non-VR
 #	define RUNTIME_DATA_CONTENT                                             \
 		ButtonEvent        buttonEvents[MAX_BUTTON_EVENTS];         /* 020*/ \
 		CharEvent          charEvents[MAX_CHAR_EVENTS];             /* 200*/ \
@@ -145,7 +145,7 @@ namespace RE
 			}
 		}
 	};
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(BSInputEventQueue) == 0x20);
 #elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_AE)
 	static_assert(sizeof(BSInputEventQueue) == 0x580);

@@ -41,10 +41,10 @@ namespace RE
 	{
 	public:
 		// members
-		bool          dirty;  // 0
-		std::uint8_t  pad1;   // 1
-		std::uint16_t pad2;   // 2
-		float         value;  // 4
+		float         value;    // 0
+		bool          invalid;  // 4
+		std::uint8_t  pad5;     // 5
+		std::uint16_t pad6;     // 6
 	};
 	static_assert(sizeof(CachedValueData) == 0x8);
 
@@ -80,20 +80,20 @@ namespace RE
 			kOwnerIsInCombatantFaction = 1 << 3
 		};
 
-		float                                         cachedRadius;              // 00
-		float                                         cachedWidth;               // 04
-		float                                         cachedLength;              // 08
-		float                                         cachedForwardLength;       // 0C
-		float                                         cachedDPS;                 // 10
-		float                                         cachedEyeLevel;            // 14
-		float                                         cachedWalkSpeed;           // 18
-		float                                         cachedRunSpeed;            // 1C
-		float                                         cachedJogSpeed;            // 20
-		float                                         cachedFastWalkSpeed;       // 24
-		stl::enumeration<BooleanValue, std::uint32_t> booleanValues;             // 28
-		stl::enumeration<Flags, std::uint32_t>        flags;                     // 2C
-		BSTArray<CachedValueData>                     actorValueCache;           // 30
-		BSTArray<CachedValueData>                     permanentActorValueCache;  // 48
+		float                                         cachedRadius;         // 00
+		float                                         cachedWidth;          // 04
+		float                                         cachedLength;         // 08
+		float                                         cachedForwardLength;  // 0C
+		float                                         cachedDPS;            // 10
+		float                                         cachedEyeLevel;       // 14
+		float                                         cachedWalkSpeed;      // 18
+		float                                         cachedRunSpeed;       // 1C
+		float                                         cachedJogSpeed;       // 20
+		float                                         cachedFastWalkSpeed;  // 24
+		stl::enumeration<BooleanValue, std::uint32_t> booleanValues;        // 28
+		stl::enumeration<Flags, std::uint32_t>        flags;                // 2C
+		BSTArray<CachedValueData>                     actorValueCache;      // 30
+		BSTArray<CachedValueData>                     maxActorValueCache;   // 48
 	};
 	static_assert(sizeof(CachedValues) == 0x60);
 
@@ -171,11 +171,13 @@ namespace RE
 		bool                    InLowProcess() const;
 		bool                    IsArrested() const;
 		bool                    IsGhost() const;
+		void                    SetActorRefraction(float a_refraction);
 		void                    KnockExplosion(Actor* a_actor, const NiPoint3& a_location, float a_magnitude);
 		bool                    PlayIdle(Actor* a_actor, TESIdleForm* a_idle, TESObjectREFR* a_target);
 		void                    SetActorsDetectionEvent(Actor* a_actor, const NiPoint3& a_location, std::int32_t a_soundLevel, TESObjectREFR* a_ref);
 		void                    SetArrested(bool a_arrested);
 		void                    SetCachedHeight(float a_height);
+		void                    SetRefraction(float a_refraction);
 		void                    SetHeadtrackTarget(Actor* a_owner, NiPoint3& a_targetPosition);
 		void                    Set3DUpdateFlag(RESET_3D_FLAGS a_flags);
 		bool                    SetupSpecialIdle(Actor* a_actor, DEFAULT_OBJECT a_action, TESIdleForm* a_idle, bool a_arg5, bool a_arg6, TESObjectREFR* a_target);
@@ -222,6 +224,9 @@ namespace RE
 
 	protected:
 		void Update3DModel_Impl(Actor* a_actor);
+
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(AIProcess) == 0x140);
 }

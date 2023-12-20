@@ -39,6 +39,8 @@ namespace RE
 	public:
 		// members
 		BSBitField<>* visData;  // 0
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BGSTerrainVisibilityData) == 0x8);
 
@@ -73,6 +75,8 @@ namespace RE
 	public:
 		// members
 		BSTArray<BSTSmartPointer<NavMesh>> navMeshes;  // 00
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(NavMeshArray) == 0x18);
 
@@ -266,19 +270,21 @@ namespace RE
 		}
 
 		// members
-		mutable BSSpinLock                                   grassCreateLock;   // 030
-		mutable BSSpinLock                                   grassTaskLock;     // 038
-		stl::enumeration<Flag, std::uint16_t>                cellFlags;         // 040
-		std::uint16_t                                        cellGameFlags;     // 042
-		stl::enumeration<CellState, std::uint8_t>            cellState;         // 044
-		bool                                                 autoWaterLoaded;   // 045
-		bool                                                 cellDetached;      // 046
-		std::uint8_t                                         pad047;            // 047
-		ExtraDataList                                        extraList;         // 048
+		mutable BSSpinLock                        grassCreateLock;  // 030
+		mutable BSSpinLock                        grassTaskLock;    // 038
+		stl::enumeration<Flag, std::uint16_t>     cellFlags;        // 040
+		std::uint16_t                             cellGameFlags;    // 042
+		stl::enumeration<CellState, std::uint8_t> cellState;        // 044
+		bool                                      autoWaterLoaded;  // 045
+		bool                                      cellDetached;     // 046
+		std::uint8_t                              pad047;           // 047
+		ExtraDataList                             extraList;        // 048
 
 #ifndef ENABLE_SKYRIM_AE
-		RUNTIME_DATA_CONTENT
+		RUNTIME_DATA_CONTENT;
 #endif
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef ENABLE_SKYRIM_AE
 	static_assert(sizeof(TESObjectCELL) == 0x140);

@@ -47,18 +47,18 @@ namespace RE
 
 		struct CAMERASTATE_RUNTIME_DATA
 		{
-#ifndef ENABLE_SKYRIM_VR                                                // Non-VR
+#if !defined(ENABLE_SKYRIM_VR)  // Non-VR
 #	define CAMERASTATE_RUNTIME_DATA_CONTENT                                                                                                   \
 		ViewData camViewData;                                           /* 08 VR is BSTArray, Each array has 2 elements (one for each eye?) */ \
 		NiPoint3 posAdjust;                                             /* 20 */                                                               \
 		NiPoint3 currentPosAdjust;                                      /* 38 */                                                               \
-		NiPoint3 previousPosAdjust;                                     /* 50 */                                                               \
+		NiPoint3 previousPosAdjust;                                     /* 50 */ \
 		#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)  // VR
-#	define CAMERASTATE_RUNTIME_DATA_CONTENT                                                                                                   \
-		BSTArray<ViewData> camViewData;                                 /* 08 VR is BSTArray, Each array has 2 elements (one for each eye?) */ \
-		BSTArray<NiPoint3> posAdjust;                                   /* 20 */                                                               \
-		BSTArray<NiPoint3> currentPosAdjust;                            /* 38 */                                                               \
-		BSTArray<NiPoint3> previousPosAdjust;                           /* 50 */
+#	define CAMERASTATE_RUNTIME_DATA_CONTENT                                                                         \
+		BSTArray<ViewData> camViewData;       /* 08 VR is BSTArray, Each array has 2 elements (one for each eye?) */ \
+		BSTArray<NiPoint3> posAdjust;         /* 20 */                                                               \
+		BSTArray<NiPoint3> currentPosAdjust;  /* 38 */                                                               \
+		BSTArray<NiPoint3> previousPosAdjust; /* 50 */
 #else
 #	define CAMERASTATE_RUNTIME_DATA_CONTENT
 #endif
@@ -82,10 +82,10 @@ namespace RE
 			}
 
 			// members
-			NiCamera* referenceCamera;                          /* 00 */
-			CAMERASTATE_RUNTIME_DATA_CONTENT;                   // 08
+			NiCamera* referenceCamera;         /* 00 */
+			CAMERASTATE_RUNTIME_DATA_CONTENT;  // 08
 		};
-#ifndef ENABLE_SKYRIM_VR                                        // Non-VR
+#if !defined(ENABLE_SKYRIM_VR)  // Non-VR
 		static_assert(sizeof(CameraStateData) == 0x68);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)  // VR
 		static_assert(sizeof(CameraStateData) == 0x8);
@@ -97,7 +97,7 @@ namespace RE
 		public:
 			struct RUNTIME_DATA
 			{
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)            // VR
+#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)  // VR
 #	define RUNTIME_DATA_CONTENT                                                                                              \
 		uint32_t                  firstCameraStateIndex;                /*	058 VR   only ?*/                                  \
 		NiPointer<NiTexture>      defaultTextureBlack;                  /* SE 058, AE,VR 060 - "BSShader_DefHeightMap"*/      \
@@ -143,7 +143,7 @@ namespace RE
 #endif
 				RUNTIME_DATA_CONTENT;
 			};
-#ifndef ENABLE_SKYRIM_VR                                        // Non-VR
+#if !defined(ENABLE_SKYRIM_VR)  // Non-VR
 			static_assert(offsetof(RUNTIME_DATA, dynamicResolutionCurrentWidthScale) == 0xA4);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)  // VR
 			static_assert(offsetof(RUNTIME_DATA, dynamicResolutionCurrentWidthScale) == 0xAC);
@@ -209,7 +209,7 @@ namespace RE
 			bool                 useEarlyZ;                          // 055
 			RUNTIME_DATA_CONTENT;                                    // 058, VR 060
 		};
-#ifndef ENABLE_SKYRIM_VR                                             // Non-VR
+#if !defined(ENABLE_SKYRIM_VR)  // Non-VR
 		static_assert(offsetof(State, screenWidth) == 0x24);
 		static_assert(offsetof(State, frameBufferViewport) == 0x2C);
 		static_assert(offsetof(State, letterbox) == 0x51);

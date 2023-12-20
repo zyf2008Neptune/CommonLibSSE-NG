@@ -92,6 +92,7 @@ set(SOURCES
 	include/RE/B/BGSDualCastData.h
 	include/RE/B/BGSEncounterZone.h
 	include/RE/B/BGSEntryPoint.h
+	include/RE/B/BGSEntryPointFunction.h
 	include/RE/B/BGSEntryPointFunctionData.h
 	include/RE/B/BGSEntryPointFunctionDataActivateChoice.h
 	include/RE/B/BGSEntryPointFunctionDataOneValue.h
@@ -113,6 +114,7 @@ set(SOURCES
 	include/RE/B/BGSImpactDataSet.h
 	include/RE/B/BGSImpactManager.h
 	include/RE/B/BGSInstancedQuestObjective.h
+	include/RE/B/BGSKeyword.cpp
 	include/RE/B/BGSKeyword.h
 	include/RE/B/BGSKeywordForm.h
 	include/RE/B/BGSLensFlare.h
@@ -191,6 +193,7 @@ set(SOURCES
 	include/RE/B/BGSStoryManagerTreeForm.h
 	include/RE/B/BGSStoryTeller.h
 	include/RE/B/BGSTalkingActivator.h
+	include/RE/B/BGSTerrainManager.h
 	include/RE/B/BGSTextureModel.h
 	include/RE/B/BGSTextureSet.h
 	include/RE/B/BGSTypedItem.h
@@ -307,10 +310,13 @@ set(SOURCES
 	include/RE/B/BSPrecomputedNavmeshInfoPathMap.h
 	include/RE/B/BSReloadShaderI.h
 	include/RE/B/BSRenderPass.h
+	include/RE/B/BSResource.h
 	include/RE/B/BSResourceEntryDB.h
 	include/RE/B/BSResourceNiBinaryStream.h
 	include/RE/B/BSResponse.h
 	include/RE/B/BSSaveDataSystemUtility.h
+	include/RE/B/BSScaleformExternalTexture.h
+	include/RE/B/BSScaleformImageLoader.h
 	include/RE/B/BSScaleformManager.h
 	include/RE/B/BSScaleformTranslator.h
 	include/RE/B/BSSceneGraph.h
@@ -366,6 +372,7 @@ set(SOURCES
 	include/RE/B/BSTriShape.h
 	include/RE/B/BSUIMessageData.h
 	include/RE/B/BSUIScaleformData.h
+	include/RE/B/BSVRInterface.h
 	include/RE/B/BSValueNode.h
 	include/RE/B/BSVRInterface.h
 	include/RE/B/BSVirtualKeyboardDevice.h
@@ -434,6 +441,7 @@ set(SOURCES
 	include/RE/C/CFilter.h
 	include/RE/C/CRC.h
 	include/RE/C/Calendar.h
+	include/RE/C/CalibrationOptionMenu.h
 	include/RE/C/CalmEffect.h
 	include/RE/C/CharEvent.h
 	include/RE/C/Character.h
@@ -518,6 +526,7 @@ set(SOURCES
 	include/RE/D/DialogueMenu.h
 	include/RE/D/DialoguePackage.h
 	include/RE/D/DialogueTypes.h
+	include/RE/D/DirectionHandler.h
 	include/RE/D/DisarmEffect.h
 	include/RE/D/DisarmedEvent.h
 	include/RE/D/DisguiseEffect.h
@@ -528,6 +537,7 @@ set(SOURCES
 	include/RE/D/DualValueModifierEffect.h
 	include/RE/E/Effect.h
 	include/RE/E/EffectArchetypes.h
+	include/RE/E/EffectSetting.cpp
 	include/RE/E/EffectSetting.h
 	include/RE/E/EmotionTypes.h
 	include/RE/E/EnchantConstructMenu.h
@@ -770,6 +780,7 @@ set(SOURCES
 	include/RE/G/GFxExternalInterface.h
 	include/RE/G/GFxFileConstants.h
 	include/RE/G/GFxFunctionHandler.h
+	include/RE/G/GFxImageLoader.h
 	include/RE/G/GFxInitImportActions.h
 	include/RE/G/GFxKey.h
 	include/RE/G/GFxKeyboardState.h
@@ -841,6 +852,9 @@ set(SOURCES
 	include/RE/G/GHashsetNodeEntry.h
 	include/RE/G/GImage.h
 	include/RE/G/GImageBase.h
+	include/RE/G/GImageInfo.h
+	include/RE/G/GImageInfoBase.h
+	include/RE/G/GImageInfoBaseImpl.h
 	include/RE/G/GList.h
 	include/RE/G/GMath.h
 	include/RE/G/GMatrix2D.h
@@ -899,6 +913,7 @@ set(SOURCES
 	include/RE/H/HighProcessData.h
 	include/RE/H/HitData.h
 	include/RE/H/HorseCameraState.h
+	include/RE/H/HudModeChangeEvent.h
 	include/RE/H/hkAabb.h
 	include/RE/H/hkArray.h
 	include/RE/H/hkBaseObject.h
@@ -1091,7 +1106,6 @@ set(SOURCES
 	include/RE/I/IVMSaveLoadInterface.h
 	include/RE/I/IVirtualMachine.h
 	include/RE/I/IXAudio2VoiceCallback.h
-	include/RE/I/ImageData.h
 	include/RE/I/ImageSpaceData.h
 	include/RE/I/ImageSpaceEffect.h
 	include/RE/I/ImageSpaceEffectDepthOfField.h
@@ -1579,6 +1593,7 @@ set(SOURCES
 	include/RE/T/TargetValueModifierEffect.h
 	include/RE/T/TaskQueueInterface.h
 	include/RE/T/TelekinesisEffect.h
+	include/RE/T/TeleportHandler.h
 	include/RE/T/TempEffectTraits.h
 	include/RE/T/TextureAddressModes.h
 	include/RE/T/TextureFileFormat.h
@@ -1607,6 +1622,9 @@ set(SOURCES
 	include/RE/U/UserEvents.h
 	include/RE/V/VATS.h
 	include/RE/V/VDescTable.h
+	include/RE/V/VRDeviceConnectionChange.h
+	include/RE/V/VROverlayChange.h
+	include/RE/V/VRResetHMDHeight.h
 	include/RE/V/VRWandEvent.h
 	include/RE/V/ValueAndConditionsEffect.h
 	include/RE/V/ValueModifierEffect.h
@@ -1617,6 +1635,7 @@ set(SOURCES
 	include/RE/V/VoiceSpellFireHandler.h
 	include/RE/V/VrWandTouchpadPositionEvent.h
 	include/RE/V/VrWandTouchpadSwipeEvent.h
+	include/RE/W/WSActivateRollover.h
 	include/RE/W/WeaponAnimationGraphManagerHolder.h
 	include/RE/W/WeatherType.h
 	include/RE/W/WerewolfEffect.h
@@ -1705,6 +1724,7 @@ set(SOURCES
 	src/RE/B/BSModelDB.cpp
 	src/RE/B/BSMouseDevice.cpp
 	src/RE/B/BSMultiBoundNode.cpp
+	src/RE/B/BSOpenVR.cpp
 	src/RE/B/BSPCGamepadDeviceDelegate.cpp
 	src/RE/B/BSPCGamepadDeviceHandler.cpp
 	src/RE/B/BSPCOrbisGamepadDevice.cpp
@@ -1978,6 +1998,7 @@ set(SOURCES
 	src/RE/U/UserEvents.cpp
 	src/RE/V/Variable.cpp
 	src/RE/V/VirtualMachine.cpp
+	src/RE/W/WorldSpaceMenu.cpp
 	src/RE/Z/ZeroFunctionArguments.cpp
 	src/REL/Relocation.cpp
 	src/SKSE/API.cpp

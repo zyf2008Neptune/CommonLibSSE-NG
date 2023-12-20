@@ -28,11 +28,20 @@ namespace RE
 				kTFCMode,
 				kMapDebug,
 				kLockpicking,
+#ifdef SKYRIM_SUPPORT_AE
+				kMarketplace,
+#endif
 				kFavor,
 
-				kTotal = 17,
+#if !defined(ENABLE_SKYRIM_VR)
+				kTotal,
 
-				kNone = 18
+				kNone
+#else
+				kTotal = 17,
+				kNone = 22  // More input contexts might be available, needs REing
+#endif
+
 			};
 		};
 		using INPUT_CONTEXT_ID = INPUT_CONTEXT_IDS::INPUT_CONTEXT_ID;
@@ -166,6 +175,8 @@ namespace RE
 		BSFixedString localMap;           // 328 - "LocalMap"
 		BSFixedString localMapMoveMode;   // 330 - "LocalMapMoveMode"
 		BSFixedString itemZoom;           // 338 - "Item Zoom"
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(UserEvents) == 0x340);
 }

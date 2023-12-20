@@ -55,7 +55,7 @@ namespace RE
 			return 0;
 		}
 
-		if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR() && !VRcompiledFileCollection) {
+		if (REL::Module::IsVR() && !VRcompiledFileCollection) {
 			// Use SkyrimVR lookup logic, ignore light plugin index which doesn't exist in VR
 			return (a_localFormID & 0xFFFFFF) | (file->compileIndex << 24);
 		} else {
@@ -74,7 +74,7 @@ namespace RE
 		}
 
 		auto rawIndex = (a_rawFormID & 0xFF000000) >> 24;
-		if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR() && !VRcompiledFileCollection) {
+		if (REL::Module::IsVR() && !VRcompiledFileCollection) {
 			if (rawIndex >= file->masterCount) {
 				return 0;
 			}

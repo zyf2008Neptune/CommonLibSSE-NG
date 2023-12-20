@@ -5,7 +5,7 @@ namespace RE
 {
 	ConsoleLog* ConsoleLog::GetSingleton()
 	{
-		REL::Relocation<ConsoleLog**> singleton{ Offset::ConsoleLog::Singleton };
+		REL::Relocation<ConsoleLog**> singleton{ REL::ID(515064) };
 		return *singleton;
 	}
 
@@ -25,7 +25,7 @@ namespace RE
 	void ConsoleLog::VPrint(const char* a_fmt, std::va_list a_args)
 	{
 		using func_t = decltype(&ConsoleLog::Print);
-		REL::Relocation<func_t> func{ Offset::ConsoleLog::VPrint };
+		REL::Relocation<func_t> func{ REL::ID(50180) };
 		func(this, a_fmt, a_args);
 	}
 }

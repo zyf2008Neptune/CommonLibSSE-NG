@@ -8,6 +8,9 @@
 #include "RE/E/EffectArchetypes.h"
 #include "RE/M/MagicSystem.h"
 #include "RE/N/NiPoint3.h"
+#ifdef SKYRIMVR
+#	include "RE/B/BSContainer.h"
+#endif
 
 namespace RE
 {
@@ -94,12 +97,87 @@ namespace RE
 		bool HasMagicEffectWithKeyword(BGSKeyword* a_keyword, std::uint64_t a_arg2);
 		void VisitEffects(ForEachActiveEffectVisitor& visitor);
 
+#ifdef ENABLE_SKYRIM_VR
+		//VR requires a visitor to access all items
+		class GetEffectCount : public MagicTarget::ForEachActiveEffectVisitor
+		{
+		public:
+			GetEffectCount() :
+				m_count(0) {}
+
+			virtual BSContainer::ForEachResult Accept(ActiveEffect* /*effect*/) override  // suppress c4100 error
+			{
+				m_count++;
+				return BSContainer::ForEachResult::kContinue;
+			}
+
+			std::uint32_t GetCount() const { return m_count; }
+
+		private:
+			std::uint32_t m_count;
+		};
+
+		class GetNthEffect : public MagicTarget::ForEachActiveEffectVisitor
+		{
+		public:
+			GetNthEffect(std::uint32_t n) :
+				m_result(nullptr), m_n(n), m_count(0) {}
+
+			virtual BSContainer::ForEachResult Accept(ActiveEffect* effect) override
+			{
+				if (m_count == m_n) {
+					m_result = effect;
+					return BSContainer::ForEachResult::kContinue;
+				}
+				m_count++;
+				return BSContainer::ForEachResult::kStop;
+			}
+
+			ActiveEffect* GetResult() { return m_result; }
+
+		private:
+			ActiveEffect* m_result;
+			std::uint32_t m_n;
+			std::uint32_t m_count;
+		};
+
+		class EffectVisitor : public MagicTarget::ForEachActiveEffectVisitor
+		{
+		public:
+			EffectVisitor(std::function<BSContainer::ForEachResult(ActiveEffect*)> func) :
+				m_functor(func) {}
+
+			virtual BSContainer::ForEachResult Accept(ActiveEffect* effect) override
+			{
+				return m_functor(effect);
+			}
+
+		protected:
+			std::function<BSContainer::ForEachResult(ActiveEffect*)> m_functor;
+		};
+
+		void VisitActiveEffects(std::function<BSContainer::ForEachResult(ActiveEffect*)> func)
+		{
+			EffectVisitor visitor(func);
+			ForEachActiveEffect(visitor);
+		}
+
+		void ForEachActiveEffect(MagicTarget::ForEachActiveEffectVisitor& visitor)
+		{
+			using func_t = decltype(&MagicTarget::ForEachActiveEffect);
+			REL::Relocation<func_t> func{ REL::ID(33756) };
+			func(this, visitor);
+		}
+#endif
+
 		// members
 		SpellDispelData* postUpdateDispelList;  // 08
 		std::uint8_t     flags;                 // 10
 		std::uint8_t     pad11;                 // 11
 		std::uint16_t    pad12;                 // 12
 		std::uint32_t    pad14;                 // 14
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(MagicTarget) == 0x18);
 }

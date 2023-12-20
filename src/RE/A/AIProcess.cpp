@@ -176,6 +176,14 @@ namespace RE
 	{
 		return cachedValues && cachedValues->flags.all(CachedValues::Flags::kActorIsGhost);
 	}
+#ifdef SKYRIMVR
+	void AIProcess::SetActorRefraction(float a_refraction)
+	{
+		using func_t = decltype(&AIProcess::SetActorRefraction);
+		REL::Relocation<func_t> func{ REL::ID(5375528368) };
+		return func(this, a_refraction);
+	}
+#endif
 
 	void AIProcess::KnockExplosion(Actor* a_actor, const NiPoint3& a_location, float a_magnitude)
 	{
@@ -215,6 +223,13 @@ namespace RE
 		using func_t = decltype(&AIProcess::SetHeadtrackTarget);
 		REL::Relocation<func_t> func{ RELOCATION_ID(38850, 39887) };
 		return func(this, a_owner, a_targetPosition);
+	}
+
+	void AIProcess::SetRefraction(float a_refraction)
+	{
+		if (middleHigh) {
+			middleHigh->scriptRefractPower = a_refraction;
+		}
 	}
 
 	void AIProcess::Set3DUpdateFlag(RESET_3D_FLAGS a_flags)

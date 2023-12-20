@@ -34,8 +34,10 @@ namespace RE
 #ifndef SKYRIM_CROSS_VR
 		GFxValue root;  // 30, 40 - "Menu_mc"
 #endif
+	private:
+		KEEP_FOR_RE()
 	};
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(TutorialMenu) == 0x48);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(TutorialMenu) == 0x58);

@@ -16,7 +16,7 @@ namespace RE
 
 		struct RUNTIME_DATA
 		{
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 #	define RUNTIME_DATA_CONTENT float worldToCam[4][4]; /* 0 */
 			RUNTIME_DATA_CONTENT
 		};
@@ -99,8 +99,10 @@ namespace RE
 		RUNTIME_DATA_CONTENT;   // 110, 138
 		RUNTIME_DATA2_CONTENT;  // 150, 1CC
 #endif
+	private:
+		KEEP_FOR_RE();
 	};
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(NiCamera) == 0x188);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(NiCamera) == 0x208);

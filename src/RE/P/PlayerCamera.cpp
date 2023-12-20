@@ -52,7 +52,7 @@ namespace RE
 
 	bool PlayerCamera::QCameraEquals(CameraState a_cameraState) const
 	{
-		return currentState && currentState == cameraStates[a_cameraState];
+		return currentState && currentState == GetRuntimeData()->cameraStates[a_cameraState];
 	}
 
 	void PlayerCamera::ToggleFreeCameraMode(bool a_freezeTime)

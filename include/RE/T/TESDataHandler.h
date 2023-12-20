@@ -5,6 +5,7 @@
 #include "RE/B/BSTList.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/F/FormTypes.h"
+#include "RE/I/InventoryChanges.h"
 #include "RE/N/NiTArray.h"
 #include "RE/N/NiTList.h"
 #include "RE/T/TESForm.h"
@@ -187,7 +188,7 @@ namespace RE
 		std::uint32_t                     padD54;                                         // D54
 		TESFile*                          activeFile;                                     // D58
 		BSSimpleList<TESFile*>            files;                                          // D60
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 		TESFileCollection compiledFileCollection;  // D70
 		RUNTIME_DATA_CONTENT
 		std::uint8_t          unkDAA;             // DAA
@@ -204,6 +205,8 @@ namespace RE
 		TESRegionDataManager* regionDataManager;  // 1580
 		InventoryChanges*     merchantInventory;  // 1588
 #endif
+	private:
+		KEEP_FOR_RE()
 	};
 
 	template <class T>

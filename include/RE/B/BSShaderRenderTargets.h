@@ -170,7 +170,7 @@ namespace RE
 			kPRECIPITATION_OCCLUSION_MAP,
 			kFOCUS_NEO,
 
-			kTOTAL, // 12 in SSE, 21 in VR
+			kTOTAL,  // 12 in SSE, 21 in VR
 			kVRTOTAL = 21,
 		};
 	};

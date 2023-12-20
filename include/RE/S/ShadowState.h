@@ -229,7 +229,7 @@ namespace RE
 
 			struct RUNTIME_DATA
 			{
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 #	define RUNTIME_DATA_CONTENT \
 		FLAT_RUNTIME_DATA_CONTENT;
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
@@ -271,7 +271,7 @@ namespace RE
 				return g_RendererShadowState;
 			}
 		};
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 		static_assert(sizeof(RendererShadowState) == 0x5e0);
 		static_assert(offsetof(RendererShadowState, renderTargets) == 0x18);
 		static_assert(offsetof(RendererShadowState, depthStencil) == 0x38);

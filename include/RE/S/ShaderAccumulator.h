@@ -56,14 +56,14 @@ namespace RE
 			bool firstPerson;      // 128
 			char _pad0[0x3];       // 129
 			bool drawDecals;       // 130
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 			RUNTIME_DATA_CONTENT;  // 130
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 			std::uint64_t unk000[(0x158 - 0x130) >> 3];  // 130
 			RUNTIME_DATA_CONTENT;                        // 158
 #endif
 		};
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 		static_assert(sizeof(BSShaderAccumulator) == 0x180);
 		static_assert(offsetof(BSShaderAccumulator, batchRenderer) == 0x130);
 		static_assert(offsetof(BSShaderAccumulator, currentPass) == 0x138);

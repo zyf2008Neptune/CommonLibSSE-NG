@@ -820,7 +820,7 @@ namespace REL {
          * Returns whether the current Skyrim runtime is a Skyrim VR release.
          */
         [[nodiscard]] static SKYRIM_REL_VR bool IsVR() noexcept {
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
             return false;
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
             return true;
@@ -2085,7 +2085,7 @@ namespace REL {
             typename detail::RelocateVirtualHelper<Fn>::this_type *a_self, Args &&... a_args) {
         return (*reinterpret_cast<typename detail::RelocateVirtualHelper<Fn>::function_type **>(
                 *reinterpret_cast<const uintptr_t *>(reinterpret_cast<uintptr_t>(a_self) +
-                                                     #ifndef ENABLE_SKYRIM_VR
+                                                     #if !defined(ENABLE_SKYRIM_VR)
                                                      a_seAndAEVtableOffset) +
 			a_seAndAEVtableIndex
                                                      #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)

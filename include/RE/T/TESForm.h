@@ -20,6 +20,8 @@ namespace RE
 	class TESFileArray : public BSStaticArray<TESFile*>
 	{
 	public:
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(TESFileArray) == 0x10);
 
@@ -28,6 +30,8 @@ namespace RE
 	public:
 		// members
 		TESFileArray* array;  // 0
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(TESFileContainer) == 0x8);
 
@@ -352,6 +356,8 @@ namespace RE
 		[[nodiscard]] bool IsSoulGem() const noexcept { return Is(FormType::SoulGem); }
 		[[nodiscard]] bool IsWeapon() const noexcept { return Is(FormType::Weapon); }
 
+		void SetPlayerKnows(bool a_known);
+
 		// members
 		TESFileContainer                                sourceFiles;      // 08
 		std::uint32_t                                   formFlags;        // 10
@@ -360,6 +366,8 @@ namespace RE
 		stl::enumeration<FormType, std::uint8_t>        formType;         // 1A
 		std::uint8_t                                    pad1B;            // 1B
 		std::uint32_t                                   pad1C;            // 1C
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(TESForm) == 0x20);
 }

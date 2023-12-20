@@ -264,8 +264,13 @@ namespace RE
 		auto xTeleport = GetByType<ExtraTeleport>();
 
 		return xTeleport && xTeleport->teleportData ?
-                   xTeleport->teleportData->linkedDoor :
-                   ObjectRefHandle();
+		           xTeleport->teleportData->linkedDoor :
+		           ObjectRefHandle();
+	}
+
+	bool ExtraDataList::GetWorn() const
+	{
+		return HasType<ExtraWorn>() || HasType<ExtraWornLeft>();
 	}
 
 	void ExtraDataList::SetCount(std::uint16_t a_count)

@@ -27,7 +27,7 @@ namespace RE
 	{
 		if (charEventCount < MAX_CHAR_EVENTS) {
 			auto& cachedEvent = GetRuntimeData().charEvents[charEventCount];
-			cachedEvent.keycode = a_keyCode;
+			cachedEvent.keyCode = a_keyCode;
 
 			PushOntoInputQueue(&cachedEvent);
 			++charEventCount;

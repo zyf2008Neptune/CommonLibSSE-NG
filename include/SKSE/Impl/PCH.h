@@ -7,6 +7,7 @@
 #include <cassert>
 #include <cmath>
 #include <concepts>
+#include <coroutine>
 #include <cstdarg>
 #include <cstddef>
 #include <cstdint>
@@ -58,9 +59,10 @@ static_assert(
 	"wrap std::time_t instead");
 
 #pragma warning(push)
-#include <fmt/format.h>
 #include <fmt/core.h>
+#include <fmt/format.h>
 #include <spdlog/spdlog.h>
+
 #pragma warning(pop)
 
 #include "SKSE/Impl/DInputAPI.h"
@@ -244,7 +246,7 @@ namespace SKSE
 			template <class... Args>
 			constexpr enumeration(Args... a_values) noexcept  //
 				requires(std::same_as<Args, enum_type> && ...)
-			:
+				:
 				_impl((static_cast<underlying_type>(a_values) | ...))
 			{}
 
@@ -721,7 +723,7 @@ namespace SKSE
 		}
 
 		[[noreturn]] inline void report_and_fail(std::string_view a_msg,
-			SKSE::stl::source_location a_loc = SKSE::stl::source_location::current())
+			SKSE::stl::source_location                            a_loc = SKSE::stl::source_location::current())
 		{
 			report_and_error(a_msg, true, a_loc);
 		}
@@ -804,5 +806,14 @@ namespace REL
 
 #include "RE/B/BSCoreTypes.h"
 #include "RE/S/SFTypes.h"
+
+#ifdef _DEBUG
+// Generates a concrete function to force the class to be included in the PDB when loading types from PDB for IDA/Ghidra
+#	define KEEP_FOR_RE() \
+		void REdebug(){};
+#else
+// Generates a concrete function to help with RE, does nothing on release builds
+#	define KEEP_FOR_RE()
+#endif
 
 #undef cdecl  // Workaround for Clang.

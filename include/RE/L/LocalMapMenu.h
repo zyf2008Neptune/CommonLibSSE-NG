@@ -1,10 +1,10 @@
 #pragma once
 
 #include "RE/B/BSCullingProcess.h"
+#include "RE/B/BSScaleformExternalTexture.h"
 #include "RE/B/BSTArray.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/G/GFxValue.h"
-#include "RE/I/ImageData.h"
 #include "RE/I/ImageSpaceShaderParam.h"
 #include "RE/L/LocalMapCamera.h"
 #include "RE/M/MenuEventHandler.h"
@@ -53,7 +53,7 @@ namespace RE
 			Data             unk301F8;        // 301F8
 			std::uint64_t    unk30240;        // 30240
 			std::uint64_t    unk30248;        // 30248
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 			std::uint64_t                  unk30250;  // 30250
 			std::uint64_t                  unk30258;  // 30258
 			LocalMapCamera                 camera;    // 30260
@@ -85,7 +85,7 @@ namespace RE
 			std::uint8_t  unk30260[0x100];  // 30260
 #endif
 		};
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 		static_assert(sizeof(LocalMapCullingProcess) == 0x30360);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 		static_assert(sizeof(LocalMapCullingProcess) == 0x303D8);
@@ -111,7 +111,7 @@ namespace RE
 
 		struct RUNTIME_DATA
 		{
-			ImageData                     unk303A0;  // 00
+			BSScaleformExternalTexture    unk303A0;  // 00
 			GFxValue                      unk303B8;  // 18
 			GFxValue                      unk303D0;  // 30
 			void*                         unk303E8;  // 48
@@ -143,8 +143,10 @@ namespace RE
 		std::uint32_t unk30478;  // 30478
 		std::uint32_t pad3047C;  // 3047C
 #endif
+	private:
+		KEEP_FOR_RE()
 	};
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(LocalMapMenu) == 0x30400);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(LocalMapMenu) == 0x30480);

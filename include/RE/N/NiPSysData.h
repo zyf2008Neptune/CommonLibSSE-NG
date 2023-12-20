@@ -15,6 +15,8 @@ namespace RE
 		std::uint16_t unk18;       // 18
 		std::uint16_t unk1A;       // 1A
 		std::uint32_t pad1C;       // 1C
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(NiParticleInfo) == 0x20);
 
@@ -63,10 +65,12 @@ namespace RE
 
 		// members
 #ifndef SKYRIM_CROSS_VR
-		RUNTIME_DATA_CONTENT
+		RUNTIME_DATA_CONTENT;
 #endif
+	private:
+		KEEP_FOR_RE()
 	};
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(NiPSysData) == 0xA8);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(NiPSysData) == 0xA8);

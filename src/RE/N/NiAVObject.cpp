@@ -398,4 +398,16 @@ namespace RE
 		REL::RelocateVirtual<decltype(&NiAVObject::OnVisible)>(0x34, 0x35, this, a_process);
 	}
 #endif
+	BSLightingShaderProperty* NiAVObject::temp_nicast(BSGeometry* a_geometry)
+	{
+		if (auto effect = a_geometry->GetGeometryRuntimeData().properties[BSGeometry::States::kEffect].get(); effect) {
+			if (auto rtti = effect->GetRTTI(); rtti) {
+				const std::string temp_name(rtti->GetName());
+				if (temp_name == "BSLightingShaderProperty") {
+					return static_cast<RE::BSLightingShaderProperty*>(effect);
+				}
+			}
+		}
+		return nullptr;
+	}
 }

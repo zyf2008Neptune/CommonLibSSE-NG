@@ -48,10 +48,12 @@ namespace RE
 
 		// members
 #ifndef SKYRIM_CROSS_VR
-		RUNTIME_DATA_CONTENT  // 30, 40
+		RUNTIME_DATA_CONTENT;  // 30, 40
 #endif
+	private:
+		KEEP_FOR_RE()
 	};
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(SleepWaitMenu) == 0x58);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(SleepWaitMenu) == 0x68);

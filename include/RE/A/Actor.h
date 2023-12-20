@@ -322,9 +322,9 @@ namespace RE
 		bool                                 ShouldSaveAnimationOnSaving() const override;                                                                                                                                                                         // 07B
 		bool                                 ShouldPerformRevert() const override;                                                                                                                                                                                 // 07C
 		void                                 UpdateAnimation(float a_delta) override;                                                                                                                                                                              // 07D
-		void                                 RemoveWeapon(BIPED_OBJECT equipIndex) override;                                                                                                                                                                       // 082
 #ifndef SKYRIM_CROSS_VR
 		// Override functions past where Skyrim VR breaks compatibility.
+		void                   RemoveWeapon(BIPED_OBJECT equipIndex) override;                                                // 082
 		void                   SetObjectReference(TESBoundObject* a_object) override;                                         // 084
 		void                   MoveHavok(bool a_forceRec) override;                                                           // 085
 		void                   GetLinearVelocity(NiPoint3& a_velocity) const override;                                        // 086
@@ -521,12 +521,12 @@ namespace RE
 		void                                    EvaluatePackage(bool a_immediate = false, bool a_resetAI = false);
 		[[nodiscard]] TESNPC*                   GetActorBase();
 		[[nodiscard]] const TESNPC*             GetActorBase() const;
-		[[nodiscard]] bool                      IsLeveled() const;
 		[[nodiscard]] float                     GetActorValueModifier(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_value) const;
 		[[nodiscard]] float                     GetAimAngle() const;
 		[[nodiscard]] float                     GetAimHeading() const;
 		[[nodiscard]] InventoryEntryData*       GetAttackingWeapon();
 		[[nodiscard]] const InventoryEntryData* GetAttackingWeapon() const;
+		[[nodiscard]] const float               GetTotalCarryWeight();
 		[[nodiscard]] bhkCharacterController*   GetCharController() const;
 		std::uint32_t                           GetCollisionFilterInfo(std::uint32_t& a_outCollisionFilterInfo);
 		[[nodiscard]] NiPointer<Actor>          GetCommandingActor() const;
@@ -563,6 +563,7 @@ namespace RE
 		[[nodiscard]] float                     GetWarmthRating() const;
 		[[nodiscard]] TESObjectARMO*            GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot, bool a_noInit = false);
 		[[nodiscard]] TESObjectARMO*            GetWornArmor(FormID a_formID, bool a_noInit = false);
+		[[nodiscard]] bool                      HasKeyword(const BGSKeyword* a_keyword) const;
 		[[nodiscard]] bool                      HasKeywordString(std::string_view a_formEditorID);
 		[[nodiscard]] bool                      HasLineOfSight(TESObjectREFR* a_ref, bool& a_arg2);
 		[[nodiscard]] bool                      HasOutfitItems(BGSOutfit* a_outfit);
@@ -590,6 +591,7 @@ namespace RE
 		[[nodiscard]] constexpr bool            IsInKillMove() const noexcept { return GetActorRuntimeData().boolFlags.all(BOOL_FLAGS::kIsInKillMove); }
 		[[nodiscard]] bool                      IsInMidair() const;
 		[[nodiscard]] bool                      IsInRagdollState() const;
+		[[nodiscard]] bool                      IsLeveled() const;
 		[[nodiscard]] bool                      IsLimbGone(std::uint32_t a_limb);
 		[[nodiscard]] bool                      IsMoving() const;
 		[[nodiscard]] bool                      IsOnMount() const;
@@ -607,6 +609,7 @@ namespace RE
 		void                                    RemoveAnimationGraphEventSink(BSTEventSink<BSAnimationGraphEvent>* a_sink) const;
 		void                                    RemoveCastScroll(SpellItem* a_spell, MagicSystem::CastingSource a_source);
 		void                                    RemoveExtraArrows3D();
+		void                                    RemoveFromFaction(TESFaction* a_faction);
 		void                                    RemoveOutfitItems(BGSOutfit* a_outfit);
 		bool                                    RemoveSpell(SpellItem* a_spell);
 		[[nodiscard]] std::int32_t              RequestDetectionLevel(Actor* a_target, DETECTION_PRIORITY a_priority = DETECTION_PRIORITY::kNormal);
@@ -778,6 +781,7 @@ namespace RE
 		void        CalculateCurrentVendorFaction() const;
 		float       CalcEquippedWeight();
 		TESFaction* GetCrimeFactionImpl() const;
+		KEEP_FOR_RE()
 	};
 #ifndef ENABLE_SKYRIM_AE
 	static_assert(sizeof(Actor) == 0x2B0);

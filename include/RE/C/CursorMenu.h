@@ -41,10 +41,13 @@ namespace RE
 		{
 			return const_cast<CursorMenu*>(this)->AsMenuEventHandler();
 		}
+
+	private:
+		KEEP_FOR_RE()
 	};
-#ifndef ENABLE_SKYRIM_VR
-	static_assert(sizeof(CursorMenu) == 0x40);
+#if !defined(ENABLE_SKYRIM_VR)
+static_assert(sizeof(CursorMenu) == 0x40);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-	static_assert(sizeof(CursorMenu) == 0x50);
+static_assert(sizeof(CursorMenu) == 0x50);
 #endif
 }

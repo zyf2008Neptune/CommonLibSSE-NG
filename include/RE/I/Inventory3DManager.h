@@ -70,19 +70,21 @@ namespace RE
 		}
 
 		// members
-		std::uint8_t                                  unk011;         // 011
-		std::uint16_t                                 unk012;         // 012
-		NiPoint3                                      itemPosCopy;    // 014
-		NiPoint3                                      itemPos;        // 020
-		float                                         itemScaleCopy;  // 02C
-		float                                         itemScale;      // 030
-		std::uint32_t                                 unk034;         // 034
-		TESObjectREFR*                                tempRef;        // 038
-		ExtraDataList                                 originalExtra;  // 040
+		std::uint8_t   unk011;         // 011
+		std::uint16_t  unk012;         // 012
+		NiPoint3       itemPosCopy;    // 014
+		NiPoint3       itemPos;        // 020
+		float          itemScaleCopy;  // 02C
+		float          itemScale;      // 030
+		std::uint32_t  unk034;         // 034
+		TESObjectREFR* tempRef;        // 038
+		ExtraDataList  originalExtra;  // 040
 
 #ifndef ENABLE_SKYRIM_AE
-		RUNTIME_DATA_CONTENT
+		RUNTIME_DATA_CONTENT;
 #endif
+	private:
+		KEEP_FOR_RE()
 	};
 #ifndef ENABLE_SKYRIM_AE
 	static_assert(sizeof(Inventory3DManager) == 0x160);

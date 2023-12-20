@@ -16,6 +16,12 @@ namespace RE
 		return *singleton;
 	}
 
+	bool BSInputDeviceManager::GetButtonNameFromID(INPUT_DEVICE a_device, std::int32_t a_id, BSFixedString& a_buttonName) const
+	{
+		const auto device = devices[a_device];
+		return device && device->GetKeyMapping(a_id, a_buttonName);
+	}
+
 	BSPCGamepadDeviceDelegate* BSInputDeviceManager::GetGamepad()
 	{
 		auto handler = GetGamepadHandler();
@@ -39,7 +45,7 @@ namespace RE
 
 	BSTrackedControllerDevice* BSInputDeviceManager::GetVRControllerRight()
 	{
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 		return nullptr;
 #else
 		if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
@@ -51,7 +57,7 @@ namespace RE
 
 	BSTrackedControllerDevice* BSInputDeviceManager::GetVRControllerLeft()
 	{
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 		return nullptr;
 #else
 		if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {

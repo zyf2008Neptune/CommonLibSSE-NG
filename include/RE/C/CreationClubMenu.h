@@ -1,9 +1,9 @@
 #pragma once
 
+#include "RE/B/BSScaleformExternalTexture.h"
 #include "RE/B/BSTEvent.h"
 #include "RE/G/GFxFunctionHandler.h"
 #include "RE/I/IMenu.h"
-#include "RE/I/ImageData.h"
 #include "RE/M/MenuEventHandler.h"
 
 namespace RE
@@ -29,9 +29,9 @@ namespace RE
 
 		struct RUNTIME_DATA
 		{
-#define RUNTIME_DATA_CONTENT       \
-	ImageData background; /* 00 */ \
-	ImageData details;    /* 18 */
+#define RUNTIME_DATA_CONTENT                        \
+	BSScaleformExternalTexture background; /* 00 */ \
+	BSScaleformExternalTexture details;    /* 18 */
 
 			RUNTIME_DATA_CONTENT
 		};
@@ -96,10 +96,12 @@ namespace RE
 
 		// members
 #ifndef SKYRIM_CROSS_VR
-		RUNTIME_DATA_CONTENT  // 58, 68
+		RUNTIME_DATA_CONTENT;  // 58, 68
 #endif
+	private:
+		KEEP_FOR_RE();
 	};
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(CreationClubMenu) == 0x88);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(CreationClubMenu) == 0x98);

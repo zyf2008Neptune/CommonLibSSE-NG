@@ -50,6 +50,7 @@ namespace RE
 		BSShaderMaterial::Type GetMaterialType() override;                                                                                  // 3E - { return 2; }
 
 		void CopyMembers(BSLightingShaderProperty* a_other);
+		void InvalidateTextures(std::uint32_t a_unk1);
 
 		// members
 		Data            unk088[3];          // 088
@@ -74,6 +75,8 @@ namespace RE
 		std::uint8_t    pad159;             // 159
 		std::uint16_t   pad15A;             // 15A
 		std::uint32_t   pad15C;             // 15C
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSLightingShaderProperty) == 0x160);
 }

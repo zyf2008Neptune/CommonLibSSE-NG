@@ -212,6 +212,7 @@ namespace RE
 		virtual std::uint32_t                  DetermineUtilityShaderDecl();                                                                           // 3D - { return 0; }
 		virtual BSShaderMaterial::Type         GetMaterialType();                                                                                      // 3E - { return 0; }
 
+		bool InvalidateMaterial();
 		void SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
 		void SetMaterial(BSShaderMaterial* a_material, bool a_unk1);
 		void SetFlags(EShaderPropertyFlag8 a_flag, bool a_set);
@@ -229,6 +230,8 @@ namespace RE
 		BSShaderPropertyLightData*                           lightData;            // 70
 		BSEffectShaderMaterial*                              material;             // 78
 		std::uint64_t                                        unk80;                // 80
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(BSShaderProperty) == 0x88);
 }

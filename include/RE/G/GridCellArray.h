@@ -25,14 +25,16 @@ namespace RE
 		[[nodiscard]] TESObjectCELL* GetCell(std::uint32_t a_x, std::uint32_t a_y) const noexcept
 		{
 			return (a_x < length && a_y < length) ?
-                       cells[(a_x * length) + a_y] :
-                       nullptr;
+			           cells[(a_x * length) + a_y] :
+			           nullptr;
 		};
 
 		// members
 		TESObjectCELL** cells;           // 18 - (memory allocated using 0x8 * numGrids * numGrids)
 		NiPoint3        unk20;           // 20
 		bool            land3DAttached;  // 2C
+	private:
+		KEEP_FOR_RE()
 	};
 	static_assert(sizeof(GridCellArray) == 0x30);
 };

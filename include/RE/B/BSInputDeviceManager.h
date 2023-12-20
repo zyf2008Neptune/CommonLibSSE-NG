@@ -44,6 +44,7 @@ namespace RE
 
 		static BSInputDeviceManager* GetSingleton();
 
+		bool                          GetButtonNameFromID(INPUT_DEVICE a_device, std::int32_t a_id, BSFixedString& a_buttonName) const;
 		BSPCGamepadDeviceDelegate*    GetGamepad();
 		BSPCGamepadDeviceHandler*     GetGamepadHandler();
 		BSWin32KeyboardDevice*        GetKeyboard();
@@ -88,7 +89,7 @@ namespace RE
 #	endif
 #endif
 	};
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(BSInputDeviceManager) == 0xF0);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(BSInputDeviceManager) == 0x108);

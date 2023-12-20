@@ -28,12 +28,13 @@ namespace RE
 			kPCTransition,
 			kTween,
 			kAnimated,
-			kThirdPerson, // VR VrCameraState : TESCameraState : BSIntrusiveRefCounted
-			kMount, // VR kThirdPerson ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
-			kBleedout, // VR kMount HorseCameraState : ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
-			kDragon, // VR kBleedout BleedoutCameraState : ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
-			
-			kTotal, // VR kDragon DragonCameraState : ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
+			kThirdPerson,  // VR VrCameraState : TESCameraState : BSIntrusiveRefCounted
+			kMount,        // VR kThirdPerson ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
+			kBleedout,     // VR kMount HorseCameraState : ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
+			kDragon,       // VR kBleedout BleedoutCameraState : ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
+
+			kTotal,             // VR kDragon DragonCameraState : ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
+			kVR = kDragon + 1,  // ".?AVVrCameraState@@"? by memory address it's after bleedout and before tween
 			kVRTotal
 		};
 	};
@@ -55,6 +56,54 @@ namespace RE
 
 		~PlayerCamera() override;  // 00
 
+		struct RUNTIME_DATA
+		{
+#define RUNTIME_DATA_CONTENT                                                                                      \
+	BSTSmallArray<TESCameraState*, CameraStates::kTotal> tempReturnStates;                   /* 040, VR 050*/     \
+	BSTSmartPointer<TESCameraState>                      cameraStates[CameraStates::kTotal]; /* 0B8, VR 0C0*/     \
+	Unk120*                                              unk120;                             /* 120, */           \
+	NiPointer<bhkRigidBody>                              rigidBody;                          /* 128, VR 130 - ?*/ \
+	RefHandle                                            objectFadeHandle;                   /* 130, VR 138 - ?*/ \
+	mutable BSSpinLock                                   lock;                               /* 134, VR 13c*/
+
+			RUNTIME_DATA_CONTENT
+		};
+		static_assert(sizeof(RUNTIME_DATA) == 0x100);
+
+		struct VR_RUNTIME_DATA
+		{
+#define VR_RUNTIME_DATA_CONTENT                                                                                       \
+	BSTSmallArray<TESCameraState*, CameraStates::kVRTotal> tempReturnStates;                     /* 040, VR 050*/     \
+	BSTSmartPointer<TESCameraState>                        cameraStates[CameraStates::kVRTotal]; /* 0B8, VR 0C0*/     \
+	NiPointer<bhkRigidBody>                                rigidBody;                            /* 128, VR 130 - ?*/ \
+	RefHandle                                              objectFadeHandle;                     /* 130, VR 138 - ?*/ \
+	mutable BSSpinLock                                     lock;                                 /* 134, VR 13c*/     \
+	char                                                   VRpad140[20];                         /* VR 140 */
+            VR_RUNTIME_DATA_CONTENT
+		};
+		static_assert(sizeof(VR_RUNTIME_DATA) == 0x118);
+
+		struct RUNTIME_DATA2
+		{
+#define RUNTIME_DATA2_CONTENT                                            \
+	float         worldFOV;            /* 13C, VR 158*/                  \
+	float         firstPersonFOV;      /* 140, VR 15c*/                  \
+	NiPoint3      pos;                 /* 144, VR 160 - ?*/              \
+	float         idleTimer;           /* 150, VR 16c - ?*/              \
+	float         yaw;                 /* 154, VR 170 - ? - in radians*/ \
+	std::uint32_t unk158;              /* 158 - ?*/                      \
+	std::uint32_t unk15C;              /* 15C - ?*/                      \
+	bool          allowAutoVanityMode; /* 160, VR 17c*/                  \
+	bool          bowZoomedIn;         /* 161, VR 17d*/                  \
+	bool          isWeapSheathed;      /* 162, VR 17e - ?*/              \
+	bool          isProcessed;         /* 163, VR 17f - ?*/              \
+	std::uint8_t  unk164;              /* 164*/                          \
+	std::uint8_t  unk165;              /* 165*/                          \
+	std::uint16_t pad166;              /* 166*/
+			RUNTIME_DATA2_CONTENT
+		};
+		static_assert(sizeof(RUNTIME_DATA2) == 0x2c);
+
 		// override (TESCamera)
 		void SetCameraRoot(NiPointer<NiNode> a_root) override;  // 01
 
@@ -69,33 +118,73 @@ namespace RE
 		void ToggleFreeCameraMode(bool a_freezeTime);
 		void UpdateThirdPerson(bool a_weaponDrawn);
 
+		[[nodiscard]] inline RUNTIME_DATA* GetRuntimeData() noexcept
+		{
+			if SKYRIM_REL_CONSTEXPR (!REL::Module::IsVR()) {
+				return REL::RelocateMember<RUNTIME_DATA*>(this, 0x40, 0);
+			} else {
+				return nullptr;
+			}
+		}
+
+		[[nodiscard]] inline const RUNTIME_DATA* GetRuntimeData() const noexcept
+		{
+			if SKYRIM_REL_CONSTEXPR (!REL::Module::IsVR()) {
+				return REL::RelocateMember<RUNTIME_DATA*>(this, 0x40, 0);
+			} else {
+				return nullptr;
+			}
+		}
+
+		[[nodiscard]] inline VR_RUNTIME_DATA* GetVRRuntimeData() noexcept
+		{
+			if SKYRIM_REL_CONSTEXPR (!REL::Module::IsVR()) {
+				return nullptr;
+			} else {
+				return REL::RelocateMember<VR_RUNTIME_DATA*>(this, 0, 0x40);
+			}
+		}
+
+		[[nodiscard]] inline const VR_RUNTIME_DATA* GetVRRuntimeData() const noexcept
+		{
+			if SKYRIM_REL_CONSTEXPR (!REL::Module::IsVR()) {
+				return nullptr;
+			} else {
+				return REL::RelocateMember<VR_RUNTIME_DATA*>(this, 0, 0x40);
+			}
+		}
+
+		[[nodiscard]] inline RUNTIME_DATA2& GetRuntimeData2() noexcept
+		{
+			return REL::RelocateMember<RUNTIME_DATA2>(this, 0x13c, 0x158);
+		}
+
+		[[nodiscard]] inline const RUNTIME_DATA2& GetRuntimeData2() const noexcept
+		{
+			return REL::RelocateMember<RUNTIME_DATA2>(this, 0x13c, 0x158);
+		}
 		// members
-		std::uint8_t                                         pad039;                              // 039
-		std::uint16_t                                        pad03A;                              // 03A
-		ActorHandle                                          cameraTarget;                        // 03C
-		BSTSmallArray<TESCameraState*, CameraStates::kTotal> tempReturnStates;                    // 040, VR 050
-		BSTSmartPointer<TESCameraState>                      cameraStates[CameraStates::kTotal];  // 0B8, VR 0C0
-		Unk120*                                              unk120;                              // 120, VR 130 - ?
-		NiPointer<bhkRigidBody>                              rigidBody;                           // 128, VR 138 - ?
-		RefHandle                                            objectFadeHandle;                    // 130, VR 140 - ?
-		mutable BSSpinLock                                   lock;                                // 134, VR 144
-		float                                                worldFOV;                            // 13C, VR 158
-		float                                                firstPersonFOV;                      // 140, VR 15c
-		NiPoint3                                             pos;                                 // 144, VR 160 - ?
-		float                                                idleTimer;                           // 150, VR 16c - ?
-		float                                                yaw;                                 // 154, VR 170 - ? - in radians
-		std::uint32_t                                        unk158;                              // 158 - ?
-		std::uint32_t                                        unk15C;                              // 15C - ?
-		bool                                                 allowAutoVanityMode;                 // 160, VR 17c
-		bool                                                 bowZoomedIn;                         // 161, VR 17d
-		bool                                                 isWeapSheathed;                      // 162, VR 17e - ?
-		bool                                                 isProcessed;                         // 163, VR 17f - ?
-		std::uint8_t                                         unk164;                              // 164
-		std::uint8_t                                         unk165;                              // 165
-		std::uint16_t                                        pad166;                              // 166
+		std::uint8_t  pad039;        // 039
+		std::uint16_t pad03A;        // 03A
+		ActorHandle   cameraTarget;  // 03C
+#if !defined(ENABLE_SKYRIM_VR)
+		RUNTIME_DATA_CONTENT;
+		RUNTIME_DATA2_CONTENT;
+#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+		VR_RUNTIME_DATA_CONTENT;
+		RUNTIME_DATA2_CONTENT;
+#endif
 
 	private:
 		bool QCameraEquals(CameraState a_cameraState) const;
+		KEEP_FOR_RE();
 	};
+#if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(PlayerCamera) == 0x168);
+#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+	static_assert(sizeof(PlayerCamera) == 0x188);
+#endif
 }
+#undef RUNTIME_DATA_CONTENT
+#undef VR_RUNTIME_DATA_CONTENT
+#undef RUNTIME_DATA2_CONTENT

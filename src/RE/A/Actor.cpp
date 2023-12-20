@@ -580,6 +580,13 @@ namespace RE
 		return func(this);
 	}
 
+	const float Actor::GetTotalCarryWeight()
+	{
+		using func_t = decltype(&Actor::GetTotalCarryWeight);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36456, 37452) };
+		return func(this);
+	}
+
 	TESFaction* Actor::GetVendorFaction()
 	{
 		auto* _vendorFaction = GetActorRuntimeData().vendorFaction;
@@ -605,12 +612,14 @@ namespace RE
 		return func(this);
 	}
 
+#if !defined(ENABLE_SKYRIM_VR)
 	float Actor::GetWarmthRating() const
 	{
 		using func_t = decltype(&Actor::GetWarmthRating);
 		REL::Relocation<func_t> func{ RELOCATION_ID(25834, 26394) };
 		return func(this);
 	}
+#endif
 
 	TESObjectARMO* Actor::GetWornArmor(BGSBipedObjectForm::BipedObjectSlot a_slot, bool a_noInit)
 	{
@@ -647,6 +656,11 @@ namespace RE
 		}
 
 		return nullptr;
+	}
+
+	bool Actor::HasKeyword(const BGSKeyword* a_keyword) const
+	{
+		return HasKeywordHelper(a_keyword);
 	}
 
 	bool Actor::HasKeywordString(std::string_view a_formEditorID)
@@ -910,6 +924,7 @@ namespace RE
 
 	void Actor::ProcessVATSAttack(MagicCaster* a_caster, bool a_hasTargetAnim, TESObjectREFR* a_target, bool a_leftHand)
 	{
+		// in VR the function exists but is void.
 		using func_t = decltype(&Actor::ProcessVATSAttack);
 		REL::Relocation<func_t> func{ RELOCATION_ID(40230, 41233) };
 		return func(this, a_caster, a_hasTargetAnim, a_target, a_leftHand);
@@ -947,6 +962,13 @@ namespace RE
 	void Actor::RemoveExtraArrows3D()
 	{
 		extraList.RemoveByType(ExtraDataType::kAttachedArrows3D);
+	}
+
+	void Actor::RemoveFromFaction(RE::TESFaction* a_faction)
+	{
+		using func_t = decltype(&Actor::RemoveFromFaction);
+		REL::Relocation<func_t> func{ RELOCATION_ID(36680, 37688) };
+		return func(this, a_faction);
 	}
 
 	bool Actor::RemoveSpell(SpellItem* a_spell)

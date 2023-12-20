@@ -31,7 +31,7 @@ namespace RE
 		bool          IsEnabled() const override;                                                 // 07 - { return currentPCGamePadDelegate != 0; }
 		void          Reset() override;                                                           // 08
 
-		void InitializeDelegate();                                                                // called by Initialize() and Process() to initialize the delegate
+		void InitializeDelegate();  // called by Initialize() and Process() to initialize the delegate
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
@@ -50,7 +50,7 @@ namespace RE
 		friend class BSInputDeviceFactory;
 		BSPCGamepadDeviceHandler();
 	};
-#ifndef ENABLE_SKYRIM_VR
+#if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(BSPCGamepadDeviceHandler) == 0x10);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(BSPCGamepadDeviceHandler) == 0x10);

@@ -1,12 +1,13 @@
 #include "RE/C/ControlMap.h"
 
+#include "RE/B/BSInputDeviceManager.h"
 #include "RE/U/UserEventEnabled.h"
 
 namespace RE
 {
 	ControlMap* ControlMap::GetSingleton()
 	{
-		REL::Relocation<ControlMap**> singleton{ Offset::ControlMap::Singleton };
+		REL::Relocation<ControlMap**> singleton{ REL::ID{ 514705 } };
 		return *singleton;
 	}
 
@@ -25,6 +26,29 @@ namespace RE
 		return GetRuntimeData().textEntryCount;
 	}
 
+	bool ControlMap::GetButtonNameFromUserEvent(const BSFixedString& a_eventID, INPUT_DEVICE a_device, BSFixedString& a_buttonName)
+	{
+		for (const auto& inputContext : controlMap) {
+			if (!inputContext) {
+				continue;
+			}
+
+			for (const auto& mapping : inputContext->deviceMappings[a_device]) {
+				if (mapping.eventID == a_eventID) {
+					if (mapping.inputKey == 0xFF) {
+						break;
+					}
+
+					const auto inputDeviceManager = BSInputDeviceManager::GetSingleton();
+					inputDeviceManager->GetButtonNameFromID(a_device, mapping.inputKey, a_buttonName);
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
 	std::uint32_t ControlMap::GetMappedKey(std::string_view a_eventID, INPUT_DEVICE a_device, InputContextID a_context) const
 	{
 		assert(a_device < INPUT_DEVICE::kTotal);
@@ -41,6 +65,21 @@ namespace RE
 		}
 
 		return kInvalid;
+	}
+
+	bool ControlMap::GetMappingFromEventName(const BSFixedString& a_eventID, UserEvents::INPUT_CONTEXT_ID a_context, INPUT_DEVICE a_device, UserEventMapping& a_mapping)
+	{
+		const auto context = controlMap[a_context];
+		if (context) {
+			for (auto& mapping : context->deviceMappings[a_device]) {
+				if (mapping.eventID == a_eventID) {
+					a_mapping = mapping;
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 
 	std::string_view ControlMap::GetUserEventName(std::uint32_t a_buttonID, INPUT_DEVICE a_device, InputContextID a_context) const

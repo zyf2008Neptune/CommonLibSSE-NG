@@ -1,8 +1,8 @@
+#pragma once
 #include "RE/I/InventoryChanges.h"
 #include "RE/A/Actor.h"
 #include "RE/F/FormTraits.h"
 #include "RE/T/TESObjectREFR.h"
-
 namespace RE
 {
 	InventoryChanges::InventoryChanges() :
@@ -51,13 +51,20 @@ namespace RE
 			if (!actor) {
 				return nullptr;
 			}
-            auto bipedSlot = (a_slot - 30) >= 0 ? 1 << (a_slot - 30) : 0;
-            return actor->GetWornArmor(static_cast<BGSBipedObjectForm::BipedObjectSlot>(bipedSlot));
+			auto bipedSlot = (a_slot - 30) >= 0 ? 1 << (a_slot - 30) : 0;
+			return actor->GetWornArmor(static_cast<BGSBipedObjectForm::BipedObjectSlot>(bipedSlot));
 		} else {
 			using func_t = decltype(&InventoryChanges::GetArmorInSlot);
 			REL::Relocation<func_t> func{ RELOCATION_ID(15873, 16113) };
 			return func(this, a_slot);
 		}
+	}
+
+	float InventoryChanges::GetInventoryWeight()
+	{
+		using func_t = decltype(&InventoryChanges::GetInventoryWeight);
+		REL::Relocation<func_t> func{ RELOCATION_ID(15883, 16123) };
+		return func(this);
 	}
 
 	std::uint16_t InventoryChanges::GetNextUniqueID()
