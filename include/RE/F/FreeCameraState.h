@@ -41,7 +41,11 @@ namespace RE
 		KEEP_FOR_RE()
 	};
 #if !defined(ENABLE_SKYRIM_VR)
+#	ifdef ENABLE_SKYRIM_AE
+	static_assert(sizeof(FreeCameraState) == 0x50);
+#	else
 	static_assert(sizeof(FreeCameraState) == 0x48);
+#	endif
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_AE)
 #else
 	static_assert(sizeof(FreeCameraState) == 0x50);

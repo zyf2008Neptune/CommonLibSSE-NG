@@ -87,7 +87,11 @@ namespace RE
 		KEEP_FOR_RE()
 	};
 #if !defined(ENABLE_SKYRIM_VR)
-static_assert(sizeof(FavoritesMenu) == 0x78);
+#	ifdef ENABLE_SKYRIM_AE
+	static_assert(sizeof(FavoritesMenu) == 0x88);
+#	else
+	static_assert(sizeof(FavoritesMenu) == 0x78);
+#	endif
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 static_assert(sizeof(FavoritesMenu) == 0x88);
 #endif

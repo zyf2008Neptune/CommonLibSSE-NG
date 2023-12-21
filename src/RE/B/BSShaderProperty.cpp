@@ -2,7 +2,7 @@
 
 namespace RE
 {
-#ifdef SKYRIMVR
+#ifdef ENABLE_SKYRIM_VR
 	bool BSShaderProperty::InvalidateMaterial()
 	{
 		using func_t = decltype(&BSShaderProperty::InvalidateMaterial);

@@ -19,7 +19,7 @@ namespace RE
 		projectedUVColor = a_other->projectedUVColor;
 		emissiveMult = a_other->emissiveMult;
 	}
-#ifdef SKYRIMVR
+#ifdef ENABLE_SKYRIM_VR
 	void BSLightingShaderProperty::InvalidateTextures(std::uint32_t a_unk1)
 	{
 		using func_t = decltype(&BSLightingShaderProperty::InvalidateTextures);

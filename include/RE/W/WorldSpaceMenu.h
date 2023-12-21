@@ -56,7 +56,9 @@ namespace RE
 		// override
 		virtual void               PostCreate() override;                          // 02
 		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;  // 04
+#ifdef ENABLE_SKYRIM_VR
 		virtual void               Unk_09(UI_MENU_Unk09 a_unk) override;           // 09
+#endif
 
 		// add
 		virtual void        SetupMenuNode();          // 0B - Sets up menuNode

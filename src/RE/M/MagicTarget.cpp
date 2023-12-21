@@ -13,6 +13,7 @@ namespace RE
 		return func(this, a_spell, a_caster, a_effect);
 	}
 
+#if defined(ENABLE_SKYRIM_VR)
 	void MagicTarget::DispelEffectsWithArchetype(Archetype a_type, bool a_force)
 	{
 		std::vector<RE::ActiveEffect*> queued;
@@ -28,7 +29,7 @@ namespace RE
 			effect->Dispel(a_force);
 		}
 	}
-
+#endif
 	bool MagicTarget::HasEffectWithArchetype(Archetype a_type)
 	{
 		auto effects = GetActiveEffectList();

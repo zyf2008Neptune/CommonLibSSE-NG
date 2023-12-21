@@ -2,7 +2,7 @@
 
 namespace RE
 {
-#ifdef SKYRIMVR
+#ifdef ENABLE_SKYRIM_VR
 	struct VROverlayChange
 	{
 	public:

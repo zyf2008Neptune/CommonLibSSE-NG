@@ -3,6 +3,7 @@
 #include "RE/U/UI.h"
 #include "RE/U/UIMessage.h"
 
+#ifdef ENABLE_SKYRIM_VR
 namespace RE
 {
 	WorldSpaceMenu::~WorldSpaceMenu()
@@ -87,3 +88,4 @@ namespace RE
 		return isTopMenu || a_message->menu == menuName;
 	}
 }
+#endif

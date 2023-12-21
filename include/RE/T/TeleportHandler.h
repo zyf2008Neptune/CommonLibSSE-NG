@@ -2,7 +2,7 @@
 
 #include "RE/H/HeldStateHandler.h"
 
-#ifdef SKYRIMVR
+#ifdef ENABLE_SKYRIM_VR
 namespace RE
 {
 	struct TeleportHandler : public HeldStateHandler
@@ -28,7 +28,14 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
+#	if !defined(ENABLE_SKYRIM_VR)
+	static_assert(sizeof(TeleportHandler) == 0x58);
+	char (*__kaboom)[sizeof(TeleportHandler)] = 1;
+#	elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(TeleportHandler) == 0x70);
+#	else
+	static_assert(sizeof(TeleportHandler) == 0x58);
+#	endif
 
 }
 #endif

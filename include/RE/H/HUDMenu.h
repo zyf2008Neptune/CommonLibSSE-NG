@@ -127,7 +127,11 @@ namespace RE
 		KEEP_FOR_RE()
 	};
 #	ifndef ENABLE_SKYRIM_VR
-static_assert(sizeof(HUDMenu) == 0x98);
+#	ifdef ENABLE_SKYRIM_AE
+	static_assert(sizeof(HUDMenu) == 0xA8);
+#	else
+	static_assert(sizeof(HUDMenu) == 0x98);
+#	endif
 #	elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 static_assert(sizeof(HUDMenu) == 0xC8);
 #	endif

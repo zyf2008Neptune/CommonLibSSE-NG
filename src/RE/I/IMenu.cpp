@@ -91,7 +91,7 @@ namespace RE
 		}
 	}
 
-#ifdef SKYRIMVR
+#ifdef ENABLE_SKYRIM_VR
 	void IMenu::Unk_09(UI_MENU_Unk09 a_unk)
 	{
 		unk30 = a_unk;

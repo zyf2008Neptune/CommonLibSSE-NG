@@ -187,8 +187,8 @@ namespace RE
 	bool PlayerCharacter::IsGrabbing() const
 	{
 		if SKYRIM_REL_CONSTEXPR (Module::IsVR()) {
-			for (auto& grabData : GetVRPlayerRuntimeData().grabbedObjectData) {
-				if (grabData.grabbedObject) {
+			for (auto& VRgrabData : GetVRPlayerRuntimeData().grabbedObjectData) {
+				if (VRgrabData.grabbedObject) {
 					return true;
 				}
 			}

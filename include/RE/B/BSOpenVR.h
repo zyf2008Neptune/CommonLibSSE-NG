@@ -5,6 +5,7 @@
 #include "RE/B/BSVRInterface.h"
 #include "RE/N/NiNode.h"
 
+#ifdef ENABLE_SKYRIM_VR
 namespace RE
 {
 	class BSOpenVR : public BSVRInterface
@@ -80,3 +81,4 @@ namespace RE
 	};
 	static_assert(sizeof(BSOpenVR) == 0x408);
 }
+#endif

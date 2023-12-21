@@ -1,6 +1,6 @@
 #pragma once
 
-#ifdef SKYRIMVR
+#ifdef ENABLE_SKYRIM_VR
 namespace RE
 {
 	class HudModeChangeEvent

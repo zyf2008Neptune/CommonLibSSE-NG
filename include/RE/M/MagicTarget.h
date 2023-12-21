@@ -8,7 +8,7 @@
 #include "RE/E/EffectArchetypes.h"
 #include "RE/M/MagicSystem.h"
 #include "RE/N/NiPoint3.h"
-#ifdef SKYRIMVR
+#ifdef ENABLE_SKYRIM_VR
 #	include "RE/B/BSContainer.h"
 #endif
 
@@ -91,7 +91,9 @@ namespace RE
 		virtual bool                         CheckAbsorb(Actor* a_actor, MagicItem* a_magicItem, const Effect* a_effect);          // 0B - { return false; }
 
 		bool DispelEffect(MagicItem* a_spell, BSPointerHandle<Actor>& a_caster, ActiveEffect* a_effect = nullptr);
+#if defined(ENABLE_SKYRIM_VR)
 		void DispelEffectsWithArchetype(Archetype a_type, bool a_force);
+#endif
 		bool HasEffectWithArchetype(Archetype a_type);
 		bool HasMagicEffect(EffectSetting* a_effect);
 		bool HasMagicEffectWithKeyword(BGSKeyword* a_keyword, std::uint64_t a_arg2);

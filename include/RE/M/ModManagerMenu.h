@@ -87,7 +87,11 @@ namespace RE
 		KEEP_FOR_RE()
 	};
 #if !defined(ENABLE_SKYRIM_VR)
+#	ifdef ENABLE_SKYRIM_AE
+	static_assert(sizeof(ModManagerMenu) == 0x68);
+#	else
 	static_assert(sizeof(ModManagerMenu) == 0x58);
+#	endif
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(ModManagerMenu) == 0x68);
 #endif

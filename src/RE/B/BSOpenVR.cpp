@@ -4,10 +4,10 @@
 
 namespace RE
 {
-#ifdef SKYRIMVR
+#ifdef ENABLE_SKYRIM_VR
 	BSOpenVR* BSOpenVR::GetSingleton()
 	{
-		REL::Relocation<BSOpenVR**> singleton{ Offset::BSOpenVR::Singleton };
+		REL::Relocation<BSOpenVR**> singleton{ REL::Offset(0x2FEB9B0) };
 		return *singleton;
 	}
 

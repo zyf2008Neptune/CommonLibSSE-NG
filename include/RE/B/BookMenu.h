@@ -110,7 +110,11 @@ namespace RE
 #endif
 	};
 #if !defined(ENABLE_SKYRIM_VR)
+#	if defined(ENABLE_SKYRIM_AE)
+	static_assert(sizeof(BookMenu) == 0xA8);
+#	else
 	static_assert(sizeof(BookMenu) == 0x98);
+#	endif
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(BookMenu) == 0xA8);
 #endif

@@ -176,7 +176,7 @@ namespace RE
 	{
 		return cachedValues && cachedValues->flags.all(CachedValues::Flags::kActorIsGhost);
 	}
-#ifdef SKYRIMVR
+#ifdef ENABLE_SKYRIM_VR
 	void AIProcess::SetActorRefraction(float a_refraction)
 	{
 		using func_t = decltype(&AIProcess::SetActorRefraction);

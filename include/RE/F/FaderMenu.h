@@ -39,7 +39,11 @@ namespace RE
 		KEEP_FOR_RE()
 	};
 #if !defined(ENABLE_SKYRIM_VR)
-static_assert(sizeof(FaderMenu) == 0x40);
+#	ifdef ENABLE_SKYRIM_AE
+	static_assert(sizeof(FaderMenu) == 0x50);
+#	else
+	static_assert(sizeof(FaderMenu) == 0x40);
+#	endif
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 static_assert(sizeof(FaderMenu) == 0x50);
 #endif
