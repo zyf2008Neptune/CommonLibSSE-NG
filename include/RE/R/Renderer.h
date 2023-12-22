@@ -4,6 +4,7 @@
 #include "RE/N/NiTexture.h"
 #include "RE/R/RenderTargetData.h"
 #include "RE/T/TextureFileFormat.h"
+#include <SKSE/Version.h>
 
 struct ID3D11Device;
 struct ID3D11DeviceContext;
@@ -39,13 +40,13 @@ namespace RE
 		{
 		public:
 #define RENDERER_DATA2_CONTENT                                                                              \
-	CubemapRenderTargetData        cubemapRenderTargets[RENDER_TARGET_CUBEMAP::kTOTAL]; /* 26D8, VR 2E48 */ \
-	Texture3DTargetData            texture3DRenderTargets[RENDER_TARGET_3D::kTOTAL];    /* 2718, VR 2E88*/  \
-	float                          clearColor[4];                                       /* 2778, VR 2EE8*/  \
-	std::uint8_t                   clearStencil;                                        /* 2788, VR 2EF8*/  \
-	SKSE::WinAPI::CRITICAL_SECTION lock;                                                /* 2790, VR 2F00*/  \
-	const char*                    className;                                           /* 27B8, VR 2F28*/  \
-	SKSE::WinAPI::HINSTANCE        hInstance;                                           /* 27C0, VR 2F30*/
+	CubemapRenderTargetData        cubemapRenderTargets[RENDER_TARGET_CUBEMAP::kTOTAL]; /* 26D8, VR 2E48, AE1130 2738 */ \
+	Texture3DTargetData            texture3DRenderTargets[RENDER_TARGET_3D::kTOTAL];    /* 2718, VR 2E88, AE1130 2778*/  \
+	float                          clearColor[4];                                       /* 2778, VR 2EE8, AE1130 27d8*/  \
+	std::uint8_t                   clearStencil;                                        /* 2788, VR 2EF8, AE1130 27e8*/  \
+	SKSE::WinAPI::CRITICAL_SECTION lock;                                                /* 2790, VR 2F00, AE1130 27f0*/  \
+	const char*                    className;                                           /* 27B8, VR 2F28, AE1130 2818*/  \
+	SKSE::WinAPI::HINSTANCE        hInstance;                                           /* 27C0, VR 2F30, AE1130 2820*/
             RENDERER_DATA2_CONTENT
 		};
 
@@ -54,11 +55,11 @@ namespace RE
 		public:
 #if !defined(ENABLE_SKYRIM_VR)
 #	define DEPTHSTENCIL_RUNTIME_DATA_CONTENT \
-		DepthStencilData depthStencils[RENDER_TARGET_DEPTHSTENCIL::kTOTAL]; /* 1FB8, VR 21D0*/
+		DepthStencilData depthStencils[RENDER_TARGET_DEPTHSTENCIL::kTOTAL]; /* 1FB8, VR 21D0, AE1130 0x2018*/
 //#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 #else
 #	define DEPTHSTENCIL_RUNTIME_DATA_CONTENT \
-		DepthStencilData depthStencils[RENDER_TARGET_DEPTHSTENCIL::kVRTOTAL]; /* 1FA8*/
+		DepthStencilData depthStencils[RENDER_TARGET_DEPTHSTENCIL::kVRTOTAL]; /* 1FB8, VR 21D0, AE1130 0x2018*/
 #endif
 			DEPTHSTENCIL_RUNTIME_DATA_CONTENT
 		};
@@ -172,30 +173,43 @@ namespace RE
 
 			[[nodiscard]] inline DepthStencilRuntimeData& GetDepthStencilData() noexcept
 			{
+				if (REL::Module::IsAE())
+					return REL::RelocateMemberIfNewer<DepthStencilRuntimeData>(SKSE::RUNTIME_SSE_1_6_1130, this, 0x1FB8, 0x2018);
+
 				return REL::RelocateMember<DepthStencilRuntimeData>(this, 0x1FB8, 0x21D0);
 			}
 
 			[[nodiscard]] inline const DepthStencilRuntimeData& GetDepthStencilData() const noexcept
 			{
+				if (REL::Module::IsAE())
+					return REL::RelocateMemberIfNewer<DepthStencilRuntimeData>(SKSE::RUNTIME_SSE_1_6_1130, this, 0x1FB8, 0x2018);
 				return REL::RelocateMember<DepthStencilRuntimeData>(this, 0x1FB8, 0x21D0);
 			}
 
 			[[nodiscard]] inline RendererData2& GetRendererData() noexcept
 			{
+				if (REL::Module::IsAE())
+						return REL::RelocateMemberIfNewer<RendererData2>(SKSE::RUNTIME_SSE_1_6_1130, this, 0x26D8, 0x2738);
 				return REL::RelocateMember<RendererData2>(this, 0x26D8, 0x2E48);
 			}
 
 			[[nodiscard]] inline const RendererData2& GetRendererData() const noexcept
 			{
+				if (REL::Module::IsAE())
+					return REL::RelocateMemberIfNewer<RendererData2>(SKSE::RUNTIME_SSE_1_6_1130, this, 0x26D8, 0x2738);
 				return REL::RelocateMember<RendererData2>(this, 0x26D8, 0x2E48);
 			}
 			[[nodiscard]] inline SKSE::WinAPI::CRITICAL_SECTION& GetLock() noexcept
 			{
+				if (REL::Module::IsAE())
+					return REL::RelocateMemberIfNewer<SKSE::WinAPI::CRITICAL_SECTION>(SKSE::RUNTIME_SSE_1_6_1130, this, 0x2790, 0x27f0);
 				return REL::RelocateMember<SKSE::WinAPI::CRITICAL_SECTION>(this, 0x2790, 0x2F00);
 			}
 
 			[[nodiscard]] inline const SKSE::WinAPI::CRITICAL_SECTION& GetLock() const noexcept
 			{
+				if (REL::Module::IsAE())
+					return REL::RelocateMemberIfNewer<SKSE::WinAPI::CRITICAL_SECTION>(SKSE::RUNTIME_SSE_1_6_1130, this, 0x2790, 0x27f0);
 				return REL::RelocateMember<SKSE::WinAPI::CRITICAL_SECTION>(this, 0x2790, 0x2F00);
 			}
 

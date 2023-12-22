@@ -122,7 +122,7 @@ namespace RE
 			kSNOW_SPECALPHA,
 			kSNOW_SWAP,
 
-			kTOTAL,  // SE 114, 125 in VR
+			kTOTAL,  // SE 114, 125 in VR, 116 in AE1130
 			kVRTOTAL = 125,
 			kFRAMEBUFFER_TOTAL = kMAIN,
 		};
