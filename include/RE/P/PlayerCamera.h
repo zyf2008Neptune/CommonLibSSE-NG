@@ -28,13 +28,18 @@ namespace RE
 			kPCTransition,
 			kTween,
 			kAnimated,
-			kThirdPerson,  // VR VrCameraState : TESCameraState : BSIntrusiveRefCounted
-			kMount,        // VR kThirdPerson ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
-			kBleedout,     // VR kMount HorseCameraState : ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
-			kDragon,       // VR kBleedout BleedoutCameraState : ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
+			kThirdPerson,
+			kMount,
+			kBleedout,
+			kDragon,
+			kTotal,
 
-			kTotal,             // VR kDragon DragonCameraState : ThirdPersonState : TESCameraState : BSIntrusiveRefCounted : PlayerInputHandler
-			kVR = kDragon + 1,  // ".?AVVrCameraState@@"? by memory address it's after bleedout and before tween
+			// VR has kVR in between Animated and ThirdPerson
+			kVR = 9,
+			kVRThirdPerson,
+			kVRMount,
+			kVRBleedout,
+			kVRDragon,
 			kVRTotal
 		};
 	};
@@ -59,7 +64,7 @@ namespace RE
 		struct RUNTIME_DATA
 		{
 #define RUNTIME_DATA_CONTENT                                                                                      \
-	BSTSmallArray<TESCameraState*, CameraStates::kTotal> tempReturnStates;                   /* 040, VR 050*/     \
+	BSTSmallArray<TESCameraState*, CameraStates::kTotal> tempReturnStates;                   /* 040, VR 040*/     \
 	BSTSmartPointer<TESCameraState>                      cameraStates[CameraStates::kTotal]; /* 0B8, VR 0C0*/     \
 	Unk120*                                              unk120;                             /* 120, */           \
 	NiPointer<bhkRigidBody>                              rigidBody;                          /* 128, VR 130 - ?*/ \
@@ -69,19 +74,27 @@ namespace RE
 			RUNTIME_DATA_CONTENT
 		};
 		static_assert(sizeof(RUNTIME_DATA) == 0x100);
+		static_assert(offsetof(RUNTIME_DATA, cameraStates) == 0x78);
+		static_assert(offsetof(RUNTIME_DATA, rigidBody) == 0xE8);
+		static_assert(offsetof(RUNTIME_DATA, objectFadeHandle) == 0xF0);
+		static_assert(offsetof(RUNTIME_DATA, lock) == 0xF4);
 
 		struct VR_RUNTIME_DATA
 		{
 #define VR_RUNTIME_DATA_CONTENT                                                                                       \
-	BSTSmallArray<TESCameraState*, CameraStates::kVRTotal> tempReturnStates;                     /* 040, VR 050*/     \
+	BSTSmallArray<TESCameraState*, CameraStates::kVRTotal> tempReturnStates;                     /* 040, VR 040*/     \
 	BSTSmartPointer<TESCameraState>                        cameraStates[CameraStates::kVRTotal]; /* 0B8, VR 0C0*/     \
 	NiPointer<bhkRigidBody>                                rigidBody;                            /* 128, VR 130 - ?*/ \
 	RefHandle                                              objectFadeHandle;                     /* 130, VR 138 - ?*/ \
 	mutable BSSpinLock                                     lock;                                 /* 134, VR 13c*/     \
-	char                                                   VRpad140[20];                         /* VR 140 */
+	char                                                   VRpad144[14];                         /* VR 144 */
             VR_RUNTIME_DATA_CONTENT
 		};
 		static_assert(sizeof(VR_RUNTIME_DATA) == 0x118);
+		static_assert(offsetof(VR_RUNTIME_DATA, cameraStates) == 0x80);
+		static_assert(offsetof(VR_RUNTIME_DATA, rigidBody) == 0xF0);
+		static_assert(offsetof(VR_RUNTIME_DATA, objectFadeHandle) == 0xF8);
+		static_assert(offsetof(VR_RUNTIME_DATA, lock) == 0xFC);
 
 		struct RUNTIME_DATA2
 		{
@@ -118,40 +131,24 @@ namespace RE
 		void ToggleFreeCameraMode(bool a_freezeTime);
 		void UpdateThirdPerson(bool a_weaponDrawn);
 
-		[[nodiscard]] inline RUNTIME_DATA* GetRuntimeData() noexcept
+		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
-			if SKYRIM_REL_CONSTEXPR (!REL::Module::IsVR()) {
-				return REL::RelocateMember<RUNTIME_DATA*>(this, 0x40, 0);
-			} else {
-				return nullptr;
-			}
+			return REL::RelocateMember<RUNTIME_DATA>(this, 0x40, 0);
 		}
 
-		[[nodiscard]] inline const RUNTIME_DATA* GetRuntimeData() const noexcept
+		[[nodiscard]] inline const RUNTIME_DATA& GetRuntimeData() const noexcept
 		{
-			if SKYRIM_REL_CONSTEXPR (!REL::Module::IsVR()) {
-				return REL::RelocateMember<RUNTIME_DATA*>(this, 0x40, 0);
-			} else {
-				return nullptr;
-			}
+			return REL::RelocateMember<RUNTIME_DATA>(this, 0x40, 0);
 		}
 
-		[[nodiscard]] inline VR_RUNTIME_DATA* GetVRRuntimeData() noexcept
+		[[nodiscard]] inline VR_RUNTIME_DATA& GetVRRuntimeData() noexcept
 		{
-			if SKYRIM_REL_CONSTEXPR (!REL::Module::IsVR()) {
-				return nullptr;
-			} else {
-				return REL::RelocateMember<VR_RUNTIME_DATA*>(this, 0, 0x40);
-			}
+			return REL::RelocateMember<VR_RUNTIME_DATA>(this, 0, 0x40);
 		}
 
-		[[nodiscard]] inline const VR_RUNTIME_DATA* GetVRRuntimeData() const noexcept
+		[[nodiscard]] inline const VR_RUNTIME_DATA& GetVRRuntimeData() const noexcept
 		{
-			if SKYRIM_REL_CONSTEXPR (!REL::Module::IsVR()) {
-				return nullptr;
-			} else {
-				return REL::RelocateMember<VR_RUNTIME_DATA*>(this, 0, 0x40);
-			}
+			return REL::RelocateMember<VR_RUNTIME_DATA>(this, 0, 0x40);
 		}
 
 		[[nodiscard]] inline RUNTIME_DATA2& GetRuntimeData2() noexcept
@@ -176,6 +173,7 @@ namespace RE
 #endif
 
 	private:
+		// VR requires a_cameraState with kVR enums > kAnimated
 		bool QCameraEquals(CameraState a_cameraState) const;
 		KEEP_FOR_RE();
 	};
