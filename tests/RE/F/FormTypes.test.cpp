@@ -28,8 +28,8 @@ TEST_CASE("FormType/fmt::format")
 	}
 	SECTION("Less than valid types")
 	{
-        CHECK(fmt::format("{}", RE::FormType::None) == "NONE");
-    }
+		CHECK(fmt::format("{}", RE::FormType::None) == "NONE");
+	}
 	SECTION("Greater than valid types")
 	{
 		CHECK(fmt::format("{}", RE::FormType::Max) == "NONE");
@@ -40,15 +40,15 @@ TEST_CASE("FormType/std::format")
 {
 	SECTION("Sample types")
 	{
-		CHECK(std::format("{}", RE::FormType::ActorCharacter) == "ACHR");
-		CHECK(std::format("{}", RE::FormType::Ammo) == "AMMO");
+		CHECK(std::format("{}", std::to_string(RE::FormType::ActorCharacter)) == "ACHR");
+		CHECK(std::format("{}", std::to_string(RE::FormType::Ammo)) == "AMMO");
 	}
 	SECTION("Less than valid types")
 	{
-		CHECK(std::format("{}", RE::FormType::None) == "NONE");
+		CHECK(std::format("{}", std::to_string(RE::FormType::None)) == "NONE");
 	}
 	SECTION("Greater than valid types")
 	{
-		CHECK(std::format("{}", RE::FormType::Max) == "NONE");
+		CHECK(std::format("{}", std::to_string(RE::FormType::Max)) == "NONE");
 	}
 }
