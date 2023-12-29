@@ -57,7 +57,7 @@ namespace RE
 	void Script::CompileAndRun_Impl(ScriptCompiler* a_compiler, COMPILER_NAME a_name, TESObjectREFR* a_targetRef)
 	{
 		using func_t = decltype(&Script::CompileAndRun_Impl);
-		REL::Relocation<func_t> func { RELOCATION_ID(AE_CHECK(SKSE::RUNTIME_SSE_1_6_1130, 21416, 441582), 21890) };
+		REL::Relocation<func_t> func{ RELOCATION_ID(21416, AE_CHECK(SKSE::RUNTIME_SSE_1_6_1130, 21890, 441582)) };
 		return func(this, a_compiler, a_name, a_targetRef);
 	}
 }
