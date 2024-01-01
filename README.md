@@ -5,8 +5,6 @@
 
 
 ## Build Dependencies
-* [Boost](https://www.boost.org/)
-	* Stl_interfaces
 * [spdlog](https://github.com/gabime/spdlog)
 * [Visual Studio Community 2019 16.10.0 Preview 3.0](https://visualstudio.microsoft.com/vs/preview/)
 	* Desktop development with C++
