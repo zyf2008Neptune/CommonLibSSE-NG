@@ -482,7 +482,7 @@ namespace REL
 			auto handle = WinAPI::GetModuleHandle(_filename.c_str());
 			if (handle == nullptr) {
 				stl::report_and_fail(
-					fmt::format(
+					std::format(
 						"Failed to obtain module handle for: \"{0}\".\n"
 						"You have likely renamed the executable to something unexpected. "
 						"Renaming the executable back to \"{0}\" may resolve the issue."sv,
@@ -503,7 +503,7 @@ namespace REL
 				_version = *version;
 			} else {
 				stl::report_and_fail(
-					fmt::format(
+					std::format(
 						"Failed to obtain file version info for: {}\n"
 						"Please contact the author of this script extender plugin for further assistance."sv,
 						stl::utf16_to_utf8(_filename).value_or("<unicode conversion error>"s)));
@@ -580,7 +580,7 @@ namespace REL
                     });
 				if (it == _offset2id.end()) {
 					stl::report_and_fail(
-						fmt::format(
+						std::format(
 							"Failed to find the offset within the database: 0x{:08X}"sv,
 							a_offset));
 				}
@@ -624,7 +624,7 @@ namespace REL
 				});
 			if (it == _id2offset.end()) {
 				stl::report_and_fail(
-					fmt::format(
+					std::format(
 						"Failed to find the id within the address library: {}\n"
 						"This means this script extender plugin is incompatible with the address "
 						"library for this version of the game, and thus does not support it."sv,
@@ -649,7 +649,7 @@ namespace REL
 				if (format != 1) {
 #endif
 					stl::report_and_fail(
-						fmt::format(
+						std::format(
 							"Unsupported address library format: {}\n"
 							"This means this script extender plugin is incompatible with the address "
 							"library available for this version of the game, and thus does not "
@@ -695,7 +695,7 @@ namespace REL
 			const auto version = Module::get().version();
 			const auto filename =
 				stl::utf8_to_utf16(
-					fmt::format(
+					std::format(
 #ifdef SKYRIM_SUPPORT_AE
 						"Data/SKSE/Plugins/versionlib-{}.bin"sv,
 #else
@@ -735,7 +735,7 @@ namespace REL
 				}
 			} catch (const std::system_error&) {
 				stl::report_and_fail(
-					fmt::format(
+					std::format(
 						"Failed to locate an appropriate address library with the path: {}\n"
 						"This means you are missing the address library for this specific version of "
 						"the game. Please continue to the mod page for address library to download "
@@ -1105,7 +1105,7 @@ namespace REL
 				if (!this->match(a_address)) {
 					const auto version = Module::get().version();
 					stl::report_and_fail(
-						fmt::format(
+						std::format(
 							"A pattern has failed to match.\n"
 							"This means the plugin is incompatible with the current version of the game ({}.{}.{}). "
 							"Head to the mod page of this plugin to see if an update is available."sv,

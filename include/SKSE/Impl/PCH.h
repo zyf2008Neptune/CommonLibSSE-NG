@@ -22,6 +22,7 @@
 #include <format>
 #include <fstream>
 #include <functional>
+#include <intrin.h>
 #include <iomanip>
 #include <ios>
 #include <istream>
@@ -59,7 +60,6 @@ static_assert(
 
 #pragma warning(push)
 #include <binary_io/file_stream.hpp>
-#include <fmt/format.h>
 #include <spdlog/spdlog.h>
 #pragma warning(pop)
 
@@ -599,7 +599,7 @@ namespace SKSE
 				}
 
 				return utf8_to_utf16(
-					fmt::format(
+					std::format(
 						"{}({}): {}"sv,
 						filename,
 						a_loc.line(),
