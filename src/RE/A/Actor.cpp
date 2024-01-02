@@ -527,6 +527,14 @@ namespace RE
 		return base ? base->race : nullptr;
 	}
 
+	float Actor::GetRegenDelay(ActorValue a_actorValue) const
+	{
+		if (currentProcess) {
+			return currentProcess->GetRegenDelay(a_actorValue);
+		}
+		return 0.0f;
+	}
+
 	bool Actor::GetRider(NiPointer<Actor>& a_outRider)
 	{
 		using func_t = decltype(&Actor::GetRider);
@@ -1085,6 +1093,13 @@ namespace RE
 					model->UpdateHairColor(color);
 				}
 			}
+		}
+	}
+
+	void Actor::UpdateRegenDelay(ActorValue a_actorValue, float a_regenDelay)
+	{
+		if (currentProcess) {
+			currentProcess->UpdateRegenDelay(a_actorValue, a_regenDelay);
 		}
 	}
 
