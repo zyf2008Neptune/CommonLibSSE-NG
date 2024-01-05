@@ -480,14 +480,6 @@ namespace RE::Offset
 		constexpr auto FirstScriptCommand = RELOCATION_ID(501789, 361120);
 	}
 
-	namespace Sky
-	{
-		constexpr auto GetSingleton = RELOCATION_ID(13789, 13878);
-		constexpr auto SetWeather = RELOCATION_ID(25694, 26241);
-		constexpr auto ForceWeather = RELOCATION_ID(25696, 26243);
-		constexpr auto ResetWeather = RELOCATION_ID(25695, 26242);
-	}
-
 	namespace SkyrimVM
 	{
 		constexpr auto QueuePostRenderCall = RELOCATION_ID(53144, 53955);

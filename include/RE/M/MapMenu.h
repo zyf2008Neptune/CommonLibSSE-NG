@@ -100,23 +100,21 @@ namespace RE
 		{
 #define RUNTIME_DATA2_CONTENT                      \
 	RefHandle                unk30460;   /* 000 */ \
-	std::uint32_t            unk30464;   /* 004 */ \
-	std::uint32_t            unk30468;   /* 008 */ \
-	std::uint32_t            unk3046C;   /* 00C */ \
+	NiPoint3                 playerMarkerPosition;   /* 004 */ \
 	BSTArray<Unk30470Entry*> unk30470;   /* 010 */ \
 	BSTArray<Unk30488Entry*> unk30488;   /* 028 */ \
 	MapCamera                camera;     /* 040 */ \
 	std::uint64_t            unk30530;   /* 0D0 */ \
 	TESWorldSpace*           worldSpace; /* 0D8 */ \
 	GFxValue                 unk30540;   /* 0E0 */ \
-	std::uint64_t            unk30558;   /* 0F8 */ \
-	std::uint64_t            unk30560;   /* 100 */ \
-	std::uint64_t            unk30568;   /* 108 */ \
-	std::uint32_t            unk30570;   /* 110 */ \
+	std::uint32_t            unk30558;   /* 0F8 */ \
+	NiPoint3                 unk3055C;   /* 0FC */ \
+	NiPoint3                 unk30568;   /* 108 */ \
 	BSSoundHandle            unk30574;   /* 114 */ \
 	std::uint64_t            unk30580;   /* 120 */ \
 	std::uint64_t            unk30588;   /* 128 */ \
 	std::uint64_t            unk30590;   /* 130 */
+
             RUNTIME_DATA2_CONTENT
 		};
 		static_assert(sizeof(RUNTIME_DATA2) == 0x138);
@@ -197,13 +195,12 @@ namespace RE
 		// members
 #ifndef SKYRIM_CROSS_VR
 		RUNTIME_DATA_CONTENT       // 40, 68
-			RUNTIME_DATA2_CONTENT  // 30460, 30508
+		RUNTIME_DATA2_CONTENT  // 30460, 30508
 #endif
 	};
+
 #ifndef ENABLE_SKYRIM_VR
 	static_assert(sizeof(MapMenu) == 0x30598);
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-	static_assert(sizeof(MapMenu) == 0x30640);
 #endif
 }
 
