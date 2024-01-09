@@ -47,7 +47,7 @@ namespace RE
 		void                       FinishCastImpl() override;                                                                                                                            // 07 - { return; }
 		void                       InterruptCastImpl(bool a_depleteEnergy) override;                                                                                                     // 08 - { return; }
 		void                       SpellCast(bool a_doCast, std::uint32_t a_arg2, MagicItem* a_spell) override;                                                                          // 09 - { return; }
-		bool                       CheckCast(MagicItem* a_spell, bool a_dualCast, float* a_alchStrength, MagicSystem::CannotCastReason* a_reason, bool a_useBaseValueForCost) override;  // 0A
+		bool                       CheckCast(MagicItem* a_spell, bool a_dualCast, float* a_effectStrength, MagicSystem::CannotCastReason* a_reason, bool a_useBaseValueForCost) override;  // 0A
 		TESObjectREFR*             GetCasterStatsObject() const override;                                                                                                                // 0B - { return actor; }
 		Actor*                     GetCasterAsActor() const override;                                                                                                                    // 0C - { return actor; }
 		NiNode*                    GetMagicNode() override;                                                                                                                              // 0E - { return magicNode; }
