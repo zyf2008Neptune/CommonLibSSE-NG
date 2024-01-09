@@ -1900,6 +1900,7 @@ set(SOURCES
 	src/RE/S/ScrapHeap.cpp
 	src/RE/S/Script.cpp
 	src/RE/S/ScriptEventSourceHolder.cpp
+	src/RE/S/SendUIMessage.cpp
 	src/RE/S/Setting.cpp
 	src/RE/S/ShoutAttack.cpp
 	src/RE/S/SkillIncrease.cpp
