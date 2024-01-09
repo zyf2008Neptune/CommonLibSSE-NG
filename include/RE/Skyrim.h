@@ -1371,6 +1371,7 @@
 #include "RE/S/ScriptedRefEffect.h"
 #include "RE/S/ScrollItem.h"
 #include "RE/S/SendPlayerToJailFunctor.h"
+#include "RE/S/SendUIMessage.h"
 #include "RE/S/SetEventData.h"
 #include "RE/S/SetMotionTypeFunctor.h"
 #include "RE/S/SetPositionFunctor.h"
