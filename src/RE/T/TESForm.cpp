@@ -72,7 +72,7 @@ namespace RE
 		keywordForm->ForEachKeyword([&](const BGSKeyword& a_keyword) {
 			if (std::ranges::find(editorIDs, a_keyword.GetFormEditorID()) != editorIDs.end()) {
 				hasKeyword = true;
-			    return BSContainer::ForEachResult::kStop;
+				return BSContainer::ForEachResult::kStop;
 			}
 			return BSContainer::ForEachResult::kContinue;
 		});
@@ -80,7 +80,7 @@ namespace RE
 		return hasKeyword;
 	}
 
-    bool TESForm::HasKeywordByEditorID(std::string_view a_editorID)
+	bool TESForm::HasKeywordByEditorID(std::string_view a_editorID)
 	{
 		const auto keywordForm = As<BGSKeywordForm>();
 		if (!keywordForm) {
@@ -90,7 +90,7 @@ namespace RE
 		return keywordForm->HasKeywordString(a_editorID);
 	}
 
-    bool TESForm::HasKeywordInArray(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const
+	bool TESForm::HasKeywordInArray(const std::vector<BGSKeyword*>& a_keywords, bool a_matchAll) const
 	{
 		const auto keywordForm = As<BGSKeywordForm>();
 		if (!keywordForm) {
