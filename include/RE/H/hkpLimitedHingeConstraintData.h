@@ -45,7 +45,7 @@ namespace RE
 			inline float getCurrentAngle()
 			{
 				return solverResults[SolverResultType::kLimit].data * -1.f;
-			} 
+			}
 
 			hkpSolverResults solverResults[SolverResultType::kNUM];  // 00
 			bool             previousTargetInitialized;              // 40

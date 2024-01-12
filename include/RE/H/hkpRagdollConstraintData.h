@@ -22,7 +22,7 @@ namespace RE
 			kTwist,
 			kCone,
 			kPlane,
-			
+
 			kLinear0,
 			kLinear1,
 			kLinear2,
