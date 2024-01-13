@@ -984,6 +984,7 @@ set(SOURCES
 	include/RE/H/hkpConstraintData.h
 	include/RE/H/hkpConstraintInfo.h
 	include/RE/H/hkpConstraintInstance.h
+	include/RE/H/hkpConstraintMotor.h
 	include/RE/H/hkpConstraintOwner.h
 	include/RE/H/hkpContactListener.h
 	include/RE/H/hkpContactPointEvent.h
@@ -1028,6 +1029,7 @@ set(SOURCES
 	include/RE/H/hkpSimulationIsland.h
 	include/RE/H/hkpSingleShapeContainer.h
 	include/RE/H/hkpSolverInfo.h
+	include/RE/H/hkpSolverResults.h
 	include/RE/H/hkpSphereRepShape.h
 	include/RE/H/hkpSphereShape.h
 	include/RE/H/hkpTypedBroadPhaseHandle.h
