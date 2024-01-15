@@ -69,8 +69,8 @@ namespace RE
 		// Iterate through the keywords
 		bool hasKeyword = false;
 
-		keywordForm->ForEachKeyword([&](const BGSKeyword& a_keyword) {
-			if (std::ranges::find(editorIDs, a_keyword.GetFormEditorID()) != editorIDs.end()) {
+		keywordForm->ForEachKeyword([&](const BGSKeyword* a_keyword) {
+			if (std::ranges::find(editorIDs, a_keyword->GetFormEditorID()) != editorIDs.end()) {
 				hasKeyword = true;
 				return BSContainer::ForEachResult::kStop;
 			}
@@ -122,8 +122,8 @@ namespace RE
 
 		bool hasKeyword = false;
 
-		a_keywordList->ForEachForm([&](const TESForm& a_form) {
-			const auto keyword = a_form.As<BGSKeyword>();
+		a_keywordList->ForEachForm([&](const TESForm* a_form) {
+			const auto keyword = a_form->As<BGSKeyword>();
 			hasKeyword = keyword && keywordForm->HasKeyword(keyword);
 			if (a_matchAll && !hasKeyword || hasKeyword) {
 				return BSContainer::ForEachResult::kStop;
