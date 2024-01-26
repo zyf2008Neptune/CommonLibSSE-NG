@@ -749,14 +749,24 @@ namespace RE
 		return boolFlags.all(BOOL_FLAGS::kIsCommandedActor);
 	}
 
-	bool Actor::IsCurrentShout(SpellItem* a_spell)
+	bool Actor::IsCurrentShout(SpellItem* a_power)
 	{
 		using func_t = decltype(&Actor::IsCurrentShout);
 		REL::Relocation<func_t> func{ RELOCATION_ID(37858, 38812) };
-		return func(this, a_spell);
+		return func(this, a_power);
 	}
 
-	bool Actor::IsEssential() const
+    bool Actor::IsDualCasting() const
+	{
+		if (!currentProcess) {
+			return false;
+		}
+
+        const auto highProcess = currentProcess->high;
+		return highProcess && highProcess->isDualCasting;
+	}
+
+    bool Actor::IsEssential() const
 	{
 		return boolFlags.all(BOOL_FLAGS::kEssential);
 	}

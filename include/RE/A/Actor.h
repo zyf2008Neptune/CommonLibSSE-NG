@@ -573,6 +573,7 @@ namespace RE
 		bool                         IsCasting(MagicItem* a_spell) const;
 		bool                         IsCommandedActor() const;
 		bool                         IsCurrentShout(SpellItem* a_power);
+		bool                         IsDualCasting() const;
 		bool                         IsEssential() const;
 		bool                         IsFactionInCrimeGroup(const TESFaction* a_faction) const;
 		bool                         IsGhost() const;
