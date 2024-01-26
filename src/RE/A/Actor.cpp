@@ -756,17 +756,17 @@ namespace RE
 		return func(this, a_power);
 	}
 
-    bool Actor::IsDualCasting() const
+	bool Actor::IsDualCasting() const
 	{
 		if (!currentProcess) {
 			return false;
 		}
 
-        const auto highProcess = currentProcess->high;
+		const auto highProcess = currentProcess->high;
 		return highProcess && highProcess->isDualCasting;
 	}
 
-    bool Actor::IsEssential() const
+	bool Actor::IsEssential() const
 	{
 		return boolFlags.all(BOOL_FLAGS::kEssential);
 	}
