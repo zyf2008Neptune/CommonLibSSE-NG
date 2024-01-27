@@ -1613,7 +1613,13 @@ set(SOURCES
 	include/RE/W/WerewolfFeedEffect.h
 	include/RE/Z/ZeroFunctionArguments.h
 	include/RE/Z/ZeroOverheadHeap.h
+	include/REL/ID.h
+	include/REL/Module.h
+	include/REL/Offset.h
+	include/REL/Pattern.h
+	include/REL/REL.h
 	include/REL/Relocation.h
+	include/REL/Version.h
 	include/SKSE/API.h
 	include/SKSE/Events.h
 	include/SKSE/IAT.h
@@ -1957,7 +1963,8 @@ set(SOURCES
 	src/RE/V/Variable.cpp
 	src/RE/V/VirtualMachine.cpp
 	src/RE/Z/ZeroFunctionArguments.cpp
-	src/REL/Relocation.cpp
+	src/REL/ID.cpp
+	src/REL/Module.cpp
 	src/SKSE/API.cpp
 	src/SKSE/IAT.cpp
 	src/SKSE/Impl/PCH.cpp
