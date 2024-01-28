@@ -46,7 +46,7 @@ namespace REL
 			void* _mapping{ nullptr };
 			void* _view{ nullptr };
 		};
-    }
+	}
 
 	class IDDatabase
 	{

@@ -2,7 +2,7 @@
 
 namespace REL
 {
-    class Version
+	class Version
 	{
 	public:
 		using value_type = std::uint16_t;
@@ -95,7 +95,7 @@ namespace REL
 
 		Version             version;
 		std::wistringstream ss(std::wstring(static_cast<const wchar_t*>(verBuf), verLen));
-		std::wstring token;
+		std::wstring        token;
 		for (std::size_t i = 0; i < 4 && std::getline(ss, token, L'.'); ++i) {
 			version[i] = static_cast<std::uint16_t>(std::stoi(token));
 		}
