@@ -185,6 +185,15 @@ namespace RE
 		[[nodiscard]] TESObjectCELL* GetSkyCell();
 		[[nodiscard]] float          GetDefaultWaterHeight() const;
 
+		BGSTerrainManager* GetTerrainManager() const
+		{
+			auto world = this;
+			while (world->parentWorld != nullptr && world->parentUseFlags.any(RE::TESWorldSpace::ParentUseFlag::kUseLODData)) {
+				world = world->parentWorld;
+			}
+			return world->terrainManager;
+		}
+
 		// members
 		BSTHashMap<CellID, TESObjectCELL*>                            cellMap;                  // 058
 		TESObjectCELL*                                                persistentCell;           // 088

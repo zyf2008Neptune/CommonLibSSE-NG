@@ -3,7 +3,7 @@
 #include "RE/B/BSTArray.h"
 #include "RE/N/NiCamera.h"
 #include "RE/N/NiSmartPointer.h"
-#include "RE/N/NiTexture.h"
+#include "RE/N/NiSourceTexture.h"
 #include "SKSE/Version.h"
 #include <SimpleMath.h>
 using namespace DirectX::SimpleMath;
@@ -97,49 +97,49 @@ namespace RE
 		public:
 			struct RUNTIME_DATA
 			{
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)  // VR
-#	define RUNTIME_DATA_CONTENT                                                                                              \
-		uint32_t                  firstCameraStateIndex;                /*	058 VR   only ?*/                                  \
-		NiPointer<NiTexture>      defaultTextureBlack;                  /* SE 058, AE,VR 060 - "BSShader_DefHeightMap"*/      \
-		NiPointer<NiTexture>      defaultTextureWhite;                  /* SE 060, AE,VR 068 */                               \
-		NiPointer<NiTexture>      defaultTextureGrey;                   /* SE 068, AE,VR 070 */                               \
-		NiPointer<NiTexture>      defaultHeightMap;                     /* SE 070, AE,VR 078 */                               \
-		NiPointer<NiTexture>      defaultReflectionCubeMap;             /* SE 078, AE,VR 080 */                               \
-		NiPointer<NiTexture>      defaultFaceDetailMap;                 /* SE 080, AE,VR 088 */                               \
-		NiPointer<NiTexture>      defaultTexEffectMap;                  /* SE 088, AE,VR 090 */                               \
-		NiPointer<NiTexture>      defaultTextureNormalMap;              /* SE 090, AE,VR 098 */                               \
-		NiPointer<NiTexture>      defaultTextureDitherNoiseMap;         /* SE 098, AE,VR 0a0 */                               \
-		BSTArray<CameraStateData> cameraDataCacheA;                     /* SE 0a0, AE,VR 0a8 */                               \
-		float                     _pad2;                                /* SE 0a8, AE,VR 0c0 */                               \
-		float                     haltonSequence[2][8];                 /* SE 0c0, AE,VR 0c4 (2, 3) Halton Sequence points */ \
-		float                     dynamicResolutionCurrentWidthScale;   /* SE 0c4, AE,VR 104 */                               \
-		float                     dynamicResolutionCurrentHeightScale;  /* SE 104, AE,VR 108 */                               \
-		float                     dynamicResolutionPreviousWidthScale;  /* SE 108, AE,VR 10c */                               \
-		float                     dynamicResolutionPreviousHeightScale; /* SE 10c, AE,VR 110 */                               \
-		float                     dynamicResolutionWidthRatio;          /* SE 110, AE,VR 114 */                               \
-		float                     dynamicResolutionHeightRatio;         /* SE 114, AE,VR 118 */                               \
-		uint16_t                  dynamicResolutionCounter;             /* SE 118, AE,VR 11c */
+#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)            // VR
+#	define RUNTIME_DATA_CONTENT                                                                                               \
+		uint32_t                   firstCameraStateIndex;                /*	058 VR   only ?*/                                  \
+		NiPointer<NiSourceTexture> defaultTextureBlack;                  /* SE 058, AE,VR 060 - "BSShader_DefHeightMap"*/      \
+		NiPointer<NiSourceTexture> defaultTextureWhite;                  /* SE 060, AE,VR 068 */                               \
+		NiPointer<NiSourceTexture> defaultTextureGrey;                   /* SE 068, AE,VR 070 */                               \
+		NiPointer<NiSourceTexture> defaultHeightMap;                     /* SE 070, AE,VR 078 */                               \
+		NiPointer<NiSourceTexture> defaultReflectionCubeMap;             /* SE 078, AE,VR 080 */                               \
+		NiPointer<NiSourceTexture> defaultFaceDetailMap;                 /* SE 080, AE,VR 088 */                               \
+		NiPointer<NiSourceTexture> defaultTexEffectMap;                  /* SE 088, AE,VR 090 */                               \
+		NiPointer<NiSourceTexture> defaultTextureNormalMap;              /* SE 090, AE,VR 098 */                               \
+		NiPointer<NiSourceTexture> defaultTextureDitherNoiseMap;         /* SE 098, AE,VR 0a0 */                               \
+		BSTArray<CameraStateData>  cameraDataCacheA;                     /* SE 0a0, AE,VR 0a8 */                               \
+		float                      _pad2;                                /* SE 0a8, AE,VR 0c0 */                               \
+		float                      haltonSequence[2][8];                 /* SE 0c0, AE,VR 0c4 (2, 3) Halton Sequence points */ \
+		float                      dynamicResolutionCurrentWidthScale;   /* SE 0c4, AE,VR 104 */                               \
+		float                      dynamicResolutionCurrentHeightScale;  /* SE 104, AE,VR 108 */                               \
+		float                      dynamicResolutionPreviousWidthScale;  /* SE 108, AE,VR 10c */                               \
+		float                      dynamicResolutionPreviousHeightScale; /* SE 10c, AE,VR 110 */                               \
+		float                      dynamicResolutionWidthRatio;          /* SE 110, AE,VR 114 */                               \
+		float                      dynamicResolutionHeightRatio;         /* SE 114, AE,VR 118 */                               \
+		uint16_t                   dynamicResolutionCounter;             /* SE 118, AE,VR 11c */
 #else
-#	define RUNTIME_DATA_CONTENT                                                                                              \
-		NiPointer<NiTexture>      defaultTextureBlack;                  /* SE 058, AE,VR 060 - "BSShader_DefHeightMap"*/      \
-		NiPointer<NiTexture>      defaultTextureWhite;                  /* SE 060, AE,VR 068 */                               \
-		NiPointer<NiTexture>      defaultTextureGrey;                   /* SE 068, AE,VR 070 */                               \
-		NiPointer<NiTexture>      defaultHeightMap;                     /* SE 070, AE,VR 078 */                               \
-		NiPointer<NiTexture>      defaultReflectionCubeMap;             /* SE 078, AE,VR 080 */                               \
-		NiPointer<NiTexture>      defaultFaceDetailMap;                 /* SE 080, AE,VR 088 */                               \
-		NiPointer<NiTexture>      defaultTexEffectMap;                  /* SE 088, AE,VR 090 */                               \
-		NiPointer<NiTexture>      defaultTextureNormalMap;              /* SE 090, AE,VR 098 */                               \
-		NiPointer<NiTexture>      defaultTextureDitherNoiseMap;         /* SE 098, AE,VR 0a0 */                               \
-		BSTArray<CameraStateData> cameraDataCacheA;                     /* SE 0a0, AE,VR 0a8 */                               \
-		float                     _pad2;                                /* SE 0a8, AE,VR 0c0 */                               \
-		float                     haltonSequence[2][8];                 /* SE 0c0, AE,VR 0c4 (2, 3) Halton Sequence points */ \
-		float                     dynamicResolutionCurrentWidthScale;   /* SE 0c4, AE,VR 104 */                               \
-		float                     dynamicResolutionCurrentHeightScale;  /* SE 104, AE,VR 108 */                               \
-		float                     dynamicResolutionPreviousWidthScale;  /* SE 108, AE,VR 10c */                               \
-		float                     dynamicResolutionPreviousHeightScale; /* SE 10c, AE,VR 110 */                               \
-		float                     dynamicResolutionWidthRatio;          /* SE 110, AE,VR 114 */                               \
-		float                     dynamicResolutionHeightRatio;         /* SE 114, AE,VR 118 */                               \
-		uint16_t                  dynamicResolutionCounter;             /* SE 118, AE,VR 11c */
+#	define RUNTIME_DATA_CONTENT                                                                                               \
+		NiPointer<NiSourceTexture> defaultTextureBlack;                  /* SE 058, AE,VR 060 - "BSShader_DefHeightMap"*/      \
+		NiPointer<NiSourceTexture> defaultTextureWhite;                  /* SE 060, AE,VR 068 */                               \
+		NiPointer<NiSourceTexture> defaultTextureGrey;                   /* SE 068, AE,VR 070 */                               \
+		NiPointer<NiSourceTexture> defaultHeightMap;                     /* SE 070, AE,VR 078 */                               \
+		NiPointer<NiSourceTexture> defaultReflectionCubeMap;             /* SE 078, AE,VR 080 */                               \
+		NiPointer<NiSourceTexture> defaultFaceDetailMap;                 /* SE 080, AE,VR 088 */                               \
+		NiPointer<NiSourceTexture> defaultTexEffectMap;                  /* SE 088, AE,VR 090 */                               \
+		NiPointer<NiSourceTexture> defaultTextureNormalMap;              /* SE 090, AE,VR 098 */                               \
+		NiPointer<NiSourceTexture> defaultTextureDitherNoiseMap;         /* SE 098, AE,VR 0a0 */                               \
+		BSTArray<CameraStateData>  cameraDataCacheA;                     /* SE 0a0, AE,VR 0a8 */                               \
+		float                      _pad2;                                /* SE 0a8, AE,VR 0c0 */                               \
+		float                      haltonSequence[2][8];                 /* SE 0c0, AE,VR 0c4 (2, 3) Halton Sequence points */ \
+		float                      dynamicResolutionCurrentWidthScale;   /* SE 0c4, AE,VR 104 */                               \
+		float                      dynamicResolutionCurrentHeightScale;  /* SE 104, AE,VR 108 */                               \
+		float                      dynamicResolutionPreviousWidthScale;  /* SE 108, AE,VR 10c */                               \
+		float                      dynamicResolutionPreviousHeightScale; /* SE 10c, AE,VR 110 */                               \
+		float                      dynamicResolutionWidthRatio;          /* SE 110, AE,VR 114 */                               \
+		float                      dynamicResolutionHeightRatio;         /* SE 114, AE,VR 118 */                               \
+		uint16_t                   dynamicResolutionCounter;             /* SE 118, AE,VR 11c */
 #endif
 				RUNTIME_DATA_CONTENT;
 			};

@@ -21,6 +21,7 @@ namespace RE
 	public:
 		inline static constexpr auto RTTI = RTTI_BSShaderProperty;
 		inline static auto           Ni_RTTI = NiRTTI_BSShaderProperty;
+		inline static constexpr auto VTABLE = VTABLE_BSShaderProperty;
 
 		class ForEachVisitor
 		{
@@ -216,6 +217,7 @@ namespace RE
 		void SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
 		void SetMaterial(BSShaderMaterial* a_material, bool a_unk1);
 		void SetFlags(EShaderPropertyFlag8 a_flag, bool a_set);
+		void LinkMaterial(BSShaderMaterial* material, bool a2);
 
 		// members
 		float                                                alpha;                // 30
@@ -228,7 +230,7 @@ namespace RE
 		BSFadeNode*                                          fadeNode;             // 60
 		BSTSmartPointer<BSEffectShaderData>                  effectData;           // 68
 		BSShaderPropertyLightData*                           lightData;            // 70
-		BSEffectShaderMaterial*                              material;             // 78
+		BSShaderMaterial*                                    material;             // 78
 		std::uint64_t                                        unk80;                // 80
 	private:
 		KEEP_FOR_RE()

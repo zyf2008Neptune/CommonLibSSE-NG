@@ -1,6 +1,7 @@
 #pragma once
 
 #include "RE/B/BSReloadShaderI.h"
+#include "RE/B/BSTHashMap.h"
 #include "RE/N/NiBoneMatrixSetterI.h"
 #include "RE/N/NiRefObject.h"
 
@@ -15,6 +16,13 @@ namespace RE
 
 	namespace BSGraphics
 	{
+		enum class ConstantGroupLevel
+		{
+			PerTechnique,
+			PerMaterial,
+			PerGeometry,
+		};
+
 		class ConstantGroup
 		{
 		public:

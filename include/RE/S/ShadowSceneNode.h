@@ -114,6 +114,13 @@ namespace RE
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0x128, 0x150);
 		}
 
+		void AttachObject(RE::NiAVObject* object)
+		{
+			using func_t = decltype(&ShadowSceneNode::AttachObject);
+			REL::Relocation<func_t> func{ RELOCATION_ID(99696, 106330) };
+			return func(this, object);
+		}
+
 		// members
 #ifndef SKYRIM_CROSS_VR
 		RUNTIME_DATA_CONTENT;  // 128, 150
