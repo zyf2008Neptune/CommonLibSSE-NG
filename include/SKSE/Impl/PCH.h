@@ -713,7 +713,7 @@ namespace REL
 #	define RELOCATION_ID(SE, AE) REL::ID(SE)
 #endif
 
-#include "REL/Relocation.h"
+#include "REL/REL.h"
 
 #include "RE/Offsets.h"
 #include "RE/Offsets_NiRTTI.h"
