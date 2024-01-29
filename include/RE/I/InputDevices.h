@@ -10,14 +10,15 @@ namespace RE
 			kKeyboard = 0,
 			kMouse,
 			kGamepad,
-			kVirtualKeyboard,
 #ifdef ENABLE_SKYRIM_VR
-			kVRRight = 5,
-			kVRLeft = 6,
-			kWMRRight = 7,
-			kWMRLeft = 8,
+			kVivePrimary,
+			kViveSecondary,
+			kOculusPrimary,
+			kOculusSecondary,
+			kWMRPrimary,
+			kWMRSecondary,
 #endif
-
+			kVirtualKeyboard,
 			kTotal
 		};
 		static_assert(sizeof(INPUT_DEVICE) == 0x4);

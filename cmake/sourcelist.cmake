@@ -1003,6 +1003,7 @@ set(SOURCES
 	include/RE/H/hkpConstraintData.h
 	include/RE/H/hkpConstraintInfo.h
 	include/RE/H/hkpConstraintInstance.h
+	include/RE/H/hkpConstraintMotor.h
 	include/RE/H/hkpConstraintOwner.h
 	include/RE/H/hkpContactListener.h
 	include/RE/H/hkpContactPointEvent.h
@@ -1047,6 +1048,7 @@ set(SOURCES
 	include/RE/H/hkpSimulationIsland.h
 	include/RE/H/hkpSingleShapeContainer.h
 	include/RE/H/hkpSolverInfo.h
+	include/RE/H/hkpSolverResults.h
 	include/RE/H/hkpSphereRepShape.h
 	include/RE/H/hkpSphereShape.h
 	include/RE/H/hkpTypedBroadPhaseHandle.h
@@ -1396,6 +1398,7 @@ set(SOURCES
 	include/RE/S/ScriptedRefEffect.h
 	include/RE/S/ScrollItem.h
 	include/RE/S/SendPlayerToJailFunctor.h
+	include/RE/S/SendUIMessage.h
 	include/RE/S/SetEventData.h
 	include/RE/S/SetMotionTypeFunctor.h
 	include/RE/S/SetPositionFunctor.h
@@ -1947,6 +1950,7 @@ set(SOURCES
 	src/RE/S/ScrapHeap.cpp
 	src/RE/S/Script.cpp
 	src/RE/S/ScriptEventSourceHolder.cpp
+	src/RE/S/SendUIMessage.cpp
 	src/RE/S/Setting.cpp
 	src/RE/S/ShoutAttack.cpp
 	src/RE/S/SkillIncrease.cpp

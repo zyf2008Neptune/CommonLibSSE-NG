@@ -709,6 +709,7 @@ namespace RE
 		[[nodiscard]] bool                     HasActorDoingCommand() const;
 		[[nodiscard]] bool                     IsGrabbing() const;
 		bool                                   IsGrabbingWithDevice(VR_DEVICE a_device) const;
+		void                                   PlayMagicFailureSound(MagicSystem::SpellType a_spellType);
 		void                                   PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void                                   SetAIDriven(bool a_enable);
 		void                                   SetEscaping(bool a_flag, bool a_escaped);

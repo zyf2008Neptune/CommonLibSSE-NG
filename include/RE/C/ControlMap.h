@@ -62,7 +62,7 @@ namespace RE
 			BSTArray<UserEventMapping> deviceMappings[INPUT_DEVICES::kTotal];  // 00
 		};
 #ifdef ENABLE_SKYRIM_VR
-		static_assert(sizeof(InputContext) == 0xA8);
+		static_assert(sizeof(InputContext) == 0xF0);
 #else
 		static_assert(sizeof(InputContext) == 0x60);
 #endif

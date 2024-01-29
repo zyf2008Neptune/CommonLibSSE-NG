@@ -206,8 +206,8 @@ namespace RE
 			return func(this);
 		}
 
-		void                         ForEachReference(std::function<BSContainer::ForEachResult(TESObjectREFR&)> a_callback) const;
-		void                         ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<BSContainer::ForEachResult(TESObjectREFR&)> a_callback) const;
+		void                         ForEachReference(std::function<BSContainer::ForEachResult(TESObjectREFR*)> a_callback) const;
+		void                         ForEachReferenceInRange(const NiPoint3& a_origin, float a_radius, std::function<BSContainer::ForEachResult(TESObjectREFR*)> a_callback) const;
 		[[nodiscard]] EXTERIOR_DATA* GetCoordinates();
 		[[nodiscard]] TESFaction*    GetFactionOwner();
 		[[nodiscard]] INTERIOR_DATA* GetLighting();

@@ -50,6 +50,7 @@ namespace RE
 	static_assert(sizeof(NiPoint3) == 0xC);
 }
 
+#ifdef FMT_VERSION
 template <>
 struct fmt::formatter<RE::NiPoint3>
 {
@@ -79,3 +80,4 @@ struct fmt::formatter<RE::NiPoint3>
 		return presentation == 'f' ? fmt::format_to(ctx.out(), "({:.1f}, {:.1f}, {:.1f})", v.x, v.y, v.z) : fmt::format_to(ctx.out(), "({:.1e}, {:.1e}, {:.1e})", v.x, v.y, v.z);
 	}
 };
+#endif

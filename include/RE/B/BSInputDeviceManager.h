@@ -1,6 +1,9 @@
 #pragma once
 
 #include "RE/B/BSFixedString.h"
+#ifdef ENABLE_SKYRIM_VR
+#include "RE/B/BSOpenVR.h"
+#endif
 #include "RE/B/BSTEvent.h"
 #include "RE/B/BSTSingleton.h"
 #include "RE/I/InputDevices.h"

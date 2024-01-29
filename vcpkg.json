@@ -14,7 +14,6 @@
     },
     "directxmath",
     "directxtk",
-    "fmt",
     "rapidcsv",
     "spdlog"
   ],
