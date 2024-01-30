@@ -212,10 +212,11 @@ namespace RE
 		virtual std::uint32_t                  DetermineUtilityShaderDecl();                                                                           // 3D - { return 0; }
 		virtual BSShaderMaterial::Type         GetMaterialType();                                                                                      // 3E - { return 0; }
 
-		bool InvalidateMaterial();
-		void SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
-		void SetMaterial(BSShaderMaterial* a_material, bool a_unk1);
-		void SetFlags(EShaderPropertyFlag8 a_flag, bool a_set);
+		BSShaderMaterial* GetBaseMaterial() { return material; }
+		bool              InvalidateMaterial();
+		void              SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
+		void              SetMaterial(BSShaderMaterial* a_material, bool a_unk1);
+		void              SetFlags(EShaderPropertyFlag8 a_flag, bool a_set);
 
 		// members
 		float                                                alpha;                // 30
