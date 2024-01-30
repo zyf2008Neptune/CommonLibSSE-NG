@@ -9,7 +9,7 @@ namespace RE
 {
 	class BSRenderPass;
 	class BSShaderAccumulator;
-	class BSEffectShaderMaterial;
+	class BSShaderMaterial;
 	class BSShaderPropertyLightData;
 	class NiSourceTexture;
 
@@ -228,7 +228,7 @@ namespace RE
 		BSFadeNode*                                          fadeNode;             // 60
 		BSTSmartPointer<BSEffectShaderData>                  effectData;           // 68
 		BSShaderPropertyLightData*                           lightData;            // 70
-		BSEffectShaderMaterial*                              material;             // 78
+		BSShaderMaterial*                                    material;             // 78
 		std::uint64_t                                        unk80;                // 80
 	private:
 		KEEP_FOR_RE()
