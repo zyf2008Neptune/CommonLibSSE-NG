@@ -51,7 +51,8 @@ namespace RE
 		if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
 			return nullptr;
 		}
-		return static_cast<BSTrackedControllerDevice*>(devices[stl::to_underlying(INPUT_DEVICE::kVRRight)]);
+		const auto deviceType = BSOpenVR::GetSingleton()->GetHMDDeviceType();
+		return static_cast<BSTrackedControllerDevice*>(devices[2 * stl::to_underlying(deviceType) + 3]);  //3,5,7 for vive, oculus, windows
 #endif
 	}
 
@@ -63,7 +64,8 @@ namespace RE
 		if SKYRIM_REL_VR_CONSTEXPR (!REL::Module::IsVR()) {
 			return nullptr;
 		}
-		return static_cast<BSTrackedControllerDevice*>(devices[stl::to_underlying(INPUT_DEVICE::kVRLeft)]);
+		const auto deviceType = BSOpenVR::GetSingleton()->GetHMDDeviceType();
+		return static_cast<BSTrackedControllerDevice*>(devices[2 * stl::to_underlying(deviceType) + 4]);  //4,6,8 for vive, oculus, windows
 #endif
 	}
 

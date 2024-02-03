@@ -29,7 +29,6 @@ if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
 	message(FATAL_ERROR "in-source builds are not allowed")
 endif()
 
-find_package(fmt CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_path(RAPIDCSV_INCLUDE_DIRS "rapidcsv.h")
 find_package(directxtk CONFIG REQUIRED)
@@ -137,9 +136,9 @@ target_compile_definitions(
 target_link_libraries(
 	"${PROJECT_NAME}"
 	PUBLIC
-	fmt::fmt
 	spdlog::spdlog
 	Version.lib
+	Dbghelp.lib
 	Microsoft::DirectXTK
 )
 
@@ -200,7 +199,6 @@ if(BUILD_TESTS)
 		"${PROJECT_NAME}Tests"
 		PRIVATE
 		${Catch2_INCLUDE_DIRS}
-		${fmt_INCLUDE_DIRS}
 		${spdlog_INCLUDE_DIRS}
 		${RAPIDCSV_INCLUDE_DIRS}
 	)

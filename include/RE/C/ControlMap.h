@@ -8,6 +8,7 @@
 #include "RE/I/InputDevices.h"
 #include "RE/P/PCGamepadType.h"
 #include "RE/U/UserEvents.h"
+#include <SKSE/Version.h>
 
 namespace RE
 {
@@ -61,7 +62,7 @@ namespace RE
 			BSTArray<UserEventMapping> deviceMappings[INPUT_DEVICES::kTotal];  // 00
 		};
 #ifdef ENABLE_SKYRIM_VR
-		static_assert(sizeof(InputContext) == 0xA8);
+		static_assert(sizeof(InputContext) == 0xF0);
 #else
 		static_assert(sizeof(InputContext) == 0x60);
 #endif
@@ -122,17 +123,36 @@ namespace RE
 		//members
 
 		// members
-		InputContext* controlMap[InputContextID::kTotal];  // 060
-#ifndef SKYRIM_CROSS_VR
-		RUNTIME_DATA_CONTENT;  // 0E8, VR 108
+		InputContext* controlMap[InputContextID::kTotal];        // 060
+#if !defined(ENABLE_SKYRIM_VR)                                   //flat
+#	if !defined(ENABLE_SKYRIM_AE) && defined(ENABLE_SKYRIM_SE)  // SSE
+		RUNTIME_DATA_CONTENT;                                    // 0E8
+#	else                                                        // AE
+		RUNTIME_DATA_CONTENT;  // 0F8
+#	endif
+#elif !defined(ENABLE_SKYRIM_AE) && defined(ENABLE_SKYRIM_SE)  // VR
+		RUNTIME_DATA_CONTENT;  // 108
+#else                                                          // ALL
+		// controlMap can be accessed up to kTotal, kAETotal, or kVRTotal based on runtime
 #endif
+
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
+			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
+				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_6_1130) != std::strong_ordering::less) {
+					return REL::RelocateMember<RUNTIME_DATA>(this, 0xf0);
+				}
+			}
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0xE8, 0x108);
 		}
 
 		[[nodiscard]] inline const RUNTIME_DATA& GetRuntimeData() const noexcept
 		{
+			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
+				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_6_1130) != std::strong_ordering::less) {
+					return REL::RelocateMember<RUNTIME_DATA>(this, 0xf0);
+				}
+			}
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0xE8, 0x108);
 		}
 	};

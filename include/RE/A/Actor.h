@@ -526,7 +526,6 @@ namespace RE
 		[[nodiscard]] float                     GetAimHeading() const;
 		[[nodiscard]] InventoryEntryData*       GetAttackingWeapon();
 		[[nodiscard]] const InventoryEntryData* GetAttackingWeapon() const;
-		[[nodiscard]] const float               GetTotalCarryWeight();
 		[[nodiscard]] bhkCharacterController*   GetCharController() const;
 		std::uint32_t                           GetCollisionFilterInfo(std::uint32_t& a_outCollisionFilterInfo);
 		[[nodiscard]] NiPointer<Actor>          GetCommandingActor() const;
@@ -554,9 +553,11 @@ namespace RE
 		[[nodiscard]] ObjectRefHandle           GetOccupiedFurniture() const;
 		[[nodiscard]] TESRace*                  GetRace() const;
 		[[nodiscard]] bool                      GetRider(NiPointer<Actor>& a_outRider);
+		[[nodiscard]] float                     GetRegenDelay(ActorValue a_actorValue) const;
 		[[nodiscard]] TESObjectARMO*            GetSkin() const;
 		[[nodiscard]] TESObjectARMO*            GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot, bool a_noInit = false);
 		[[nodiscard]] SOUL_LEVEL                GetSoulSize() const;
+		[[nodiscard]] const float               GetTotalCarryWeight();
 		[[nodiscard]] TESFaction*               GetVendorFaction();
 		[[nodiscard]] const TESFaction*         GetVendorFaction() const;
 		[[nodiscard]] float                     GetVoiceRecoveryTime();
@@ -582,6 +583,7 @@ namespace RE
 		[[nodiscard]] bool                      IsCasting(MagicItem* a_spell) const;
 		[[nodiscard]] bool                      IsCommandedActor() const;
 		[[nodiscard]] bool                      IsCurrentShout(SpellItem* a_power);
+		[[nodiscard]] bool                      IsDualCasting() const;
 		[[nodiscard]] bool                      IsEssential() const;
 		[[nodiscard]] bool                      IsFactionInCrimeGroup(const TESFaction* a_faction) const;
 		[[nodiscard]] bool                      IsGhost() const;
@@ -628,6 +630,7 @@ namespace RE
 		void                                    UpdateAwakeSound(NiAVObject* a_obj3D);
 		void                                    Update3DModel();
 		void                                    UpdateHairColor();
+		void                                    UpdateRegenDelay(ActorValue a_actorValue, float a_regenDelay);
 		void                                    UpdateSkinColor();
 		void                                    UpdateWeaponAbility(TESForm* a_weapon, ExtraDataList* a_extraData, bool a_leftHand);
 		void                                    VisitArmorAddon(TESObjectARMO* a_armor, TESObjectARMA* a_arma, std::function<void(bool a_firstPerson, NiAVObject& a_obj)> a_visitor);

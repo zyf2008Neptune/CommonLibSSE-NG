@@ -52,7 +52,7 @@ namespace RE
 		ViewData camViewData;                                           /* 08 VR is BSTArray, Each array has 2 elements (one for each eye?) */ \
 		NiPoint3 posAdjust;                                             /* 20 */                                                               \
 		NiPoint3 currentPosAdjust;                                      /* 38 */                                                               \
-		NiPoint3 previousPosAdjust;                                     /* 50 */ \
+		NiPoint3 previousPosAdjust;                                     /* 50 */                                                               \
 		#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)  // VR
 #	define CAMERASTATE_RUNTIME_DATA_CONTENT                                                                         \
 		BSTArray<ViewData> camViewData;       /* 08 VR is BSTArray, Each array has 2 elements (one for each eye?) */ \
@@ -237,6 +237,7 @@ namespace RE
 	}
 }
 
+#ifdef FMT_VERSION
 template <>
 struct fmt::formatter<Vector3>
 {
@@ -325,4 +326,5 @@ struct fmt::formatter<Matrix>
 		return fmt::format_to(ctx.out(), "[{}, {}, {}, {}]", (Vector4)m.m[0], (Vector4)m.m[1], (Vector4)m.m[2], (Vector4)m.m[3]);
 	}
 };
+#endif
 #undef RUNTIME_DATA_CONTENT

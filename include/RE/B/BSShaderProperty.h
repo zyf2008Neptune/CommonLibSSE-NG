@@ -9,7 +9,7 @@ namespace RE
 {
 	class BSRenderPass;
 	class BSShaderAccumulator;
-	class BSEffectShaderMaterial;
+	class BSShaderMaterial;
 	class BSShaderPropertyLightData;
 	class NiSourceTexture;
 
@@ -213,11 +213,12 @@ namespace RE
 		virtual std::uint32_t                  DetermineUtilityShaderDecl();                                                                           // 3D - { return 0; }
 		virtual BSShaderMaterial::Type         GetMaterialType();                                                                                      // 3E - { return 0; }
 
-		bool InvalidateMaterial();
-		void SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
-		void SetMaterial(BSShaderMaterial* a_material, bool a_unk1);
-		void SetFlags(EShaderPropertyFlag8 a_flag, bool a_set);
-		void LinkMaterial(BSShaderMaterial* material, bool a2);
+		BSShaderMaterial* GetBaseMaterial() { return material; }
+		bool              InvalidateMaterial();
+		void              SetEffectShaderData(const BSTSmartPointer<BSEffectShaderData>& a_data);
+		void              SetMaterial(BSShaderMaterial* a_material, bool a_unk1);
+		void              SetFlags(EShaderPropertyFlag8 a_flag, bool a_set);
+		void              LinkMaterial(BSShaderMaterial* material, bool a2);
 
 		// members
 		float                                                alpha;                // 30

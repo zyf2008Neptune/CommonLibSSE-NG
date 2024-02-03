@@ -1,11 +1,11 @@
 #include "RE/N/NiAVObject.h"
 
 #include "RE/B/BSEffectShaderData.h"
-#include "RE/B/BSEffectShaderMaterial.h"
 #include "RE/B/BSGeometry.h"
 #include "RE/B/BSLightingShaderMaterialFacegenTint.h"
 #include "RE/B/BSLightingShaderMaterialHairTint.h"
 #include "RE/B/BSLightingShaderProperty.h"
+#include "RE/B/BSShaderMaterial.h"
 #include "RE/B/BSShaderProperty.h"
 #include "RE/B/BSTSmartPointer.h"
 #include "RE/B/BSVisit.h"
@@ -257,7 +257,7 @@ namespace RE
 				if (lightingShader) {
 					auto material = lightingShader->material;
 					if (material && material->GetFeature() == Feature::kFaceGenRGBTint) {
-						auto facegenTint = static_cast<BSLightingShaderMaterialFacegenTint*>(static_cast<BSShaderMaterial*>(material));
+						auto facegenTint = static_cast<BSLightingShaderMaterialFacegenTint*>(material);
 						facegenTint->tintColor = a_color;
 					}
 				}
@@ -279,7 +279,7 @@ namespace RE
 				if (lightingShader) {
 					auto material = lightingShader->material;
 					if (material && material->GetFeature() == Feature::kHairTint) {
-						auto hairTint = static_cast<BSLightingShaderMaterialHairTint*>(static_cast<BSShaderMaterial*>(material));
+						auto hairTint = static_cast<BSLightingShaderMaterialHairTint*>(material);
 						hairTint->tintColor = a_color;
 					}
 				}
@@ -299,7 +299,7 @@ namespace RE
 			if (effect) {
 				auto lightingShader = netimmerse_cast<BSLightingShaderProperty*>(effect);
 				if (lightingShader) {
-					auto material = static_cast<BSLightingShaderMaterialBase*>(static_cast<BSShaderMaterial*>(lightingShader->material));
+					auto material = static_cast<BSLightingShaderMaterialBase*>(lightingShader->material);
 					if (material) {
 						if (a_doOnlySkin) {
 							if (auto const feature = material->GetFeature(); feature != Feature::kFaceGen && feature != Feature::kFaceGenRGBTint) {

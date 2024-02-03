@@ -94,10 +94,11 @@ namespace RE
 #if defined(ENABLE_SKYRIM_VR)
 		void DispelEffectsWithArchetype(Archetype a_type, bool a_force);
 #endif
-		bool HasEffectWithArchetype(Archetype a_type);
-		bool HasMagicEffect(EffectSetting* a_effect);
-		bool HasMagicEffectWithKeyword(BGSKeyword* a_keyword, std::uint64_t a_arg2);
-		void VisitEffects(ForEachActiveEffectVisitor& visitor);
+		Actor* GetTargetAsActor();
+		bool   HasEffectWithArchetype(Archetype a_type);
+		bool   HasMagicEffect(EffectSetting* a_effect);
+		bool   HasMagicEffectWithKeyword(BGSKeyword* a_keyword, std::uint64_t a_arg2);
+		void   VisitEffects(ForEachActiveEffectVisitor& visitor);
 
 #ifdef ENABLE_SKYRIM_VR
 		//VR requires a visitor to access all items

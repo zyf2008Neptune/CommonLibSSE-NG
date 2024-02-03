@@ -23,6 +23,7 @@
 #include <format>
 #include <fstream>
 #include <functional>
+#include <intrin.h>
 #include <iomanip>
 #include <ios>
 #include <istream>
@@ -59,8 +60,6 @@ static_assert(
 	"wrap std::time_t instead");
 
 #pragma warning(push)
-#include <fmt/core.h>
-#include <fmt/format.h>
 #include <spdlog/spdlog.h>
 
 #pragma warning(pop)
@@ -673,7 +672,7 @@ namespace SKSE
 				}
 
 				return utf8_to_utf16(
-					fmt::format(
+					std::format(
 						"{}({}): {}"sv,
 						filename,
 						a_loc.line(),

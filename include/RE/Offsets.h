@@ -111,11 +111,6 @@ namespace RE::Offset
 		constexpr auto SetEndianSwap = RELOCATION_ID(69643, 71021);
 	}
 
-	namespace BSScaleformTranslator
-	{
-		constexpr auto GetCachedString = RELOCATION_ID(67844, 69188);
-	}
-
 	namespace BSScript
 	{
 		namespace ObjectBindPolicy
@@ -140,6 +135,7 @@ namespace RE::Offset
 	namespace BSSoundHandle
 	{
 		constexpr auto IsValid = RELOCATION_ID(66360, 67621);
+		constexpr auto Pause = RELOCATION_ID(66357, 67618);
 		constexpr auto Play = RELOCATION_ID(66355, 67616);
 		constexpr auto SetObjectToFollow = RELOCATION_ID(66375, 67636);
 		constexpr auto SetPosition = RELOCATION_ID(66370, 67631);

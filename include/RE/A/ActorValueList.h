@@ -48,6 +48,7 @@ namespace std
 #endif
 }
 
+#ifdef FMT_VERSION
 namespace fmt
 {
 	template <>
@@ -67,3 +68,4 @@ namespace fmt
 		}
 	};
 }
+#endif

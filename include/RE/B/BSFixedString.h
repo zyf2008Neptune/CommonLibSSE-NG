@@ -251,6 +251,7 @@ namespace RE
 	};
 }
 
+#ifdef FMT_VERSION
 template <>
 struct fmt::formatter<RE::BSFixedString>
 {
@@ -280,3 +281,4 @@ struct fmt::formatter<RE::BSFixedString>
 		return fmt::format_to(ctx.out(), "{}", v.data());
 	}
 };
+#endif

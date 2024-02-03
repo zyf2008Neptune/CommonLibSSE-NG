@@ -180,7 +180,7 @@ namespace RE
 #if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(PlayerCamera) == 0x168);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-	static_assert(sizeof(PlayerCamera) == 0x188);
+	static_assert(sizeof(PlayerCamera) == 0x180);
 #endif
 }
 #undef RUNTIME_DATA_CONTENT

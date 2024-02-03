@@ -270,7 +270,7 @@ namespace RE
 		public BSTEventSink<UserEventEnabledEvent>,  // 2C0
 		public BSTEventSink<TESTrackedStatsEvent>    // 2C8
 #else
-		public Character                                                                   // 000
+		public Character  // 000
 #endif
 	{
 	public:
@@ -307,12 +307,11 @@ namespace RE
 	float                                            grabObjectWeight; /* 8CC */ \
 	float                                            grabDistance;     /* 8d0 */ \
 	float                                            unk004;           /* 8d4 */ \
-	std::uint64_t                                    unk008;           /* 8d8 */ \
-	std::uint32_t                                    unk010;           /* 8e0 */
+	std::uint64_t                                    unk008;           /* 8d8 */
 
 			GRAB_DATA_CONTENT
 		};
-		static_assert(sizeof(GrabData) == 0x50);
+		static_assert(sizeof(GrabData) == 0x48);
 
 		struct VRGrabData
 		{
@@ -384,25 +383,25 @@ namespace RE
 			bool          pad5_5: 3;  // 5:5
 			std::uint16_t pad6;       // 6
 #else
-			bool unk5_5: 1;                                                                // 5:5
-			bool unk5_6: 1;                                                                // 5:6
-			bool unk5_7: 1;                                                                // 5:7
-			bool unk6_0: 1;                                                                // 6:0
-			bool unk6_1: 1;                                                                // 6:1
-			bool unk6_2: 1;                                                                // 6:2
-			bool unk6_3: 1;                                                                // 6:3
-			bool unk6_4: 1;                                                                // 6:4
-			bool unk6_5: 1;                                                                // 6:5
-			bool unk6_6: 1;                                                                // 6:6
-			bool unk6_7: 1;                                                                // 6:7
-			bool unk7_0: 1;                                                                // 7:0
-			bool unk7_1: 1;                                                                // 7:1
-			bool unk7_2: 1;                                                                // 7:2
-			bool unk7_3: 1;                                                                // 7:3
-			bool unk7_4: 1;                                                                // 7:4
-			bool unk7_5: 1;                                                                // 7:5
-			bool unk7_6: 1;                                                                // 7:6
-			bool unk7_7: 1;                                                                // 7:7
+			bool unk5_5: 1;  // 5:5
+			bool unk5_6: 1;  // 5:6
+			bool unk5_7: 1;  // 5:7
+			bool unk6_0: 1;  // 6:0
+			bool unk6_1: 1;  // 6:1
+			bool unk6_2: 1;  // 6:2
+			bool unk6_3: 1;  // 6:3
+			bool unk6_4: 1;  // 6:4
+			bool unk6_5: 1;  // 6:5
+			bool unk6_6: 1;  // 6:6
+			bool unk6_7: 1;  // 6:7
+			bool unk7_0: 1;  // 7:0
+			bool unk7_1: 1;  // 7:1
+			bool unk7_2: 1;  // 7:2
+			bool unk7_3: 1;  // 7:3
+			bool unk7_4: 1;  // 7:4
+			bool unk7_5: 1;  // 7:5
+			bool unk7_6: 1;  // 7:6
+			bool unk7_7: 1;  // 7:7
 #endif
 		};
 		static_assert(sizeof(PlayerFlags) == 0x8);
@@ -710,6 +709,7 @@ namespace RE
 		[[nodiscard]] bool                     HasActorDoingCommand() const;
 		[[nodiscard]] bool                     IsGrabbing() const;
 		bool                                   IsGrabbingWithDevice(VR_DEVICE a_device) const;
+		void                                   PlayMagicFailureSound(MagicSystem::SpellType a_spellType);
 		void                                   PlayPickupEvent(TESForm* a_item, TESForm* a_containerOwner, TESObjectREFR* a_containerRef, EventType a_eventType);
 		void                                   SetAIDriven(bool a_enable);
 		void                                   SetEscaping(bool a_flag, bool a_escaped);
@@ -853,6 +853,7 @@ namespace RE
 	PLAYER_ACTION                                           mostRecentAction;                         /* 890 */             \
 	ActorHandle                                             actorDoingPlayerCommand;                  /* 894 */             \
 	GrabData                                                grabData;                                 /* 898 */             \
+	std::uint32_t                                           unk8e0;                                   /* 8e0 */             \
 	INFO_RUNTIME_DATA_CONTENT;                                                                        /* 8E4 */             \
 	std::uint8_t                                   unkA20[0xA0];                                      /* A20 */             \
 	std::uint32_t                                  unkAC0;                                            /* AC0 */             \
@@ -999,12 +1000,12 @@ namespace RE
 
 		[[nodiscard]] inline PLAYER_RUNTIME_DATA& GetPlayerRuntimeData() noexcept
 		{
-			return REL::RelocateMemberIfNewer<PLAYER_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x3D8, 0);
+			return REL::RelocateMemberIfNewer<PLAYER_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x3D8, 0x3E0);
 		}
 
 		[[nodiscard]] inline const PLAYER_RUNTIME_DATA& GetPlayerRuntimeData() const noexcept
 		{
-			return REL::RelocateMemberIfNewer<PLAYER_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x3D8, 0);
+			return REL::RelocateMemberIfNewer<PLAYER_RUNTIME_DATA>(SKSE::RUNTIME_SSE_1_6_629, this, 0x3D8, 0x3E0);
 		}
 
 		[[nodiscard]] inline VR_PLAYER_RUNTIME_DATA& GetVRPlayerRuntimeData() noexcept
@@ -1144,7 +1145,7 @@ namespace RE
 		bool CenterOnCell_Impl(const char* a_cellName, RE::TESObjectCELL* a_cell);
 	};
 #if !defined(ENABLE_SKYRIM_VR)
-	static_assert(sizeof(PlayerCharacter) == 0x888);
+	static_assert(sizeof(PlayerCharacter) == 0x880);
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(PlayerCharacter) == 0x12D8);
 #else
