@@ -88,7 +88,7 @@ namespace RE
 			struct FLAT_RUNTIME_DATA
 			{
 #define FLAT_RUNTIME_DATA_CONTENT                                                                                                                 \
-	ShaderFlags                stateUpdateFlags;                                            /* 00 Flags +0x0  0xFFFFFFFF; global state updates */ \
+	stl::enumeration < ShaderFlags, uint32_t> stateUpdateFlags;                              /* 00 Flags +0x0  0xFFFFFFFF; global state updates */ \
 	uint32_t                   PSResourceModifiedBits;                                      /* 04 Flags +0x4  0xFFFF */                           \
 	uint32_t                   PSSamplerModifiedBits;                                       /* 08 Flags +0x8  0xFFFF */                           \
 	uint32_t                   CSResourceModifiedBits;                                      /* 0c Flags +0xC  0xFFFF */                           \
@@ -171,7 +171,7 @@ namespace RE
 			struct VR_RUNTIME_DATA
 			{
 #define VR_RUNTIME_DATA_CONTENT                                                                                                                   \
-	ShaderFlags                stateUpdateFlags;                                            /* 00 Flags +0x0  0xFFFFFFFF; global state updates */ \
+	stl::enumeration<ShaderFlags, uint32_t> stateUpdateFlags;                                            /* 00 Flags +0x0  0xFFFFFFFF; global state updates */ \
 	uint32_t                   PSResourceModifiedBits;                                      /* 04 Flags +0x4  0xFFFF */                           \
 	uint32_t                   PSSamplerModifiedBits;                                       /* 08 Flags +0x8  0xFFFF */                           \
 	uint32_t                   CSResourceModifiedBits;                                      /* 0c Flags +0xC  0xFFFF */                           \
