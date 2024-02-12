@@ -11,9 +11,9 @@ namespace RE
 	class BSOpenVR : public BSVRInterface
 	{
 	public:
-#if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#	if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 		inline static constexpr auto RTTI = RTTI_BSOpenVR;
-#endif
+#	endif
 
 		struct Unk238
 		{
@@ -48,7 +48,7 @@ namespace RE
 		void                     Unk_0F(void) override;                                                                                               // 0F
 		void                     Unk_10(void) override;                                                                                               // 10
 		void                     Unk_11(void) override;                                                                                               // 11 - { return 0; }
-		void                     Unk_12(void) override;                                                                                               // 12
+		void                     GetRenderTargetSize(std::uint32_t* a_width, std::uint32_t* a_height) override;                                                     // 12
 		void                     Unk_13() override;                                                                                                   // 13
 		void                     Unk_14(void) override;                                                                                               // 14
 		void                     Unk_15(void) override;                                                                                               // 15 - { return 0; }

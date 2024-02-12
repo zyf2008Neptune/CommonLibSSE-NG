@@ -65,7 +65,7 @@ namespace RE
 		virtual void                     Unk_0F(void);                                                                                     // 0F
 		virtual void                     Unk_10(void);                                                                                     // 10
 		virtual void                     Unk_11(void);                                                                                     // 11
-		virtual void                     Unk_12(void);                                                                                     // 12
+		virtual void                     GetRenderTargetSize(std::uint32_t* a_width, std::uint32_t* a_height);                             // 12
 		virtual void                     Unk_13(void);                                                                                     // 13
 		virtual void                     Unk_14(void);                                                                                     // 14
 		virtual void                     Unk_15(void);                                                                                     // 15
