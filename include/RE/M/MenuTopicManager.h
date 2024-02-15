@@ -10,6 +10,7 @@
 namespace RE
 {
 	class BGSDialogueBranch;
+	class DialogueResponse;
 	class MenuOpenCloseEvent;
 	class TESQuest;
 	class TESTopic;

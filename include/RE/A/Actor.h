@@ -583,6 +583,7 @@ namespace RE
 		[[nodiscard]] constexpr bool IsInKillMove() const noexcept { return boolFlags.all(BOOL_FLAGS::kIsInKillMove); }
 		bool                         IsInMidair() const;
 		bool                         IsInRagdollState() const;
+		bool                         IsLeveled() const;
 		bool                         IsLimbGone(std::uint32_t a_limb);
 		bool                         IsMoving() const;
 		bool                         IsOnMount() const;
