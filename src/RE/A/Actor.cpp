@@ -396,7 +396,7 @@ namespace RE
 		}
 	}
 
-	TESBoundObject* Actor::GetEquippedObjectInSlot(const BGSEquipSlot* slot) const
+	TESForm* Actor::GetEquippedObjectInSlot(const BGSEquipSlot* slot) const
 	{
 		if (!currentProcess) {
 			return nullptr;
