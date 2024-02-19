@@ -529,6 +529,7 @@ namespace RE
 		InventoryEntryData*          GetEquippedEntryData(bool a_leftHand) const;
 		TESForm*                     GetEquippedObject(bool a_leftHand) const;
 		float                        GetEquippedWeight();
+		TESBoundObject*              GetEquippedObjectInSlot(const BGSEquipSlot* slot) const;
 		std::int32_t                 GetFactionRank(TESFaction* a_faction, bool a_isPlayer);
 		std::int32_t                 GetGoldAmount(bool a_noInit = false);
 		ActorHandle                  GetHandle();
