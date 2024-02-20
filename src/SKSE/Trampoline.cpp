@@ -7,6 +7,7 @@
 // xbyak brings in <Windows.h>
 #ifdef SKSE_SUPPORT_XBYAK
 #	include <xbyak/xbyak.h>
+#   undef max
 #	undef MEM_COMMIT
 #	undef MEM_FREE
 #	undef MEM_RESERVE
