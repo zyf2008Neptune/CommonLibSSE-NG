@@ -24,7 +24,7 @@ namespace RE
 				kLeft = REX::PS4::SCE_PAD_BUTTON::SCE_PAD_BUTTON_LEFT,
 				kRight = REX::PS4::SCE_PAD_BUTTON::SCE_PAD_BUTTON_RIGHT,
 				kPS3_Start = REX::PS4::SCE_PAD_BUTTON::SCE_PAD_BUTTON_OPTIONS,
-				kPS3_Back = REX::PS4::SCE_PAD_BUTTON::SCE_PAD_BUTTON_TOUCH_PAD,     // This is mapped to the touchpad on the PS4 controller
+				kPS3_Back = REX::PS4::SCE_PAD_BUTTON::SCE_PAD_BUTTON_TOUCH_PAD,  // This is mapped to the touchpad on the PS4 controller
 				kPS3_L3 = REX::PS4::SCE_PAD_BUTTON::SCE_PAD_BUTTON_L3,
 				kPS3_R3 = REX::PS4::SCE_PAD_BUTTON::SCE_PAD_BUTTON_R3,
 				kPS3_LB = REX::PS4::SCE_PAD_BUTTON::SCE_PAD_BUTTON_L1,

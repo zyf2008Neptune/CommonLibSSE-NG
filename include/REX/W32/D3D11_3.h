@@ -22,30 +22,30 @@ namespace REX::W32
 	enum D3D11_CONSERVATIVE_RASTERIZATION_MODE
 	{
 		D3D11_CONSERVATIVE_RASTERIZATION_MODE_OFF = 0,
-		D3D11_CONSERVATIVE_RASTERIZATION_MODE_ON  = 1,
+		D3D11_CONSERVATIVE_RASTERIZATION_MODE_ON = 1,
 	};
 
 	enum D3D11_CONTEXT_TYPE
 	{
-		D3D11_CONTEXT_TYPE_ALL     = 0,
-		D3D11_CONTEXT_TYPE_3D      = 1,
+		D3D11_CONTEXT_TYPE_ALL = 0,
+		D3D11_CONTEXT_TYPE_3D = 1,
 		D3D11_CONTEXT_TYPE_COMPUTE = 2,
-		D3D11_CONTEXT_TYPE_COPY    = 3,
-		D3D11_CONTEXT_TYPE_VIDEO   = 4,
+		D3D11_CONTEXT_TYPE_COPY = 3,
+		D3D11_CONTEXT_TYPE_VIDEO = 4,
 	};
 
 	enum D3D11_FENCE_FLAG
 	{
-		D3D11_FENCE_FLAG_NONE                 = 0,
-		D3D11_FENCE_FLAG_SHARED               = 0x2,
+		D3D11_FENCE_FLAG_NONE = 0,
+		D3D11_FENCE_FLAG_SHARED = 0x2,
 		D3D11_FENCE_FLAG_SHARED_CROSS_ADAPTER = 0x4,
-		D3D11_FENCE_FLAG_NON_MONITORED        = 0x8,
+		D3D11_FENCE_FLAG_NON_MONITORED = 0x8,
 	};
 
 	enum D3D11_TEXTURE_LAYOUT
 	{
-		D3D11_TEXTURE_LAYOUT_UNDEFINED            = 0,
-		D3D11_TEXTURE_LAYOUT_ROW_MAJOR            = 1,
+		D3D11_TEXTURE_LAYOUT_UNDEFINED = 0,
+		D3D11_TEXTURE_LAYOUT_ROW_MAJOR = 1,
 		D3D11_TEXTURE_LAYOUT_64K_STANDARD_SWIZZLE = 2,
 	};
 }
@@ -121,9 +121,9 @@ namespace REX::W32
 
 	struct D3D11_RENDER_TARGET_VIEW_DESC1
 	{
-		DXGI_FORMAT                 format;
-		D3D11_RTV_DIMENSION         viewDimension;
-		union 
+		DXGI_FORMAT         format;
+		D3D11_RTV_DIMENSION viewDimension;
+		union
 		{
 			D3D11_BUFFER_RTV        buffer;
 			D3D11_TEX1D_RTV         texture1D;
@@ -167,9 +167,9 @@ namespace REX::W32
 
 	struct D3D11_SHADER_RESOURCE_VIEW_DESC1
 	{
-		DXGI_FORMAT                 format;
-		D3D11_SRV_DIMENSION         viewDimension;
-		union 
+		DXGI_FORMAT         format;
+		D3D11_SRV_DIMENSION viewDimension;
+		union
 		{
 			D3D11_BUFFER_SRV        buffer;
 			D3D11_TEX1D_SRV         texture1D;
@@ -187,9 +187,9 @@ namespace REX::W32
 
 	struct D3D11_UNORDERED_ACCESS_VIEW_DESC1
 	{
-		DXGI_FORMAT                format;
-		D3D11_UAV_DIMENSION        viewDimension;
-		union 
+		DXGI_FORMAT         format;
+		D3D11_UAV_DIMENSION viewDimension;
+		union
 		{
 			D3D11_BUFFER_UAV       buffer;
 			D3D11_TEX1D_UAV        texture1D;
@@ -213,10 +213,10 @@ namespace REX::W32
 		virtual HRESULT CreateUnorderedAccessView1(ID3D11Resource* a_resource, const D3D11_UNORDERED_ACCESS_VIEW_DESC1* a_desc1, ID3D11UnorderedAccessView1** a_uaView1) = 0;
 		virtual HRESULT CreateRenderTargetView1(ID3D11Resource* a_resource, const D3D11_RENDER_TARGET_VIEW_DESC1* a_desc1, ID3D11RenderTargetView1** a_rtView1) = 0;
 		virtual HRESULT CreateQuery1(const D3D11_QUERY_DESC1* a_queryDesc1, ID3D11Query1** a_query1) = 0;
-		virtual void GetImmediateContext3(ID3D11DeviceContext3** a_immediateContext) = 0;
+		virtual void    GetImmediateContext3(ID3D11DeviceContext3** a_immediateContext) = 0;
 		virtual HRESULT CreateDeferredContext3(std::uint32_t a_contextFlags, ID3D11DeviceContext3** a_deferredContext) = 0;
-		virtual void WriteToSubresource(ID3D11Resource* a_dstResource, std::uint32_t a_dstSubresource, const D3D11_BOX* a_dstBox, const void* a_srcData, std::uint32_t a_srcRowPitch, std::uint32_t a_srcDepthPitch) = 0;
-		virtual void ReadFromSubresource(void* a_dstData, std::uint32_t a_dstRowPitch, std::uint32_t a_dstDepthPitch, ID3D11Resource* a_srcResource, std::uint32_t a_srcSubresource, const D3D11_BOX* a_srcBox) = 0;
+		virtual void    WriteToSubresource(ID3D11Resource* a_dstResource, std::uint32_t a_dstSubresource, const D3D11_BOX* a_dstBox, const void* a_srcData, std::uint32_t a_srcRowPitch, std::uint32_t a_srcDepthPitch) = 0;
+		virtual void    ReadFromSubresource(void* a_dstData, std::uint32_t a_dstRowPitch, std::uint32_t a_dstDepthPitch, ID3D11Resource* a_srcResource, std::uint32_t a_srcSubresource, const D3D11_BOX* a_srcBox) = 0;
 	};
 
 	struct __declspec(novtable, uuid("b4e3c01d-e79e-4637-91b2-510e9f4c9b8f"))
@@ -237,9 +237,9 @@ namespace REX::W32
 	struct __declspec(novtable, uuid("affde9d1-1df7-4bb7-8a34-0f46251dab80"))
 		ID3D11Fence : public ID3D11DeviceChild
 	{
-		virtual HRESULT CreateSharedHandle(const SECURITY_ATTRIBUTES* a_attributes, std::uint32_t a_access, const wchar_t* a_name, HANDLE* a_handle) = 0;
+		virtual HRESULT       CreateSharedHandle(const SECURITY_ATTRIBUTES* a_attributes, std::uint32_t a_access, const wchar_t* a_name, HANDLE* a_handle) = 0;
 		virtual std::uint64_t GetCompletedValue(void) = 0;
-		virtual HRESULT SetEventOnCompletion(std::uint64_t a_value, HANDLE a_event) = 0;
+		virtual HRESULT       SetEventOnCompletion(std::uint64_t a_value, HANDLE a_event) = 0;
 	};
 
 	struct __declspec(novtable, uuid("631b4766-36dc-461d-8db6-c47e13e60916"))

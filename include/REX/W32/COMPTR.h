@@ -58,7 +58,7 @@ namespace REX::W32
 			return *this;
 		}
 
-		template<class U>
+		template <class U>
 		ComPtr& operator=(const ComPtr<U>& a_other) noexcept
 		{
 			ComPtr(a_other).Swap(*this);
@@ -71,7 +71,7 @@ namespace REX::W32
 			return *this;
 		}
 
-		template<class U>
+		template <class U>
 		ComPtr& operator=(ComPtr<U>&& a_other) noexcept
 		{
 			ComPtr(static_cast<ComPtr<U>&&>(a_other)).Swap(*this);
@@ -167,7 +167,7 @@ namespace REX::W32
 		template <class U>
 		HRESULT CopyTo(U** a_ptr) const noexcept
 		{
-			return _ptr->QueryInterface(__uuidof(U), reinterpret_cast<void**>(a_ptr)); 
+			return _ptr->QueryInterface(__uuidof(U), reinterpret_cast<void**>(a_ptr));
 		}
 
 	protected:

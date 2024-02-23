@@ -25,56 +25,56 @@ namespace REX::W32
 	enum D3D11_COPY_FLAGS
 	{
 		D3D11_COPY_NO_OVERWRITE = 0x1,
-		D3D11_COPY_DISCARD      = 0x2,
+		D3D11_COPY_DISCARD = 0x2,
 	};
 
 	enum D3D11_CRYPTO_SESSION_STATUS
 	{
-		D3D11_CRYPTO_SESSION_STATUS_OK                   = 0,
-		D3D11_CRYPTO_SESSION_STATUS_KEY_LOST             = 1,
+		D3D11_CRYPTO_SESSION_STATUS_OK = 0,
+		D3D11_CRYPTO_SESSION_STATUS_KEY_LOST = 1,
 		D3D11_CRYPTO_SESSION_STATUS_KEY_AND_CONTENT_LOST = 2,
 	};
 
 	enum D3D11_LOGIC_OP
 	{
-		D3D11_LOGIC_OP_CLEAR         = 0,
-		D3D11_LOGIC_OP_SET           = (D3D11_LOGIC_OP_CLEAR + 1),
-		D3D11_LOGIC_OP_COPY          = (D3D11_LOGIC_OP_SET + 1),
+		D3D11_LOGIC_OP_CLEAR = 0,
+		D3D11_LOGIC_OP_SET = (D3D11_LOGIC_OP_CLEAR + 1),
+		D3D11_LOGIC_OP_COPY = (D3D11_LOGIC_OP_SET + 1),
 		D3D11_LOGIC_OP_COPY_INVERTED = (D3D11_LOGIC_OP_COPY + 1),
-		D3D11_LOGIC_OP_NOOP          = (D3D11_LOGIC_OP_COPY_INVERTED + 1),
-		D3D11_LOGIC_OP_INVERT        = (D3D11_LOGIC_OP_NOOP + 1),
-		D3D11_LOGIC_OP_AND           = (D3D11_LOGIC_OP_INVERT + 1),
-		D3D11_LOGIC_OP_NAND          = (D3D11_LOGIC_OP_AND + 1),
-		D3D11_LOGIC_OP_OR            = (D3D11_LOGIC_OP_NAND + 1),
-		D3D11_LOGIC_OP_NOR           = (D3D11_LOGIC_OP_OR + 1),
-		D3D11_LOGIC_OP_XOR           = (D3D11_LOGIC_OP_NOR + 1),
-		D3D11_LOGIC_OP_EQUIV         = (D3D11_LOGIC_OP_XOR + 1),
-		D3D11_LOGIC_OP_AND_REVERSE   = (D3D11_LOGIC_OP_EQUIV + 1),
-		D3D11_LOGIC_OP_AND_INVERTED  = (D3D11_LOGIC_OP_AND_REVERSE + 1),
-		D3D11_LOGIC_OP_OR_REVERSE    = (D3D11_LOGIC_OP_AND_INVERTED + 1),
-		D3D11_LOGIC_OP_OR_INVERTED   = (D3D11_LOGIC_OP_OR_REVERSE + 1),
+		D3D11_LOGIC_OP_NOOP = (D3D11_LOGIC_OP_COPY_INVERTED + 1),
+		D3D11_LOGIC_OP_INVERT = (D3D11_LOGIC_OP_NOOP + 1),
+		D3D11_LOGIC_OP_AND = (D3D11_LOGIC_OP_INVERT + 1),
+		D3D11_LOGIC_OP_NAND = (D3D11_LOGIC_OP_AND + 1),
+		D3D11_LOGIC_OP_OR = (D3D11_LOGIC_OP_NAND + 1),
+		D3D11_LOGIC_OP_NOR = (D3D11_LOGIC_OP_OR + 1),
+		D3D11_LOGIC_OP_XOR = (D3D11_LOGIC_OP_NOR + 1),
+		D3D11_LOGIC_OP_EQUIV = (D3D11_LOGIC_OP_XOR + 1),
+		D3D11_LOGIC_OP_AND_REVERSE = (D3D11_LOGIC_OP_EQUIV + 1),
+		D3D11_LOGIC_OP_AND_INVERTED = (D3D11_LOGIC_OP_AND_REVERSE + 1),
+		D3D11_LOGIC_OP_OR_REVERSE = (D3D11_LOGIC_OP_AND_INVERTED + 1),
+		D3D11_LOGIC_OP_OR_INVERTED = (D3D11_LOGIC_OP_OR_REVERSE + 1),
 	};
 
 	enum D3D11_VIDEO_DECODER_CAPS
 	{
-		D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE          = 0x1,
-		D3D11_VIDEO_DECODER_CAPS_NON_REAL_TIME       = 0x2,
-		D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE_DYNAMIC  = 0x4,
+		D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE = 0x1,
+		D3D11_VIDEO_DECODER_CAPS_NON_REAL_TIME = 0x2,
+		D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE_DYNAMIC = 0x4,
 		D3D11_VIDEO_DECODER_CAPS_DOWNSAMPLE_REQUIRED = 0x8,
-		D3D11_VIDEO_DECODER_CAPS_UNSUPPORTED         = 0x10,
+		D3D11_VIDEO_DECODER_CAPS_UNSUPPORTED = 0x10,
 	};
 
 	enum D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINTS
 	{
-		D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_ROTATION               = 0x1,
-		D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_RESIZE                 = 0x2,
+		D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_ROTATION = 0x1,
+		D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_RESIZE = 0x2,
 		D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_COLOR_SPACE_CONVERSION = 0x4,
-		D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_TRIPLE_BUFFER_OUTPUT                      = 0x8,
+		D3D11_VIDEO_PROCESSOR_BEHAVIOR_HINT_TRIPLE_BUFFER_OUTPUT = 0x8,
 	};
 }
 
 namespace REX::W32
-{ 
+{
 	struct D3D11_KEY_EXCHANGE_HW_PROTECTION_INPUT_DATA;
 	struct D3D11_KEY_EXCHANGE_HW_PROTECTION_OUTPUT_DATA;
 	struct D3D11_VIDEO_DECODER_SUB_SAMPLE_MAPPING_BLOCK;
@@ -195,8 +195,8 @@ namespace REX::W32
 	{
 		virtual std::int32_t BeginEvent(const wchar_t* a_name) = 0;
 		virtual std::int32_t EndEvent(void) = 0;
-		virtual void SetMarker(const wchar_t* a_name) = 0;
-		virtual BOOL GetStatus(void) = 0;
+		virtual void         SetMarker(const wchar_t* a_name) = 0;
+		virtual BOOL         GetStatus(void) = 0;
 	};
 
 	struct __declspec(novtable, uuid("cc86fabe-da55-401d-85e7-e3c9de2877e9"))
@@ -208,7 +208,7 @@ namespace REX::W32
 	struct __declspec(novtable, uuid("a04bfb29-08ef-43d6-a49c-a9bdbdcbe686"))
 		ID3D11Device1 : public ID3D11Device
 	{
-		virtual void GetImmediateContext1(ID3D11DeviceContext1** a_immediateContext) = 0;
+		virtual void    GetImmediateContext1(ID3D11DeviceContext1** a_immediateContext) = 0;
 		virtual HRESULT CreateDeferredContext1(std::uint32_t a_contextFlags, ID3D11DeviceContext1** a_deferredContext) = 0;
 		virtual HRESULT CreateBlendState1(const D3D11_BLEND_DESC1* a_blendStateDesc, ID3D11BlendState1** a_blendState) = 0;
 		virtual HRESULT CreateRasterizerState1(const D3D11_RASTERIZER_DESC1* a_rasterizerDesc, ID3D11RasterizerState1** a_rasterizerState) = 0;
@@ -255,14 +255,14 @@ namespace REX::W32
 		virtual HRESULT CheckCryptoSessionStatus(ID3D11CryptoSession* a_cryptoSession, D3D11_CRYPTO_SESSION_STATUS* a_status) = 0;
 		virtual HRESULT DecoderEnableDownsampling(ID3D11VideoDecoder* a_decoder, DXGI_COLOR_SPACE_TYPE a_inputColorSpace, const D3D11_VIDEO_SAMPLE_DESC* a_outputDesc, std::uint32_t a_referenceFrameCount) = 0;
 		virtual HRESULT DecoderUpdateDownsampling(ID3D11VideoDecoder* a_decoder, const D3D11_VIDEO_SAMPLE_DESC* a_outputDesc) = 0;
-		virtual void VideoProcessorSetOutputColorSpace1(ID3D11VideoProcessor* a_videoProcessor, DXGI_COLOR_SPACE_TYPE a_colorSpace) = 0;
-		virtual void VideoProcessorSetOutputShaderUsage(ID3D11VideoProcessor* a_videoProcessor, BOOL a_shaderUsage) = 0;
-		virtual void VideoProcessorGetOutputColorSpace1(ID3D11VideoProcessor* a_videoProcessor, DXGI_COLOR_SPACE_TYPE* a_colorSpace) = 0;
-		virtual void VideoProcessorGetOutputShaderUsage(ID3D11VideoProcessor* a_videoProcessor, BOOL* a_shaderUsage) = 0;
-		virtual void VideoProcessorSetStreamColorSpace1(ID3D11VideoProcessor* a_videoProcessor, std::uint32_t a_streamIndex, DXGI_COLOR_SPACE_TYPE a_colorSpace) = 0;
-		virtual void VideoProcessorSetStreamMirror(ID3D11VideoProcessor* a_videoProcessor, std::uint32_t a_streamIndex, BOOL a_enable, BOOL a_flipHorizontal, BOOL a_flipVertical) = 0;
-		virtual void VideoProcessorGetStreamColorSpace1(ID3D11VideoProcessor* a_videoProcessor, std::uint32_t a_streamIndex, DXGI_COLOR_SPACE_TYPE* a_colorSpace) = 0;
-		virtual void VideoProcessorGetStreamMirror(ID3D11VideoProcessor* a_videoProcessor, std::uint32_t a_streamIndex, BOOL* a_enable, BOOL* a_flipHorizontal, BOOL* a_flipVertical) = 0;
+		virtual void    VideoProcessorSetOutputColorSpace1(ID3D11VideoProcessor* a_videoProcessor, DXGI_COLOR_SPACE_TYPE a_colorSpace) = 0;
+		virtual void    VideoProcessorSetOutputShaderUsage(ID3D11VideoProcessor* a_videoProcessor, BOOL a_shaderUsage) = 0;
+		virtual void    VideoProcessorGetOutputColorSpace1(ID3D11VideoProcessor* a_videoProcessor, DXGI_COLOR_SPACE_TYPE* a_colorSpace) = 0;
+		virtual void    VideoProcessorGetOutputShaderUsage(ID3D11VideoProcessor* a_videoProcessor, BOOL* a_shaderUsage) = 0;
+		virtual void    VideoProcessorSetStreamColorSpace1(ID3D11VideoProcessor* a_videoProcessor, std::uint32_t a_streamIndex, DXGI_COLOR_SPACE_TYPE a_colorSpace) = 0;
+		virtual void    VideoProcessorSetStreamMirror(ID3D11VideoProcessor* a_videoProcessor, std::uint32_t a_streamIndex, BOOL a_enable, BOOL a_flipHorizontal, BOOL a_flipVertical) = 0;
+		virtual void    VideoProcessorGetStreamColorSpace1(ID3D11VideoProcessor* a_videoProcessor, std::uint32_t a_streamIndex, DXGI_COLOR_SPACE_TYPE* a_colorSpace) = 0;
+		virtual void    VideoProcessorGetStreamMirror(ID3D11VideoProcessor* a_videoProcessor, std::uint32_t a_streamIndex, BOOL* a_enable, BOOL* a_flipHorizontal, BOOL* a_flipVertical) = 0;
 		virtual HRESULT VideoProcessorGetBehaviorHints(ID3D11VideoProcessor* a_videoProcessor, std::uint32_t a_outputWidth, std::uint32_t a_outputHeight, DXGI_FORMAT a_outputFormat, std::uint32_t a_streamCount, const D3D11_VIDEO_PROCESSOR_STREAM_BEHAVIOR_HINT* a_streams, std::uint32_t* a_behaviorHints) = 0;
 	};
 

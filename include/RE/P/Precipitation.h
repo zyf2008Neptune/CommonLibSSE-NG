@@ -21,11 +21,11 @@ namespace RE
 		{
 		public:
 			// members
-			alignas(0x10) REX::W32::XMFLOAT4X4 projection;      // 00
-			NiPointer<NiCamera>                camera;          // 40
-			NiPointer<BSShaderAccumulator>     accumulator;     // 48
-			BSCullingProcess*                  cullingProcess;  // 50
-			std::uint64_t                      pad58;           // 58
+			alignas(0x10) REX::W32::XMFLOAT4X4 projection;  // 00
+			NiPointer<NiCamera>            camera;          // 40
+			NiPointer<BSShaderAccumulator> accumulator;     // 48
+			BSCullingProcess*              cullingProcess;  // 50
+			std::uint64_t                  pad58;           // 58
 		};
 		static_assert(sizeof(OcclusionMapData) == 0x60);
 

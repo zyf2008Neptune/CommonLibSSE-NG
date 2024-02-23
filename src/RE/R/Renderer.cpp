@@ -65,7 +65,7 @@ namespace RE
 			REL::Relocation<func_t> func{ RELOCATION_ID(75458, 77243) };
 			return func(this);
 		}
-	
+
 		void Renderer::Unlock()
 		{
 			using func_t = decltype(&Renderer::Unlock);

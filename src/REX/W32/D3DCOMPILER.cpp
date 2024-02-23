@@ -27,13 +27,13 @@ REX_W32_IMPORT(std::int32_t, D3DStripShader, const void*, std::size_t, std::uint
 REX_W32_IMPORT(std::int32_t, D3DWriteBlobToFile, REX::W32::ID3DBlob*, const wchar_t*, REX::W32::BOOL);
 
 namespace REX::W32
-{   
+{
 	HRESULT D3DCompile(const void* a_srcData, std::size_t a_srcDataSize, const char* a_sourceName, const D3D_SHADER_MACRO* a_defines, ID3DInclude* a_include, const char* a_entrypoint, const char* a_target, std::uint32_t a_flags1, std::uint32_t a_flags2, ID3DBlob** a_code, ID3DBlob** a_errorMsgs)
 	{
 		return ::W32_IMPL_D3DCompile(a_srcData, a_srcDataSize, a_sourceName, a_defines, a_include, a_entrypoint, a_target, a_flags1, a_flags2, a_code, a_errorMsgs);
 	}
 
-	HRESULT D3DCompile2(const void*  a_srcData, std::size_t a_srcDataSize, const char* a_sourceName, const D3D_SHADER_MACRO* a_defines, ID3DInclude* a_include, const char* a_entrypoint, const char* a_target, std::uint32_t a_flags1, std::uint32_t a_flags2, std::uint32_t a_secondaryDataFlags, const void* a_secondaryData, std::size_t a_secondaryDataSize, ID3DBlob** a_code, ID3DBlob** a_errorMsgs)
+	HRESULT D3DCompile2(const void* a_srcData, std::size_t a_srcDataSize, const char* a_sourceName, const D3D_SHADER_MACRO* a_defines, ID3DInclude* a_include, const char* a_entrypoint, const char* a_target, std::uint32_t a_flags1, std::uint32_t a_flags2, std::uint32_t a_secondaryDataFlags, const void* a_secondaryData, std::size_t a_secondaryDataSize, ID3DBlob** a_code, ID3DBlob** a_errorMsgs)
 	{
 		return ::W32_IMPL_D3DCompile2(a_srcData, a_srcDataSize, a_sourceName, a_defines, a_include, a_entrypoint, a_target, a_flags1, a_flags2, a_secondaryDataFlags, a_secondaryData, a_secondaryDataSize, a_code, a_errorMsgs);
 	}

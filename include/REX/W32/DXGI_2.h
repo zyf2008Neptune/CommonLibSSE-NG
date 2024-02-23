@@ -19,49 +19,49 @@ namespace REX::W32
 {
 	enum DXGI_ALPHA_MODE
 	{
-		DXGI_ALPHA_MODE_UNSPECIFIED   = 0,
+		DXGI_ALPHA_MODE_UNSPECIFIED = 0,
 		DXGI_ALPHA_MODE_PREMULTIPLIED = 1,
-		DXGI_ALPHA_MODE_STRAIGHT      = 2,
-		DXGI_ALPHA_MODE_IGNORE        = 3,
-		DXGI_ALPHA_MODE_FORCE_DWORD   = 0xFFFFFFFF,
+		DXGI_ALPHA_MODE_STRAIGHT = 2,
+		DXGI_ALPHA_MODE_IGNORE = 3,
+		DXGI_ALPHA_MODE_FORCE_DWORD = 0xFFFFFFFF,
 	};
 
 	enum DXGI_COMPUTE_PREEMPTION_GRANULARITY
 	{
-		DXGI_COMPUTE_PREEMPTION_DMA_BUFFER_BOUNDARY   = 0,
-		DXGI_COMPUTE_PREEMPTION_DISPATCH_BOUNDARY     = 1,
+		DXGI_COMPUTE_PREEMPTION_DMA_BUFFER_BOUNDARY = 0,
+		DXGI_COMPUTE_PREEMPTION_DISPATCH_BOUNDARY = 1,
 		DXGI_COMPUTE_PREEMPTION_THREAD_GROUP_BOUNDARY = 2,
-		DXGI_COMPUTE_PREEMPTION_THREAD_BOUNDARY       = 3,
-		DXGI_COMPUTE_PREEMPTION_INSTRUCTION_BOUNDARY  = 4,
+		DXGI_COMPUTE_PREEMPTION_THREAD_BOUNDARY = 3,
+		DXGI_COMPUTE_PREEMPTION_INSTRUCTION_BOUNDARY = 4,
 	};
 
 	enum DXGI_GRAPHICS_PREEMPTION_GRANULARITY
 	{
-		DXGI_GRAPHICS_PREEMPTION_DMA_BUFFER_BOUNDARY  = 0,
-		DXGI_GRAPHICS_PREEMPTION_PRIMITIVE_BOUNDARY   = 1,
-		DXGI_GRAPHICS_PREEMPTION_TRIANGLE_BOUNDARY    = 2,
-		DXGI_GRAPHICS_PREEMPTION_PIXEL_BOUNDARY       = 3,
+		DXGI_GRAPHICS_PREEMPTION_DMA_BUFFER_BOUNDARY = 0,
+		DXGI_GRAPHICS_PREEMPTION_PRIMITIVE_BOUNDARY = 1,
+		DXGI_GRAPHICS_PREEMPTION_TRIANGLE_BOUNDARY = 2,
+		DXGI_GRAPHICS_PREEMPTION_PIXEL_BOUNDARY = 3,
 		DXGI_GRAPHICS_PREEMPTION_INSTRUCTION_BOUNDARY = 4,
 	};
 
 	enum DXGI_OFFER_RESOURCE_PRIORITY
 	{
-		DXGI_OFFER_RESOURCE_PRIORITY_LOW    = 1,
+		DXGI_OFFER_RESOURCE_PRIORITY_LOW = 1,
 		DXGI_OFFER_RESOURCE_PRIORITY_NORMAL = (DXGI_OFFER_RESOURCE_PRIORITY_LOW + 1),
-		DXGI_OFFER_RESOURCE_PRIORITY_HIGH   = (DXGI_OFFER_RESOURCE_PRIORITY_NORMAL + 1)
+		DXGI_OFFER_RESOURCE_PRIORITY_HIGH = (DXGI_OFFER_RESOURCE_PRIORITY_NORMAL + 1)
 	};
 
 	enum DXGI_OUTDUPL_POINTER_SHAPE_TYPE
 	{
-		DXGI_OUTDUPL_POINTER_SHAPE_TYPE_MONOCHROME   = 0x1,
-		DXGI_OUTDUPL_POINTER_SHAPE_TYPE_COLOR        = 0x2,
+		DXGI_OUTDUPL_POINTER_SHAPE_TYPE_MONOCHROME = 0x1,
+		DXGI_OUTDUPL_POINTER_SHAPE_TYPE_COLOR = 0x2,
 		DXGI_OUTDUPL_POINTER_SHAPE_TYPE_MASKED_COLOR = 0x4,
 	};
 
 	enum DXGI_SCALING
 	{
-		DXGI_SCALING_STRETCH              = 0,
-		DXGI_SCALING_NONE                 = 1,
+		DXGI_SCALING_STRETCH = 0,
+		DXGI_SCALING_NONE = 1,
 		DXGI_SCALING_ASPECT_RATIO_STRETCH = 2,
 	};
 }
@@ -193,16 +193,16 @@ namespace REX::W32
 	struct __declspec(novtable, uuid("50C83A1C-E072-4C48-87B0-3630FA36A6D0"))
 		IDXGIFactory2 : public IDXGIFactory1
 	{
-		virtual BOOL IsWindowedStereoEnabled(void) = 0;
+		virtual BOOL    IsWindowedStereoEnabled(void) = 0;
 		virtual HRESULT CreateSwapChainForHwnd(IUnknown* a_device, HWND a_wnd, const DXGI_SWAP_CHAIN_DESC1* a_desc, const DXGI_SWAP_CHAIN_FULLSCREEN_DESC* a_fullscreenDesc, IDXGIOutput* a_restrictToOutput, IDXGISwapChain1** a_swapChain) = 0;
 		virtual HRESULT CreateSwapChainForCoreWindow(IUnknown* a_device, IUnknown* a_window, const DXGI_SWAP_CHAIN_DESC1* a_desc, IDXGIOutput* a_restrictToOutput, IDXGISwapChain1** a_swapChain) = 0;
 		virtual HRESULT GetSharedResourceAdapterLuid(HANDLE a_resource, LUID* a_luid) = 0;
 		virtual HRESULT RegisterStereoStatusWindow(HWND a_wnd, std::uint32_t a_msg, std::uint32_t* a_cookie) = 0;
 		virtual HRESULT RegisterStereoStatusEvent(HANDLE a_event, std::uint32_t* a_cookie) = 0;
-		virtual void UnregisterStereoStatus(std::uint32_t a_cookie) = 0;
+		virtual void    UnregisterStereoStatus(std::uint32_t a_cookie) = 0;
 		virtual HRESULT RegisterOcclusionStatusWindow(HWND a_wnd, std::uint32_t a_msg, std::uint32_t* a_cookie) = 0;
 		virtual HRESULT RegisterOcclusionStatusEvent(HANDLE a_event, std::uint32_t* a_cookie) = 0;
-		virtual void UnregisterOcclusionStatus(std::uint32_t dwCookie) = 0;
+		virtual void    UnregisterOcclusionStatus(std::uint32_t dwCookie) = 0;
 		virtual HRESULT CreateSwapChainForComposition(IUnknown* a_device, const DXGI_SWAP_CHAIN_DESC1* a_desc, IDXGIOutput* a_restrictToOutput, IDXGISwapChain1** a_swapChain) = 0;
 	};
 
@@ -218,7 +218,7 @@ namespace REX::W32
 	struct __declspec(novtable, uuid("191CFAC3-A341-470D-B26E-A864F428319C"))
 		IDXGIOutputDuplication : public IDXGIObject
 	{
-		virtual void GetDesc(DXGI_OUTDUPL_DESC* a_desc) = 0;
+		virtual void    GetDesc(DXGI_OUTDUPL_DESC* a_desc) = 0;
 		virtual HRESULT AcquireNextFrame(std::uint32_t a_timeoutInMilliseconds, DXGI_OUTDUPL_FRAME_INFO* a_frameInfo, IDXGIResource** a_desktopResource) = 0;
 		virtual HRESULT GetFrameDirtyRects(std::uint32_t a_dirtyRectsBufferSize, RECT* a_dirtyRectsBuffer, std::uint32_t* a_dirtyRectsBufferSizeRequired) = 0;
 		virtual HRESULT GetFrameMoveRects(std::uint32_t a_moveRectsBufferSize, DXGI_OUTDUPL_MOVE_RECT* a_moveRectBuffer, std::uint32_t* a_moveRectsBufferSizeRequired) = 0;
@@ -249,7 +249,7 @@ namespace REX::W32
 		virtual HRESULT GetHwnd(HWND* a_wnd) = 0;
 		virtual HRESULT GetCoreWindow(const IID& a_iid, void** a_unk) = 0;
 		virtual HRESULT Present1(std::uint32_t a_syncInterval, std::uint32_t a_presentFlags, const DXGI_PRESENT_PARAMETERS* a_presentParameters) = 0;
-		virtual BOOL IsTemporaryMonoSupported(void) = 0;
+		virtual BOOL    IsTemporaryMonoSupported(void) = 0;
 		virtual HRESULT GetRestrictToOutput(IDXGIOutput** a_restrictToOutput) = 0;
 		virtual HRESULT SetBackgroundColor(const DXGI_RGBA* a_color) = 0;
 		virtual HRESULT GetBackgroundColor(DXGI_RGBA* a_color) = 0;

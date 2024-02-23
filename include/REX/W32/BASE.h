@@ -1,11 +1,11 @@
 #pragma once
 
 #ifdef _INC_WINAPIFAMILY
-#error Windows API detected. Please move any Windows API includes after CommonLib, or remove them.
+#	error Windows API detected. Please move any Windows API includes after CommonLib, or remove them.
 #endif
 
-#define REX_W32_IMPORT(a_ret, a_name, ...)\
-	extern "C" __declspec(dllimport) a_ret __stdcall W32_IMPL_##a_name(...) noexcept;\
+#define REX_W32_IMPORT(a_ret, a_name, ...)                                            \
+	extern "C" __declspec(dllimport) a_ret __stdcall W32_IMPL_##a_name(...) noexcept; \
 	__pragma(comment(linker, "/alternatename:__imp_W32_IMPL_" #a_name "=__imp_" #a_name))
 
 namespace REX::W32
@@ -22,15 +22,15 @@ namespace REX::W32
 	using HKEY = struct HKEY__*;
 	using HMENU = struct HMENU__*;
 	using HMODULE = HINSTANCE;
-    using HMONITOR = struct HMONITOR__*;
+	using HMONITOR = struct HMONITOR__*;
 	using HPALETTE = struct HPALETTE__*;
 	using HPEN = struct HPEN__*;
 	using HSTRING = struct HSTRING__*;
-    using HWND = struct HWND__*;
+	using HWND = struct HWND__*;
 
 	// general constants
 	inline const auto     INVALID_HANDLE_VALUE{ reinterpret_cast<HANDLE>(static_cast<std::intptr_t>(-1)) };
-    inline constexpr auto MAX_PATH{ 260u };
+	inline constexpr auto MAX_PATH{ 260u };
 }
 
 namespace REX::W32

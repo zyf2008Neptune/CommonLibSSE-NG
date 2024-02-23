@@ -340,7 +340,7 @@ namespace REX::W32
 		return ::W32_IMPL_OpenFileMappingA(a_desiredAccess, a_inheritHandle, a_name);
 	}
 
-	HANDLE OpenFileMappingW(std::uint32_t  a_desiredAccess, bool a_inheritHandle, const wchar_t* a_name) noexcept
+	HANDLE OpenFileMappingW(std::uint32_t a_desiredAccess, bool a_inheritHandle, const wchar_t* a_name) noexcept
 	{
 		return ::W32_IMPL_OpenFileMappingW(a_desiredAccess, a_inheritHandle, a_name);
 	}

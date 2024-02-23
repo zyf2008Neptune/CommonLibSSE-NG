@@ -7,7 +7,7 @@
 // xbyak brings in <Windows.h>
 #ifdef SKSE_SUPPORT_XBYAK
 #	include <xbyak/xbyak.h>
-#   undef max
+#	undef max
 #	undef MEM_COMMIT
 #	undef MEM_FREE
 #	undef MEM_RESERVE
@@ -56,7 +56,7 @@ namespace SKSE
 				// if rounding didn't advance us into the next region and the region is the required size
 				if (addr < min && (min - addr) >= a_size) {
 					const auto mem = REX::W32::VirtualAlloc(
-						reinterpret_cast<void*>(addr), a_size,REX::W32::MEM_COMMIT | REX::W32::MEM_RESERVE, REX::W32::PAGE_EXECUTE_READWRITE);
+						reinterpret_cast<void*>(addr), a_size, REX::W32::MEM_COMMIT | REX::W32::MEM_RESERVE, REX::W32::PAGE_EXECUTE_READWRITE);
 					if (mem) {
 						return mem;
 					}

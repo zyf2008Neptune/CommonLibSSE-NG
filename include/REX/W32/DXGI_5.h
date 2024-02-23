@@ -19,8 +19,8 @@ namespace REX::W32
 
 	enum DXGI_HDR_METADATA_TYPE
 	{
-		DXGI_HDR_METADATA_TYPE_NONE      = 0,
-		DXGI_HDR_METADATA_TYPE_HDR10     = 1,
+		DXGI_HDR_METADATA_TYPE_NONE = 0,
+		DXGI_HDR_METADATA_TYPE_HDR10 = 1,
 		DXGI_HDR_METADATA_TYPE_HDR10PLUS = 2,
 	};
 
@@ -31,8 +31,8 @@ namespace REX::W32
 
 	enum DXGI_RECLAIM_RESOURCE_RESULTS
 	{
-		DXGI_RECLAIM_RESOURCE_RESULT_OK            = 0,
-		DXGI_RECLAIM_RESOURCE_RESULT_DISCARDED     = 1,
+		DXGI_RECLAIM_RESOURCE_RESULT_OK = 0,
+		DXGI_RECLAIM_RESOURCE_RESULT_DISCARDED = 1,
 		DXGI_RECLAIM_RESOURCE_RESULT_NOT_COMMITTED = 2,
 	};
 }
@@ -62,7 +62,7 @@ namespace REX::W32
 	struct __declspec(novtable, uuid("95B4F95F-D8DA-4CA4-9EE6-3B76D5968A10"))
 		IDXGIDevice4 : public IDXGIDevice3
 	{
-		virtual HRESULT OfferResources1(std::uint32_t a_numResources, IDXGIResource* const* a_resources, DXGI_OFFER_RESOURCE_PRIORITY a_priority, std::uint32_t a_flags) = 0; 
+		virtual HRESULT OfferResources1(std::uint32_t a_numResources, IDXGIResource* const* a_resources, DXGI_OFFER_RESOURCE_PRIORITY a_priority, std::uint32_t a_flags) = 0;
 		virtual HRESULT ReclaimResources1(std::uint32_t a_numResources, IDXGIResource* const* a_resources, DXGI_RECLAIM_RESOURCE_RESULTS* a_results) = 0;
 	};
 

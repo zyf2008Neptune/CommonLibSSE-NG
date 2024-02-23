@@ -18,22 +18,22 @@ namespace REX::W32
 {
 	enum DXGI_FRAME_PRESENTATION_MODE
 	{
-		DXGI_FRAME_PRESENTATION_MODE_COMPOSED            = 0,
-		DXGI_FRAME_PRESENTATION_MODE_OVERLAY             = 1,
-		DXGI_FRAME_PRESENTATION_MODE_NONE                = 2,
+		DXGI_FRAME_PRESENTATION_MODE_COMPOSED = 0,
+		DXGI_FRAME_PRESENTATION_MODE_OVERLAY = 1,
+		DXGI_FRAME_PRESENTATION_MODE_NONE = 2,
 		DXGI_FRAME_PRESENTATION_MODE_COMPOSITION_FAILURE = 3,
 	};
 
 	enum DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAGS
 	{
 		DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAG_NOMINAL_RANGE = 0x1,
-		DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAG_BT709         = 0x2,
-		DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAG_xvYCC         = 0x4,
+		DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAG_BT709 = 0x2,
+		DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAG_xvYCC = 0x4,
 	};
 
 	enum DXGI_OVERLAY_SUPPORT_FLAG
 	{
-		DXGI_OVERLAY_SUPPORT_FLAG_DIRECT  = 0x1,
+		DXGI_OVERLAY_SUPPORT_FLAG_DIRECT = 0x1,
 		DXGI_OVERLAY_SUPPORT_FLAG_SCALING = 0x2,
 	};
 }
@@ -72,14 +72,14 @@ namespace REX::W32
 	struct __declspec(novtable, uuid("2633066B-4514-4C7A-8FD8-12EA98059D18"))
 		IDXGIDecodeSwapChain : public IUnknown
 	{
-		virtual HRESULT PresentBuffer(std::uint32_t a_bufferToPresent, std::uint32_t a_syncInterval, std::uint32_t a_flags) = 0;
-		virtual HRESULT SetSourceRect(const RECT* a_rect) = 0;
-		virtual HRESULT SetTargetRect(const RECT* a_rect) = 0;
-		virtual HRESULT SetDestSize(std::uint32_t a_width, std::uint32_t a_height) = 0;
-		virtual HRESULT GetSourceRect(RECT* a_rect) = 0;
-		virtual HRESULT GetTargetRect(RECT* a_rect) = 0;
-		virtual HRESULT GetDestSize(std::uint32_t* a_width, std::uint32_t* a_height) = 0;
-		virtual HRESULT SetColorSpace(DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAGS a_colorSpace) = 0;
+		virtual HRESULT                             PresentBuffer(std::uint32_t a_bufferToPresent, std::uint32_t a_syncInterval, std::uint32_t a_flags) = 0;
+		virtual HRESULT                             SetSourceRect(const RECT* a_rect) = 0;
+		virtual HRESULT                             SetTargetRect(const RECT* a_rect) = 0;
+		virtual HRESULT                             SetDestSize(std::uint32_t a_width, std::uint32_t a_height) = 0;
+		virtual HRESULT                             GetSourceRect(RECT* a_rect) = 0;
+		virtual HRESULT                             GetTargetRect(RECT* a_rect) = 0;
+		virtual HRESULT                             GetDestSize(std::uint32_t* a_width, std::uint32_t* a_height) = 0;
+		virtual HRESULT                             SetColorSpace(DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAGS a_colorSpace) = 0;
 		virtual DXGI_MULTIPLANE_OVERLAY_YCbCr_FLAGS GetColorSpace(void) = 0;
 	};
 
@@ -121,7 +121,7 @@ namespace REX::W32
 		virtual HRESULT GetSourceSize(std::uint32_t* a_width, std::uint32_t* a_height) = 0;
 		virtual HRESULT SetMaximumFrameLatency(std::uint32_t a_maxLatency) = 0;
 		virtual HRESULT GetMaximumFrameLatency(std::uint32_t* a_maxLatency) = 0;
-		virtual HANDLE GetFrameLatencyWaitableObject(void) = 0;
+		virtual HANDLE  GetFrameLatencyWaitableObject(void) = 0;
 		virtual HRESULT SetMatrixTransform(const DXGI_MATRIX_3X2_F* a_matrix) = 0;
 		virtual HRESULT GetMatrixTransform(DXGI_MATRIX_3X2_F* a_matrix) = 0;
 	};
