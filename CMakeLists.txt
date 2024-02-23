@@ -94,8 +94,12 @@ target_link_libraries(
 	PUBLIC
 		binary_io::binary_io
 		spdlog::spdlog
-		Version.lib
+ 		Advapi32.lib
+		D3D11.lib
 		Dbghelp.lib
+		DXGI.lib
+		Ole32.lib
+		Version.lib
 )
 
 target_precompile_headers(

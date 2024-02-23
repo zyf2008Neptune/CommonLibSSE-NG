@@ -24,6 +24,8 @@
 #include "RE/T/TESNPC.h"
 #include "RE/T/TESObjectREFR.h"
 
+#include "REX/W32/BASE.h"
+
 namespace RE
 {
 	class ActorMagicCaster;
@@ -688,7 +690,7 @@ namespace RE
 		std::uint32_t                                         unk274;                             // 274
 		std::uint64_t                                         unk278;                             // 278
 		std::uint64_t                                         unk280;                             // 280
-		WinAPI::CRITICAL_SECTION                              unk288;                             // 288 - havok related
+		REX::W32::CRITICAL_SECTION                            unk288;                             // 288 - havok related
 
 	private:
 		void        CalculateCurrentVendorFaction() const;

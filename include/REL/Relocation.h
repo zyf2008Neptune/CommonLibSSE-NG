@@ -1,5 +1,7 @@
 #pragma once
 
+#include "REX/W32/KERNEL32.h"
+
 #define REL_MAKE_MEMBER_FUNCTION_POD_TYPE_HELPER_IMPL(a_nopropQual, a_propQual, ...)              \
 	template <                                                                                    \
 		class R,                                                                                  \
@@ -188,23 +190,15 @@ namespace REL
 	inline void safe_write(std::uintptr_t a_dst, const void* a_src, std::size_t a_count)
 	{
 		std::uint32_t old{ 0 };
-		auto          success =
-			WinAPI::VirtualProtect(
-				reinterpret_cast<void*>(a_dst),
-				a_count,
-				(WinAPI::PAGE_EXECUTE_READWRITE),
-				std::addressof(old));
-		if (success != 0) {
+		bool success = REX::W32::VirtualProtect(
+			reinterpret_cast<void*>(a_dst), a_count, REX::W32::PAGE_EXECUTE_READWRITE, std::addressof(old));
+		if (success) {
 			std::memcpy(reinterpret_cast<void*>(a_dst), a_src, a_count);
-			success =
-				WinAPI::VirtualProtect(
-					reinterpret_cast<void*>(a_dst),
-					a_count,
-					old,
-					std::addressof(old));
+			success = REX::W32::VirtualProtect(
+				reinterpret_cast<void*>(a_dst), a_count, old, std::addressof(old));
 		}
 
-		assert(success != 0);
+		assert(success);
 	}
 
 	template <std::integral T>
@@ -222,23 +216,15 @@ namespace REL
 	inline void safe_fill(std::uintptr_t a_dst, std::uint8_t a_value, std::size_t a_count)
 	{
 		std::uint32_t old{ 0 };
-		auto          success =
-			WinAPI::VirtualProtect(
-				reinterpret_cast<void*>(a_dst),
-				a_count,
-				(WinAPI::PAGE_EXECUTE_READWRITE),
-				std::addressof(old));
-		if (success != 0) {
+		bool success = REX::W32::VirtualProtect(
+			reinterpret_cast<void*>(a_dst), a_count, REX::W32::PAGE_EXECUTE_READWRITE, std::addressof(old));
+		if (success) {
 			std::fill_n(reinterpret_cast<std::uint8_t*>(a_dst), a_count, a_value);
-			success =
-				WinAPI::VirtualProtect(
-					reinterpret_cast<void*>(a_dst),
-					a_count,
-					old,
-					std::addressof(old));
+			success = REX::W32::VirtualProtect(
+				reinterpret_cast<void*>(a_dst), a_count, old, std::addressof(old));
 		}
 
-		assert(success != 0);
+		assert(success);
 	}
 
 	template <class T>
