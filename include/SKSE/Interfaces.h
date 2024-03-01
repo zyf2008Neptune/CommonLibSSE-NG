@@ -1,13 +1,24 @@
 #pragma once
 
-#include "RE/G/GFxMovieView.h"
-#include "RE/G/GFxValue.h"
-#include "RE/I/IVirtualMachine.h"
-#include "RE/I/InventoryEntryData.h"
-#include "RE/V/VirtualMachine.h"
-
 #include "SKSE/Impl/Stubs.h"
 #include "SKSE/Version.h"
+
+namespace RE
+{
+	class GFxMovieView;
+	class GFxValue;
+	class InventoryEntryData;
+
+	namespace BSScript
+	{
+		namespace Internal
+		{
+			class VirtualMachine;
+		}
+
+		class IVirtualMachine;
+	}
+}
 
 namespace SKSE
 {
