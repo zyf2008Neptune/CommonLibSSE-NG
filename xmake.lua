@@ -1,6 +1,9 @@
 -- set minimum xmake version
 set_xmakever("2.8.2")
 
+-- make extras available
+includes("xmake-extra.lua")
+
 -- set project
 set_project("commonlibsse")
 set_arch("x64")
