@@ -135,6 +135,7 @@ install(
 	DIRECTORY
 		"include/RE"
 		"include/REL"
+		"include/REX"
 		"include/SKSE"
 	DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )
