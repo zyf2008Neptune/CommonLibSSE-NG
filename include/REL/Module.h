@@ -120,7 +120,7 @@ namespace REL
 
 		void load_version()
 		{
-			const auto version = get_file_version(_filename);
+			const auto version = GetFileVersion(_filename);
 			if (version) {
 				_version = *version;
 			} else {
