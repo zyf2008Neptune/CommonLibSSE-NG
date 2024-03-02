@@ -7,7 +7,7 @@ includes("xmake-extra.lua")
 -- set project
 set_project("commonlibsse")
 set_arch("x64")
-set_languages("c++20")
+set_languages("c++23")
 set_warnings("allextra")
 set_encodings("utf-8")
 
