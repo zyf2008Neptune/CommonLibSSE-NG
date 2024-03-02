@@ -1,3 +1,20 @@
+local PLUGIN_FILE = [[
+#include <SKSE/SKSE.h>
+#ifdef SKYRIM_SUPPORT_AE
+extern "C" __declspec(dllexport) constinit auto SKSEPlugin_Version = []() {
+    SKSE::PluginVersionData v;
+    v.PluginVersion({ ${PLUGIN_VERSION_MAJOR}, ${PLUGIN_VERSION_MINOR}, ${PLUGIN_VERSION_PATCH}, 0 });
+    v.PluginName("${PLUGIN_NAME}");
+    v.AuthorName("${PLUGIN_AUTHOR}");
+    v.AuthorEmail("${PLUGIN_EMAIL}");
+    v.UsesAddressLibrary();
+    v.UsesUpdatedStructs();
+    v.CompatibleVersions({ SKSE::RUNTIME_LATEST });
+    return v;
+}();
+#endif
+]]
+
 local PLUGIN_VERSION_FILE = [[
 #include <winres.h>
 
@@ -95,5 +112,6 @@ rule("commonlibsse.plugin")
             target:add("files", file_path)
         end
 
+        add_file("plugin.cpp", PLUGIN_FILE)
         add_file("version.rc", PLUGIN_VERSION_FILE)
     end)
