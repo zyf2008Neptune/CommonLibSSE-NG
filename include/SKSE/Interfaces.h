@@ -106,7 +106,7 @@ namespace SKSE
 				std::negation_v<
 					std::is_pointer<T>>,
 				int> = 0>
-		inline std::uint32_t WriteRecord(std::uint32_t a_type, std::uint32_t a_version, const T& a_buf) const
+		inline bool WriteRecord(std::uint32_t a_type, std::uint32_t a_version, const T& a_buf) const
 		{
 			return WriteRecord(a_type, a_version, std::addressof(a_buf), sizeof(T));
 		}
@@ -117,7 +117,7 @@ namespace SKSE
 			std::enable_if_t<
 				std::is_array_v<T>,
 				int> = 0>
-		inline std::uint32_t WriteRecord(std::uint32_t a_type, std::uint32_t a_version, const T (&a_buf)[N]) const
+		inline bool WriteRecord(std::uint32_t a_type, std::uint32_t a_version, const T (&a_buf)[N]) const
 		{
 			return WriteRecord(a_type, a_version, std::addressof(a_buf), sizeof(T) * N);
 		}
@@ -132,7 +132,7 @@ namespace SKSE
 				std::negation_v<
 					std::is_pointer<T>>,
 				int> = 0>
-		inline std::uint32_t WriteRecordData(const T& a_buf) const
+		inline bool WriteRecordData(const T& a_buf) const
 		{
 			return WriteRecordData(std::addressof(a_buf), sizeof(T));
 		}
@@ -143,7 +143,7 @@ namespace SKSE
 			std::enable_if_t<
 				std::is_array_v<T>,
 				int> = 0>
-		inline std::uint32_t WriteRecordData(const T (&a_buf)[N]) const
+		inline bool WriteRecordData(const T (&a_buf)[N]) const
 		{
 			return WriteRecordData(std::addressof(a_buf), sizeof(T) * N);
 		}
