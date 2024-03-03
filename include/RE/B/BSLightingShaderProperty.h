@@ -52,6 +52,13 @@ namespace RE
 		void CopyMembers(BSLightingShaderProperty* a_other);
 		void InvalidateTextures(std::uint32_t a_unk1);
 
+		BSLightingShaderProperty* Ctor()
+		{
+			using func_t = decltype(&BSLightingShaderProperty::Ctor);
+			REL::Relocation<func_t> func{ RELOCATION_ID(99854, 106499) };
+			return func(this);
+		}
+
 		// members
 		Data            unk088[3];          // 088
 		Data            unk0B8;             // 0B8

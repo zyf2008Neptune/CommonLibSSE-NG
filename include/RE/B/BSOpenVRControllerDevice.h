@@ -1,5 +1,7 @@
 #pragma once
 
+#ifdef ENABLE_SKYRIM_VR
+
 #include "RE/B/BSTrackedControllerDevice.h"
 
 namespace RE
@@ -54,3 +56,4 @@ namespace RE
 	static_assert(sizeof(BSOpenVRControllerDevice) == 0x150);
 #endif
 }
+#endif
