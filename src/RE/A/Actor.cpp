@@ -1225,7 +1225,7 @@ namespace RE
 			if (auto magicCaster = magicCasters[i]) {
 				auto castingSource = magicCaster->GetCastingSource();
 				if (magicCaster->currentSpell) {
-					result |= 1 << stl::to_underlying(castingSource);
+					result |= 1 << std::to_underlying(castingSource);
 				}
 			}
 		}
