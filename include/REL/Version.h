@@ -68,7 +68,7 @@ namespace REL
 			return result;
 		}
 
-        [[nodiscard]] static constexpr Version unpack(std::uint32_t a_packedVersion) noexcept
+		[[nodiscard]] static constexpr Version unpack(std::uint32_t a_packedVersion) noexcept
 		{
 			return REL::Version{
 				static_cast<value_type>((a_packedVersion >> 24) & 0x0FF),

@@ -10,7 +10,7 @@
 #	undef max
 #	undef MEM_COMMIT
 #	undef MEM_FREE
-#   undef MEM_RELEASE
+#	undef MEM_RELEASE
 #	undef MEM_RESERVE
 #	undef PAGE_EXECUTE_READWRITE
 #endif
