@@ -15,7 +15,7 @@ namespace RE
 				REL::Relocation<func_t> func{ RELOCATION_ID(68635, 69979) };
 				return func(this, a_path);
 			}
-			
+
 			// members
 			std::uint32_t dir{ 0 };  // 0
 		};
