@@ -1590,6 +1590,7 @@
 #include "RE/T/TextureFormat.h"
 #include "RE/T/ThirdPersonState.h"
 #include "RE/T/ThumbstickEvent.h"
+#include "RE/T/TintMask.h"
 #include "RE/T/TitleSequenceMenu.h"
 #include "RE/T/TogglePOVHandler.h"
 #include "RE/T/ToggleRunHandler.h"
