@@ -265,11 +265,6 @@ namespace RE
 		return obj ? obj->As<TESNPC>() : nullptr;
 	}
 
-	bool Actor::IsLeveled() const
-	{
-		return extraList.GetByType<ExtraLeveledCreature>();
-	}
-
 	float Actor::GetActorValueModifier(ACTOR_VALUE_MODIFIER a_modifier, ActorValue a_value) const
 	{
 		using func_t = decltype(&Actor::GetActorValueModifier);
@@ -414,6 +409,20 @@ namespace RE
 		}
 	}
 
+	TESForm* Actor::GetEquippedObjectInSlot(const BGSEquipSlot* slot) const
+	{
+		auto _currentProcess = GetActorRuntimeData().currentProcess;
+		if (_currentProcess) {
+			for (const auto& equippedObject : _currentProcess->equippedForms) {
+				if (equippedObject.slot == slot) {
+					return equippedObject.object;
+				}
+			}
+		}
+
+		return nullptr;
+	}
+
 	float Actor::GetEquippedWeight()
 	{
 		if (GetActorRuntimeData().equippedWeight < 0.0f) {
@@ -482,7 +491,8 @@ namespace RE
 
 	HighProcessData* Actor::GetHighProcess() const
 	{
-		return GetActorRuntimeData().currentProcess ? GetActorRuntimeData().currentProcess->high : nullptr;
+		const auto& runtimeData = GetActorRuntimeData();
+		return runtimeData.currentProcess ? runtimeData.currentProcess->high : nullptr;
 	}
 
 	Actor* Actor::GetKiller() const
@@ -503,7 +513,8 @@ namespace RE
 
 	MiddleHighProcessData* Actor::GetMiddleHighProcess() const
 	{
-		return GetActorRuntimeData().currentProcess ? GetActorRuntimeData().currentProcess->middleHigh : nullptr;
+		const auto& runtimeData = GetActorRuntimeData();
+		return runtimeData.currentProcess ? runtimeData.currentProcess->middleHigh : nullptr;
 	}
 
 	bool Actor::GetMount(NiPointer<Actor>& a_outMount)
@@ -550,8 +561,9 @@ namespace RE
 
 	float Actor::GetRegenDelay(ActorValue a_actorValue) const
 	{
-		if (GetActorRuntimeData().currentProcess) {
-			return GetActorRuntimeData().currentProcess->GetRegenDelay(a_actorValue);
+		const auto& runtimeData = GetActorRuntimeData();
+		if (runtimeData.currentProcess) {
+			return runtimeData.currentProcess->GetRegenDelay(a_actorValue);
 		}
 		return 0.0f;
 	}
@@ -588,7 +600,7 @@ namespace RE
 		return func(this);
 	}
 
-	const float Actor::GetTotalCarryWeight()
+	float Actor::GetTotalCarryWeight()
 	{
 		using func_t = decltype(&Actor::GetTotalCarryWeight);
 		REL::Relocation<func_t> func{ RELOCATION_ID(36456, 37452) };
@@ -788,11 +800,12 @@ namespace RE
 
 	bool Actor::IsDualCasting() const
 	{
-		if (!GetActorRuntimeData().currentProcess) {
+		auto _currentProcess = GetActorRuntimeData().currentProcess;
+		if (!_currentProcess) {
 			return false;
 		}
 
-		const auto highProcess = GetActorRuntimeData().currentProcess->high;
+		const auto highProcess = _currentProcess->high;
 		return highProcess && highProcess->isDualCasting;
 	}
 
@@ -853,6 +866,11 @@ namespace RE
 		using func_t = decltype(&Actor::IsInRagdollState);
 		REL::Relocation<func_t> func{ RELOCATION_ID(36492, 37491) };
 		return func(this);
+	}
+
+	bool Actor::IsLeveled() const
+	{
+		return extraList.GetByType<ExtraLeveledCreature>();
 	}
 
 	bool Actor::IsLimbGone(std::uint32_t a_limb)
@@ -1142,8 +1160,9 @@ namespace RE
 
 	void Actor::UpdateRegenDelay(ActorValue a_actorValue, float a_regenDelay)
 	{
-		if (GetActorRuntimeData().currentProcess) {
-			GetActorRuntimeData().currentProcess->UpdateRegenDelay(a_actorValue, a_regenDelay);
+		const auto& runtimeData = GetActorRuntimeData();
+		if (runtimeData.currentProcess) {
+			runtimeData.currentProcess->UpdateRegenDelay(a_actorValue, a_regenDelay);
 		}
 	}
 
@@ -1184,7 +1203,7 @@ namespace RE
 			kTotal
 		};
 
-		char addonString[MAX_PATH]{ '\0' };
+		char addonString[REX::W32::MAX_PATH]{ '\0' };
 		a_arma->GetNodeName(addonString, this, a_armor, -1);
 		std::array<NiAVObject*, kTotal> skeletonRoot = { Get3D(k3rd), Get3D(k1st) };
 		if (skeletonRoot[k1st] == skeletonRoot[k3rd]) {
@@ -1237,7 +1256,7 @@ namespace RE
 			if (auto magicCaster = GetActorRuntimeData().magicCasters[i]) {
 				auto castingSource = magicCaster->GetCastingSource();
 				if (magicCaster->currentSpell) {
-					result |= 1 << stl::to_underlying(castingSource);
+					result |= 1 << std::to_underlying(castingSource);
 				}
 			}
 		}

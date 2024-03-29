@@ -1,4 +1,5 @@
 #include "RE/M/MenuCursor.h"
+#include "REX/W32/USER32.h"
 
 namespace RE
 {
@@ -12,11 +13,11 @@ namespace RE
 	{
 		if (a_visible && cursorDisplayCount < 0) {
 			do {
-				cursorDisplayCount = WinAPI::ShowCursor(true);
+				cursorDisplayCount = REX::W32::ShowCursor(true);
 			} while (cursorDisplayCount < 0);
 		} else if (!a_visible && cursorDisplayCount >= 0) {
 			do {
-				cursorDisplayCount = WinAPI::ShowCursor(false);
+				cursorDisplayCount = REX::W32::ShowCursor(false);
 			} while (cursorDisplayCount >= 0);
 		}
 	}

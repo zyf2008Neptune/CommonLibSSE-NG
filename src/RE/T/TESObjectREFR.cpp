@@ -590,18 +590,7 @@ namespace RE
 		return hasKeyword;
 	}
 
-	bool TESObjectREFR::HasKeywordWithType(DEFAULT_OBJECT keywordType) const
-	{
-		auto dobj = BGSDefaultObjectManager::GetSingleton();
-		if (!dobj) {
-			return false;
-		}
-
-		auto keyword = dobj->GetObject<BGSKeyword>(keywordType);
-		return keyword ? HasKeyword(keyword) : false;
-	}
-
-	bool TESObjectREFR::HasKeywordWithType(DefaultObjectID keywordType) const 
+	bool TESObjectREFR::HasKeywordWithType(DefaultObjectID keywordType) const
 	{
 		auto dobj = BGSDefaultObjectManager::GetSingleton();
 		if (!dobj) {
@@ -609,7 +598,6 @@ namespace RE
 		}
 		auto keyword = dobj->GetObject<BGSKeyword>(keywordType);
 		return keyword && *keyword ? HasKeyword(*keyword) : false;
-
 	}
 
 	bool TESObjectREFR::HasQuestObject() const
@@ -646,7 +634,7 @@ namespace RE
 
 	bool TESObjectREFR::IsAnimal() const
 	{
-		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordHorse);
+		return HasKeywordWithType(DefaultObjectID::kKeywordAnimal);
 	}
 
 	bool TESObjectREFR::IsAnOwner(const Actor* a_testOwner, bool a_useFaction, bool a_requiresOwner) const
@@ -693,12 +681,18 @@ namespace RE
 
 	bool TESObjectREFR::IsHorse() const
 	{
-		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordHorse);
+		auto dobj = BGSDefaultObjectManager::GetSingleton();
+		if (!dobj) {
+			return false;
+		}
+
+		auto keyword = dobj->GetObject<BGSKeyword>(DefaultObjectID::kKeywordHorse);
+		return keyword && *keyword ? HasKeyword(*keyword) : false;
 	}
 
 	bool TESObjectREFR::IsHumanoid() const
 	{
-		return HasKeywordWithType(DEFAULT_OBJECT::kKeywordNPC);
+		return HasKeywordWithType(DefaultObjectID::kKeywordNPC);
 	}
 
 	bool TESObjectREFR::IsInitiallyDisabled() const
@@ -799,6 +793,13 @@ namespace RE
 		std::string name = obj ? obj->GetName() : "";
 
 		return name.find(a_word) != std::string::npos;
+	}
+
+	void TESObjectREFR::OpenContainer(std::int32_t a_openType) const
+	{
+		using func_t = decltype(&TESObjectREFR::OpenContainer);
+		REL::Relocation<func_t> func{ RELOCATION_ID(50211, 51140) };
+		func(this, a_openType);
 	}
 
 	NiPointer<TESObjectREFR> TESObjectREFR::PlaceObjectAtMe(TESBoundObject* a_baseToPlace, bool a_forcePersist) const

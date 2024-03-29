@@ -366,7 +366,7 @@ namespace RE
 		static bool                     LookupByHandle(RefHandle a_refHandle, NiPointer<TESObjectREFR>& a_refrOut);
 		static TESObjectREFR*           FindReferenceFor3D(NiAVObject* a_object3D);
 
-		bool                                            ActivateRef(TESObjectREFR* a_activator, std::uint8_t a_arg2, TESBoundObject* a_object, std::int32_t a_count, bool a_defaultProcessingOnly);
+		bool                                            ActivateRef(TESObjectREFR* a_activator, uint8_t a_arg2, TESBoundObject* a_object, int32_t a_count, bool a_defaultProcessingOnly);
 		ModelReferenceEffect*                           ApplyArtObject(BGSArtObject* a_artObject, float a_duration = -1.0f, TESObjectREFR* a_facingRef = nullptr, bool a_faceTarget = false, bool a_attachToCamera = false, NiAVObject* a_attachNode = nullptr, bool a_interfaceEffect = false);
 		ShaderReferenceEffect*                          ApplyEffectShader(TESEffectShader* a_effectShader, float a_duration = -1.0f, TESObjectREFR* a_facingRef = nullptr, bool a_faceTarget = false, bool a_attachToCamera = false, NiAVObject* a_attachNode = nullptr, bool a_interfaceEffect = false);
 		[[nodiscard]] bool                              CanBeMoved();
@@ -435,9 +435,11 @@ namespace RE
 		[[nodiscard]] bool                              HasQuestObject() const;
 		void                                            InitChildActivates(TESObjectREFR* a_actionRef);
 		bool                                            InitInventoryIfRequired(bool a_ignoreContainerExtraData = false);
-		[[nodiscard]] bool                              Is3DLoaded() const;
-		[[nodiscard]] bool                              IsActivationBlocked() const;
+		bool                                            Is3DLoaded() const;
+		bool                                            IsActivationBlocked() const;
 		bool                                            IsAnimal() const;
+		ModelReferenceEffect*                           InstantiateHitArt(BGSArtObject* a_art, float a_dur, TESObjectREFR* a_facingRef, bool a_faceTarget, bool a_attachToCamera, NiAVObject* a_attachNode = nullptr, bool a_interfaceEffect = false);
+		ShaderReferenceEffect*                          InstantiateHitShader(TESEffectShader* a_shader, float a_dur, TESObjectREFR* a_facingRef = nullptr, bool a_faceTarget = false, bool a_attachToCamera = false, NiAVObject* a_attachNode = nullptr, bool a_interfaceEffect = false);
 		[[nodiscard]] bool                              IsAnOwner(const Actor* a_testOwner, bool a_useFaction, bool a_requiresOwner) const;
 		[[nodiscard]] bool                              IsCrimeToActivate();
 		[[nodiscard]] bool                              IsDisabled() const;
@@ -458,6 +460,7 @@ namespace RE
 		bool                                            MoveToNode(TESObjectREFR* a_target, const BSFixedString& a_nodeName);
 		bool                                            MoveToNode(TESObjectREFR* a_target, NiAVObject* a_node);
 		bool                                            NameIncludes(std::string a_word);
+		void                                            OpenContainer(std::int32_t a_openType) const;
 		NiPointer<TESObjectREFR>                        PlaceObjectAtMe(TESBoundObject* a_baseToPlace, bool a_forcePersist) const;
 		void                                            PlayAnimation(stl::zstring a_from, stl::zstring a_to);
 		void                                            PlayAnimation(NiControllerManager* a_manager, NiControllerSequence* a_toSeq, NiControllerSequence* a_fromSeq);

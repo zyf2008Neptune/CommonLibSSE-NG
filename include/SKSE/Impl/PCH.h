@@ -64,10 +64,8 @@ static_assert(
 
 #pragma warning(pop)
 
-#include "SKSE/Impl/DInputAPI.h"
-#include "SKSE/Impl/ScePadAPI.h"
-#include "SKSE/Impl/WinAPI.h"
-#include "SKSE/Impl/XInputAPI.h"
+#include "REX/W32/KERNEL32.h"
+#include "REX/W32/USER32.h"
 
 namespace SKSE
 {
@@ -315,9 +313,9 @@ namespace SKSE
 
 		template <class... Args>
 		enumeration(Args...) -> enumeration<
-			std::common_type_t<Args...>,
-			std::underlying_type_t<
-				std::common_type_t<Args...>>>;
+								 std::common_type_t<Args...>,
+								 std::underlying_type_t<
+									 std::common_type_t<Args...>>>;
 	}
 }
 
@@ -549,8 +547,8 @@ namespace SKSE
 			-> std::optional<std::wstring>
 		{
 			const auto cvt = [&](wchar_t* a_dst, std::size_t a_length) {
-				return WinAPI::MultiByteToWideChar(
-					CP_UTF8,
+				return REX::W32::MultiByteToWideChar(
+					REX::W32::CP_UTF8,
 					0,
 					a_in.data(),
 					static_cast<int>(a_in.length()),
@@ -575,8 +573,8 @@ namespace SKSE
 			-> std::optional<std::string>
 		{
 			const auto cvt = [&](char* a_dst, std::size_t a_length) {
-				return WinAPI::WideCharToMultiByte(
-					CP_UTF8,
+				return REX::W32::WideCharToMultiByte(
+					REX::W32::CP_UTF8,
 					0,
 					a_in.data(),
 					static_cast<int>(a_in.length()),
@@ -599,67 +597,8 @@ namespace SKSE
 			return out;
 		}
 
-#ifndef __clang__
-		using source_location = std::source_location;
-#else
-		/**
-		 * A polyfill for source location support for Clang.
-		 *
-		 * <p>
-		 * Clang-CL can use <code>source_location</code>, but not in the context of a default argument due to
-		 * a bug in its support for <code>consteval</code>. This bug does not affect <code>constexpr</code> so
-		 * this class uses a <code>constexpr</code> version of the typical constructor.
-		 * </p>
-		 */
-		struct source_location
-		{
-		public:
-			static constexpr source_location current(
-				const uint_least32_t a_line = __builtin_LINE(),
-				const uint_least32_t a_column = __builtin_COLUMN(),
-				const char* const    a_file = __builtin_FILE(),
-				const char* const    a_function = __builtin_FUNCTION()) noexcept
-			{
-				source_location result;
-				result._line = a_line;
-				result._column = a_column;
-				result._file = a_file;
-				result._function = a_function;
-				return result;
-			}
-
-			[[nodiscard]] constexpr const char* file_name() const noexcept
-			{
-				return _file;
-			}
-
-			[[nodiscard]] constexpr const char* function_name() const noexcept
-			{
-				return _function;
-			}
-
-			[[nodiscard]] constexpr uint_least32_t line() const noexcept
-			{
-				return _line;
-			}
-
-			[[nodiscard]] constexpr uint_least32_t column() const noexcept
-			{
-				return _column;
-			}
-
-		private:
-			source_location() = default;
-
-			uint_least32_t _line{};
-			uint_least32_t _column{};
-			const char*    _file = "";
-			const char*    _function = "";
-		};
-#endif
-
 		inline bool report_and_error(std::string_view a_msg, bool a_fail = true,
-			SKSE::stl::source_location a_loc = SKSE::stl::source_location::current())
+			std::source_location a_loc = std::source_location::current())
 		{
 			const auto body = [&]() -> std::wstring {
 				const std::filesystem::path p = a_loc.file_name();
@@ -681,15 +620,14 @@ namespace SKSE
 			}();
 
 			const auto caption = []() {
-				const auto           maxPath = WinAPI::GetMaxPath();
 				std::vector<wchar_t> buf;
-				buf.reserve(maxPath);
-				buf.resize(maxPath / 2);
+				buf.reserve(REX::W32::MAX_PATH);
+				buf.resize(REX::W32::MAX_PATH / 2);
 				std::uint32_t result = 0;
 				do {
 					buf.resize(buf.size() * 2);
-					result = GetModuleFileName(
-						WinAPI::GetCurrentModule(),
+					result = REX::W32::GetModuleFileNameW(
+						REX::W32::GetCurrentModule(),
 						buf.data(),
 						static_cast<std::uint32_t>(buf.size()));
 				} while (result && result == buf.size() && buf.size() <= (std::numeric_limits<std::uint32_t>::max)());
@@ -714,24 +652,17 @@ namespace SKSE
 #ifdef ENABLE_COMMONLIBSSE_TESTING
 				throw std::runtime_error(utf16_to_utf8(caption.empty() ? body.c_str() : caption.c_str())->c_str());
 #else
-				MessageBox(nullptr, body.c_str(), (caption.empty() ? nullptr : caption.c_str()), 0);
-				WinAPI::TerminateProcess(WinAPI::GetCurrentProcess(), EXIT_FAILURE);
+				REX::W32::MessageBoxW(nullptr, body.c_str(), (caption.empty() ? nullptr : caption.c_str()), 0);
+				REX::W32::TerminateProcess(REX::W32::GetCurrentProcess(), EXIT_FAILURE);
 #endif
 			}
 			return true;
 		}
 
 		[[noreturn]] inline void report_and_fail(std::string_view a_msg,
-			SKSE::stl::source_location                            a_loc = SKSE::stl::source_location::current())
+			std::source_location                                  a_loc = std::source_location::current())
 		{
 			report_and_error(a_msg, true, a_loc);
-		}
-
-		template <class Enum>
-		[[nodiscard]] constexpr auto to_underlying(Enum a_val) noexcept  //
-			requires(std::is_enum_v<Enum>)
-		{
-			return static_cast<std::underlying_type_t<Enum>>(a_val);
 		}
 
 		template <class To, class From>
@@ -784,20 +715,18 @@ namespace RE
 {
 	using namespace std::literals;
 	namespace stl = SKSE::stl;
-	namespace WinAPI = SKSE::WinAPI;
 }
 
 namespace REL
 {
 	using namespace std::literals;
 	namespace stl = SKSE::stl;
-	namespace WinAPI = SKSE::WinAPI;
 }
 
 #define RELOCATION_ID(a_se, a_ae) REL::RelocationID(a_se, a_ae)
 #define AE_CHECK(a_version, a_older, a_newer) REL::Module::get().version().compare(a_version) == std::strong_ordering::less ? a_older : a_newer
 
-#include "REL/Relocation.h"
+#include "REL/REL.h"
 
 #include "RE/Offsets.h"
 #include "RE/Offsets_NiRTTI.h"
@@ -810,7 +739,7 @@ namespace REL
 #ifdef _DEBUG
 // Generates a concrete function to force the class to be included in the PDB when loading types from PDB for IDA/Ghidra
 #	define KEEP_FOR_RE() \
-		void REdebug(){};
+		void REdebug() {};
 #else
 // Generates a concrete function to help with RE, does nothing on release builds
 #	define KEEP_FOR_RE()

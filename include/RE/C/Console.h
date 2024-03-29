@@ -18,34 +18,38 @@ namespace RE
 		inline static constexpr auto      RTTI = RTTI_Console;
 		constexpr static std::string_view MENU_NAME = "Console";
 
+		struct EXTENDED_CONSOLE_DATA
+		{
+#define EXTENDED_CONSOLE_DATA_CONTENT                                  \
+private:                                                               \
+	[[maybe_unused]] std::uint32_t pad48; /* 48 */                     \
+	[[maybe_unused]] std::uint8_t  pad4c; /* 4c */                     \
+public:                                                                \
+	bool         showAchievementWarning; /* 4d -- only used in ctor */ \
+	bool         ctrlKeyHeld;            /* 4e */                      \
+	std::uint8_t pad4f;                  /* 4f */
+
+			EXTENDED_CONSOLE_DATA_CONTENT
+		};
+
 		struct RUNTIME_DATA
 		{
 #define RUNTIME_DATA_CONTENT       \
 	void*         opcode; /* 00 */ \
 	std::uint64_t unk38;  /* 08 */ \
-	std::uint64_t unk40;  /* 10 */ \
-	std::uint64_t unk48;  /* 18 */ \
-	std::uint64_t unk50;  /* 20 */
+	std::uint64_t unk40;  /* 10 */
 
 			RUNTIME_DATA_CONTENT
 		};
-		static_assert(sizeof(RUNTIME_DATA) == 0x28);
 
-		struct AE_RUNTIME_DATA
+		struct RUNTIME_DATA2
 		{
-#define AE_RUNTIME_DATA_CONTENT                                        \
-	void*         opcode;                 /* 00 */                     \
-	std::uint64_t unk38;                  /* 08 */                     \
-	std::uint64_t unk40;                  /* 10 */                     \
-	std::uint32_t unk48;                  /* 48 */                     \
-	std::uint8_t  unk4c;                  /* 4c*/                      \
-	bool          showAchievementWarning; /* 4d -- only used in ctor*/ \
-	bool          ctrlKeyHeld;            /* 4e*/                      \
-	std::uint8_t  pad4f;                  /* 4f*/
+#define RUNTIME_DATA_CONTENT2     \
+	std::uint64_t unk48; /* 18 */ \
+	std::uint64_t unk50; /* 20 */
 
-			AE_RUNTIME_DATA_CONTENT
+			RUNTIME_DATA_CONTENT2
 		};
-		static_assert(sizeof(AE_RUNTIME_DATA) == 0x20);
 
 		~Console() override;  // 00
 
@@ -70,29 +74,37 @@ namespace RE
 			return REL::RelocateMember<RUNTIME_DATA>(this, 0x30, 0x40);
 		}
 
-		[[nodiscard]] inline AE_RUNTIME_DATA* GetAERuntimeData() noexcept
+		[[nodiscard]] inline RUNTIME_DATA2& GetRuntimeData2() noexcept
 		{
-			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
-				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_6_1130) != std::strong_ordering::less) {
-					return REL::RelocateMember<AE_RUNTIME_DATA*>(this, 0x30);
-				}
-			}
-			return nullptr;
+			return REL::RelocateMember<RUNTIME_DATA2>(this, 0x48, 0x60);
 		}
 
-		[[nodiscard]] inline const AE_RUNTIME_DATA* GetAERuntimeData() const noexcept
+		[[nodiscard]] inline const RUNTIME_DATA2& GetRuntimeData2() const noexcept
 		{
-			if SKYRIM_REL_CONSTEXPR (REL::Module::IsAE()) {
-				if (REL::Module::get().version().compare(SKSE::RUNTIME_SSE_1_6_1130) != std::strong_ordering::less) {
-					return REL::RelocateMember<AE_RUNTIME_DATA*>(this, 0x30);
-				}
+			return REL::RelocateMember<RUNTIME_DATA2>(this, 0x48, 0x60);
+		}
+
+		[[nodiscard]] inline EXTENDED_CONSOLE_DATA* TryGetExtendedConsoleData() noexcept
+		{
+			if (REL::Module::IsAE()) {
+				return nullptr;
 			}
-			return nullptr;
+			return &REL::RelocateMember<EXTENDED_CONSOLE_DATA>(this, 0, 0x58);
+		}
+
+		[[nodiscard]] inline const EXTENDED_CONSOLE_DATA* TryGetExtendedConsoleData() const noexcept
+		{
+			if (REL::Module::IsAE()) {
+				return nullptr;
+			}
+			return &REL::RelocateMember<EXTENDED_CONSOLE_DATA>(this, 0, 0x58);
 		}
 
 		// members
 #ifndef SKYRIM_CROSS_VR
-		RUNTIME_DATA_CONTENT;  // 30, 40
+		RUNTIME_DATA_CONTENT
+		EXTENDED_CONSOLE_DATA_CONTENT
+		RUNTIME_DATA_CONTENT2
 #endif
 
 	protected:
@@ -102,16 +114,7 @@ namespace RE
 	private:
 		KEEP_FOR_RE()
 	};
-#if !defined(ENABLE_SKYRIM_VR)
-#	if defined(ENABLE_SKYRIM_AE)
-	static_assert(sizeof(Console) == 0x68);
-#	else
-	static_assert(sizeof(Console) == 0x58);
-	char (*__kaboom)[sizeof(Console)] = 1;
-#endif
-#elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
-	static_assert(sizeof(Console) == 0x68);
-#endif
 }
 #undef RUNTIME_DATA_CONTENT
-#undef AE_RUNTIME_DATA_CONTENT
+#undef RUNTIME_DATA_CONTENT2
+#undef EXTENDED_CONSOLE_DATA_CONTENT

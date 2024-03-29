@@ -135,29 +135,15 @@ namespace RE
 	std::uint64_t            unk30530;             /* 0D0 */ \
 	TESWorldSpace*           worldSpace;           /* 0D8 */ \
 	GFxValue                 unk30540;             /* 0E0 */ \
-	std::uint32_t            unk30558;             /* 0F8 */ \
-	NiPoint3                 unk3055C;             /* 100 */ \
-	NiPoint3                 unk30568;             /* 108 */ \
+	std::uint64_t            unk30558;             /* 0F8 */ \
+	std::uint64_t            unk30560;             /* 100 */ \
+	std::uint64_t            unk30568;             /* 108 */ \
+	std::uint32_t            unk30570;             /* 110 */ \
 	BSSoundHandle            unk30574;             /* 114 */ \
 	std::uint64_t            unk30580;             /* 120 */ \
 	std::uint64_t            unk30588;             /* 128 */ \
 	std::uint64_t            unk30590;             /* 130 */
-            RefHandle                unk30460;
-            NiPoint3                 playerMarkerPosition;
-            BSTArray<Unk30470Entry*> unk30470;
-            BSTArray<Unk30488Entry*> unk30488;
-            MapCamera                camera;
-            std::uint64_t            unk30530;
-            TESWorldSpace*           worldSpace;
-            GFxValue                 unk30540;
-            std::uint32_t            unk30558;
-            NiPoint3                 unk3055C;
-            NiPoint3                 unk30568;
-            BSSoundHandle            unk30574;
-            std::uint64_t            unk30580;
-            std::uint64_t            unk30588;
-            std::uint64_t            unk30590;
-            ;
+            RUNTIME_DATA2_CONTENT
 		};
 		static_assert(sizeof(RUNTIME_DATA2) == 0x138);
 

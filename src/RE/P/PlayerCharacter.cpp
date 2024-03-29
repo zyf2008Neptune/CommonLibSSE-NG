@@ -131,7 +131,7 @@ namespace RE
 	}
 
 	// TODO need to understand how this changed in VR
-#	ifndef ENABLE_SKYRIM_VR
+#ifndef ENABLE_SKYRIM_VR
 	TintMask* PlayerCharacter::GetOverlayTintMask(TintMask* a_original)
 	{
 		if SKYRIM_REL_VR_CONSTEXPR (REL::Module::IsVR()) {
@@ -173,7 +173,7 @@ namespace RE
 			return func(this, a_tintType, a_index);
 		}
 	}
-#	endif
+#endif
 
 	bool PlayerCharacter::HasActorDoingCommand() const
 	{
@@ -198,12 +198,12 @@ namespace RE
 		}
 	}
 
-#	ifdef ENABLE_SKYRIM_VR
+#ifdef ENABLE_SKYRIM_VR
 	bool PlayerCharacter::IsGrabbingWithDevice(VR_DEVICE a_device) const
 	{
 		return static_cast<bool>(GetVRPlayerRuntimeData().grabbedObjectData[a_device].grabbedObject);
 	}
-#	endif
+#endif
 
 	void PlayerCharacter::PlayMagicFailureSound(MagicSystem::SpellType a_spellType)
 	{

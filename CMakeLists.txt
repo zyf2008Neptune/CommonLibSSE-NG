@@ -72,16 +72,13 @@ target_compile_definitions(
 target_compile_features(
 	"${PROJECT_NAME}"
 	PUBLIC
-	cxx_std_20
+	cxx_std_23
 )
 
 if(MSVC)
 	target_compile_options(
 		"${PROJECT_NAME}"
 		PUBLIC
-
-		# warnings -> errors
-		/we4715 # 'function' : not all control paths return a value
 
 		# disable warnings
 		/wd4005 # macro redefinition
@@ -101,11 +98,11 @@ if(MSVC)
 		/wd4710 # 'function' : function not inlined
 		/wd4711 # function 'function' selected for inline expansion
 		/wd4820 # 'bytes' bytes padding added after construct 'member_name'
+		/wd4996 # 'deprecated function': required due to Microsoft STL itself using its own deprecated functions
 		/wd5026 # 'type': move constructor was implicitly defined as deleted
 		/wd5027 # 'type': move assignment operator was implicitly defined as deleted
 		/wd5045 # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 		/wd5053 # support for 'explicit(<expr>)' in C++17 and earlier is a vendor extension
-		/wd5082 # second argument to 'va_start' is not the last named parameter
 		/wd5204 # 'type-name': class has virtual functions, but its trivial destructor is not virtual; instances of objects derived from this class may not be destructed correctly
 		/wd5220 # 'member': a non-static data member with a volatile qualified type no longer implies that compiler generated copy / move constructors and copy / move assignment operators are not trivial
 	)
@@ -123,7 +120,6 @@ target_include_directories(
 target_include_directories(
 	"${PROJECT_NAME}"
 	PRIVATE
-	${fmt_INCLUDE_DIRS}
 	${spdlog_INCLUDE_DIRS}
 	${RAPIDCSV_INCLUDE_DIRS}
 )
@@ -137,9 +133,14 @@ target_link_libraries(
 	"${PROJECT_NAME}"
 	PUBLIC
 	spdlog::spdlog
-	Version.lib
-	Dbghelp.lib
 	Microsoft::DirectXTK
+	Advapi32.lib
+	D3D11.lib
+	d3dcompiler.lib
+	Dbghelp.lib
+	DXGI.lib
+	Ole32.lib
+	Version.lib
 )
 
 target_precompile_headers(
@@ -174,6 +175,7 @@ install(
 	DIRECTORY
 	"include/RE"
 	"include/REL"
+	"include/REX"
 	"include/SKSE"
 	DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
 )

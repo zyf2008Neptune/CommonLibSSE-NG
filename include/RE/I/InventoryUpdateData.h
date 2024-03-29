@@ -14,9 +14,9 @@ namespace RE
 		~InventoryUpdateData() override = default;  // 00
 
 		// members
-		RefHandle     inventoryRef;  // 10
-		std::uint32_t pad14;         // 14
-		TESForm*      unk18;         // 18
+		RefHandle       inventoryRef;  // 10
+		std::uint32_t   pad14;         // 14
+		TESBoundObject* updateObj;     // 18
 	private:
 		KEEP_FOR_RE()
 	};

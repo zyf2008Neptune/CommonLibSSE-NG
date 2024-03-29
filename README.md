@@ -209,7 +209,6 @@ For more information on how to use CommonLibSSE NG, you can look at the
 
 ## Build Dependencies
 
-- [fmt](https://fmt.dev/latest/index.html)
 - [rapidcsv](https://github.com/d99kris/rapidcsv)
 - [spdlog](https://github.com/gabime/spdlog)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/)

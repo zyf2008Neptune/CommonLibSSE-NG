@@ -4,6 +4,7 @@
 #include "RE/B/BSTHashMap.h"
 #include "RE/N/NiBoneMatrixSetterI.h"
 #include "RE/N/NiRefObject.h"
+#include <REX/W32/D3D11.h>
 
 struct ID3D11Buffer;
 struct ID3D11PixelShader;
@@ -27,7 +28,7 @@ namespace RE
 		{
 		public:
 			// members
-			ID3D11Buffer* buffer;  // 00
+			REX::W32::ID3D11Buffer* buffer;  // 00
 			void*         data;    // 08
 		};
 		static_assert(sizeof(ConstantGroup) == 0x10);
@@ -37,7 +38,7 @@ namespace RE
 		public:
 			// members
 			std::uint32_t               id;                  // 00
-			ID3D11PixelShader*          shader = nullptr;    // 08
+			REX::W32::ID3D11PixelShader* shader = nullptr;    // 08
 			ConstantGroup               constantBuffers[3];  // 10
 			std::array<std::int8_t, 64> constantTable;       // 58
 		};
@@ -48,7 +49,7 @@ namespace RE
 		public:
 			// members
 			std::uint32_t               id;                  // 00
-			ID3D11VertexShader*         shader = nullptr;    // 08
+			REX::W32::ID3D11VertexShader* shader = nullptr;    // 08
 			std::uint32_t               byteCodeSize;        // 10
 			ConstantGroup               constantBuffers[3];  // 18
 			std::uint64_t               shaderDesc;          // 48

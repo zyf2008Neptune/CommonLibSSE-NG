@@ -35,7 +35,7 @@ namespace RE
 	Actor* MagicTarget::GetTargetAsActor()
 	{
 		if (MagicTargetIsActor()) {
-			return static_cast<Actor*>(static_cast<void*>(this));
+			return reinterpret_cast<Actor*>(this);
 		}
 
 		return nullptr;

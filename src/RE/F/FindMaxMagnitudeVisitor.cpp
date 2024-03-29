@@ -1,5 +1,3 @@
-#pragma once
-
 #include "RE/F/FindMaxMagnitudeVisitor.h"
 
 namespace RE

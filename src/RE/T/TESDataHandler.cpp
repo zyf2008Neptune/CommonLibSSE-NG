@@ -2,6 +2,8 @@
 
 #include "RE/T/TESFile.h"
 #include "RE/T/TESForm.h"
+
+#include "REX/W32/BASE.h"
 #undef GetModuleHandle
 
 namespace RE
@@ -11,9 +13,9 @@ namespace RE
 	{
 		REL::Relocation<TESDataHandler**> singleton{ Offset::TESDataHandler::Singleton };
 		if (REL::Module::IsVR() && a_VRESL && !VRcompiledFileCollection) {
-			const auto VRhandle = WinAPI::GetModuleHandle("skyrimvresl");
+			const auto VRhandle = REX::W32::GetModuleHandleW(L"skyrimvresl");
 			if (VRhandle != NULL) {
-				const auto GetCompiledFileCollection = reinterpret_cast<const RE::TESFileCollection* (*)()>(WinAPI::GetProcAddress(VRhandle, "GetCompiledFileCollectionExtern"));
+				const auto GetCompiledFileCollection = reinterpret_cast<const RE::TESFileCollection* (*)()>(REX::W32::GetProcAddress(VRhandle, "GetCompiledFileCollectionExtern"));
 				if (GetCompiledFileCollection != nullptr) {
 					TESDataHandler::VRcompiledFileCollection = const_cast<RE::TESFileCollection*>(GetCompiledFileCollection());
 				}
@@ -185,7 +187,7 @@ namespace RE
 
 	BSTArray<TESForm*>& TESDataHandler::GetFormArray(FormType a_formType)
 	{
-		return formArrays[stl::to_underlying(a_formType)];
+		return formArrays[std::to_underlying(a_formType)];
 	}
 
 	ObjectRefHandle TESDataHandler::CreateReferenceAtLocation(TESBoundObject* a_base, const NiPoint3& a_location, const NiPoint3& a_rotation, TESObjectCELL* a_targetCell, TESWorldSpace* a_selfWorldSpace, TESObjectREFR* a_alreadyCreatedRef, BGSPrimitive* a_primitive, const ObjectRefHandle& a_linkedRoomRefHandle, bool a_forcePersist, bool a_arg11)

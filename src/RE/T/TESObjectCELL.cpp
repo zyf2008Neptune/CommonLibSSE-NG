@@ -38,6 +38,13 @@ namespace RE
 		return owner && owner->Is(FormType::NPC) ? static_cast<TESNPC*>(owner) : nullptr;
 	}
 
+	bhkWorld* TESObjectCELL::GetbhkWorld() const
+	{
+		using func_t = decltype(&TESObjectCELL::GetbhkWorld);
+		REL::Relocation<func_t> func{ RELOCATION_ID(18536, 18995) };
+		return func(this);
+	}
+
 	EXTERIOR_DATA* TESObjectCELL::GetCoordinates()
 	{
 		return IsExteriorCell() ? GetRuntimeData().cellData.exterior : nullptr;
@@ -52,6 +59,13 @@ namespace RE
 	INTERIOR_DATA* TESObjectCELL::GetLighting()
 	{
 		return IsInteriorCell() ? GetRuntimeData().cellData.interior : nullptr;
+	}
+
+	BGSLocation* TESObjectCELL::GetLocation() const
+	{
+		using func_t = decltype(&TESObjectCELL::GetLocation);
+		REL::Relocation<func_t> func{ RELOCATION_ID(18474, 18905) };
+		return func(this);
 	}
 
 	float TESObjectCELL::GetNorthRotation()

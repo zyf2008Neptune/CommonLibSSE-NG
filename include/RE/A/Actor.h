@@ -24,6 +24,8 @@
 #include "RE/T/TESNPC.h"
 #include "RE/T/TESObjectREFR.h"
 
+#include "REX/W32/BASE.h"
+
 namespace RE
 {
 	class ActorMagicCaster;
@@ -537,27 +539,28 @@ namespace RE
 		[[nodiscard]] const TESShout*           GetCurrentShout() const;
 		[[nodiscard]] InventoryEntryData*       GetEquippedEntryData(bool a_leftHand) const;
 		[[nodiscard]] TESForm*                  GetEquippedObject(bool a_leftHand) const;
+		[[nodiscard]] TESForm*                  GetEquippedObjectInSlot(const BGSEquipSlot* slot) const;
 		[[nodiscard]] float                     GetEquippedWeight();
 		[[nodiscard]] std::int32_t              GetFactionRank(TESFaction* a_faction, bool a_isPlayer);
 		[[nodiscard]] std::int32_t              GetGoldAmount(bool a_noInit = false);
 		[[nodiscard]] ActorHandle               GetHandle();
 		[[nodiscard]] NiAVObject*               GetHeadPartObject(BGSHeadPart::HeadPartType a_type);
 		[[nodiscard]] float                     GetHeight();
-		HighProcessData*                        GetHighProcess() const;
+		[[nodiscard]] HighProcessData*          GetHighProcess() const;
 		[[nodiscard]] Actor*                    GetKiller() const;
 		[[nodiscard]] std::uint16_t             GetLevel() const;
-		MiddleHighProcessData*                  GetMiddleHighProcess() const;
+		[[nodiscard]] MiddleHighProcessData*    GetMiddleHighProcess() const;
 		[[nodiscard]] bool                      GetMount(NiPointer<Actor>& a_outMount);
 		[[nodiscard]] bool                      GetMountedBy(NiPointer<Actor>& a_outRider);
 		[[nodiscard]] double                    GetMoveDirectionRelativeToFacing();
 		[[nodiscard]] ObjectRefHandle           GetOccupiedFurniture() const;
 		[[nodiscard]] TESRace*                  GetRace() const;
-		[[nodiscard]] bool                      GetRider(NiPointer<Actor>& a_outRider);
 		[[nodiscard]] float                     GetRegenDelay(ActorValue a_actorValue) const;
+		[[nodiscard]] bool                      GetRider(NiPointer<Actor>& a_outRider);
 		[[nodiscard]] TESObjectARMO*            GetSkin() const;
 		[[nodiscard]] TESObjectARMO*            GetSkin(BGSBipedObjectForm::BipedObjectSlot a_slot, bool a_noInit = false);
 		[[nodiscard]] SOUL_LEVEL                GetSoulSize() const;
-		[[nodiscard]] const float               GetTotalCarryWeight();
+		[[nodiscard]] float                     GetTotalCarryWeight();
 		[[nodiscard]] TESFaction*               GetVendorFaction();
 		[[nodiscard]] const TESFaction*         GetVendorFaction() const;
 		[[nodiscard]] float                     GetVoiceRecoveryTime();
@@ -700,7 +703,7 @@ namespace RE
 	std::uint32_t                                         unk274;                            /* 274 */ \
 	std::uint64_t                                         unk278;                            /* 278 */ \
 	std::uint64_t                                         unk280;                            /* 280 */ \
-	WinAPI::CRITICAL_SECTION                              unk288;                            /* 288 - havok related */
+	REX::W32::CRITICAL_SECTION                            unk288;                            /* 288 - havok related */
 
 			RUNTIME_DATA_CONTENT
 		};
