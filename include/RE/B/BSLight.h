@@ -7,6 +7,7 @@
 
 namespace RE
 {
+	class BSCullingProcess;
 	class BSPortalGraph;
 	class BSTriShape;
 	class NiAVObject;
@@ -49,7 +50,7 @@ namespace RE
 		std::uint32_t          unk040;          // 040
 		bool                   pointLight;      // 044
 		bool                   ambientLight;    // 045
-		bool                   unk046;          // 046
+		bool                   followsCamera;   // 046
 		bool                   portalStrict;    // 047
 		NiPointer<NiLight>     light;           // 048
 		NiPoint3               worldTranslate;  // 050
@@ -69,7 +70,7 @@ namespace RE
 		BSTArray<void*>        unk0F0;          // 0F0
 		BSTArray<void*>        unk108;          // 108
 		BSPortalGraph*         portalGraph;     // 120
-		std::uint64_t          unk128;          // 128
+		BSCullingProcess*      cullingProcess;  // 128
 		NiPointer<NiAVObject>  objectNode;      // 130
 		BSLensFlareRenderData* lensFlareData;   // 138
 	private:
