@@ -870,7 +870,9 @@ namespace RE
 
 	bool Actor::IsLeveled() const
 	{
-		return extraList.GetByType<ExtraLeveledCreature>();
+		using func_t = decltype(&Actor::IsLeveled);
+		REL::Relocation<func_t> func{ RELOCATION_ID(19824, 20229) };
+		return func(this);
 	}
 
 	bool Actor::IsLimbGone(std::uint32_t a_limb)

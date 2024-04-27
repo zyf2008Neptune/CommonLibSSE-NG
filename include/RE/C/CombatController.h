@@ -97,7 +97,7 @@ namespace RE
 		bool                           ignoringCombat;        // 42
 		bool                           inactive;              // 43
 		AITimer                        unk44;                 // 44
-		float                          unk4C;                 // 4C
+		float                          lowMovementDelta;      // 4C
 		BSTArray<CombatAimController*> aimControllers;        // 50
 #if defined(ENABLE_SKYRIM_AE) && !(defined(ENABLE_SKYRIM_SE) || defined(ENABLE_SKYRIM_VR))
 		AE_RUNTIME_DATA_CONTENT;

@@ -66,7 +66,6 @@ namespace RE
 		}
 
 		// members
-
 		BSStreamHeader                                header;                                // 008
 		BSTSmallArray<NiObjectGroup>                  groups;                                // 0D0
 		std::uint32_t                                 nifMaxVersion;                         // 100

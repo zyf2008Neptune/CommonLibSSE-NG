@@ -57,7 +57,7 @@ namespace RE
 		std::uint32_t          unk05C;          // 05C
 		std::uint8_t           unk060;          // 060
 		bool                   affectLand;      // 061
-		std::uint8_t           unk062;          // 062
+		bool                   affectWater;     // 062
 		bool                   neverFades;      // 063
 		std::uint32_t          unk064;          // 064
 		std::uint64_t          unk068;          // 068

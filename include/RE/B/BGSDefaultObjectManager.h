@@ -374,15 +374,15 @@ namespace RE
 			kKeywordArmorMaterialHeavyStalhrim = 360,
 			kKeywordWeaponMaterialNordic = 361,
 			kKeywordWeaponMaterialStalhrim = 362,
-#if defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
+#	if defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 			kHelpManualInstalledContent = 363,
 			kHelpManualInstalledContentAE = 364,
 			kModsHelpFormList = 365,
 			kTotal = 366
-#else  // SSE
+#	else  // SSE
 			kModsHelpFormList = 363,
 			kTotal = 364
-#endif
+#	endif
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 			kisJarlChair = 184,
 			kFurnitureAnimatesFast = 185,
