@@ -1,6 +1,6 @@
 function(commonlibsse_parse_version VERSION)
     message("${version_match_count} for ${VERSION}")
-    string(REGEX MATCHALL "^([0-9]+)(\\.([0-9]+)(\\.([0-9]+)(\\.([0-9]+))?)?)?$" version_match "${VERSION}")
+    string(REGEX MATCHALL "^([0-9]+)(\.([0-9]+)(\.([0-9]+)(\.([0-9]+))?)?)?$" version_match "${VERSION}")
     unset(COMMONLIBSSE_VERSION_MAJOR PARENT_SCOPE)
     unset(COMMONLIBSSE_VERSION_MINOR PARENT_SCOPE)
     unset(COMMONLIBSSE_VERSION_PATCH PARENT_SCOPE)
@@ -58,6 +58,7 @@ function(target_commonlibsse_properties TARGET)
         set(commonlibsse_plugin_version "${ADD_COMMONLIBSSE_PLUGIN_VERSION}")
     endif()
 
+    message("Parsing commonlibsse_plugin_version ${commonlibsse_plugin_version}")
     commonlibsse_parse_version("${commonlibsse_plugin_version}")
 
     if(NOT DEFINED COMMONLIBSSE_VERSION_MAJOR)
@@ -71,6 +72,7 @@ function(target_commonlibsse_properties TARGET)
         set(ADD_COMMONLIBSSE_PLUGIN_MINIMUM_SKSE_VERSION 0)
     endif()
 
+    message("Parsing ADD_COMMONLIBSSE_PLUGIN_MINIMUM_SKSE_VERSION ${ADD_COMMONLIBSSE_PLUGIN_MINIMUM_SKSE_VERSION}")
     commonlibsse_parse_version("${ADD_COMMONLIBSSE_PLUGIN_MINIMUM_SKSE_VERSION}")
 
     if(NOT COMMONLIBSSE_VERSION_MATCH)
