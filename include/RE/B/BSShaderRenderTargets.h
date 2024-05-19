@@ -123,6 +123,17 @@ namespace RE
 			kSNOW_SWAP,
 
 			kTOTAL,  // SE 114, 125 in VR, 116 in AE1130
+			k114 = 114,
+			k115,
+			k116,
+			k117,
+			k118,
+			k119,
+			k120,
+			k121,
+			k122,
+			k123,
+			k124,
 			kVRTOTAL = 125,
 			kFRAMEBUFFER_TOTAL = kMAIN,
 		};
@@ -171,6 +182,14 @@ namespace RE
 			kFOCUS_NEO,
 
 			kTOTAL,  // 12 in SSE, 21 in VR
+			k13,
+			k14,
+			k15,
+			k16,
+			k17,
+			k18,
+			k19,
+			k20,
 			kVRTOTAL = 21,
 		};
 	};
