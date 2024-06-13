@@ -4,10 +4,10 @@
   "version-semver": "3.7.0",
   "port-version": 0,
   "description": "A fork of CommonLibSSE with advanced features for modern SKSE development.",
-  "homepage": "https://github.com/CharmedBaryon/CommonLibSSE",
+  "homepage": "https://github.com/zyf2008Neptune/CommonLibSSE-NG",
   "license": "MIT",
   "supports": "windows & x64",
-  "builtin-baseline": "fc3f61366102c1f0d4547c06d03c523bb18c13a7",
+  "builtin-baseline": "cb0df0c01a93158e9299a417d76b0eb683c6cc19",
   "dependencies": [
     {
       "name": "vcpkg-cmake-config",
@@ -15,16 +15,5 @@
     },
     "rapidcsv",
     "spdlog"
-  ],
-  "features": {
-    "tests": {
-      "description": "Build tests for CommonLibSSE.",
-      "dependencies": [
-        "catch2"
-      ]
-    }
-  },
-  "default-features": [
-    "tests"
   ]
 }
