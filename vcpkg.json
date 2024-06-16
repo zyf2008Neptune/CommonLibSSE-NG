@@ -7,7 +7,6 @@
   "homepage": "https://github.com/zyf2008Neptune/CommonLibSSE-NG",
   "license": "MIT",
   "supports": "windows & x64",
-  "builtin-baseline": "cb0df0c01a93158e9299a417d76b0eb683c6cc19",
   "dependencies": [
     {
       "name": "vcpkg-cmake-config",
