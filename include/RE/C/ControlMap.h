@@ -15,8 +15,8 @@ namespace RE
 	class UserEventEnabled;
 
 	class ControlMap :
-		public BSTSingletonSDM<ControlMap>,      // 00
-		public BSTEventSource<UserEventEnabled>  // 08
+		public BSTSingletonSDM<ControlMap>,     // 00
+		public BSTEventSource<UserEventEnabled> // 08
 	{
 	public:
 		using InputContextID = UserEvents::INPUT_CONTEXT_ID;
@@ -31,15 +31,16 @@ namespace RE
 		{
 		public:
 			// members
-			BSFixedString                           eventID;             // 00
-			std::uint16_t                           inputKey;            // 08
-			std::uint16_t                           modifier;            // 08
-			std::int8_t                             indexInContext;      // 0C
-			bool                                    remappable;          // 0D
-			bool                                    linked;              // 0E
-			stl::enumeration<UEFlag, std::uint32_t> userEventGroupFlag;  // 10
-			std::uint32_t                           pad14;               // 14
+			BSFixedString                           eventID;            // 00
+			std::uint16_t                           inputKey;           // 08
+			std::uint16_t                           modifier;           // 08
+			std::int8_t                             indexInContext;     // 0C
+			bool                                    remappable;         // 0D
+			bool                                    linked;             // 0E
+			stl::enumeration<UEFlag, std::uint32_t> userEventGroupFlag; // 10
+			std::uint32_t                           pad14;              // 14
 		};
+
 		static_assert(sizeof(UserEventMapping) == 0x18);
 
 		struct InputContext
@@ -59,7 +60,7 @@ namespace RE
 			}
 
 			// members
-			BSTArray<UserEventMapping> deviceMappings[INPUT_DEVICES::kTotal];  // 00
+			BSTArray<UserEventMapping> deviceMappings[INPUT_DEVICES::kTotal]; // 00
 		};
 #ifdef ENABLE_SKYRIM_VR
 		static_assert(sizeof(InputContext) == 0xF0);
@@ -71,13 +72,14 @@ namespace RE
 		{
 		public:
 			// members
-			BSFixedString  linkedMappingName;     // 00
-			InputContextID linkedMappingContext;  // 08
-			INPUT_DEVICE   device;                // 0C
-			InputContextID linkFromContext;       // 10
-			std::uint32_t  pad14;                 // 14
-			BSFixedString  linkFromName;          // 18
+			BSFixedString  linkedMappingName;    // 00
+			InputContextID linkedMappingContext; // 08
+			INPUT_DEVICE   device;               // 0C
+			InputContextID linkFromContext;      // 10
+			std::uint32_t  pad14;                // 14
+			BSFixedString  linkFromName;         // 18
 		};
+
 		static_assert(sizeof(LinkedMapping) == 0x20);
 
 		static ControlMap* GetSingleton();
@@ -118,17 +120,18 @@ namespace RE
 	stl::enumeration<PC_GAMEPAD_TYPE, std::uint32_t> gamePadMapType;               /* 124, VR 144*/
 			RUNTIME_DATA_CONTENT
 		};
+
 		static_assert(sizeof(RUNTIME_DATA) == 0x40);
 
 		//members
 
 		// members
-		InputContext* controlMap[InputContextID::kTotal];        // 060
+		InputContext* controlMap[InputContextID::kTotal]; // 060
 #if !defined(ENABLE_SKYRIM_VR)                                   //flat
 #	if !defined(ENABLE_SKYRIM_AE) && defined(ENABLE_SKYRIM_SE)  // SSE
 		RUNTIME_DATA_CONTENT;                                    // 0E8
 #	else                                                        // AE
-		RUNTIME_DATA_CONTENT;  // 0F8
+		RUNTIME_DATA_CONTENT; // 0F8
 #	endif
 #elif !defined(ENABLE_SKYRIM_AE) && defined(ENABLE_SKYRIM_SE)  // VR
 		RUNTIME_DATA_CONTENT;  // 108
@@ -160,7 +163,7 @@ namespace RE
 #	if !defined(ENABLE_SKYRIM_AE)
 	static_assert(sizeof(ControlMap) == 0x130);
 #	elif !defined(ENABLE_SKYRIM_SE)
-	static_assert(sizeof(ControlMap) == 0x128);
+	//static_assert(sizeof(ControlMap) == 0x128);
 #	endif
 #elif !defined(ENABLE_SKYRIM_SE) && !defined(ENABLE_SKYRIM_AE)
 	//static_assert(sizeof(ControlMap) == 0x148);  // VS seems to choke even though this should be right

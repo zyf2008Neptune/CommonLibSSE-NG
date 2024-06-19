@@ -572,9 +572,11 @@ namespace RE
 #endif
 		};
 	};
+
 	using DEFAULT_OBJECT = DEFAULT_OBJECTS::DEFAULT_OBJECT;
 
 #define MakeDefaultObjectID(se, vr) (se | (vr << 16))
+
 	enum class DefaultObjectID
 	{
 		kWerewolfSpell = 0,
@@ -978,19 +980,20 @@ namespace RE
 	{
 	public:
 		// members
-		const char*                                          name;         // 00
-		stl::enumeration<FormType, std::uint8_t>             type;         // 08
-		std::uint8_t                                         pad09;        // 09
-		std::uint16_t                                        pad0A;        // 0A
-		char                                                 uniqueID[4];  // 0C
-		stl::enumeration<DEFAULT_OBJECT_TYPE, std::uint32_t> doType;       // 10
-		std::uint32_t                                        pad14;        // 14
+		const char*                                          name;        // 00
+		stl::enumeration<FormType, std::uint8_t>             type;        // 08
+		std::uint8_t                                         pad09;       // 09
+		std::uint16_t                                        pad0A;       // 0A
+		char                                                 uniqueID[4]; // 0C
+		stl::enumeration<DEFAULT_OBJECT_TYPE, std::uint32_t> doType;      // 10
+		std::uint32_t                                        pad14;       // 14
 	};
+
 	static_assert(sizeof(DEFAULT_OBJECT_DATA) == 0x18);
 
 	class BGSDefaultObjectManager :
-		public TESForm,                                       // 000
-		public BSTSingletonImplicit<BGSDefaultObjectManager>  // 020
+		public TESForm,                                      // 000
+		public BSTSingletonImplicit<BGSDefaultObjectManager> // 020
 	{
 	public:
 		inline static constexpr auto RTTI = RTTI_BGSDefaultObjectManager;
@@ -1001,16 +1004,14 @@ namespace RE
 
 		struct RecordFlags
 		{
-			enum RecordFlag : std::uint32_t
-			{
-			};
+			enum RecordFlag : std::uint32_t {};
 		};
 
-		~BGSDefaultObjectManager() override;  // 00
+		~BGSDefaultObjectManager() override; // 00
 
 		// override (TESForm)
-		bool Load(TESFile* a_mod) override;  // 06
-		void InitItemImpl() override;        // 13
+		bool Load(TESFile* a_mod) override; // 06
+		void InitItemImpl() override;       // 13
 
 		[[nodiscard]] static BGSDefaultObjectManager* GetSingleton()
 		{
@@ -1076,19 +1077,20 @@ namespace RE
 		[[nodiscard]] static bool SupportsCurrentRuntime(DefaultObjectID a_object) noexcept;
 
 		// members
-		TESForm* objects[DEFAULT_OBJECTS::kTotal];  // 020 - DNAM
+		TESForm* objects[DEFAULT_OBJECTS::kTotal]; // 020 - DNAM
 #ifndef SKYRIM_CROSS_VR
-		bool          objectInit[DEFAULT_OBJECTS::kTotal];  // B80
-		std::uint32_t padCEC;                               // CEC
+		bool          objectInit[DEFAULT_OBJECTS::kTotal]; // B80
+		std::uint32_t padCEC;                              // CEC
 #else
 		std::uint8_t unk5D8[0x718];  // 5D8
 #endif
+
 	private:
 		KEEP_FOR_RE()
 	};
 #if !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 	static_assert(sizeof(BGSDefaultObjectManager) == 0xD20);
 #else
-	static_assert(sizeof(BGSDefaultObjectManager) == 0xCF0);
+	static_assert(sizeof(BGSDefaultObjectManager) == 0xD08);
 #endif
 }

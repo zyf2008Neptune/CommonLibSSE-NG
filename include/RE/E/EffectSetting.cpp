@@ -1,5 +1,3 @@
-#pragma once
-
 #include "RE/E/EffectSetting.h"
 #include "RE/B/BSFixedString.h"
 

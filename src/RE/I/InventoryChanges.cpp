@@ -1,13 +1,12 @@
-#pragma once
 #include "RE/I/InventoryChanges.h"
 #include "RE/A/Actor.h"
 #include "RE/F/FormTraits.h"
 #include "RE/T/TESObjectREFR.h"
+
 namespace RE
 {
 	InventoryChanges::InventoryChanges() :
-		InventoryChanges(nullptr)
-	{}
+		InventoryChanges(nullptr) {}
 
 	InventoryChanges::InventoryChanges(TESObjectREFR* a_ref)
 	{
