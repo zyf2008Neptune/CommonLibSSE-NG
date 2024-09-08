@@ -143,7 +143,7 @@ namespace SKSE
 				template <std::size_t POS = 0, std::size_t COUNT = npos>
 				[[nodiscard]] consteval auto substr() const noexcept
 				{
-					return string < CharT, COUNT != npos ? COUNT : N - POS > (this->data() + POS);
+					return string<CharT, COUNT != npos ? COUNT : N - POS>(this->data() + POS);
 				}
 
 				char_type c[N] = {};
@@ -153,23 +153,23 @@ namespace SKSE
 			string(const CharT (&)[N]) -> string<CharT, N - 1>;
 		}
 
-		template <class EF>                                        //
-			requires(std::invocable<std::remove_reference_t<EF>>)  //
+		template <class EF>                                       //
+			requires(std::invocable<std::remove_reference_t<EF>>) //
 		class scope_exit
 		{
 		public:
 			// 1)
 			template <class Fn>
-			explicit scope_exit(Fn&& a_fn)  //
+			explicit scope_exit(Fn&& a_fn) //
 				noexcept(std::is_nothrow_constructible_v<EF, Fn> ||
-						 std::is_nothrow_constructible_v<EF, Fn&>)  //
+				         std::is_nothrow_constructible_v<EF, Fn&>) //
 				requires(!std::is_same_v<std::remove_cvref_t<Fn>, scope_exit> &&
-						 std::is_constructible_v<EF, Fn>)
+				         std::is_constructible_v<EF, Fn>)
 			{
 				static_assert(std::invocable<Fn>);
 
 				if constexpr (!std::is_lvalue_reference_v<Fn> &&
-							  std::is_nothrow_constructible_v<EF, Fn>) {
+				              std::is_nothrow_constructible_v<EF, Fn>) {
 					_fn.emplace(std::forward<Fn>(a_fn));
 				} else {
 					_fn.emplace(a_fn);
@@ -177,11 +177,11 @@ namespace SKSE
 			}
 
 			// 2)
-			scope_exit(scope_exit&& a_rhs)  //
+			scope_exit(scope_exit&& a_rhs) //
 				noexcept(std::is_nothrow_move_constructible_v<EF> ||
-						 std::is_nothrow_copy_constructible_v<EF>)  //
+				         std::is_nothrow_copy_constructible_v<EF>) //
 				requires(std::is_nothrow_move_constructible_v<EF> ||
-						 std::is_copy_constructible_v<EF>)
+				         std::is_copy_constructible_v<EF>)
 			{
 				static_assert(!(std::is_nothrow_move_constructible_v<EF> && !std::is_move_constructible_v<EF>));
 				static_assert(!(!std::is_nothrow_move_constructible_v<EF> && !std::is_copy_constructible_v<EF>));
@@ -235,17 +235,14 @@ namespace SKSE
 
 			constexpr enumeration(enumeration&&) noexcept = default;
 
-			template <class U2>  // NOLINTNEXTLINE(google-explicit-constructor)
+			template <class U2> // NOLINTNEXTLINE(google-explicit-constructor)
 			constexpr enumeration(enumeration<Enum, U2> a_rhs) noexcept :
-				_impl(static_cast<underlying_type>(a_rhs.get()))
-			{}
+				_impl(static_cast<underlying_type>(a_rhs.get())) {}
 
 			template <class... Args>
-			constexpr enumeration(Args... a_values) noexcept  //
-				requires(std::same_as<Args, enum_type> && ...)
-				:
-				_impl((static_cast<underlying_type>(a_values) | ...))
-			{}
+			constexpr enumeration(Args... a_values) noexcept //
+				requires(std::same_as<Args, enum_type> && ...) :
+				_impl((static_cast<underlying_type>(a_values) | ...)) {}
 
 			~enumeration() noexcept = default;
 
@@ -256,6 +253,7 @@ namespace SKSE
 			constexpr enumeration& operator=(enumeration<Enum, U2> a_rhs) noexcept
 			{
 				_impl = static_cast<underlying_type>(a_rhs.get());
+				return *this;
 			}
 
 			constexpr enumeration& operator=(enum_type a_value) noexcept
@@ -271,7 +269,7 @@ namespace SKSE
 			[[nodiscard]] constexpr underlying_type underlying() const noexcept { return _impl; }
 
 			template <class... Args>
-			constexpr enumeration& set(Args... a_args) noexcept  //
+			constexpr enumeration& set(Args... a_args) noexcept //
 				requires(std::same_as<Args, enum_type> && ...)
 			{
 				_impl |= (static_cast<underlying_type>(a_args) | ...);
@@ -279,7 +277,7 @@ namespace SKSE
 			}
 
 			template <class... Args>
-			constexpr enumeration& reset(Args... a_args) noexcept  //
+			constexpr enumeration& reset(Args... a_args) noexcept //
 				requires(std::same_as<Args, enum_type> && ...)
 			{
 				_impl &= ~(static_cast<underlying_type>(a_args) | ...);
@@ -287,21 +285,21 @@ namespace SKSE
 			}
 
 			template <class... Args>
-			[[nodiscard]] constexpr bool any(Args... a_args) const noexcept  //
+			[[nodiscard]] constexpr bool any(Args... a_args) const noexcept //
 				requires(std::same_as<Args, enum_type> && ...)
 			{
 				return (_impl & (static_cast<underlying_type>(a_args) | ...)) != static_cast<underlying_type>(0);
 			}
 
 			template <class... Args>
-			[[nodiscard]] constexpr bool all(Args... a_args) const noexcept  //
+			[[nodiscard]] constexpr bool all(Args... a_args) const noexcept //
 				requires(std::same_as<Args, enum_type> && ...)
 			{
 				return (_impl & (static_cast<underlying_type>(a_args) | ...)) == (static_cast<underlying_type>(a_args) | ...);
 			}
 
 			template <class... Args>
-			[[nodiscard]] constexpr bool none(Args... a_args) const noexcept  //
+			[[nodiscard]] constexpr bool none(Args... a_args) const noexcept //
 				requires(std::same_as<Args, enum_type> && ...)
 			{
 				return (_impl & (static_cast<underlying_type>(a_args) | ...)) == static_cast<underlying_type>(0);
@@ -313,9 +311,9 @@ namespace SKSE
 
 		template <class... Args>
 		enumeration(Args...) -> enumeration<
-								 std::common_type_t<Args...>,
-								 std::underlying_type_t<
-									 std::common_type_t<Args...>>>;
+			std::common_type_t<Args...>,
+			std::underlying_type_t<
+				std::common_type_t<Args...>>>;
 	}
 }
 
@@ -435,8 +433,8 @@ namespace SKSE
 		SKSE_MAKE_ENUMERATION_OP(+);
 		SKSE_MAKE_ENUMERATION_OP(-);
 
-		SKSE_MAKE_INCREMENTER_OP(+);  // ++
-		SKSE_MAKE_INCREMENTER_OP(-);  // --
+		SKSE_MAKE_INCREMENTER_OP(+); // ++
+		SKSE_MAKE_INCREMENTER_OP(-); // --
 
 		template <class T>
 		class atomic_ref :
@@ -449,8 +447,7 @@ namespace SKSE
 			using value_type = typename super::value_type;
 
 			explicit atomic_ref(volatile T& a_obj) noexcept(std::is_nothrow_constructible_v<super, value_type&>) :
-				super(const_cast<value_type&>(a_obj))
-			{}
+				super(const_cast<value_type&>(a_obj)) {}
 
 			using super::super;
 			using super::operator=;
@@ -525,7 +522,7 @@ namespace SKSE
 		}
 
 		template <class... Args>
-		[[nodiscard]] inline auto pun_bits(Args... a_args)  //
+		[[nodiscard]] inline auto pun_bits(Args... a_args) //
 			requires(std::same_as<std::remove_cv_t<Args>, bool> && ...)
 		{
 			constexpr auto ARGC = sizeof...(Args);
@@ -598,7 +595,7 @@ namespace SKSE
 		}
 
 		inline bool report_and_error(std::string_view a_msg, bool a_fail = true,
-			std::source_location a_loc = std::source_location::current())
+			const std::source_location&               a_loc = std::source_location::current())
 		{
 			const auto body = [&]() -> std::wstring {
 				const std::filesystem::path p = a_loc.file_name();
@@ -611,12 +608,12 @@ namespace SKSE
 				}
 
 				return utf8_to_utf16(
-					std::format(
-						"{}({}): {}"sv,
-						filename,
-						a_loc.line(),
-						a_msg))
-				    .value_or(L"<character encoding error>"s);
+						std::format(
+							"{}({}): {}"sv,
+							filename,
+							a_loc.line(),
+							a_msg))
+					.value_or(L"<character encoding error>"s);
 			}();
 
 			const auto caption = []() {
@@ -660,7 +657,7 @@ namespace SKSE
 		}
 
 		[[noreturn]] inline void report_and_fail(std::string_view a_msg,
-			std::source_location                                  a_loc = std::source_location::current())
+			const std::source_location&                           a_loc = std::source_location::current())
 		{
 			report_and_error(a_msg, true, a_loc);
 		}
@@ -669,8 +666,8 @@ namespace SKSE
 		[[nodiscard]] To unrestricted_cast(From a_from) noexcept
 		{
 			if constexpr (std::is_same_v<
-							  std::remove_cv_t<From>,
-							  std::remove_cv_t<To>>) {
+				std::remove_cv_t<From>,
+				std::remove_cv_t<To>>) {
 				return To{ a_from };
 
 				// From != To
@@ -685,12 +682,12 @@ namespace SKSE
 
 				// To: NOT reference
 			} else if constexpr (std::is_pointer_v<From> &&
-								 std::is_pointer_v<To>) {
+			                     std::is_pointer_v<To>) {
 				return static_cast<To>(
 					const_cast<void*>(
 						static_cast<const volatile void*>(a_from)));
 			} else if constexpr ((std::is_pointer_v<From> && std::is_integral_v<To>) ||
-								 (std::is_integral_v<From> && std::is_pointer_v<To>)) {
+			                     (std::is_integral_v<From> && std::is_pointer_v<To>)) {
 				return reinterpret_cast<To>(a_from);
 			} else {
 				union

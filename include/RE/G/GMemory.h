@@ -31,7 +31,7 @@ namespace RE
 
 // Global heap
 #define GALLOC(a_count) RE::GMemory::Alloc((a_count))
-#define GMEMALIGN(a_sz, a_al) RE::GMemory::Alloc((a_count), (a_al))
+#define GMEMALIGN(a_count, a_al) RE::GMemory::Alloc((a_count), (a_al))
 #define GREALLOC(a_ptr, a_count) RE::GMemory::Realloc((a_ptr), (a_count))
 #define GFREE(a_ptr) RE::GMemory::Free((a_ptr))
 #define GFREE_ALIGN(a_count) RE::GMemory::Free((a_count))

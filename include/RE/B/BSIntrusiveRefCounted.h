@@ -22,11 +22,12 @@ namespace RE
 			return --myRefCount;
 		}
 
-		TES_HEAP_REDEFINE_NEW();
+		TES_HEAP_REDEFINE_NEW()
 
 	protected:
 		// members
-		mutable volatile std::uint32_t _refCount{ 0 };  // 0
+		mutable volatile std::uint32_t _refCount{ 0 }; // 0
 	};
+
 	static_assert(sizeof(BSIntrusiveRefCounted) == 0x4);
 }

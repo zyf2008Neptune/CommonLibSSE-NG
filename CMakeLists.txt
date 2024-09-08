@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
 
-option(SKSE_SUPPORT_XBYAK "Enables trampoline support for Xbyak." OFF)
+option(SKSE_SUPPORT_XBYAK "Enables trampoline support for Xbyak." ON)
 option(ENABLE_SKYRIM_SE "Enable support for Skyrim SE in the dynamic runtime feature." OFF)
 option(ENABLE_SKYRIM_AE "Enable support for Skyrim AE in the dynamic runtime feature." ON)
 option(ENABLE_SKYRIM_VR "Enable support for Skyrim VR in the dynamic runtime feature." OFF)
@@ -123,6 +123,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES Clang)
 		-Wno-inconsistent-missing-override		  #
 		-Wno-reinterpret-base-class               #
 		-Wno-dynamic-class-memaccess			  #
+		-Wno-defaulted-function-deleted			  #
 	)
 
 endif()

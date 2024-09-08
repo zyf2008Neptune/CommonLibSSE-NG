@@ -19,9 +19,9 @@ namespace RE
 	struct ScreenshotHandler;
 
 	class MenuControls :
-		public BSTEventSink<InputEvent*>,         // 00
-		public BSTSingletonSDM<MenuControls>,     // 10
-		public BSTEventSink<MenuModeChangeEvent>  // 08
+		public BSTEventSink<InputEvent*>,        // 00
+		public BSTSingletonSDM<MenuControls>,    // 10
+		public BSTEventSink<MenuModeChangeEvent> // 08
 	{
 	public:
 		struct QueuedReg
@@ -31,12 +31,13 @@ namespace RE
 			~QueuedReg() = default;
 
 			// members
-			MenuEventHandler* handler;  // 00
-			bool              add;      // 08
-			std::uint8_t      pad08;    // 09
-			std::uint16_t     pad09;    // 0A
-			std::uint32_t     pad0A;    // 0C
+			MenuEventHandler* handler; // 00
+			bool              add;     // 08
+			std::uint8_t      pad08;   // 09
+			std::uint16_t     pad09;   // 0A
+			std::uint32_t     pad0A;   // 0C
 		};
+
 		static_assert(sizeof(QueuedReg) == 0x10);
 
 		struct RUNTIME_DATA
@@ -50,24 +51,25 @@ namespace RE
 
 			RUNTIME_DATA_CONTENT
 		};
+
 		static_assert(sizeof(RUNTIME_DATA) == 0x8);
 
-		~MenuControls() override;  // 00
+		~MenuControls() override = default; // 00
 
 		// override (BSTEventSink<InputEvent*>)
-		BSEventNotifyControl ProcessEvent(InputEvent* const* a_event, BSTEventSource<InputEvent*>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(InputEvent* const* a_event, BSTEventSource<InputEvent*>* a_eventSource) override; // 01
 
 		// override (BSTEventSink<MenuModeChangeEvent>)
-		BSEventNotifyControl ProcessEvent(const MenuModeChangeEvent* a_event, BSTEventSource<MenuModeChangeEvent>* a_eventSource) override;  // 01
+		BSEventNotifyControl ProcessEvent(const MenuModeChangeEvent* a_event, BSTEventSource<MenuModeChangeEvent>* a_eventSource) override; // 01
 
 		static MenuControls* GetSingleton();
 
-		void                         AddHandler(MenuEventHandler* a_handler);
+		void               AddHandler(MenuEventHandler* a_handler);
 		[[nodiscard]] bool InBeastForm() const noexcept { return GetRuntimeData().beastForm; }
-		void                         RegisterHandler(MenuEventHandler* a_handler);
-		void                         RemoveHandler(MenuEventHandler* a_handler);
-		bool                         QueueScreenshot();
-		void                         UnregisterHandler(MenuEventHandler* a_handler);
+		void               RegisterHandler(MenuEventHandler* a_handler);
+		void               RemoveHandler(MenuEventHandler* a_handler);
+		bool               QueueScreenshot();
+		void               UnregisterHandler(MenuEventHandler* a_handler);
 
 		[[nodiscard]] inline RUNTIME_DATA& GetRuntimeData() noexcept
 		{
@@ -88,28 +90,30 @@ namespace RE
 		}
 
 		// members
-		std::uint8_t                pad11;                 // 11
-		std::uint16_t               pad12;                 // 12
-		std::uint32_t               pad14;                 // 14
-		BSTArray<MenuEventHandler*> handlers;              // 18
-		BSTArray<QueuedReg>         regBuffer;             // 30
-		ClickHandler*               clickHandler;          // 48
-		DirectionHandler*           directionHandler;      // 50
-		ConsoleOpenHandler*         consoleOpenHandler;    // 58
-		QuickSaveLoadHandler*       quickSaveLoadHandler;  // 60
-		MenuOpenHandler*            menuOpenHandler;       // 68
-		FavoritesHandler*           favoritesHandler;      // 70
-		ScreenshotHandler*          screenshotHandler;     // 78
+		std::uint8_t                pad11;                // 11
+		std::uint16_t               pad12;                // 12
+		std::uint32_t               pad14;                // 14
+		BSTArray<MenuEventHandler*> handlers;             // 18
+		BSTArray<QueuedReg>         regBuffer;            // 30
+		ClickHandler*               clickHandler;         // 48
+		DirectionHandler*           directionHandler;     // 50
+		ConsoleOpenHandler*         consoleOpenHandler;   // 58
+		QuickSaveLoadHandler*       quickSaveLoadHandler; // 60
+		MenuOpenHandler*            menuOpenHandler;      // 68
+		FavoritesHandler*           favoritesHandler;     // 70
+		ScreenshotHandler*          screenshotHandler;    // 78
 #ifndef ENABLE_SKYRIM_VR
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 		std::uint64_t occlusionCullingToggleHandler;  // 80
 #endif
 #ifndef SKYRIM_CROSS_VR
-		RUNTIME_DATA_CONTENT;  // 80, 88
+		RUNTIME_DATA_CONTENT; // 80, 88
 #endif
+
 	private:
 		KEEP_FOR_RE()
 	};
+
 	static_assert(offsetof(MenuControls, handlers) == 0x18);
 
 #ifndef ENABLE_SKYRIM_VR

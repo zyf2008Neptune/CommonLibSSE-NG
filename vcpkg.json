@@ -15,6 +15,7 @@
     "directxmath",
     "directxtk",
     "rapidcsv",
-    "spdlog"
+    "spdlog",
+    "xbyak"
   ]
 }

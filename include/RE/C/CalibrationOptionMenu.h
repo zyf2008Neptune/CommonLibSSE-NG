@@ -10,7 +10,8 @@ namespace RE
 		public MenuEventHandler // 40
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_CalibrationOptionMenu;
+		static constexpr auto RTTI = RTTI_CalibrationOptionMenu;
+		~CalibrationOptionMenu() override;
 
 		// override (IMenu)
 		void               Accept(CallbackProcessor* a_processor) override; // 01
@@ -26,5 +27,5 @@ namespace RE
 		KEEP_FOR_RE()
 	};
 
-	static_assert(sizeof(CalibrationOptionMenu) == 0x58);
+	static_assert(sizeof(CalibrationOptionMenu) == 88);
 }

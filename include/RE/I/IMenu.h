@@ -19,7 +19,7 @@ namespace RE
 		kAlwaysOpen = 1 << 1,
 		kUsesCursor = 1 << 2,
 		kUsesMenuContext = 1 << 3,
-		kModal = 1 << 4,  // prevents lower movies with this flag from advancing
+		kModal = 1 << 4, // prevents lower movies with this flag from advancing
 		kFreezeFrameBackground = 1 << 5,
 		kOnStack = 1 << 6,
 		kDisablePauseMenu = 1 << 7,
@@ -54,31 +54,30 @@ namespace RE
 
 	enum class UI_MENU_Unk09
 	{
-		kNone = static_cast<std::underlying_type_t<UI_MENU_Unk09>>(-1),  // Entire enum needs more REing
-
+		kNone = static_cast<std::underlying_type_t<UI_MENU_Unk09>>(-1), // Entire enum needs more REing
 	};
 
 	class IMenu : public FxDelegateHandler
 	{
 	public:
-		inline static constexpr auto RTTI = RTTI_IMenu;
+		static constexpr auto RTTI = RTTI_IMenu;
 
 		using Context = UserEvents::INPUT_CONTEXT_ID;
 		using Flag = UI_MENU_FLAGS;
 
-		~IMenu() override = default;  // 00
+		~IMenu() override = default; // 00
 
 		// override (FxDelegateHandler)
-		void Accept(CallbackProcessor* a_processor) override;  // 01 - { return; }
+		void Accept(CallbackProcessor* a_processor) override; // 01 - { return; }
 
 		// add
-		virtual void               PostCreate();                                                 // 02 - { return; }
-		virtual void               Unk_03(void);                                                 // 03 - { return; }
-		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message);                         // 04
-		virtual void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime);  // 05
-		virtual void               PostDisplay();                                                // 06
-		virtual void               PreDisplay();                                                 // 07 - { return; } - only available if kRendersOffscreenTargets is set
-		virtual void               RefreshPlatform();                                            // 08
+		virtual void               PostCreate();                                                // 02 - { return; }
+		virtual void               Unk_03();                                                    // 03 - { return; }
+		virtual UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message);                        // 04
+		virtual void               AdvanceMovie(float a_interval, std::uint32_t a_currentTime); // 05
+		virtual void               PostDisplay();                                               // 06
+		virtual void               PreDisplay();                                                // 07 - { return; } - only available if kRendersOffscreenTargets is set
+		virtual void               RefreshPlatform();                                           // 08
 #ifdef ENABLE_SKYRIM_VR
 		virtual void Unk_09(UI_MENU_Unk09 a_unk);  // 09 - { unk30 = a_unk; }
 		virtual void Unk_0A();                     // 0A - Does something with _root.ResetOnShow swf function
@@ -88,6 +87,7 @@ namespace RE
 		{
 			return menuFlags.all(Flag::kAdvancesUnderPauseMenu);
 		}
+
 		[[nodiscard]] constexpr bool AllowSaving() const noexcept { return menuFlags.all(Flag::kAllowSaving); }
 		[[nodiscard]] constexpr bool AlwaysOpen() const noexcept { return menuFlags.all(Flag::kAlwaysOpen); }
 		[[nodiscard]] constexpr bool ApplicationMenu() const noexcept { return menuFlags.all(Flag::kApplicationMenu); }
@@ -117,19 +117,19 @@ namespace RE
 		[[nodiscard]] constexpr bool UsesMovementToDirection() const noexcept { return menuFlags.all(Flag::kUpdateUsesCursor); }
 
 		// members
-		GPtr<GFxMovieView>                             uiMovie{ nullptr };              // 10
-		std::int8_t                                    depthPriority{ 3 };              // 18
-		std::uint8_t                                   pad19{ 0 };                      // 19
-		std::uint16_t                                  pad20{ 0 };                      // 1A
-		stl::enumeration<UI_MENU_FLAGS, std::uint32_t> menuFlags{ Flag::kNone };        // 1C
-		stl::enumeration<Context, std::uint32_t>       inputContext{ Context::kNone };  // 20
-		std::uint32_t                                  pad24{ 0 };                      // 24
-		GPtr<FxDelegate>                               fxDelegate{ nullptr };           // 28
+		GPtr<GFxMovieView>                             uiMovie{ nullptr };             // 10
+		std::int8_t                                    depthPriority{ 3 };             // 18
+		std::uint8_t                                   pad19{ 0 };                     // 19
+		std::uint16_t                                  pad20{ 0 };                     // 1A
+		stl::enumeration<UI_MENU_FLAGS, std::uint32_t> menuFlags{ Flag::kNone };       // 1C
+		stl::enumeration<Context, std::uint32_t>       inputContext{ Context::kNone }; // 20
+		std::uint32_t                                  pad24{ 0 };                     // 24
+		GPtr<FxDelegate>                               fxDelegate{ nullptr };          // 28
 		stl::enumeration<UI_MENU_Unk09, std::uint32_t> unk30{ UI_MENU_Unk09::kNone };
 		std::byte                                      unk34{ 1 };
-		BSFixedString                                  menuName{ "N/A" };  // 38
+		BSFixedString                                  menuName{ "N/A" }; // 38
 	private:
-		KEEP_FOR_RE();
+		KEEP_FOR_RE()
 	};
 #if !defined(ENABLE_SKYRIM_VR)
 	static_assert(sizeof(IMenu) == 0x40);

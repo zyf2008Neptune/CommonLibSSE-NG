@@ -12,6 +12,6 @@ namespace RE
 	class GRefCountBaseStatImpl : public Base
 	{
 	public:
-		GFC_MEMORY_REDEFINE_NEW_IMPL(Base, GFC_REFCOUNTALLOC_CHECK_DELETE, StatType);
+		GFC_MEMORY_REDEFINE_NEW_IMPL(Base, GFC_REFCOUNTALLOC_CHECK_DELETE, StatType)
 	};
 }

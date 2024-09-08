@@ -51,11 +51,11 @@ public:                                                                \
 			RUNTIME_DATA_CONTENT2
 		};
 
-		~Console() override;  // 00
+		~Console() override = default; // 00
 
 		// override (IMenu)
-		void               Accept(CallbackProcessor* a_processor) override;  // 01
-		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;    // 04
+		void               Accept(CallbackProcessor* a_processor) override; // 01
+		UI_MESSAGE_RESULTS ProcessMessage(UIMessage& a_message) override;   // 04
 
 		static NiPointer<TESObjectREFR> GetSelectedRef();
 		static ObjectRefHandle          GetSelectedRefHandle();
