@@ -566,13 +566,13 @@ namespace RE
 		Entry& E(UPInt a_index)
 		{
 			assert(a_index <= table->sizeMask);
-			return *(static_cast<Entry*>(table + 1) + a_index);
+			return *(reinterpret_cast<Entry*>(table + 1) + a_index);
 		}
 
 		const Entry& E(UPInt a_index) const
 		{
 			assert(a_index <= table->sizeMask);
-			return *(static_cast<Entry*>(table + 1) + a_index);
+			return *(reinterpret_cast<Entry*>(table + 1) + a_index);
 		}
 
 		void SetRawCapacity(void* a_heapAddr, UPInt a_newSize)
