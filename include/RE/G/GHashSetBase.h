@@ -24,26 +24,25 @@ namespace RE
 		public:
 			const_iterator() :
 				hash(nullptr),
-				index(0)
-			{}
+				index(0) {}
 
 			const C& operator*() const
 			{
-				assert(index >= 0 && index <= (SPInt)hash->table->sizeMask);
+				assert(index >= 0 && index <= reinterpret_cast<SPInt>(hash->table->sizeMask));
 				return hash->E(index).value;
 			}
 
 			const C* operator->() const
 			{
-				assert(index >= 0 && index <= (SPInt)hash->table->sizeMask);
+				assert(index >= 0 && index <= reinterpret_cast<SPInt>(hash->table->sizeMask));
 				return &hash->E(index).value;
 			}
 
 			void operator++()
 			{
-				if (index <= (SPInt)hash->table->sizeMask) {
+				if (index <= reinterpret_cast<SPInt>(hash->table->sizeMask)) {
 					++index;
-					while ((UPInt)index <= hash->table->sizeMask && hash->E(index).IsEmpty()) {
+					while (static_cast<UPInt>(index) <= hash->table->sizeMask && hash->E(index).IsEmpty()) {
 						++index;
 					}
 				}
@@ -65,7 +64,7 @@ namespace RE
 
 			[[nodiscard]] bool IsEnd() const
 			{
-				return (!hash) || (!hash->table) || (index > (SPInt)hash->table->sizeMask);
+				return (!hash) || (!hash->table) || (index > reinterpret_cast<SPInt>(hash->table->sizeMask));
 			}
 
 		protected:
@@ -73,12 +72,12 @@ namespace RE
 
 			const_iterator(const SelfType* a_hash, SPInt a_index) :
 				hash(a_hash),
-				index(a_index)
-			{}
+				index(a_index) {}
 
-			const SelfType* hash;   // 00
-			SPInt           index;  // 08
+			const SelfType* hash;  // 00
+			SPInt           index; // 08
 		};
+
 		static_assert(sizeof(const_iterator) == 0x10);
 
 		friend struct const_iterator;
@@ -87,12 +86,11 @@ namespace RE
 		{
 		public:
 			iterator() :
-				const_iterator(nullptr, 0)
-			{}
+				const_iterator(nullptr, 0) {}
 
 			C& operator*() const
 			{
-				assert(const_iterator::index >= 0 && const_iterator::index <= (SPInt)const_iterator::hash->table->sizeMask);
+				assert(const_iterator::index >= 0 && const_iterator::index <= static_cast<SPInt>(const_iterator::hash->table->sizeMask));
 				return const_cast<SelfType*>(const_iterator::hash)->E(const_iterator::index).value;
 			}
 
@@ -112,14 +110,14 @@ namespace RE
 
 				Entry* entry = &hash->E(index);
 
-				if (entry->IsEmpty() || (entry->GetCachedHash(hash->table->sizeMask) != (UPInt)index)) {
+				if (entry->IsEmpty() || (entry->GetCachedHash(hash->table->sizeMask) != static_cast<UPInt>(index))) {
 					return;
 				}
 
 				SPInt naturalIndex = index;
 				SPInt prevIndex = -1;
 
-				while ((entry->GetCachedHash(hash->table->sizeMask) != (UPInt)naturalIndex) || !(entry->value == key)) {
+				while ((entry->GetCachedHash(hash->table->sizeMask) != static_cast<UPInt>(naturalIndex)) || !(entry->value == key)) {
 					prevIndex = index;
 					index = entry->nextInChain;
 					if (index == -1) {
@@ -128,12 +126,12 @@ namespace RE
 					entry = &hash->E(index);
 				}
 
-				if (index == (SPInt)const_iterator::index) {
+				if (index == static_cast<SPInt>(const_iterator::index)) {
 					if (naturalIndex == index) {
 						if (!entry->IsEndOfChain()) {
 							Entry* nextEntry = &hash->E(entry->nextInChain);
 							entry->Clear();
-							new (entry) Entry(*nextEntry);
+							new(entry) Entry(*nextEntry);
 							entry = nextEntry;
 							--const_iterator::index;
 						}
@@ -156,34 +154,31 @@ namespace RE
 			using base::index;
 
 			iterator(SelfType* a_hash, SPInt a_idx) :
-				const_iterator(a_hash, a_idx)
-			{}
+				const_iterator(a_hash, a_idx) {}
 		};
 
 		friend struct iterator;
 
 		GHashSetBase() :
-			table(nullptr)
-		{}
+			table(nullptr) {}
 
 		GHashSetBase(std::int32_t a_sizeHint) :
-			table(0)
+			table(nullptr)
 		{
 			SetCapacity(this, a_sizeHint);
 		}
 
 		explicit GHashSetBase([[maybe_unused]] void* a_memAddr) :
-			table(0)
-		{}
+			table(nullptr) {}
 
 		GHashSetBase(void* a_memAddr, std::int32_t a_sizeHint) :
-			table(0)
+			table(nullptr)
 		{
 			SetCapacity(a_memAddr, a_sizeHint);
 		}
 
 		GHashSetBase(const SelfType& a_src) :
-			table(0)
+			table(nullptr)
 		{
 			Assign(this, a_src);
 		}
@@ -211,7 +206,7 @@ namespace RE
 			Clear();
 			if (a_src.IsEmpty() == false) {
 				SetCapacity(a_memAddr, a_src.GetSize());
-				for (const_iterator it = a_src.Begin(); it != a_src.End(); ++it) {
+				for (const_iterator it = a_src.begin(); it != a_src.end(); ++it) {
 					Add(a_memAddr, *it);
 				}
 			}
@@ -273,7 +268,7 @@ namespace RE
 
 			Entry* entry = std::addressof(E(index));
 
-			if (entry->IsEmpty() || (entry->GetCachedHash(table->sizeMask) != (UPInt)index)) {
+			if (entry->IsEmpty() || (entry->GetCachedHash(table->sizeMask) != static_cast<UPInt>(index))) {
 				return;
 			}
 
@@ -281,7 +276,7 @@ namespace RE
 			const SPInt naturalIndex = index;
 			SPInt       prevIndex = -1;
 
-			while ((entry->GetCachedHash(table->sizeMask) != (UPInt)naturalIndex) || !(entry->value == a_key)) {
+			while ((entry->GetCachedHash(table->sizeMask) != static_cast<UPInt>(naturalIndex)) || !(entry->value == a_key)) {
 				prevIndex = index;
 				index = entry->nextInChain;
 				if (index == -1) {
@@ -294,7 +289,7 @@ namespace RE
 				if (!entry->IsEndOfChain()) {
 					Entry* nextEntry = std::addressof(E(entry->nextInChain));
 					entry->Clear();
-					new (entry) Entry(*nextEntry);
+					new(entry) Entry(*nextEntry);
 					entry = nextEntry;
 				}
 			} else {
@@ -318,7 +313,7 @@ namespace RE
 			if (index >= 0) {
 				return std::addressof(E(index).value);
 			} else {
-				return 0;
+				return nullptr;
 			}
 		}
 
@@ -329,7 +324,7 @@ namespace RE
 			if (index >= 0) {
 				return std::addressof(E(index).value);
 			} else {
-				return 0;
+				return nullptr;
 			}
 		}
 
@@ -369,7 +364,7 @@ namespace RE
 
 		[[nodiscard]] UPInt GetSize() const
 		{
-			return table ? 0 : (UPInt)table->entryCount;
+			return table ? 0 : static_cast<UPInt>(table->entryCount);
 		}
 
 		void CheckExpand(void* a_memAddr)
@@ -397,7 +392,7 @@ namespace RE
 
 		iterator begin()
 		{
-			if (table == 0) {
+			if (table == nullptr) {
 				return iterator(0, 0);
 			}
 
@@ -463,10 +458,11 @@ namespace RE
 
 		struct TableType
 		{
-			UPInt entryCount;  // 00
-			UPInt sizeMask;    // 08
-							   //Entry	entries[0];	// 10
+			UPInt entryCount; // 00
+			UPInt sizeMask;   // 08
+			//Entry	entries[0];	// 10
 		};
+
 		static_assert(sizeof(TableType) == 0x10);
 
 		template <class K>
@@ -510,7 +506,7 @@ namespace RE
 				assert(!(entry->value == a_key));
 
 				index = entry->nextInChain;
-				if (index == (UPInt)-1) {
+				if (index == static_cast<UPInt>(-1)) {
 					break;
 				}
 
@@ -532,7 +528,7 @@ namespace RE
 			Entry*      naturalEntry = &(E(index));
 
 			if (naturalEntry->IsEmpty()) {
-				new (naturalEntry) Entry(a_key, -1);
+				new(naturalEntry) Entry(a_key, -1);
 			} else {
 				SPInt blankIndex = index;
 				do {
@@ -541,22 +537,22 @@ namespace RE
 
 				Entry* blankEntry = std::addressof(E(blankIndex));
 
-				if (naturalEntry->GetCachedHash(table->sizeMask) == (UPInt)index) {
-					new (blankEntry) Entry(*naturalEntry);
+				if (naturalEntry->GetCachedHash(table->sizeMask) == static_cast<UPInt>(index)) {
+					new(blankEntry) Entry(*naturalEntry);
 					naturalEntry->value = a_key;
 					naturalEntry->nextInChain = blankIndex;
 				} else {
 					SPInt collidedIndex = naturalEntry->GetCachedHash(table->sizeMask);
-					assert(collidedIndex >= 0 && collidedIndex <= (SPInt)table->sizeMask);
+					assert(collidedIndex >= 0 && collidedIndex <= static_cast<SPInt>(table->sizeMask));
 					for (;;) {
 						Entry* entry = std::addressof(E(collidedIndex));
 						if (entry->nextInChain == index) {
-							new (blankEntry) Entry(*naturalEntry);
+							new(blankEntry) Entry(*naturalEntry);
 							entry->nextInChain = blankIndex;
 							break;
 						}
 						collidedIndex = entry->nextInChain;
-						assert(collidedIndex >= 0 && collidedIndex <= (SPInt)table->sizeMask);
+						assert(collidedIndex >= 0 && collidedIndex <= static_cast<SPInt>(table->sizeMask));
 					}
 
 					naturalEntry->value = a_key;
@@ -570,13 +566,13 @@ namespace RE
 		Entry& E(UPInt a_index)
 		{
 			assert(a_index <= table->sizeMask);
-			return *(((Entry*)(table + 1)) + a_index);
+			return *(static_cast<Entry*>(table + 1) + a_index);
 		}
 
 		const Entry& E(UPInt a_index) const
 		{
 			assert(a_index <= table->sizeMask);
-			return *(((Entry*)(table + 1)) + a_index);
+			return *(static_cast<Entry*>(table + 1) + a_index);
 		}
 
 		void SetRawCapacity(void* a_heapAddr, UPInt a_newSize)
@@ -589,8 +585,8 @@ namespace RE
 			if (a_newSize < HashMinSize) {
 				a_newSize = HashMinSize;
 			} else {
-				const auto bits = gfchop(glog2f((float)(a_newSize - 1)) + 1);
-				a_newSize = UPInt(1) << bits;
+				const auto bits = gfchop(glog2f(static_cast<float>(a_newSize - 1)) + 1);
+				a_newSize = static_cast<UPInt>(1) << bits;
 			}
 
 			SelfType newHash;
@@ -623,9 +619,10 @@ namespace RE
 		}
 
 		// members
-		TableType* table;  // 00
+		TableType* table; // 00
 	private:
 		KEEP_FOR_RE()
 	};
+
 	// size == 0x8
 }

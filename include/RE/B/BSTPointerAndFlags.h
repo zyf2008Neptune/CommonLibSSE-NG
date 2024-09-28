@@ -44,7 +44,7 @@ namespace RE
 				clear_flags();
 				a_rhs.clear_flags();
 				_storage.address = a_rhs._storage.address;
-				a_rhs.storage.address = 0;
+				a_rhs._storage.address = 0;
 			}
 			return *this;
 		}
@@ -85,7 +85,7 @@ namespace RE
 		static constexpr std::uintptr_t FLAG_MASK = MASK;
 
 		// members
-		Storage _storage;  // 0
+		Storage _storage; // 0
 	private:
 		KEEP_FOR_RE()
 	};
