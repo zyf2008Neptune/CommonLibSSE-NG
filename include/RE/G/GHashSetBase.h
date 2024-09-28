@@ -24,8 +24,7 @@ namespace RE
 		public:
 			const_iterator() :
 				hash(nullptr),
-				index(0)
-			{}
+				index(0) {}
 
 			const C& operator*() const
 			{
@@ -73,12 +72,12 @@ namespace RE
 
 			const_iterator(const SelfType* a_hash, SPInt a_index) :
 				hash(a_hash),
-				index(a_index)
-			{}
+				index(a_index) {}
 
-			const SelfType* hash;   // 00
-			SPInt           index;  // 08
+			const SelfType* hash;  // 00
+			SPInt           index; // 08
 		};
+
 		static_assert(sizeof(const_iterator) == 0x10);
 
 		friend struct const_iterator;
@@ -87,8 +86,7 @@ namespace RE
 		{
 		public:
 			iterator() :
-				const_iterator(nullptr, 0)
-			{}
+				const_iterator(nullptr, 0) {}
 
 			C& operator*() const
 			{
@@ -133,7 +131,7 @@ namespace RE
 						if (!entry->IsEndOfChain()) {
 							Entry* nextEntry = &hash->E(entry->nextInChain);
 							entry->Clear();
-							new (entry) Entry(*nextEntry);
+							new(entry) Entry(*nextEntry);
 							entry = nextEntry;
 							--const_iterator::index;
 						}
@@ -156,15 +154,13 @@ namespace RE
 			using base::index;
 
 			iterator(SelfType* a_hash, SPInt a_idx) :
-				const_iterator(a_hash, a_idx)
-			{}
+				const_iterator(a_hash, a_idx) {}
 		};
 
 		friend struct iterator;
 
 		GHashSetBase() :
-			table(nullptr)
-		{}
+			table(nullptr) {}
 
 		GHashSetBase(std::int32_t a_sizeHint) :
 			table(0)
@@ -173,8 +169,7 @@ namespace RE
 		}
 
 		explicit GHashSetBase([[maybe_unused]] void* a_memAddr) :
-			table(0)
-		{}
+			table(0) {}
 
 		GHashSetBase(void* a_memAddr, std::int32_t a_sizeHint) :
 			table(0)
@@ -211,7 +206,7 @@ namespace RE
 			Clear();
 			if (a_src.IsEmpty() == false) {
 				SetCapacity(a_memAddr, a_src.GetSize());
-				for (const_iterator it = a_src.Begin(); it != a_src.End(); ++it) {
+				for (const_iterator it = a_src.begin(); it != a_src.end(); ++it) {
 					Add(a_memAddr, *it);
 				}
 			}
@@ -294,7 +289,7 @@ namespace RE
 				if (!entry->IsEndOfChain()) {
 					Entry* nextEntry = std::addressof(E(entry->nextInChain));
 					entry->Clear();
-					new (entry) Entry(*nextEntry);
+					new(entry) Entry(*nextEntry);
 					entry = nextEntry;
 				}
 			} else {
@@ -463,10 +458,11 @@ namespace RE
 
 		struct TableType
 		{
-			UPInt entryCount;  // 00
-			UPInt sizeMask;    // 08
-							   //Entry	entries[0];	// 10
+			UPInt entryCount; // 00
+			UPInt sizeMask;   // 08
+			//Entry	entries[0];	// 10
 		};
+
 		static_assert(sizeof(TableType) == 0x10);
 
 		template <class K>
@@ -532,7 +528,7 @@ namespace RE
 			Entry*      naturalEntry = &(E(index));
 
 			if (naturalEntry->IsEmpty()) {
-				new (naturalEntry) Entry(a_key, -1);
+				new(naturalEntry) Entry(a_key, -1);
 			} else {
 				SPInt blankIndex = index;
 				do {
@@ -542,7 +538,7 @@ namespace RE
 				Entry* blankEntry = std::addressof(E(blankIndex));
 
 				if (naturalEntry->GetCachedHash(table->sizeMask) == (UPInt)index) {
-					new (blankEntry) Entry(*naturalEntry);
+					new(blankEntry) Entry(*naturalEntry);
 					naturalEntry->value = a_key;
 					naturalEntry->nextInChain = blankIndex;
 				} else {
@@ -551,7 +547,7 @@ namespace RE
 					for (;;) {
 						Entry* entry = std::addressof(E(collidedIndex));
 						if (entry->nextInChain == index) {
-							new (blankEntry) Entry(*naturalEntry);
+							new(blankEntry) Entry(*naturalEntry);
 							entry->nextInChain = blankIndex;
 							break;
 						}
@@ -623,9 +619,10 @@ namespace RE
 		}
 
 		// members
-		TableType* table;  // 00
+		TableType* table; // 00
 	private:
 		KEEP_FOR_RE()
 	};
+
 	// size == 0x8
 }
