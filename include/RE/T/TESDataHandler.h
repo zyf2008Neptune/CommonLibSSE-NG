@@ -23,23 +23,25 @@ namespace RE
 	{
 	public:
 		// members
-		std::uint8_t pad0;  // 0
+		std::uint8_t pad0; // 0
 	};
+
 	static_assert(sizeof(TESObjectList) == 0x1);
 
 	struct TESFileCollection
 	{
 	public:
 		// members
-		BSTArray<TESFile*> files;       // 00
-		BSTArray<TESFile*> smallFiles;  // 18
+		BSTArray<TESFile*> files;      // 00
+		BSTArray<TESFile*> smallFiles; // 18
 	};
+
 	static_assert(sizeof(TESFileCollection) == 0x30);
 
 	class TESDataHandler : public BSTSingletonSDM<TESDataHandler>
 	{
 	public:
-		inline static RE::TESFileCollection* VRcompiledFileCollection = nullptr;  // used by SkyrimVRESL to store pointer to VR version
+		inline static RE::TESFileCollection* VRcompiledFileCollection = nullptr; // used by SkyrimVRESL to store pointer to VR version
 		static TESDataHandler*               GetSingleton(bool a_VRESL = true);
 
 		bool AddFormToDataHandler(TESForm* a_form);
@@ -145,12 +147,12 @@ namespace RE
 			}
 		}
 
-		[[nodiscard]] inline std::uint8_t GetLoadedLightModCount() const noexcept
+		[[nodiscard]] inline std::uint16_t GetLoadedLightModCount() const noexcept
 		{
 			if SKYRIM_REL_CONSTEXPR (REL::Module::IsVR()) {
 				return (!VRcompiledFileCollection) ? 0 : static_cast<std::uint8_t>(VRcompiledFileCollection->smallFiles.size());
 			} else {
-				return static_cast<std::uint8_t>(REL::RelocateMember<const TESFileCollection>(this, 0xD70, 0).smallFiles.size());
+				return static_cast<std::uint16_t>(REL::RelocateMember<const TESFileCollection>(this, 0xD70, 0).smallFiles.size());
 			}
 		}
 
@@ -175,27 +177,27 @@ namespace RE
 		}
 
 		// members
-		std::uint8_t                      pad001;                                         // 001
-		std::uint16_t                     pad002;                                         // 002
-		std::uint32_t                     pad004;                                         // 004
-		TESObjectList*                    objectList;                                     // 008
-		BSTArray<TESForm*>                formArrays[std::to_underlying(FormType::Max)];  // 010
-		TESRegionList*                    regionList;                                     // D00
-		NiTPrimitiveArray<TESObjectCELL*> interiorCells;                                  // D08
-		NiTPrimitiveArray<BGSAddonNode*>  addonNodes;                                     // D20
-		NiTList<TESForm*>                 badForms;                                       // D38
-		FormID                            nextID;                                         // D50
-		std::uint32_t                     padD54;                                         // D54
-		TESFile*                          activeFile;                                     // D58
-		BSSimpleList<TESFile*>            files;                                          // D60
+		std::uint8_t                      pad001;                                        // 001
+		std::uint16_t                     pad002;                                        // 002
+		std::uint32_t                     pad004;                                        // 004
+		TESObjectList*                    objectList;                                    // 008
+		BSTArray<TESForm*>                formArrays[std::to_underlying(FormType::Max)]; // 010
+		TESRegionList*                    regionList;                                    // D00
+		NiTPrimitiveArray<TESObjectCELL*> interiorCells;                                 // D08
+		NiTPrimitiveArray<BGSAddonNode*>  addonNodes;                                    // D20
+		NiTList<TESForm*>                 badForms;                                      // D38
+		FormID                            nextID;                                        // D50
+		std::uint32_t                     padD54;                                        // D54
+		TESFile*                          activeFile;                                    // D58
+		BSSimpleList<TESFile*>            files;                                         // D60
 #if !defined(ENABLE_SKYRIM_VR)
-		TESFileCollection compiledFileCollection;  // D70
+		TESFileCollection compiledFileCollection; // D70
 		RUNTIME_DATA_CONTENT
-		std::uint8_t          unkDAA;             // DAA
-		std::uint8_t          padDAB;             // DAB
-		std::uint32_t         padDAC;             // DAC
-		TESRegionDataManager* regionDataManager;  // DB0
-		InventoryChanges*     merchantInventory;  // DB8
+		std::uint8_t          unkDAA;            // DAA
+		std::uint8_t          padDAB;            // DAB
+		std::uint32_t         padDAC;            // DAC
+		TESRegionDataManager* regionDataManager; // DB0
+		InventoryChanges*     merchantInventory; // DB8
 #elif !defined(ENABLE_SKYRIM_AE) && !defined(ENABLE_SKYRIM_SE)
 		std::uint32_t loadedModCount;    // D70 this should be avoided if SkyrimVRESL is available
 		std::uint32_t pad14;             // D74
@@ -205,6 +207,7 @@ namespace RE
 		TESRegionDataManager* regionDataManager;  // 1580
 		InventoryChanges*     merchantInventory;  // 1588
 #endif
+
 	private:
 		KEEP_FOR_RE()
 	};
@@ -214,10 +217,10 @@ namespace RE
 	{
 		auto form = LookupForm(a_localFormID, a_modName);
 		if (!form) {
-			return 0;
+			return nullptr;
 		}
 
-		return form->Is(T::FORMTYPE) ? static_cast<T*>(form) : 0;
+		return form->Is(T::FORMTYPE) ? static_cast<T*>(form) : nullptr;
 	}
 
 	template <class T>
@@ -225,10 +228,10 @@ namespace RE
 	{
 		auto form = LookupFormRaw(a_rawFormID, a_modName);
 		if (!form) {
-			return 0;
+			return nullptr;
 		}
 
-		return form->Is(T::FORMTYPE) ? static_cast<T*>(form) : 0;
+		return form->Is(T::FORMTYPE) ? static_cast<T*>(form) : nullptr;
 	}
 
 	template <class T>
